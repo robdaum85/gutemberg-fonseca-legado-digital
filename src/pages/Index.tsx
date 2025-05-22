@@ -3,8 +3,9 @@ import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Timeline from '@/components/Timeline';
-import Programs from '@/components/Programs';
+import Career from '@/components/Career';
+import Achievements from '@/components/Achievements';
+import Days365 from '@/components/Days365';
 import Statistics from '@/components/Statistics';
 import Testimonials from '@/components/Testimonials';
 import ContactSection from '@/components/ContactSection';
@@ -21,8 +22,9 @@ const Index = () => {
       <Header />
       <Hero />
       <About />
-      <Timeline />
-      <Programs />
+      <Career />
+      <Achievements />
+      <Days365 />
       <Statistics />
       <Testimonials />
       <ContactSection />

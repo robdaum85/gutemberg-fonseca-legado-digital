@@ -21,8 +21,9 @@ const Header = () => {
 
   const navLinks = [
     { name: 'Sobre', href: '#sobre' },
-    { name: 'Legado', href: '#legado' },
-    { name: 'Programas', href: '#programas' },
+    { name: 'Carreira', href: '#carreira' },
+    { name: 'Realizações', href: '#realizacoes' },
+    { name: '365 Dias', href: '#365dias' },
     { name: 'Números', href: '#numeros' },
     { name: 'Depoimentos', href: '#depoimentos' },
     { name: 'Contato', href: '#contato' }
@@ -62,7 +63,7 @@ const Header = () => {
             className="bg-primary hover:bg-primary/90 text-white font-medium"
             onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Fale com o Gutemberg
+            Fale com o Secretário
           </Button>
         </div>
 
@@ -102,7 +103,7 @@ const Header = () => {
                 setMobileMenuOpen(false);
               }}
             >
-              Fale com o Gutemberg
+              Fale com o Secretário
             </Button>
           </div>
         </div>
