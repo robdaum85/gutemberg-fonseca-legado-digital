@@ -4,8 +4,12 @@ const Footer = () => {
     <footer className="bg-primary text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4">Gutemberg Fonseca</h3>
+          <div className="flex flex-col items-start">
+            <img 
+              src="/lovable-uploads/c003fb8b-1544-42bc-881b-af1b83f1ac15.png" 
+              alt="Gutemberg Fonseca Logo" 
+              className="h-16 mb-4"
+            />
             <p className="mb-4">Secretário Estadual de Defesa do Consumidor</p>
             <p className="text-sm opacity-75">
               Transformando as relações de consumo no estado do Rio de Janeiro.

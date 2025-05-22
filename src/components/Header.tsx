@@ -35,8 +35,12 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <a href="#" className="text-primary font-bold text-2xl">
-          Gutemberg Fonseca
+        <a href="#" className="flex items-center">
+          <img 
+            src="/lovable-uploads/c003fb8b-1544-42bc-881b-af1b83f1ac15.png" 
+            alt="Gutemberg Fonseca Logo" 
+            className="h-12 md:h-16"
+          />
         </a>
 
         {/* Desktop Navigation */}
