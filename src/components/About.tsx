@@ -1,3 +1,4 @@
+
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { useState, useEffect } from 'react';
 
@@ -16,24 +17,24 @@ const About = () => {
       <div className="section-container">
         <h2 className="section-title">Sobre o Secretário</h2>
         
-        <div className="flex flex-col md:flex-row gap-12 items-center mt-12">
+        <div className="flex flex-col lg:flex-row gap-12 items-start mt-12">
           <div 
             ref={ref as React.RefObject<HTMLDivElement>}
-            className={`md:w-1/2 transition-all duration-1000 ${
+            className={`lg:w-2/5 transition-all duration-1000 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
             }`}
           >
-            <div className="rounded-lg overflow-hidden shadow-xl">
+            <div className="relative">
               <img 
                 src="/lovable-uploads/424487f0-dee5-4f8e-bdab-8e3e234b08c7.png" 
                 alt="Gutemberg Fonseca" 
-                className="w-full h-auto"
+                className="w-full max-w-sm mx-auto lg:mx-0 rounded-xl shadow-2xl object-cover"
               />
             </div>
           </div>
           
           <div 
-            className={`md:w-1/2 transition-all duration-1000 delay-300 ${
+            className={`lg:w-3/5 transition-all duration-1000 delay-300 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
             }`}
           >
