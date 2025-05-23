@@ -57,9 +57,7 @@ const Header = () => {
             <a 
               key={link.name}
               href={link.href} 
-              className={`px-3 py-2 transition-colors ${
-                isScrolled ? 'text-white hover:text-secondary' : 'text-graphite hover:text-primary'
-              }`}
+              className="px-3 py-2 text-white hover:text-secondary transition-colors"
             >
               {link.name}
             </a>
@@ -74,11 +72,7 @@ const Header = () => {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-2 rounded-full transition-colors ${
-                isScrolled 
-                  ? 'text-white hover:text-secondary hover:bg-white/10' 
-                  : 'text-primary hover:text-white hover:bg-primary'
-              }`}
+              className="p-2 rounded-full text-white hover:text-secondary hover:bg-white/10 transition-colors"
               aria-label={social.label}
             >
               <social.icon size={20} />
@@ -88,9 +82,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button 
-          className={`md:hidden p-2 transition-colors ${
-            isScrolled ? 'text-white' : 'text-graphite'
-          }`}
+          className="md:hidden p-2 text-white transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
