@@ -11,7 +11,7 @@ const Hero = () => {
       id="hero" 
       className="relative h-screen w-full flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: 'url(/lovable-uploads/a097c447-657b-430a-8653-0e7ce0db1524.png)',
+        backgroundImage: 'url(/lovable-uploads/5118e141-56bb-4600-b3bb-86aec0a70a56.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed'
