@@ -7,6 +7,7 @@ import Career from '@/components/Career';
 import Achievements from '@/components/Achievements';
 import Days365 from '@/components/Days365';
 import Statistics from '@/components/Statistics';
+import MultimediaClipping from '@/components/MultimediaClipping';
 import Testimonials from '@/components/Testimonials';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -26,6 +27,7 @@ const Index = () => {
       <Achievements />
       <Days365 />
       <Statistics />
+      <MultimediaClipping />
       <Testimonials />
       <ContactSection />
       <Footer />
