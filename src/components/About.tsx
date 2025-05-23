@@ -5,6 +5,16 @@ import { useState, useEffect } from 'react';
 const About = () => {
   const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.1 });
   const [isVisible, setIsVisible] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const aboutImages = [
+    '/lovable-uploads/424487f0-dee5-4f8e-bdab-8e3e234b08c7.png',
+    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&crop=face'
+  ];
   
   useEffect(() => {
     if (isIntersecting) {
@@ -12,8 +22,16 @@ const About = () => {
     }
   }, [isIntersecting]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % aboutImages.length);
+    }, 4000); // Troca a cada 4 segundos
+
+    return () => clearInterval(interval);
+  }, [aboutImages.length]);
+
   return (
-    <section id="sobre" className="py-20 bg-white">
+    <section id="sobre" className="py-20 bg-gray-50/60">
       <div className="section-container">
         <h2 className="section-title">Sobre o Secretário</h2>
         
@@ -26,10 +44,23 @@ const About = () => {
           >
             <div className="relative">
               <img 
-                src="/lovable-uploads/424487f0-dee5-4f8e-bdab-8e3e234b08c7.png" 
+                src={aboutImages[currentImageIndex]} 
                 alt="Gutemberg Fonseca" 
-                className="w-full max-w-sm mx-auto lg:mx-0 rounded-xl shadow-2xl object-cover"
+                className="w-full max-w-sm mx-auto lg:mx-0 rounded-xl shadow-2xl object-cover h-80 transition-all duration-500"
               />
+              
+              {/* Indicadores de imagem */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {aboutImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
           
