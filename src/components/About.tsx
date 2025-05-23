@@ -1,4 +1,3 @@
-
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { useState, useEffect } from 'react';
 
@@ -26,7 +25,7 @@ const About = () => {
           >
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=774&ixlib=rb-4.0.3" 
+                src="/lovable-uploads/424487f0-dee5-4f8e-bdab-8e3e234b08c7.png" 
                 alt="Gutemberg Fonseca" 
                 className="w-full h-auto"
               />
