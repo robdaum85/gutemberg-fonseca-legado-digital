@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
+import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,10 +29,17 @@ const Header = () => {
     { name: 'Contato', href: '#contato' }
   ];
 
+  const socialLinks = [
+    { icon: Instagram, href: 'https://www.instagram.com/gutembergpfonseca/', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/gutembergfonseca/', label: 'LinkedIn' },
+    { icon: Facebook, href: 'https://www.facebook.com/gutembergpfonseca', label: 'Facebook' },
+    { icon: Twitter, href: 'https://twitter.com/gutopfonseca', label: 'Twitter' }
+  ];
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled ? 'bg-primary shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -50,26 +57,40 @@ const Header = () => {
             <a 
               key={link.name}
               href={link.href} 
-              className="px-3 py-2 text-graphite hover:text-primary transition-colors"
+              className={`px-3 py-2 transition-colors ${
+                isScrolled ? 'text-white hover:text-secondary' : 'text-graphite hover:text-primary'
+              }`}
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* CTA Button */}
-        <div className="hidden md:block">
-          <Button 
-            className="bg-primary hover:bg-primary/90 text-white font-medium"
-            onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Fale com o Secretário
-          </Button>
+        {/* Social Media Icons */}
+        <div className="hidden md:flex items-center space-x-3">
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`p-2 rounded-full transition-colors ${
+                isScrolled 
+                  ? 'text-white hover:text-secondary hover:bg-white/10' 
+                  : 'text-primary hover:text-white hover:bg-primary'
+              }`}
+              aria-label={social.label}
+            >
+              <social.icon size={20} />
+            </a>
+          ))}
         </div>
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-graphite p-2" 
+          className={`md:hidden p-2 transition-colors ${
+            isScrolled ? 'text-white' : 'text-graphite'
+          }`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -96,15 +117,20 @@ const Header = () => {
                 {link.name}
               </a>
             ))}
-            <Button 
-              className="mt-4 bg-primary hover:bg-primary/90 text-white font-medium"
-              onClick={() => {
-                document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' });
-                setMobileMenuOpen(false);
-              }}
-            >
-              Fale com o Secretário
-            </Button>
+            <div className="flex justify-center space-x-4 mt-4 pt-4 border-t border-gray-100">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-secondary transition-colors"
+                  aria-label={social.label}
+                >
+                  <social.icon size={24} />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       )}

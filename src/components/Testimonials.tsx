@@ -32,29 +32,6 @@ const Testimonials = () => {
     }
   ];
 
-  const team = [
-    {
-      name: "Gutemberg Fonseca",
-      role: "Secretário Estadual de Defesa do Consumidor",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=256"
-    },
-    {
-      name: "Carracena",
-      role: "Subsecretário",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=256"
-    },
-    {
-      name: "Pimenta",
-      role: "Subsecretário",
-      avatar: "https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&q=80&w=256"
-    },
-    {
-      name: "Gomides",
-      role: "Subsecretário",
-      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=256"
-    }
-  ];
-
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % testimonials.length);
   };
@@ -74,7 +51,7 @@ const Testimonials = () => {
   return (
     <section id="depoimentos" className="py-20 bg-white">
       <div className="section-container">
-        <h2 className="section-title">Depoimentos & Equipe</h2>
+        <h2 className="section-title">Depoimentos</h2>
         
         <div 
           ref={ref as React.RefObject<HTMLDivElement>} 
@@ -137,29 +114,6 @@ const Testimonials = () => {
                 ></button>
               ))}
             </div>
-          </div>
-          
-          {/* Team Section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <div 
-                key={member.name} 
-                className={`text-center transition-all duration-1000 transform ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                <div className="w-32 h-32 mx-auto overflow-hidden rounded-full mb-4 border-4 border-primary">
-                  <img 
-                    src={member.avatar} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-primary">{member.name}</h3>
-                <p className="text-graphite">{member.role}</p>
-              </div>
-            ))}
           </div>
           
           {/* CTA Banner */}

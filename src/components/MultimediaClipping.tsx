@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { Button } from '@/components/ui/button';
@@ -311,41 +310,6 @@ const MultimediaClipping = () => {
                 <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
-          </div>
-
-          {/* Quem é Gutemberg? */}
-          <div className="max-w-4xl mx-auto">
-            <Card className="bg-gradient-to-r from-primary to-primary/90 text-white overflow-hidden">
-              <CardContent className="p-8 lg:p-12">
-                <h3 className="text-3xl font-bold mb-6 text-center">Quem é Gutemberg?</h3>
-                <div className="space-y-4 text-lg leading-relaxed">
-                  <p>
-                    Gutemberg de Paula Fonseca, 48 anos, casado, pai de dois filhos, carioca de Jacarepaguá 
-                    e hoje morador de Vargem Grande. Administrador com pós-graduação em Administração, Negócios 
-                    e Marketing; pós-graduado em Ciências Políticas, Poder e Establishment; especialização em 
-                    gerenciamento de cidades; e ex-árbitro FIFA.
-                  </p>
-                  
-                  <p>Como gestor público há mais de 18 anos, ocupou cargos estratégicos:</p>
-                  
-                  <ul className="space-y-2 pl-4">
-                    <li>– Diretor de Operações da Secretaria de Trabalho e Renda (2007)</li>
-                    <li>– Chefe de Gabinete na Câmara Municipal do Rio (2008)</li>
-                    <li>– Secretário de Turismo, Lazer e Esporte de Japeri (2012)</li>
-                    <li>– Diretor de Marketing da Secretaria de Turismo do RJ (2013)</li>
-                    <li>– Secretário de Governo do Estado (2019)</li>
-                    <li>– Secretário de Ordem Pública da capital (2020)</li>
-                    <li>– Secretário de Esporte, Lazer e Juventude do Estado (2021)</li>
-                    <li>– Desde 2023, Secretário de Estado de Defesa do Consumidor do RJ</li>
-                  </ul>
-                  
-                  <blockquote className="text-center text-xl font-semibold italic mt-8 p-6 bg-white/10 rounded-lg">
-                    "Educação e Esporte são Ferramentas Primordiais na Formação do Cidadão de Bem."
-                    <cite className="block mt-2 text-base font-normal">— Gutemberg Fonseca</cite>
-                  </blockquote>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
