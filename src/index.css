@@ -135,17 +135,4 @@
   .count-number {
     @apply font-bold text-4xl text-primary mb-2;
   }
-
-  /* Background color overrides for better image visibility */
-  section {
-    background-color: rgba(255, 255, 255, 0.8) !important;
-  }
-  
-  section.bg-gray-50 {
-    background-color: rgba(249, 250, 251, 0.6) !important;
-  }
-  
-  section.bg-white {
-    background-color: rgba(255, 255, 255, 0.7) !important;
-  }
 }
