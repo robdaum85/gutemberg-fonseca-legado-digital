@@ -60,11 +60,11 @@ const Career = () => {
         <h2 className="section-title">Trajetória Profissional</h2>
         
         <div className="relative mt-16">
-          {/* Timeline central line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary"></div>
+          {/* Timeline central line - hidden on mobile */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary hidden md:block"></div>
           
           {/* Timeline items */}
-          <div className="relative">
+          <div className="relative space-y-8 md:space-y-16">
             {events.map((event, index) => {
               const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.1 });
               const [isVisible, setIsVisible] = useState(false);
@@ -81,10 +81,42 @@ const Career = () => {
                 <div 
                   key={index} 
                   ref={ref as React.RefObject<HTMLDivElement>}
-                  className={`relative z-10 mb-16 flex ${isEven ? 'flex-row' : 'flex-row-reverse'} items-center`}
+                  className={`relative z-10 ${
+                    // Mobile: simple stacked layout
+                    // Desktop: alternating layout
+                    'md:flex md:items-center ' + 
+                    (isEven ? 'md:flex-row' : 'md:flex-row-reverse')
+                  }`}
                 >
+                  {/* Mobile layout */}
+                  <div className="md:hidden">
+                    <div 
+                      className={`transition-all duration-1000 ${
+                        isVisible 
+                          ? 'opacity-100 translate-y-0' 
+                          : 'opacity-0 translate-y-10'
+                      }`}
+                    >
+                      <div className="bg-white rounded-lg shadow-lg p-6 mx-4">
+                        <div className="flex items-center gap-4 mb-4">
+                          <img 
+                            src={event.image} 
+                            alt={event.title}
+                            className="w-16 h-16 rounded-full object-cover shadow-md flex-shrink-0"
+                          />
+                          <div>
+                            <span className="inline-block text-secondary font-bold text-lg">{event.year}</span>
+                            <h3 className="text-xl font-bold text-primary">{event.title}</h3>
+                          </div>
+                        </div>
+                        <p className="text-graphite">{event.description}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Desktop layout */}
                   <div 
-                    className={`w-5/12 ${isEven ? 'text-right pr-8' : 'text-left pl-8'} transition-all duration-1000 ${
+                    className={`hidden md:block md:w-5/12 ${isEven ? 'text-right pr-8' : 'text-left pl-8'} transition-all duration-1000 ${
                       isVisible 
                         ? 'opacity-100' 
                         : 'opacity-0 transform ' + (isEven ? '-translate-x-20' : 'translate-x-20')
@@ -104,10 +136,10 @@ const Career = () => {
                     </div>
                   </div>
                   
-                  {/* Central dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-secondary rounded-full border-4 border-white shadow"></div>
+                  {/* Central dot - only on desktop */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-secondary rounded-full border-4 border-white shadow hidden md:block"></div>
                   
-                  <div className="w-5/12"></div>
+                  <div className="hidden md:block md:w-5/12"></div>
                 </div>
               );
             })}

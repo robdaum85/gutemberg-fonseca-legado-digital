@@ -30,27 +30,31 @@ const Hero = () => {
     <section 
       id="hero" 
       className="relative h-screen w-full flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundImage: `url(${backgroundImages[currentImageIndex]})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
     >
+      {/* Background image with responsive sizing */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
+        style={{
+          backgroundImage: `url(${backgroundImages[currentImageIndex]})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
+      
       {/* Overlay */}
       <div className="absolute inset-0 bg-primary/50"></div>
       
       {/* Content */}
-      <div className="relative z-10 text-center text-white px-4">
-        <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-fade-in-up">
+      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 animate-fade-in-up">
           Gutemberg de Paula Fonseca
         </h1>
-        <p className="text-xl md:text-2xl mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <p className="text-lg sm:text-xl md:text-2xl mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           18 anos de gestão pública transformadora
         </p>
         <Button 
           size="lg" 
-          className="bg-secondary hover:bg-secondary/90 text-white font-bold text-lg py-6 px-8 animate-fade-in-up"
+          className="bg-secondary hover:bg-secondary/90 text-white font-bold text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-8 animate-fade-in-up"
           style={{ animationDelay: '0.4s' }}
           onClick={scrollToCareer}
         >
@@ -61,13 +65,13 @@ const Hero = () => {
       {/* Parallax elements */}
       <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-primary/30 to-transparent"></div>
       
-      {/* Indicadores de imagem */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      {/* Indicadores de imagem - responsivos */}
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {backgroundImages.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentImageIndex(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
               index === currentImageIndex ? 'bg-white' : 'bg-white/50'
             }`}
           />
