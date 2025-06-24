@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { Button } from '@/components/ui/button';
@@ -44,47 +43,111 @@ const MultimediaClipping = () => {
     },
   ];
 
-  // Dados do clipping - atualizados com os novos clippings reais
+  // Dados do clipping - atualizados com os 13 novos clippings
   const newsClipping = [
     {
-      date: "24/06/2025",
-      source: "Jornal BandNews Rio",
-      vehicle: "Rádio BandNews",
-      title: "Procon-RJ multa empresa do Jaé em até R$ 10 milhões por falhas no atendimento",
-      summary: "Secretaria de Defesa do Consumidor aplicou multa significativa por irregularidades no atendimento.",
-      url: "https://imagens.empauta.com/audio/eJwFwUsOgyAQANAriZ8D0FC0i5kW0hnD7CwmaoINiQsNp--2BfNdqP--2BjnM6nWZkjxoTNzjGE5odJEpWjy4kR--2BcvuNvdrL4xAU5KHeReQ6ob8XeH00--3D.mp3"
+      date: "01/04/2025",
+      source: "Dia Online",
+      vehicle: "Governador/Defesa do Consumidor",
+      title: "Comissão formada após morte de turista apresenta relatório de melhorias no Cristo Redentor",
+      summary: "Força-tarefa apresenta medidas para aumentar a segurança e qualidade dos serviços no Cristo Redentor.",
+      url: "https://odia.ig.com.br/rio-de-janeiro/2025/04/7030667-comissao-formada-apos-morte-de-turista-apresenta-relatorio-de-melhorias-no-cristo-redentor.html"
     },
     {
-      date: "23/06/2025",
-      source: "Diário do Povo",
-      vehicle: "Portal de Notícias",
-      title: "Rio amplia horários de postos do Jaé e inaugura superpostos",
-      summary: "Novas medidas para melhorar o atendimento aos usuários do transporte público municipal.",
-      url: "https://diario.dopovo.com.br/2025/06/23/rio-amplia-horarios-de-postos-do-jae-e-inaugura-superpostos/"
+      date: "01/04/2025",
+      source: "Jornal BandNews Rio 2ª Edição",
+      vehicle: "BandNews FM",
+      title: "Cristo Redentor terá elevador até novembro, segundo Secretaria de Estado de Defesa do Consumidor",
+      summary: "Secretaria anuncia prazo para instalação de elevador para garantir acessibilidade no monumento.",
+      url: "https://imagens.empauta.com/audio/eJwFwUEKgCAQAMA3WdDdNbMIBcW29CYWpkTQSfD1zWCLs0--2BuUqtBEpF3njOnMdOdhIC1bSJOazLvWJLwVT0olHXEFyjeXogfZRyCPgfo7sPh0rYWuXxihU4LSX--2FcJB9j.mp"
     },
     {
-      date: "23/06/2025",
-      source: "O Informativo",
+      date: "01/04/2025",
+      source: "AM Post",
       vehicle: "Portal de Notícias",
-      title: "Empresa responsável pelo cartão Jaé intimada por desrespeito aos direitos do consumidor",
-      summary: "SEDCON atua para garantir os direitos dos usuários do sistema de transporte público.",
-      url: "https://oinformativo.com/cidades/empresa-responsavel-por-emissao-do-cartao-jae-e-intimada-a-prestar-esclarecimentos-por-desrespeito-aos-direitos-do-consumidor"
+      title: "Comissão do Cristo Redentor tem segunda reunião após morte de turista",
+      summary: "Segunda reunião da comissão discute melhorias na segurança e atendimento aos visitantes.",
+      url: "https://ampost.com.br/brasil/comissao-do-cristo-redentor-tem-segunda-reuniao-apos-morte-de-turista/"
     },
     {
-      date: "23/06/2025",
-      source: "Blog do Jader Santos",
+      date: "01/04/2025",
+      source: "Diário do Rio",
       vehicle: "Portal de Notícias",
-      title: "Procon-RJ cobra explicações sobre emissão do cartão Jaé no Rio",
-      summary: "Secretaria exige esclarecimentos sobre dificuldades enfrentadas pelos consumidores.",
-      url: "https://www.blogdojadersantos.com.br/nb2/rj/rio-de-janeiro/noticia/2025/06/20/procon-rj-cobra-explicacoes-emissao-do-cartao-jae-no-rio.ghtml"
+      title: "Mais de uma tonelada de alimentos impróprios é descartada em mercados do RJ em uma semana",
+      summary: "Ação de fiscalização da SEDCON resulta no descarte de grande quantidade de alimentos inadequados para consumo.",
+      url: "https://diariodorio.com/mais-de-uma-tonelada-de-alimentos-improprios-e-descartada-em-mercados-do-rj-em-uma-semana/"
     },
     {
-      date: "23/06/2025",
-      source: "MSN",
+      date: "01/04/2025",
+      source: "RJ4News",
       vehicle: "Portal de Notícias",
-      title: "Procon-RJ cobra explicações sobre dificuldades na emissão do cartão Jaé no Rio",
-      summary: "Ação da SEDCON busca solucionar problemas enfrentados pelos usuários do transporte público.",
-      url: "http://www.msn.com/pt-br/noticias/brasil/procon-rj-cobra-explica%C3%A7%C3%B5es-sobre-dificuldades-na-emiss%C3%A3o-do-cart%C3%A3o-ja%C3%A9-no-rio/ar-AA1H6Q50?apiversion=v2&noservercache=1&domshim=1&renderwebcomponents=1&wcseo=1&batchservertelemetry=1&noservertelemetry=1"
+      title: "Mais de uma tonelada de alimentos impróprios para consumo foram descartados em uma semana",
+      summary: "Fiscalização intensiva da Defesa do Consumidor garante qualidade dos alimentos comercializados.",
+      url: "https://rj4news.com.br/2025/04/01/mais-de-uma-tonelada-de-alimentos-improprios-para-consumo-foram-descartados-em-uma-semana/"
+    },
+    {
+      date: "01/04/2025",
+      source: "Diário Carioca",
+      vehicle: "Portal de Notícias",
+      title: "Mais de uma tonelada de alimentos irregulares são descartados no RJ",
+      summary: "Operação da SEDCON retira do mercado alimentos que apresentavam irregularidades sanitárias.",
+      url: "https://www.diariocarioca.com/rio-de-janeiro/mais-de-uma-tonelada-de-alimentos-irregulares-sao-descartados-no-rj/"
+    },
+    {
+      date: "01/04/2025",
+      source: "Diário Carioca",
+      vehicle: "Portal de Notícias",
+      title: "Cristo Redentor: Governo do Rio apresenta avanços para garantir segurança e qualidade dos serviços",
+      summary: "Relatório apresenta melhorias implementadas para garantir experiência segura aos visitantes.",
+      url: "https://www.diariocarioca.com/rio-de-janeiro/cristo-redentor-governo-do-rio-apresenta-avancos-para-garantir-seguranca-e-qualidade-dos-servicos/"
+    },
+    {
+      date: "01/04/2025",
+      source: "A Tribuna RJ",
+      vehicle: "Portal de Notícias",
+      title: "Fiscalização encontra tonelada de alimentos impróprios no Estado",
+      summary: "Ação coordenada identifica e remove do mercado produtos alimentícios inadequados.",
+      url: "https://www.atribunarj.com.br/materia/fiscalizacao-encontra-tonelada-de-alimentos-improprios-no-estado"
+    },
+    {
+      date: "31/03/2025",
+      source: "G1",
+      vehicle: "Portal de Notícias",
+      title: "Cristo Redentor vai ter elevador para cadeirantes",
+      summary: "Medida visa garantir acessibilidade plena ao monumento para pessoas com deficiência.",
+      url: "https://g1.globo.com/google/amp/rj/rio-de-janeiro/noticia/2025/03/31/cristo-redentor-vai-ter-elevador-para-cadeirantes.ghtml"
+    },
+    {
+      date: "31/03/2025",
+      source: "Agência Brasil",
+      vehicle: "Defesa do Consumidor",
+      title: "Força-tarefa do Corcovado promete aumentar segurança para visitantes",
+      summary: "Iniciativa coordenada busca implementar melhorias na segurança e qualidade do atendimento.",
+      url: "https://agenciabrasil.ebc.com.br/geral/noticia/2025-03/forca-tarefa-do-corcovado-promete-aumentar-seguranca-para-visitantes"
+    },
+    {
+      date: "31/03/2025",
+      source: "TV Prefeito",
+      vehicle: "Defesa do Consumidor",
+      title: "Relatório sobre melhorias no Cristo Redentor após morte de turista é apresentado",
+      summary: "Documento detalha ações implementadas para prevenir novos incidentes e melhorar a experiência.",
+      url: "https://tvprefeito.com/relatorio-sobre-melhorias-no-cristo-redentor-apos-morte-de-turista-e-apresentado/"
+    },
+    {
+      date: "31/03/2025",
+      source: "Jornal de Hoje",
+      vehicle: "Defesa do Consumidor",
+      title: "Força-tarefa do Corcovado promete aumentar segurança para visitantes",
+      summary: "Comissão apresenta medidas concretas para garantir segurança e qualidade no atendimento aos turistas.",
+      url: "https://jornalhoje.inf.br/wp/geral/forca-tarefa-do-corcovado-promete-aumentar-seguranca-para-visitantes/"
+    },
+    {
+      date: "31/03/2025",
+      source: "Diário do Rio",
+      vehicle: "Portal de Notícias",
+      title: "Cristo Redentor vai ter elevador para cadeirantes até novembro, garante secretário",
+      summary: "Secretário confirma prazo para instalação de equipamento que garantirá acessibilidade completa.",
+      url: "https://diariodorio.com/cristo-redentor-vai-ter-elevador-para-cadeirantes-ate-novembro-garante-secretario/"
     }
   ];
 
