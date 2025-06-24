@@ -44,29 +44,48 @@ const MultimediaClipping = () => {
     },
   ];
 
-  // Dados do clipping
+  // Dados do clipping - atualizados com os novos clippings reais
   const newsClipping = [
     {
-      source: "O Globo",
-      date: "15/05/2025",
-      title: "SEDCON intensifica fiscalizações em estabelecimentos comerciais",
-      summary: "Secretaria aplicou mais de 200 multas em operações de defesa do consumidor.",
-      url: "https://oglobo.globo.com",
+      date: "24/06/2025",
+      source: "Jornal BandNews Rio",
+      vehicle: "Rádio BandNews",
+      title: "Procon-RJ multa empresa do Jaé em até R$ 10 milhões por falhas no atendimento",
+      summary: "Secretaria de Defesa do Consumidor aplicou multa significativa por irregularidades no atendimento.",
+      url: "https://imagens.empauta.com/audio/eJwFwUsOgyAQANAriZ8D0FC0i5kW0hnD7CwmaoINiQsNp--2BfNdqP--2BjnM6nWZkjxoTNzjGE5odJEpWjy4kR--2BcvuNvdrL4xAU5KHeReQ6ob8XeH00--3D.mp3"
     },
     {
-      source: "Extra",
-      date: "10/05/2025",
-      title: "Gutemberg Fonseca anuncia novos projetos para 2025",
-      summary: "Secretário apresenta plano estratégico para fortalecer direitos do consumidor.",
-      url: "https://extra.globo.com",
+      date: "23/06/2025",
+      source: "Diário do Povo",
+      vehicle: "Portal de Notícias",
+      title: "Rio amplia horários de postos do Jaé e inaugura superpostos",
+      summary: "Novas medidas para melhorar o atendimento aos usuários do transporte público municipal.",
+      url: "https://diario.dopovo.com.br/2025/06/23/rio-amplia-horarios-de-postos-do-jae-e-inaugura-superpostos/"
     },
     {
-      source: "G1 Rio",
-      date: "05/05/2025",
-      title: "SEDCON media conflitos entre consumidores e empresas",
-      summary: "Mais de 1.000 casos resolvidos através de mediação no primeiro trimestre.",
-      url: "https://g1.globo.com",
+      date: "23/06/2025",
+      source: "O Informativo",
+      vehicle: "Portal de Notícias",
+      title: "Empresa responsável pelo cartão Jaé intimada por desrespeito aos direitos do consumidor",
+      summary: "SEDCON atua para garantir os direitos dos usuários do sistema de transporte público.",
+      url: "https://oinformativo.com/cidades/empresa-responsavel-por-emissao-do-cartao-jae-e-intimada-a-prestar-esclarecimentos-por-desrespeito-aos-direitos-do-consumidor"
     },
+    {
+      date: "23/06/2025",
+      source: "Blog do Jader Santos",
+      vehicle: "Portal de Notícias",
+      title: "Procon-RJ cobra explicações sobre emissão do cartão Jaé no Rio",
+      summary: "Secretaria exige esclarecimentos sobre dificuldades enfrentadas pelos consumidores.",
+      url: "https://www.blogdojadersantos.com.br/nb2/rj/rio-de-janeiro/noticia/2025/06/20/procon-rj-cobra-explicacoes-emissao-do-cartao-jae-no-rio.ghtml"
+    },
+    {
+      date: "23/06/2025",
+      source: "MSN",
+      vehicle: "Portal de Notícias",
+      title: "Procon-RJ cobra explicações sobre dificuldades na emissão do cartão Jaé no Rio",
+      summary: "Ação da SEDCON busca solucionar problemas enfrentados pelos usuários do transporte público.",
+      url: "http://www.msn.com/pt-br/noticias/brasil/procon-rj-cobra-explica%C3%A7%C3%B5es-sobre-dificuldades-na-emiss%C3%A3o-do-cart%C3%A3o-ja%C3%A9-no-rio/ar-AA1H6Q50?apiversion=v2&noservercache=1&domshim=1&renderwebcomponents=1&wcseo=1&batchservertelemetry=1&noservertelemetry=1"
+    }
   ];
 
   // Redes sociais
@@ -169,6 +188,7 @@ const MultimediaClipping = () => {
                         <div className="flex justify-between items-start mb-4">
                           <div>
                             <h4 className="font-bold text-primary text-lg">{news.source}</h4>
+                            <p className="text-sm text-gray-500">{news.vehicle}</p>
                             <span className="text-sm text-gray-500">{news.date}</span>
                           </div>
                           <Button
