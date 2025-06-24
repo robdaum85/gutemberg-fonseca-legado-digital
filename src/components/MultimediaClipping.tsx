@@ -25,20 +25,20 @@ const MultimediaClipping = () => {
     }
   }, [isIntersecting]);
 
-  // Dados dos vídeos
+  // Dados dos vídeos - atualizados com os novos IDs do YouTube
   const videos = [
     {
-      id: "UCioLHaDMpWqXGiCqnjtkEAg",
+      id: "fC0VS6gZBXw",
       title: "Entrevista RJTV",
       caption: "Entrevista no RJTV – Maio/2025",
     },
     {
-      id: "dQw4w9WgXcQ",
+      id: "UKt484G9Oe8",
       title: "Ações da SEDCON",
       caption: "TV Rio – Abril/2025",
     },
     {
-      id: "9bZkp7q19f0",
+      id: "mDm-5C9ZNwI",
       title: "Defesa do Consumidor",
       caption: "Band Rio – Março/2025",
     },
