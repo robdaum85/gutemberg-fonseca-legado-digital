@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -6,12 +5,9 @@ const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const backgroundImages = [
-    '/lovable-uploads/5118e141-56bb-4600-b3bb-86aec0a70a56.png',
-    'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1920&h=1080&fit=crop',
-    'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop',
-    'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&h=1080&fit=crop',
-    'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&h=1080&fit=crop',
-    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=1080&fit=crop'
+    'https://img.playbook.com/3gmHBQ3nDjvgLt33nyR9Xxf6x_LASkigwMCHzx-L3P0/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljL2FiYWNkMDE0/LWJlMjctNDgyZi05/N2I2LTdmYzI1NDdm/ZjQ5OA',
+    'https://img.playbook.com/ihBOakoOc26ghY6gcu4YHRzq9KD5chqsOA4_ghcMF4w/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzU1ZDc2ZjE4/LWUzMjAtNDUxNy04/ZWNhLWNiMGQzN2E0/MGNjYw',
+    'https://img.playbook.com/qRzLFPwsMekYl6AwVA0-H_YOuZSIRoOrCbvaJdauePg/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzlkMjU5Y2Nj/LWE5NDUtNGQyMS1h/NTlhLTAzNjNkMzQ0/MmE5Nw'
   ];
 
   useEffect(() => {
