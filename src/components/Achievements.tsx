@@ -78,14 +78,14 @@ const Achievements = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <div className="bg-secondary text-white px-3 py-1 rounded-full text-sm font-semibold inline-block">
+                  <div className="bg-gradient-primary text-primary px-3 py-1 rounded-full text-sm font-semibold inline-block">
                     {achievement.stats}
                   </div>
                 </div>
               </div>
 
               <CardHeader className="pb-3">
-                <CardTitle className="text-xl text-primary leading-tight group-hover:text-secondary transition-colors duration-300">
+                <CardTitle className="text-xl text-primary leading-tight group-hover:bg-gradient-primary group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                   {achievement.title}
                 </CardTitle>
               </CardHeader>

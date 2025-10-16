@@ -25,6 +25,7 @@ const Header = () => {
     { name: 'Realizações', href: '#realizacoes' },
     { name: '365 Dias', href: '#365dias' },
     { name: 'Números', href: '#numeros' },
+    { name: 'Instagram', href: '#instagram' },
     { name: 'Depoimentos', href: '#depoimentos' },
     { name: 'Contato', href: '#contato' }
   ];
@@ -57,7 +58,7 @@ const Header = () => {
             <a 
               key={link.name}
               href={link.href} 
-              className="px-3 py-2 text-white hover:text-secondary transition-colors"
+              className="px-3 py-2 text-white hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all"
             >
               {link.name}
             </a>
@@ -72,7 +73,7 @@ const Header = () => {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full text-white hover:text-secondary hover:bg-white/10 transition-colors"
+              className="p-2 rounded-full text-white hover:bg-gradient-primary hover:bg-white/10 transition-all"
               aria-label={social.label}
             >
               <social.icon size={20} />
@@ -116,7 +117,7 @@ const Header = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:text-secondary transition-colors"
+                  className="text-primary hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all"
                   aria-label={social.label}
                 >
                   <social.icon size={24} />

@@ -101,11 +101,11 @@ const Career = () => {
                     >
                       <div className="bg-white rounded-lg shadow-lg p-6 mx-4">
                         <div className="flex items-center gap-4 mb-4">
-                          <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center shadow-md flex-shrink-0">
-                            <IconComponent size={32} className="text-white" />
+                          <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                            <IconComponent size={32} className="text-primary" />
                           </div>
                           <div>
-                            <span className="inline-block text-secondary font-bold text-lg">{event.year}</span>
+                            <span className="inline-block bg-gradient-primary bg-clip-text text-transparent font-bold text-lg">{event.year}</span>
                             <h3 className="text-xl font-bold text-primary">{event.title}</h3>
                           </div>
                         </div>
@@ -123,11 +123,11 @@ const Career = () => {
                     }`}
                   >
                     <div className={`flex items-center gap-4 ${isEven ? 'flex-row-reverse' : 'flex-row'}`}>
-                      <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center shadow-md">
-                        <IconComponent size={32} className="text-white" />
+                      <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center shadow-md">
+                        <IconComponent size={32} className="text-primary" />
                       </div>
                       <div className={isEven ? 'text-right' : 'text-left'}>
-                        <span className="inline-block text-secondary font-bold mb-2">{event.year}</span>
+                        <span className="inline-block bg-gradient-primary bg-clip-text text-transparent font-bold mb-2">{event.year}</span>
                         <h3 className="text-xl font-bold text-primary mb-2">{event.title}</h3>
                         <p className="text-graphite">{event.description}</p>
                       </div>
@@ -135,7 +135,7 @@ const Career = () => {
                   </div>
                   
                   {/* Central dot - only on desktop */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-secondary rounded-full border-4 border-white shadow hidden md:block"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-gradient-primary rounded-full border-4 border-white shadow hidden md:block"></div>
                   
                   <div className="hidden md:block md:w-5/12"></div>
                 </div>

@@ -122,7 +122,8 @@ const Testimonials = () => {
             <p className="text-lg mb-8">Fale diretamente com o Secretário</p>
             <Button 
               size="lg" 
-              className="bg-secondary hover:bg-secondary/90 text-white font-bold"
+              variant="gradient"
+              className="font-bold"
               onClick={() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Agende uma Reunião

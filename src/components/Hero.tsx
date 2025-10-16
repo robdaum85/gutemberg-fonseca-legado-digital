@@ -50,7 +50,8 @@ const Hero = () => {
         </p>
         <Button 
           size="lg" 
-          className="bg-secondary hover:bg-secondary/90 text-white font-bold text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-8 animate-fade-in-up"
+          variant="gradient"
+          className="font-bold text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-8 animate-fade-in-up"
           style={{ animationDelay: '0.4s' }}
           onClick={scrollToCareer}
         >

@@ -19,13 +19,14 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Links Rápidos</h3>
             <ul className="space-y-2">
-              <li><a href="#sobre" className="hover:text-secondary transition-colors">Sobre</a></li>
-              <li><a href="#carreira" className="hover:text-secondary transition-colors">Carreira</a></li>
-              <li><a href="#realizacoes" className="hover:text-secondary transition-colors">Realizações</a></li>
-              <li><a href="#365dias" className="hover:text-secondary transition-colors">365 Dias</a></li>
-              <li><a href="#numeros" className="hover:text-secondary transition-colors">Números</a></li>
-              <li><a href="#depoimentos" className="hover:text-secondary transition-colors">Depoimentos</a></li>
-              <li><a href="#contato" className="hover:text-secondary transition-colors">Contato</a></li>
+              <li><a href="#sobre" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Sobre</a></li>
+              <li><a href="#carreira" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Carreira</a></li>
+              <li><a href="#realizacoes" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Realizações</a></li>
+              <li><a href="#365dias" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">365 Dias</a></li>
+              <li><a href="#numeros" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Números</a></li>
+              <li><a href="#instagram" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Instagram</a></li>
+              <li><a href="#depoimentos" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Depoimentos</a></li>
+              <li><a href="#contato" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Contato</a></li>
             </ul>
           </div>
           

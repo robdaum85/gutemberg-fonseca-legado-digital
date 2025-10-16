@@ -8,6 +8,7 @@ import Achievements from '@/components/Achievements';
 import Days365 from '@/components/Days365';
 import Statistics from '@/components/Statistics';
 import MultimediaClipping from '@/components/MultimediaClipping';
+import InstagramFeed from '@/components/InstagramFeed';
 import Testimonials from '@/components/Testimonials';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -28,6 +29,7 @@ const Index = () => {
       <Days365 />
       <Statistics />
       <MultimediaClipping />
+      <InstagramFeed />
       <Testimonials />
       <ContactSection />
       <Footer />

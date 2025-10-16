@@ -26,12 +26,16 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: '#4050a1',
-					foreground: '#ffffff',
+					DEFAULT: 'hsl(228, 88%, 13%)',
+					foreground: 'hsl(0, 0%, 100%)',
 				},
 				secondary: {
-					DEFAULT: '#27d70c',
-					foreground: '#ffffff',
+					DEFAULT: 'hsl(100, 64%, 59%)',
+					foreground: 'hsl(228, 88%, 13%)',
+				},
+				gradient: {
+					start: 'hsl(100, 64%, 59%)',
+					end: 'hsl(171, 81%, 47%)',
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -63,7 +67,6 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				graphite: '#333333',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -95,7 +98,11 @@ export default {
 				'count-up': 'count-up 0.5s ease-out'
 			},
 			fontFamily: {
-				'roboto': ['"Roboto"', 'sans-serif'],
+				'heading': ['"Poppins"', 'sans-serif'],
+				'body': ['"Inter"', 'sans-serif'],
+			},
+			backgroundImage: {
+				'gradient-primary': 'linear-gradient(90deg, hsl(100, 64%, 59%), hsl(171, 81%, 47%))',
 			}
 		}
 	},
