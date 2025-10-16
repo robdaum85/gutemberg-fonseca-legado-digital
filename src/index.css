@@ -149,10 +149,13 @@ code {
   
   html {
     @apply scroll-smooth;
+    -webkit-tap-highlight-color: transparent;
   }
   
   body {
     @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -171,6 +174,28 @@ code {
     content: '';
     @apply absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-24 h-1;
     background: linear-gradient(90deg, hsl(100, 64%, 59%), hsl(171, 81%, 47%));
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .section-container {
+      @apply py-12 px-4;
+    }
+
+    .section-title {
+      @apply text-2xl mb-8;
+    }
+
+    /* Prevent horizontal scroll */
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Optimize touch targets */
+    a, button {
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
   
   .parallax {

@@ -5,7 +5,7 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Career from '@/components/Career';
 import Achievements from '@/components/Achievements';
-import Days365 from '@/components/Days365';
+import TruthSection from '@/components/TruthSection';
 import Statistics from '@/components/Statistics';
 import MultimediaClipping from '@/components/MultimediaClipping';
 import InstagramFeed from '@/components/InstagramFeed';
@@ -26,7 +26,7 @@ const Index = () => {
       <About />
       <Career />
       <Achievements />
-      <Days365 />
+      <TruthSection />
       <Statistics />
       <MultimediaClipping />
       <InstagramFeed />
