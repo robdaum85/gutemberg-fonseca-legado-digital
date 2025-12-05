@@ -52,6 +52,12 @@ const Career = () => {
       title: "Secretário de Defesa do Consumidor",
       description: "Lançamento do Balcão, interdição preventiva do Cristo Redentor, fortalecimento do Fala Consumidor",
       icon: ShieldCheck
+    },
+    {
+      year: "2025",
+      title: "Maior Apreensão da História do RJ",
+      description: "Em dezembro de 2025, a SEDCON e o PROCON-RJ realizaram a maior apreensão de produtos falsificados da história do estado do Rio de Janeiro, com mais de 14,5 toneladas em Rio das Ostras",
+      icon: Trophy
     }
   ];
 
