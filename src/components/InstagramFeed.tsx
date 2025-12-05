@@ -13,10 +13,10 @@ const InstagramFeed = () => {
   }, [isIntersecting]);
 
   const instagramPosts = [
-    'https://www.instagram.com/p/C-example1/',
-    'https://www.instagram.com/p/C-example2/',
-    'https://www.instagram.com/p/C-example3/',
-    'https://www.instagram.com/p/C-example4/',
+    'https://www.instagram.com/p/DR4tXupjNKB/',
+    'https://www.instagram.com/reel/DR4XLxSEbcW/',
+    'https://www.instagram.com/p/DR2xktJEmby/',
+    'https://www.instagram.com/reel/DR0qNG1jBj_/',
   ];
 
   return (
