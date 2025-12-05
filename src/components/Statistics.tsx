@@ -1,9 +1,10 @@
 
-import { useIntersectionObserver, useCountAnimation } from '@/hooks/useIntersectionObserver';
-import { useState, useEffect, useRef } from 'react';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useState, useEffect } from 'react';
+import { Users, Scale, HandCoins, Package, MapPin, Bus, Building2, Shield, Check } from 'lucide-react';
 
 const Statistics = () => {
-  const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.2 });
+  const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.1 });
   const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
@@ -12,126 +13,154 @@ const Statistics = () => {
     }
   }, [isIntersecting]);
 
-  const stats = [
+  const mainStats = [
     {
-      number: 100,
-      unit: "toneladas",
-      description: "de produtos impróprios apreendidos em fiscalização"
+      number: "470.000",
+      prefix: "+",
+      label: "consumidores atendidos",
+      icon: Users
     },
     {
-      number: 137,
-      unit: "mil",
-      description: "atendimentos realizados em todo o Estado"
+      number: "65.8",
+      prefix: "R$",
+      suffix: "mi",
+      label: "em multas aplicadas",
+      icon: Scale
     },
     {
-      number: 344,
-      unit: "",
-      description: "denúncias em maio recebidas e resolvidas"
+      number: "40",
+      prefix: "R$",
+      suffix: "mi",
+      label: "renegociados por mais de 9.000 famílias",
+      icon: HandCoins
     },
     {
-      number: 42,
-      unit: "",
-      description: "operações de fiscalização realizadas"
+      number: "160",
+      prefix: "+",
+      suffix: "ton",
+      label: "de produtos irregulares apreendidos",
+      icon: Package
+    }
+  ];
+
+  const achievements = [
+    {
+      icon: MapPin,
+      title: "Mutirão de Renegociação de Dívidas",
+      description: "Em apenas um ano, a Secretaria de Defesa do Consumidor e o Procon-RJ levaram os mutirões de renegociação de dívidas a 18 municípios, passando por todas as regiões do estado e também pela capital.",
+      highlight: "Mais de R$ 40 milhões renegociados, representando uma grande economia no bolso dos consumidores."
+    },
+    {
+      icon: Bus,
+      title: "Expresso do Consumidor + Consumidor Social",
+      description: "O Expresso do Consumidor é uma estrutura itinerante e totalmente acessível que oferece orientação jurídica gratuita, atendimento técnico e recebe reclamações e denúncias.",
+      highlight: "O Consumidor Social leva serviços essenciais: emissão de 2ª via do título de eleitor, CPF, Carteira do Idoso e ID Jovem."
+    },
+    {
+      icon: Building2,
+      title: "Nova Sede Inclusiva",
+      description: "A nova sede da SEDCON e do Procon-RJ na Cidade Nova é a estrutura pública mais inclusiva do Brasil, pensada para acolher todo tipo de público com conforto e acessibilidade.",
+      features: [
+        "Estacionamento adaptado para PCD",
+        "Rampas de acesso e piso tátil",
+        "CDC em Braile e atendimento em Libras",
+        "Espaço para cão-guia",
+        "Sala sensorial para mães com filhos autistas",
+        "18 novas viaturas para fiscalização"
+      ]
+    },
+    {
+      icon: Shield,
+      title: "Fiscalização e Apreensões",
+      description: "A SEDCON e o Procon-RJ já apreenderam mais de 160 toneladas de produtos irregulares em todo o estado: café adulterado, bebidas contrafeitas, roupas, calçados e acessórios falsificados.",
+      highlight: "Recorde de 1.100 ações de fiscalização realizadas, protegendo a saúde e segurança do consumidor."
     }
   ];
   
   return (
-    <section id="numeros" className="py-20 bg-gray-50">
+    <section id="numeros" className="py-20 bg-muted/30">
       <div className="section-container">
-        <h2 className="section-title">Estatísticas & Impacto</h2>
+        <h2 className="section-title">Resultados que Transformam</h2>
+        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-12">
+          Resultados que demonstram a efetividade das ações da Secretaria de Estado de Defesa do Consumidor e do PROCON-RJ em todo o estado do Rio de Janeiro.
+        </p>
         
+        {/* Main Stats Grid */}
         <div 
           ref={ref as React.RefObject<HTMLDivElement>} 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
         >
-          {stats.map((stat, index) => {
-            const statRef = useRef<HTMLDivElement>(null);
-            const count = useCountAnimation(statRef, stat.number, 2000, isVisible);
-
-            return (
-              <div 
-                key={index} 
-                ref={statRef}
-                className={`bg-white p-6 rounded-lg shadow-lg text-center transition-all duration-1000 transform ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                <div className="flex justify-center items-baseline">
-                  <span className="text-5xl font-bold text-primary">{isVisible ? count : 0}</span>
-                  {stat.unit && <span className="text-2xl text-primary ml-1">{stat.unit}</span>}
-                </div>
-                <p className="text-graphite mt-2">{stat.description}</p>
+          {mainStats.map((stat, index) => (
+            <div 
+              key={index} 
+              className={`bg-card p-6 rounded-xl shadow-lg text-center transition-all duration-700 transform hover:shadow-xl hover:-translate-y-1 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-primary flex items-center justify-center">
+                <stat.icon className="w-7 h-7 text-primary-foreground" />
               </div>
-            );
-          })}
+              <div className="flex justify-center items-baseline gap-1">
+                {stat.prefix && (
+                  <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                    {stat.prefix}
+                  </span>
+                )}
+                <span className="text-4xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                  {stat.number}
+                </span>
+                {stat.suffix && (
+                  <span className="text-xl font-semibold bg-gradient-primary bg-clip-text text-transparent">
+                    {stat.suffix}
+                  </span>
+                )}
+              </div>
+              <p className="text-muted-foreground mt-3 text-sm">{stat.label}</p>
+            </div>
+          ))}
         </div>
         
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className={`bg-white p-6 rounded-lg shadow-lg transition-all duration-1000 transform ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`} style={{ transitionDelay: '200ms' }}>
-            <h3 className="text-xl font-bold text-primary mb-4">Tipos de Ocorrência</h3>
-            <div className="space-y-4">
-              {[
-                { label: "Reclamações sobre produtos e serviços", value: 45 },
-                { label: "Práticas abusivas", value: 28 },
-                { label: "Publicidade enganosa", value: 15 },
-                { label: "Outros", value: 12 }
-              ].map((item, i) => (
-                <div key={i} className="relative pt-1">
-                  <div className="flex mb-2 items-center justify-between">
-                    <div>
-                      <span className="text-xs font-semibold inline-block text-primary">
-                        {item.label}
-                      </span>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-xs font-semibold inline-block text-primary">
-                        {item.value}%
-                      </span>
-                    </div>
-                  </div>
-                  <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
-                    <div style={{ width: `${item.value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"></div>
-                  </div>
+        {/* Achievement Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {achievements.map((achievement, index) => (
+            <div 
+              key={index}
+              className={`bg-card p-6 rounded-xl shadow-lg transition-all duration-700 transform hover:shadow-xl ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${(index + 4) * 150}ms` }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center flex-shrink-0">
+                  <achievement.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
-              ))}
-            </div>
-          </div>
-          
-          <div className={`bg-white p-6 rounded-lg shadow-lg transition-all duration-1000 transform ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`} style={{ transitionDelay: '400ms' }}>
-            <h3 className="text-xl font-bold text-primary mb-4">Setores Fiscalizados</h3>
-            <div className="space-y-4">
-              {[
-                { label: "Comércio eletrônico", value: 32 },
-                { label: "Supermercados", value: 26 },
-                { label: "Eventos e entretenimento", value: 18 },
-                { label: "Telefonia", value: 14 },
-                { label: "Outros", value: 10 }
-              ].map((item, i) => (
-                <div key={i} className="relative pt-1">
-                  <div className="flex mb-2 items-center justify-between">
-                    <div>
-                      <span className="text-xs font-semibold inline-block text-primary">
-                        {item.label}
-                      </span>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-xs font-semibold inline-block text-primary">
-                        {item.value}%
-                      </span>
-                    </div>
-                  </div>
-                  <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
-                    <div style={{ width: `${item.value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"></div>
-                  </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-primary mb-3">{achievement.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                    {achievement.description}
+                  </p>
+                  
+                  {achievement.highlight && (
+                    <p className="text-sm font-medium text-foreground bg-secondary/20 p-3 rounded-lg border-l-4 border-secondary">
+                      {achievement.highlight}
+                    </p>
+                  )}
+                  
+                  {achievement.features && (
+                    <ul className="space-y-2 mt-3">
+                      {achievement.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Check className="w-4 h-4 text-secondary flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
