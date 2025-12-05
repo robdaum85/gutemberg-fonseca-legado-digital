@@ -6,6 +6,7 @@ import About from '@/components/About';
 import Career from '@/components/Career';
 import Statistics from '@/components/Statistics';
 import MultimediaClipping from '@/components/MultimediaClipping';
+import PodcastHighlight from '@/components/PodcastHighlight';
 import InstagramFeed from '@/components/InstagramFeed';
 import Testimonials from '@/components/Testimonials';
 import ContactSection from '@/components/ContactSection';
@@ -25,6 +26,7 @@ const Index = () => {
       <Career />
       <Statistics />
       <MultimediaClipping />
+      <PodcastHighlight />
       <InstagramFeed />
       <Testimonials />
       <ContactSection />
