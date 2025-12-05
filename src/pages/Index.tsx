@@ -4,7 +4,6 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Career from '@/components/Career';
-import Achievements from '@/components/Achievements';
 import Statistics from '@/components/Statistics';
 import MultimediaClipping from '@/components/MultimediaClipping';
 import InstagramFeed from '@/components/InstagramFeed';
@@ -24,7 +23,6 @@ const Index = () => {
       <Hero />
       <About />
       <Career />
-      <Achievements />
       <Statistics />
       <MultimediaClipping />
       <InstagramFeed />

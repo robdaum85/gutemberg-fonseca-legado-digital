@@ -44,9 +44,178 @@ const MultimediaClipping = () => {
     },
   ];
 
-  // Dados do clipping - 43 clippings sem datas
+  // Dados do clipping - 65 clippings (22 novos + 43 anteriores)
   const newsClipping = [
-    // Clippings originais (13)
+    // Notícias da Operação Malha Fina e Expresso do Consumidor - Dezembro 2025
+    {
+      date: "05/12/2025",
+      source: "Bom Dia Rio",
+      vehicle: "Televisão",
+      title: "14 toneladas de camisas falsificadas do Flamengo apreendidas em Rio das Ostras",
+      summary: "Fábrica clandestina interditada pela SEDCON e PROCON-RJ - maior apreensão da história do estado",
+      url: "https://imagens.empauta.com/video/eJxzDPcNSHQLKnTMSvYPMAzKdMwt9--2FIqD8sJqyoIjcwJNXMMCQvxDcsxANJJ--2Fm6BhhHupkGR5Z5GYbkp4X5hYeZOztkeSTlu6Y7hpoGRho6VoVluwVGObnkAEYsczg--3D--3D.mp4"
+    },
+    {
+      date: "05/12/2025",
+      source: "Jornal BandNews Rio 1ª Edição",
+      vehicle: "Rádio",
+      title: "Sedcon e Procon-RJ apreendem 14,5 toneladas de produtos falsificados em Rio das Ostras",
+      summary: "Maior apreensão de produtos falsificados da história do estado do Rio de Janeiro",
+      url: "https://imagens.empauta.com/audio/eJwFwc0KwyAMAOBHGh077JrQ0FUwRTBRcpVScAo79e--2Fp930yzmSh3Bhfy7KVEzvremhLtQBv9pMpkDX3wOoyg35zeo9eXdenJQ60Y2xxBX9KxmCgXSoRD3DhJB8Pcv8BFawfug--3D--3D.mp3"
+    },
+    {
+      date: "05/12/2025",
+      source: "CBN Rio",
+      vehicle: "Rádio",
+      title: "15 toneladas de peças falsificadas apreendidas em Rio das Ostras",
+      summary: "Fábrica clandestina interditada pela SEDCON e PROCON-RJ",
+      url: "https://imagens.empauta.com/audio/eJwFwTEOgzAMBdADdQGWdnVKQonARBXfwVyAKoSJIaKn5z3MDBb54djcmE2O6dX7rI05TsN1dZmW3ur4gQi7Fp--2Bk0ymQXohEWssTXfkMbt1l--2FUKJN8x9CM7--2BpRXR7Pcb4iIfGw--3D--3D.mp3"
+    },
+    {
+      date: "05/12/2025",
+      source: "Diário do Rio",
+      vehicle: "Portal de Notícias",
+      title: "Operação Malha Fina desmonta fábrica clandestina e faz maior apreensão de produtos falsificados do RJ",
+      summary: "Ação em Rio das Ostras resultou na maior apreensão da história do estado",
+      url: "https://diariodorio.com/operacao-malha-fina-desmonta-fabrica-clandestina-e-faz-maior-apreensao-de-produtos-falsificados-do-rj/"
+    },
+    {
+      date: "05/12/2025",
+      source: "Agenda do Poder",
+      vehicle: "Portal de Notícias",
+      title: "Maior apreensão do Rio retira 14,5 t de produtos falsificados de circulação",
+      summary: "SEDCON e PROCON-RJ realizam operação histórica contra falsificação",
+      url: "https://agendadopoder.com.br/maior-apreensao-do-rio-retira-145-t-de-produtos-falsificados-de-circulacao/"
+    },
+    {
+      date: "05/12/2025",
+      source: "TV Prefeito",
+      vehicle: "Portal de Notícias",
+      title: "Maior apreensão de produtos falsificados da história do estado descobre fábrica clandestina em Rio das Ostras",
+      summary: "Operação na Região dos Lagos resultou em apreensão recorde",
+      url: "https://tvprefeito.com/maior-apreensao-de-produtos-falsificados-da-historia-do-estado-descobre-fabrica-clandestina-em-rio-das-ostras-na-regiao-dos-lagos/"
+    },
+    {
+      date: "04/12/2025",
+      source: "Jornal BandNews Rio",
+      vehicle: "Rádio",
+      title: "Sedcon, Procon-RJ e PM apreendem 11 toneladas de produtos falsificados na Taquara",
+      summary: "Operação Malha Fina combate comércio de produtos falsificados",
+      url: "https://imagens.empauta.com/audio/eJwNyjkKgDAQAMAvGUGtN--2Bh64JFzYyxFEEIidoKv12qaATeJPaoTAiyCqQtSMwwPRXpv66MtwZCZKGa--2F--2B4KSrW2h--2FNPnlA43I1W8PrsRMYDmckN4bUDtJYY6L--2Bz--2F2Aftix7F.mp3"
+    },
+    {
+      date: "04/12/2025",
+      source: "Manchete RJ",
+      vehicle: "Portal de Notícias",
+      title: "Expresso do Consumidor chega a Campos com emissão de documentos, exame de vista e orientação jurídica",
+      summary: "Serviços gratuitos para a população de Campos dos Goytacazes",
+      url: "https://mancheterj.com/expresso-do-consumidor-chega-a-campos-com-emissao-de-documentos-exame-de-vista-e-orientacao-juridica/"
+    },
+    {
+      date: "04/12/2025",
+      source: "TV Prefeito",
+      vehicle: "Portal de Notícias",
+      title: "Operação Malha Fina apreende 11,8 toneladas de produtos com indícios de falsificação",
+      summary: "Ação na Taquara combate comércio irregular de produtos",
+      url: "https://tvprefeito.com/operacao-malha-fina-apreende-118-toneladas-de-produtos-com-indicios-de-falsificacao/"
+    },
+    {
+      date: "04/12/2025",
+      source: "Diário do Rio",
+      vehicle: "Portal de Notícias",
+      title: "Operação Malha Fina apreende 11,8 toneladas de produtos suspeitos de falsificação na Taquara",
+      summary: "SEDCON e PROCON-RJ em ação conjunta contra falsificação",
+      url: "https://diariodorio.com/operacao-malha-fina-apreende-118-toneladas-de-produtos-suspeitos-de-falsificacao-na-taquara/"
+    },
+    {
+      date: "04/12/2025",
+      source: "Agenda do Poder",
+      vehicle: "Portal de Notícias",
+      title: "Operação Malha Fina apreende 11,8 t de produtos falsificados no Rio",
+      summary: "Ação de fiscalização combate comércio de produtos irregulares",
+      url: "http://agendadopoder.com.br/operacao-malha-fina-apreende-118-t-de-produtos-falsificados-no-rio/"
+    },
+    {
+      date: "04/12/2025",
+      source: "Enfoco",
+      vehicle: "Portal de Notícias",
+      title: "Toneladas de produtos falsificados são apreendidas no Rio pela Sedcon, Procon-RJ e PM",
+      summary: "Operação conjunta retira produtos irregulares de circulação",
+      url: "https://enfoco.com.br/noticias/cidades/rio/toneladas-de-produtos-falsificados-sao-apreendidas-no-rio-135316?_=amp"
+    },
+    {
+      date: "03/12/2025",
+      source: "Mensageiro RN",
+      vehicle: "Portal de Notícias",
+      title: "Procon-RJ leva Expresso do Consumidor a Campos com serviços gratuitos nesta quinta",
+      summary: "Serviços de atendimento ao consumidor chegam a Campos dos Goytacazes",
+      url: "https://mensageironf.com.br/procon-rj-leva-expresso-do-consumidor-a-campos-com-servicos-gratuitos-nesta-quinta/"
+    },
+    {
+      date: "03/12/2025",
+      source: "O Dia",
+      vehicle: "Portal de Notícias",
+      title: "Consumidor recebe atendimento social em Campos através de Expresso do Consumidor",
+      summary: "Projeto itinerante leva serviços gratuitos à população",
+      url: "https://odia.ig.com.br/campos/2025/12/7174182-consumidor-recebe-atendimento-social-em-campos-atraves-de-expresso.html"
+    },
+    {
+      date: "03/12/2025",
+      source: "Capital FM Radio",
+      vehicle: "Portal de Notícias",
+      title: "Campos dos Goytacazes recebe o Expresso do Consumidor e Consumidor Social",
+      summary: "Serviços gratuitos incluem emissão de documentos e orientação jurídica",
+      url: "https://capitalfmradio.com.br/campos-dos-goytacazes-recebe-o-expresso-do-consumidor-e-consumidor-social-na-proxima-quinta-feira-04-12/"
+    },
+    {
+      date: "03/12/2025",
+      source: "Campos 24 Horas",
+      vehicle: "Portal de Notícias",
+      title: "Expresso do Consumidor chega a Campos com serviços gratuitos",
+      summary: "População de Campos recebe atendimento especializado da SEDCON",
+      url: "https://campos24horas.com.br/noticia/600117"
+    },
+    {
+      date: "03/12/2025",
+      source: "Atualiza AI 20",
+      vehicle: "Portal de Notícias",
+      title: "Expresso do Consumidor em Campos: serviços gratuitos e atendimento social",
+      summary: "Projeto leva serviços essenciais à população do interior",
+      url: "https://atualizaai20.com.br/noticia.php?id=456"
+    },
+    {
+      date: "03/12/2025",
+      source: "Folha da Terra Digital",
+      vehicle: "Portal de Notícias",
+      title: "Procon-RJ leva serviços gratuitos a Campos com Expresso do Consumidor",
+      summary: "Atendimento itinerante beneficia consumidores do interior do estado",
+      url: "https://folhadaterradigital.com.br/policia/procon/"
+    },
+    {
+      date: "03/12/2025",
+      source: "Jornal BandNews Rio 2ª Edição",
+      vehicle: "Rádio",
+      title: "11 toneladas de produtos falsificados apreendidas na Taquara",
+      summary: "Operação Malha Fina combate comércio de produtos irregulares",
+      url: "https://imagens.empauta.com/audio/eJwNxUEKgzAQBdArmYgHmOkYE8TAiPmQuUChabs02NPbt3kQKxncSLbH5sKXPS1rSBfkjer6D58kFfvErxQtlKEsKWal--2FzOZzicfjVZnDaOhan6y15iDegjUOvUbm--2BYdvg--3D--3D.mp3"
+    },
+    {
+      date: "02/12/2025",
+      source: "ASSERJ",
+      vehicle: "Portal de Notícias",
+      title: "Retirada imediata: Operação Café Real aponta marcas irregulares",
+      summary: "Fiscalização identifica marcas de café com irregularidades",
+      url: "https://asserj.com.br/pt/w/retirada-imediata-operacao-cafe-real-aponta-marcas-irregulares"
+    },
+    {
+      date: "02/12/2025",
+      source: "Enfoco e Diário do Rio",
+      vehicle: "Portal de Notícias",
+      title: "11,8 toneladas de produtos com indícios de falsificação apreendidas na Taquara",
+      summary: "Operação Malha Fina retira produtos irregulares de circulação",
+      url: "https://enfoco.com.br/noticias/cidades/rio/toneladas-de-produtos-falsificados-sao-apreendidas-no-rio-135316"
+    },
+    // Clippings anteriores
     {
       source: "Dia Online",
       vehicle: "Governador/Defesa do Consumidor",
