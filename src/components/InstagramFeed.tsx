@@ -1,4 +1,4 @@
-import { Instagram } from 'lucide-react';
+import { Instagram, Camera, Film } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { useState, useEffect } from 'react';
 
@@ -13,10 +13,30 @@ const InstagramFeed = () => {
   }, [isIntersecting]);
 
   const instagramPosts = [
-    'https://www.instagram.com/p/DR4tXupjNKB/',
-    'https://www.instagram.com/reel/DR4XLxSEbcW/',
-    'https://www.instagram.com/p/DR2xktJEmby/',
-    'https://www.instagram.com/reel/DR0qNG1jBj_/',
+    {
+      url: 'https://www.instagram.com/p/DR4tXupjNKB/',
+      type: 'post' as const,
+      description: 'Maior apreensão da história do RJ',
+      gradient: 'from-amber-500 via-orange-500 to-red-500',
+    },
+    {
+      url: 'https://www.instagram.com/reel/DR4XLxSEbcW/',
+      type: 'reel' as const,
+      description: 'Operação Malha Fina em ação',
+      gradient: 'from-purple-500 via-pink-500 to-rose-500',
+    },
+    {
+      url: 'https://www.instagram.com/p/DR2xktJEmby/',
+      type: 'post' as const,
+      description: 'Fiscalização e combate ao crime',
+      gradient: 'from-blue-500 via-cyan-500 to-teal-500',
+    },
+    {
+      url: 'https://www.instagram.com/reel/DR0qNG1jBj_/',
+      type: 'reel' as const,
+      description: 'Bastidores da SEDCON',
+      gradient: 'from-emerald-500 via-green-500 to-lime-500',
+    },
   ];
 
   return (
@@ -47,22 +67,60 @@ const InstagramFeed = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {instagramPosts.map((postUrl, index) => (
+            {instagramPosts.map((post, index) => (
               <div
                 key={index}
-                className={`transition-all duration-700 delay-${index * 100}`}
+                className={`transition-all duration-700`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <a
-                  href={postUrl}
+                  href={post.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block aspect-square bg-muted rounded-lg overflow-hidden hover:opacity-90 transition-opacity relative group"
+                  className="block aspect-square rounded-xl overflow-hidden relative group shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="absolute inset-0 flex items-center justify-center bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Instagram className="w-12 h-12 text-primary-foreground" />
+                  {/* Gradient Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${post.gradient}`} />
+                  
+                  {/* Pattern Overlay */}
+                  <div className="absolute inset-0 opacity-20">
+                    <div className="absolute inset-0" style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                    }} />
                   </div>
-                  <div className="w-full h-full bg-gradient-to-br from-gradient-start/20 to-gradient-end/20" />
+                  
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-white">
+                    {/* Badge */}
+                    <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5">
+                      {post.type === 'reel' ? (
+                        <>
+                          <Film className="w-3.5 h-3.5" />
+                          <span className="text-xs font-semibold">Reel</span>
+                        </>
+                      ) : (
+                        <>
+                          <Camera className="w-3.5 h-3.5" />
+                          <span className="text-xs font-semibold">Post</span>
+                        </>
+                      )}
+                    </div>
+                    
+                    {/* Icon */}
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <Instagram className="w-8 h-8" />
+                    </div>
+                    
+                    {/* Description */}
+                    <p className="text-center font-heading font-semibold text-sm leading-tight px-2">
+                      {post.description}
+                    </p>
+                  </div>
+                  
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-white font-semibold text-sm">Ver no Instagram →</span>
+                  </div>
                 </a>
               </div>
             ))}
@@ -73,7 +131,7 @@ const InstagramFeed = () => {
               href="https://www.instagram.com/gutembergpfonseca"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 bg-gradient-primary text-primary font-heading font-semibold rounded-lg hover:opacity-90 transition-opacity"
+              className="inline-block px-8 py-3 bg-gradient-primary text-primary-foreground font-heading font-semibold rounded-lg hover:opacity-90 transition-opacity"
             >
               Ver mais no Instagram
             </a>
