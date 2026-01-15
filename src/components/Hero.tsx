@@ -44,11 +44,11 @@ const Hero = () => {
     >
       {/* Background image with responsive sizing */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
+        className="absolute inset-0 bg-cover bg-no-repeat transition-all duration-1000"
         style={{
           backgroundImage: `url(${backgroundImages[currentImageIndex]})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center top',
         }}
       />
       
