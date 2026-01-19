@@ -81,7 +81,7 @@ const Blog = () => {
       <div className="section-container">
         <h2 className="section-title">Blog</h2>
         <p className="text-center text-graphite mb-12 max-w-2xl mx-auto">
-          Artigos, colunas e notícias sobre defesa do consumidor
+          Artigos, colunas e notícias sobre defesa do consumidor por Gutemberg Fonseca
         </p>
 
         <div
