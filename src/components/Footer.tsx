@@ -10,7 +10,7 @@ const Footer = () => {
               alt="Gutemberg Fonseca Logo" 
               className="h-16 mb-4"
             />
-            <p className="mb-4">Secretário Estadual de Defesa do Consumidor</p>
+            
             <p className="text-sm opacity-75">
               18 anos de gestão pública transformadora.
             </p>
@@ -48,7 +48,7 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-white/20 text-center">
           <p className="text-sm opacity-75">
-            &copy; {new Date().getFullYear()} Gutemberg Fonseca. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} Gutemberg Fonseca. Todos os direitos reservados. Deus é Fiel!
           </p>
         </div>
       </div>
