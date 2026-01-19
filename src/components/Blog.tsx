@@ -6,9 +6,46 @@ interface BlogPost {
   title: string;
   url: string;
   source: string;
+  image?: string;
 }
 
 const blogPosts: BlogPost[] = [
+  {
+    title: "Crédito consignado: atenção aos seus direitos antes de contratar",
+    url: "https://diariodorio.com/credito-consignado-atencao-aos-seus-direitos-antes-de-contratar/",
+    source: "Diário do Rio",
+    image: "https://diariodorio.com/wp-content/uploads/2025/01/credito-consignado.jpg"
+  },
+  {
+    title: "Turismo de verão: hotéis, pousadas e os direitos do hóspede",
+    url: "https://diariodorio.com/turismo-de-verao-hoteis-pousadas-e-os-direitos-do-hospede/",
+    source: "Diário do Rio",
+    image: "https://diariodorio.com/wp-content/uploads/2025/01/turismo-de-verao.jpg"
+  },
+  {
+    title: "Trocas pós-Natal: o que a loja é obrigada a aceitar",
+    url: "https://diariodorio.com/trocas-pos-natal-o-que-a-loja-e-obrigada-a-aceitar/",
+    source: "Diário do Rio",
+    image: "https://diariodorio.com/wp-content/uploads/2024/12/trocas-pos-natal.jpg"
+  },
+  {
+    title: "Prazo de entrega e atrasos: o que fazer quando a compra não chega",
+    url: "https://diariodorio.com/prazo-de-entrega-e-atrasos-o-que-fazer-quando-a-compra-nao-chega/",
+    source: "Diário do Rio",
+    image: "https://diariodorio.com/wp-content/uploads/2024/12/prazo-de-entrega.jpg"
+  },
+  {
+    title: "Compras online e golpes no PIX: como comprar com segurança e evitar prejuízos",
+    url: "https://diariodorio.com/compras-online-e-golpes-no-pix-como-comprar-com-seguranca-e-evitar-prejuizos/",
+    source: "Diário do Rio",
+    image: "https://diariodorio.com/wp-content/uploads/2024/12/compras-online-pix.jpg"
+  },
+  {
+    title: "Os direitos básicos do consumidor que todo cidadão precisa conhecer",
+    url: "https://diariodorio.com/os-direitos-basicos-do-consumidor-que-todo-cidadao-precisa-conhecer/",
+    source: "Diário do Rio",
+    image: "https://diariodorio.com/wp-content/uploads/2024/12/direitos-consumidor.jpg"
+  },
   {
     title: "Ano novo, mesmos golpes: fraudes digitais em alta",
     url: "https://diariodovale.com.br/economia/ano-novo-mesmos-golpes-fraudes-digitais-em-alta/",
@@ -68,6 +105,18 @@ const Blog = () => {
               rel="noopener noreferrer"
               className="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-primary/30"
             >
+              {post.image && (
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                </div>
+              )}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
