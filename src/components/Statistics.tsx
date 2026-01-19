@@ -1,45 +1,93 @@
 
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useCountUp } from '@/hooks/useCountUp';
 import { useState, useEffect } from 'react';
 import { Users, Scale, HandCoins, Package, MapPin, Bus, Building2, Shield, Check } from 'lucide-react';
+
+interface AnimatedStatProps {
+  end: number;
+  decimals?: number;
+  prefix?: string;
+  suffix?: string;
+  enabled: boolean;
+}
+
+const AnimatedStat = ({ end, decimals = 0, prefix, suffix, enabled }: AnimatedStatProps) => {
+  const count = useCountUp({ end, decimals, duration: 2500, enabled });
+  
+  const formatNumber = (num: number) => {
+    if (decimals > 0) {
+      return num.toFixed(decimals).replace('.', ',');
+    }
+    return num.toLocaleString('pt-BR');
+  };
+
+  return (
+    <div className="flex justify-center items-baseline gap-1">
+      {prefix && (
+        <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          {prefix}
+        </span>
+      )}
+      <span className="text-4xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent tabular-nums">
+        {formatNumber(count)}
+      </span>
+      {suffix && (
+        <span className="text-xl font-semibold bg-gradient-primary bg-clip-text text-transparent">
+          {suffix}
+        </span>
+      )}
+    </div>
+  );
+};
 
 const Statistics = () => {
   const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.1 });
   const [isVisible, setIsVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   
   useEffect(() => {
-    if (isIntersecting) {
+    if (isIntersecting && !hasAnimated) {
       setIsVisible(true);
+      setHasAnimated(true);
     }
-  }, [isIntersecting]);
+  }, [isIntersecting, hasAnimated]);
 
   const mainStats = [
     {
-      number: "470.000",
+      number: 470000,
+      displayNumber: "470.000",
       prefix: "+",
       label: "consumidores atendidos",
-      icon: Users
+      icon: Users,
+      decimals: 0
     },
     {
-      number: "65.8",
+      number: 65.8,
+      displayNumber: "65,8",
       prefix: "R$",
       suffix: "mi",
       label: "em multas aplicadas",
-      icon: Scale
+      icon: Scale,
+      decimals: 1
     },
     {
-      number: "40",
+      number: 40,
+      displayNumber: "40",
       prefix: "R$",
       suffix: "mi",
       label: "renegociados por mais de 9.000 famílias",
-      icon: HandCoins
+      icon: HandCoins,
+      decimals: 0
     },
     {
-      number: "160",
+      number: 160,
+      displayNumber: "160",
       prefix: "+",
       suffix: "ton",
       label: "de produtos irregulares apreendidos",
-      icon: Package
+      icon: Package,
+      decimals: 0
     }
   ];
 
@@ -101,21 +149,13 @@ const Statistics = () => {
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-primary flex items-center justify-center">
                 <stat.icon className="w-7 h-7 text-primary-foreground" />
               </div>
-              <div className="flex justify-center items-baseline gap-1">
-                {stat.prefix && (
-                  <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                    {stat.prefix}
-                  </span>
-                )}
-                <span className="text-4xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                  {stat.number}
-                </span>
-                {stat.suffix && (
-                  <span className="text-xl font-semibold bg-gradient-primary bg-clip-text text-transparent">
-                    {stat.suffix}
-                  </span>
-                )}
-              </div>
+              <AnimatedStat 
+                end={stat.number}
+                decimals={stat.decimals}
+                prefix={stat.prefix}
+                suffix={stat.suffix}
+                enabled={hasAnimated}
+              />
               <p className="text-muted-foreground mt-3 text-sm">{stat.label}</p>
             </div>
           ))}
