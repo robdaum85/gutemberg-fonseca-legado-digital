@@ -38,7 +38,7 @@ const About = () => {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
             }`}
           >
-            <h3 className="text-2xl font-bold text-primary mb-4">Gutemberg de Paula Fonseca</h3>
+            <h3 className="text-2xl font-bold text-primary mb-4">Gutemberg Fonseca</h3>
             
             <p className="text-graphite mb-4">
               Gutemberg Fonseca é administrador com MBA em Marketing, pós-graduação em Ciências Políticas 

@@ -75,7 +75,7 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 animate-fade-in-up">
-          Gutemberg de Paula Fonseca
+          Gutemberg Fonseca
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           18 anos de gestão pública transformadora
