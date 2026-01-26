@@ -38,11 +38,6 @@ const MultimediaClipping = () => {
       title: "Ações da SEDCON",
       caption: "TV Rio – Abril/2025",
     },
-    {
-      id: "mDm-5C9ZNwI",
-      title: "Defesa do Consumidor",
-      caption: "Band Rio – Março/2025",
-    },
   ];
 
   // Dados do clipping importados de src/data/newsClipping.ts
