@@ -11,7 +11,8 @@ import {
   Facebook, 
   Twitter,
   Share2,
-  ExternalLink
+  ExternalLink,
+  Youtube
 } from 'lucide-react';
 import { newsClipping } from '@/data/newsClipping';
 
@@ -29,14 +30,19 @@ const MultimediaClipping = () => {
   // Dados dos vídeos - atualizados com os novos IDs do YouTube
   const videos = [
     {
-      id: "fC0VS6gZBXw",
-      title: "Entrevista RJTV",
-      caption: "Entrevista no RJTV – Maio/2025",
+      id: "xi2QbV0uDDg",
+      title: "Balcão do Consumidor",
+      caption: "RJTV 2 (TV Rio Sul) – Janeiro/2026",
     },
     {
-      id: "UKt484G9Oe8",
-      title: "Ações da SEDCON",
-      caption: "TV Rio – Abril/2025",
+      id: "1sdH4i3vztA",
+      title: "Troca de Presentes",
+      caption: "RJTV 2 (TV Rio Sul) – Janeiro/2026",
+    },
+    {
+      id: "xDj3UwD3U9g",
+      title: "Operação Café Real",
+      caption: "Balanço Geral Rio (Record TV) – Agosto/2025",
     },
   ];
 
@@ -124,6 +130,24 @@ const MultimediaClipping = () => {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+            
+            {/* Botão do Canal */}
+            <div className="flex justify-center mt-8">
+              <Button
+                asChild
+                className="bg-red-600 hover:bg-red-700 text-white"
+              >
+                <a 
+                  href="https://www.youtube.com/@gutembergpfonseca" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <Youtube className="h-5 w-5" />
+                  Acessar Canal no YouTube
+                </a>
+              </Button>
             </div>
           </div>
 
