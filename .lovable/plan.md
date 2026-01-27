@@ -1,57 +1,80 @@
 
 
-## Plano: Remover Vídeo Band Rio
+## Plano: Substituir Vídeos e Adicionar Botão do Canal
 
-### Alteração
+### Alterações no arquivo `src/components/MultimediaClipping.tsx`
 
-**Arquivo:** `src/components/MultimediaClipping.tsx`
+| Linha | Ação | Descrição |
+|-------|------|-----------|
+| 14 | Adicionar import | Importar ícone `Youtube` do lucide-react |
+| 30-41 | Substituir array | Trocar os 2 vídeos atuais pelos 3 novos |
+| 127 | Adicionar botão | Inserir botão "Acessar Canal" após o grid de vídeos |
 
-| Ação | Descrição |
-|------|-----------|
-| Remover item do array | Excluir o terceiro vídeo do array `videos` (linhas 36-39) |
-
-### Código Atual (linhas 26-40)
-
-```javascript
-const videos = [
-  {
-    id: "fC0VS6gZBXw",
-    title: "Entrevista RJTV",
-    caption: "Entrevista no RJTV – Maio/2025",
-  },
-  {
-    id: "UKt484G9Oe8",
-    title: "Ações da SEDCON",
-    caption: "TV Rio – Abril/2025",
-  },
-  {
-    id: "mDm-5C9ZNwI",          // <- REMOVER
-    title: "Defesa do Consumidor",
-    caption: "Band Rio – Março/2025",
-  },
-];
-```
-
-### Código Após Alteração
+### Novos Vídeos
 
 ```javascript
 const videos = [
   {
-    id: "fC0VS6gZBXw",
-    title: "Entrevista RJTV",
-    caption: "Entrevista no RJTV – Maio/2025",
+    id: "xi2QbV0uDDg",
+    title: "Vídeo 1",
+    caption: "Descrição do vídeo 1",
   },
   {
-    id: "UKt484G9Oe8",
-    title: "Ações da SEDCON",
-    caption: "TV Rio – Abril/2025",
+    id: "1sdH4i3vztA",
+    title: "Vídeo 2",
+    caption: "Descrição do vídeo 2",
+  },
+  {
+    id: "xDj3UwD3U9g",
+    title: "Vídeo 3",
+    caption: "Descrição do vídeo 3",
   },
 ];
 ```
 
-### Resultado
+### Novo Botão do Canal
 
-A seção "Vídeos Institucionais" exibirá apenas 2 vídeos:
-1. Entrevista RJTV – Maio/2025
-2. Ações da SEDCON – TV Rio – Abril/2025
+Será adicionado abaixo do grid de vídeos:
+
+```jsx
+<div className="flex justify-center mt-8">
+  <Button
+    asChild
+    className="bg-red-600 hover:bg-red-700 text-white"
+  >
+    <a 
+      href="https://www.youtube.com/@CANAL_DO_USUARIO" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="flex items-center gap-2"
+    >
+      <Youtube className="h-5 w-5" />
+      Acessar Canal no YouTube
+    </a>
+  </Button>
+</div>
+```
+
+### Resultado Visual
+
+```text
+┌─────────────────────────────────────────────────┐
+│           Vídeos Institucionais                 │
+├─────────────────────────────────────────────────┤
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐         │
+│  │ Vídeo 1 │  │ Vídeo 2 │  │ Vídeo 3 │         │
+│  └─────────┘  └─────────┘  └─────────┘         │
+│                                                 │
+│         [🎬 Acessar Canal no YouTube]           │
+│              (botão vermelho)                   │
+└─────────────────────────────────────────────────┘
+```
+
+### Pergunta
+
+Preciso de duas informações para completar o plano:
+
+1. **Títulos e legendas dos vídeos** - Quais são os títulos e descrições para cada um dos 3 vídeos?
+
+2. **Link do canal** - Qual é o endereço do canal do YouTube para o botão "Acessar Canal"?
 
