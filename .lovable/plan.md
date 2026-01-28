@@ -1,88 +1,115 @@
 
 
-## Plano: Manter Apenas 3 Imagens Originais no Hero
+## Plano: Substituir Imagens e Links do Instagram
 
 ### Arquivo a ser alterado
 
-**`src/components/Hero.tsx`**
+**`src/components/InstagramFeed.tsx`**
 
 ### Situação Atual
 
-O slider de imagens possui:
-- **Desktop**: 7 imagens (3 originais + 4 novas)
-- **Mobile**: 16 imagens (7 + 9 verticais adicionais)
+O componente usa **cards com gradientes coloridos** (sem imagens reais) para representar os posts do Instagram:
+
+```javascript
+const instagramPosts = [
+  {
+    url: 'https://www.instagram.com/p/DR4tXupjNKB/',
+    type: 'post',
+    description: 'Maior apreensão da história do RJ',
+    gradient: 'from-amber-500 via-orange-500 to-red-500',
+  },
+  // ... mais 3 posts
+];
+```
 
 ### Alteração Proposta
 
-Simplificar para usar apenas as **3 imagens originais do Playbook** em todos os dispositivos:
+Substituir os 4 posts atuais pelos novos, agora usando **imagens reais** em vez de gradientes:
 
-| Antes | Depois |
-|-------|--------|
-| 7 imagens no desktop | 3 imagens |
-| 16 imagens no mobile | 3 imagens |
-
-### Código Atual (linhas 5-38)
-
-```javascript
-// Imagens que aparecem em TODAS as telas (desktop + mobile) - 7 fotos
-const allDevicesImages = [
-  // 3 originais do Playbook
-  'https://img.playbook.com/3gmHBQ3nDjvgLt33...',
-  'https://img.playbook.com/ihBOakoOc26ghY6g...',
-  'https://img.playbook.com/qRzLFPwsMekYl6Aw...',
-  // 4 novas que funcionam bem no desktop
-  'https://kngofnnx.com/wp-content/uploads/2026/01/01d1b5e5...',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/00b15fc3...',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/0621379e...',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/2b427863...',
-];
-
-// Imagens que aparecem APENAS no mobile (9 fotos verticais)
-const mobileOnlyImages = [
-  'https://kngofnnx.com/wp-content/uploads/2026/01/IMG_4766.jpg',
-  // ... mais 8 imagens
-];
-
-// No mobile: todas as 16 fotos | No desktop: apenas 7 fotos
-const backgroundImages = isMobile 
-  ? [...allDevicesImages, ...mobileOnlyImages] 
-  : allDevicesImages;
-```
+| Posição | Nova Imagem | Novo Link |
+|---------|-------------|-----------|
+| 1 | `guto1.png` | `.../p/DThvZenks6H/` |
+| 2 | `guto2.png` | `.../p/DTu9r-rEbTn/` |
+| 3 | `guto3.png` | `.../p/DTdcycDki2k/` |
+| 4 | `guto4.png` | `.../p/DS2qS5ZEvqk/` |
 
 ### Código Após Alteração
 
+**Array de posts (linhas 15-40):**
+
 ```javascript
-// 3 imagens originais do Playbook - usadas em todos os dispositivos
-const backgroundImages = [
-  'https://img.playbook.com/3gmHBQ3nDjvgLt33nyR9Xxf6x_LASkigwMCHzx-L3P0/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljL2FiYWNkMDE0/LWJlMjctNDgyZi05/N2I2LTdmYzI1NDdm/ZjQ5OA',
-  'https://img.playbook.com/ihBOakoOc26ghY6gcu4YHRzq9KD5chqsOA4_ghcMF4w/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzU1ZDc2ZjE4/LWUzMjAtNDUxNy04/ZWNhLWNiMGQzN2E0/MGNjYw',
-  'https://img.playbook.com/qRzLFPwsMekYl6AwVA0-H_YOuZSIRoOrCbvaJdauePg/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzlkMjU5Y2Nj/LWE5NDUtNGQyMS1h/NTlhLTAzNjNkMzQ0/MmE5Nw',
+const instagramPosts = [
+  {
+    url: 'https://www.instagram.com/p/DThvZenks6H/?igsh=dnNtYzIwc2I1cXUz',
+    image: 'https://kngofnnx.com/wp-content/uploads/2026/01/Guto1.png',
+    type: 'post' as const,
+  },
+  {
+    url: 'https://www.instagram.com/p/DTu9r-rEbTn/?igsh=NWpzcDA5djF3aXIw',
+    image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto2.png',
+    type: 'post' as const,
+  },
+  {
+    url: 'https://www.instagram.com/p/DTdcycDki2k/?igsh=NnU3MnhueDUwcm90',
+    image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto3.png',
+    type: 'post' as const,
+  },
+  {
+    url: 'https://www.instagram.com/p/DS2qS5ZEvqk/?igsh=ZDR4d3VqbHJsMjYw',
+    image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto4.png',
+    type: 'post' as const,
+  },
 ];
+```
+
+**Template do card (linhas 80-124):**
+
+Substituir o gradiente de fundo por uma imagem real:
+
+```jsx
+{/* Antes: Gradient Background */}
+<div className={`absolute inset-0 bg-gradient-to-br ${post.gradient}`} />
+
+{/* Depois: Imagem Real */}
+<img 
+  src={post.image} 
+  alt="Post do Instagram"
+  className="absolute inset-0 w-full h-full object-cover"
+/>
 ```
 
 ### Simplificações
 
 | Item | Ação |
 |------|------|
-| Array `allDevicesImages` | Remover (substituído por `backgroundImages`) |
-| Array `mobileOnlyImages` | Remover completamente |
-| Import `useIsMobile` | Remover (não será mais necessário) |
-| Variável `isMobile` | Remover |
-| `useEffect` de reset de índice | Remover (não há mais troca mobile/desktop) |
-| Lógica condicional mobile/desktop | Remover |
+| Propriedade `gradient` | Remover (substituída por `image`) |
+| Propriedade `description` | Remover (não será exibida) |
+| Pattern Overlay | Remover (não necessário com imagens) |
+| Ícone central do Instagram | Remover (as imagens falam por si) |
+| Badge Post/Reel | Manter para identificar o tipo |
 
-### Resultado
+### Resultado Visual
 
 ```text
 ┌─────────────────────────────────────────────────┐
-│              Hero Slider                        │
+│                  Instagram                       │
+│             @gutembergpfonseca                   │
 ├─────────────────────────────────────────────────┤
-│                                                 │
-│   ● ○ ○   ← Apenas 3 indicadores               │
-│                                                 │
-│   Mesmas 3 imagens em desktop e mobile         │
-│   Código mais simples e responsivo             │
-│                                                 │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐
+│  │ Guto1   │  │ Guto2   │  │ Guto3   │  │ Guto4   │
+│  │ (foto)  │  │ (foto)  │  │ (foto)  │  │ (foto)  │
+│  │  [Post] │  │  [Post] │  │  [Post] │  │  [Post] │
+│  └─────────┘  └─────────┘  └─────────┘  └─────────┘
+│                                                   │
+│         [Ver mais no Instagram]                   │
 └─────────────────────────────────────────────────┘
 ```
+
+### Resumo das Alterações
+
+| Linha | Alteração |
+|-------|-----------|
+| 15-40 | Substituir array `instagramPosts` com novos URLs, imagens e remover gradientes |
+| 82-90 | Substituir `<div>` com gradiente por `<img>` com a foto real |
+| 92-118 | Simplificar conteúdo central removendo ícone e descrição |
 
