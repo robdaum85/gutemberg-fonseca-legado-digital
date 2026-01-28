@@ -35,8 +35,8 @@ const MultimediaClipping = () => {
       caption: "RJTV 2 (TV Rio Sul) – Janeiro/2026",
     },
     {
-      id: "1sdH4i3vztA",
-      title: "Troca de Presentes",
+      id: "zabK3YJIGFE",
+      title: "Cuidado Onde Você Abastece!",
       caption: "RJTV 2 (TV Rio Sul) – Janeiro/2026",
     },
     {
