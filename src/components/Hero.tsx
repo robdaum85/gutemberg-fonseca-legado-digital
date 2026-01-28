@@ -1,54 +1,23 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { useIsMobile } from '@/hooks/use-mobile';
 
-// Imagens que aparecem em TODAS as telas (desktop + mobile) - 7 fotos
-const allDevicesImages = [
-  // 3 originais do Playbook
+// 3 imagens originais do Playbook - usadas em todos os dispositivos
+const backgroundImages = [
   'https://img.playbook.com/3gmHBQ3nDjvgLt33nyR9Xxf6x_LASkigwMCHzx-L3P0/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljL2FiYWNkMDE0/LWJlMjctNDgyZi05/N2I2LTdmYzI1NDdm/ZjQ5OA',
   'https://img.playbook.com/ihBOakoOc26ghY6gcu4YHRzq9KD5chqsOA4_ghcMF4w/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzU1ZDc2ZjE4/LWUzMjAtNDUxNy04/ZWNhLWNiMGQzN2E0/MGNjYw',
   'https://img.playbook.com/qRzLFPwsMekYl6AwVA0-H_YOuZSIRoOrCbvaJdauePg/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzlkMjU5Y2Nj/LWE5NDUtNGQyMS1h/NTlhLTAzNjNkMzQ0/MmE5Nw',
-  // 4 novas que funcionam bem no desktop
-  'https://kngofnnx.com/wp-content/uploads/2026/01/01d1b5e5-8ebf-49b7-ba21-9dd2c93781be.jpg',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/00b15fc3-cd65-4ada-9879-0d438bef1402.jpg',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/0621379e-5efb-4107-891b-c68776a8ed2f.jpg',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/2b427863-3f7f-45c5-b6d4-ce49a82758e2.jpg',
-];
-
-// Imagens que aparecem APENAS no mobile (9 fotos verticais)
-const mobileOnlyImages = [
-  'https://kngofnnx.com/wp-content/uploads/2026/01/IMG_4766.jpg',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/IMG_4754.jpg',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/IMG_4700-scaled.jpg',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/e0c7e76e-b60e-4d59-a90a-2478cef8fe95.jpg',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/WhatsApp-Image-2025-09-23-at-17.01.20-1.jpeg',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/096c75df-6456-4746-93f7-d94faef6aabf.jpg',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/8fc65008-6172-4812-bb66-aea45acac03d.jpg',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/5ac6518b-a0b8-44d0-b8e4-0f876b0ef2dc.jpg',
-  'https://kngofnnx.com/wp-content/uploads/2026/01/02b56f38-e9b8-45e7-be39-e1030abcace4.jpg',
 ];
 
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const isMobile = useIsMobile();
-  
-  // No mobile: todas as 16 fotos | No desktop: apenas 7 fotos
-  const backgroundImages = isMobile 
-    ? [...allDevicesImages, ...mobileOnlyImages] 
-    : allDevicesImages;
-
-  // Reseta o índice quando muda de dispositivo para evitar índice inválido
-  useEffect(() => {
-    setCurrentImageIndex(0);
-  }, [isMobile]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
-    }, 5000); // Troca a cada 5 segundos
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [backgroundImages.length]);
+  }, []);
 
   const scrollToCareer = () => {
     document.getElementById('carreira')?.scrollIntoView({ behavior: 'smooth' });
