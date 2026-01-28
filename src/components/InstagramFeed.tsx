@@ -1,4 +1,4 @@
-import { Instagram, Camera, Film } from 'lucide-react';
+import { Instagram, Camera } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { useState, useEffect } from 'react';
 
@@ -14,28 +14,24 @@ const InstagramFeed = () => {
 
   const instagramPosts = [
     {
-      url: 'https://www.instagram.com/p/DR4tXupjNKB/',
+      url: 'https://www.instagram.com/p/DThvZenks6H/?igsh=dnNtYzIwc2I1cXUz',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/01/Guto1.png',
       type: 'post' as const,
-      description: 'Maior apreensão da história do RJ',
-      gradient: 'from-amber-500 via-orange-500 to-red-500',
     },
     {
-      url: 'https://www.instagram.com/reel/DR4XLxSEbcW/',
-      type: 'reel' as const,
-      description: 'Operação Malha Fina em ação',
-      gradient: 'from-purple-500 via-pink-500 to-rose-500',
-    },
-    {
-      url: 'https://www.instagram.com/p/DR2xktJEmby/',
+      url: 'https://www.instagram.com/p/DTu9r-rEbTn/?igsh=NWpzcDA5djF3aXIw',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto2.png',
       type: 'post' as const,
-      description: 'Fiscalização e combate ao crime',
-      gradient: 'from-blue-500 via-cyan-500 to-teal-500',
     },
     {
-      url: 'https://www.instagram.com/reel/DR0qNG1jBj_/',
-      type: 'reel' as const,
-      description: 'Bastidores da SEDCON',
-      gradient: 'from-emerald-500 via-green-500 to-lime-500',
+      url: 'https://www.instagram.com/p/DTdcycDki2k/?igsh=NnU3MnhueDUwcm90',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto3.png',
+      type: 'post' as const,
+    },
+    {
+      url: 'https://www.instagram.com/p/DS2qS5ZEvqk/?igsh=ZDR4d3VqbHJsMjYw',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto4.png',
+      type: 'post' as const,
     },
   ];
 
@@ -79,42 +75,17 @@ const InstagramFeed = () => {
                   rel="noopener noreferrer"
                   className="block aspect-square rounded-xl overflow-hidden relative group shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  {/* Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${post.gradient}`} />
+                  {/* Imagem Real */}
+                  <img 
+                    src={post.image} 
+                    alt="Post do Instagram"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
                   
-                  {/* Pattern Overlay */}
-                  <div className="absolute inset-0 opacity-20">
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                    }} />
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-white">
-                    {/* Badge */}
-                    <div className="absolute top-3 right-3 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5">
-                      {post.type === 'reel' ? (
-                        <>
-                          <Film className="w-3.5 h-3.5" />
-                          <span className="text-xs font-semibold">Reel</span>
-                        </>
-                      ) : (
-                        <>
-                          <Camera className="w-3.5 h-3.5" />
-                          <span className="text-xs font-semibold">Post</span>
-                        </>
-                      )}
-                    </div>
-                    
-                    {/* Icon */}
-                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <Instagram className="w-8 h-8" />
-                    </div>
-                    
-                    {/* Description */}
-                    <p className="text-center font-heading font-semibold text-sm leading-tight px-2">
-                      {post.description}
-                    </p>
+                  {/* Badge */}
+                  <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5 text-white">
+                    <Camera className="w-3.5 h-3.5" />
+                    <span className="text-xs font-semibold">Post</span>
                   </div>
                   
                   {/* Hover Overlay */}
