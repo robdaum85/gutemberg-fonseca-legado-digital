@@ -1,80 +1,74 @@
 
 
-## Plano: Substituir Vídeos e Adicionar Botão do Canal
+## Plano: Substituir Vídeo Central + Verificação do Analytics
 
-### Alterações no arquivo `src/components/MultimediaClipping.tsx`
+### 1. Substituição do Vídeo Central
 
-| Linha | Ação | Descrição |
-|-------|------|-----------|
-| 14 | Adicionar import | Importar ícone `Youtube` do lucide-react |
-| 30-41 | Substituir array | Trocar os 2 vídeos atuais pelos 3 novos |
-| 127 | Adicionar botão | Inserir botão "Acessar Canal" após o grid de vídeos |
+**Arquivo:** `src/components/MultimediaClipping.tsx`
 
-### Novos Vídeos
+| Posição | Vídeo Atual | Novo Vídeo |
+|---------|-------------|------------|
+| Central (2º) | `1sdH4i3vztA` - "Troca de Presentes" | `zabK3YJIGFE` |
 
+**Código atual (linhas 37-41):**
 ```javascript
-const videos = [
-  {
-    id: "xi2QbV0uDDg",
-    title: "Vídeo 1",
-    caption: "Descrição do vídeo 1",
-  },
-  {
-    id: "1sdH4i3vztA",
-    title: "Vídeo 2",
-    caption: "Descrição do vídeo 2",
-  },
-  {
-    id: "xDj3UwD3U9g",
-    title: "Vídeo 3",
-    caption: "Descrição do vídeo 3",
-  },
-];
+{
+  id: "1sdH4i3vztA",
+  title: "Troca de Presentes",
+  caption: "RJTV 2 (TV Rio Sul) – Janeiro/2026",
+},
 ```
 
-### Novo Botão do Canal
-
-Será adicionado abaixo do grid de vídeos:
-
-```jsx
-<div className="flex justify-center mt-8">
-  <Button
-    asChild
-    className="bg-red-600 hover:bg-red-700 text-white"
-  >
-    <a 
-      href="https://www.youtube.com/@CANAL_DO_USUARIO" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="flex items-center gap-2"
-    >
-      <Youtube className="h-5 w-5" />
-      Acessar Canal no YouTube
-    </a>
-  </Button>
-</div>
+**Código após alteração:**
+```javascript
+{
+  id: "zabK3YJIGFE",
+  title: "[Título a buscar do YouTube]",
+  caption: "[Data/Veículo a definir]",
+},
 ```
 
-### Resultado Visual
+Vou buscar o título do vídeo automaticamente do YouTube ao implementar.
 
-```text
-┌─────────────────────────────────────────────────┐
-│           Vídeos Institucionais                 │
-├─────────────────────────────────────────────────┤
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐         │
-│  │ Vídeo 1 │  │ Vídeo 2 │  │ Vídeo 3 │         │
-│  └─────────┘  └─────────┘  └─────────┘         │
-│                                                 │
-│         [🎬 Acessar Canal no YouTube]           │
-│              (botão vermelho)                   │
-└─────────────────────────────────────────────────┘
+---
+
+### 2. Verificação do Google Analytics
+
+**Status: ✅ Instalado Corretamente**
+
+O Google Analytics 4 está configurado no arquivo `index.html` (linhas 33-41):
+
+```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQTGRP15XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GQTGRP15XX');
+</script>
 ```
 
-### Pergunta
+**Checklist de Implementação:**
 
-Preciso de duas informações para completar o plano:
+| Item | Status |
+|------|--------|
+| Script gtag.js carregado assincronamente | ✅ |
+| ID de medição correto (G-GQTGRP15XX) | ✅ |
+| dataLayer inicializado | ✅ |
+| Função gtag definida | ✅ |
+| Configuração do ID executada | ✅ |
+| Posição no `<head>` (antes do body) | ✅ |
 
-1. **Títulos e legendas dos vídeos** - Quais são os títulos e descrições para cada um dos 3 vídeos?
+**Recomendação:** Para verificar se os dados estão sendo coletados, acesse o [Google Analytics](https://analytics.google.com/) e verifique:
+- Relatório em Tempo Real
+- Eventos recebidos nas últimas 24h
 
-2. **Link do canal** - Qual é o endereço do canal do YouTube para o botão "Acessar Canal"?
+---
+
+### Resumo das Alterações
+
+| Arquivo | Alteração |
+|---------|-----------|
+| `src/components/MultimediaClipping.tsx` | Substituir ID do vídeo central de `1sdH4i3vztA` para `zabK3YJIGFE` |
 
