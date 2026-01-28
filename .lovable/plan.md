@@ -1,74 +1,88 @@
 
 
-## Plano: Substituir Vídeo Central + Verificação do Analytics
+## Plano: Manter Apenas 3 Imagens Originais no Hero
 
-### 1. Substituição do Vídeo Central
+### Arquivo a ser alterado
 
-**Arquivo:** `src/components/MultimediaClipping.tsx`
+**`src/components/Hero.tsx`**
 
-| Posição | Vídeo Atual | Novo Vídeo |
-|---------|-------------|------------|
-| Central (2º) | `1sdH4i3vztA` - "Troca de Presentes" | `zabK3YJIGFE` |
+### Situação Atual
 
-**Código atual (linhas 37-41):**
+O slider de imagens possui:
+- **Desktop**: 7 imagens (3 originais + 4 novas)
+- **Mobile**: 16 imagens (7 + 9 verticais adicionais)
+
+### Alteração Proposta
+
+Simplificar para usar apenas as **3 imagens originais do Playbook** em todos os dispositivos:
+
+| Antes | Depois |
+|-------|--------|
+| 7 imagens no desktop | 3 imagens |
+| 16 imagens no mobile | 3 imagens |
+
+### Código Atual (linhas 5-38)
+
 ```javascript
-{
-  id: "1sdH4i3vztA",
-  title: "Troca de Presentes",
-  caption: "RJTV 2 (TV Rio Sul) – Janeiro/2026",
-},
+// Imagens que aparecem em TODAS as telas (desktop + mobile) - 7 fotos
+const allDevicesImages = [
+  // 3 originais do Playbook
+  'https://img.playbook.com/3gmHBQ3nDjvgLt33...',
+  'https://img.playbook.com/ihBOakoOc26ghY6g...',
+  'https://img.playbook.com/qRzLFPwsMekYl6Aw...',
+  // 4 novas que funcionam bem no desktop
+  'https://kngofnnx.com/wp-content/uploads/2026/01/01d1b5e5...',
+  'https://kngofnnx.com/wp-content/uploads/2026/01/00b15fc3...',
+  'https://kngofnnx.com/wp-content/uploads/2026/01/0621379e...',
+  'https://kngofnnx.com/wp-content/uploads/2026/01/2b427863...',
+];
+
+// Imagens que aparecem APENAS no mobile (9 fotos verticais)
+const mobileOnlyImages = [
+  'https://kngofnnx.com/wp-content/uploads/2026/01/IMG_4766.jpg',
+  // ... mais 8 imagens
+];
+
+// No mobile: todas as 16 fotos | No desktop: apenas 7 fotos
+const backgroundImages = isMobile 
+  ? [...allDevicesImages, ...mobileOnlyImages] 
+  : allDevicesImages;
 ```
 
-**Código após alteração:**
+### Código Após Alteração
+
 ```javascript
-{
-  id: "zabK3YJIGFE",
-  title: "[Título a buscar do YouTube]",
-  caption: "[Data/Veículo a definir]",
-},
+// 3 imagens originais do Playbook - usadas em todos os dispositivos
+const backgroundImages = [
+  'https://img.playbook.com/3gmHBQ3nDjvgLt33nyR9Xxf6x_LASkigwMCHzx-L3P0/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljL2FiYWNkMDE0/LWJlMjctNDgyZi05/N2I2LTdmYzI1NDdm/ZjQ5OA',
+  'https://img.playbook.com/ihBOakoOc26ghY6gcu4YHRzq9KD5chqsOA4_ghcMF4w/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzU1ZDc2ZjE4/LWUzMjAtNDUxNy04/ZWNhLWNiMGQzN2E0/MGNjYw',
+  'https://img.playbook.com/qRzLFPwsMekYl6AwVA0-H_YOuZSIRoOrCbvaJdauePg/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzlkMjU5Y2Nj/LWE5NDUtNGQyMS1h/NTlhLTAzNjNkMzQ0/MmE5Nw',
+];
 ```
 
-Vou buscar o título do vídeo automaticamente do YouTube ao implementar.
+### Simplificações
 
----
+| Item | Ação |
+|------|------|
+| Array `allDevicesImages` | Remover (substituído por `backgroundImages`) |
+| Array `mobileOnlyImages` | Remover completamente |
+| Import `useIsMobile` | Remover (não será mais necessário) |
+| Variável `isMobile` | Remover |
+| `useEffect` de reset de índice | Remover (não há mais troca mobile/desktop) |
+| Lógica condicional mobile/desktop | Remover |
 
-### 2. Verificação do Google Analytics
+### Resultado
 
-**Status: ✅ Instalado Corretamente**
-
-O Google Analytics 4 está configurado no arquivo `index.html` (linhas 33-41):
-
-```html
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQTGRP15XX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GQTGRP15XX');
-</script>
+```text
+┌─────────────────────────────────────────────────┐
+│              Hero Slider                        │
+├─────────────────────────────────────────────────┤
+│                                                 │
+│   ● ○ ○   ← Apenas 3 indicadores               │
+│                                                 │
+│   Mesmas 3 imagens em desktop e mobile         │
+│   Código mais simples e responsivo             │
+│                                                 │
+└─────────────────────────────────────────────────┘
 ```
-
-**Checklist de Implementação:**
-
-| Item | Status |
-|------|--------|
-| Script gtag.js carregado assincronamente | ✅ |
-| ID de medição correto (G-GQTGRP15XX) | ✅ |
-| dataLayer inicializado | ✅ |
-| Função gtag definida | ✅ |
-| Configuração do ID executada | ✅ |
-| Posição no `<head>` (antes do body) | ✅ |
-
-**Recomendação:** Para verificar se os dados estão sendo coletados, acesse o [Google Analytics](https://analytics.google.com/) e verifique:
-- Relatório em Tempo Real
-- Eventos recebidos nas últimas 24h
-
----
-
-### Resumo das Alterações
-
-| Arquivo | Alteração |
-|---------|-----------|
-| `src/components/MultimediaClipping.tsx` | Substituir ID do vídeo central de `1sdH4i3vztA` para `zabK3YJIGFE` |
 
