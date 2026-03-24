@@ -15,6 +15,7 @@ import {
   Youtube
 } from 'lucide-react';
 import { newsClipping } from '@/data/newsClipping';
+import { TikTokIcon, ThreadsIcon } from '@/components/SocialIcons';
 
 const MultimediaClipping = () => {
   const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.1 });
@@ -54,6 +55,8 @@ const MultimediaClipping = () => {
     { icon: Linkedin, url: "https://www.linkedin.com/in/gutembergfonseca/", name: "LinkedIn" },
     { icon: Facebook, url: "https://www.facebook.com/gutembergpfonseca", name: "Facebook" },
     { icon: Twitter, url: "https://twitter.com/gutopfonseca", name: "Twitter" },
+    { icon: TikTokIcon, url: "https://www.tiktok.com/@gutembergpfonseca_?_r=1&_t=ZS-94xYYr9aX4x", name: "TikTok" },
+    { icon: ThreadsIcon, url: "#", name: "Threads" },
   ];
 
   const shareNews = (news: typeof newsClipping[0]) => {
