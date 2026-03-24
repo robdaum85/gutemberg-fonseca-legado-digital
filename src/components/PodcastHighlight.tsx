@@ -32,7 +32,7 @@ const PodcastHighlight = () => {
               <div className="bg-card rounded-xl overflow-hidden shadow-lg">
                 <div className="aspect-video">
                   <iframe
-                    src="https://www.youtube.com/embed/EyfwkZLfEQw"
+                    src="https://www.youtube.com/embed/XCONLAT8Jc0"
                     title="Entrevista Completa - Gutemberg Fonseca"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -82,7 +82,7 @@ const PodcastHighlight = () => {
 
           <div className="text-center mt-8">
             <a
-              href="https://www.youtube.com/live/EyfwkZLfEQw"
+              href="https://www.youtube.com/watch?v=XCONLAT8Jc0"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-primary text-primary-foreground font-heading font-semibold rounded-lg hover:opacity-90 transition-opacity"

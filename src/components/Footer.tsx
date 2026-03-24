@@ -21,8 +21,6 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><a href="#sobre" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Sobre</a></li>
               <li><a href="#carreira" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Carreira</a></li>
-              <li><a href="#realizacoes" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Realizações</a></li>
-              <li><a href="#365dias" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">365 Dias</a></li>
               <li><a href="#numeros" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Números</a></li>
               <li><a href="#instagram" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Instagram</a></li>
               <li><a href="#depoimentos" className="hover:bg-gradient-primary hover:bg-clip-text hover:text-transparent transition-all">Depoimentos</a></li>
