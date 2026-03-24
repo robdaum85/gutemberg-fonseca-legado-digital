@@ -47,17 +47,17 @@ const MultimediaClipping = () => {
     },
     {
       id: "94gPo7NtOaI",
-      title: "Vídeo Institucional 4",
+      title: "Divida Zero",
       caption: "Participação em mídia",
     },
     {
       id: "L7qtJxk4v9U",
-      title: "Vídeo Institucional 5",
+      title: "Laboratório Móvel",
       caption: "Participação em mídia",
     },
     {
       id: "j6hddMF9E6s",
-      title: "Vídeo Institucional 6",
+      title: "Golpe do Falso Atendente",
       caption: "Participação em mídia",
     },
   ];
