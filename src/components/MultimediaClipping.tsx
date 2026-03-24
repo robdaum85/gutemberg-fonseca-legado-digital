@@ -71,7 +71,7 @@ const MultimediaClipping = () => {
     { icon: Facebook, url: "https://www.facebook.com/gutembergpfonseca", name: "Facebook" },
     { icon: Twitter, url: "https://twitter.com/gutopfonseca", name: "Twitter" },
     { icon: TikTokIcon, url: "https://www.tiktok.com/@gutembergpfonseca_?_r=1&_t=ZS-94xYYr9aX4x", name: "TikTok" },
-    { icon: ThreadsIcon, url: "#", name: "Threads" },
+    { icon: ThreadsIcon, url: "https://www.threads.com/@gutembergpfonseca?xmt=AQF0XDiAQ-9DqUfAwkcvQRQ3-spVkHjM2r0URsdLwXFy_ww", name: "Threads" },
   ];
 
   const shareNews = (news: typeof newsClipping[0]) => {
