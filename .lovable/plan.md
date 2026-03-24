@@ -1,115 +1,32 @@
 
 
-## Plano: Substituir Imagens e Links do Instagram
+## Plano: Atualizar Podcast, Rodapé e Instagram
 
-### Arquivo a ser alterado
+### 1. Vídeo Destaque do Podcast
 
-**`src/components/InstagramFeed.tsx`**
+**Arquivo:** `src/components/PodcastHighlight.tsx` (linha 35)
 
-### Situação Atual
+Substituir o ID do vídeo principal de `EyfwkZLfEQw` para `XCONLAT8Jc0`. Atualizar também o link do botão "Assistir no YouTube" (linha 88).
 
-O componente usa **cards com gradientes coloridos** (sem imagens reais) para representar os posts do Instagram:
+### 2. Rodapé — Remover Links
 
-```javascript
-const instagramPosts = [
-  {
-    url: 'https://www.instagram.com/p/DR4tXupjNKB/',
-    type: 'post',
-    description: 'Maior apreensão da história do RJ',
-    gradient: 'from-amber-500 via-orange-500 to-red-500',
-  },
-  // ... mais 3 posts
-];
-```
+**Arquivo:** `src/components/Footer.tsx` (linhas 24-25)
 
-### Alteração Proposta
+Remover estas duas linhas do menu:
+- `Realizações` (linha 24)
+- `365 Dias` (linha 25)
 
-Substituir os 4 posts atuais pelos novos, agora usando **imagens reais** em vez de gradientes:
+### 3. Instagram — Novos Posts
 
-| Posição | Nova Imagem | Novo Link |
-|---------|-------------|-----------|
-| 1 | `guto1.png` | `.../p/DThvZenks6H/` |
-| 2 | `guto2.png` | `.../p/DTu9r-rEbTn/` |
-| 3 | `guto3.png` | `.../p/DTdcycDki2k/` |
-| 4 | `guto4.png` | `.../p/DS2qS5ZEvqk/` |
+**Arquivo:** `src/components/InstagramFeed.tsx` (linhas 15-36)
 
-### Código Após Alteração
+Substituir os 4 posts atuais por 3 novos:
 
-**Array de posts (linhas 15-40):**
+| # | Link | Imagem |
+|---|------|--------|
+| 1 | `.../reel/DWRTgxCjqpL/...` | `noticia1.png` |
+| 2 | `.../reel/DWPw1L9S3PF/...` | `noticia2.png` |
+| 3 | `.../reel/DWOgyF3D9KC/...` | `noticias3.png` |
 
-```javascript
-const instagramPosts = [
-  {
-    url: 'https://www.instagram.com/p/DThvZenks6H/?igsh=dnNtYzIwc2I1cXUz',
-    image: 'https://kngofnnx.com/wp-content/uploads/2026/01/Guto1.png',
-    type: 'post' as const,
-  },
-  {
-    url: 'https://www.instagram.com/p/DTu9r-rEbTn/?igsh=NWpzcDA5djF3aXIw',
-    image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto2.png',
-    type: 'post' as const,
-  },
-  {
-    url: 'https://www.instagram.com/p/DTdcycDki2k/?igsh=NnU3MnhueDUwcm90',
-    image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto3.png',
-    type: 'post' as const,
-  },
-  {
-    url: 'https://www.instagram.com/p/DS2qS5ZEvqk/?igsh=ZDR4d3VqbHJsMjYw',
-    image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto4.png',
-    type: 'post' as const,
-  },
-];
-```
-
-**Template do card (linhas 80-124):**
-
-Substituir o gradiente de fundo por uma imagem real:
-
-```jsx
-{/* Antes: Gradient Background */}
-<div className={`absolute inset-0 bg-gradient-to-br ${post.gradient}`} />
-
-{/* Depois: Imagem Real */}
-<img 
-  src={post.image} 
-  alt="Post do Instagram"
-  className="absolute inset-0 w-full h-full object-cover"
-/>
-```
-
-### Simplificações
-
-| Item | Ação |
-|------|------|
-| Propriedade `gradient` | Remover (substituída por `image`) |
-| Propriedade `description` | Remover (não será exibida) |
-| Pattern Overlay | Remover (não necessário com imagens) |
-| Ícone central do Instagram | Remover (as imagens falam por si) |
-| Badge Post/Reel | Manter para identificar o tipo |
-
-### Resultado Visual
-
-```text
-┌─────────────────────────────────────────────────┐
-│                  Instagram                       │
-│             @gutembergpfonseca                   │
-├─────────────────────────────────────────────────┤
-│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐
-│  │ Guto1   │  │ Guto2   │  │ Guto3   │  │ Guto4   │
-│  │ (foto)  │  │ (foto)  │  │ (foto)  │  │ (foto)  │
-│  │  [Post] │  │  [Post] │  │  [Post] │  │  [Post] │
-│  └─────────┘  └─────────┘  └─────────┘  └─────────┘
-│                                                   │
-│         [Ver mais no Instagram]                   │
-└─────────────────────────────────────────────────┘
-```
-
-### Resumo das Alterações
-
-| Linha | Alteração |
-|-------|-----------|
-| 15-40 | Substituir array `instagramPosts` com novos URLs, imagens e remover gradientes |
-| 82-90 | Substituir `<div>` com gradiente por `<img>` com a foto real |
-| 92-118 | Simplificar conteúdo central removendo ícone e descrição |
+O tipo será alterado de `post` para `reel`. O grid passará de 4 para 3 colunas.
 
