@@ -14,24 +14,19 @@ const InstagramFeed = () => {
 
   const instagramPosts = [
     {
-      url: 'https://www.instagram.com/p/DThvZenks6H/?igsh=dnNtYzIwc2I1cXUz',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/01/Guto1.png',
-      type: 'post' as const,
+      url: 'https://www.instagram.com/reel/DWRTgxCjqpL/?igsh=MWlxbnVhOXpxbnBiOA==',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/03/noticia1.png',
+      type: 'reel' as const,
     },
     {
-      url: 'https://www.instagram.com/p/DTu9r-rEbTn/?igsh=NWpzcDA5djF3aXIw',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto2.png',
-      type: 'post' as const,
+      url: 'https://www.instagram.com/reel/DWPw1L9S3PF/?igsh=Z2prNHhvMnlpeXds',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/03/noticia2.png',
+      type: 'reel' as const,
     },
     {
-      url: 'https://www.instagram.com/p/DTdcycDki2k/?igsh=NnU3MnhueDUwcm90',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto3.png',
-      type: 'post' as const,
-    },
-    {
-      url: 'https://www.instagram.com/p/DS2qS5ZEvqk/?igsh=ZDR4d3VqbHJsMjYw',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/01/guto4.png',
-      type: 'post' as const,
+      url: 'https://www.instagram.com/reel/DWOgyF3D9KC/?igsh=Ymg4dTUxOWNiMXRv',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/03/noticias3.png',
+      type: 'reel' as const,
     },
   ];
 
@@ -62,7 +57,7 @@ const InstagramFeed = () => {
             </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {instagramPosts.map((post, index) => (
               <div
                 key={index}
@@ -85,7 +80,7 @@ const InstagramFeed = () => {
                   {/* Badge */}
                   <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5 text-white">
                     <Camera className="w-3.5 h-3.5" />
-                    <span className="text-xs font-semibold">Post</span>
+                    <span className="text-xs font-semibold">Reel</span>
                   </div>
                   
                   {/* Hover Overlay */}
