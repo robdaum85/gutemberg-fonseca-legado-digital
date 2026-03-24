@@ -1,12 +1,14 @@
 
 
-## Plano: Atualizar Link do Threads em Todas as Seções
+## Plano: Atualizar Títulos dos Vídeos Institucionais
 
-Substituir o placeholder `#` pelo link real do Threads em 3 arquivos:
+### Arquivo: `src/components/MultimediaClipping.tsx`
 
-| Arquivo | Linha | Alteração |
-|---------|-------|-----------|
-| `src/components/Header.tsx` | 40 | `href: '#'` → `href: 'https://www.threads.com/@gutembergpfonseca?xmt=...'` |
-| `src/components/MultimediaClipping.tsx` | 74 | `url: "#"` → `url: 'https://www.threads.com/@gutembergpfonseca?xmt=...'` |
-| `src/components/ContactSection.tsx` | 164 | `href="#"` → `href="https://www.threads.com/@gutembergpfonseca?xmt=..."` |
+| Linha | Atual | Novo |
+|-------|-------|------|
+| 50 | `Vídeo Institucional 4` | `Divida Zero` |
+| 55 | `Vídeo Institucional 5` | `Laboratório Móvel` |
+| ~60 | `Vídeo Institucional 6` | `Golpe do Falso Atendente` |
+
+Apenas alteração de texto nos campos `title` do array `videos`.
 
