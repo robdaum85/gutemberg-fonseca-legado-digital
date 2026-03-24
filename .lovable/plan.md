@@ -1,32 +1,26 @@
 
 
-## Plano: Atualizar Podcast, Rodapé e Instagram
+## Plano: Adicionar TikTok e Threads às Redes Sociais
 
-### 1. Vídeo Destaque do Podcast
+### Arquivos a alterar
 
-**Arquivo:** `src/components/PodcastHighlight.tsx` (linha 35)
+**`src/components/Header.tsx`**
 
-Substituir o ID do vídeo principal de `EyfwkZLfEQw` para `XCONLAT8Jc0`. Atualizar também o link do botão "Assistir no YouTube" (linha 88).
+Adicionar dois novos ícones no array `socialLinks` (após Twitter):
 
-### 2. Rodapé — Remover Links
+- **TikTok**: link `https://www.tiktok.com/@gutembergpfonseca_?_r=1&_t=ZS-94xYYr9aX4x`, ícone SVG customizado (Lucide não tem TikTok)
+- **Threads**: link `#` (placeholder), ícone SVG customizado
 
-**Arquivo:** `src/components/Footer.tsx` (linhas 24-25)
+Como Lucide não possui ícones de TikTok e Threads, serão criados componentes SVG inline para cada um, seguindo o mesmo padrão visual dos ícones existentes (tamanho 20px no desktop, 24px no mobile).
 
-Remover estas duas linhas do menu:
-- `Realizações` (linha 24)
-- `365 Dias` (linha 25)
+### Detalhes Técnicos
 
-### 3. Instagram — Novos Posts
+- Criar dois componentes funcionais simples (`TikTokIcon` e `ThreadsIcon`) com SVG paths oficiais das marcas
+- Adicioná-los ao array `socialLinks` no Header (desktop e mobile)
+- Ambos aparecerão tanto no menu desktop quanto no mobile
 
-**Arquivo:** `src/components/InstagramFeed.tsx` (linhas 15-36)
-
-Substituir os 4 posts atuais por 3 novos:
-
-| # | Link | Imagem |
-|---|------|--------|
-| 1 | `.../reel/DWRTgxCjqpL/...` | `noticia1.png` |
-| 2 | `.../reel/DWPw1L9S3PF/...` | `noticia2.png` |
-| 3 | `.../reel/DWOgyF3D9KC/...` | `noticias3.png` |
-
-O tipo será alterado de `post` para `reel`. O grid passará de 4 para 3 colunas.
+| Rede | Link | Status |
+|------|------|--------|
+| TikTok | `https://www.tiktok.com/@gutembergpfonseca_?...` | Com link |
+| Threads | `#` | Placeholder (sem link por enquanto) |
 
