@@ -1,26 +1,26 @@
 
 
-## Plano: Adicionar TikTok e Threads às Redes Sociais
+## Plano: Adicionar TikTok e Threads em Todas as Seções
 
-### Arquivos a alterar
+Os ícones de TikTok e Threads já existem no **Header**. Faltam em mais duas seções:
 
-**`src/components/Header.tsx`**
+### Seções a atualizar
 
-Adicionar dois novos ícones no array `socialLinks` (após Twitter):
-
-- **TikTok**: link `https://www.tiktok.com/@gutembergpfonseca_?_r=1&_t=ZS-94xYYr9aX4x`, ícone SVG customizado (Lucide não tem TikTok)
-- **Threads**: link `#` (placeholder), ícone SVG customizado
-
-Como Lucide não possui ícones de TikTok e Threads, serão criados componentes SVG inline para cada um, seguindo o mesmo padrão visual dos ícones existentes (tamanho 20px no desktop, 24px no mobile).
+| Seção | Arquivo | Alteração |
+|-------|---------|-----------|
+| Clipping Multimídia | `src/components/MultimediaClipping.tsx` (linhas 52-57) | Adicionar TikTok e Threads ao array `socialMedia` |
+| Contato / "Siga-nos" | `src/components/ContactSection.tsx` (linhas 138-157) | Adicionar ícones de TikTok e Threads após LinkedIn |
 
 ### Detalhes Técnicos
 
-- Criar dois componentes funcionais simples (`TikTokIcon` e `ThreadsIcon`) com SVG paths oficiais das marcas
-- Adicioná-los ao array `socialLinks` no Header (desktop e mobile)
-- Ambos aparecerão tanto no menu desktop quanto no mobile
+**MultimediaClipping.tsx:**
+- Importar os componentes SVG `TikTokIcon` e `ThreadsIcon` (definir inline ou extrair para arquivo compartilhado)
+- Adicionar ao array `socialMedia`:
+  - TikTok: `https://www.tiktok.com/@gutembergpfonseca_?_r=1&_t=ZS-94xYYr9aX4x`
+  - Threads: `#` (placeholder)
 
-| Rede | Link | Status |
-|------|------|--------|
-| TikTok | `https://www.tiktok.com/@gutembergpfonseca_?...` | Com link |
-| Threads | `#` | Placeholder (sem link por enquanto) |
+**ContactSection.tsx:**
+- Adicionar dois novos `<a>` com os SVGs de TikTok e Threads, seguindo o mesmo padrão visual (`bg-primary hover:bg-primary/80 text-white p-3 rounded-full`)
+
+Para evitar duplicação de código, os componentes `TikTokIcon` e `ThreadsIcon` serão extraídos para um arquivo compartilhado (`src/components/SocialIcons.tsx`) e importados no Header, MultimediaClipping e ContactSection.
 
