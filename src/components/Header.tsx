@@ -46,7 +46,9 @@ const Header = () => {
     { icon: Instagram, href: 'https://www.instagram.com/gutembergpfonseca/', label: 'Instagram' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/gutembergfonseca/', label: 'LinkedIn' },
     { icon: Facebook, href: 'https://www.facebook.com/gutembergpfonseca', label: 'Facebook' },
-    { icon: Twitter, href: 'https://twitter.com/gutopfonseca', label: 'Twitter' }
+    { icon: Twitter, href: 'https://twitter.com/gutopfonseca', label: 'Twitter' },
+    { icon: TikTokIcon, href: 'https://www.tiktok.com/@gutembergpfonseca_?_r=1&_t=ZS-94xYYr9aX4x', label: 'TikTok' },
+    { icon: ThreadsIcon, href: '#', label: 'Threads' }
   ];
 
   return (
