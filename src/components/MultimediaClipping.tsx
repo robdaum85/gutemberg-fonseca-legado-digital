@@ -45,6 +45,21 @@ const MultimediaClipping = () => {
       title: "Operação Café Real",
       caption: "Balanço Geral Rio (Record TV) – Agosto/2025",
     },
+    {
+      id: "94gPo7NtOaI",
+      title: "Vídeo Institucional 4",
+      caption: "Participação em mídia",
+    },
+    {
+      id: "L7qtJxk4v9U",
+      title: "Vídeo Institucional 5",
+      caption: "Participação em mídia",
+    },
+    {
+      id: "j6hddMF9E6s",
+      title: "Vídeo Institucional 6",
+      caption: "Participação em mídia",
+    },
   ];
 
   // Dados do clipping importados de src/data/newsClipping.ts
