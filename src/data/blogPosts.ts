@@ -51,37 +51,7 @@ export const blogPosts: BlogPost[] = [
     `
   },
 
-  {
-    slug: "credito-consignado-atencao-aos-seus-direitos-antes-de-contratar",
-    source: "Diário do Rio",
-    title: "Crédito consignado: atenção aos seus direitos antes de contratar",
-    excerpt:
-      "Antes de assinar um contrato de crédito consignado, o consumidor precisa entender taxas, descontos e riscos envolvidos.",
-    author: "Gutemberg Fonseca",
-    role: "Coluna de Defesa do Consumidor",
-    date: "2026-03-26",
-    image: "/images/gutemberg-coluna.jpg",
-    metaTitle: "Crédito consignado: atenção aos seus direitos antes de contratar",
-    metaDescription:
-      "Saiba quais cuidados tomar antes de contratar crédito consignado e conheça os direitos do consumidor para evitar problemas.",
-    content: `
-      <p><strong>O crédito consignado pode parecer uma solução rápida, mas exige atenção redobrada antes da contratação.</strong></p>
-      <p>Antes de assinar qualquer contrato, o consumidor deve verificar taxas, prazo de pagamento, valor total financiado e impacto das parcelas no orçamento mensal.</p>
-      <h2>O que avaliar antes de contratar</h2>
-      <ul>
-        <li>Taxa de juros aplicada</li>
-        <li>Valor final do contrato</li>
-        <li>Quantidade de parcelas</li>
-        <li>Desconto mensal no benefício ou salário</li>
-      </ul>
-      <h2>Cuidado com assédio comercial</h2>
-      <p>Ofertas insistentes por telefone, mensagens e promessas de facilidade merecem atenção. O consumidor não deve contratar por pressão.</p>
-      <h2>Leia antes de assinar</h2>
-      <p>Nunca aceite contratação sem acesso claro ao contrato e às condições completas da operação.</p>
-      <h2>Em caso de irregularidade</h2>
-      <p>Se houver cobrança indevida, contratação sem consentimento ou falta de transparência, procure os órgãos de defesa do consumidor.</p>
-    `
-  },
+  
 
   {
     slug: "turismo-de-verao-hoteis-pousadas-e-os-direitos-do-hospede",
@@ -116,121 +86,80 @@ export const blogPosts: BlogPost[] = [
   },
 
   {
-    slug: "trocas-pos-natal-o-que-a-loja-e-obrigada-a-aceitar",
-    source: "Diário do Rio",
-    title: "Trocas pós-Natal: o que a loja é obrigada a aceitar",
-    excerpt:
-      "Nem toda troca é obrigatória, mas o consumidor tem direitos claros quando há defeito, vício ou descumprimento da oferta.",
-    author: "Gutemberg Fonseca",
-    role: "Coluna de Defesa do Consumidor",
-    date: "2026-03-26",
-    image: "/images/gutemberg-coluna.jpg",
-    metaTitle: "Trocas pós-Natal: o que a loja é obrigada a aceitar",
-    metaDescription:
-      "Entenda quando a loja é obrigada a trocar produtos após o Natal e quais são os direitos do consumidor em caso de defeito ou vício.",
-    content: `
-      <p><strong>Depois do Natal, muita gente procura as lojas para trocar presentes — mas é importante entender quando a troca é um direito e quando depende da política do estabelecimento.</strong></p>
-      <h2>Quando a troca é obrigatória</h2>
-      <p>Se o produto apresenta defeito, vício de qualidade ou não corresponde ao que foi ofertado, a loja ou fabricante deve solucionar o problema.</p>
-      <h2>Quando a troca não é obrigatória</h2>
-      <p>Nos casos em que o produto está perfeito e a pessoa apenas não gostou de cor, tamanho ou modelo, a troca depende da política comercial da loja.</p>
-      <h2>Comprovantes são essenciais</h2>
-      <p>Nota fiscal, etiqueta, embalagem e prova da compra facilitam o atendimento e a solução do problema.</p>
-      <h2>Oferta vincula o fornecedor</h2>
-      <p>Se a loja prometeu troca em determinado prazo, precisa cumprir o que anunciou.</p>
-    `
-  },
+  slug: "contrato-de-academia-direitos-do-consumidor",
+  source: "Diário do Rio",
+  title: "Academia e contrato: o que o consumidor precisa saber antes de assinar",
+  excerpt: "Vai se matricular em academia? Entenda regras de reajuste, fidelização e cancelamento para evitar cobranças abusivas.",
+  author: "Gutemberg Fonseca",
+  role: "Coluna de Defesa do Consumidor",
+  date: "2026-03-26",
+  image: "/images/gutemberg-coluna.jpg",
+  metaTitle: "Contrato de academia: direitos do consumidor antes de assinar",
+  metaDescription: "Vai se matricular em academia? Saiba o que o contrato precisa ter, quando o reajuste é abusivo e como funciona o cancelamento. Conheça seus direitos.",
+  content: `
+    <p><strong>Matrícula em academia parece simples — mas o contrato pode esconder armadilhas.</strong> Reajuste sem aviso, multa abusiva e dificuldade para cancelar são problemas reais. Conheça seus direitos antes de colocar o tênis.</p>
 
-  {
-    slug: "prazo-de-entrega-e-atrasos-o-que-fazer-quando-a-compra-nao-chega",
-    source: "Diário do Rio",
-    title: "Prazo de entrega e atrasos: o que fazer quando a compra não chega",
-    excerpt:
-      "Atraso na entrega não é mero detalhe. Saiba como cobrar a empresa, exigir solução e proteger seus direitos.",
-    author: "Gutemberg Fonseca",
-    role: "Coluna de Defesa do Consumidor",
-    date: "2026-03-26",
-    image: "/images/gutemberg-coluna.jpg",
-    metaTitle: "Prazo de entrega e atrasos: o que fazer quando a compra não chega",
-    metaDescription:
-      "Seu pedido atrasou ou não chegou? Veja quais são os direitos do consumidor diante do descumprimento do prazo de entrega.",
-    content: `
-      <p><strong>Quando a compra não chega no prazo prometido, o consumidor não é obrigado a aceitar silêncio, desculpas vagas ou espera indefinida.</strong></p>
-      <p>O prazo de entrega integra a oferta e deve ser cumprido pela empresa.</p>
-      <h2>O que fazer diante do atraso</h2>
-      <ol>
-        <li>Registre reclamação formal com a empresa</li>
-        <li>Guarde prints, e-mails e comprovantes</li>
-        <li>Peça uma solução clara e prazo objetivo</li>
-      </ol>
-      <h2>O consumidor pode exigir</h2>
-      <ul>
-        <li>Entrega do produto</li>
-        <li>Cancelamento da compra</li>
-        <li>Devolução do valor pago</li>
-      </ul>
-      <h2>Não aceite indefinição</h2>
-      <p>Se a empresa não cumpre a oferta nem resolve o problema, cabe reclamação aos órgãos de defesa do consumidor.</p>
-    `
-  },
+    <p>Com a chegada de um novo ano, a promessa de saúde, bem-estar e disposição leva muita gente direto ao balcão de matrícula das academias. E não tem nada de errado nisso — o problema começa quando o entusiasmo fala mais alto do que a atenção ao contrato.</p>
 
-  {
-    slug: "compras-online-e-golpes-no-pix-como-comprar-com-seguranca-e-evitar-prejuizos",
-    source: "Diário do Rio",
-    title: "Compras online e golpes no PIX: como comprar com segurança e evitar prejuízos",
-    excerpt:
-      "Descontos mirabolantes, perfis falsos e pagamento instantâneo exigem atenção. Veja como evitar golpes nas compras online.",
-    author: "Gutemberg Fonseca",
-    role: "Coluna de Defesa do Consumidor",
-    date: "2026-03-26",
-    image: "/images/gutemberg-coluna.jpg",
-    metaTitle: "Compras online e golpes no PIX: como comprar com segurança e evitar prejuízos",
-    metaDescription:
-      "Aprenda a identificar sinais de golpe em compras online com PIX e saiba como se proteger antes de pagar.",
-    content: `
-      <p><strong>Comprar online é prático, mas exige cautela, especialmente quando o pagamento é feito por PIX.</strong></p>
-      <p>Golpistas exploram urgência, preços muito baixos e perfis falsos para induzir o consumidor ao erro.</p>
-      <h2>Sinais de alerta</h2>
-      <ul>
-        <li>Preço muito abaixo do mercado</li>
-        <li>Pressa para fechar a compra</li>
-        <li>Perfil sem histórico confiável</li>
-        <li>Ausência de canais formais de atendimento</li>
-      </ul>
-      <h2>Antes de pagar</h2>
-      <p>Pesquise reputação, confira CNPJ quando houver, verifique comentários reais e desconfie de promessas excessivas.</p>
-      <h2>PIX exige ainda mais cuidado</h2>
-      <p>Como o pagamento é instantâneo, recuperar valores pode ser mais difícil quando há fraude.</p>
-      <h2>Se cair em golpe</h2>
-      <p>Registre imediatamente boletim de ocorrência, avise a instituição financeira e reúna todas as provas da transação.</p>
-    `
-  },
+    <p>Reajuste inesperado na mensalidade, multa alta para cancelar, cláusulas que ninguém explicou na hora da venda... Tudo isso pode transformar uma decisão saudável em uma dor de cabeça jurídica.</p>
 
-  {
-    slug: "os-direitos-basicos-do-consumidor-que-todo-cidadao-precisa-conhecer",
-    source: "Diário do Rio",
-    title: "Os direitos básicos do consumidor que todo cidadão precisa conhecer",
-    excerpt:
-      "Informação clara, proteção contra abusos e reparação por danos estão entre os direitos fundamentais do consumidor.",
-    author: "Gutemberg Fonseca",
-    role: "Coluna de Defesa do Consumidor",
-    date: "2026-03-26",
-    image: "/images/gutemberg-coluna.jpg",
-    metaTitle: "Os direitos básicos do consumidor que todo cidadão precisa conhecer",
-    metaDescription:
-      "Conheça os direitos básicos do consumidor e entenda por que informação, segurança e respeito devem fazer parte de toda relação de consumo.",
-    content: `
-      <p><strong>Conhecer os direitos básicos do consumidor é o primeiro passo para evitar abusos e exigir respeito nas relações de consumo.</strong></p>
-      <h2>Direito à informação</h2>
-      <p>Todo consumidor deve receber informações claras, corretas e completas sobre produtos e serviços.</p>
-      <h2>Proteção contra publicidade enganosa</h2>
-      <p>Promessas falsas, omissões importantes e anúncios que induzem ao erro violam a legislação.</p>
-      <h2>Reparação por danos</h2>
-      <p>Quando há prejuízo causado por falha do fornecedor, o consumidor pode exigir reparação.</p>
-      <h2>Acesso à justiça e aos órgãos de defesa</h2>
-      <p>O consumidor não está sozinho. Existem canais de atendimento, conciliação e fiscalização para apoiar a defesa de seus direitos.</p>
-      <h2>Informação é proteção</h2>
-      <p>Quanto mais consciente o cidadão estiver, menor o espaço para práticas abusivas e desrespeito.</p>
-    `
-  }
+    <h2>A academia pode aumentar a mensalidade quando quiser?</h2>
+
+    <p>Não. O reajuste de mensalidade só é permitido se estiver claramente previsto no contrato, com critérios objetivos e transparentes — como reajuste anual pelo IPCA ou outro índice previamente definido.</p>
+
+    <p>Reajuste surpresa, sem aviso ou sem previsão contratual, é prática abusiva e pode ser contestada.</p>
+
+    <div style="background:#f1f5f9;padding:16px;border-radius:8px;margin:20px 0;">
+      <strong>Exemplo prático:</strong><br>
+      A academia aumentou sua mensalidade de R$ 120 para R$ 160 sem aviso e sem previsão contratual? Você pode exigir a revisão do valor ou cancelar sem multa.
+    </div>
+
+    <h2>E a fidelização? Pode cobrar multa no cancelamento?</h2>
+
+    <p>Pode — mas dentro de limites. A multa por cancelamento antecipado deve ser proporcional ao tempo restante do contrato.</p>
+
+    <p>Valores exagerados que impedem o cancelamento são considerados abusivos.</p>
+
+    <div style="background:#f1f5f9;padding:16px;border-radius:8px;margin:20px 0;">
+      <strong>Exemplo prático:</strong><br>
+      Em um contrato de 12 meses, se você já cumpriu 8, a multa deve ser proporcional aos 4 meses restantes — nunca ao valor total do contrato.
+    </div>
+
+    <h2>Contratação online tem proteção especial</h2>
+
+    <p>Sim. Se você contratou pela internet ou aplicativo, tem direito ao arrependimento.</p>
+
+    <p>É possível cancelar em até 7 dias corridos, sem justificativa e com reembolso integral.</p>
+
+    <p>Esse direito é garantido pelo Código de Defesa do Consumidor para compras feitas à distância.</p>
+
+    <h2>Dicas antes de assinar contrato de academia</h2>
+
+    <ul>
+      <li>Leia todas as cláusulas com atenção</li>
+      <li>Exija uma cópia do contrato</li>
+      <li>Verifique regras de cancelamento e reajuste</li>
+      <li>Não confie apenas em promessas verbais</li>
+      <li>Guarde comprovantes de pagamento</li>
+    </ul>
+
+    <h2>Cancelar deve ser simples</h2>
+
+    <p>Assim como contratar, cancelar precisa ser fácil. Criar obstáculos, exigir documentos desnecessários ou dificultar o processo é prática irregular.</p>
+
+    <p>A academia deve oferecer canais acessíveis e um processo direto para encerramento do contrato.</p>
+
+    <h2>Academia deve trazer saúde, não prejuízo</h2>
+
+    <p>A matrícula deve ser uma decisão positiva — e não um problema financeiro ou jurídico.</p>
+
+    <p>Ler o contrato, conhecer seus direitos e guardar comprovantes são atitudes essenciais para evitar abusos.</p>
+
+    <p>Se você enfrentou problemas com contrato de academia, mensalidade abusiva ou cancelamento, procure os canais de defesa do consumidor</p>
+
+    <p><strong>Informação é o melhor treino. Use-a a seu favor.</strong></p>
+  `
+}
+
+  
 ];
