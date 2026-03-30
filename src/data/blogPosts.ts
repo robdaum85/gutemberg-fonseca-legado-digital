@@ -506,6 +506,465 @@ export const blogPosts: BlogPost[] = [
     
     <p>Seguimos atentos e trabalhando para que esse tipo de avanço deixe de ser exceção, e passe a fazer parte da regra.</p>
   `
+},
+
+{
+  slug: "fraudes-digitais-pix-falso-whatsapp-golpes",
+  source: "Diário do Vale",
+  category: "Defesa do Consumidor",
+  title: "Ano novo, mesmos golpes: fraudes digitais seguem em alta",
+  subTitle:
+    "PIX falso, links maliciosos e clonagem de WhatsApp continuam fazendo vítimas. Saiba como se proteger e evitar prejuízos.",
+  excerpt:
+    "PIX falso, links maliciosos e clonagem de WhatsApp continuam fazendo vítimas. Saiba como se proteger e evitar prejuízos.",
+  author: "Gutemberg Fonseca",
+  role: "Coluna de Defesa do Consumidor",
+  date: "2026-01-16",
+  authorImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle:
+    "Fraudes digitais em alta: como se proteger de golpes com PIX, links e WhatsApp",
+  metaDescription:
+    "Veja como funcionam os principais golpes digitais, como PIX falso e clonagem de WhatsApp, e saiba como se proteger.",
+  readingTime: "5 min de leitura",
+  tags: [
+    "Golpes digitais",
+    "PIX falso",
+    "Fraudes online",
+    "Clonagem de WhatsApp",
+    "Segurança digital",
+    "Direitos do consumidor"
+  ],
+  featured: false,
+  content: `
+    <p><strong>O ano muda, mas os golpes continuam os mesmos — e cada vez mais sofisticados.</strong> Fraudes digitais seguem em alta no Brasil, atingindo consumidores por meio de PIX falso, links maliciosos e clonagem de WhatsApp. Diante desse cenário, informação é a principal ferramenta para evitar prejuízos.</p>
+
+    <br/>
+
+    <h2>PIX falso: o golpe da pressa e da pressão</h2>
+
+    <p>Um dos golpes mais comuns acontece quando o consumidor recebe um comprovante falso ou uma mensagem urgente solicitando transferência via PIX. A pressão emocional é parte da estratégia para induzir o erro.</p>
+
+    <p>Antes de realizar qualquer pagamento, é fundamental confirmar se o valor realmente saiu da conta e desconfiar de pedidos feitos com urgência ou tom alarmista.</p>
+
+    <br/>
+
+    <h2>Links maliciosos: o risco escondido em um clique</h2>
+
+    <p>Outro método bastante utilizado é o envio de links falsos por e-mail, SMS ou redes sociais. Muitas vezes, os golpistas se passam por bancos, lojas ou até órgãos públicos.</p>
+
+    <p>Ao clicar, o consumidor pode ter seus dados roubados. Por isso, a orientação é clara: <strong>não clique em links suspeitos e nunca informe dados pessoais, senhas ou códigos fora dos canais oficiais.</strong></p>
+
+    <br/>
+
+    <h2>Clonagem de WhatsApp ainda faz vítimas</h2>
+
+    <p>A clonagem de contas no WhatsApp continua sendo uma prática recorrente. Nesse tipo de golpe, o criminoso se passa por alguém conhecido e solicita dinheiro ou códigos enviados por SMS.</p>
+
+    <p>É importante reforçar: nenhuma empresa ou pessoa confiável pede código de verificação. Ativar a verificação em duas etapas no aplicativo é uma das formas mais eficazes de proteção.</p>
+
+    <br/>
+
+    <h2>Dicas importantes para se proteger</h2>
+
+    <p>Algumas atitudes simples podem evitar grandes prejuízos:</p>
+
+    <p>Desconfie de mensagens urgentes ou com erros de português;<br/>
+    Nunca compartilhe senhas ou códigos;<br/>
+    Confirme sempre o destinatário antes de fazer um PIX;<br/>
+    Ative a verificação em duas etapas nos aplicativos;<br/>
+    Mantenha antivírus e sistema sempre atualizados.</p>
+
+    <br/>
+
+    <h2>Onde buscar ajuda em caso de golpe</h2>
+
+    <p>Se você for vítima ou tiver dúvidas, é importante procurar orientação. Os canais de atendimento incluem o Fala Consumidor (SEDCON) pelo WhatsApp (21) 99336-4848 e o Disque 151 do PROCON-RJ.</p>
+
+    <p>Também é possível buscar atendimento direto com a equipe por canais digitais. O importante é agir rápido para minimizar prejuízos e registrar a ocorrência.</p>
+
+    <br/>
+
+    <p><strong>A prevenção ainda é a melhor defesa.</strong> Em um ambiente digital cada vez mais complexo, estar atento e bem informado é essencial para não cair em armadilhas.</p>
+  `
+},
+
+{
+  slug: "trocas-pos-natal-direitos-consumidor",
+  source: "Diário do Rio",
+  category: "Defesa do Consumidor",
+  title: "Trocas pós-Natal: o que a loja é obrigada a aceitar?",
+  subTitle:
+    "Entenda quando a troca é obrigatória por lei, quando depende da política da loja e quais são seus direitos nas compras feitas pela internet.",
+  excerpt:
+    "Entenda quando a troca é obrigatória por lei, quando depende da política da loja e quais são seus direitos nas compras feitas pela internet.",
+  author: "Gutemberg Fonseca",
+  role: "Coluna de Defesa do Consumidor",
+  date: "2025-12-31",
+  authorImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle:
+    "Trocas pós-Natal: quando a loja é obrigada a aceitar devolução ou troca",
+  metaDescription:
+    "Saiba quando você tem direito à troca ou devolução após o Natal e quando isso depende da política da loja.",
+  readingTime: "6 min de leitura",
+  tags: [
+    "Troca de produtos",
+    "Direito do consumidor",
+    "Troca pós-Natal",
+    "Produto com defeito",
+    "Direito de arrependimento",
+    "Compras online"
+  ],
+  featured: false,
+  content: `
+    <p><strong>Depois do Natal, uma cena se repete todos os anos:</strong> filas nas lojas, sacolas nas mãos e uma dúvida comum entre os consumidores — é possível trocar o presente recebido?</p>
+
+    <p>A resposta depende da situação. Nem toda troca é obrigatória por lei, e entender essa diferença é fundamental para evitar frustrações e prejuízos.</p>
+
+    <br/>
+
+    <h2>Produto com defeito: troca é obrigatória</h2>
+
+    <p>Se o presente veio com defeito, não há discussão: o consumidor tem direito à solução do problema. A loja tem até 30 dias para resolver a situação.</p>
+
+    <p>Caso o defeito não seja solucionado dentro desse prazo, o consumidor pode escolher entre a troca do produto, a devolução do dinheiro ou o abatimento proporcional do valor.</p>
+
+    <p>Em casos mais graves — quando o defeito compromete a qualidade ou o uso do produto — a troca ou devolução pode ser exigida de forma imediata, sem necessidade de aguardar os 30 dias.</p>
+
+    <br/>
+
+    <h2>Produto sem defeito: troca depende da loja</h2>
+
+    <p>Quando o produto não apresenta defeito, a troca por gosto, tamanho ou cor não é uma obrigação legal. Nesse caso, a troca depende exclusivamente da política da loja.</p>
+
+    <p>Por isso, é sempre importante verificar as regras antes da compra — seja no cupom fiscal, em cartazes ou no site do estabelecimento.</p>
+
+    <br/>
+
+    <h2>Compras pela internet têm regra diferente</h2>
+
+    <p>Nas compras realizadas fora do estabelecimento físico — pela internet, telefone ou aplicativos — o consumidor tem o chamado <strong>direito de arrependimento</strong>.</p>
+
+    <p>Isso significa que é possível desistir da compra em até sete dias corridos após o recebimento do produto, sem precisar justificar o motivo.</p>
+
+    <p>Nesses casos, a empresa deve devolver integralmente o valor pago, incluindo o frete.</p>
+
+    <br/>
+
+    <h2>Etiqueta e embalagem: podem ser exigidas?</h2>
+
+    <p>Para trocas por liberalidade da loja, é comum que sejam exigidos requisitos como etiqueta, embalagem original e ausência de uso.</p>
+
+    <p>No entanto, quando há defeito no produto, essas exigências não podem impedir o exercício do direito do consumidor.</p>
+
+    <br/>
+
+    <h2>Dicas para evitar problemas nas trocas</h2>
+
+    <p>Algumas atitudes simples ajudam a garantir seus direitos:</p>
+
+    <p>Guarde sempre o cupom fiscal;<br/>
+    Verifique a política de trocas antes de comprar;<br/>
+    Evite retirar etiquetas antes de ter certeza sobre o produto;<br/>
+    Teste o item o quanto antes, especialmente eletrônicos.</p>
+
+    <br/>
+
+    <h2>Quando procurar ajuda</h2>
+
+    <p>Se houver dificuldade na troca ou devolução, o consumidor pode buscar orientação nos órgãos de defesa do consumidor, como o PROCON-RJ e a SEDCON.</p>
+
+    <p>Entender seus direitos é a melhor forma de evitar dores de cabeça — e garantir que o presente não vire prejuízo.</p>
+  `
+},
+
+{
+  slug: "plano-de-celular-direitos-consumidor-fidelizacao-cancelamento",
+  source: "Diário do Rio",
+  category: "Defesa do Consumidor",
+  title: "Plano de celular sem pegadinhas: conheça seus direitos",
+  subTitle:
+    "Fidelização, internet lenta e dificuldade para cancelar estão entre as principais queixas dos consumidores. Saiba o que a lei garante.",
+  excerpt:
+    "Fidelização, internet lenta e dificuldade para cancelar estão entre as principais queixas dos consumidores. Saiba o que a lei garante.",
+  author: "Gutemberg Fonseca",
+  role: "Coluna de Defesa do Consumidor",
+  date: "2026-02-25",
+  authorImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle:
+    "Plano de celular: direitos do consumidor sobre fidelização, cancelamento e qualidade",
+  metaDescription:
+    "Saiba seus direitos em planos de celular: fidelização, internet lenta, portabilidade e cancelamento sem burocracia.",
+  readingTime: "5 min de leitura",
+  tags: [
+    "Plano de celular",
+    "Fidelização",
+    "Cancelamento de contrato",
+    "Direitos do consumidor",
+    "Internet lenta",
+    "Portabilidade"
+  ],
+  featured: false,
+  content: `
+    <p><strong>Os planos de celular fazem parte do dia a dia dos brasileiros — mas também lideram as reclamações nos órgãos de defesa do consumidor.</strong> Problemas como cobranças indevidas, internet abaixo do prometido e dificuldade para cancelar são frequentes. A boa notícia é que o Código de Defesa do Consumidor garante direitos claros.</p>
+
+    <br/>
+
+    <h2>Fidelização: quando é permitida?</h2>
+
+    <p>A fidelização só pode existir quando há um benefício real ao consumidor, como desconto no aparelho ou na mensalidade.</p>
+
+    <p>Mesmo assim, existem regras: o prazo máximo é de 12 meses e todas as condições devem estar claras no contrato. Se a operadora descumprir o que foi prometido, a multa por quebra de fidelidade não pode ser cobrada.</p>
+
+    <br/>
+
+    <h2>Internet lenta: o serviço deve cumprir o que foi prometido</h2>
+
+    <p>Se a internet não entrega a velocidade contratada, isso caracteriza falha na prestação do serviço.</p>
+
+    <p>Nesse caso, o consumidor pode exigir desconto na fatura, a correção do problema ou até o cancelamento do contrato sem pagamento de multa.</p>
+
+    <br/>
+
+    <h2>Portabilidade é um direito seu</h2>
+
+    <p>O consumidor pode mudar de operadora e manter o mesmo número de telefone, sem custos e sem precisar justificar.</p>
+
+    <p>A empresa não pode dificultar o processo nem criar barreiras para impedir a troca.</p>
+
+    <br/>
+
+    <h2>Cancelamento deve ser simples</h2>
+
+    <p>Cancelar um plano não pode ser uma batalha. O Código de Defesa do Consumidor proíbe práticas abusivas, como longas esperas, exigência de atendimento presencial ou transferências intermináveis.</p>
+
+    <p>O processo deve ser rápido, claro e acessível.</p>
+
+    <br/>
+
+    <h2>Como evitar problemas</h2>
+
+    <p>Algumas atitudes ajudam a evitar dores de cabeça:</p>
+
+    <p>Leia o contrato com atenção antes de contratar;<br/>
+    Guarde todos os protocolos de atendimento;<br/>
+    Desconfie de ofertas com promessas exageradas;<br/>
+    Registre qualquer problema imediatamente.</p>
+
+    <br/>
+
+    <h2>Procure seus direitos</h2>
+
+    <p>Se houver abuso ou dificuldade na resolução do problema, o consumidor pode buscar ajuda nos órgãos de defesa do consumidor, como o PROCON-RJ e a SEDCON.</p>
+
+    <p><strong>Informação clara não é favor — é obrigação.</strong> E consumidor bem informado não cai em pegadinhas.</p>
+  `
+},
+
+{
+  slug: "compras-online-golpes-pix-como-evitar",
+  source: "Diário do Rio",
+  category: "Defesa do Consumidor",
+  title: "Compras online e golpes no PIX: como comprar com segurança e evitar prejuízos",
+  subTitle:
+    "Sites falsos, anúncios enganosos e fraudes no PIX estão entre os principais riscos. Veja como se proteger e o que fazer se cair em um golpe.",
+  excerpt:
+    "Sites falsos, anúncios enganosos e fraudes no PIX estão entre os principais riscos. Veja como se proteger e o que fazer se cair em um golpe.",
+  author: "Gutemberg Fonseca",
+  role: "Coluna de Defesa do Consumidor",
+  date: "2025-12-17",
+  authorImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle:
+    "Golpes em compras online e PIX: como evitar fraudes e comprar com segurança",
+  metaDescription:
+    "Aprenda a identificar golpes em compras online e no PIX e saiba o que fazer para evitar prejuízos.",
+  readingTime: "6 min de leitura",
+  tags: [
+    "Compras online",
+    "Golpes no PIX",
+    "Fraudes digitais",
+    "Segurança digital",
+    "Direitos do consumidor",
+    "Sites falsos"
+  ],
+  featured: false,
+  content: `
+    <p><strong>Comprar pela internet virou hábito — mas também abriu espaço para golpes cada vez mais sofisticados.</strong> Sites falsos, anúncios enganosos e fraudes com PIX estão entre as principais armadilhas enfrentadas pelos consumidores.</p>
+
+    <p>Com informação e atenção, é possível evitar prejuízos e comprar com mais segurança.</p>
+
+    <br/>
+
+    <h2>Antes de comprar: como identificar se o site é confiável</h2>
+
+    <p>Muitos golpes acontecem porque o consumidor não consegue identificar um site falso. Alguns cuidados ajudam a evitar problemas:</p>
+
+    <p>Desconfie de preços muito abaixo do normal — ofertas "imperdíveis" são usadas para atrair vítimas;<br/>
+    Verifique se o site informa CNPJ, endereço, telefone e formas de contato;<br/>
+    Pesquise a reputação da loja e avaliações de outros consumidores;<br/>
+    Confira o endereço do site — golpistas costumam usar links parecidos com os originais;<br/>
+    Evite clicar em links enviados por redes sociais ou mensagens.</p>
+
+    <br/>
+
+    <h2>Pagamento por PIX exige atenção redobrada</h2>
+
+    <p>O PIX é rápido e prático, mas também se tornou uma ferramenta frequente em golpes.</p>
+
+    <p><strong>O PIX é seguro quando:</strong><br/>
+    É feito diretamente para empresas confiáveis;<br/>
+    O pagamento ocorre dentro do próprio site oficial;<br/>
+    O nome do destinatário confere com a empresa.</p>
+
+    <p><strong>Desconfie quando:</strong><br/>
+    A loja só aceita PIX e não oferece outras formas de pagamento;<br/>
+    O vendedor pede para pagar por fora, via WhatsApp;<br/>
+    O nome do recebedor é de pessoa física desconhecida;<br/>
+    O link leva para páginas estranhas ou recém-criadas.</p>
+
+    <br/>
+
+    <h2>Golpes mais comuns</h2>
+
+    <p>Entre os golpes mais frequentes estão:</p>
+
+    <p>Sites falsos que imitam lojas conhecidas;<br/>
+    Anúncios de produtos que nunca são entregues;<br/>
+    Golpistas que se passam por atendentes e pedem pagamento via PIX;<br/>
+    Links maliciosos que capturam dados do consumidor.</p>
+
+    <br/>
+
+    <h2>O que fazer se cair em um golpe</h2>
+
+    <p>As medidas dependem da forma de pagamento:</p>
+
+    <p><strong>Cartão de crédito:</strong><br/>
+    Solicite o cancelamento da compra junto ao banco;<br/>
+    Peça a contestação da cobrança.</p>
+
+    <p><strong>PIX:</strong><br/>
+    Entre em contato imediatamente com o banco;<br/>
+    Informe que foi vítima de golpe e solicite o Mecanismo Especial de Devolução (MED);<br/>
+    Registre ocorrência policial;<br/>
+    Procure o PROCON-RJ ou a SEDCON.</p>
+
+    <p><strong>Boleto:</strong><br/>
+    Verifique quem recebeu o pagamento;<br/>
+    O banco pode ajudar a identificar o destinatário.</p>
+
+    <br/>
+
+    <h2>Informação é a melhor proteção</h2>
+
+    <p>Grande parte dos golpes acontece por falta de informação ou atenção. Verificar antes de pagar é sempre o melhor caminho.</p>
+
+    <p><strong>Comprar online pode ser seguro — desde que o consumidor esteja atento.</strong></p>
+  `
+},
+
+{
+  slug: "credito-consignado-direitos-consumidor-emprestimo",
+  source: "Diário do Rio",
+  category: "Defesa do Consumidor",
+  title: "Crédito consignado: atenção aos seus direitos antes de contratar",
+  subTitle:
+    "Margem consignável, portabilidade e descontos indevidos estão entre os principais pontos de atenção. Saiba como evitar prejuízos.",
+  excerpt:
+    "Margem consignável, portabilidade e descontos indevidos estão entre os principais pontos de atenção. Saiba como evitar prejuízos.",
+  author: "Gutemberg Fonseca",
+  role: "Coluna de Defesa do Consumidor",
+  date: "2026-01-14",
+  authorImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle:
+    "Crédito consignado: direitos do consumidor e cuidados antes de contratar",
+  metaDescription:
+    "Saiba seus direitos no crédito consignado, como evitar descontos indevidos e o que fazer em caso de fraude.",
+  readingTime: "6 min de leitura",
+  tags: [
+    "Crédito consignado",
+    "Direitos do consumidor",
+    "Empréstimo",
+    "Descontos indevidos",
+    "Margem consignável",
+    "Fraudes financeiras"
+  ],
+  featured: false,
+  content: `
+    <p><strong>O crédito consignado é uma das modalidades de empréstimo mais utilizadas no Brasil</strong>, especialmente por aposentados, pensionistas e servidores públicos. Apesar dos juros mais baixos, essa facilidade exige atenção — principalmente quando o consumidor não conhece bem seus direitos.</p>
+
+    <br/>
+
+    <h2>Margem consignável: existe limite</h2>
+
+    <p>Um dos pontos mais importantes é a margem consignável, que representa o limite da renda que pode ser comprometido com parcelas do empréstimo.</p>
+
+    <p>Esse limite existe justamente para evitar o superendividamento. Quando a margem está totalmente utilizada, nenhuma nova contratação pode ser feita — nem mesmo em forma de refinanciamento disfarçado.</p>
+
+    <p>Se houver desconto acima do permitido, o consumidor tem direito à correção imediata.</p>
+
+    <br/>
+
+    <h2>Portabilidade: você não é obrigado a ficar no mesmo banco</h2>
+
+    <p>Muita gente não sabe, mas é possível transferir o empréstimo para outra instituição que ofereça juros menores.</p>
+
+    <p>A portabilidade não pode gerar custos extras nem aumentar a dívida. Além disso, a liberação de dinheiro durante esse processo só pode ocorrer com autorização expressa do consumidor.</p>
+
+    <p>Fique atento a propostas que prometem "troca com troco": elas podem esconder novas contratações indevidas.</p>
+
+    <br/>
+
+    <h2>Descontos indevidos e empréstimos não autorizados</h2>
+
+    <p>Um problema cada vez mais comum é o surgimento de empréstimos consignados não autorizados.</p>
+
+    <p>Muitos consumidores só percebem quando o valor começa a ser descontado no benefício. Essa prática é ilegal — nenhuma instituição pode contratar empréstimo sem consentimento claro do cliente.</p>
+
+    <p>Nesses casos, o desconto deve ser suspenso imediatamente e os valores cobrados precisam ser devolvidos.</p>
+
+    <br/>
+
+    <h2>O que fazer em caso de irregularidade</h2>
+
+    <p>Se identificar cobranças indevidas, siga este passo a passo:</p>
+
+    <p>Solicite ao banco o contrato e o comprovante da autorização;<br/>
+    Registre reclamação nos canais oficiais da instituição;<br/>
+    Peça a suspensão imediata dos descontos;<br/>
+    Procure o PROCON-RJ ou a SEDCON;<br/>
+    Se necessário, busque orientação jurídica.</p>
+
+    <br/>
+
+    <h2>Cuidado com ofertas fáceis</h2>
+
+    <p>Ofertas de empréstimo por telefone, mensagens ou redes sociais devem ser vistas com cautela — especialmente quando prometem dinheiro rápido sem análise.</p>
+
+    <p>Além disso, é importante não confundir empréstimo consignado com cartão de crédito consignado. No cartão, o pagamento mínimo é descontado automaticamente, e o restante da dívida pode gerar juros altos.</p>
+
+    <br/>
+
+    <h2>Antes de contratar, faça as contas</h2>
+
+    <p>Crédito consignado não é renda extra — é dívida. Antes de contratar, avalie sua capacidade de pagamento e desconfie de propostas milagrosas.</p>
+
+    <p><strong>Informação é a melhor proteção contra abusos e golpes.</strong></p>
+  `
 }
 
 ];
