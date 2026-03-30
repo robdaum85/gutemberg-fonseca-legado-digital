@@ -20,6 +20,110 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+  slug: "gasolina-subindo-sem-reajuste-petrobras-direitos-consumidor",
+  source: "Coluna Defesa do Consumidor",
+  category: "Defesa do Consumidor",
+  title: "Gasolina subindo sem aumento da Petrobras: o que está acontecendo — e o que você pode fazer",
+  subTitle:
+    "Alta nos combustíveis sem reajuste oficial levanta suspeitas sobre margens abusivas. Entenda o que está por trás do aumento e como agir.",
+  excerpt:
+    "Alta nos combustíveis sem reajuste oficial levanta suspeitas sobre margens abusivas. Entenda o que está por trás do aumento e como agir.",
+  author: "Gutemberg Fonseca",
+  role: "Coluna de Defesa do Consumidor",
+  date: "2026-03-30",
+  authorImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle:
+    "Gasolina subindo sem reajuste: entenda o aumento e seus direitos",
+  metaDescription:
+    "Saiba por que a gasolina está subindo mesmo sem reajuste da Petrobras e o que você pode fazer diante de possíveis abusos.",
+  readingTime: "6 min de leitura",
+  tags: [
+    "Gasolina",
+    "Preço abusivo",
+    "Combustível",
+    "Direitos do consumidor",
+    "Procon",
+    "Fiscalização"
+  ],
+  featured: false,
+  content: `
+    <p><strong>Você foi abastecer e levou um susto com o preço na bomba?</strong> A gasolina e o diesel vêm subindo há semanas — e o mais intrigante é que não houve reajuste oficial da Petrobras.</p>
+
+    <p>Diante disso, surge a dúvida: de onde vem essa alta? E o mais importante: o que o consumidor pode fazer?</p>
+
+    <br/>
+
+    <h2>Por que o combustível está subindo?</h2>
+
+    <p>O preço que chega até você passa por uma cadeia: Petrobras → distribuidoras → postos. Cada etapa influencia o valor final.</p>
+
+    <p>Em momentos de instabilidade internacional, como conflitos geopolíticos, o preço do petróleo pode subir e pressionar os custos. Mas isso não explica tudo.</p>
+
+    <p><strong>Parte do aumento que você está pagando não é custo — é margem de lucro.</strong></p>
+
+    <br/>
+
+    <h2>Os números que chamam atenção</h2>
+
+    <p>Levantamentos recentes mostram aumento significativo nas margens de distribuidoras e postos.</p>
+
+    <p>Em alguns casos, o custo subiu poucos centavos, mas o preço final ao consumidor aumentou mais de R$ 1 por litro.</p>
+
+    <p>Isso pode caracterizar prática abusiva, quando não há justificativa proporcional para o reajuste.</p>
+
+    <br/>
+
+    <h2>O impacto no bolso do consumidor</h2>
+
+    <p>Para quem depende do carro para trabalhar, o impacto é direto. Pequenos aumentos no litro representam dezenas de reais a mais por semana.</p>
+
+    <p>Além disso, o diesel mais caro afeta o transporte e encarece produtos no supermercado.</p>
+
+    <br/>
+
+    <h2>Fiscalizações e investigações</h2>
+
+    <p>Órgãos de defesa do consumidor e autoridades já iniciaram fiscalizações para apurar aumentos injustificados.</p>
+
+    <p>Há também investigações sobre possíveis práticas irregulares, como alinhamento de preços entre empresas.</p>
+
+    <p>Quem estiver praticando abuso deverá prestar esclarecimentos.</p>
+
+    <br/>
+
+    <h2>O que você pode fazer agora</h2>
+
+    <p>O consumidor não precisa aceitar esse cenário sem reação. Veja como agir:</p>
+
+    <p><strong>1. Verifique o preço antes de abastecer:</strong> divergência entre placa e bomba é irregularidade.<br/>
+    <strong>2. Guarde o comprovante:</strong> ele é essencial para qualquer reclamação.<br/>
+    <strong>3. Registre denúncia no Procon:</strong> presencialmente, pelo site ou aplicativo.<br/>
+    <strong>4. Use o Consumidor.gov.br:</strong> plataforma gratuita com resposta obrigatória das empresas.</p>
+
+    <br/>
+
+    <h2>Erros comuns que você deve evitar</h2>
+
+    <p>Muitos consumidores acabam perdendo seus direitos por falta de informação:</p>
+
+    <p>Achar que reclamar não adianta;<br/>
+    Não comparar preços entre postos;<br/>
+    Aceitar justificativas genéricas sem questionar.</p>
+
+    <br/>
+
+    <h2>Você não está sozinho</h2>
+
+    <p>O aumento abusivo dos combustíveis afeta toda a população — do motorista ao consumidor no supermercado.</p>
+
+    <p><strong>Se você identificou aumento injustificado, não fique em silêncio. Denuncie. Seu relato faz diferença.</strong></p>
+  `
+},
+
+  {
   slug: "pascoa-direitos-consumidor-compra-chocolate",
   source: "Coluna Defesa do Consumidor",
   category: "Defesa do Consumidor",
