@@ -20,6 +20,243 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+  slug: "pascoa-direitos-consumidor-compra-chocolate",
+  source: "Coluna Defesa do Consumidor",
+  category: "Defesa do Consumidor",
+  title: "Páscoa sem gosto amargo: conheça seus direitos na hora de comprar chocolate",
+  subTitle:
+    "Diferença de peso, produtos fora do padrão e informações pouco claras estão entre os principais problemas. Saiba como evitar prejuízos.",
+  excerpt:
+    "Diferença de peso, produtos fora do padrão e informações pouco claras estão entre os principais problemas. Saiba como evitar prejuízos.",
+  author: "Gutemberg Fonseca",
+  role: "Coluna de Defesa do Consumidor",
+  date: "2026-03-30",
+  authorImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle:
+    "Páscoa: conheça seus direitos ao comprar ovos de chocolate",
+  metaDescription:
+    "Saiba como evitar prejuízos na Páscoa ao comprar chocolates e conheça seus direitos como consumidor.",
+  readingTime: "4 min de leitura",
+  tags: [
+    "Páscoa",
+    "Direitos do consumidor",
+    "Ovo de chocolate",
+    "Publicidade enganosa",
+    "Produto com defeito",
+    "Compra segura"
+  ],
+  featured: false,
+  content: `
+    <p><strong>A Páscoa é tempo de celebrar, reunir a família e adoçar a vida.</strong> Mas ninguém merece que o sabor do chocolate seja substituído pelo gosto amargo de uma infração contra o consumidor.</p>
+
+    <p>Nesta época do ano, aumentam as reclamações sobre diferença de peso dos itens, produtos fora do padrão e falta de clareza nas informações. Estar atento é o melhor caminho para evitar prejuízos.</p>
+
+    <br/>
+
+    <h2>Antes de comprar, fique atento:</h2>
+
+    <p><strong>Peso líquido x embalagem:</strong> o que vale é o peso do chocolate, não o tamanho da caixa. Muitas embalagens são grandes, mas contêm menos produto do que parecem. Confira sempre o peso líquido indicado.<br/>
+    
+    <strong>Preço por grama:</strong> comparar o valor proporcional ajuda a identificar opções mais vantajosas e evitar armadilhas.<br/>
+    
+    <strong>Validade:</strong> produtos vencidos não podem ser vendidos. Alimentos fora da validade representam risco à saúde e configuram infração grave.<br/>
+    
+    <strong>Qualidade e conservação:</strong> o chocolate não pode apresentar sinais de alteração, como manchas esbranquiçadas, que indicam problema de conservação. O produto deve estar protegido do calor e da umidade.<br/>
+    
+    <strong>Informação clara:</strong> ingredientes, alergênicos e características precisam estar visíveis. Falta de informação também é infração.<br/>
+    
+    <strong>Troca:</strong> defeitos, alterações visíveis ou problemas na fabricação dão direito à substituição do produto ou à devolução do valor pago.</p>
+
+    <br/>
+
+    <h2>Se houver problema, saiba como agir</h2>
+
+    <p>Se encontrar qualquer irregularidade, procure os órgãos de defesa do consumidor, como a Secretaria de Estado de Defesa do Consumidor e o PROCON-RJ.</p>
+
+    <p>Você também pode registrar denúncia pelo Fala Consumidor (SEDCON) via WhatsApp (21) 99336-4848 ou pelo Disque 151 do PROCON-RJ.</p>
+
+    <p><strong>Informação é o melhor ingrediente para não cair em armadilhas.</strong></p>
+  `
+},
+
+{
+  slug: "pascoa-consciente-direito-informacao-rotulo",
+  source: "Diário do Rio",
+  category: "Defesa do Consumidor",
+  title: "Páscoa consciente: você tem direito à informação no rótulo; saiba como usá-la",
+  subTitle:
+    "Saber ler ingredientes, identificar alergênicos e entender a tabela nutricional ajuda o consumidor a fazer escolhas mais seguras.",
+  excerpt:
+    "Saber ler ingredientes, identificar alergênicos e entender a tabela nutricional ajuda o consumidor a fazer escolhas mais seguras.",
+  author: "Gutemberg Fonseca",
+  role: "Coluna de Defesa do Consumidor",
+  date: "2026-03-26",
+  authorImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle:
+    "Páscoa consciente: como ler rótulos e proteger sua saúde",
+  metaDescription:
+    "Aprenda a interpretar rótulos de alimentos na Páscoa e faça escolhas mais seguras e conscientes.",
+  readingTime: "5 min de leitura",
+  tags: [
+    "Páscoa",
+    "Rótulo de alimentos",
+    "Direitos do consumidor",
+    "Informação clara",
+    "Segurança alimentar",
+    "ANVISA"
+  ],
+  featured: false,
+  content: `
+    <p><strong>A Páscoa chega com vitrines coloridas, ovos de chocolate e uma infinidade de produtos industrializados.</strong> Mas, no meio de tantas opções, um detalhe essencial ainda passa despercebido por muitos consumidores: o rótulo.</p>
+
+    <p>As informações da embalagem não são mero detalhe. O consumidor tem direito a receber dados claros, corretos e em linguagem acessível — e saber interpretá-los é uma forma de proteger a própria saúde.</p>
+
+    <br/>
+
+    <h2>O que a lista de ingredientes revela</h2>
+
+    <p>Muitas escolhas são feitas pela marca, preço ou aparência, mas é no verso da embalagem que estão as informações mais importantes.</p>
+
+    <p>A lista de ingredientes é organizada em ordem decrescente, ou seja, o primeiro item é o que aparece em maior quantidade. Se o açúcar aparece logo no início, isso indica alta concentração no produto.</p>
+
+    <br/>
+
+    <h2>Atenção aos alergênicos</h2>
+
+    <p>Ingredientes como leite, ovos, soja, amendoim, castanhas e glúten devem estar claramente identificados.</p>
+
+    <p>Para pessoas com alergias ou intolerâncias, essa informação é essencial. A ausência ou falta de clareza pode representar risco à saúde e configurar infração ao Código de Defesa do Consumidor.</p>
+
+    <br/>
+
+    <h2>Tabela nutricional: o que observar</h2>
+
+    <p>A tabela nutricional informa calorias, açúcar, gorduras e sódio por porção.</p>
+
+    <p>Comparar produtos semelhantes ajuda a fazer escolhas mais equilibradas, especialmente quando há consumo frequente ou crianças envolvidas.</p>
+
+    <br/>
+
+    <h2>Rotulagem frontal: o alerta da lupa</h2>
+
+    <p>Com as novas regras da ANVISA, muitos produtos passaram a trazer símbolos na parte frontal da embalagem.</p>
+
+    <p>A lupa indica alto teor de açúcar adicionado, gordura saturada ou sódio, funcionando como um alerta visual para o consumidor.</p>
+
+    <br/>
+
+    <h2>Validade e conservação também importam</h2>
+
+    <p>Verificar a data de validade e as condições de armazenamento é fundamental, principalmente no caso de chocolates, que podem sofrer alterações de textura e sabor quando mal conservados.</p>
+
+    <br/>
+
+    <h2>Consumo consciente começa pela informação</h2>
+
+    <p>Na correria das compras, é comum agir por impulso. Mas consumir com consciência é garantir não apenas uma escolha melhor, mas também o respeito aos seus direitos.</p>
+
+    <p><strong>Nesta Páscoa, não deixe que a pressa substitua a informação.</strong></p>
+  `
+},
+
+{
+  slug: "vagao-feminino-rj-24-horas",
+  source: "Portal Pessoal",
+  category: "Segurança Pública",
+  title: "Vagão feminino RJ 24 horas: o que muda na rotina das mulheres no transporte público",
+  subTitle:
+    "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
+  excerpt:
+    "Quantas mulheres já passaram por situações constrangedoras no trem ou no metrô? Conheça os avanços e o que muda com o funcionamento 24h do vagão feminino.",
+  author: "Gutemberg Fonseca",
+  role: "Secretário de Estado de Defesa do Consumidor",
+  date: "2025-03-25",
+  authorImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage:
+    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle: "Vagão feminino RJ 24 horas: segurança das mulheres no transporte público",
+  metaDescription:
+    "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
+  readingTime: "4 min de leitura",
+  tags: [
+    "Vagão feminino",
+    "Transporte público RJ",
+    "Segurança das mulheres",
+    "Mobilidade urbana",
+    "Direitos das mulheres"
+  ],
+  featured: false,
+  content: `
+    <p><strong>Quantas mulheres já passaram por situações constrangedoras no trem ou no metrô?</strong></p>
+
+    <p>Essa ainda é uma realidade presente no transporte público no Rio de Janeiro, e que precisa ser enfrentada com seriedade.</p>
+    
+    <p>Na última quarta, dia 24 de março, estive no Palácio Tiradentes, no Centro do Rio, em uma sessão solene que marcou um avanço importante nessa discussão: a ampliação para 24 horas do funcionamento dos vagões exclusivos para mulheres nos trens e metrôs do estado.</p>
+    
+    <p>Essa atualização reforça uma medida que já existia, mas que agora passa a acompanhar a rotina de quem utiliza metrô e trem RJ em diferentes horários, inclusive à noite e de madrugada.</p>
+
+    <br/>
+
+    <h2>Quando a pauta deixa de ser debate e vira realidade</h2>
+
+    <p>A mudança é simples de explicar, mas significativa no que representa.</p>
+    
+    <p>Garantir que os espaços exclusivos estejam disponíveis em qualquer horário é reconhecer que o deslocamento das mulheres não acontece em janelas limitadas, ele faz parte de uma rotina contínua, todos os dias.</p>
+    
+    <p>Durante a sessão, falei sobre esse avanço e porque essa é uma pauta que precisa estar no centro das prioridades.</p>
+
+    <br/>
+
+    <h2>Mais do que mobilidade, estamos falando de respeito</h2>
+
+    <p>Defender o consumidor é, antes de tudo, defender pessoas.</p>
+    
+    <p>E quando a gente fala de segurança das mulheres no transporte público, está falando de algo que impacta diretamente a vida de milhares de cariocas.</p>
+    
+    <p>Está nas decisões do dia a dia.</p>
+    
+    <p>Nos horários que escolhem.</p>
+    
+    <p>Nos caminhos que evitam.</p>
+    
+    <p>É sobre a liberdade de ir e vir com mais tranquilidade.</p>
+
+    <br/>
+
+    <h2>Transporte público no Rio de Janeiro: um passo que aponta direção</h2>
+
+    <p>A ampliação do vagão feminino RJ para 24 horas não resolve tudo, mas aponta um caminho.</p>
+    
+    <p>Mostra que a realidade está sendo observada.</p>
+    
+    <p>E que é possível avançar com medidas concretas.</p>
+    
+    <p>Ainda há muito a ser feito quando falamos do transporte público no Rio de Janeiro, especialmente para as mulheres, mas cada passo consistente faz diferença.</p>
+
+    <br/>
+
+    <h2>No fim, é sobre o básico</h2>
+
+    <p>No fim das contas, o que está em jogo não é só a organização dentro de um vagão.</p>
+    
+    <p>É respeito.</p>
+    
+    <p>É dignidade.</p>
+    
+    <p>É tranquilidade no dia a dia.</p>
+    
+    <p>Seguimos atentos e trabalhando para que esse tipo de avanço deixe de ser exceção, e passe a fazer parte da regra.</p>
+  `
+},
+
+{
   slug: "contrato-de-academia-direitos-do-consumidor",
   source: "Diário do Rio",
   category: "Defesa do Consumidor",
