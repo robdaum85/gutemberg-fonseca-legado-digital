@@ -8,6 +8,196 @@ export interface NewsItem {
 }
 
 export const newsClipping: NewsItem[] = [
+  // Abril 2026 - Clippings adicionados
+  {
+    date: "01/04/2026",
+    source: "Manchete Rio",
+    vehicle: "Portal de Notícias",
+    url: "https://mancheterio.com.br/rio-oficializa-exoneracao-de-gutemberg-fonseca-da-sedcon/",
+    title: "Rio oficializa exoneração de Gutemberg Fonseca da Sedcon"
+  },
+  {
+    date: "01/04/2026",
+    source: "Bom Dia Alerj",
+    vehicle: "Televisão",
+    url: "https://imagens.empauta.com/video/eJxzDHcNiHILynTM8vT3NwxKd8xM90pMD8sMqyoJjTIMNXMMiQpJc8sG0ilJ--2FjmBFRHuJUFR6Z4GYblR4WluYeZO7skeSW5umY7hBYFROY7GoVl--2BwVGBANYCHHo--3D.mp4",
+    title: "Pesquisa Sedcon/Procon aponta variação de até 160% nos preços de Páscoa"
+  },
+  {
+    date: "01/04/2026",
+    source: "Instagram",
+    vehicle: "Rede Social",
+    url: "https://www.instagram.com/p/DWlqVhVAHDE/?igsh=MW5qNDk5emxqNmEzMQ==",
+    title: "Exoneração de Gutemberg Fonseca da Sedcon"
+  },
+  {
+    date: "01/04/2026",
+    source: "RJ2",
+    vehicle: "Televisão",
+    url: "https://imagens.empauta.com/video/eJxzDHcNSDQMynHMSvb3DwPSmeleielhmWFVJaFRhqFmjiFRIWlu2UA6Jck--2FjmBFRHuJUGRgZ7GYblR4WluYeZO7skeSW5umY7hBYFROY7GoVl--2BwVGBAOEfHJc--3D.mp4",
+    title: "Evento discute novas formas de tecnologia e consumo no Rio"
+  },
+  {
+    date: "31/03/2026",
+    source: "TV Prefeito",
+    vehicle: "Portal de Notícias",
+    url: "https://tvprefeito.com/rio-lidera-nova-agenda-de-defesa-do-consumidor-no-pais-com-seminario-sobre-fraudes-digitais-inteligencia-artificial-e-superendividamento/",
+    title: "Rio lidera nova agenda de Defesa do Consumidor no país com seminário sobre fraudes digitais, IA e superendividamento"
+  },
+  {
+    date: "31/03/2026",
+    source: "Instagram",
+    vehicle: "Rede Social",
+    url: "https://www.instagram.com/reel/DWj-muaCQFx/?igsh=MTIxZTJ3NXRlcGQ2bw==",
+    title: "Balcão do Consumidor ganha novo polo na Cidade de Deus"
+  },
+  {
+    date: "31/03/2026",
+    source: "Folha Vitória",
+    vehicle: "Portal de Notícias",
+    url: "https://www.folhavitoria.com.br/politica/a-vice-e-so",
+    title: "Pesquisa Procon-RJ aponta variação de até 160% nos itens de Páscoa"
+  },
+  {
+    date: "31/03/2026",
+    source: "Bom Dia Rio",
+    vehicle: "Televisão",
+    url: "https://imagens.empauta.com/video/eJwFwUsKgCAUBdAtldECniHCCwVDr9hMKOw--2FCqJW3zmkpbc1F--2FKBDKYFTdUlxwedbc6ObwgZZwQBzbDEFyIPCSghKuqLufE5yo96w7ZrQ7xKPSKVH5iYG90--3D.mp4",
+    title: "Cidade de Deus ganha novo ponto de atendimento do Procon-RJ"
+  },
+  {
+    date: "30/03/2026",
+    source: "CNN Brasil",
+    vehicle: "Portal de Notícias",
+    url: "https://www.cnnbrasil.com.br/economia/macroeconomia/ovos-de-pascoa-precos-seguem-pressionados-mesmo-com-cacau-nas-minimas/",
+    title: "Ovos de Páscoa: preços seguem pressionados mesmo com cacau nas mínimas"
+  },
+  {
+    date: "30/03/2026",
+    source: "Diário do Rio",
+    vehicle: "Portal de Notícias",
+    url: "https://diariodorio.com/fiscalizacao-encontra-alimentos-com-larvas-e-mosquitos-no-cadeg/",
+    title: "Fiscalização encontra alimentos com larvas e mosquitos no Cadeg"
+  },
+  {
+    date: "30/03/2026",
+    source: "Povo na Rua",
+    vehicle: "Portal de Notícias",
+    url: "https://povonarua.com.br/alimentos-improprios-no-cadeg-sao-apreendidos-em-operacao-do-procon-rj/",
+    title: "Alimentos impróprios no Cadeg são apreendidos em operação do Procon-RJ"
+  },
+  {
+    date: "30/03/2026",
+    source: "Tribuna do Sertão",
+    vehicle: "Portal de Notícias",
+    url: "https://www.tribunadosertao.com.br/rj-em-foco/2026/03/27/879664-alimentos-com-larvas-e-mosquitos-fiscais-descartam-14-quilos-de-produtos-improprios-no-cadeg-as-vesperas-da-semana-santa",
+    title: "Alimentos com larvas e mosquitos: fiscais descartam 14 quilos de produtos impróprios no Cadeg"
+  },
+  {
+    date: "30/03/2026",
+    source: "Instagram",
+    vehicle: "Rede Social",
+    url: "https://www.instagram.com/p/DWhN4WJCYwY/?igsh=MXhpanYyM3E1aWRzYw==",
+    title: "Fiscalização descarta 14 kg de alimentos impróprios no Cadeg"
+  },
+  {
+    date: "26/03/2026",
+    source: "Diário do Rio",
+    vehicle: "Portal de Notícias",
+    url: "https://diariodorio.com/fiscalizacao-encontra-alimentos-com-larvas-e-mosquitos-no-cadeg/",
+    title: "Fiscalização encontra alimentos com larvas e mosquitos no Cadeg"
+  },
+  {
+    date: "26/03/2026",
+    source: "Povo na Rua",
+    vehicle: "Portal de Notícias",
+    url: "https://povonarua.com.br/alimentos-improprios-no-cadeg-assustam-consumidores-apos-fiscalizacao-descartar-14-quilos/",
+    title: "Alimentos impróprios no Cadeg assustam consumidores após fiscalização descartar 14 quilos"
+  },
+  {
+    date: "26/03/2026",
+    source: "O Debate 24h",
+    vehicle: "Portal de Notícias",
+    url: "https://odebate24h.com/noticia/56874/cafe-real-megaoperacao-combate-cafe-adulterado-no-estado-do-rio-de-janeiro.html",
+    title: "Café Real: megaoperação combate café adulterado no estado do Rio de Janeiro"
+  },
+  {
+    date: "26/03/2026",
+    source: "Diário do Rio",
+    vehicle: "Portal de Notícias",
+    url: "https://diariodorio.com/operacao-apreende-1765-kg-de-cafe-adulterado-no-rj-veja-como-identificar-o-produto-irregular",
+    title: "Operação apreende 176,5 kg de café adulterado no RJ - veja como identificar o produto irregular"
+  },
+  {
+    date: "26/03/2026",
+    source: "A Tribuna RJ",
+    vehicle: "Portal de Notícias",
+    url: "https://www.atribunarj.com.br/materia/pesquisa-aponta-variacao-de-ate-160-nos-precos-de-itens-de-pascoa",
+    title: "Pesquisa aponta variação de até 160% nos preços de itens de Páscoa"
+  },
+  {
+    date: "26/03/2026",
+    source: "Diário do Rio",
+    vehicle: "Portal de Notícias",
+    url: "https://diariodorio.com/pesquisa-do-governo-do-rio-aponta-variacao-de-ate-160-nos-precos-de-itens-de-pascoa/",
+    title: "Pesquisa do Governo do Rio aponta variação de até 160% nos preços de itens de Páscoa"
+  },
+  {
+    date: "26/03/2026",
+    source: "O São Gonçalo",
+    vehicle: "Portal de Notícias",
+    url: "https://www.osaogoncalo.com.br/geral/163827/pascoa-mais-cara-preco-do-chocolate-dispara-e-exige-pesquisa",
+    title: "Páscoa mais cara: preço do chocolate dispara e exige pesquisa"
+  },
+  {
+    date: "26/03/2026",
+    source: "Instagram",
+    vehicle: "Rede Social",
+    url: "https://www.instagram.com/reel/DWWkXC7DL_9/?igsh=MXRwMmU5c3l1NjZ5Zg==",
+    title: "Páscoa mais cara: pesquisa aponta aumento nos preços de chocolate"
+  },
+  {
+    date: "25/03/2026",
+    source: "Jornal Atual",
+    vehicle: "Portal de Notícias",
+    url: "https://jornalatual.com.br/procon-inaugura-balcao-do-consumidor-em-itaguai/",
+    title: "Procon inaugura Balcão do Consumidor em Itaguaí"
+  },
+  {
+    date: "24/03/2026",
+    source: "Diário do Rio",
+    vehicle: "Portal de Notícias",
+    url: "https://diariodorio.com/supervia-e-autuada-apos-explosao-e-principio-de-incendio-em-trem-perto-de-quintino/",
+    title: "SuperVia é autuada após explosão e princípio de incêndio em trem perto de Quintino"
+  },
+  {
+    date: "24/03/2026",
+    source: "Papa de Nível",
+    vehicle: "Portal de Notícias",
+    url: "https://papodenivel.blogspot.com/2026/03/supervia-e-autuada-por-falha-em-trem.html",
+    title: "SuperVia é autuada por falha em trem com explosão e princípio de incêndio"
+  },
+  {
+    date: "23/03/2026",
+    source: "Instagram",
+    vehicle: "Rede Social",
+    url: "https://www.instagram.com/p/DV1oy0PEaC2/?igsh=MXN3ZmwyejF0cmxiZg==",
+    title: "Incêndio em trem da SuperVia assusta moradores em Quintino"
+  },
+  {
+    date: "23/03/2026",
+    source: "Povo na Rua",
+    vehicle: "Portal de Notícias",
+    url: "https://povonarua.com.br/incendio-em-trem-da-supervia-assusta-moradores-em-quintino-no-rio/",
+    title: "Incêndio em trem da SuperVia assusta moradores em Quintino no Rio"
+  },
+  {
+    date: "23/03/2026",
+    source: "Diário do Rio",
+    vehicle: "Portal de Notícias",
+    url: "https://diariodorio.com/supervia-e-autuada-apos-explosao-e-principio-de-incendio-em-trem-perto-de-quintino/",
+    title: "SuperVia é autuada após explosão e princípio de incêndio em trem perto de Quintino"
+  },
   // Janeiro 2026 - Novo JSON importado
   {
     date: "14/01/2026",
