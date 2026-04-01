@@ -15,7 +15,7 @@ const About = () => {
   return (
     <section id="sobre" className="py-20 bg-white">
       <div className="section-container">
-        <h2 className="section-title">Sobre o Secretário</h2>
+        <h2 className="section-title">Sobre Gutemberg</h2>
         
         <div className="flex flex-col lg:flex-row gap-12 items-start mt-12">
           <div 
@@ -46,17 +46,15 @@ const About = () => {
               estratégicos na administração pública do Rio de Janeiro.
             </p>
             
-            <p className="text-graphite mb-4">
+            {/* <p className="text-graphite mb-4">
               Atuou como Diretor de Operações (2007), Chefe de Gabinete na Câmara do Rio (2008), 
               Secretário de Turismo de Japeri (2012), Diretor de Marketing do Turismo Estadual (2013), 
               Secretário de Governo (2019), Secretário de Ordem Pública (2020), Secretário de Esporte e, 
               desde 2023, Secretário de Defesa do Consumidor do Rio.
-            </p>
+            </p> */}
             
             <p className="text-graphite">
-              Com 18 anos de experiência em gestão pública, Gutemberg é reconhecido por sua capacidade 
-              de transformação e inovação nos setores onde atua, sempre com foco em resultados mensuráveis 
-              e impacto positivo para a população fluminense.
+              É especialista em Defesa do Consumidor e ex-secretário de Estado de Defesa do Consumidor do Rio de Janeiro. Gestor público com 18 anos de atuação, formado em Administração e especializado em Gestão de Cidades, Marketing e Ciências Políticas. Já ocupou cargos estratégicos no Estado e na capital, como Secretário de Governo, Secretário de Ordem Pública e Secretário de Esporte. Liderou o Gabinete de Crise do Rio durante a pandemia. A partir 2023, comandou a SEDCON, fortalecendo direitos, fiscalizando abusos e ampliando ações de proteção ao consumidor em todo o Rio de Janeiro.
             </p>
           </div>
         </div>

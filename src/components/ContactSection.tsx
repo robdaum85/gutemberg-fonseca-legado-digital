@@ -41,7 +41,8 @@ const ContactSection = () => {
     }
 
     const message = `Olá! Meu nome é ${whatsappData.name}. ${whatsappData.message}`;
-    const whatsappNumber = "5521966192498"; // Número do WhatsApp do secretário
+    const whatsappNumber = "5521966192498"; // Número do WhatsApp do Gutemberg
+  
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     
     window.open(whatsappUrl, '_blank');
@@ -78,7 +79,7 @@ const ContactSection = () => {
               <h3 className="text-xl font-bold text-green-700">Contato via WhatsApp</h3>
             </div>
             
-            <p className="text-green-600 mb-6">Fale diretamente com o Secretário pelo WhatsApp</p>
+            <p className="text-green-600 mb-6">Fale diretamente com Gutemberg pelo WhatsApp</p>
             
             <form onSubmit={handleWhatsappSubmit} className="space-y-6">
               <div>

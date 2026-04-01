@@ -119,7 +119,7 @@ const Testimonials = () => {
           {/* CTA Banner */}
           <div className="mt-20 bg-primary text-white rounded-lg shadow-lg p-8 text-center">
             <h3 className="text-2xl font-bold mb-4">Quer saber mais sobre nossas ações?</h3>
-            <p className="text-lg mb-8">Fale diretamente com o Secretário</p>
+            <p className="text-lg mb-8">Fale diretamente com o Gutemberg</p>
             <Button 
               size="lg" 
               variant="gradient"

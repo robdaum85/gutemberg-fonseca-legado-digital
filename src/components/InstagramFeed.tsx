@@ -24,8 +24,8 @@ const InstagramFeed = () => {
       type: 'reel' as const,
     },
     {
-      url: 'https://www.instagram.com/reel/DWOgyF3D9KC/?igsh=Ymg4dTUxOWNiMXRv',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/03/noticias3.png',
+      url: 'https://www.instagram.com/reel/DWkfKhEjAwf/?igsh=MW50MnV6MDRyYnVkNQ==',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/04/instaguto1.png',
       type: 'reel' as const,
     },
   ];
