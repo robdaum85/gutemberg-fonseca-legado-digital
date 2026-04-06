@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
-// 3 imagens originais do Playbook - usadas em todos os dispositivos
+// 6 imagens do site kngofnnx.com
 const backgroundImages = [
-  // 'https://img.playbook.com/3gmHBQ3nDjvgLt33nyR9Xxf6x_LASkigwMCHzx-L3P0/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljL2FiYWNkMDE0/LWJlMjctNDgyZi05/N2I2LTdmYzI1NDdm/ZjQ5OA',
-  'https://img.playbook.com/ihBOakoOc26ghY6gcu4YHRzq9KD5chqsOA4_ghcMF4w/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzU1ZDc2ZjE4/LWUzMjAtNDUxNy04/ZWNhLWNiMGQzN2E0/MGNjYw',
-  // 'https://img.playbook.com/qRzLFPwsMekYl6AwVA0-H_YOuZSIRoOrCbvaJdauePg/Z3M6Ly9wbGF5Ym9v/ay1hc3NldHMtcHVi/bGljLzlkMjU5Y2Nj/LWE5NDUtNGQyMS1h/NTlhLTAzNjNkMzQ0/MmE5Nw',
+  'https://kngofnnx.com/wp-content/uploads/2026/04/img6.jpeg',
+  'https://kngofnnx.com/wp-content/uploads/2026/04/img5.jpeg',
+  'https://kngofnnx.com/wp-content/uploads/2026/04/img4.jpeg',
+  'https://kngofnnx.com/wp-content/uploads/2026/04/img3.jpeg',
+  'https://kngofnnx.com/wp-content/uploads/2026/04/img2.jpeg',
+  'https://kngofnnx.com/wp-content/uploads/2026/04/img1.jpeg',
 ];
 
 const Hero = () => {
