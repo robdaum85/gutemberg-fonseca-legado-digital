@@ -1,4 +1,5 @@
 export type BlogPost = {
+  image: any;
   slug: string;
   source: string;
   category: string;
@@ -20,36 +21,114 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
-  slug: "gasolina-subindo-sem-reajuste-petrobras-direitos-consumidor",
-  source: "Coluna Defesa do Consumidor",
-  category: "Defesa do Consumidor",
-  title: "Gasolina subindo sem aumento da Petrobras: o que está acontecendo — e o que você pode fazer",
-  subTitle:
-    "Alta nos combustíveis sem reajuste oficial levanta suspeitas sobre margens abusivas. Entenda o que está por trás do aumento e como agir.",
-  excerpt:
-    "Alta nos combustíveis sem reajuste oficial levanta suspeitas sobre margens abusivas. Entenda o que está por trás do aumento e como agir.",
-  author: "Gutemberg Fonseca",
-  role: "Coluna de Defesa do Consumidor",
-  date: "2026-03-30",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  metaTitle:
-    "Gasolina subindo sem reajuste: entenda o aumento e seus direitos",
-  metaDescription:
-    "Saiba por que a gasolina está subindo mesmo sem reajuste da Petrobras e o que você pode fazer diante de possíveis abusos.",
-  readingTime: "6 min de leitura",
-  tags: [
-    "Gasolina",
-    "Preço abusivo",
-    "Combustível",
-    "Direitos do consumidor",
-    "Procon",
-    "Fiscalização"
-  ],
-  featured: false,
-  content: `
+    slug: "corte-indevido-servicos-essenciais-direitos-consumidor",
+    source: "Coluna Defesa do Consumidor",
+    category: "Defesa do Consumidor",
+    title: "Corte indevido de serviços essenciais: o consumidor não pode ficar no escuro",
+    subTitle: "Interrupção de água e luz sem aviso prévio ou por dívida em disputa pode ser abusiva. Saiba quais são seus direitos.",
+    excerpt: "Interrupção de água e luz sem aviso prévio ou por dívida em disputa pode ser abusiva. Saiba quais são seus direitos.",
+    author: "Gutemberg Fonseca",
+    role: "Coluna de Defesa do Consumidor",
+    date: "2026-04-06",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    metaTitle: "Corte de luz ou água: quando é ilegal e quais são seus direitos",
+    metaDescription: "Saiba quando o corte de serviços essenciais é abusivo e o que fazer para garantir seus direitos.",
+    readingTime: "5 min de leitura",
+    tags: [
+      "Serviços essenciais",
+      "Corte de luz",
+      "Corte de água",
+      "Direitos do consumidor",
+      "Cobrança indevida",
+      "Procon"
+    ],
+    featured: false,
+    content: `
+      <p><strong>Ficar sem água ou luz por conta de um corte indevido é mais do que um transtorno — é uma violação de direitos básicos.</strong> Serviços essenciais devem ser interrompidos apenas em situações específicas e seguindo regras claras.</p>
+
+      <br/>
+
+      <h2>Quando o corte pode acontecer</h2>
+
+      <p>O corte de serviços como água e energia pode ocorrer quando há dívidas recentes e sem contestação.</p>
+
+      <p>Nesses casos, a concessionária pode suspender o fornecimento após aviso prévio. Ainda assim, existem limites e regras que precisam ser respeitadas.</p>
+
+      <br/>
+
+      <h2>Dívidas antigas não justificam corte</h2>
+
+      <p>Um erro comum acontece quando a empresa corta o serviço por dívidas muito antigas.</p>
+
+      <p>Nessas situações, a interrupção é irregular. A empresa pode cobrar os valores por outros meios, mas não pode suspender o fornecimento.</p>
+
+      <br/>
+
+      <h2>Falta de aviso prévio é abuso</h2>
+
+      <p>O consumidor deve ser informado com antecedência sobre o risco de corte.</p>
+
+      <p>Sem comunicação clara e comprovada, a interrupção do serviço é considerada abusiva.</p>
+
+      <br/>
+
+      <h2>Dívida em disputa não autoriza corte</h2>
+
+      <p>Se o valor da conta estiver sendo contestado, a empresa não pode realizar o corte até que a situação seja analisada.</p>
+
+      <p>Nesses casos, o consumidor tem direito à revisão da cobrança e à apresentação de justificativas.</p>
+
+      <br/>
+
+      <h2>Seus direitos em caso de corte indevido</h2>
+
+      <p>O consumidor não está desamparado. Veja o que a lei garante:</p>
+
+      <p>Não pode haver corte por dívidas antigas sem relação com o consumo atual;<br/>
+      O aviso prévio é obrigatório antes da suspensão;<br/>
+      Contas em disputa não autorizam corte automático;<br/>
+      O serviço deve ser restabelecido rapidamente após o pagamento;<br/>
+      É possível buscar o PROCON e a Justiça em caso de abuso.</p>
+
+      <br/>
+
+      <h2>Serviço essencial é direito, não privilégio</h2>
+
+      <p>O acesso à água e à energia elétrica é um direito básico e deve ser respeitado.</p>
+
+      <p>Se houver irregularidade, o consumidor pode procurar a Secretaria de Estado de Defesa do Consumidor (SEDCON) ou o PROCON-RJ.</p>
+
+      <p><strong>Informação é a melhor defesa — e conhecer seus direitos é o primeiro passo para não ficar no escuro.</strong></p>
+    `,
+    image: undefined
+  },
+
+  {
+    slug: "gasolina-subindo-sem-reajuste-petrobras-direitos-consumidor",
+    source: "Coluna Defesa do Consumidor",
+    category: "Defesa do Consumidor",
+    title: "Gasolina subindo sem aumento da Petrobras: o que está acontecendo — e o que você pode fazer",
+    subTitle: "Alta nos combustíveis sem reajuste oficial levanta suspeitas sobre margens abusivas. Entenda o que está por trás do aumento e como agir.",
+    excerpt: "Alta nos combustíveis sem reajuste oficial levanta suspeitas sobre margens abusivas. Entenda o que está por trás do aumento e como agir.",
+    author: "Gutemberg Fonseca",
+    role: "Coluna de Defesa do Consumidor",
+    date: "2026-03-30",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    metaTitle: "Gasolina subindo sem reajuste: entenda o aumento e seus direitos",
+    metaDescription: "Saiba por que a gasolina está subindo mesmo sem reajuste da Petrobras e o que você pode fazer diante de possíveis abusos.",
+    readingTime: "6 min de leitura",
+    tags: [
+      "Gasolina",
+      "Preço abusivo",
+      "Combustível",
+      "Direitos do consumidor",
+      "Procon",
+      "Fiscalização"
+    ],
+    featured: false,
+    content: `
     <p><strong>Você foi abastecer e levou um susto com o preço na bomba?</strong> A gasolina e o diesel vêm subindo há semanas — e o mais intrigante é que não houve reajuste oficial da Petrobras.</p>
 
     <p>Diante disso, surge a dúvida: de onde vem essa alta? E o mais importante: o que o consumidor pode fazer?</p>
@@ -120,40 +199,35 @@ export const blogPosts: BlogPost[] = [
     <p>O aumento abusivo dos combustíveis afeta toda a população — do motorista ao consumidor no supermercado.</p>
 
     <p><strong>Se você identificou aumento injustificado, não fique em silêncio. Denuncie. Seu relato faz diferença.</strong></p>
-  `
-},
+  `,
+    image: undefined
+  },
 
   {
-  slug: "pascoa-direitos-consumidor-compra-chocolate",
-  source: "Coluna Defesa do Consumidor",
-  category: "Defesa do Consumidor",
-  title: "Páscoa sem gosto amargo: conheça seus direitos na hora de comprar chocolate",
-  subTitle:
-    "Diferença de peso, produtos fora do padrão e informações pouco claras estão entre os principais problemas. Saiba como evitar prejuízos.",
-  excerpt:
-    "Diferença de peso, produtos fora do padrão e informações pouco claras estão entre os principais problemas. Saiba como evitar prejuízos.",
-  author: "Gutemberg Fonseca",
-  role: "Coluna de Defesa do Consumidor",
-  date: "2026-03-30",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  metaTitle:
-    "Páscoa: conheça seus direitos ao comprar ovos de chocolate",
-  metaDescription:
-    "Saiba como evitar prejuízos na Páscoa ao comprar chocolates e conheça seus direitos como consumidor.",
-  readingTime: "4 min de leitura",
-  tags: [
-    "Páscoa",
-    "Direitos do consumidor",
-    "Ovo de chocolate",
-    "Publicidade enganosa",
-    "Produto com defeito",
-    "Compra segura"
-  ],
-  featured: false,
-  content: `
+    slug: "pascoa-direitos-consumidor-compra-chocolate",
+    source: "Coluna Defesa do Consumidor",
+    category: "Defesa do Consumidor",
+    title: "Páscoa sem gosto amargo: conheça seus direitos na hora de comprar chocolate",
+    subTitle: "Diferença de peso, produtos fora do padrão e informações pouco claras estão entre os principais problemas. Saiba como evitar prejuízos.",
+    excerpt: "Diferença de peso, produtos fora do padrão e informações pouco claras estão entre os principais problemas. Saiba como evitar prejuízos.",
+    author: "Gutemberg Fonseca",
+    role: "Coluna de Defesa do Consumidor",
+    date: "2026-03-30",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    metaTitle: "Páscoa: conheça seus direitos ao comprar ovos de chocolate",
+    metaDescription: "Saiba como evitar prejuízos na Páscoa ao comprar chocolates e conheça seus direitos como consumidor.",
+    readingTime: "4 min de leitura",
+    tags: [
+      "Páscoa",
+      "Direitos do consumidor",
+      "Ovo de chocolate",
+      "Publicidade enganosa",
+      "Produto com defeito",
+      "Compra segura"
+    ],
+    featured: false,
+    content: `
     <p><strong>A Páscoa é tempo de celebrar, reunir a família e adoçar a vida.</strong> Mas ninguém merece que o sabor do chocolate seja substituído pelo gosto amargo de uma infração contra o consumidor.</p>
 
     <p>Nesta época do ano, aumentam as reclamações sobre diferença de peso dos itens, produtos fora do padrão e falta de clareza nas informações. Estar atento é o melhor caminho para evitar prejuízos.</p>
@@ -183,29 +257,24 @@ export const blogPosts: BlogPost[] = [
     <p>Você também pode registrar denúncia pelo Fala Consumidor (SEDCON) via WhatsApp (21) 99336-4848 ou pelo Disque 151 do PROCON-RJ.</p>
 
     <p><strong>Informação é o melhor ingrediente para não cair em armadilhas.</strong></p>
-  `
-},
+  `,
+    image: undefined
+  },
 
 {
   slug: "pascoa-consciente-direito-informacao-rotulo",
   source: "Diário do Rio",
   category: "Defesa do Consumidor",
   title: "Páscoa consciente: você tem direito à informação no rótulo; saiba como usá-la",
-  subTitle:
-    "Saber ler ingredientes, identificar alergênicos e entender a tabela nutricional ajuda o consumidor a fazer escolhas mais seguras.",
-  excerpt:
-    "Saber ler ingredientes, identificar alergênicos e entender a tabela nutricional ajuda o consumidor a fazer escolhas mais seguras.",
+  subTitle: "Saber ler ingredientes, identificar alergênicos e entender a tabela nutricional ajuda o consumidor a fazer escolhas mais seguras.",
+  excerpt: "Saber ler ingredientes, identificar alergênicos e entender a tabela nutricional ajuda o consumidor a fazer escolhas mais seguras.",
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-26",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  metaTitle:
-    "Páscoa consciente: como ler rótulos e proteger sua saúde",
-  metaDescription:
-    "Aprenda a interpretar rótulos de alimentos na Páscoa e faça escolhas mais seguras e conscientes.",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle: "Páscoa consciente: como ler rótulos e proteger sua saúde",
+  metaDescription: "Aprenda a interpretar rótulos de alimentos na Páscoa e faça escolhas mais seguras e conscientes.",
   readingTime: "5 min de leitura",
   tags: [
     "Páscoa",
@@ -266,7 +335,8 @@ export const blogPosts: BlogPost[] = [
     <p>Na correria das compras, é comum agir por impulso. Mas consumir com consciência é garantir não apenas uma escolha melhor, mas também o respeito aos seus direitos.</p>
 
     <p><strong>Nesta Páscoa, não deixe que a pressa substitua a informação.</strong></p>
-  `
+  `,
+  image: undefined
 },
 
 {
@@ -274,20 +344,15 @@ export const blogPosts: BlogPost[] = [
   source: "Portal Pessoal",
   category: "Segurança Pública",
   title: "Vagão feminino RJ 24 horas: o que muda na rotina das mulheres no transporte público",
-  subTitle:
-    "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
-  excerpt:
-    "Quantas mulheres já passaram por situações constrangedoras no trem ou no metrô? Conheça os avanços e o que muda com o funcionamento 24h do vagão feminino.",
+  subTitle: "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
+  excerpt: "Quantas mulheres já passaram por situações constrangedoras no trem ou no metrô? Conheça os avanços e o que muda com o funcionamento 24h do vagão feminino.",
   author: "Gutemberg Fonseca",
   role: "Secretário de Estado de Defesa do Consumidor",
   date: "2025-03-25",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
   metaTitle: "Vagão feminino RJ 24 horas: segurança das mulheres no transporte público",
-  metaDescription:
-    "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
+  metaDescription: "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
   readingTime: "4 min de leitura",
   tags: [
     "Vagão feminino",
@@ -357,7 +422,8 @@ export const blogPosts: BlogPost[] = [
     <p>É tranquilidade no dia a dia.</p>
     
     <p>Seguimos atentos e trabalhando para que esse tipo de avanço deixe de ser exceção, e passe a fazer parte da regra.</p>
-  `
+  `,
+  image: undefined
 },
 
 {
@@ -365,20 +431,15 @@ export const blogPosts: BlogPost[] = [
   source: "Diário do Rio",
   category: "Defesa do Consumidor",
   title: "Academia e contrato: o que o consumidor precisa saber antes de assinar",
-  subTitle:
-    "Reajuste sem aviso, multa de fidelização e dificuldade para cancelar estão entre os principais problemas enfrentados por consumidores em contratos de academia.",
-  excerpt:
-    "Vai se matricular em academia? Saiba o que o contrato precisa ter, quando o reajuste é abusivo e como funciona o cancelamento.",
+  subTitle: "Reajuste sem aviso, multa de fidelização e dificuldade para cancelar estão entre os principais problemas enfrentados por consumidores em contratos de academia.",
+  excerpt: "Vai se matricular em academia? Saiba o que o contrato precisa ter, quando o reajuste é abusivo e como funciona o cancelamento.",
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-26",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
   metaTitle: "Contrato de academia: direitos do consumidor antes de assinar",
-  metaDescription:
-    "Vai se matricular em academia? Saiba o que o contrato precisa ter, quando o reajuste é abusivo e como funciona o cancelamento. Conheça seus direitos.",
+  metaDescription: "Vai se matricular em academia? Saiba o que o contrato precisa ter, quando o reajuste é abusivo e como funciona o cancelamento. Conheça seus direitos.",
   readingTime: "4 min de leitura",
   tags: [
     "Contrato de academia",
@@ -460,7 +521,8 @@ export const blogPosts: BlogPost[] = [
 
     <p>Se você passou por algum problema com contrato de academia, mensalidade abusiva ou dificuldade de cancelamento, não fique sem resposta. Os canais de defesa do consumidor estão à disposição</p>
 
-  `
+  `,
+  image: undefined
 },
 
 {
@@ -468,20 +530,15 @@ export const blogPosts: BlogPost[] = [
   source: "Diário do Rio",
   category: "Defesa do Consumidor",
   title: "Viagem de verão: conheça os direitos do hóspede em hotéis e pousadas",
-  subTitle:
-    "Foto diferente da realidade, reserva não honrada ou cobrança indevida? Conheça os direitos do hóspede em hotéis e pousadas e saiba o que exigir.",
-  excerpt:
-    "Foto bonita no site, realidade decepcionante na chegada? Saiba quais são os direitos do hóspede em hotéis e pousadas e o que exigir quando algo dá errado.",
+  subTitle: "Foto diferente da realidade, reserva não honrada ou cobrança indevida? Conheça os direitos do hóspede em hotéis e pousadas e saiba o que exigir.",
+  excerpt: "Foto bonita no site, realidade decepcionante na chegada? Saiba quais são os direitos do hóspede em hotéis e pousadas e o que exigir quando algo dá errado.",
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-30",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
   metaTitle: "Viagem de verão: conheça os direitos do hóspede em hotéis e pousadas",
-  metaDescription:
-    "Foto diferente da realidade, reserva não honrada ou cobrança indevida? Conheça os direitos do hóspede em hotéis e pousadas e saiba o que exigir.",
+  metaDescription: "Foto diferente da realidade, reserva não honrada ou cobrança indevida? Conheça os direitos do hóspede em hotéis e pousadas e saiba o que exigir.",
   readingTime: "6 min de leitura",
   tags: [
     "Direitos do hóspede",
@@ -574,7 +631,8 @@ export const blogPosts: BlogPost[] = [
       <li><strong>Zap do Guto:</strong> (21) 96619-2498</li>
       <li><strong>Instagram:</strong> @gutembergfonseca</li>
     </ul>
-  `
+  `,
+  image: undefined
 },
 
 {
@@ -582,20 +640,15 @@ export const blogPosts: BlogPost[] = [
   source: "Diário do Rio",
   category: "Defesa do Consumidor",
   title: "Direitos básicos do consumidor: o que todo cidadão precisa saber antes de comprar",
-  subTitle:
-    "Produto com defeito, propaganda enganosa ou cobrança indevida estão entre as situações em que o Código de Defesa do Consumidor protege você.",
-  excerpt:
-    "Produto com defeito, propaganda enganosa ou cobrança indevida? Conheça os direitos básicos do consumidor e saiba como o CDC protege você no dia a dia.",
+  subTitle: "Produto com defeito, propaganda enganosa ou cobrança indevida estão entre as situações em que o Código de Defesa do Consumidor protege você.",
+  excerpt: "Produto com defeito, propaganda enganosa ou cobrança indevida? Conheça os direitos básicos do consumidor e saiba como o CDC protege você no dia a dia.",
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-26",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
   metaTitle: "Direitos básicos do consumidor: o que você precisa saber",
-  metaDescription:
-    "Produto com defeito, propaganda enganosa ou cobrança indevida? Conheça os direitos básicos do consumidor e saiba como o CDC protege você no dia a dia.",
+  metaDescription: "Produto com defeito, propaganda enganosa ou cobrança indevida? Conheça os direitos básicos do consumidor e saiba como o CDC protege você no dia a dia.",
   readingTime: "5 min de leitura",
   tags: [
     "Direitos básicos do consumidor",
@@ -671,7 +724,8 @@ export const blogPosts: BlogPost[] = [
     <p>Quando o consumidor sabe o que a lei garante, fica muito mais difícil ser enganado. E quando mais pessoas conhecem e exercem seus direitos, o mercado melhora para todo mundo — as empresas que desrespeitam são pressionadas a mudar, e as boas práticas se tornam o padrão.</p>
 
     <p>Informação é, sim, o melhor instrumento de defesa do consumidor.</p>
-  `
+  `,
+  image: undefined
 },
 
 {
@@ -679,20 +733,15 @@ export const blogPosts: BlogPost[] = [
   source: "Diário do Rio",
   category: "Defesa do Consumidor",
   title: "Prazo de entrega e atrasos: o que fazer quando a compra não chega",
-  subTitle:
-    "Saiba o que fazer quando a entrega atrasa: conheça seus direitos, as opções de reembolso e como reclamar nos órgãos de defesa do consumidor.",
-  excerpt:
-    "Saiba o que fazer quando a entrega atrasa: conheça seus direitos, as opções de reembolso e como reclamar nos órgãos de defesa do consumidor.",
+  subTitle: "Saiba o que fazer quando a entrega atrasa: conheça seus direitos, as opções de reembolso e como reclamar nos órgãos de defesa do consumidor.",
+  excerpt: "Saiba o que fazer quando a entrega atrasa: conheça seus direitos, as opções de reembolso e como reclamar nos órgãos de defesa do consumidor.",
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-30",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
   metaTitle: "Prazo de entrega e atrasos: o que fazer quando a compra não chega",
-  metaDescription:
-    "Saiba o que fazer quando a entrega atrasa: conheça seus direitos, as opções de reembolso e como reclamar nos órgãos de defesa do consumidor.",
+  metaDescription: "Saiba o que fazer quando a entrega atrasa: conheça seus direitos, as opções de reembolso e como reclamar nos órgãos de defesa do consumidor.",
   readingTime: "6 min de leitura",
   tags: [
     "Atraso na entrega",
@@ -755,7 +804,8 @@ export const blogPosts: BlogPost[] = [
     <p>Guarde todas as provas — prints de conversas, comprovantes de pagamento, anúncios com o prazo informado. Depois, entre em contato com a loja pelos canais oficiais, peça um prazo final para a resolução e anote o número do protocolo de atendimento.</p>
 
     <p>Se nada avançar, acione os órgãos de defesa do consumidor. E se o atraso causou um prejuízo maior — como um presente que não chegou a tempo para uma data especial, um produto essencial para o trabalho ou um item para um evento —, você pode pedir indenização por danos materiais ou morais.</p>
-  `
+  `,
+  image: undefined
 },
 
 {
@@ -763,20 +813,15 @@ export const blogPosts: BlogPost[] = [
   source: "Portal Pessoal",
   category: "Segurança Pública",
   title: "Vagão feminino RJ 24 horas: o que muda na rotina das mulheres no transporte público",
-  subTitle:
-    "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
-  excerpt:
-    "Quantas mulheres já passaram por situações constrangedoras no trem ou no metrô? Conheça os avanços e o que muda com o funcionamento 24h do vagão feminino.",
+  subTitle: "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
+  excerpt: "Quantas mulheres já passaram por situações constrangedoras no trem ou no metrô? Conheça os avanços e o que muda com o funcionamento 24h do vagão feminino.",
   author: "Gutemberg Fonseca",
   role: "Secretário de Estado de Defesa do Consumidor",
   date: "2025-03-25",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
   metaTitle: "Vagão feminino RJ 24 horas: segurança das mulheres no transporte público",
-  metaDescription:
-    "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
+  metaDescription: "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
   readingTime: "4 min de leitura",
   tags: [
     "Vagão feminino",
@@ -846,7 +891,8 @@ export const blogPosts: BlogPost[] = [
     <p>É tranquilidade no dia a dia.</p>
     
     <p>Seguimos atentos e trabalhando para que esse tipo de avanço deixe de ser exceção, e passe a fazer parte da regra.</p>
-  `
+  `,
+  image: undefined
 },
 
 {
@@ -854,21 +900,15 @@ export const blogPosts: BlogPost[] = [
   source: "Diário do Vale",
   category: "Defesa do Consumidor",
   title: "Ano novo, mesmos golpes: fraudes digitais seguem em alta",
-  subTitle:
-    "PIX falso, links maliciosos e clonagem de WhatsApp continuam fazendo vítimas. Saiba como se proteger e evitar prejuízos.",
-  excerpt:
-    "PIX falso, links maliciosos e clonagem de WhatsApp continuam fazendo vítimas. Saiba como se proteger e evitar prejuízos.",
+  subTitle: "PIX falso, links maliciosos e clonagem de WhatsApp continuam fazendo vítimas. Saiba como se proteger e evitar prejuízos.",
+  excerpt: "PIX falso, links maliciosos e clonagem de WhatsApp continuam fazendo vítimas. Saiba como se proteger e evitar prejuízos.",
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2026-01-16",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  metaTitle:
-    "Fraudes digitais em alta: como se proteger de golpes com PIX, links e WhatsApp",
-  metaDescription:
-    "Veja como funcionam os principais golpes digitais, como PIX falso e clonagem de WhatsApp, e saiba como se proteger.",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle: "Fraudes digitais em alta: como se proteger de golpes com PIX, links e WhatsApp",
+  metaDescription: "Veja como funcionam os principais golpes digitais, como PIX falso e clonagem de WhatsApp, e saiba como se proteger.",
   readingTime: "5 min de leitura",
   tags: [
     "Golpes digitais",
@@ -929,7 +969,8 @@ export const blogPosts: BlogPost[] = [
     <br/>
 
     <p><strong>A prevenção ainda é a melhor defesa.</strong> Em um ambiente digital cada vez mais complexo, estar atento e bem informado é essencial para não cair em armadilhas.</p>
-  `
+  `,
+  image: undefined
 },
 
 {
@@ -937,21 +978,15 @@ export const blogPosts: BlogPost[] = [
   source: "Diário do Rio",
   category: "Defesa do Consumidor",
   title: "Trocas pós-Natal: o que a loja é obrigada a aceitar?",
-  subTitle:
-    "Entenda quando a troca é obrigatória por lei, quando depende da política da loja e quais são seus direitos nas compras feitas pela internet.",
-  excerpt:
-    "Entenda quando a troca é obrigatória por lei, quando depende da política da loja e quais são seus direitos nas compras feitas pela internet.",
+  subTitle: "Entenda quando a troca é obrigatória por lei, quando depende da política da loja e quais são seus direitos nas compras feitas pela internet.",
+  excerpt: "Entenda quando a troca é obrigatória por lei, quando depende da política da loja e quais são seus direitos nas compras feitas pela internet.",
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2025-12-31",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  metaTitle:
-    "Trocas pós-Natal: quando a loja é obrigada a aceitar devolução ou troca",
-  metaDescription:
-    "Saiba quando você tem direito à troca ou devolução após o Natal e quando isso depende da política da loja.",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle: "Trocas pós-Natal: quando a loja é obrigada a aceitar devolução ou troca",
+  metaDescription: "Saiba quando você tem direito à troca ou devolução após o Natal e quando isso depende da política da loja.",
   readingTime: "6 min de leitura",
   tags: [
     "Troca de produtos",
@@ -1021,7 +1056,8 @@ export const blogPosts: BlogPost[] = [
     <p>Se houver dificuldade na troca ou devolução, o consumidor pode buscar orientação nos órgãos de defesa do consumidor, como o PROCON-RJ e a SEDCON.</p>
 
     <p>Entender seus direitos é a melhor forma de evitar dores de cabeça — e garantir que o presente não vire prejuízo.</p>
-  `
+  `,
+  image: undefined
 },
 
 {
@@ -1029,21 +1065,15 @@ export const blogPosts: BlogPost[] = [
   source: "Diário do Rio",
   category: "Defesa do Consumidor",
   title: "Plano de celular sem pegadinhas: conheça seus direitos",
-  subTitle:
-    "Fidelização, internet lenta e dificuldade para cancelar estão entre as principais queixas dos consumidores. Saiba o que a lei garante.",
-  excerpt:
-    "Fidelização, internet lenta e dificuldade para cancelar estão entre as principais queixas dos consumidores. Saiba o que a lei garante.",
+  subTitle: "Fidelização, internet lenta e dificuldade para cancelar estão entre as principais queixas dos consumidores. Saiba o que a lei garante.",
+  excerpt: "Fidelização, internet lenta e dificuldade para cancelar estão entre as principais queixas dos consumidores. Saiba o que a lei garante.",
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2026-02-25",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  metaTitle:
-    "Plano de celular: direitos do consumidor sobre fidelização, cancelamento e qualidade",
-  metaDescription:
-    "Saiba seus direitos em planos de celular: fidelização, internet lenta, portabilidade e cancelamento sem burocracia.",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle: "Plano de celular: direitos do consumidor sobre fidelização, cancelamento e qualidade",
+  metaDescription: "Saiba seus direitos em planos de celular: fidelização, internet lenta, portabilidade e cancelamento sem burocracia.",
   readingTime: "5 min de leitura",
   tags: [
     "Plano de celular",
@@ -1107,7 +1137,8 @@ export const blogPosts: BlogPost[] = [
     <p>Se houver abuso ou dificuldade na resolução do problema, o consumidor pode buscar ajuda nos órgãos de defesa do consumidor, como o PROCON-RJ e a SEDCON.</p>
 
     <p><strong>Informação clara não é favor — é obrigação.</strong> E consumidor bem informado não cai em pegadinhas.</p>
-  `
+  `,
+  image: undefined
 },
 
 {
@@ -1115,21 +1146,15 @@ export const blogPosts: BlogPost[] = [
   source: "Diário do Rio",
   category: "Defesa do Consumidor",
   title: "Compras online e golpes no PIX: como comprar com segurança e evitar prejuízos",
-  subTitle:
-    "Sites falsos, anúncios enganosos e fraudes no PIX estão entre os principais riscos. Veja como se proteger e o que fazer se cair em um golpe.",
-  excerpt:
-    "Sites falsos, anúncios enganosos e fraudes no PIX estão entre os principais riscos. Veja como se proteger e o que fazer se cair em um golpe.",
+  subTitle: "Sites falsos, anúncios enganosos e fraudes no PIX estão entre os principais riscos. Veja como se proteger e o que fazer se cair em um golpe.",
+  excerpt: "Sites falsos, anúncios enganosos e fraudes no PIX estão entre os principais riscos. Veja como se proteger e o que fazer se cair em um golpe.",
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2025-12-17",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  metaTitle:
-    "Golpes em compras online e PIX: como evitar fraudes e comprar com segurança",
-  metaDescription:
-    "Aprenda a identificar golpes em compras online e no PIX e saiba o que fazer para evitar prejuízos.",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle: "Golpes em compras online e PIX: como evitar fraudes e comprar com segurança",
+  metaDescription: "Aprenda a identificar golpes em compras online e no PIX e saiba o que fazer para evitar prejuízos.",
   readingTime: "6 min de leitura",
   tags: [
     "Compras online",
@@ -1212,7 +1237,8 @@ export const blogPosts: BlogPost[] = [
     <p>Grande parte dos golpes acontece por falta de informação ou atenção. Verificar antes de pagar é sempre o melhor caminho.</p>
 
     <p><strong>Comprar online pode ser seguro — desde que o consumidor esteja atento.</strong></p>
-  `
+  `,
+  image: undefined
 },
 
 {
@@ -1220,21 +1246,15 @@ export const blogPosts: BlogPost[] = [
   source: "Diário do Rio",
   category: "Defesa do Consumidor",
   title: "Crédito consignado: atenção aos seus direitos antes de contratar",
-  subTitle:
-    "Margem consignável, portabilidade e descontos indevidos estão entre os principais pontos de atenção. Saiba como evitar prejuízos.",
-  excerpt:
-    "Margem consignável, portabilidade e descontos indevidos estão entre os principais pontos de atenção. Saiba como evitar prejuízos.",
+  subTitle: "Margem consignável, portabilidade e descontos indevidos estão entre os principais pontos de atenção. Saiba como evitar prejuízos.",
+  excerpt: "Margem consignável, portabilidade e descontos indevidos estão entre os principais pontos de atenção. Saiba como evitar prejuízos.",
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2026-01-14",
-  authorImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage:
-    "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  metaTitle:
-    "Crédito consignado: direitos do consumidor e cuidados antes de contratar",
-  metaDescription:
-    "Saiba seus direitos no crédito consignado, como evitar descontos indevidos e o que fazer em caso de fraude.",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  metaTitle: "Crédito consignado: direitos do consumidor e cuidados antes de contratar",
+  metaDescription: "Saiba seus direitos no crédito consignado, como evitar descontos indevidos e o que fazer em caso de fraude.",
   readingTime: "6 min de leitura",
   tags: [
     "Crédito consignado",
@@ -1305,7 +1325,8 @@ export const blogPosts: BlogPost[] = [
     <p>Crédito consignado não é renda extra — é dívida. Antes de contratar, avalie sua capacidade de pagamento e desconfie de propostas milagrosas.</p>
 
     <p><strong>Informação é a melhor proteção contra abusos e golpes.</strong></p>
-  `
+  `,
+  image: undefined
 }
 
 ];

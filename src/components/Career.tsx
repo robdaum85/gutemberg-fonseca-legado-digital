@@ -58,6 +58,12 @@ const Career = () => {
       title: "Maior Apreensão da História do RJ",
       description: "Em dezembro de 2025, a SEDCON e o PROCON-RJ realizaram a maior apreensão de produtos falsificados da história do estado do Rio de Janeiro, com mais de 14,5 toneladas em Rio das Ostras",
       icon: Trophy
+    },
+    {
+    year: "2026",
+      title: "Especialista em Defesa do Consumidor.",
+      description: "Em 2026, Gutemberg Fonseca é reconhecido como um dos maiores especialistas em Defesa do Consumidor do país, consolidando sua reputação como um gestor público comprometido com a proteção dos direitos dos consumidores e a promoção de um mercado mais justo e transparente.",
+      icon: Trophy
     }
   ];
 
