@@ -1,5 +1,10 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/blog/:slug", "destination": "/index.html" },
+    { "source": "/blog", "destination": "/index.html" },
+    {
+      "source": "/((?!sitemap\\.xml|robots\\.txt|manifest\\.webmanifest|sw\\.js|registerSW\\.js|workbox-.*\\.js|assets/.*|lovable-uploads/.*|favicon\\.ico|placeholder\\.svg).*)",
+      "destination": "/index.html"
+    }
   ]
 }
