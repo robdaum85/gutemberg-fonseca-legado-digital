@@ -16,6 +16,17 @@ export default defineConfig({
         "favicon.ico",
         "lovable-uploads/c003fb8b-1544-42bc-881b-af1b83f1ac15.png",
       ],
+      workbox: {
+        navigateFallbackDenylist: [
+          /^\/robots\.txt$/,
+          /^\/sitemap\.xml$/,
+          /^\/manifest\.webmanifest$/,
+          /^\/sw\.js$/,
+          /^\/registerSW\.js$/,
+          /^\/workbox-.*\.js$/,
+        ],
+        cleanupOutdatedCaches: true
+      },
       manifest: {
         name: "Gutemberg Fonseca - Legado Digital",
         short_name: "Gutemberg",
