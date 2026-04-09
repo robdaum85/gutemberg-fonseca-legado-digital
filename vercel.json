@@ -1,9 +1,15 @@
 {
   "rewrites": [
-    { "source": "/blog/:slug", "destination": "/index.html" },
-    { "source": "/blog", "destination": "/index.html" },
     {
-      "source": "/((?!sitemap\\.xml|robots\\.txt|manifest\\.webmanifest|sw\\.js|registerSW\\.js|workbox-.*\\.js|assets/.*|lovable-uploads/.*|favicon\\.ico|placeholder\\.svg).*)",
+      "source": "/blog/:slug",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/((?!robots\\.txt|sitemap\\.xml|manifest\\.webmanifest|sw\\.js|registerSW\\.js|workbox-.*\\.js|favicon\\.ico|placeholder\\.svg|lovable-uploads/.*|assets/.*).*)",
       "destination": "/index.html"
     }
   ]
