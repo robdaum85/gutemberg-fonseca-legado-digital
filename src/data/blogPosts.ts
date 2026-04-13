@@ -1,5 +1,4 @@
 export type BlogPost = {
-  image: any;
   slug: string;
   source: string;
   category: string;
@@ -20,6 +19,170 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "crime-relacao-consumo-virus-silencioso",
+    source: "O Dia",
+    category: "Defesa do Consumidor",
+    title: "O crime na relação de consumo é um vírus silencioso e pode ser combatido",
+    subTitle:
+      "Produtos falsificados, contrabando e práticas ilegais impactam a economia e colocam consumidores em risco.",
+    excerpt:
+      "Produtos falsificados, contrabando e práticas ilegais impactam a economia e colocam consumidores em risco.",
+    author: "Gutemberg Fonseca",
+    role: "Coluna de Defesa do Consumidor",
+    date: "2026-04-13",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    metaTitle:
+      "Crime na relação de consumo: um problema silencioso",
+    metaDescription:
+      "Entenda como o crime nas relações de consumo afeta a sociedade e como combatê-lo.",
+    readingTime: "6 min de leitura",
+    tags: [
+      "Produtos falsificados",
+      "Contrabando",
+      "Direitos do consumidor",
+      "Fiscalização",
+      "Crime econômico"
+    ],
+    featured: true,
+    content: `
+      <p><strong>O crime na relação de consumo é um vírus silencioso — e pode ser combatido.</strong></p>
+
+      <br/>
+
+      <h2>Uma epidemia invisível</h2>
+      <p>Experiência à frente da gestão pública, inclusive em momentos críticos como a pandemia, ensinou que as maiores ameaças nem sempre são visíveis. Hoje, fora do contexto sanitário, o Brasil convive com outra epidemia silenciosa: o crime nas relações de consumo. Um problema estrutural que afeta a economia, compromete a segurança e impacta diretamente a vida da população.</p>
+
+      <br/>
+
+      <h2>O tamanho do prejuízo</h2>
+      <p>Contrabando, pirataria, falsificação e adulteração de produtos alimentam uma cadeia criminosa bilionária. Dados do Fórum Nacional Contra a Pirataria e a Ilegalidade apontam prejuízos de centenas de bilhões de reais ao país. São recursos que deixam de circular na economia formal, comprometendo empregos, arrecadação e investimentos em áreas essenciais.</p>
+
+      <br/>
+
+      <h2>Risco real para o consumidor</h2>
+      <p>Mais do que números, trata-se de uma questão de risco real. Produtos falsificados ou adulterados não passam por controle de qualidade e podem causar danos à saúde e à segurança. Cosméticos irregulares provocam reações alérgicas, brinquedos sem certificação colocam crianças em perigo, e até itens aparentemente simples, como roupas e calçados, podem gerar lesões. O barato, nesses casos, pode sair caro e até perigoso.</p>
+
+      <br/>
+
+      <h2>Fiscalização e crime organizado</h2>
+      <p>Operações de fiscalização têm mostrado a dimensão desse problema. A Operação Veritas, realizada em parceria com órgãos de controle e segurança, resultou na apreensão de mais de 30 toneladas de produtos piratas em estabelecimentos em diversas regiões do estado do Rio de Janeiro. Mercadorias que, além de enganar o consumidor, muitas vezes financiam atividades ilícitas como milícias, lavagem de dinheiro e sonegação fiscal.</p>
+
+      <br/>
+
+      <h2>Por que o consumidor compra irregular?</h2>
+      <p>Muitas vezes, a escolha por um produto irregular está associada ao preço mais baixo, à falta de informação ou ao desejo de acesso a determinadas marcas. Por isso, a educação para o consumo é tão essencial quanto a fiscalização. Informar, orientar e conscientizar são etapas fundamentais para prevenir riscos.</p>
+
+      <br/>
+
+      <h2>Responsabilidade compartilhada</h2>
+      <p>O enfrentamento ao crime nas relações de consumo passa, necessariamente, pela construção de uma cultura de responsabilidade compartilhada. O consumidor que exige nota fiscal, verifica a procedência do produto e denuncia irregularidades contribui diretamente para um mercado mais justo e seguro.</p>
+
+      <br/>
+
+      <h2>Como combater esse crime?</h2>
+      <p>Esse tipo de crime é silencioso, mas seus efeitos são profundos. Combatê-lo é proteger não apenas o direito de escolha, mas a saúde, a segurança e a dignidade da população. A boa notícia é que existe solução: informação, fiscalização e engajamento coletivo são as ferramentas mais eficazes nessa luta.</p>
+
+      <br/>
+
+      <h2>Denuncie</h2>
+      <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo whatsapp <strong>+55 (21) 96619-2498</strong> ou pelo <strong>@gutembergfonseca</strong>.</p>
+    `
+  },
+  {
+    slug: "compras-online-prazo-entrega-direitos-consumidor",
+    source: "Diário do Vale",
+    category: "Defesa do Consumidor",
+    title: "Compras online: atenção aos prazos de entrega e aos seus direitos",
+    subTitle:
+      "Atrasos, direito de arrependimento e descumprimento da oferta estão entre os principais problemas nas compras pela internet. Saiba como agir.",
+    excerpt:
+      "Atrasos, direito de arrependimento e descumprimento da oferta estão entre os principais problemas nas compras pela internet. Saiba como agir.",
+    author: "Gutemberg Fonseca",
+    role: "Coluna de Defesa do Consumidor",
+    date: "2026-04-10",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    metaTitle:
+      "Compras online: prazos de entrega e direitos do consumidor",
+    metaDescription:
+      "Saiba o que fazer em caso de atraso na entrega, como funciona o direito de arrependimento e como agir em compras online.",
+    readingTime: "5 min de leitura",
+    tags: [
+      "Compras online",
+      "Prazo de entrega",
+      "Direitos do consumidor",
+      "Direito de arrependimento",
+      "Reembolso",
+      "Compra pela internet"
+    ],
+    featured: false,
+    content: `
+      <p><strong>Comprar pela internet já faz parte da rotina do consumidor conectado — mas exige atenção.</strong> Um dos pontos mais importantes é o prazo de entrega, que deve ser informado de forma clara no momento da compra e cumprido exatamente como prometido.</p>
+
+      <br/>
+
+      <h2>Prazo de entrega deve ser respeitado</h2>
+
+      <p>Se houver atraso, o consumidor não precisa aceitar passivamente. A lei garante três opções:</p>
+
+      <p>Exigir o cumprimento da entrega;<br/>
+      Aceitar outro produto equivalente;<br/>
+      Cancelar a compra com reembolso integral, incluindo o frete.</p>
+
+      <br/>
+
+      <h2>Direito de arrependimento</h2>
+
+      <p>Nas compras realizadas pela internet, o consumidor pode desistir da compra em até sete dias após o recebimento do produto ou da assinatura do contrato.</p>
+
+      <p>Não é necessário justificar. O valor pago deve ser devolvido integralmente, e o fornecedor é responsável pelos custos da devolução.</p>
+
+      <br/>
+
+      <h2>Produto diferente do comprado</h2>
+
+      <p>Se o consumidor receber algo diferente do que foi adquirido, há descumprimento da oferta.</p>
+
+      <p>Nesse caso, ele pode exigir o produto correto, aceitar outro equivalente ou cancelar a compra com devolução do valor pago.</p>
+
+      <br/>
+
+      <h2>Como evitar problemas</h2>
+
+      <p>Algumas medidas simples ajudam a reduzir riscos:</p>
+
+      <p>Pesquisar a reputação da loja;<br/>
+      Verificar avaliações de outros consumidores;<br/>
+      Guardar comprovantes e registros da compra.</p>
+
+      <br/>
+
+      <h2>Transparência não é opcional</h2>
+
+      <p>No ambiente digital, a regra é clara: o fornecedor deve cumprir a oferta e agir com transparência.</p>
+
+      <p><strong>Isso não é favor — é obrigação legal.</strong></p>
+
+      <br/>
+
+      <h2>Onde buscar ajuda</h2>
+
+      <p>Se houver problemas, o consumidor pode registrar denúncia nos canais de defesa:</p>
+
+      <p>Fala Consumidor (SEDCON) pelo WhatsApp (21) 99336-4848;<br/>
+      Disque 151 do PROCON-RJ;<br/>
+      Também é possível buscar atendimento digital ou presencial.</p>
+
+      <p><strong>Consumidor informado evita prejuízos e faz valer seus direitos.</strong></p>
+    `
+  },
+
   {
     slug: "corte-indevido-servicos-essenciais-direitos-consumidor",
     source: "Coluna Defesa do Consumidor",
@@ -100,8 +263,7 @@ export const blogPosts: BlogPost[] = [
       <p>Se houver irregularidade, o consumidor pode procurar a Secretaria de Estado de Defesa do Consumidor (SEDCON) ou o PROCON-RJ.</p>
 
       <p><strong>Informação é a melhor defesa — e conhecer seus direitos é o primeiro passo para não ficar no escuro.</strong></p>
-    `,
-    image: undefined
+    `
   },
 
   {
@@ -199,8 +361,7 @@ export const blogPosts: BlogPost[] = [
     <p>O aumento abusivo dos combustíveis afeta toda a população — do motorista ao consumidor no supermercado.</p>
 
     <p><strong>Se você identificou aumento injustificado, não fique em silêncio. Denuncie. Seu relato faz diferença.</strong></p>
-  `,
-    image: undefined
+  `
   },
 
   {
@@ -257,8 +418,7 @@ export const blogPosts: BlogPost[] = [
     <p>Você também pode registrar denúncia pelo Fala Consumidor (SEDCON) via WhatsApp (21) 99336-4848 ou pelo Disque 151 do PROCON-RJ.</p>
 
     <p><strong>Informação é o melhor ingrediente para não cair em armadilhas.</strong></p>
-  `,
-    image: undefined
+  `
   },
 
 {
@@ -335,8 +495,7 @@ export const blogPosts: BlogPost[] = [
     <p>Na correria das compras, é comum agir por impulso. Mas consumir com consciência é garantir não apenas uma escolha melhor, mas também o respeito aos seus direitos.</p>
 
     <p><strong>Nesta Páscoa, não deixe que a pressa substitua a informação.</strong></p>
-  `,
-  image: undefined
+  `
 },
 
 {
@@ -422,8 +581,7 @@ export const blogPosts: BlogPost[] = [
     <p>É tranquilidade no dia a dia.</p>
     
     <p>Seguimos atentos e trabalhando para que esse tipo de avanço deixe de ser exceção, e passe a fazer parte da regra.</p>
-  `,
-  image: undefined
+  `
 },
 
 {
@@ -521,8 +679,7 @@ export const blogPosts: BlogPost[] = [
 
     <p>Se você passou por algum problema com contrato de academia, mensalidade abusiva ou dificuldade de cancelamento, não fique sem resposta. Os canais de defesa do consumidor estão à disposição</p>
 
-  `,
-  image: undefined
+  `
 },
 
 {
@@ -631,8 +788,7 @@ export const blogPosts: BlogPost[] = [
       <li><strong>Zap do Guto:</strong> (21) 96619-2498</li>
       <li><strong>Instagram:</strong> @gutembergfonseca</li>
     </ul>
-  `,
-  image: undefined
+  `
 },
 
 {
@@ -724,8 +880,7 @@ export const blogPosts: BlogPost[] = [
     <p>Quando o consumidor sabe o que a lei garante, fica muito mais difícil ser enganado. E quando mais pessoas conhecem e exercem seus direitos, o mercado melhora para todo mundo — as empresas que desrespeitam são pressionadas a mudar, e as boas práticas se tornam o padrão.</p>
 
     <p>Informação é, sim, o melhor instrumento de defesa do consumidor.</p>
-  `,
-  image: undefined
+  `
 },
 
 {
@@ -804,8 +959,7 @@ export const blogPosts: BlogPost[] = [
     <p>Guarde todas as provas — prints de conversas, comprovantes de pagamento, anúncios com o prazo informado. Depois, entre em contato com a loja pelos canais oficiais, peça um prazo final para a resolução e anote o número do protocolo de atendimento.</p>
 
     <p>Se nada avançar, acione os órgãos de defesa do consumidor. E se o atraso causou um prejuízo maior — como um presente que não chegou a tempo para uma data especial, um produto essencial para o trabalho ou um item para um evento —, você pode pedir indenização por danos materiais ou morais.</p>
-  `,
-  image: undefined
+  `
 },
 
 {
@@ -882,8 +1036,7 @@ export const blogPosts: BlogPost[] = [
     <br/>
 
     <p><strong>A prevenção ainda é a melhor defesa.</strong> Em um ambiente digital cada vez mais complexo, estar atento e bem informado é essencial para não cair em armadilhas.</p>
-  `,
-  image: undefined
+  `
 },
 
 {
@@ -969,8 +1122,7 @@ export const blogPosts: BlogPost[] = [
     <p>Se houver dificuldade na troca ou devolução, o consumidor pode buscar orientação nos órgãos de defesa do consumidor, como o PROCON-RJ e a SEDCON.</p>
 
     <p>Entender seus direitos é a melhor forma de evitar dores de cabeça — e garantir que o presente não vire prejuízo.</p>
-  `,
-  image: undefined
+  `
 },
 
 {
@@ -1050,8 +1202,7 @@ export const blogPosts: BlogPost[] = [
     <p>Se houver abuso ou dificuldade na resolução do problema, o consumidor pode buscar ajuda nos órgãos de defesa do consumidor, como o PROCON-RJ e a SEDCON.</p>
 
     <p><strong>Informação clara não é favor — é obrigação.</strong> E consumidor bem informado não cai em pegadinhas.</p>
-  `,
-  image: undefined
+  `
 },
 
 {
@@ -1150,8 +1301,7 @@ export const blogPosts: BlogPost[] = [
     <p>Grande parte dos golpes acontece por falta de informação ou atenção. Verificar antes de pagar é sempre o melhor caminho.</p>
 
     <p><strong>Comprar online pode ser seguro — desde que o consumidor esteja atento.</strong></p>
-  `,
-  image: undefined
+  `
 },
 
 {
@@ -1238,8 +1388,7 @@ export const blogPosts: BlogPost[] = [
     <p>Crédito consignado não é renda extra — é dívida. Antes de contratar, avalie sua capacidade de pagamento e desconfie de propostas milagrosas.</p>
 
     <p><strong>Informação é a melhor proteção contra abusos e golpes.</strong></p>
-  `,
-  image: undefined
+  `
 }
 
 ];
