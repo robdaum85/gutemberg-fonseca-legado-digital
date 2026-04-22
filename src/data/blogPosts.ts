@@ -19,6 +19,63 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+    {
+      slug: "juros-abusivos-cartao-de-credito-limite-divida-rotativo",
+      source: "Original",
+      category: "Defesa do Consumidor",
+      title: "Juros Abusivos no Cartão de Crédito: Existe um Limite que o Banco Não Te Conta",
+      subTitle: "Qual o valor máximo que a dívida do cartão pode chegar? Descubra a regra que protege o consumidor.",
+      excerpt: "Os juros abusivos no cartão de crédito chegaram a 436% ao ano. Mas existe uma regra que protege o consumidor: sua dívida no rotativo não pode ultrapassar o dobro do valor original. Entenda como funciona.",
+      author: "Gutemberg Fonseca",
+      role: "Especialista em Defesa do Consumidor",
+      date: "2026-04-22",
+      authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+      coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/Design-sem-nome-6.png",
+      metaTitle: "Juros Abusivos no Cartão de Crédito: Existe um Limite que o Banco Não Te Conta",
+      metaDescription: "Os juros abusivos no cartão de crédito chegaram a 436% ao ano. Mas existe uma regra que protege o consumidor: sua dívida no rotativo não pode ultrapassar o dobro do valor original. Entenda como funciona.",
+      readingTime: "5 min de leitura",
+      tags: [
+        "juros cartão de crédito",
+        "direitos do consumidor",
+        "crédito rotativo",
+        "dívida abusiva",
+        "Gutemberg Fonseca"
+      ],
+      featured: true,
+      content: `
+        <img src="https://kngofnnx.com/wp-content/uploads/2026/04/Design-sem-nome-6.png" alt="Juros abusivos no cartão de crédito" style="width:100%;height:auto;max-width:600px;margin:0 auto 24px;display:block;" />
+
+        <h1>Juros Abusivos no Cartão de Crédito: Existe um Limite que o Banco Não Te Conta</h1>
+        <p><strong>Qual o valor máximo que a dívida do cartão pode chegar?</strong></p>
+        <p>Eu já ouvi essa história centenas de vezes. A pessoa atrasa uma fatura, paga o mínimo, e de repente a dívida virou um monstro que ela não consegue mais olhar de frente. Parece que não tem saída. Mas tem.</p>
+
+        <h2>O rotativo e os juros de 436% ao ano</h2>
+        <p>Quando você não paga a fatura inteira do cartão, o valor restante entra no chamado crédito rotativo. É aí que começa o problema. Os juros do rotativo no Brasil chegaram a 436% ao ano, um dos mais altos do mundo.</p>
+        <p>Quem não conhece os próprios direitos fica à mercê de cobranças que crescem sem limite aparente.</p>
+
+        <h2>A regra que poucos conhecem</h2>
+        <p>O Banco Central e o Conselho Monetário Nacional estabelecem que, no crédito rotativo e no parcelamento do cartão, a dívida total não pode ultrapassar 100% do valor original. Na prática, isso significa:</p>
+        <ul>
+          <li>Devia R$ 1.000? Com juros e encargos, o máximo cobrado é R$ 2.000.</li>
+        </ul>
+        <p>Se a sua dívida já ultrapassou esse valor, você pode questionar a cobrança e usar isso como argumento na negociação com o banco.</p>
+
+        <h2>Como verificar a sua situação</h2>
+        <p>Pegue a sua fatura e responda duas perguntas simples:</p>
+        <ul>
+          <li>Quanto você devia no começo?</li>
+          <li>Quanto o banco está cobrando hoje?</li>
+        </ul>
+        <p>Se o valor atual for mais do que o dobro do original, procure o SAC do banco, o Procon do seu estado ou um advogado especialista em direito do consumidor.</p>
+
+        <h2>Isso não é desculpa pra deixar de pagar</h2>
+        <p>Conhecer esse direito não significa ignorar a dívida. Nome sujo e restrição de crédito continuam sendo consequências que prejudicam a sua vida. A melhor saída ainda é quitar a dívida o quanto antes, usando esse limite como argumento na hora de negociar.</p>
+
+        <p>Compartilha esse texto com quem está afogado no cartão. Informação também é um direito.</p>
+
+        <p><em>Gutemberg Fonseca é Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro. Acompanhe mais conteúdos sobre seus direitos no Instagram @gutembergpfonseca.</em></p>
+      `
+    },
   {
     slug: "como-saber-se-tem-emprestimo-no-meu-nome-banco-central",
     source: "Original",
@@ -386,7 +443,7 @@ export const blogPosts: BlogPost[] = [
     role: "Coluna de Defesa do Consumidor",
     date: "2026-03-30",
     authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/gutoblog-1.png",
     metaTitle: "Gasolina subindo sem reajuste: entenda o aumento e seus direitos",
     metaDescription: "Saiba por que a gasolina está subindo mesmo sem reajuste da Petrobras e o que você pode fazer diante de possíveis abusos.",
     readingTime: "6 min de leitura",
@@ -541,7 +598,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-26",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/Design-sem-nome-1-1.png",
   metaTitle: "Páscoa consciente: como ler rótulos e proteger sua saúde",
   metaDescription: "Aprenda a interpretar rótulos de alimentos na Páscoa e faça escolhas mais seguras e conscientes.",
   readingTime: "5 min de leitura",
@@ -1082,7 +1139,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2026-01-16",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/anonovogolpe-scaled.jpeg",
   metaTitle: "Fraudes digitais em alta: como se proteger de golpes com PIX, links e WhatsApp",
   metaDescription: "Veja como funcionam os principais golpes digitais, como PIX falso e clonagem de WhatsApp, e saiba como se proteger.",
   readingTime: "5 min de leitura",
@@ -1159,7 +1216,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2025-12-31",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/trocaposnatal-scaled.jpeg",
   metaTitle: "Trocas pós-Natal: quando a loja é obrigada a aceitar devolução ou troca",
   metaDescription: "Saiba quando você tem direito à troca ou devolução após o Natal e quando isso depende da política da loja.",
   readingTime: "6 min de leitura",
@@ -1245,7 +1302,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2026-02-25",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/young-beautiful-woman-having-online-meeting.jpg-scaled.jpeg",
   metaTitle: "Plano de celular: direitos do consumidor sobre fidelização, cancelamento e qualidade",
   metaDescription: "Saiba seus direitos em planos de celular: fidelização, internet lenta, portabilidade e cancelamento sem burocracia.",
   readingTime: "5 min de leitura",
@@ -1325,7 +1382,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2025-12-17",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/golpesnopix-scaled.jpeg",
   metaTitle: "Golpes em compras online e PIX: como evitar fraudes e comprar com segurança",
   metaDescription: "Aprenda a identificar golpes em compras online e no PIX e saiba o que fazer para evitar prejuízos.",
   readingTime: "6 min de leitura",
@@ -1423,8 +1480,8 @@ export const blogPosts: BlogPost[] = [
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2026-01-14",
-  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  authorImage: "https://kngofnnx.com/wp-content/uploads/2026/04/creditoconsignado-1-scaled.jpeg",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/creditoconsignado-1-scaled.jpeg",
   metaTitle: "Crédito consignado: direitos do consumidor e cuidados antes de contratar",
   metaDescription: "Saiba seus direitos no crédito consignado, como evitar descontos indevidos e o que fazer em caso de fraude.",
   readingTime: "6 min de leitura",
