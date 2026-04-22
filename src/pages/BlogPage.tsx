@@ -64,6 +64,13 @@ const BlogPage = () => {
                 onClick={() => handleOpen(post.slug)}
                 className="group text-left bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border hover:border-primary/30 cursor-pointer"
               >
+                {post.coverImage && (
+                  <img
+                    src={post.coverImage}
+                    alt={post.title}
+                    className="w-full h-48 object-cover object-center"
+                  />
+                )}
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">

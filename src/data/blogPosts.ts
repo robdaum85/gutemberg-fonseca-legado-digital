@@ -20,6 +20,114 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "como-saber-se-tem-emprestimo-no-meu-nome-banco-central",
+    source: "Original",
+    category: "Defesa do Consumidor",
+    title: "Como saber se tem empréstimo no meu nome: o guia completo para consultar pelo Banco Central",
+    subTitle: "Descubra como consultar se tem empréstimo no seu nome pelo Registrato do Banco Central. Passo a passo, riscos de fraude e o que fazer se aparecer dívida que não reconhece.",
+    excerpt: "Descubra como consultar se tem empréstimo no seu nome pelo Registrato do Banco Central. Passo a passo, riscos de fraude e o que fazer se aparecer dívida que não reconhece.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor",
+    date: "2026-04-20",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80",
+    metaTitle: "Como saber se tem empréstimo no meu nome? Consulte grátis no Banco Central",
+    metaDescription: "Descubra como consultar se tem empréstimo no seu nome pelo Registrato do Banco Central. Passo a passo, riscos de fraude e o que fazer se aparecer dívida que não reconhece.",
+    readingTime: "7 min de leitura",
+    tags: [
+      "como saber se tem empréstimo no meu nome",
+      "consulta empréstimo no meu nome",
+      "empréstimo no CPF",
+      "Registrato Banco Central",
+      "fraude empréstimo no meu nome",
+      "dívida no nome que não reconhece",
+      "SCR Banco Central"
+    ],
+    featured: true,
+    content: `
+      <img src=\"https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80\" alt=\"Como saber se tem empréstimo no meu nome - consulta Registrato Banco Central\" style=\"width:100%;height:auto;max-width:600px;margin:0 auto 24px;display:block;\" />
+
+      <h1>Como saber se tem empréstimo no meu nome: o guia completo para consultar pelo Banco Central</h1>
+      <p>Você sabe exatamente quais empréstimos e financiamentos estão vinculados ao seu CPF agora?</p>
+      <p>Se a resposta for \"não tenho certeza\", você não está sozinho. Milhares de brasileiros descobrem, na hora de tentar um crédito ou fechar um financiamento, que existem contratos no seu nome que eles nem se lembram de ter assinado, ou pior, que nunca assinaram.</p>
+      <p>A boa notícia: como saber se tem empréstimo no seu nome é mais simples do que parece. E a consulta é gratuita, oficial e leva menos de cinco minutos.</p>
+
+      <h2>Por que você pode ter empréstimos no seu nome sem saber</h2>
+      <p>Isso acontece com mais frequência do que as pessoas imaginam. Existem pelo menos três situações comuns:</p>
+      <ul>
+        <li><strong>Contratos esquecidos:</strong> empréstimos antigos, renegociações ou financiamentos que ainda constam no sistema mesmo depois de pagos.</li>
+        <li><strong>Fraudes e golpes:</strong> uso indevido do CPF para contratar crédito sem a sua autorização, um crime que cresce a cada ano no Brasil.</li>
+        <li><strong>Erros cadastrais:</strong> registros incorretos feitos por instituições financeiras.</li>
+      </ul>
+      <p>Em todos esses casos, o primeiro passo é o mesmo: consultar o sistema oficial do Banco Central para saber o que está registrado no seu nome.</p>
+
+      <h2>O que é o Registrato e por que ele existe</h2>
+      <p>O Registrato é uma plataforma oficial do Banco Central do Brasil. Ela funciona como uma espécie de extrato financeiro completo: reúne todas as informações sobre empréstimos, financiamentos e operações de crédito vinculadas ao seu CPF, independentemente da instituição financeira que originou o contrato.</p>
+      <p>As informações vêm do SCR — Sistema de Informações de Crédito, um banco de dados que todas as instituições financeiras do país são obrigadas a alimentar. Ou seja: se existe um empréstimo no seu nome, ele está lá.</p>
+      <p>O acesso é gratuito, o site é oficial (<a href=\"https://registrato.bcb.gov.br\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">registrato.bcb.gov.br</a>) e qualquer cidadão pode consultar.</p>
+
+      <h2>Como saber se tem empréstimo no seu nome: passo a passo pelo Registrato</h2>
+      <p>Siga as etapas abaixo. Você vai precisar de uma conta gov.br com nível prata ou ouro para autenticar o acesso.</p>
+      <ol>
+        <li><strong>Acesse o site oficial:</strong> Entre em <a href=\"https://registrato.bcb.gov.br\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">registrato.bcb.gov.br</a>. Esse é o endereço oficial. Desconfie de qualquer site parecido com nome diferente.</li>
+        <li><strong>Faça login com sua conta gov.br:</strong> Clique em \"Entrar com gov.br\" e use seu CPF e senha. Se sua conta ainda for nível bronze, você precisará subir para prata ou ouro para acessar os dados de crédito. Isso pode ser feito pelo próprio aplicativo gov.br, validando sua identidade por biometria facial ou outros métodos.</li>
+        <li><strong>Autorize o acesso aos seus dados:</strong> O sistema vai pedir que você autorize a consulta às suas informações financeiras. É uma etapa de segurança obrigatória. Confirme a autorização para continuar.</li>
+        <li><strong>Selecione \"Empréstimos e Financiamentos — SCR\":</strong> Na página inicial do Registrato, você vai ver várias categorias de consulta. Clique em \"Empréstimos e Financiamentos — o SCR\".</li>
+        <li><strong>Solicite o relatório:</strong> Clique em \"Solicite um novo relatório\". Em seguida, vá em \"Histórico\", escolha o período que deseja consultar (mês e ano) e clique em \"Próximo\".</li>
+      </ol>
+      <p>Em poucos segundos, o sistema gera um relatório completo com tudo que está registrado no seu nome no sistema financeiro nacional.</p>
+
+      <h2>O que você vai encontrar no relatório</h2>
+      <p>O relatório do SCR mostra informações como:</p>
+      <ul>
+        <li>Nome da instituição financeira</li>
+        <li>Tipo de operação (crédito pessoal, financiamento de veículo, consignado, etc.)</li>
+        <li>Valor contratado</li>
+        <li>Situação do contrato (em aberto, quitado, em atraso)</li>
+        <li>Data da operação</li>
+      </ul>
+      <p>Se aparecer algo que você não reconhece, não ignore. Pode ser um erro ou o início de uma fraude.</p>
+
+      <h2>O que fazer se encontrar algo errado</h2>
+      <p>Encontrou um contrato que não é seu? Veja o que fazer:</p>
+      <ol>
+        <li><strong>Anote todos os detalhes do registro:</strong> Nome da instituição, tipo de operação, valor e data. Você vai precisar dessas informações.</li>
+        <li><strong>Entre em contato com a instituição financeira:</strong> Acesse os canais oficiais de atendimento da instituição que aparece no relatório e informe que não reconhece a operação. Exija cancelamento e esclarecimentos formais.</li>
+        <li><strong>Registre um boletim de ocorrência:</strong> Se suspeitar de fraude, registre o B.O. na delegacia ou pelo site da Polícia Civil do seu estado. É um passo importante para sua proteção jurídica.</li>
+        <li><strong>Faça a reclamação formal no <a href=\"https://consumidor.gov.br\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">consumidor.gov.br</a>:</strong> O consumidor.gov.br é a plataforma oficial do governo federal para reclamações contra empresas. É gratuito e as empresas têm prazo para responder.</li>
+        <li><strong>Procure o Procon do seu estado:</strong> Se a instituição não resolver, o Procon pode intermediar e aplicar sanções. No Rio de Janeiro, o Procon-RJ atende presencialmente e online.</li>
+      </ol>
+
+      <h2>Erros comuns que as pessoas cometem nessa situação</h2>
+      <ul>
+        <li><strong>Entrar em contato por canais não oficiais:</strong> Cuidado com números de WhatsApp ou telefones encontrados em buscas no Google. Use sempre os canais oficiais da instituição, disponíveis no site do Banco Central ou no próprio site da empresa.</li>
+        <li><strong>Pagar uma dívida sem verificar se é legítima:</strong> Antes de pagar qualquer cobrança que chegue por SMS, WhatsApp ou ligação, consulte o Registrato para confirmar se aquela operação realmente existe no seu nome.</li>
+        <li><strong>Achar que não tem direito porque \"assinou um contrato\":</strong> Mesmo que tenha assinado algo, se as condições foram abusivas, a informação foi omitida ou você foi induzido ao erro, você tem direito de questionar. O Código de Defesa do Consumidor protege você.</li>
+        <li><strong>Deixar pra depois:</strong> Quanto mais tempo passa, mais difícil fica reverter algumas situações. A consulta é gratuita e rápida. Não tem motivo para esperar.</li>
+      </ul>
+
+      <h2>Com que frequência você deve consultar o Registrato</h2>
+      <p>Não existe uma regra oficial, mas uma boa prática é consultar ao menos uma vez por ano — ou sempre que:</p>
+      <ul>
+        <li>Você for solicitar um novo crédito ou financiamento</li>
+        <li>Suspeitar que seus dados foram vazados</li>
+        <li>Receber cobranças de dívidas que não reconhece</li>
+        <li>Notar movimentações estranhas na sua vida financeira</li>
+      </ul>
+      <p>Fazer isso com regularidade é uma forma de monitorar sua vida financeira e agir rápido se algo estiver errado.</p>
+
+      <h2>Conclusão</h2>
+      <p>Saber se tem empréstimo no seu nome não é complicado. O Banco Central disponibilizou uma ferramenta gratuita, oficial e acessível justamente para isso,  e a maioria das pessoas simplesmente não sabe que ela existe.</p>
+      <p>Se você chegou até aqui, já deu o primeiro passo: buscou a informação.</p>
+      <p>Agora o próximo passo é simples: acesse o <a href=\"https://registrato.bcb.gov.br\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">registrato.bcb.gov.br</a>, faça a consulta e veja com seus próprios olhos o que está registrado no seu CPF.</p>
+      <p>Se encontrar algo que não reconhece, não entre em pânico, mas também não ignore. Você tem direitos, e existem caminhos concretos para resolver.</p>
+      <p>Compartilhe esse conteúdo com alguém que pode precisar. Muita gente está pagando dívidas que não são suas ou sendo negativadas por contratos que nunca assinou,  e não sabe que pode mudar isso.</p>
+
+      <p><em>Gutemberg Fonseca é Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro. Acompanhe mais conteúdos sobre seus direitos no Instagram @gutembergpfonseca.</em></p>
+    `
+  },
+  // ...existing code...
+  {
     slug: "crime-relacao-consumo-virus-silencioso",
     source: "O Dia",
     category: "Defesa do Consumidor",
@@ -34,7 +142,7 @@ export const blogPosts: BlogPost[] = [
     authorImage:
       "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
     coverImage:
-      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+      "https://kngofnnx.com/wp-content/uploads/2026/04/crime-relacao-consumo-virus-silencioso.png",
     metaTitle:
       "Crime na relação de consumo: um problema silencioso",
     metaDescription:
@@ -106,8 +214,8 @@ export const blogPosts: BlogPost[] = [
     date: "2026-04-10",
     authorImage:
       "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage:
-      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+      coverImage:
+        "https://kngofnnx.com/wp-content/uploads/2026/04/comprasonline.png",
     metaTitle:
       "Compras online: prazos de entrega e direitos do consumidor",
     metaDescription:
@@ -183,6 +291,7 @@ export const blogPosts: BlogPost[] = [
     `
   },
 
+
   {
     slug: "corte-indevido-servicos-essenciais-direitos-consumidor",
     source: "Coluna Defesa do Consumidor",
@@ -194,7 +303,7 @@ export const blogPosts: BlogPost[] = [
     role: "Coluna de Defesa do Consumidor",
     date: "2026-04-06",
     authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+      coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/luz.png",
     metaTitle: "Corte de luz ou água: quando é ilegal e quais são seus direitos",
     metaDescription: "Saiba quando o corte de serviços essenciais é abusivo e o que fazer para garantir seus direitos.",
     readingTime: "5 min de leitura",
@@ -375,7 +484,7 @@ export const blogPosts: BlogPost[] = [
     role: "Coluna de Defesa do Consumidor",
     date: "2026-03-30",
     authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+      coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/Design-sem-nome-2.png",
     metaTitle: "Páscoa: conheça seus direitos ao comprar ovos de chocolate",
     metaDescription: "Saiba como evitar prejuízos na Páscoa ao comprar chocolates e conheça seus direitos como consumidor.",
     readingTime: "4 min de leitura",
@@ -509,7 +618,7 @@ export const blogPosts: BlogPost[] = [
   role: "Secretário de Estado de Defesa do Consumidor",
   date: "2025-03-25",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/Design-sem-nome-1.png",
   metaTitle: "Vagão feminino RJ 24 horas: segurança das mulheres no transporte público",
   metaDescription: "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
   readingTime: "4 min de leitura",
@@ -595,7 +704,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-26",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/side-view-people-running-treadmill-gym.jpg-scaled.jpeg",
   metaTitle: "Contrato de academia: direitos do consumidor antes de assinar",
   metaDescription: "Vai se matricular em academia? Saiba o que o contrato precisa ter, quando o reajuste é abusivo e como funciona o cancelamento. Conheça seus direitos.",
   readingTime: "4 min de leitura",
@@ -693,7 +802,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-30",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/african-american-man-carrying-bags-hotel-lobby-arriving-reception-counter-with-woman-check-guests-preparing-fill-registration-forms-staff-welcoming-tourists.jpg-scaled.jpeg",
   metaTitle: "Viagem de verão: conheça os direitos do hóspede em hotéis e pousadas",
   metaDescription: "Foto diferente da realidade, reserva não honrada ou cobrança indevida? Conheça os direitos do hóspede em hotéis e pousadas e saiba o que exigir.",
   readingTime: "6 min de leitura",
@@ -802,7 +911,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-26",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/man-shaking-hands-with-lady.jpg-scaled.jpeg",
   metaTitle: "Direitos básicos do consumidor: o que você precisa saber",
   metaDescription: "Produto com defeito, propaganda enganosa ou cobrança indevida? Conheça os direitos básicos do consumidor e saiba como o CDC protege você no dia a dia.",
   readingTime: "5 min de leitura",
@@ -894,7 +1003,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-30",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/mature-woman-getting-angry-yelling-phone-call-desk.jpg-scaled.jpeg",
   metaTitle: "Prazo de entrega e atrasos: o que fazer quando a compra não chega",
   metaDescription: "Saiba o que fazer quando a entrega atrasa: conheça seus direitos, as opções de reembolso e como reclamar nos órgãos de defesa do consumidor.",
   readingTime: "6 min de leitura",

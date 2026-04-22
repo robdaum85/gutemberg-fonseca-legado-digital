@@ -93,9 +93,9 @@ const BlogPostModal = ({ post, open, onClose }: BlogPostModalProps) => {
               {post.title}
             </h1>
 
-            {post.image && (
+            {post.coverImage && (
               <img
-                src={post.image}
+                src={post.coverImage}
                 alt={post.title}
                 className="w-full rounded-lg mb-6 object-cover max-h-[400px]"
                 loading="lazy"
