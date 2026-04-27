@@ -19,7 +19,62 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
-    {
+  {
+  slug: "delivery-sem-dor-de-cabeca-conheca-seus-direitos",
+  source: "Coluna",
+  category: "Defesa do Consumidor",
+  title: "Delivery sem dor de cabeça: conheça seus direitos",
+  subTitle: "Pedido errado, atraso ou qualidade ruim? Saiba como agir e não sair no prejuízo.",
+  excerpt: "Problemas com delivery são comuns, mas o consumidor não precisa arcar com prejuízo. O Código de Defesa do Consumidor garante reembolso, correção ou reenvio em caso de falhas no serviço.",
+  author: "Gutemberg Fonseca",
+  role: "Especialista em Defesa do Consumidor",
+  date: "2026-04-25",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/delivery.png",
+  metaTitle: "Delivery sem dor de cabeça: conheça seus direitos",
+  metaDescription: "Saiba o que fazer quando o pedido chega errado, atrasado ou em condições inadequadas. O consumidor tem direito a reembolso, troca ou correção do serviço.",
+  readingTime: "4 min de leitura",
+  tags: [
+    "delivery",
+    "direitos do consumidor",
+    "pedido errado",
+    "atraso entrega",
+    "CDC",
+    "Gutemberg Fonseca"
+  ],
+  featured: false,
+  content: `
+
+    <h1>Delivery sem dor de cabeça: conheça seus direitos</h1>
+    <p><strong>Pedido errado, atraso ou qualidade abaixo do esperado não são problemas que o consumidor deve assumir.</strong></p>
+
+    <p>Pedir comida por aplicativo já faz parte da rotina de muitos consumidores. Ainda assim, problemas como pedido errado, atraso ou qualidade abaixo do esperado continuam frequentes. Nessas situações, o consumidor não deve arcar com prejuízo. O Código de Defesa do Consumidor determina que o serviço seja prestado conforme a oferta.</p>
+
+    <h2>Pedido errado ou incompleto</h2>
+    <p>Se o pedido chegar errado ou incompleto, há falha na prestação do serviço. O consumidor pode escolher entre a correção imediata, o reenvio do pedido ou a devolução do valor pago.</p>
+    <p>O mesmo se aplica quando o alimento é entregue em condições diferentes das informadas, como temperatura inadequada ou apresentação comprometida.</p>
+
+    <h2>Atraso na entrega</h2>
+    <p>Quando há atraso além do prazo informado, ocorre descumprimento da oferta. Nessa hipótese, o consumidor pode cancelar o pedido e solicitar o reembolso integral.</p>
+
+    <h2>Quem é responsável?</h2>
+    <p>A responsabilidade pode ser solidária entre o restaurante e a empresa que gerencia o aplicativo, dependendo da forma como o serviço é prestado. Ambos integram a cadeia de fornecimento e podem responder pelo problema.</p>
+
+    <h2>Como se proteger</h2>
+    <p>Se acontecer algum problema, é importante registrar a reclamação no próprio aplicativo e guardar comprovantes. Fotos do produto e capturas de tela das mensagens ajudam a demonstrar o ocorrido.</p>
+    <p>Se não houver solução, o consumidor pode procurar os órgãos de defesa do consumidor ou utilizar plataformas digitais de reclamação.</p>
+
+    <h2>Direito à qualidade e cumprimento da oferta</h2>
+    <p>Praticidade não pode gerar prejuízo. O fornecedor deve cumprir o que foi prometido, no prazo, na forma e na qualidade informados.</p>
+
+    <p>Se quiser fazer uma denúncia sobre esse tema ou qualquer outro, os canais são: Fala Consumidor (SEDCON) pelo WhatsApp (21) 99336-4848 ou pelo Disque 151 do PROCON-RJ. Quem quiser, pode falar comigo pelo “Zap do Guto” (21) 96619-2498. Também estou no @gutembergfonseca.</p>
+
+    <p><em>Gutemberg Fonseca é Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro.</em></p>
+
+  `
+},  
+  
+  {
       slug: "juros-abusivos-cartao-de-credito-limite-divida-rotativo",
       source: "Original",
       category: "Defesa do Consumidor",
@@ -43,7 +98,6 @@ export const blogPosts: BlogPost[] = [
       ],
       featured: true,
       content: `
-        <img src="https://kngofnnx.com/wp-content/uploads/2026/04/Design-sem-nome-6.png" alt="Juros abusivos no cartão de crédito" style="width:100%;height:auto;max-width:600px;margin:0 auto 24px;display:block;" />
 
         <h1>Juros Abusivos no Cartão de Crédito: Existe um Limite que o Banco Não Te Conta</h1>
         <p><strong>Qual o valor máximo que a dívida do cartão pode chegar?</strong></p>
