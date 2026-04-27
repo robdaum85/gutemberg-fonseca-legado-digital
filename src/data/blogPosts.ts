@@ -87,7 +87,7 @@ export const blogPosts: BlogPost[] = [
     role: "Especialista em Defesa do Consumidor",
     date: "2026-04-20",
     authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/emprestimo-scaled.jpeg",
     metaTitle: "Como saber se tem empréstimo no meu nome? Consulte grátis no Banco Central",
     metaDescription: "Descubra como consultar se tem empréstimo no seu nome pelo Registrato do Banco Central. Passo a passo, riscos de fraude e o que fazer se aparecer dívida que não reconhece.",
     readingTime: "7 min de leitura",
@@ -102,7 +102,6 @@ export const blogPosts: BlogPost[] = [
     ],
     featured: true,
     content: `
-      <img src=\"https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80\" alt=\"Como saber se tem empréstimo no meu nome - consulta Registrato Banco Central\" style=\"width:100%;height:auto;max-width:600px;margin:0 auto 24px;display:block;\" />
 
       <h1>Como saber se tem empréstimo no meu nome: o guia completo para consultar pelo Banco Central</h1>
       <p>Você sabe exatamente quais empréstimos e financiamentos estão vinculados ao seu CPF agora?</p>
@@ -443,7 +442,7 @@ export const blogPosts: BlogPost[] = [
     role: "Coluna de Defesa do Consumidor",
     date: "2026-03-30",
     authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/gutoblog-1.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/gasolina-scaled.jpeg",
     metaTitle: "Gasolina subindo sem reajuste: entenda o aumento e seus direitos",
     metaDescription: "Saiba por que a gasolina está subindo mesmo sem reajuste da Petrobras e o que você pode fazer diante de possíveis abusos.",
     readingTime: "6 min de leitura",

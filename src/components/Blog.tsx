@@ -38,6 +38,14 @@ const Blog = () => {
               to={`/blog/${post.slug}`}
               className="group bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border hover:border-primary/30"
             >
+              {post.coverImage && (
+                <img
+                  src={post.coverImage}
+                  alt={post.title}
+                  className="w-full h-48 object-cover object-center"
+                  loading="lazy"
+                />
+              )}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
