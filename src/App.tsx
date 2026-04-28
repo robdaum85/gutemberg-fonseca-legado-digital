@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 const BlogPage = lazy(() => import("./pages/BlogPage"));
+const CategoryPage = lazy(() => import("./pages/CategoryPage"));
+const CategoryPostPage = lazy(() => import("./pages/CategoryPostPage"));
 
 const queryClient = new QueryClient();
 
@@ -28,6 +30,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPage />} />
+            <Route path="/direitos-do-consumidor" element={<CategoryPage />} />
+            <Route path="/direitos-do-consumidor/:slug" element={<CategoryPostPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
