@@ -1,50 +1,43 @@
-## Plano: Unificar Blog em "Direitos do Consumidor"
+# Reenvio da consolidação do blog para o GitHub
 
-### Por que existem duas páginas hoje
+## Objetivo
 
-Na arquitetura atual, deixei `/blog` e `/direitos-do-consumidor` convivendo em paralelo por uma razão técnica de SEO: posts antigos ou compartilhamentos externos que apontam para `/blog/:slug` continuam funcionando, e o `<link rel="canonical">` informa ao Google que a versão "oficial" é a `/direitos-do-consumidor/:slug`. Isso evita perda de links e evita conteúdo duplicado.
+Forçar um novo commit/push do Lovable para o GitHub contendo o estado atual e correto da consolidação do blog em `/direitos-do-consumidor`, sobrescrevendo eventuais divergências do repositório.
 
-Mas como hoje **100% dos posts** são da categoria "Defesa do Consumidor", manter duas páginas de listagem (uma genérica em `/blog` e a hub temática em `/direitos-do-consumidor`) é redundante e dilui a autoridade SEO. Faz total sentido unificar.
+## Como vai funcionar
 
-### Solução
+O Lovable só faz push quando há mudança em arquivo. Como o código aqui já está correto, vou tocar dois arquivos de forma útil (não é "mudança fake" — agrega valor real) para gerar um commit novo que arrasta junto todo o estado atual:
 
-Transformar `/direitos-do-consumidor` na **única** página hub e redirecionar todo o tráfego de `/blog` para ela, preservando os links antigos.
+1. **`src/data/blogPosts.ts`** — adicionar um cabeçalho de comentário com o checklist de publicação (você pediu isso na pergunta anterior). Documenta:
+   - Onde editar para criar/atualizar posts
+   - Como o `category` define a URL automaticamente
+   - Lembrete de atualizar `public/sitemap.xml` ao publicar
 
-### Alterações
+2. **`.lovable/plan.md`** — atualizar o registro da consolidação com a data/nota do reenvio.
 
-**1. `src/App.tsx` — Redirecionar rotas antigas**
-- `/blog` → redireciona para `/direitos-do-consumidor` (via `<Navigate replace>`)
-- `/blog/:slug` → redireciona para `/direitos-do-consumidor/:slug` quando o post existir na categoria; senão para `/direitos-do-consumidor`
-- Criar pequeno componente `BlogRedirect` inline para fazer o lookup do slug e decidir o destino correto (preservando SEO via redirect 301-equivalente do lado cliente)
-- Remover o lazy import de `BlogPage` (não usado mais)
+## Verificação prévia (read-only)
 
-**2. `src/components/Header.tsx`**
-- Trocar item de menu "Blog" → "Direitos do Consumidor" apontando para `/direitos-do-consumidor`
+Antes de tocar qualquer coisa, confirmo que estes arquivos estão no estado esperado:
 
-**3. `src/components/Blog.tsx`** (seção da home)
-- Atualizar links dos cards: `/blog/:slug` → `/direitos-do-consumidor/:slug`
-- Botão "Ver todos os artigos": `/blog` → `/direitos-do-consumidor`
-- Opcionalmente atualizar o título/CTA da seção para "Direitos do Consumidor" (manter texto atual se você preferir, posso confirmar)
+- `src/App.tsx` → rota `/blog` redireciona, `BlogPostRedirect` ativo ✅ (já confirmado no contexto)
+- `src/lib/blogUtils.ts` → `CATEGORY_SLUG_MAP` correto ✅
+- `src/lib/useSeo.ts` → existe ✅
+- `src/pages/CategoryPage.tsx` e `CategoryPostPage.tsx` → existem ✅
+- `src/components/Header.tsx` → menu "Direitos do Consumidor"
+- `src/components/Blog.tsx` → links da home apontando para `/direitos-do-consumidor/{slug}`
+- `src/pages/BlogPage.tsx` e `src/components/BlogPostModal.tsx` → ausentes (deletados)
+- `public/sitemap.xml` → só com URLs canônicas
 
-**4. `src/components/BlogPostModal.tsx`**
-- Não é mais usado em nenhuma rota ativa após a unificação. Vou deletar o arquivo para evitar código morto.
+Se algo estiver fora do esperado, corrijo no mesmo passo.
 
-**5. `src/pages/BlogPage.tsx`**
-- Deletar (substituído pelo redirect).
+## Resultado
 
-**6. `src/pages/CategoryPostPage.tsx`**
-- Ajustar o fallback (linhas 22 e 25): em vez de redirecionar para `/blog`, redirecionar para `/direitos-do-consumidor` (já que `/blog` agora é só um redirect).
+Um único commit novo é empurrado pelo Lovable para o GitHub. Como o sync do Lovable usa o estado do editor como fonte da verdade nesse push, sobrescreve qualquer divergência.
 
-**7. `public/sitemap.xml`**
-- Remover entradas `/blog` e `/blog/:slug` (mantemos apenas as URLs canônicas `/direitos-do-consumidor` e `/direitos-do-consumidor/:slug`).
+Após o push concluir (alguns segundos), você já pode continuar editando via código diretamente no GitHub normalmente.
 
-### Resultado para o usuário
+## Detalhes técnicos
 
-- Quem clicar em "Blog" no menu antigo, em links externos antigos ou compartilhamentos no WhatsApp/redes sociais cai automaticamente na página correta.
-- O Google passa a indexar uma única URL canônica por post, concentrando autoridade.
-- A página hub "Direitos do Consumidor: guia prático e atualizado" passa a ser a porta de entrada principal do conteúdo editorial.
-- Menu fica mais alinhado ao posicionamento institucional ("Direitos do Consumidor" em vez de "Blog").
-
-### Observação
-
-Como o redirect é client-side (SPA), o ideal a longo prazo seria configurar redirect 301 no nível do hosting. Para o Lovable hosting atual, o redirect via React Router é a abordagem padrão e funciona corretamente para SEO desde que o `<link rel=canonical>` aponte para a URL final — o que já está implementado.
+- Nenhuma mudança funcional na aplicação — só adição de comentário-guia em `blogPosts.ts` e atualização do `.lovable/plan.md`.
+- Nenhum arquivo deletado, criado ou movido.
+- Sem impacto em rotas, SEO, sitemap ou conteúdo visível.
