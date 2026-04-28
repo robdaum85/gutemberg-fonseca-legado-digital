@@ -1,14 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/blog/:slug",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/blog",
-      "destination": "/index.html"
-    },
-    {
       "source": "/((?!robots\\.txt|sitemap\\.xml|manifest\\.webmanifest|sw\\.js|registerSW\\.js|workbox-.*\\.js|favicon\\.ico|placeholder\\.svg|lovable-uploads/.*|assets/.*).*)",
       "destination": "/index.html"
     }
