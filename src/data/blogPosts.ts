@@ -16,6 +16,7 @@ export type BlogPost = {
   tags?: string[];
   featured?: boolean;
   content: string;
+  
 };
 
 export const blogPosts: BlogPost[] = [
