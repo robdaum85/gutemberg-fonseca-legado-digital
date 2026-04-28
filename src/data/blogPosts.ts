@@ -1,3 +1,19 @@
+/**
+ * BLOG — Guia rápido de publicação
+ * ----------------------------------
+ * Para criar/atualizar um post, basta editar o array `blogPosts` abaixo.
+ *
+ * O campo `category` define automaticamente a URL canônica do post:
+ *   - "Defesa do Consumidor"  → /direitos-do-consumidor/{slug}
+ *   - "Segurança Pública"     → /seguranca-publica/{slug}
+ *   - (qualquer outra)        → fallback /blog/{slug}
+ *
+ * O mapeamento fica em src/lib/blogUtils.ts (CATEGORY_SLUG_MAP).
+ * Para criar um novo hub temático, adicione a entrada lá.
+ *
+ * Após publicar um post novo, lembre de adicionar a URL canônica
+ * em public/sitemap.xml para acelerar a indexação no Google.
+ */
 export type BlogPost = {
   slug: string;
   source: string;
