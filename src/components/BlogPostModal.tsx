@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
-import { X } from 'lucide-react';
 import ShareButtons, { MobileFixedShare } from './ShareButtons';
 import type { BlogPost } from '@/data/blogPosts';
+import { getCanonicalUrl, getPostCategoryUrl, SITE_URL } from '@/lib/blogUtils';
+import { useSeo } from '@/lib/useSeo';
 
 interface BlogPostModalProps {
   post: BlogPost | null;
@@ -11,43 +11,28 @@ interface BlogPostModalProps {
 }
 
 const BlogPostModal = ({ post, open, onClose }: BlogPostModalProps) => {
-  const baseUrl = window.location.origin;
-  const postUrl = post ? `${baseUrl}/blog/${post.slug}` : '';
+  // Canonical URL points to the preferred (category) URL when applicable
+  const canonical = post ? getCanonicalUrl(getPostCategoryUrl(post)) : '';
+  const postUrl = canonical;
 
-  // SEO: update title & meta
-  useEffect(() => {
-    if (!post || !open) return;
-    const prevTitle = document.title;
-    document.title = post.metaTitle;
-
-    let metaDesc = document.querySelector('meta[name="description"]');
-    const prevDesc = metaDesc?.getAttribute('content') || '';
-    if (metaDesc) {
-      metaDesc.setAttribute('content', post.metaDescription);
-    }
-
-    // JSON-LD
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'blog-post-schema';
-    script.textContent = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: post.title,
-      author: { '@type': 'Person', name: post.author },
-      datePublished: post.date,
-      description: post.metaDescription,
-      url: postUrl,
-    });
-    document.head.appendChild(script);
-
-    return () => {
-      document.title = prevTitle;
-      if (metaDesc) metaDesc.setAttribute('content', prevDesc);
-      const el = document.getElementById('blog-post-schema');
-      if (el) el.remove();
-    };
-  }, [post, open, postUrl]);
+  useSeo(
+    post && open
+      ? {
+          title: post.metaTitle,
+          description: post.metaDescription,
+          canonical,
+          type: 'article',
+          image: post.coverImage || post.authorImage,
+          publishedTime: post.date,
+          author: post.author,
+          articleSchema: true,
+        }
+      : {
+          title: document.title,
+          description: '',
+          canonical: SITE_URL + window.location.pathname,
+        }
+  );
 
   if (!post) return null;
 
@@ -93,9 +78,9 @@ const BlogPostModal = ({ post, open, onClose }: BlogPostModalProps) => {
               {post.title}
             </h1>
 
-            {post.image && (
+            {post.coverImage && (
               <img
-                src={post.image}
+                src={post.coverImage}
                 alt={post.title}
                 className="w-full rounded-lg mb-6 object-cover max-h-[400px]"
                 loading="lazy"

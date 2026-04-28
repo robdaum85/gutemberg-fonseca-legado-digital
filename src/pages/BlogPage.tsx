@@ -5,11 +5,22 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BlogPostModal from '@/components/BlogPostModal';
 import { blogPosts } from '@/data/blogPosts';
+import { useSeo } from '@/lib/useSeo';
+import { getCanonicalUrl, SITE_URL } from '@/lib/blogUtils';
 
 const BlogPage = () => {
   const { slug } = useParams<{ slug?: string }>();
   const navigate = useNavigate();
   const [selectedSlug, setSelectedSlug] = useState<string | null>(slug || null);
+
+  useSeo({
+    title: 'Blog | Gutemberg Fonseca — Defesa do Consumidor',
+    description:
+      'Artigos, colunas e notícias sobre defesa do consumidor por Gutemberg Fonseca.',
+    canonical: getCanonicalUrl('/blog'),
+    type: 'website',
+    image: `${SITE_URL}/lovable-uploads/c003fb8b-1544-42bc-881b-af1b83f1ac15.png`,
+  });
 
   // Open modal from URL on mount
   useEffect(() => {
