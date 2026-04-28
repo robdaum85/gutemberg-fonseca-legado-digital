@@ -1,88 +1,50 @@
-## Plano: Arquitetura SEO — Hub Temático "Direitos do Consumidor"
+## Plano: Unificar Blog em "Direitos do Consumidor"
 
-Manter `/blog` e `/blog/:slug` exatamente como estão (modal + URL dinâmica) e adicionar, em paralelo, a página pilar `/direitos-do-consumidor` com seus próprios posts em `/direitos-do-consumidor/:slug`, melhorando SEO técnico (canonical, Open Graph, Article schema, breadcrumb) e atualizando o `sitemap.xml`.
+### Por que existem duas páginas hoje
 
----
+Na arquitetura atual, deixei `/blog` e `/direitos-do-consumidor` convivendo em paralelo por uma razão técnica de SEO: posts antigos ou compartilhamentos externos que apontam para `/blog/:slug` continuam funcionando, e o `<link rel="canonical">` informa ao Google que a versão "oficial" é a `/direitos-do-consumidor/:slug`. Isso evita perda de links e evita conteúdo duplicado.
 
-### Arquivos a Criar
+Mas como hoje **100% dos posts** são da categoria "Defesa do Consumidor", manter duas páginas de listagem (uma genérica em `/blog` e a hub temática em `/direitos-do-consumidor`) é redundante e dilui a autoridade SEO. Faz total sentido unificar.
 
-**1. `src/lib/blogUtils.ts`** — Helpers centrais
-- `CATEGORY_SLUG_MAP`: `{ "Defesa do Consumidor": "direitos-do-consumidor", "Segurança Pública": "seguranca-publica" }`
-- `getCategorySlug(category)` → retorna o slug da categoria
-- `getCategoryFromSlug(slug)` → reverso
-- `getPostsByCategory(category)` → filtra `blogPosts`
-- `getPostCategoryUrl(post)` → `/direitos-do-consumidor/{slug}` quando aplicável; caso contrário `/blog/{slug}`
-- `getCanonicalUrl(path)` → `https://gutembergfonseca.com.br{path}`
-- `SITE_URL` constante
+### Solução
 
-**2. `src/lib/useSeo.ts`** — Hook de SEO sem dependências
-- Atualiza `document.title`, `meta[name=description]`, `link[rel=canonical]`
-- Injeta/atualiza Open Graph (`og:title`, `og:description`, `og:image`, `og:type=article`, `og:url`) e `article:published_time`
-- Injeta JSON-LD `Article` + `BreadcrumbList` quando aplicável
-- Limpa tudo no unmount restaurando valores anteriores
+Transformar `/direitos-do-consumidor` na **única** página hub e redirecionar todo o tráfego de `/blog` para ela, preservando os links antigos.
 
-**3. `src/pages/CategoryPage.tsx`** — Página pilar `/direitos-do-consumidor`
-- H1 "Direitos do Consumidor"
-- Texto introdutório institucional fornecido
-- Grid de cards dos posts da categoria, linkando para `/direitos-do-consumidor/:slug` via `<Link>` (links internos crawláveis)
-- `useSeo` com `metaTitle` e `metaDescription` próprios da categoria + canonical
-- JSON-LD `CollectionPage` + `ItemList`
+### Alterações
 
-**4. `src/pages/CategoryPostPage.tsx`** — Post canônico em `/direitos-do-consumidor/:slug`
-- Renderização full page (não modal) do post
-- Header, breadcrumb "Início > Direitos do Consumidor > Título", artigo com `prose`, ShareButtons e CTA (mesma estrutura do `BlogPostModal`)
-- `useSeo` com canonical apontando para `/direitos-do-consumidor/:slug` (URL canônica preferida para posts da categoria)
-- Schema.org `Article` + `BreadcrumbList`
-- Se slug não pertence à categoria, redireciona para `/blog/:slug`
+**1. `src/App.tsx` — Redirecionar rotas antigas**
+- `/blog` → redireciona para `/direitos-do-consumidor` (via `<Navigate replace>`)
+- `/blog/:slug` → redireciona para `/direitos-do-consumidor/:slug` quando o post existir na categoria; senão para `/direitos-do-consumidor`
+- Criar pequeno componente `BlogRedirect` inline para fazer o lookup do slug e decidir o destino correto (preservando SEO via redirect 301-equivalente do lado cliente)
+- Remover o lazy import de `BlogPage` (não usado mais)
 
----
+**2. `src/components/Header.tsx`**
+- Trocar item de menu "Blog" → "Direitos do Consumidor" apontando para `/direitos-do-consumidor`
 
-### Arquivos a Editar
+**3. `src/components/Blog.tsx`** (seção da home)
+- Atualizar links dos cards: `/blog/:slug` → `/direitos-do-consumidor/:slug`
+- Botão "Ver todos os artigos": `/blog` → `/direitos-do-consumidor`
+- Opcionalmente atualizar o título/CTA da seção para "Direitos do Consumidor" (manter texto atual se você preferir, posso confirmar)
 
-**5. `src/App.tsx`** — Adicionar rotas (lazy)
-```tsx
-<Route path="/direitos-do-consumidor" element={<CategoryPage />} />
-<Route path="/direitos-do-consumidor/:slug" element={<CategoryPostPage />} />
-```
-Manter `/blog` e `/blog/:slug` intactos.
+**4. `src/components/BlogPostModal.tsx`**
+- Não é mais usado em nenhuma rota ativa após a unificação. Vou deletar o arquivo para evitar código morto.
 
-**6. `src/components/BlogPostModal.tsx`** — Melhorias SEO no modal
-- Usar `getPostCategoryUrl(post)` para a URL canônica/compartilhamento
-- Adicionar `<link rel=canonical>` apontando para a URL canônica do post (categoria quando aplicável)
-- Adicionar OG tags (`og:title`, `og:description`, `og:image`, `og:type=article`, `og:url`, `article:published_time`) via hook `useSeo`
-- Manter comportamento atual (abre/fecha, restaura tags)
+**5. `src/pages/BlogPage.tsx`**
+- Deletar (substituído pelo redirect).
 
-**7. `src/pages/BlogPage.tsx`** — Pequeno ajuste
-- Cards usam `<Link>` para `getPostCategoryUrl(post)` quando a categoria mapeia, mantendo o comportamento de modal apenas dentro de `/blog`. (Sem mudança visual; melhora links internos para SEO.)
-- Adicionar `useSeo` para meta da listagem `/blog`.
+**6. `src/pages/CategoryPostPage.tsx`**
+- Ajustar o fallback (linhas 22 e 25): em vez de redirecionar para `/blog`, redirecionar para `/direitos-do-consumidor` (já que `/blog` agora é só um redirect).
 
-**8. `public/sitemap.xml`** — Regenerar
-Incluir:
-- `/`
-- `/blog`
-- `/direitos-do-consumidor`
-- `/blog/{slug}` para todos os posts (mantém URLs antigas)
-- `/direitos-do-consumidor/{slug}` para posts da categoria "Defesa do Consumidor"
-Adicionar `<lastmod>` baseado em `post.date`.
+**7. `public/sitemap.xml`**
+- Remover entradas `/blog` e `/blog/:slug` (mantemos apenas as URLs canônicas `/direitos-do-consumidor` e `/direitos-do-consumidor/:slug`).
 
-**9. `src/pages/BlogPostPage.tsx`** — Remover (arquivo órfão, não roteado, usa `react-helmet-async` sem provider). A funcionalidade está coberta por `BlogPostModal` e o novo `CategoryPostPage`.
+### Resultado para o usuário
 
----
+- Quem clicar em "Blog" no menu antigo, em links externos antigos ou compartilhamentos no WhatsApp/redes sociais cai automaticamente na página correta.
+- O Google passa a indexar uma única URL canônica por post, concentrando autoridade.
+- A página hub "Direitos do Consumidor: guia prático e atualizado" passa a ser a porta de entrada principal do conteúdo editorial.
+- Menu fica mais alinhado ao posicionamento institucional ("Direitos do Consumidor" em vez de "Blog").
 
-### Detalhes Técnicos
+### Observação
 
-- **Canonical strategy**: para posts com `category === "Defesa do Consumidor"`, a URL canônica é `/direitos-do-consumidor/{slug}`. O modal em `/blog/{slug}` aponta `<link rel=canonical>` para essa URL canônica, evitando conteúdo duplicado.
-- **Breadcrumb visual** em `CategoryPostPage` usa o componente `src/components/ui/breadcrumb.tsx` já existente.
-- **Sem novas dependências** (`react-helmet-async` não está instalado; o hook `useSeo` manipula `document.head` direto).
-- **Lazy loading** das novas páginas via `React.lazy` no `App.tsx`.
-- **Vercel rewrites**: `vercel.json` já tem fallback genérico que cobre `/direitos-do-consumidor/*`. Sem mudança necessária.
-- **Texto introdutório** da página pilar: usar exatamente o texto institucional fornecido.
-
-### Resultado
-
-- `/blog` continua funcionando (modal + URL dinâmica) ✓
-- `/direitos-do-consumidor` vira hub temático com posts de "Defesa do Consumidor" ✓
-- Cada post de Defesa do Consumidor é acessível por duas URLs, com canonical apontando para a versão `/direitos-do-consumidor/{slug}` ✓
-- Breadcrumb, Open Graph, Article schema e canonical em todas as páginas ✓
-- Sitemap atualizado com todas as URLs ✓
-- Zero quebra na estrutura atual ✓
+Como o redirect é client-side (SPA), o ideal a longo prazo seria configurar redirect 301 no nível do hosting. Para o Lovable hosting atual, o redirect via React Router é a abordagem padrão e funciona corretamente para SEO desde que o `<link rel=canonical>` aponte para a URL final — o que já está implementado.
