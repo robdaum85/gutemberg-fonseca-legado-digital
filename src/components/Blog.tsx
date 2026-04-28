@@ -35,7 +35,7 @@ const Blog = () => {
           {previewPosts.map((post) => (
             <Link
               key={post.slug}
-              to={`/blog/${post.slug}`}
+              to={`/direitos-do-consumidor/${post.slug}`}
               className="group bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border hover:border-primary/30"
             >
               <div className="p-6">
@@ -55,7 +55,7 @@ const Blog = () => {
         </div>
 
         <div className="text-center mt-10">
-          <Link to="/blog">
+          <Link to="/direitos-do-consumidor">
             <Button variant="outline" size="lg" className="gap-2">
               Ver todos os artigos
               <ArrowRight className="h-4 w-4" />
