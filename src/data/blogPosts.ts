@@ -21,6 +21,65 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+  slug: "cuidado-com-o-dinheiro-facil-quando-o-emprestimo-vira-armadilha",
+  source: "Coluna",
+  category: "Defesa do Consumidor",
+  title: "Cuidado com o “dinheiro fácil”: quando o empréstimo vira armadilha",
+  subTitle: "Ofertas de empréstimo fácil, sem consulta ao SPC ou Serasa, podem esconder golpes, cobranças ilegais e juros abusivos.",
+  excerpt: "Mensagens prometendo crédito fácil e sem análise podem esconder golpes, taxas abusivas e pedidos de depósito antecipado. Saiba como identificar os riscos antes de contratar.",
+  author: "Gutemberg Fonseca",
+  role: "Especialista em Defesa do Consumidor",
+  date: "2026-05-06",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://diariodorio.com/wp-content/uploads/2021/08/Emprestimo-1024x568-1.jpg",
+  metaTitle: "Cuidado com o “dinheiro fácil”: quando o empréstimo vira armadilha",
+  metaDescription: "Entenda os riscos das ofertas de empréstimo fácil, como identificar golpes, evitar juros abusivos e exigir transparência antes de contratar crédito.",
+  readingTime: "5 min de leitura",
+  tags: [
+    "empréstimo fácil",
+    "golpe financeiro",
+    "juros abusivos",
+    "CET",
+    "direitos do consumidor",
+    "Gutemberg Fonseca"
+  ],
+  featured: true,
+  content: `
+
+    <h1>Cuidado com o “dinheiro fácil”: quando o empréstimo vira armadilha</h1>
+    <p><strong>Ofertas de empréstimo fácil, sem consulta ao SPC ou Serasa, podem esconder golpes, cobranças ilegais e juros abusivos.</strong></p>
+
+    <p>Em tempos de orçamento apertado, nada parece mais tentador do que aquela mensagem no WhatsApp prometendo “crédito liberado na hora, sem consulta ao SPC ou Serasa e com juros baixíssimos”. Mas o que parece ser a salvação da lavoura pode, na verdade, ser o início de um pesadelo financeiro. O Código de Defesa do Consumidor estabelece que a oferta de serviços financeiros deve ser clara e, inclusive, informar sobre os riscos e condições do contrato.</p>
+
+    <h2>Desconfie da facilidade extrema</h2>
+    <p>Instituições financeiras sérias fazem análise de crédito e risco. Se uma empresa promete dinheiro a quem está com o nome negativado sem nenhum tipo de garantia ou critério, é preciso redobrar a atenção.</p>
+    <p>Muitas vezes, essas ofertas escondem taxas abusivas que fazem a dívida dobrar em poucos meses ou, pior, servem de isca para golpes em que se exige um “depósito antecipado” para liberar o valor. Essa prática é totalmente ilegal.</p>
+
+    <h2>Pressão para fechar rápido também é sinal de alerta</h2>
+    <p>Outro perigo é a pressão para contratar imediatamente. Frases como “é só até hoje” ou “oferta por tempo limitado” costumam ser usadas para impedir que o consumidor leia os detalhes e compare taxas.</p>
+    <p>Você tem o direito de analisar o contrato com calma e entender o Custo Efetivo Total (CET), que representa o valor total da dívida, incluindo juros, taxas e seguros, conforme as regras do Banco Central.</p>
+
+    <h2>Como não cair na rede</h2>
+    <p>Para evitar problemas financeiros, siga estas orientações:</p>
+    <ul>
+      <li><strong>Fuja de depósitos antecipados:</strong> instituições regulares não cobram valores antes de liberar o empréstimo. Se houver cobrança antecipada, há risco de golpe.</li>
+      <li><strong>Verifique a autorização da empresa:</strong> consulte no site do Banco Central do Brasil se a instituição pode operar. Desconfie de páginas que imitam bancos conhecidos.</li>
+      <li><strong>Exija o CET:</strong> não avalie apenas o valor da parcela. Solicite o Custo Efetivo Total para saber quanto será pago ao final do contrato.</li>
+      <li><strong>Proteja seus dados pessoais:</strong> não envie documentos ou fotos para contatos desconhecidos. Esses dados podem ser usados em fraudes.</li>
+      <li><strong>Direito ao arrependimento:</strong> em contratos feitos por telefone ou internet, o consumidor pode desistir em até 7 dias, com devolução dos valores pagos.</li>
+    </ul>
+
+    <h2>Crédito exige consciência</h2>
+    <p>O crédito consciente pode ajudar na organização financeira. O uso sem análise, porém, pode gerar endividamento e comprometer a renda por muito tempo.</p>
+    <p>Se sentir que foi enganado, procure imediatamente a Secretaria de Estado de Defesa do Consumidor ou o PROCON-RJ. Proteger seu bolso é proteger sua paz.</p>
+
+    <p>Se quiser fazer uma denúncia sobre esse tema ou qualquer outro, os canais são: Fala Consumidor (SEDCON) pelo WhatsApp (21) 99336-4848 ou pelo Disque 151 do PROCON-RJ. Quem quiser, pode falar comigo pelo “Zap do Guto” (21) 96619-2498. Também estou no @gutembergpfonseca.</p>
+
+    <p><em>Gutemberg Fonseca é Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro.</em></p>
+
+  `
+},
+  {
   slug: "delivery-sem-dor-de-cabeca-conheca-seus-direitos",
   source: "Coluna",
   category: "Defesa do Consumidor",
