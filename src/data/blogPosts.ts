@@ -21,6 +21,51 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+  slug: "enigma-das-contas-transparencia-direito-nao-concessao",
+  source: "Coluna",
+  category: "Defesa do Consumidor",
+  title: "O enigma das contas: transparência é direito, não concessão",
+  subTitle: "Contas de água e energia precisam ser claras para que o consumidor entenda, confira e conteste cobranças.",
+  excerpt: "Faturas de água e energia no Rio de Janeiro seguem difíceis de entender. A informação clara é um direito previsto no CDC, não uma concessão das concessionárias.",
+  author: "Gutemberg Fonseca",
+  role: "Especialista em Defesa do Consumidor",
+  date: "2026-05-08",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+  coverImage: "https://odia.ig.com.br/_midias/jpg/2026/05/07/1200x750/1_arte_coluna_opiniao_08_maio_2026-38639554.jpg",
+  metaTitle: "O enigma das contas: transparência é direito, não concessão",
+  metaDescription: "Entenda por que contas de água e energia precisam apresentar informações claras sobre consumo, tributos e encargos, conforme o artigo 6º do CDC.",
+  readingTime: "4 min de leitura",
+  tags: [
+    "conta de luz",
+    "conta de água",
+    "transparência",
+    "direito à informação",
+    "CDC",
+    "PROCON-RJ",
+    "Gutemberg Fonseca"
+  ],
+  featured: true,
+  content: `
+
+    <h1>O enigma das contas: transparência é direito, não concessão</h1>
+
+    <p>O consumidor do Rio de Janeiro paga pelo fornecimento de água e de energia sem conseguir entender o que está pagando. O que deveria ser um comprovante de consumo tornou-se, ao longo dos anos, um enigma matemático. As contas de luz e de água são repletas de siglas, tributos em cascata e descrições técnicas que pouco dizem a quem precisa saber, no final do mês, se o valor cobrado é justo.</p>
+
+    <p>A questão não é só financeira. O artigo 6º do Código de Defesa do Consumidor (CDC) estabelece como direito básico à informação adequada e clara sobre os diferentes produtos e serviços, com especificação correta de quantidade, características, composição, qualidade, tributos incidentes e preço. Quando uma concessionária entrega uma conta ou fatura de consumo que o cidadão não consegue decifrar, ela não dificulta apenas a conferência. Ela viola um direito de cidadania.</p>
+
+    <p>Nas faturas de energia e água no Rio, a complexidade dificulta a verificação do consumo. Entre bandeiras tarifárias, tarifa de uso do sistema de distribuição, demanda contratada, fator de potência, perda aparente e perda real, o valor do quilowatt-hora ou do metro cúbico fica diluído em uma sequência de siglas. Essa falta de clareza gera uma situação concreta: o consumidor não consegue contestar um erro porque não entende como o cálculo foi feito. Também não identifica quais encargos pesam mais no orçamento.</p>
+
+    <p>As concessionárias costumam justificar essa complexidade pela regulação do setor, que é técnica e cheia de variáveis. A técnica, porém, deve estar a serviço da clareza, e não servir de justificativa para a confusão. A transparência é a resposta para a desconfiança que existe entre os fluminenses e as empresas que fornecem serviços essenciais. As faturas precisam passar por um processo de simplificação visual e didática, com o que é necessário em posição de leitura imediata e os encargos explicados em linguagem acessível.</p>
+
+    <p>A Secretaria de Estado de Defesa do Consumidor e o PROCON-RJ têm exigido que esse direito à informação acessível seja respeitado. O tema não é de design de faturas. É garantir que o consumidor possa fiscalizar o serviço que paga. A essencialidade de serviços como água e energia exige que o fornecedor tenha responsabilidade proporcional. A cobrança pela contraprestação do serviço deve vir da eficiência operacional, nunca da confusão gerada por contas incompreensíveis.</p>
+
+    <p>Enquanto a transparência for tratada como detalhe técnico e não como dever ético, o Judiciário e os órgãos de defesa continuarão superlotados de processos e reclamações. O artigo 6º do CDC é expresso: informação clara é direito, não cortesia. A concessionária que entrega uma fatura ilegível ou de difícil entendimento descumpre a lei, independentemente de qualquer justificativa técnica.</p>
+
+    <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo WhatsApp +55 (21) 96619-2498 ou pelo @gutembergpfonseca.</p>
+
+  `
+},
+  {
   slug: "cuidado-com-o-dinheiro-facil-quando-o-emprestimo-vira-armadilha",
   source: "Coluna",
   category: "Defesa do Consumidor",
