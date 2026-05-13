@@ -164,12 +164,26 @@ body.theme-copa header.fixed {
   border-bottom: 1px solid rgba(252, 241, 11, 0.35);
   box-shadow: 0 1px 0 rgba(252, 241, 11, 0.15), 0 8px 24px rgba(0,0,0,0.25);
 }
-body.theme-copa header nav a:hover {
+body.theme-copa header nav a {
   color: #FCF10B !important;
-  background: rgba(0, 128, 55, 0.15) !important;
+  font-weight: 600;
+}
+body.theme-copa header nav a:hover {
+  color: #ffffff !important;
+  background: rgba(0, 128, 55, 0.25) !important;
   -webkit-background-clip: initial !important;
   background-clip: initial !important;
+  text-shadow: 0 0 12px rgba(252,241,11,0.55);
 }
+/* Ícones sociais e botão hambúrguer no header */
+body.theme-copa header a[aria-label] { color: #FCF10B !important; }
+body.theme-copa header a[aria-label] svg { color: #FCF10B !important; }
+body.theme-copa header a[aria-label]:hover {
+  background: rgba(252, 241, 11, 0.12) !important;
+  box-shadow: 0 0 14px rgba(252, 241, 11, 0.35);
+}
+body.theme-copa header button.md\:hidden,
+body.theme-copa header button.md\:hidden svg { color: #FCF10B !important; }
 
 /* ---------- Botões ---------- */
 body.theme-copa button,
@@ -385,6 +399,79 @@ body.theme-copa #depoimentos .bg-primary {
 
 /* Quote SVG nos testimonials em amarelo */
 body.theme-copa #depoimentos svg[fill="#4050a1"] { fill: #FCF10B !important; }
+
+/* ---------- Blog: botão "Ver todos os artigos" ---------- */
+body.theme-copa #blog a[href="/direitos-do-consumidor"] button {
+  background: transparent !important;
+  border: 2px solid #FCF10B !important;
+  color: #FCF10B !important;
+  font-weight: 700 !important;
+  transition: all 220ms ease;
+}
+body.theme-copa #blog a[href="/direitos-do-consumidor"] button svg { color: #FCF10B !important; }
+body.theme-copa #blog a[href="/direitos-do-consumidor"] button:hover {
+  background: linear-gradient(135deg, #FCF10B 0%, #fff170 100%) !important;
+  color: #02112B !important;
+  box-shadow: 0 0 22px rgba(252,241,11,0.45), 0 8px 24px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+}
+body.theme-copa #blog a[href="/direitos-do-consumidor"] button:hover svg { color: #02112B !important; }
+
+/* ---------- Multimedia: setas do carrossel de notícias ---------- */
+body.theme-copa #multimedia button.absolute {
+  background: linear-gradient(135deg, #FCF10B 0%, #fff170 100%) !important;
+  border: 1px solid rgba(0, 72, 142, 0.45) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 0 1px rgba(252,241,11,0.25);
+  transition: box-shadow 200ms ease;
+}
+body.theme-copa #multimedia button.absolute svg { color: #02112B !important; }
+body.theme-copa #multimedia button.absolute:hover {
+  box-shadow: 0 0 22px rgba(252,241,11,0.6), 0 8px 22px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   Páginas Direitos do Consumidor (lista + post)
+   ============================================================ */
+body.theme-copa .min-h-screen.bg-background { background: transparent !important; }
+body.theme-copa main .bg-background { background: transparent !important; }
+
+body.theme-copa main h1.text-foreground,
+body.theme-copa main h2.text-foreground { color: #ffffff !important; }
+body.theme-copa main .text-foreground { color: #f1f4fa !important; }
+body.theme-copa main .text-foreground\/80 { color: #d4dbe8 !important; }
+body.theme-copa main .text-muted-foreground { color: #cdd5e3 !important; }
+
+body.theme-copa main nav[aria-label="breadcrumb"] a { color: #cdd5e3 !important; }
+body.theme-copa main nav[aria-label="breadcrumb"] a:hover { color: #FCF10B !important; }
+
+body.theme-copa main .bg-card {
+  background: rgba(255,255,255,0.05) !important;
+  border-color: rgba(252,241,11,0.25) !important;
+  backdrop-filter: blur(6px);
+}
+body.theme-copa main .bg-card:hover {
+  border-color: #FCF10B !important;
+  box-shadow: 0 18px 40px rgba(0, 72, 142, 0.4), 0 0 18px rgba(252,241,11,0.18) !important;
+}
+body.theme-copa main .bg-card h3 { color: #ffffff !important; }
+body.theme-copa main .bg-card:hover h3 { color: #FCF10B !important; }
+body.theme-copa main .bg-primary\/10 {
+  background: rgba(252,241,11,0.15) !important;
+  color: #FCF10B !important;
+}
+
+body.theme-copa main article p,
+body.theme-copa main article li { color: #e7ecf5 !important; }
+body.theme-copa main article h2,
+body.theme-copa main article h3,
+body.theme-copa main article h4 { color: #ffffff !important; }
+body.theme-copa main article a { color: #FCF10B !important; text-decoration: underline; }
+body.theme-copa main article blockquote {
+  border-left: 3px solid #FCF10B !important;
+  background: rgba(252,241,11,0.06);
+  color: #f1f4fa !important;
+}
+body.theme-copa main article strong { color: #ffffff !important; }
 
 /* ---------- Mobile ---------- */
 @media (max-width: 768px) {
