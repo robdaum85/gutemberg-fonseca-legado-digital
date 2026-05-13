@@ -9,7 +9,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 // Lazy loading das páginas
-const BlogPage = lazy(() => import("./pages/BlogPage"));
 const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 const CategoryPostPage = lazy(() => import("./pages/CategoryPostPage"));
 
@@ -33,20 +32,31 @@ const App = () => (
             {/* HOME */}
             <Route path="/" element={<Index />} />
 
+            {/* LANDING PAGES EXTERNAS */}
+            <Route
+              path="/motociclistas"
+              element={<Navigate to="https://motos-livres.vercel.app/" replace />}
+            />
+            <Route
+              path="/seguranca"
+              element={<Navigate to="https://foco-democr.vercel.app/" replace />}
+            />
+            <Route
+              path="/catadoresdelixo"
+              element={<Navigate to="https://lp-lixo.vercel.app/" replace />}
+            />
+
             {/* REDIRECT DO BLOG PARA NOVA ESTRUTURA */}
             <Route
               path="/blog"
               element={<Navigate to="/direitos-do-consumidor" replace />}
             />
 
-            {/* POSTS ANTIGOS DO BLOG (mantém compatibilidade) */}
+            {/* POSTS ANTIGOS DO BLOG */}
             <Route path="/blog/:slug" element={<CategoryPostPage />} />
 
             {/* NOVA ESTRUTURA SEO */}
-            <Route
-              path="/direitos-do-consumidor"
-              element={<CategoryPage />}
-            />
+            <Route path="/direitos-do-consumidor" element={<CategoryPage />} />
             <Route
               path="/direitos-do-consumidor/:slug"
               element={<CategoryPostPage />}
