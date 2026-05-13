@@ -7,6 +7,8 @@ import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { getPostBySlug, getCategorySlug } from "./lib/blogUtils";
+import { ThemeCopaProvider } from "./contexts/ThemeCopaContext";
+import ThemeCopaToggle from "./components/ThemeCopaToggle";
 
 const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 const CategoryPostPage = lazy(() => import("./pages/CategoryPostPage"));
@@ -29,8 +31,10 @@ const BlogPostRedirect = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <ThemeCopaProvider>
       <Toaster />
       <Sonner />
+      <ThemeCopaToggle />
       <BrowserRouter>
         <Suspense
           fallback={
@@ -50,6 +54,7 @@ const App = () => (
           </Routes>
         </Suspense>
       </BrowserRouter>
+      </ThemeCopaProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

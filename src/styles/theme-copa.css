@@ -1,0 +1,265 @@
+/* =============================================================
+   THEME COPA — visual institucional brasileiro premium.
+   Tudo aqui é escopado em `body.theme-copa` para ser totalmente
+   reversível. Para remover o tema: deletar este arquivo, o
+   contexto, o toggle e remover o import em main.tsx.
+   ============================================================= */
+
+/* ---------- Toggle flutuante (sempre visível) ---------- */
+.theme-copa-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00488E 0%, #02112B 100%);
+  color: #FCF10B;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(252, 241, 11, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(252, 241, 11, 0.15);
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease, background 300ms ease;
+  backdrop-filter: blur(8px);
+}
+.theme-copa-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 18px rgba(252, 241, 11, 0.35);
+}
+.theme-copa-toggle__dot {
+  width: 10px; height: 10px; border-radius: 999px;
+  background: #6b7280;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+  transition: background 250ms ease, box-shadow 250ms ease;
+}
+.theme-copa-toggle__dot.is-on {
+  background: #008037;
+  box-shadow: 0 0 10px rgba(0, 128, 55, 0.9), inset 0 0 0 1px rgba(255,255,255,0.2);
+}
+
+/* ---------- Transição suave ao alternar tema ---------- */
+body.theme-copa-transitioning,
+body.theme-copa-transitioning * {
+  transition:
+    background-color 400ms ease,
+    color 400ms ease,
+    border-color 400ms ease,
+    box-shadow 400ms ease,
+    backdrop-filter 400ms ease !important;
+}
+
+/* =============================================================
+   THEME COPA ATIVADO
+   ============================================================= */
+body.theme-copa {
+  background:
+    radial-gradient(1200px 700px at 80% -10%, rgba(252, 241, 11, 0.08), transparent 60%),
+    radial-gradient(900px 600px at -10% 110%, rgba(0, 128, 55, 0.10), transparent 60%),
+    linear-gradient(135deg, #02112B 0%, #03194a 50%, #00488E 100%);
+  background-attachment: fixed;
+  color: #f5f7fb;
+  position: relative;
+}
+
+/* Faixas diagonais sutis estilo bandeira */
+body.theme-copa::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, transparent 0%, transparent 38%, rgba(252, 241, 11, 0.05) 39%, rgba(252, 241, 11, 0.05) 41%, transparent 42%),
+    linear-gradient(115deg, transparent 0%, transparent 60%, rgba(0, 128, 55, 0.07) 61%, rgba(0, 128, 55, 0.07) 64%, transparent 65%);
+  z-index: 0;
+  animation: copa-bg-drift 22s ease-in-out infinite alternate;
+}
+
+/* Glow de canto */
+body.theme-copa::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(600px 400px at 100% 0%, rgba(252, 241, 11, 0.06), transparent 70%),
+    radial-gradient(500px 350px at 0% 100%, rgba(0, 128, 55, 0.08), transparent 70%);
+  z-index: 0;
+}
+
+@keyframes copa-bg-drift {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-1.5%, 1%, 0); }
+}
+
+@keyframes copa-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(252, 241, 11, 0.0), 0 8px 24px rgba(0,0,0,0.25); }
+  50%      { box-shadow: 0 0 24px 0 rgba(252, 241, 11, 0.45), 0 8px 24px rgba(0,0,0,0.25); }
+}
+
+/* Garante que conteúdo fique acima dos pseudo-elements */
+body.theme-copa #root,
+body.theme-copa main,
+body.theme-copa section,
+body.theme-copa header,
+body.theme-copa footer { position: relative; z-index: 1; }
+
+/* ---------- Tipografia ---------- */
+body.theme-copa,
+body.theme-copa p,
+body.theme-copa li,
+body.theme-copa a,
+body.theme-copa span,
+body.theme-copa div {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+body.theme-copa h1,
+body.theme-copa h2,
+body.theme-copa h3,
+body.theme-copa h4,
+body.theme-copa .section-title {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+body.theme-copa .section-title { color: #ffffff; }
+body.theme-copa .section-title::after {
+  background: linear-gradient(90deg, #008037 0%, #FCF10B 50%, #00488E 100%) !important;
+  height: 3px !important;
+  width: 96px !important;
+  box-shadow: 0 0 14px rgba(252, 241, 11, 0.35);
+}
+
+/* ---------- Hero ---------- */
+body.theme-copa #hero .absolute.inset-0.bg-primary\/50 {
+  background:
+    linear-gradient(135deg, rgba(2,17,43,0.82) 0%, rgba(0,72,142,0.65) 60%, rgba(2,17,43,0.85) 100%) !important;
+}
+body.theme-copa #hero::after {
+  content: '';
+  position: absolute;
+  left: -10%; right: -10%;
+  bottom: -1px; height: 110px;
+  background:
+    linear-gradient(115deg, transparent 30%, rgba(0,128,55,0.55) 45%, rgba(252,241,11,0.55) 55%, transparent 70%);
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 5;
+}
+body.theme-copa #hero h1 {
+  text-shadow: 0 2px 30px rgba(252, 241, 11, 0.25), 0 2px 6px rgba(0,0,0,0.5);
+}
+
+/* ---------- Navbar / Header ---------- */
+body.theme-copa header.fixed {
+  background: rgba(2, 17, 43, 0.55) !important;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(252, 241, 11, 0.35);
+  box-shadow: 0 1px 0 rgba(252, 241, 11, 0.15), 0 8px 24px rgba(0,0,0,0.25);
+}
+body.theme-copa header nav a:hover {
+  color: #FCF10B !important;
+  background: rgba(0, 128, 55, 0.15) !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
+
+/* ---------- Botões ---------- */
+body.theme-copa button,
+body.theme-copa .btn,
+body.theme-copa [class*="bg-gradient"] {
+  transition: transform 200ms ease, box-shadow 200ms ease, background 250ms ease;
+}
+body.theme-copa #hero button,
+body.theme-copa button[class*="bg-primary"],
+body.theme-copa button[class*="gradient"] {
+  background: linear-gradient(135deg, #FCF10B 0%, #fff170 100%) !important;
+  color: #02112B !important;
+  font-weight: 800 !important;
+  border: 1px solid rgba(0, 72, 142, 0.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+body.theme-copa #hero button:hover,
+body.theme-copa button[class*="bg-primary"]:hover,
+body.theme-copa button[class*="gradient"]:hover {
+  animation: copa-glow-pulse 2.4s ease-in-out infinite;
+  transform: translateY(-2px);
+}
+
+/* ---------- Cards / blocos ---------- */
+body.theme-copa .card,
+body.theme-copa [class*="rounded-xl"],
+body.theme-copa [class*="rounded-2xl"],
+body.theme-copa [class*="rounded-lg"][class*="shadow"] {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(252, 241, 11, 0.18) !important;
+  backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+}
+body.theme-copa .card:hover,
+body.theme-copa [class*="rounded-xl"]:hover,
+body.theme-copa [class*="rounded-2xl"]:hover {
+  transform: translateY(-4px);
+  border-color: rgba(252, 241, 11, 0.45) !important;
+  box-shadow: 0 18px 40px rgba(0, 72, 142, 0.35);
+}
+body.theme-copa .card::before,
+body.theme-copa [class*="rounded-xl"]::before,
+body.theme-copa [class*="rounded-2xl"]::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #008037, #FCF10B 50%, #00488E);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Texto interno legível em fundo escuro */
+body.theme-copa .text-graphite,
+body.theme-copa .text-zinc-700,
+body.theme-copa .text-zinc-600,
+body.theme-copa .text-gray-700,
+body.theme-copa .text-gray-600,
+body.theme-copa .text-primary { color: #e7ecf5 !important; }
+
+/* Sections com fundo branco/claro: tornar translúcidas */
+body.theme-copa section[class*="bg-white"],
+body.theme-copa section[class*="bg-gray-50"],
+body.theme-copa section[class*="bg-slate-50"],
+body.theme-copa div[class*="bg-white"][class*="section"] {
+  background: transparent !important;
+}
+
+/* ---------- Footer ---------- */
+body.theme-copa footer {
+  background:
+    linear-gradient(180deg, #02112B 0%, #010a1c 100%) !important;
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, #008037, #FCF10B, #00488E) 1;
+  position: relative;
+}
+body.theme-copa footer::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(115deg, transparent 60%, rgba(252,241,11,0.04) 61%, rgba(252,241,11,0.04) 63%, transparent 64%),
+    linear-gradient(115deg, transparent 30%, rgba(0,128,55,0.05) 31%, rgba(0,128,55,0.05) 33%, transparent 34%);
+  pointer-events: none;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  body.theme-copa { background-attachment: scroll; }
+  body.theme-copa::before { opacity: 0.6; }
+  .theme-copa-toggle { padding: 9px 13px; font-size: 12px; }
+}
