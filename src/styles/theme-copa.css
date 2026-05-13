@@ -257,6 +257,107 @@ body.theme-copa footer::before {
   pointer-events: none;
 }
 
+/* ---------- Sections com fundos claros / gradientes (forçar transparência) ---------- */
+body.theme-copa section[class*="bg-muted"],
+body.theme-copa section[class*="bg-gray-50"],
+body.theme-copa section[class*="bg-white"],
+body.theme-copa section[class*="from-gray-50"],
+body.theme-copa section[class*="to-white"],
+body.theme-copa section[class*="bg-gradient-to-b"] {
+  background: transparent !important;
+}
+
+/* Imagem de filtro/overlay institucional sutil em sections claras */
+body.theme-copa #numeros::before,
+body.theme-copa #multimedia::before,
+body.theme-copa #depoimentos::before,
+body.theme-copa #blog::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(2,17,43,0.55) 0%, rgba(0,72,142,0.35) 50%, rgba(2,17,43,0.65) 100%),
+    url('https://kngofnnx.com/wp-content/uploads/2026/05/DDESKTOP.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+}
+body.theme-copa #numeros,
+body.theme-copa #multimedia,
+body.theme-copa #depoimentos,
+body.theme-copa #blog {
+  position: relative;
+  isolation: isolate;
+}
+body.theme-copa #numeros > *,
+body.theme-copa #multimedia > *,
+body.theme-copa #depoimentos > *,
+body.theme-copa #blog > * { position: relative; z-index: 1; }
+
+/* ---------- Statistics: números em verde→amarelo (não azul) ---------- */
+body.theme-copa #numeros .bg-gradient-primary.bg-clip-text,
+body.theme-copa #numeros [class*="bg-gradient-primary"][class*="bg-clip-text"] {
+  background: linear-gradient(90deg, #88dc51 0%, #FCF10B 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 14px rgba(252, 241, 11, 0.35));
+}
+/* Ícones circulares: gradiente verde→amarelo */
+body.theme-copa #numeros .bg-gradient-primary,
+body.theme-copa #multimedia .bg-gradient-primary,
+body.theme-copa #depoimentos .bg-gradient-primary {
+  background: linear-gradient(135deg, #008037 0%, #15d3be 50%, #FCF10B 100%) !important;
+}
+body.theme-copa #numeros .bg-gradient-primary svg,
+body.theme-copa #multimedia .bg-gradient-primary svg { color: #02112B !important; }
+
+/* Highlights e borders nos cards de conquistas */
+body.theme-copa #numeros .border-secondary { border-color: #FCF10B !important; }
+body.theme-copa #numeros .text-secondary { color: #88dc51 !important; }
+body.theme-copa #numeros .bg-secondary\/20 {
+  background: rgba(252, 241, 11, 0.10) !important;
+}
+
+/* ---------- Sub-headings (h3 .text-primary) — garantir legibilidade ---------- */
+body.theme-copa h3.text-primary,
+body.theme-copa .text-primary {
+  color: #FCF10B !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+body.theme-copa h4.text-primary,
+body.theme-copa h5 { color: #ffffff !important; }
+
+/* Garantir contraste do conteúdo dos cards */
+body.theme-copa .text-gray-500,
+body.theme-copa .text-gray-600,
+body.theme-copa .text-muted-foreground { color: #d4dbe8 !important; }
+
+/* Botões secundários em sections claras */
+body.theme-copa .bg-white { background: rgba(255,255,255,0.06) !important; }
+body.theme-copa .bg-gray-50 { background: rgba(255,255,255,0.04) !important; }
+
+/* ---------- Blog: badge e link ---------- */
+body.theme-copa #blog .bg-primary\/10 {
+  background: rgba(252, 241, 11, 0.15) !important;
+  color: #FCF10B !important;
+}
+body.theme-copa #blog .text-primary { color: #FCF10B !important; }
+
+/* ---------- CTA Banner Depoimentos ---------- */
+body.theme-copa #depoimentos .bg-primary {
+  background: linear-gradient(135deg, #008037 0%, #00488E 60%, #02112B 100%) !important;
+  border: 1px solid rgba(252, 241, 11, 0.35);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(252,241,11,0.12);
+}
+
+/* Quote SVG nos testimonials em amarelo */
+body.theme-copa #depoimentos svg[fill="#4050a1"] { fill: #FCF10B !important; }
+
 /* ---------- Mobile ---------- */
 @media (max-width: 768px) {
   body.theme-copa { background-attachment: scroll; }
