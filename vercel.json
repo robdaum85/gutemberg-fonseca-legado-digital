@@ -1,18 +1,29 @@
 {
   "rewrites": [
     {
+      "source": "/motociclistas",
+      "destination": "https://motos-livres.vercel.app/"
+    },
+    {
       "source": "/motociclistas/:path*",
       "destination": "https://motos-livres.vercel.app/:path*"
+    },
+    {
+      "source": "/seguranca",
+      "destination": "https://foco-democr.vercel.app/"
     },
     {
       "source": "/seguranca/:path*",
       "destination": "https://foco-democr.vercel.app/:path*"
     },
     {
+      "source": "/catadoresdelixo",
+      "destination": "https://lp-lixo.vercel.app/"
+    },
+    {
       "source": "/catadoresdelixo/:path*",
       "destination": "https://lp-lixo.vercel.app/:path*"
     },
-
     {
       "source": "/blog/:slug",
       "destination": "/index.html"
