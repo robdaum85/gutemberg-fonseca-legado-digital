@@ -168,6 +168,21 @@ const ContactSection = () => {
                   </svg>
                 </a>
               </div>
+
+              <div className="mt-8 flex items-end justify-start gap-3 sm:gap-4">
+                <img
+                  src="https://kngofnnx.com/wp-content/uploads/2026/05/BOLSONARO.png"
+                  alt="Figurinha Flávio Bolsonaro"
+                  className="h-36 sm:h-44 md:h-56 w-auto object-contain drop-shadow-xl"
+                  loading="lazy"
+                />
+                <img
+                  src="https://kngofnnx.com/wp-content/uploads/2026/05/GUTEMBERG-1.png"
+                  alt="Figurinha Gutemberg Fonseca"
+                  className="h-36 sm:h-44 md:h-56 w-auto object-contain drop-shadow-xl"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>

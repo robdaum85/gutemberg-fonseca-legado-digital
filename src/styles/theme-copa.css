@@ -243,7 +243,11 @@ body.theme-copa div[class*="bg-white"][class*="section"] {
 /* ---------- Footer ---------- */
 body.theme-copa footer {
   background:
-    linear-gradient(180deg, #02112B 0%, #010a1c 100%) !important;
+    linear-gradient(180deg, rgba(2,17,43,0.85) 0%, rgba(1,10,28,0.92) 100%),
+    url('https://kngofnnx.com/wp-content/uploads/2026/05/DDESKTOP.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
   border-top: 2px solid transparent;
   border-image: linear-gradient(90deg, #008037, #FCF10B, #00488E) 1;
   position: relative;
@@ -271,7 +275,8 @@ body.theme-copa section[class*="bg-gradient-to-b"] {
 body.theme-copa #numeros::before,
 body.theme-copa #multimedia::before,
 body.theme-copa #depoimentos::before,
-body.theme-copa #blog::before {
+body.theme-copa #blog::before,
+body.theme-copa #instagram::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -288,14 +293,37 @@ body.theme-copa #blog::before {
 body.theme-copa #numeros,
 body.theme-copa #multimedia,
 body.theme-copa #depoimentos,
-body.theme-copa #blog {
+body.theme-copa #blog,
+body.theme-copa #instagram {
   position: relative;
   isolation: isolate;
+  background: transparent !important;
 }
 body.theme-copa #numeros > *,
 body.theme-copa #multimedia > *,
 body.theme-copa #depoimentos > *,
-body.theme-copa #blog > * { position: relative; z-index: 1; }
+body.theme-copa #blog > *,
+body.theme-copa #instagram > * { position: relative; z-index: 1; }
+
+/* ---------- Instagram ---------- */
+body.theme-copa #instagram .section-title.bg-gradient-primary,
+body.theme-copa #instagram .bg-gradient-primary.bg-clip-text {
+  background: linear-gradient(90deg, #88dc51 0%, #FCF10B 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 14px rgba(252, 241, 11, 0.35));
+}
+body.theme-copa #instagram a.inline-block.bg-gradient-primary,
+body.theme-copa #instagram a[class*="bg-gradient-primary"]:not([class*="bg-clip-text"]) {
+  background: linear-gradient(135deg, #FCF10B 0%, #fff170 100%) !important;
+  color: #02112B !important;
+  font-weight: 800 !important;
+  border: 1px solid rgba(0, 72, 142, 0.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  -webkit-text-fill-color: #02112B !important;
+}
 
 /* ---------- Statistics: números em verde→amarelo (não azul) ---------- */
 body.theme-copa #numeros .bg-gradient-primary.bg-clip-text,

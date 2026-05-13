@@ -49,7 +49,7 @@ const Header = () => {
       <div className="container mx-auto px-4 flex items-center justify-between">
         <a href="#" className="flex items-center">
           <img 
-            src="/lovable-uploads/c003fb8b-1544-42bc-881b-af1b83f1ac15.png" 
+            src="https://kngofnnx.com/wp-content/uploads/2026/05/LOGO-BRANCA.png" 
             alt="Gutemberg Fonseca Logo" 
             className="h-12 md:h-16"
           />
