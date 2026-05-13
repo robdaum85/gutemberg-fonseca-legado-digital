@@ -1,6 +1,19 @@
 {
   "rewrites": [
     {
+      "source": "/motociclistas/:path*",
+      "destination": "https://motos-livres.vercel.app/:path*"
+    },
+    {
+      "source": "/seguranca/:path*",
+      "destination": "https://foco-democr.vercel.app/:path*"
+    },
+    {
+      "source": "/catadoresdelixo/:path*",
+      "destination": "https://lp-lixo.vercel.app/:path*"
+    },
+
+    {
       "source": "/blog/:slug",
       "destination": "/index.html"
     },
