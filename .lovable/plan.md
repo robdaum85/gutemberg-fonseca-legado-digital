@@ -1,51 +1,76 @@
-## Escopo
+## Objetivo
 
-Quatro ajustes visuais — apenas frontend, sem mexer em rotas, lógica ou dados.
+Refinar o **modo Copa** (sem alterar o tema padrão) corrigindo contrastes em botões/setas, deixando o menu/ícones do header em amarelo, e estendendo o tema às páginas internas de **Direitos do Consumidor** (lista e post).
 
-### 1. Logo branca (Header + Footer)
-- Em `src/components/Header.tsx` (linha 52) e `src/components/Footer.tsx` (linha 8), trocar o `src` da `<img>` para `https://kngofnnx.com/wp-content/uploads/2026/05/LOGO-BRANCA.png`.
-- Manter classes/altura existentes; apenas a URL muda.
+Tudo continua escopado em `body.theme-copa` em `src/styles/theme-copa.css` — totalmente reversível.
 
-### 2. Tema Copa na seção Instagram
-A seção `#instagram` usa `bg-background` e título com `bg-gradient-primary` (azul). Adicionar regras em `src/styles/theme-copa.css` escopadas em `body.theme-copa #instagram`:
-- Fundo translúcido + overlay institucional (mesmo padrão de `#numeros`/`#blog`/`#multimedia` com `DDESKTOP.png` + gradiente azul-marinho).
-- Título `Instagram` com gradiente verde→amarelo (igual aos números).
-- Link `@gutembergpfonseca` em amarelo `#FCF10B`.
-- Botão "Ver mais no Instagram": amarelo com texto azul-marinho (padrão Copa).
-- Cards dos posts já herdam o estilo de cards translúcidos.
+---
 
-### 3. Fundo do Footer com `DDESKTOP.png`
-Em `src/styles/theme-copa.css`, complementar o bloco `body.theme-copa footer`:
-- Adicionar `background-image: url('https://kngofnnx.com/wp-content/uploads/2026/05/DDESKTOP.png')` sobreposto ao gradiente azul-marinho atual, com `background-size: cover`, `background-position: center`, e overlay escuro `rgba(2,17,43,0.78)` para garantir legibilidade.
-- Manter as faixas diagonais e a borda gradient já existentes.
+## 1. Botão "Ver todos os artigos" (Blog)
 
-### 4. Figurinhas no `#contato` (abaixo de "Siga-nos")
-Em `src/components/ContactSection.tsx`, após o `<div className="flex space-x-4">…</div>` dos ícones sociais (após linha 170), adicionar um novo bloco:
+Hoje usa `Button variant="outline"` em fundo translúcido — fica com texto/borda apagados sobre o azul.
 
-```tsx
-<div className="mt-8 flex items-end justify-start gap-4">
-  <img
-    src="https://kngofnnx.com/wp-content/uploads/2026/05/BOLSONARO.png"
-    alt="Figurinha Flávio Bolsonaro"
-    className="h-40 md:h-56 w-auto object-contain drop-shadow-xl"
-    loading="lazy"
-  />
-  <img
-    src="https://kngofnnx.com/wp-content/uploads/2026/05/GUTEMBERG-1.png"
-    alt="Figurinha Gutemberg Fonseca"
-    className="h-40 md:h-56 w-auto object-contain drop-shadow-xl"
-    loading="lazy"
-  />
-</div>
-```
+No `theme-copa.css`, adicionar regra escopada para `body.theme-copa #blog a[href="/direitos-do-consumidor"] button`:
+- Borda amarela `#FCF10B`
+- Texto amarelo `#FCF10B`, ícone amarelo
+- Hover: fundo amarelo sólido + texto azul `#02112B` (mesmo padrão dos CTAs Copa)
+- `box-shadow` sutil amarelo no hover
 
-Ordem: Flávio à esquerda, Gutemberg à direita. Tamanho responsivo (mobile menor, desktop maior). Apenas presentes quando o usuário rolar até a seção.
+## 2. Setas do clipping de notícias (← →)
+
+Os dois `Button variant="outline" size="icon"` em `MultimediaClipping.tsx` (linhas 216–232) ficam quase invisíveis no fundo escuro.
+
+No `theme-copa.css`, adicionar:
+- `body.theme-copa #multimedia button[class*="absolute"][class*="rounded"]` (seletor pelos botões circulares posicionados absolutamente)
+- Fundo: gradiente amarelo `#FCF10B → #fff170`
+- Ícone (chevron): cor azul `#02112B`
+- Borda azul translúcida + sombra
+- Hover: leve `scale(1.08)` + glow amarelo
+
+## 3. Navbar — texto e ícones em amarelo
+
+No `Header.tsx` o tema padrão usa `text-white`. No modo Copa, sobrescrever via CSS (sem mexer no JSX):
+
+- `body.theme-copa header nav a` → `color: #FCF10B`
+- `body.theme-copa header nav a:hover` → manter highlight verde já existente, com texto amarelo intensificado (drop-shadow)
+- `body.theme-copa header .md\:flex a[aria-label] svg` (ícones sociais) → `color: #FCF10B`
+- Hover dos ícones: fundo `rgba(252,241,11,0.12)` + glow amarelo
+- Botão hambúrguer mobile: também amarelo
+
+A "logo branca" continua intacta.
+
+## 4. Página **Direitos do Consumidor** (lista + post)
+
+As páginas `CategoryPage.tsx` e `CategoryPostPage.tsx` já renderizam `<Header />` e `<Footer />` (que herdam o tema Copa via `body.theme-copa`), porém o conteúdo central usa `bg-background`, `text-foreground`, `bg-card` que ficam claros.
+
+Adicionar no `theme-copa.css` regras escopadas a essas páginas (sem `id` específico — usar seletores genéricos que só batem quando a section/main existe nessas rotas):
+
+- `body.theme-copa main .bg-background, body.theme-copa .min-h-screen.bg-background` → fundo transparente (deixa o gradiente Copa do `body` aparecer)
+- Headings `h1, h2` da página → branco
+- Parágrafos `text-foreground/80` → `#d4dbe8`
+- Breadcrumb (`text-muted-foreground`) → `#cdd5e3`; link "Início" → amarelo no hover
+- Cards de artigo (`Link` com `bg-card rounded-lg shadow-md ... border`):
+  - já casa com regra existente de cards translúcidos (`rounded-lg` + `shadow`)
+  - reforçar: borda amarela `rgba(252,241,11,0.25)`, hover borda sólida `#FCF10B`
+  - título do card → branco, hover → amarelo
+  - badge `text-primary bg-primary/10` (fonte) → fundo `rgba(252,241,11,0.15)`, texto amarelo
+  - ícone `BookOpen` → cinza claro, hover amarelo
+- Página de post (`CategoryPostPage`): mesmas regras de tipografia + container `prose`/conteúdo do artigo legível em fundo escuro (texto claro, links amarelos, blockquotes com borda amarela).
+
+Tudo isso vive **exclusivamente** no CSS — nenhum `.tsx` precisa ser alterado nessas páginas.
+
+---
 
 ## Arquivos alterados
-- `src/components/Header.tsx` — trocar URL da logo (1 linha).
-- `src/components/Footer.tsx` — trocar URL da logo (1 linha).
-- `src/components/ContactSection.tsx` — adicionar bloco das duas figurinhas após os ícones sociais.
-- `src/styles/theme-copa.css` — adicionar regras para `#instagram` e complementar `footer` com a imagem de fundo.
 
-## Fora do escopo
-Rotas, SEO, dados, lógica React, novos componentes ou alterações em outras seções já tematizadas.
+- `src/styles/theme-copa.css` — único arquivo modificado. Novas seções:
+  1. `/* Blog: botão Ver todos os artigos */`
+  2. `/* Multimedia: setas do carrossel */`
+  3. `/* Navbar: texto/ícones amarelos */` (substitui/expande bloco atual de header)
+  4. `/* Páginas Direitos do Consumidor (lista + post) */`
+
+## Fora de escopo
+
+- Estrutura React, rotas, lógica, dados, SEO
+- Tema padrão (sem Copa) permanece inalterado
+- Outras páginas/sections já temáticas

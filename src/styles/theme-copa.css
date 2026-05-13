@@ -164,12 +164,26 @@ body.theme-copa header.fixed {
   border-bottom: 1px solid rgba(252, 241, 11, 0.35);
   box-shadow: 0 1px 0 rgba(252, 241, 11, 0.15), 0 8px 24px rgba(0,0,0,0.25);
 }
-body.theme-copa header nav a:hover {
+body.theme-copa header nav a {
   color: #FCF10B !important;
-  background: rgba(0, 128, 55, 0.15) !important;
+  font-weight: 600;
+}
+body.theme-copa header nav a:hover {
+  color: #ffffff !important;
+  background: rgba(0, 128, 55, 0.25) !important;
   -webkit-background-clip: initial !important;
   background-clip: initial !important;
+  text-shadow: 0 0 12px rgba(252,241,11,0.55);
 }
+/* Ícones sociais e botão hambúrguer no header */
+body.theme-copa header a[aria-label] { color: #FCF10B !important; }
+body.theme-copa header a[aria-label] svg { color: #FCF10B !important; }
+body.theme-copa header a[aria-label]:hover {
+  background: rgba(252, 241, 11, 0.12) !important;
+  box-shadow: 0 0 14px rgba(252, 241, 11, 0.35);
+}
+body.theme-copa header button.md\:hidden,
+body.theme-copa header button.md\:hidden svg { color: #FCF10B !important; }
 
 /* ---------- Botões ---------- */
 body.theme-copa button,
