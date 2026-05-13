@@ -3,16 +3,27 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
-// Lazy loading das páginas
 const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 const CategoryPostPage = lazy(() => import("./pages/CategoryPostPage"));
 
 const queryClient = new QueryClient();
+
+const ExternalRedirect = ({ to }: { to: string }) => {
+  useEffect(() => {
+    window.location.replace(to);
+  }, [to]);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      Redirecionando...
+    </div>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -35,18 +46,18 @@ const App = () => (
             {/* LANDING PAGES EXTERNAS */}
             <Route
               path="/motociclistas"
-              element={<Navigate to="https://motos-livres.vercel.app/" replace />}
+              element={<ExternalRedirect to="https://motos-livres.vercel.app/" />}
             />
             <Route
               path="/seguranca"
-              element={<Navigate to="https://foco-democr.vercel.app/" replace />}
+              element={<ExternalRedirect to="https://foco-democr.vercel.app/" />}
             />
             <Route
               path="/catadoresdelixo"
-              element={<Navigate to="https://lp-lixo.vercel.app/" replace />}
+              element={<ExternalRedirect to="https://lp-lixo.vercel.app/" />}
             />
 
-            {/* REDIRECT DO BLOG PARA NOVA ESTRUTURA */}
+            {/* REDIRECT DO BLOG */}
             <Route
               path="/blog"
               element={<Navigate to="/direitos-do-consumidor" replace />}
