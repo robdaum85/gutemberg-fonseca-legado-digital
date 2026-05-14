@@ -104,8 +104,18 @@ const CategoryPage = () => {
                 <Link
                   key={post.slug}
                   to={`/${CATEGORY_SLUG}/${post.slug}`}
-                  className="group bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border hover:border-primary/30"
+                  className="group bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border hover:border-primary/30 flex flex-col"
                 >
+                  {post.coverImage && (
+                    <div className="aspect-video w-full overflow-hidden bg-muted">
+                      <img
+                        src={post.coverImage}
+                        alt={post.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
                   <article className="p-6">
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
