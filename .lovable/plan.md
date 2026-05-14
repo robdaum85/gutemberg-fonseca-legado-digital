@@ -1,76 +1,43 @@
-## Objetivo
+## Atualizar coverImage de cada post do blog
 
-Refinar o **modo Copa** (sem alterar o tema padrão) corrigindo contrastes em botões/setas, deixando o menu/ícones do header em amarelo, e estendendo o tema às páginas internas de **Direitos do Consumidor** (lista e post).
+Você enviou 21 URLs e existem 16 posts. Proponho a seguinte associação por tema (mapeando o melhor candidato visual para cada slug). URLs sobrando ficam como reserva (não utilizadas).
 
-Tudo continua escopado em `body.theme-copa` em `src/styles/theme-copa.css` — totalmente reversível.
+### Mapeamento proposto (slug → coverImage)
 
----
+| # | Slug | Nova coverImage |
+|---|------|-----------------|
+| 1 | `crime-relacao-consumo-virus-silencioso` | `.../crime-relacao-consumo-virus-silencioso.png` |
+| 2 | `compras-online-prazo-entrega-direitos-consumidor` | `.../delivery.png` |
+| 3 | `corte-indevido-servicos-essenciais-direitos-consumidor` | `.../luz.png` |
+| 4 | `gasolina-subindo-sem-reajuste-petrobras-direitos-consumidor` | `.../gasolina-scaled.jpeg` |
+| 5 | `pascoa-direitos-consumidor-compra-chocolate` | `.../Design-sem-nome-1.png` |
+| 6 | `pascoa-consciente-direito-informacao-rotulo` | `.../Design-sem-nome-1-1.png` |
+| 7 | `vagao-feminino-rj-24-horas` | `.../Design-sem-nome-2.png` |
+| 8 | `contrato-de-academia-direitos-do-consumidor` | `.../side-view-people-running-treadmill-gym...jpeg` |
+| 9 | `direitos-do-hospede-hoteis-pousadas` | `.../african-american-man-carrying-bags-hotel...jpeg` |
+| 10 | `direitos-basicos-do-consumidor` | `.../man-shaking-hands-with-lady...jpeg` |
+| 11 | `atraso-na-entrega-direitos-do-consumidor` | `.../mature-woman-getting-angry-yelling-phone...jpeg` |
+| 12 | `fraudes-digitais-pix-falso-whatsapp-golpes` | `.../anonovogolpe-scaled.jpeg` |
+| 13 | `trocas-pos-natal-direitos-consumidor` | `.../trocaposnatal-scaled.jpeg` |
+| 14 | `plano-de-celular-direitos-consumidor-fidelizacao-cancelamento` | `.../young-beautiful-woman-having-online-meeting...jpeg` |
+| 15 | `compras-online-golpes-pix-como-evitar` | `.../golpesnopix-scaled.jpeg` |
+| 16 | `credito-consignado-direitos-consumidor-emprestimo` | `.../creditoconsignado-1-scaled.jpeg` |
 
-## 1. Botão "Ver todos os artigos" (Blog)
+URLs não utilizadas (reserva): `odia .../arte_coluna_opiniao_08_maio_2026`, `diariodorio .../Emprestimo-1024x568-1.jpg`, `.../Design-sem-nome-6.png`, `.../emprestimo-scaled.jpeg`, `.../comprasonline.png`.
 
-Hoje usa `Button variant="outline"` em fundo translúcido — fica com texto/borda apagados sobre o azul.
+### Mudanças de código
 
-No `theme-copa.css`, adicionar regra escopada para `body.theme-copa #blog a[href="/direitos-do-consumidor"] button`:
-- Borda amarela `#FCF10B`
-- Texto amarelo `#FCF10B`, ícone amarelo
-- Hover: fundo amarelo sólido + texto azul `#02112B` (mesmo padrão dos CTAs Copa)
-- `box-shadow` sutil amarelo no hover
+1. **`src/data/blogPosts.ts`** — substituir o campo `coverImage` em cada um dos 16 posts pela URL correspondente acima. `authorImage` permanece como está (foto do Gutemberg).
 
-## 2. Setas do clipping de notícias (← →)
+2. **`src/components/Blog.tsx`** — atualmente os cards do bloco "Blog" na home não exibem a imagem. Adicionar no topo de cada card um `<div>` com `aspect-video` e `<img src={post.coverImage} alt={post.title} loading="lazy" className="w-full h-full object-cover" />` para que as fotos reais apareçam.
 
-Os dois `Button variant="outline" size="icon"` em `MultimediaClipping.tsx` (linhas 216–232) ficam quase invisíveis no fundo escuro.
+3. **`src/pages/CategoryPage.tsx`** — mesmo ajuste: incluir thumbnail `aspect-video` no topo de cada card da listagem `/direitos-do-consumidor`.
 
-No `theme-copa.css`, adicionar:
-- `body.theme-copa #multimedia button[class*="absolute"][class*="rounded"]` (seletor pelos botões circulares posicionados absolutamente)
-- Fundo: gradiente amarelo `#FCF10B → #fff170`
-- Ícone (chevron): cor azul `#02112B`
-- Borda azul translúcida + sombra
-- Hover: leve `scale(1.08)` + glow amarelo
+4. **`src/pages/CategoryPostPage.tsx`** — verificar se já renderiza a `coverImage` no hero do post; se não, adicionar imagem destaque acima do título.
 
-## 3. Navbar — texto e ícones em amarelo
+Sem mudanças em rotas, dados de outros posts, lógica ou tema. As novas regras de imagem usam classes Tailwind existentes e respeitam o tema Copa.
 
-No `Header.tsx` o tema padrão usa `text-white`. No modo Copa, sobrescrever via CSS (sem mexer no JSX):
+### Confirme antes de eu implementar
 
-- `body.theme-copa header nav a` → `color: #FCF10B`
-- `body.theme-copa header nav a:hover` → manter highlight verde já existente, com texto amarelo intensificado (drop-shadow)
-- `body.theme-copa header .md\:flex a[aria-label] svg` (ícones sociais) → `color: #FCF10B`
-- Hover dos ícones: fundo `rgba(252,241,11,0.12)` + glow amarelo
-- Botão hambúrguer mobile: também amarelo
-
-A "logo branca" continua intacta.
-
-## 4. Página **Direitos do Consumidor** (lista + post)
-
-As páginas `CategoryPage.tsx` e `CategoryPostPage.tsx` já renderizam `<Header />` e `<Footer />` (que herdam o tema Copa via `body.theme-copa`), porém o conteúdo central usa `bg-background`, `text-foreground`, `bg-card` que ficam claros.
-
-Adicionar no `theme-copa.css` regras escopadas a essas páginas (sem `id` específico — usar seletores genéricos que só batem quando a section/main existe nessas rotas):
-
-- `body.theme-copa main .bg-background, body.theme-copa .min-h-screen.bg-background` → fundo transparente (deixa o gradiente Copa do `body` aparecer)
-- Headings `h1, h2` da página → branco
-- Parágrafos `text-foreground/80` → `#d4dbe8`
-- Breadcrumb (`text-muted-foreground`) → `#cdd5e3`; link "Início" → amarelo no hover
-- Cards de artigo (`Link` com `bg-card rounded-lg shadow-md ... border`):
-  - já casa com regra existente de cards translúcidos (`rounded-lg` + `shadow`)
-  - reforçar: borda amarela `rgba(252,241,11,0.25)`, hover borda sólida `#FCF10B`
-  - título do card → branco, hover → amarelo
-  - badge `text-primary bg-primary/10` (fonte) → fundo `rgba(252,241,11,0.15)`, texto amarelo
-  - ícone `BookOpen` → cinza claro, hover amarelo
-- Página de post (`CategoryPostPage`): mesmas regras de tipografia + container `prose`/conteúdo do artigo legível em fundo escuro (texto claro, links amarelos, blockquotes com borda amarela).
-
-Tudo isso vive **exclusivamente** no CSS — nenhum `.tsx` precisa ser alterado nessas páginas.
-
----
-
-## Arquivos alterados
-
-- `src/styles/theme-copa.css` — único arquivo modificado. Novas seções:
-  1. `/* Blog: botão Ver todos os artigos */`
-  2. `/* Multimedia: setas do carrossel */`
-  3. `/* Navbar: texto/ícones amarelos */` (substitui/expande bloco atual de header)
-  4. `/* Páginas Direitos do Consumidor (lista + post) */`
-
-## Fora de escopo
-
-- Estrutura React, rotas, lógica, dados, SEO
-- Tema padrão (sem Copa) permanece inalterado
-- Outras páginas/sections já temáticas
+- O mapeamento acima está correto?
+- Posso descartar (ou prefere usar em algum slug específico) as 5 URLs sobrando?
