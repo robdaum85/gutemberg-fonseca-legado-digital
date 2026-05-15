@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
-// 6 imagens do site kngofnnx.com
+// Imagens do site kngofnnx.com
 const backgroundImages = [
+  'https://kngofnnx.com/wp-content/uploads/2026/05/sec2.png',
+  'https://kngofnnx.com/wp-content/uploads/2026/05/sec1.png',
   'https://kngofnnx.com/wp-content/uploads/2026/04/img6.jpeg',
   'https://kngofnnx.com/wp-content/uploads/2026/04/img5.jpeg',
   'https://kngofnnx.com/wp-content/uploads/2026/04/img4.jpeg',
