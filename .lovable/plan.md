@@ -1,43 +1,41 @@
-## Atualizar coverImage de cada post do blog
+## Problema
 
-Você enviou 21 URLs e existem 16 posts. Proponho a seguinte associação por tema (mapeando o melhor candidato visual para cada slug). URLs sobrando ficam como reserva (não utilizadas).
+O projeto usa `vite-plugin-pwa` com `registerType: "autoUpdate"`, que registra um service worker em produção. Dentro do iframe de preview da Lovable isso causa exatamente o sintoma que você descreveu: o SW intercepta navegações e serve HTML/JS antigos do cache, mesmo após mudanças no código.
 
-### Mapeamento proposto (slug → coverImage)
+Além disso, dispositivos que já visitaram o site publicado têm o SW antigo instalado — só remover o plugin **não** desinstala o SW desses navegadores. Eles continuariam servindo cache para sempre.
 
-| # | Slug | Nova coverImage |
-|---|------|-----------------|
-| 1 | `crime-relacao-consumo-virus-silencioso` | `.../crime-relacao-consumo-virus-silencioso.png` |
-| 2 | `compras-online-prazo-entrega-direitos-consumidor` | `.../delivery.png` |
-| 3 | `corte-indevido-servicos-essenciais-direitos-consumidor` | `.../luz.png` |
-| 4 | `gasolina-subindo-sem-reajuste-petrobras-direitos-consumidor` | `.../gasolina-scaled.jpeg` |
-| 5 | `pascoa-direitos-consumidor-compra-chocolate` | `.../Design-sem-nome-1.png` |
-| 6 | `pascoa-consciente-direito-informacao-rotulo` | `.../Design-sem-nome-1-1.png` |
-| 7 | `vagao-feminino-rj-24-horas` | `.../Design-sem-nome-2.png` |
-| 8 | `contrato-de-academia-direitos-do-consumidor` | `.../side-view-people-running-treadmill-gym...jpeg` |
-| 9 | `direitos-do-hospede-hoteis-pousadas` | `.../african-american-man-carrying-bags-hotel...jpeg` |
-| 10 | `direitos-basicos-do-consumidor` | `.../man-shaking-hands-with-lady...jpeg` |
-| 11 | `atraso-na-entrega-direitos-do-consumidor` | `.../mature-woman-getting-angry-yelling-phone...jpeg` |
-| 12 | `fraudes-digitais-pix-falso-whatsapp-golpes` | `.../anonovogolpe-scaled.jpeg` |
-| 13 | `trocas-pos-natal-direitos-consumidor` | `.../trocaposnatal-scaled.jpeg` |
-| 14 | `plano-de-celular-direitos-consumidor-fidelizacao-cancelamento` | `.../young-beautiful-woman-having-online-meeting...jpeg` |
-| 15 | `compras-online-golpes-pix-como-evitar` | `.../golpesnopix-scaled.jpeg` |
-| 16 | `credito-consignado-direitos-consumidor-emprestimo` | `.../creditoconsignado-1-scaled.jpeg` |
+## Plano
 
-URLs não utilizadas (reserva): `odia .../arte_coluna_opiniao_08_maio_2026`, `diariodorio .../Emprestimo-1024x568-1.jpg`, `.../Design-sem-nome-6.png`, `.../emprestimo-scaled.jpeg`, `.../comprasonline.png`.
+### 1. Remover o PWA do build
+- Desinstalar `vite-plugin-pwa`.
+- Remover o bloco `VitePWA({...})` de `vite.config.ts`.
+- Remover a importação do plugin.
 
-### Mudanças de código
+### 2. Substituir o service worker por um "kill-switch"
+Criar `public/sw.js` estático cujo único trabalho é:
+- limpar todos os caches (`caches.keys()` + `caches.delete`),
+- forçar reload das abas abertas com um query param de cache-bust,
+- chamar `self.registration.unregister()`.
 
-1. **`src/data/blogPosts.ts`** — substituir o campo `coverImage` em cada um dos 16 posts pela URL correspondente acima. `authorImage` permanece como está (foto do Gutemberg).
+Assim, qualquer dispositivo que já tinha o SW antigo instalado vai, na próxima visita, baixar este SW novo, limpar tudo e se auto-desinstalar.
 
-2. **`src/components/Blog.tsx`** — atualmente os cards do bloco "Blog" na home não exibem a imagem. Adicionar no topo de cada card um `<div>` com `aspect-video` e `<img src={post.coverImage} alt={post.title} loading="lazy" className="w-full h-full object-cover" />` para que as fotos reais apareçam.
+### 3. Garantir que nada re-registre o SW
+- Verificar `src/main.tsx`, `index.html` e `src/App.tsx` — se houver chamada `navigator.serviceWorker.register(...)` ou `registerSW()`, remover.
+- Adicionar (defensivamente) em `src/main.tsx` um bloco que desregistra qualquer SW existente ao iniciar, garantindo limpeza mesmo se o `sw.js` não for buscado.
 
-3. **`src/pages/CategoryPage.tsx`** — mesmo ajuste: incluir thumbnail `aspect-video` no topo de cada card da listagem `/direitos-do-consumidor`.
+### 4. Manter manifest mínimo (opcional)
+O `index.html` já tem `theme-color`, `apple-touch-icon` e meta tags PWA-friendly. Isso continua funcionando para "Adicionar à tela inicial" sem precisar de service worker. Não mexer.
 
-4. **`src/pages/CategoryPostPage.tsx`** — verificar se já renderiza a `coverImage` no hero do post; se não, adicionar imagem destaque acima do título.
+### 5. Comunicar limitações
+- O preview da Lovable e novos visitantes verão a versão mais recente imediatamente.
+- Usuários que já instalaram o PWA antigo na tela inicial podem precisar abrir o site uma vez no navegador para o kill-switch rodar.
+- A app perde funcionalidade offline (consequência esperada de desativar o SW).
 
-Sem mudanças em rotas, dados de outros posts, lógica ou tema. As novas regras de imagem usam classes Tailwind existentes e respeitam o tema Copa.
+## Arquivos afetados
 
-### Confirme antes de eu implementar
+- `vite.config.ts` — remover bloco VitePWA e import.
+- `package.json` — remover `vite-plugin-pwa` (via `bun remove`).
+- `public/sw.js` — novo arquivo, kill-switch.
+- `src/main.tsx` — adicionar bloco de unregister defensivo.
 
-- O mapeamento acima está correto?
-- Posso descartar (ou prefere usar em algum slug específico) as 5 URLs sobrando?
+Posso seguir?
