@@ -1,31 +1,26 @@
-## Mudanças
+## Destacar as figurinhas da Copa no rodapé do Contato
 
-### 1. Remover "Depoimentos"
-- `src/components/Header.tsx`: remover o item `{ name: 'Depoimentos', href: '#depoimentos' }` do array `navLinks` (afeta desktop e mobile).
-- `src/pages/Index.tsx`: remover `<Testimonials />` do JSX e o respectivo `import Testimonials from '@/components/Testimonials'`.
-- O arquivo `src/components/Testimonials.tsx` permanece no projeto (não deletado), apenas desconectado.
+Hoje as duas figurinhas (`BOLSONARO.png` e `GUTEMBERG-1.png`) aparecem discretas no canto do `ContactSection`, sem chamada nem moldura. Vou transformá-las num bloco de destaque visual com a frase pedida.
 
-### 2. Comentar "Clipping de Notícias" (uso futuro)
-- `src/pages/Index.tsx`: comentar a linha `<MultimediaClipping />` com `{/* ... */}` e manter o `import` também comentado, deixando um comentário `// TODO: reativar futuramente` para fácil retomada.
+### Onde
+`src/components/ContactSection.tsx`, linhas 172-185 (substituir o `<div>` atual das duas imagens).
 
-### 3. Sobre — layout no modo Copa
-- `src/components/About.tsx`: usar o hook `useThemeCopa()` para detectar `enabled`.
-- Quando `enabled === true` (modo Copa):
-  - Inverter a ordem das colunas: texto à esquerda, foto à direita. Isso será feito aplicando `lg:flex-row-reverse` no container flex (mantendo a ordem do DOM e o `flex-col` no mobile).
-  - Substituir a `src` da imagem por `https://kngofnnx.com/wp-content/uploads/2026/05/gutoselecao.png` e ajustar o `alt` para "Gutemberg Fonseca - Copa".
-  - As animações de entrada (`translate-x` esquerda/direita) e demais estilos permanecem iguais — apenas a direção visual da fileira muda.
-- Quando `enabled === false`: layout atual permanece intacto (foto à esquerda, texto à direita, imagem original `/lovable-uploads/424487f0-...`).
+### O que muda
+Trocar o bloco simples por um card de destaque com:
 
-## Detalhes técnicos
+- Container largura total da coluna, fundo `bg-gradient-primary` (gradiente verde→turquesa já existente), bordas arredondadas (`rounded-2xl`), padding generoso, sombra forte (`shadow-2xl`) e leve borda branca translúcida.
+- Headline em Poppins 700 (classe existente): **"O Álbum do Brasil precisa dessas figurinhas para completar um Brasil melhor."**
+  - Texto em branco, tamanho `text-xl md:text-2xl`, alinhado ao centro no mobile e à esquerda no desktop.
+- Subtítulo curto opcional em branco/90 (`text-sm`): "Cole, compartilhe e ajude a completar o álbum."
+- Linha das figurinhas:
+  - Layout flex centralizado, gap maior (`gap-6`).
+  - Aumentar as figurinhas para `h-44 sm:h-52 md:h-64` mantendo `object-contain`.
+  - Adicionar leve `rotate` alternado (`-rotate-3` / `rotate-3`) para dar charme de "figurinha colada".
+  - Hover: `hover:scale-105` + `transition-transform`.
+  - Manter `loading="lazy"` e os mesmos `alt`.
+- Animação sutil de entrada já é coberta pelos `useIntersectionObserver` existentes no entorno (não precisa novo hook); apenas classes Tailwind cuidam do hover.
 
-```tsx
-// About.tsx (resumo)
-const { enabled: isCopa } = useThemeCopa();
-const imgSrc = isCopa
-  ? 'https://kngofnnx.com/wp-content/uploads/2026/05/gutoselecao.png'
-  : '/lovable-uploads/424487f0-dee5-4f8e-bdab-8e3e234b08c7.png';
-
-<div className={`flex flex-col ${isCopa ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-start mt-12`}>
-```
-
-Nada mais é alterado: identidade visual, demais seções, formulários de mobilização e tema padrão continuam como estão.
+### Considerações
+- Só edição visual em um componente; sem novas dependências, sem alteração de dados ou rotas.
+- A frase fica visível tanto no tema padrão quanto no modo Copa (o gradiente é o mesmo dos botões da marca).
+- Mobile-first respeitado: card ocupa 100% no mobile, figurinhas centralizadas e empilháveis se necessário (`flex-wrap`).
