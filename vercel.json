@@ -1,29 +1,37 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/motociclistas",
-      "destination": "https://motos-livres.vercel.app"
+      "destination": "https://motos-livres.vercel.app",
+      "permanent": false
     },
     {
       "source": "/motociclistas/:path*",
-      "destination": "https://motos-livres.vercel.app/:path*"
+      "destination": "https://motos-livres.vercel.app/:path*",
+      "permanent": false
     },
     {
       "source": "/seguranca",
-      "destination": "https://foco-democr.vercel.app"
+      "destination": "https://foco-democr.vercel.app",
+      "permanent": false
     },
     {
       "source": "/seguranca/:path*",
-      "destination": "https://foco-democr.vercel.app/:path*"
+      "destination": "https://foco-democr.vercel.app/:path*",
+      "permanent": false
     },
     {
       "source": "/catadoresdelixo",
-      "destination": "https://lp-lixo.vercel.app"
+      "destination": "https://lp-lixo.vercel.app",
+      "permanent": false
     },
     {
       "source": "/catadoresdelixo/:path*",
-      "destination": "https://lp-lixo.vercel.app/:path*"
-    },
+      "destination": "https://lp-lixo.vercel.app/:path*",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
     {
       "source": "/blog",
       "destination": "/index.html"
@@ -33,7 +41,7 @@
       "destination": "/index.html"
     },
     {
-      "source": "/((?!motociclistas|seguranca|catadoresdelixo|robots\\.txt|sitemap\\.xml|manifest\\.webmanifest|sw\\.js|registerSW\\.js|workbox-.*\\.js|favicon\\.ico|placeholder\\.svg|lovable-uploads/.*|assets/.*).*)",
+      "source": "/((?!robots\\.txt|sitemap\\.xml|manifest\\.webmanifest|sw\\.js|registerSW\\.js|workbox-.*\\.js|favicon\\.ico|placeholder\\.svg|lovable-uploads/.*|assets/.*).*)",
       "destination": "/index.html"
     }
   ]
