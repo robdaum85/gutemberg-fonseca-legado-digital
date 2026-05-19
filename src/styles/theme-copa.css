@@ -474,3 +474,16 @@ body.theme-copa main article strong { color: #ffffff !important; }
   body.theme-copa::before { opacity: 0.6; }
   .theme-copa-toggle { width: 36px; height: 36px; }
 }
+
+/* ---------- Form fields visibility (theme-copa) ---------- */
+body.theme-copa input,
+body.theme-copa textarea,
+body.theme-copa select {
+  color: #1a1a1a !important;
+  background-color: #ffffff !important;
+  -webkit-text-fill-color: #1a1a1a !important;
+}
+body.theme-copa label { color: #1a1a1a !important; }
+body.theme-copa form .text-graphite,
+body.theme-copa form p { color: #334155 !important; }
+body.theme-copa ::placeholder { color: #64748b !important; opacity: 1 !important; }
