@@ -41,7 +41,7 @@ const About = () => {
           
           <div 
             className={`lg:w-3/5 transition-all duration-1000 delay-300 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
+              isVisible ? 'opacity-100 translate-x-0' : `opacity-0 ${isCopa ? '-translate-x-20' : 'translate-x-20'}`
             }`}
           >
             <h3 className="text-2xl font-bold text-primary mb-4">Gutemberg Fonseca</h3>
