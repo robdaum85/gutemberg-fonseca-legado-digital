@@ -1,22 +1,38 @@
-## Problema
+## Mudanças
 
-Quando o usuário clica no botão de acessibilidade, o popover abre, mas:
+### 1. Campos dos forms invisíveis
+**Causa:** No Modo Copa, `body.theme-copa { color: #f5f7fb }` é herdado pelos `<input>`, `<textarea>` e `<label>`, deixando o texto branco sobre o card branco.
 
-1. **Aparência confusa**: o painel parece "uma nova barra de navegação" — todos os switches aparecem amarelos (parecem todos ligados) porque o Modo Copa está ativo e suas regras CSS (`body.theme-copa button…`) pintam os switches do shadcn com gradiente amarelo. Resultado: impossível distinguir ON/OFF.
-2. **Título "Acessibilidade" invisível** dentro do popover (texto branco sobre fundo branco devido a overrides do tema).
-3. **Texto descritivo** com baixo contraste.
-4. **Popover muito alto** — passa do meio da tela.
+**Fix:** Adicionar em `src/styles/theme-copa.css` regras escopadas:
+- `body.theme-copa input, body.theme-copa textarea, body.theme-copa select { color: #1a1a1a !important; background: #ffffff !important; }`
+- `body.theme-copa label { color: #1a1a1a !important; }`
+- `body.theme-copa ::placeholder { color: #64748b !important; }`
 
-## Plano de correção
+### 2. Substituir os 2 primeiros posts do Instagram
+Em `src/components/InstagramFeed.tsx`, trocar os dois primeiros itens do array:
+- **insta1:** url `https://www.instagram.com/p/DYF6cP0mIbw/?igsh=OG1kNDhzMGlvdm1t`, imagem `https://kngofnnx.com/wp-content/uploads/2026/05/br.png`
+- **insta2:** url `https://www.instagram.com/p/DYVtrxlxav4/?igsh=MWpyczN5a283aTk1NA==`, imagem `https://kngofnnx.com/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-15-at-13.37.39.jpeg`
+- Mudar o `type` desses dois de `reel` para `post` (já que o badge mostra "Reel"). Vou ajustar o badge condicionalmente para mostrar "Post" quando `type === 'post'`.
+- Terceiro post permanece igual.
 
-Refatorar `src/components/AccessibilityWidget.tsx` e `src/styles/accessibility.css` para que o painel seja **totalmente isolado** dos estilos globais (não usar `Switch`/`Label`/`Popover` do shadcn que são pintados pelo tema). Em vez disso:
+### 3. Novo post no blog
+Adicionar no topo de `blogPosts` em `src/data/blogPosts.ts`:
+- `slug`: `bets-orcamento-familiar-armadilha`
+- `category`: `Defesa do Consumidor` → URL canônica `/direitos-do-consumidor/bets-orcamento-familiar-armadilha`
+- `title`: "Bets e o orçamento familiar: quando o jogo vira uma armadilha"
+- `date`: `2026-05-17`
+- `readingTime`: `5 min de leitura`
+- `excerpt/subTitle`: "Apostas online e jogos de cassino digital podem comprometer o orçamento familiar e exigem acolhimento, fiscalização e proteção ao consumidor."
+- `coverImage`: `https://kngofnnx.com/wp-content/uploads/2026/05/artigo2.png`
+- `author`/`role`/`authorImage`: mesmos padrões dos outros posts
+- `content`: HTML formatado com `<h2>` e `<p>` a partir do texto fornecido
+- `featured`: `true`
+- `metaTitle`/`metaDescription`/`tags` adequados a SEO
 
-- Usar um **dropdown próprio** ancorado ao botão (posição `fixed` no canto inferior direito, acima do botão), com `z-index` alto.
-- Fechar ao clicar fora ou apertar Esc.
-- Largura compacta (~300px), altura máx `min(70vh, 520px)` com scroll interno.
-- **Estilos inline com `!important`** (escopados em `.a11y-panel`) para imunidade ao Modo Copa: fundo branco, texto escuro, switches custom (track cinza/verde).
-- Toggle pills custom (não `<Switch>` do shadcn): `<button role="switch" aria-checked>` com indicador visual claro (cinza = off, verde = on).
-- Botões de tamanho de fonte mantidos, mas com bordas explícitas.
-- Substituir o título "Acessibilidade" para ter cor explícita.
+Adicionar a URL canônica `/direitos-do-consumidor/bets-orcamento-familiar-armadilha` em `public/sitemap.xml`.
 
-Não mexer no Modo Copa nem em outros componentes. Apenas o widget de acessibilidade e seu CSS.
+## Arquivos alterados
+- `src/styles/theme-copa.css`
+- `src/components/InstagramFeed.tsx`
+- `src/data/blogPosts.ts`
+- `public/sitemap.xml`
