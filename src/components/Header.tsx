@@ -27,7 +27,6 @@ const Header = () => {
     { name: 'Direitos do Consumidor', href: '/direitos-do-consumidor' },
     { name: 'Podcast', href: '#podcast' },
     { name: 'Instagram', href: '#instagram' },
-    { name: 'Depoimentos', href: '#depoimentos' },
     { name: 'Contato', href: '#contato' }
   ];
 
