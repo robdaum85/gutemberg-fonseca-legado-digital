@@ -1,3 +1,4 @@
+import { Volleyball } from 'lucide-react';
 import { useThemeCopa } from '@/contexts/ThemeCopaContext';
 
 const ThemeCopaToggle = () => {
@@ -9,12 +10,10 @@ const ThemeCopaToggle = () => {
       onClick={toggle}
       aria-pressed={enabled}
       aria-label={enabled ? 'Desativar Modo Copa' : 'Ativar Modo Copa'}
+      title="Modo Copa"
       className="theme-copa-toggle"
     >
-      <span className={`theme-copa-toggle__dot ${enabled ? 'is-on' : ''}`} />
-      <span className="theme-copa-toggle__label">
-        Modo Copa {enabled ? 'ON' : 'OFF'}
-      </span>
+      <Volleyball size={20} aria-hidden="true" />
     </button>
   );
 };

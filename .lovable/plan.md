@@ -1,26 +1,27 @@
-## Destacar as figurinhas da Copa no rodapé do Contato
+## Toggle Modo Copa mais discreto (ícone bola de futebol)
 
-Hoje as duas figurinhas (`BOLSONARO.png` e `GUTEMBERG-1.png`) aparecem discretas no canto do `ContactSection`, sem chamada nem moldura. Vou transformá-las num bloco de destaque visual com a frase pedida.
+Trocar o botão atual (pílula com texto "Modo Copa ON/OFF") por um botão circular pequeno com o ícone de bola de futebol, posicionado no canto inferior direito.
 
-### Onde
-`src/components/ContactSection.tsx`, linhas 172-185 (substituir o `<div>` atual das duas imagens).
+### `src/components/ThemeCopaToggle.tsx`
+- Importar `import { Volleyball } from 'lucide-react'` (é o ícone de bola/futebol disponível no lucide; visual de gomos clássicos).
+- Renderizar um `<button>` quadrado/circular (~40px), `aria-label` mantido ("Ativar/Desativar Modo Copa"), `aria-pressed={enabled}`.
+- Conteúdo: apenas o ícone `<Volleyball size={20} />`. Remover o `__label` com texto e o `__dot`.
+- Tooltip nativo via `title="Modo Copa"`.
 
-### O que muda
-Trocar o bloco simples por um card de destaque com:
-
-- Container largura total da coluna, fundo `bg-gradient-primary` (gradiente verde→turquesa já existente), bordas arredondadas (`rounded-2xl`), padding generoso, sombra forte (`shadow-2xl`) e leve borda branca translúcida.
-- Headline em Poppins 700 (classe existente): **"O Álbum do Brasil precisa dessas figurinhas para completar um Brasil melhor."**
-  - Texto em branco, tamanho `text-xl md:text-2xl`, alinhado ao centro no mobile e à esquerda no desktop.
-- Subtítulo curto opcional em branco/90 (`text-sm`): "Cole, compartilhe e ajude a completar o álbum."
-- Linha das figurinhas:
-  - Layout flex centralizado, gap maior (`gap-6`).
-  - Aumentar as figurinhas para `h-44 sm:h-52 md:h-64` mantendo `object-contain`.
-  - Adicionar leve `rotate` alternado (`-rotate-3` / `rotate-3`) para dar charme de "figurinha colada".
-  - Hover: `hover:scale-105` + `transition-transform`.
-  - Manter `loading="lazy"` e os mesmos `alt`.
-- Animação sutil de entrada já é coberta pelos `useIntersectionObserver` existentes no entorno (não precisa novo hook); apenas classes Tailwind cuidam do hover.
+### `src/styles/theme-copa.css`
+- Reescrever `.theme-copa-toggle` como botão circular discreto:
+  - `width: 40px; height: 40px; padding: 0; border-radius: 999px;`
+  - Fundo neutro semitransparente: `background: rgba(2, 17, 43, 0.55); backdrop-filter: blur(8px);`
+  - Borda fina: `border: 1px solid rgba(255,255,255,0.15);`
+  - Cor do ícone (OFF): `color: rgba(255,255,255,0.65);`
+  - Sombra suave: `box-shadow: 0 4px 12px rgba(0,0,0,0.25);`
+  - Opacidade base `0.7`, vai a `1` no hover.
+- Estado ativo (quando `body.theme-copa` está aplicado): `.theme-copa .theme-copa-toggle { color: #FCF10B; border-color: rgba(252,241,11,0.55); box-shadow: 0 0 12px rgba(252,241,11,0.35); opacity: 1; }`.
+- Remover regras `.theme-copa-toggle__dot` e `.theme-copa-toggle__label` (não usadas).
+- Ajustar a media query da linha 480 para o novo tamanho (`width: 36px; height: 36px;` em telas pequenas).
 
 ### Considerações
-- Só edição visual em um componente; sem novas dependências, sem alteração de dados ou rotas.
-- A frase fica visível tanto no tema padrão quanto no modo Copa (o gradiente é o mesmo dos botões da marca).
-- Mobile-first respeitado: card ocupa 100% no mobile, figurinhas centralizadas e empilháveis se necessário (`flex-wrap`).
+- Sem novas dependências (`lucide-react` já está no projeto).
+- Posição/`z-index` preservados (fixed, canto inferior direito).
+- Acessibilidade mantida via `aria-label` + `aria-pressed`.
+- Reversível: apenas edição de dois arquivos existentes.
