@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { openExternalUrl } from "@/lib/security";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const initial = {
@@ -35,7 +36,7 @@ const FormDenuncia = () => {
       "Tipo de problema": data.tipo,
       Descrição: data.descricao,
     });
-    window.open(url, "_blank");
+    openExternalUrl(url);
     setData(initial);
   };
 

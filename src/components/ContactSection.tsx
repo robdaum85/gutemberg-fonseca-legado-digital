@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { openExternalUrl } from '@/lib/security';
 
 const ContactSection = () => {
   const [whatsappData, setWhatsappData] = useState({
@@ -45,7 +46,7 @@ const ContactSection = () => {
   
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     
-    window.open(whatsappUrl, '_blank');
+    openExternalUrl(whatsappUrl);
     
     toast({
       title: "Redirecionando para WhatsApp",

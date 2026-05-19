@@ -2,6 +2,7 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import ShareButtons, { MobileFixedShare } from './ShareButtons';
 import type { BlogPost } from '@/data/blogPosts';
 import { getCanonicalUrl, getPostCategoryUrl, SITE_URL } from '@/lib/blogUtils';
+import { sanitizeHtml } from '@/lib/security';
 import { useSeo } from '@/lib/useSeo';
 
 interface BlogPostModalProps {
@@ -92,7 +93,7 @@ const BlogPostModal = ({ post, open, onClose }: BlogPostModalProps) => {
                 prose-headings:text-foreground prose-headings:font-bold prose-headings:mt-6 prose-headings:mb-3
                 prose-p:text-foreground/90 prose-p:leading-relaxed prose-p:mb-4
                 prose-li:text-foreground/90 prose-ul:my-4 prose-li:mb-1"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }}
             />
 
             {/* CTA */}

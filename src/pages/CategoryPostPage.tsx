@@ -8,6 +8,7 @@ import {
   getCanonicalUrl,
   SITE_URL,
 } from '@/lib/blogUtils';
+import { sanitizeHtml } from '@/lib/security';
 import { useSeo } from '@/lib/useSeo';
 
 const CATEGORY_LABEL = 'Defesa do Consumidor';
@@ -132,7 +133,7 @@ const CategoryPostPage = () => {
                 prose-p:text-foreground/90 prose-p:leading-relaxed prose-p:mb-4
                 prose-li:text-foreground/90 prose-ul:my-4 prose-li:mb-1
                 prose-a:text-primary"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }}
             />
 
             {/* CTA */}

@@ -487,3 +487,62 @@ body.theme-copa label { color: #1a1a1a !important; }
 body.theme-copa form .text-graphite,
 body.theme-copa form p { color: #334155 !important; }
 body.theme-copa ::placeholder { color: #64748b !important; opacity: 1 !important; }
+
+body.theme-copa #apoiador,
+body.theme-copa #lideranca,
+body.theme-copa #denuncia,
+body.theme-copa #contato,
+body.theme-copa #apoiador p,
+body.theme-copa #lideranca p,
+body.theme-copa #denuncia p,
+body.theme-copa #contato p,
+body.theme-copa #apoiador label,
+body.theme-copa #lideranca label,
+body.theme-copa #denuncia label,
+body.theme-copa #contato label,
+body.theme-copa #contato h3,
+body.theme-copa #contato .text-green-600,
+body.theme-copa #contato .text-green-700 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.theme-copa #apoiador form,
+body.theme-copa #lideranca form,
+body.theme-copa #denuncia form,
+body.theme-copa #contato .bg-green-50 {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(252, 241, 11, 0.35) !important;
+}
+
+body.theme-copa #apoiador input,
+body.theme-copa #apoiador textarea,
+body.theme-copa #lideranca input,
+body.theme-copa #lideranca textarea,
+body.theme-copa #denuncia input,
+body.theme-copa #denuncia textarea,
+body.theme-copa #contato input,
+body.theme-copa #contato textarea {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.theme-copa #apoiador input::placeholder,
+body.theme-copa #apoiador textarea::placeholder,
+body.theme-copa #lideranca input::placeholder,
+body.theme-copa #lideranca textarea::placeholder,
+body.theme-copa #denuncia input::placeholder,
+body.theme-copa #denuncia textarea::placeholder,
+body.theme-copa #contato input::placeholder,
+body.theme-copa #contato textarea::placeholder {
+  color: rgba(255, 255, 255, 0.72) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.72) !important;
+  opacity: 1 !important;
+}
+
+body.theme-copa #denuncia .text-amber-700 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
