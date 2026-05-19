@@ -27,19 +27,21 @@ const Index = () => {
     <div className="min-h-screen">
       <WelcomePopup />
       <Header />
-      <Hero />
-      <About />
-      <Career />
-      <Statistics />
-      {/* TODO: reativar futuramente <MultimediaClipping /> */}
-      <Blog />
-      <PodcastHighlight />
-      <InstagramFeed />
-      <ExercitoHero />
-      <FormApoiador />
-      <FormLideranca />
-      <FormDenuncia />
-      <ContactSection />
+      <main id="conteudo-principal" tabIndex={-1}>
+        <Hero />
+        <About />
+        <Career />
+        <Statistics />
+        {/* TODO: reativar futuramente <MultimediaClipping /> */}
+        <Blog />
+        <PodcastHighlight />
+        <InstagramFeed />
+        <ExercitoHero />
+        <FormApoiador />
+        <FormLideranca />
+        <FormDenuncia />
+        <ContactSection />
+      </main>
       <Footer />
     </div>
   );

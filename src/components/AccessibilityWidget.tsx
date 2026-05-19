@@ -1,12 +1,21 @@
-import { useEffect, useRef, useState } from 'react';
-import { Accessibility, RotateCcw, X } from 'lucide-react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { Accessibility, Hand, RotateCcw, X } from 'lucide-react';
 import { useAccessibilityPrefs, type ColorBlindMode, type FontSize } from '@/hooks/useAccessibilityPrefs';
 
 const AccessibilityWidget = () => {
   const { prefs, update, reset } = useAccessibilityPrefs();
   const [open, setOpen] = useState(false);
+  const [vlibrasEnabled, setVlibrasEnabled] = useState(false);
+  const [status, setStatus] = useState('');
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const titleId = useId();
+  const descriptionId = useId();
+
+  const closePanel = useCallback(() => {
+    setOpen(false);
+    window.setTimeout(() => triggerRef.current?.focus(), 0);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -17,19 +26,49 @@ const AccessibilityWidget = () => {
         triggerRef.current &&
         !triggerRef.current.contains(e.target as Node)
       ) {
-        setOpen(false);
+        closePanel();
       }
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === 'Escape') closePanel();
     };
     document.addEventListener('mousedown', onClick);
     document.addEventListener('keydown', onKey);
+    panelRef.current?.focus();
     return () => {
       document.removeEventListener('mousedown', onClick);
       document.removeEventListener('keydown', onKey);
     };
-  }, [open]);
+  }, [closePanel, open]);
+
+  useEffect(() => {
+    if (!vlibrasEnabled || typeof window === 'undefined') return;
+    if (document.getElementById('vlibras-plugin-script')) return;
+
+    const script = document.createElement('script');
+    script.id = 'vlibras-plugin-script';
+    script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+    script.async = true;
+    script.onload = () => {
+      const VLibras = (window as typeof window & {
+        VLibras?: { Widget: new (url: string) => unknown };
+      }).VLibras;
+      if (VLibras?.Widget) {
+        new VLibras.Widget('https://vlibras.gov.br/app');
+        setStatus('VLibras ativado.');
+      }
+    };
+    document.body.appendChild(script);
+  }, [vlibrasEnabled]);
+
+  const updatePreference = <K extends keyof typeof prefs>(
+    key: K,
+    value: (typeof prefs)[K],
+    label: string
+  ) => {
+    update(key, value);
+    setStatus(`${label} ${value ? 'ativado' : 'desativado'}.`);
+  };
 
   const fontSizes: { value: FontSize; label: string }[] = [
     { value: 'normal', label: 'A' },
@@ -102,20 +141,25 @@ const AccessibilityWidget = () => {
           id="a11y-panel"
           className="a11y-panel"
           role="dialog"
-          aria-label="Opções de acessibilidade"
+          aria-labelledby={titleId}
+          aria-describedby={descriptionId}
+          tabIndex={-1}
         >
           <div className="a11y-panel__header">
-            <h3 className="a11y-panel__title">Acessibilidade</h3>
+            <h3 id={titleId} className="a11y-panel__title">Acessibilidade</h3>
             <button
               type="button"
               className="a11y-panel__close"
-              onClick={() => setOpen(false)}
+              onClick={closePanel}
               aria-label="Fechar painel"
             >
               <X size={18} />
             </button>
           </div>
-          <p className="a11y-panel__subtitle">Ajustes seguem WCAG 2.1.</p>
+          <p id={descriptionId} className="a11y-panel__subtitle">
+            Ajustes visuais, navegação por teclado e recurso de Libras.
+          </p>
+          <div className="sr-only" aria-live="polite">{status}</div>
 
           <div className="a11y-panel__group">
             <span className="a11y-panel__label">Tamanho da fonte</span>
@@ -126,7 +170,10 @@ const AccessibilityWidget = () => {
                   type="button"
                   className={`a11y-pill ${prefs.fontSize === s.value ? 'is-active' : ''}`}
                   aria-pressed={prefs.fontSize === s.value}
-                  onClick={() => update('fontSize', s.value)}
+                  onClick={() => {
+                    update('fontSize', s.value);
+                    setStatus(`Tamanho da fonte alterado para ${s.label}.`);
+                  }}
                 >
                   {s.label}
                 </button>
@@ -142,7 +189,10 @@ const AccessibilityWidget = () => {
               id="a11y-cb"
               className="a11y-panel__select"
               value={prefs.colorBlind}
-              onChange={(e) => update('colorBlind', e.target.value as ColorBlindMode)}
+              onChange={(e) => {
+                update('colorBlind', e.target.value as ColorBlindMode);
+                setStatus(`Filtro para daltonismo alterado para ${e.target.selectedOptions[0].text}.`);
+              }}
             >
               {colorBlindModes.map((m) => (
                 <option key={m.value} value={m.value}>
@@ -164,7 +214,7 @@ const AccessibilityWidget = () => {
                     aria-checked={checked}
                     aria-label={t.label}
                     className={`a11y-switch ${checked ? 'is-on' : ''}`}
-                    onClick={() => update(t.key, !checked as never)}
+                    onClick={() => updatePreference(t.key, !checked as never, t.label)}
                   >
                     <span className="a11y-switch__thumb" />
                   </button>
@@ -173,10 +223,41 @@ const AccessibilityWidget = () => {
             })}
           </div>
 
-          <button type="button" className="a11y-panel__reset" onClick={reset}>
+          <div className="a11y-panel__group">
+            <span className="a11y-panel__label">Libras</span>
+            <button
+              type="button"
+              className="a11y-panel__reset"
+              onClick={() => {
+                setVlibrasEnabled(true);
+                setStatus('Carregando VLibras.');
+              }}
+              disabled={vlibrasEnabled}
+            >
+              <Hand size={14} aria-hidden="true" />
+              {vlibrasEnabled ? 'VLibras ativado' : 'Ativar VLibras'}
+            </button>
+          </div>
+
+          <button
+            type="button"
+            className="a11y-panel__reset"
+            onClick={() => {
+              reset();
+              setStatus('Preferencias restauradas.');
+            }}
+          >
             <RotateCcw size={14} aria-hidden="true" />
             Restaurar padrões
           </button>
+        </div>
+      )}
+      {vlibrasEnabled && (
+        <div {...{ vw: 'true' }} className="enabled" aria-hidden="true">
+          <div {...{ 'vw-access-button': 'true' }} className="active" />
+          <div {...{ 'vw-plugin-wrapper': 'true' }}>
+            <div className="vw-plugin-top-wrapper" />
+          </div>
         </div>
       )}
     </>

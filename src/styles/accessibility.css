@@ -16,10 +16,18 @@ html.a11y-high-contrast img,
 html.a11y-high-contrast video,
 html.a11y-high-contrast iframe { filter: grayscale(1) contrast(1.2); }
 
-html.a11y-grayscale body { filter: grayscale(1); }
-html.a11y-protanopia body { filter: url('#a11y-protanopia'); }
-html.a11y-deuteranopia body { filter: url('#a11y-deuteranopia'); }
-html.a11y-tritanopia body { filter: url('#a11y-tritanopia'); }
+html.a11y-grayscale #site-content header,
+html.a11y-grayscale #site-content main,
+html.a11y-grayscale #site-content footer { filter: grayscale(1); }
+html.a11y-protanopia #site-content header,
+html.a11y-protanopia #site-content main,
+html.a11y-protanopia #site-content footer { filter: url('#a11y-protanopia'); }
+html.a11y-deuteranopia #site-content header,
+html.a11y-deuteranopia #site-content main,
+html.a11y-deuteranopia #site-content footer { filter: url('#a11y-deuteranopia'); }
+html.a11y-tritanopia #site-content header,
+html.a11y-tritanopia #site-content main,
+html.a11y-tritanopia #site-content footer { filter: url('#a11y-tritanopia'); }
 
 html.a11y-underline-links a { text-decoration: underline !important; text-underline-offset: 3px; }
 
@@ -235,6 +243,10 @@ html.a11y-big-cursor * {
   -webkit-text-fill-color: #334155 !important;
 }
 .a11y-panel__reset:hover { border-color: #04103f !important; color: #04103f !important; -webkit-text-fill-color: #04103f !important; }
+.a11y-panel__reset:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
 
 /* Garantir que o tema-copa não pinte nada do painel */
 body.theme-copa .a11y-panel,

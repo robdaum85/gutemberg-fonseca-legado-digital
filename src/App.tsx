@@ -37,6 +37,10 @@ const App = () => (
       <Sonner />
       <ThemeCopaToggle />
       <AccessibilityWidget />
+      <a href="#conteudo-principal" className="skip-link">
+        Ir para o conteudo principal
+      </a>
+      <div id="site-content">
       <BrowserRouter>
         <Suspense
           fallback={
@@ -56,6 +60,7 @@ const App = () => (
           </Routes>
         </Suspense>
       </BrowserRouter>
+      </div>
       </ThemeCopaProvider>
     </TooltipProvider>
   </QueryClientProvider>
