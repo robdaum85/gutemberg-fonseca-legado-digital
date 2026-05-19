@@ -1,3 +1,19 @@
+/**
+ * BLOG — Guia rápido de publicação
+ * ----------------------------------
+ * Para criar/atualizar um post, basta editar o array `blogPosts` abaixo.
+ *
+ * O campo `category` define automaticamente a URL canônica do post:
+ *   - "Defesa do Consumidor"  → /direitos-do-consumidor/{slug}
+ *   - "Segurança Pública"     → /seguranca-publica/{slug}
+ *   - (qualquer outra)        → fallback /blog/{slug}
+ *
+ * O mapeamento fica em src/lib/blogUtils.ts (CATEGORY_SLUG_MAP).
+ * Para criar um novo hub temático, adicione a entrada lá.
+ *
+ * Após publicar um post novo, lembre de adicionar a URL canônica
+ * em public/sitemap.xml para acelerar a indexação no Google.
+ */
 export type BlogPost = {
   slug: string;
   source: string;
@@ -16,422 +32,85 @@ export type BlogPost = {
   tags?: string[];
   featured?: boolean;
   content: string;
-  
 };
 
 export const blogPosts: BlogPost[] = [
   {
-  slug: "bets-orcamento-familiar-quando-jogo-vira-armadilha",
-  source: "Coluna",
-  category: "Defesa do Consumidor",
-  title: "Bets e o orçamento familiar: quando o jogo vira uma armadilha",
-  subTitle: "Apostas online e jogos de cassino digital podem comprometer o orçamento familiar e exigem acolhimento, fiscalização e proteção ao consumidor.",
-  excerpt: "A explosão das bets e dos jogos de cassino online deixou de ser apenas entretenimento e passou a ameaçar o orçamento de famílias, exigindo ação dos órgãos de defesa do consumidor.",
-  author: "Gutemberg Fonseca",
-  role: "Especialista em Defesa do Consumidor",
-  date: "2026-05-18",
-  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/05/artigo2.png",
-  metaTitle: "Bets e o orçamento familiar: quando o jogo vira uma armadilha",
-  metaDescription: "Entenda como bets e jogos de cassino online podem comprometer o orçamento familiar, explorar consumidores vulneráveis e levar ao superendividamento.",
-  readingTime: "5 min de leitura",
-  tags: [
-    "bets",
-    "apostas online",
-    "superendividamento",
-    "ludopatia",
-    "direitos do consumidor",
-    "Balcão do Consumidor",
-    "PROCON-RJ",
-    "Gutemberg Fonseca"
-  ],
-  featured: true,
-  content: `
-
-    <h1>Bets e o orçamento familiar: quando o jogo vira uma armadilha</h1>
-
-    <p>
-    O cenário do consumo no Brasil atravessa uma transformação silenciosa e perigosa.
-    O que antes era restrito a casas de apostas físicas ou cassinos clandestinos, hoje está na palma da mão, acessível a um toque no celular.
-    A explosão das “bets” e de jogos de cassino online, como o popular “Jogo do tigrinho”, deixou de ser um fenômeno de entretenimento para se tornar uma crise de proteção ao consumidor.
-    O que assistimos agora é a invasão de algoritmos agressivos que, sob a promessa de dinheiro fácil, estão drenando o orçamento de famílias fluminenses e comprometendo recursos que deveriam ir para aluguel, a educação e a comida na mesa.
-    </p>
-
-    <p>
-    No Direito do Consumidor, tratamos essa questão sob a ótica da vulnerabilidade.
-    A publicidade abusiva dessas plataformas, muitas vezes utilizando influenciadores digitais para simular ganhos financeiros, fere o princípio básico da transparência e do dever de informação.
-    Mais do que isso, as empresas possuem o chamado “dever de cuidado”, especialmente com o consumidor superendividado.
-    </p>
-
-    <p>
-    Quando uma plataforma utiliza mecanismos psicológicos para manter o usuário apostando compulsivamente, ela ultrapassa o limite do serviço e passa a explorar a fragilidade do cidadão.
-    É aqui que o vício em jogos, a ludopatia, entra definitivamente na pauta da defesa do consumidor.
-    </p>
-
-    <p>
-    O Código de Defesa do Consumidor (CDC) é uma ferramenta poderosa, mas que precisa ser aplicada com rigor diante dessa nova realidade.
-    Um consumidor que perde o controle de suas finanças devido a práticas comerciais agressivas ou indução ao erro está sendo vítima de um mercado que, muitas vezes, opera à margem da ética e da responsabilidade social.
-    A Lei do Superendividamento já nos dá um caminho: o crédito e o consumo não podem atingir a dignidade da pessoa humana.
-    </p>
-
-    <p>
-    Reconhecendo a gravidade desse cenário, o Rio de Janeiro deu um passo inédito no país com a criação do Balcão do Consumidor.
-    Esta iniciativa da Secretaria de Estado de Defesa do Consumidor (SEDCON) e do PROCON-RJ nasceu com a missão de ir além da simples reclamação técnica.
-    </p>
-
-    <p>
-    O superendividamento causado pelas apostas online é um problema multidisciplinar.
-    Por isso, oferece um acolhimento diferenciado, contando com psicólogos e assistentes sociais para atender gratuitamente as famílias que já sofrem com as consequências devastadoras do vício.
-    </p>
-
-    <p>
-    O objetivo dessa política pública é resgatar o cidadão, e está voltada à renegociação de dívidas, suporte à manutenção do patrimônio familiar.
-    O Estado do Rio de Janeiro se posiciona na vanguarda ao entender que a defesa do consumidor em 2026 exige um atendimento personalizado e focado no consumidor superendividado por perdas financeiras causadas pelas apostas digitais.
-    </p>
-
-    <p>
-    É preciso educar para o consumo, fiscalizar a publicidade predatória e, acima de tudo, acolher quem foi capturado por essas armadilhas digitais.
-    </p>
-
-    <p>
-    A diversão não pode custar a paz de um lar.
-    Os órgãos de defesa do consumidor seguem atuantes.
-    O consumidor fluminense deve saber que não está sozinho nessa batalha: o Balcão do Consumidor é o porto seguro para quem precisa retomar as rédeas da própria vida financeira e garantir que o pão de cada dia não seja colocado em jogo.
-    </p>
-
-    <p>
-    Denúncias, reclamações e dúvidas podem ser enviadas pelo WhatsApp +55 (21) 96619-2498 ou pelo e-mail gutembergfonseca.
-    </p>
-
-    <p>
-    <strong>Gutemberg Fonseca</strong><br>
-    Especialista em defesa do consumidor e ex-secretário de Estado de Defesa do Consumidor.
-    </p>
-
-  `
-},
-  {
-  slug: "enigma-das-contas-transparencia-direito-nao-concessao",
-  source: "Coluna",
-  category: "Defesa do Consumidor",
-  title: "O enigma das contas: transparência é direito, não concessão",
-  subTitle: "Contas de água e energia precisam ser claras para que o consumidor entenda, confira e conteste cobranças.",
-  excerpt: "Faturas de água e energia no Rio de Janeiro seguem difíceis de entender. A informação clara é um direito previsto no CDC, não uma concessão das concessionárias.",
-  author: "Gutemberg Fonseca",
-  role: "Especialista em Defesa do Consumidor",
-  date: "2026-05-08",
-  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://odia.ig.com.br/_midias/jpg/2026/05/07/1200x750/1_arte_coluna_opiniao_08_maio_2026-38639554.jpg",
-  metaTitle: "O enigma das contas: transparência é direito, não concessão",
-  metaDescription: "Entenda por que contas de água e energia precisam apresentar informações claras sobre consumo, tributos e encargos, conforme o artigo 6º do CDC.",
-  readingTime: "4 min de leitura",
-  tags: [
-    "conta de luz",
-    "conta de água",
-    "transparência",
-    "direito à informação",
-    "CDC",
-    "PROCON-RJ",
-    "Gutemberg Fonseca"
-  ],
-  featured: true,
-  content: `
-
-    <h1>O enigma das contas: transparência é direito, não concessão</h1>
-
-    <p>O consumidor do Rio de Janeiro paga pelo fornecimento de água e de energia sem conseguir entender o que está pagando. O que deveria ser um comprovante de consumo tornou-se, ao longo dos anos, um enigma matemático. As contas de luz e de água são repletas de siglas, tributos em cascata e descrições técnicas que pouco dizem a quem precisa saber, no final do mês, se o valor cobrado é justo.</p>
-
-    <p>A questão não é só financeira. O artigo 6º do Código de Defesa do Consumidor (CDC) estabelece como direito básico à informação adequada e clara sobre os diferentes produtos e serviços, com especificação correta de quantidade, características, composição, qualidade, tributos incidentes e preço. Quando uma concessionária entrega uma conta ou fatura de consumo que o cidadão não consegue decifrar, ela não dificulta apenas a conferência. Ela viola um direito de cidadania.</p>
-
-    <p>Nas faturas de energia e água no Rio, a complexidade dificulta a verificação do consumo. Entre bandeiras tarifárias, tarifa de uso do sistema de distribuição, demanda contratada, fator de potência, perda aparente e perda real, o valor do quilowatt-hora ou do metro cúbico fica diluído em uma sequência de siglas. Essa falta de clareza gera uma situação concreta: o consumidor não consegue contestar um erro porque não entende como o cálculo foi feito. Também não identifica quais encargos pesam mais no orçamento.</p>
-
-    <p>As concessionárias costumam justificar essa complexidade pela regulação do setor, que é técnica e cheia de variáveis. A técnica, porém, deve estar a serviço da clareza, e não servir de justificativa para a confusão. A transparência é a resposta para a desconfiança que existe entre os fluminenses e as empresas que fornecem serviços essenciais. As faturas precisam passar por um processo de simplificação visual e didática, com o que é necessário em posição de leitura imediata e os encargos explicados em linguagem acessível.</p>
-
-    <p>A Secretaria de Estado de Defesa do Consumidor e o PROCON-RJ têm exigido que esse direito à informação acessível seja respeitado. O tema não é de design de faturas. É garantir que o consumidor possa fiscalizar o serviço que paga. A essencialidade de serviços como água e energia exige que o fornecedor tenha responsabilidade proporcional. A cobrança pela contraprestação do serviço deve vir da eficiência operacional, nunca da confusão gerada por contas incompreensíveis.</p>
-
-    <p>Enquanto a transparência for tratada como detalhe técnico e não como dever ético, o Judiciário e os órgãos de defesa continuarão superlotados de processos e reclamações. O artigo 6º do CDC é expresso: informação clara é direito, não cortesia. A concessionária que entrega uma fatura ilegível ou de difícil entendimento descumpre a lei, independentemente de qualquer justificativa técnica.</p>
-
-    <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo WhatsApp +55 (21) 96619-2498 ou pelo @gutembergpfonseca.</p>
-
-  `
-},
-  {
-  slug: "cuidado-com-o-dinheiro-facil-quando-o-emprestimo-vira-armadilha",
-  source: "Coluna",
-  category: "Defesa do Consumidor",
-  title: "Cuidado com o “dinheiro fácil”: quando o empréstimo vira armadilha",
-  subTitle: "Ofertas de empréstimo fácil, sem consulta ao SPC ou Serasa, podem esconder golpes, cobranças ilegais e juros abusivos.",
-  excerpt: "Mensagens prometendo crédito fácil e sem análise podem esconder golpes, taxas abusivas e pedidos de depósito antecipado. Saiba como identificar os riscos antes de contratar.",
-  author: "Gutemberg Fonseca",
-  role: "Especialista em Defesa do Consumidor",
-  date: "2026-05-06",
-  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://diariodorio.com/wp-content/uploads/2021/08/Emprestimo-1024x568-1.jpg",
-  metaTitle: "Cuidado com o “dinheiro fácil”: quando o empréstimo vira armadilha",
-  metaDescription: "Entenda os riscos das ofertas de empréstimo fácil, como identificar golpes, evitar juros abusivos e exigir transparência antes de contratar crédito.",
-  readingTime: "5 min de leitura",
-  tags: [
-    "empréstimo fácil",
-    "golpe financeiro",
-    "juros abusivos",
-    "CET",
-    "direitos do consumidor",
-    "Gutemberg Fonseca"
-  ],
-  featured: true,
-  content: `
-
-    <h1>Cuidado com o “dinheiro fácil”: quando o empréstimo vira armadilha</h1>
-    <p><strong>Ofertas de empréstimo fácil, sem consulta ao SPC ou Serasa, podem esconder golpes, cobranças ilegais e juros abusivos.</strong></p>
-
-    <p>Em tempos de orçamento apertado, nada parece mais tentador do que aquela mensagem no WhatsApp prometendo “crédito liberado na hora, sem consulta ao SPC ou Serasa e com juros baixíssimos”. Mas o que parece ser a salvação da lavoura pode, na verdade, ser o início de um pesadelo financeiro. O Código de Defesa do Consumidor estabelece que a oferta de serviços financeiros deve ser clara e, inclusive, informar sobre os riscos e condições do contrato.</p>
-
-    <h2>Desconfie da facilidade extrema</h2>
-    <p>Instituições financeiras sérias fazem análise de crédito e risco. Se uma empresa promete dinheiro a quem está com o nome negativado sem nenhum tipo de garantia ou critério, é preciso redobrar a atenção.</p>
-    <p>Muitas vezes, essas ofertas escondem taxas abusivas que fazem a dívida dobrar em poucos meses ou, pior, servem de isca para golpes em que se exige um “depósito antecipado” para liberar o valor. Essa prática é totalmente ilegal.</p>
-
-    <h2>Pressão para fechar rápido também é sinal de alerta</h2>
-    <p>Outro perigo é a pressão para contratar imediatamente. Frases como “é só até hoje” ou “oferta por tempo limitado” costumam ser usadas para impedir que o consumidor leia os detalhes e compare taxas.</p>
-    <p>Você tem o direito de analisar o contrato com calma e entender o Custo Efetivo Total (CET), que representa o valor total da dívida, incluindo juros, taxas e seguros, conforme as regras do Banco Central.</p>
-
-    <h2>Como não cair na rede</h2>
-    <p>Para evitar problemas financeiros, siga estas orientações:</p>
-    <ul>
-      <li><strong>Fuja de depósitos antecipados:</strong> instituições regulares não cobram valores antes de liberar o empréstimo. Se houver cobrança antecipada, há risco de golpe.</li>
-      <li><strong>Verifique a autorização da empresa:</strong> consulte no site do Banco Central do Brasil se a instituição pode operar. Desconfie de páginas que imitam bancos conhecidos.</li>
-      <li><strong>Exija o CET:</strong> não avalie apenas o valor da parcela. Solicite o Custo Efetivo Total para saber quanto será pago ao final do contrato.</li>
-      <li><strong>Proteja seus dados pessoais:</strong> não envie documentos ou fotos para contatos desconhecidos. Esses dados podem ser usados em fraudes.</li>
-      <li><strong>Direito ao arrependimento:</strong> em contratos feitos por telefone ou internet, o consumidor pode desistir em até 7 dias, com devolução dos valores pagos.</li>
-    </ul>
-
-    <h2>Crédito exige consciência</h2>
-    <p>O crédito consciente pode ajudar na organização financeira. O uso sem análise, porém, pode gerar endividamento e comprometer a renda por muito tempo.</p>
-    <p>Se sentir que foi enganado, procure imediatamente a Secretaria de Estado de Defesa do Consumidor ou o PROCON-RJ. Proteger seu bolso é proteger sua paz.</p>
-
-    <p>Se quiser fazer uma denúncia sobre esse tema ou qualquer outro, os canais são: Fala Consumidor (SEDCON) pelo WhatsApp (21) 99336-4848 ou pelo Disque 151 do PROCON-RJ. Quem quiser, pode falar comigo pelo “Zap do Guto” (21) 96619-2498. Também estou no @gutembergpfonseca.</p>
-
-    <p><em>Gutemberg Fonseca é Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro.</em></p>
-
-  `
-},
-  {
-  slug: "delivery-sem-dor-de-cabeca-conheca-seus-direitos",
-  source: "Coluna",
-  category: "Defesa do Consumidor",
-  title: "Delivery sem dor de cabeça: conheça seus direitos",
-  subTitle: "Pedido errado, atraso ou qualidade ruim? Saiba como agir e não sair no prejuízo.",
-  excerpt: "Problemas com delivery são comuns, mas o consumidor não precisa arcar com prejuízo. O Código de Defesa do Consumidor garante reembolso, correção ou reenvio em caso de falhas no serviço.",
-  author: "Gutemberg Fonseca",
-  role: "Especialista em Defesa do Consumidor",
-  date: "2026-04-25",
-  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/delivery.png",
-  metaTitle: "Delivery sem dor de cabeça: conheça seus direitos",
-  metaDescription: "Saiba o que fazer quando o pedido chega errado, atrasado ou em condições inadequadas. O consumidor tem direito a reembolso, troca ou correção do serviço.",
-  readingTime: "4 min de leitura",
-  tags: [
-    "delivery",
-    "direitos do consumidor",
-    "pedido errado",
-    "atraso entrega",
-    "CDC",
-    "Gutemberg Fonseca"
-  ],
-  featured: false,
-  content: `
-
-    <h1>Delivery sem dor de cabeça: conheça seus direitos</h1>
-    <p><strong>Pedido errado, atraso ou qualidade abaixo do esperado não são problemas que o consumidor deve assumir.</strong></p>
-
-    <p>Pedir comida por aplicativo já faz parte da rotina de muitos consumidores. Ainda assim, problemas como pedido errado, atraso ou qualidade abaixo do esperado continuam frequentes. Nessas situações, o consumidor não deve arcar com prejuízo. O Código de Defesa do Consumidor determina que o serviço seja prestado conforme a oferta.</p>
-
-    <h2>Pedido errado ou incompleto</h2>
-    <p>Se o pedido chegar errado ou incompleto, há falha na prestação do serviço. O consumidor pode escolher entre a correção imediata, o reenvio do pedido ou a devolução do valor pago.</p>
-    <p>O mesmo se aplica quando o alimento é entregue em condições diferentes das informadas, como temperatura inadequada ou apresentação comprometida.</p>
-
-    <h2>Atraso na entrega</h2>
-    <p>Quando há atraso além do prazo informado, ocorre descumprimento da oferta. Nessa hipótese, o consumidor pode cancelar o pedido e solicitar o reembolso integral.</p>
-
-    <h2>Quem é responsável?</h2>
-    <p>A responsabilidade pode ser solidária entre o restaurante e a empresa que gerencia o aplicativo, dependendo da forma como o serviço é prestado. Ambos integram a cadeia de fornecimento e podem responder pelo problema.</p>
-
-    <h2>Como se proteger</h2>
-    <p>Se acontecer algum problema, é importante registrar a reclamação no próprio aplicativo e guardar comprovantes. Fotos do produto e capturas de tela das mensagens ajudam a demonstrar o ocorrido.</p>
-    <p>Se não houver solução, o consumidor pode procurar os órgãos de defesa do consumidor ou utilizar plataformas digitais de reclamação.</p>
-
-    <h2>Direito à qualidade e cumprimento da oferta</h2>
-    <p>Praticidade não pode gerar prejuízo. O fornecedor deve cumprir o que foi prometido, no prazo, na forma e na qualidade informados.</p>
-
-    <p>Se quiser fazer uma denúncia sobre esse tema ou qualquer outro, os canais são: Fala Consumidor (SEDCON) pelo WhatsApp (21) 99336-4848 ou pelo Disque 151 do PROCON-RJ. Quem quiser, pode falar comigo pelo “Zap do Guto” (21) 96619-2498. Também estou no @gutembergfonseca.</p>
-
-    <p><em>Gutemberg Fonseca é Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro.</em></p>
-
-  `
-},  
-  
-  {
-      slug: "juros-abusivos-cartao-de-credito-limite-divida-rotativo",
-      source: "Original",
-      category: "Defesa do Consumidor",
-      title: "Juros Abusivos no Cartão de Crédito: Existe um Limite que o Banco Não Te Conta",
-      subTitle: "Qual o valor máximo que a dívida do cartão pode chegar? Descubra a regra que protege o consumidor.",
-      excerpt: "Os juros abusivos no cartão de crédito chegaram a 436% ao ano. Mas existe uma regra que protege o consumidor: sua dívida no rotativo não pode ultrapassar o dobro do valor original. Entenda como funciona.",
-      author: "Gutemberg Fonseca",
-      role: "Especialista em Defesa do Consumidor",
-      date: "2026-04-22",
-      authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-      coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/Design-sem-nome-6.png",
-      metaTitle: "Juros Abusivos no Cartão de Crédito: Existe um Limite que o Banco Não Te Conta",
-      metaDescription: "Os juros abusivos no cartão de crédito chegaram a 436% ao ano. Mas existe uma regra que protege o consumidor: sua dívida no rotativo não pode ultrapassar o dobro do valor original. Entenda como funciona.",
-      readingTime: "5 min de leitura",
-      tags: [
-        "juros cartão de crédito",
-        "direitos do consumidor",
-        "crédito rotativo",
-        "dívida abusiva",
-        "Gutemberg Fonseca"
-      ],
-      featured: true,
-      content: `
-
-        <h1>Juros Abusivos no Cartão de Crédito: Existe um Limite que o Banco Não Te Conta</h1>
-        <p><strong>Qual o valor máximo que a dívida do cartão pode chegar?</strong></p>
-        <p>Eu já ouvi essa história centenas de vezes. A pessoa atrasa uma fatura, paga o mínimo, e de repente a dívida virou um monstro que ela não consegue mais olhar de frente. Parece que não tem saída. Mas tem.</p>
-
-        <h2>O rotativo e os juros de 436% ao ano</h2>
-        <p>Quando você não paga a fatura inteira do cartão, o valor restante entra no chamado crédito rotativo. É aí que começa o problema. Os juros do rotativo no Brasil chegaram a 436% ao ano, um dos mais altos do mundo.</p>
-        <p>Quem não conhece os próprios direitos fica à mercê de cobranças que crescem sem limite aparente.</p>
-
-        <h2>A regra que poucos conhecem</h2>
-        <p>O Banco Central e o Conselho Monetário Nacional estabelecem que, no crédito rotativo e no parcelamento do cartão, a dívida total não pode ultrapassar 100% do valor original. Na prática, isso significa:</p>
-        <ul>
-          <li>Devia R$ 1.000? Com juros e encargos, o máximo cobrado é R$ 2.000.</li>
-        </ul>
-        <p>Se a sua dívida já ultrapassou esse valor, você pode questionar a cobrança e usar isso como argumento na negociação com o banco.</p>
-
-        <h2>Como verificar a sua situação</h2>
-        <p>Pegue a sua fatura e responda duas perguntas simples:</p>
-        <ul>
-          <li>Quanto você devia no começo?</li>
-          <li>Quanto o banco está cobrando hoje?</li>
-        </ul>
-        <p>Se o valor atual for mais do que o dobro do original, procure o SAC do banco, o Procon do seu estado ou um advogado especialista em direito do consumidor.</p>
-
-        <h2>Isso não é desculpa pra deixar de pagar</h2>
-        <p>Conhecer esse direito não significa ignorar a dívida. Nome sujo e restrição de crédito continuam sendo consequências que prejudicam a sua vida. A melhor saída ainda é quitar a dívida o quanto antes, usando esse limite como argumento na hora de negociar.</p>
-
-        <p>Compartilha esse texto com quem está afogado no cartão. Informação também é um direito.</p>
-
-        <p><em>Gutemberg Fonseca é Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro. Acompanhe mais conteúdos sobre seus direitos no Instagram @gutembergpfonseca.</em></p>
-      `
-    },
-  {
-    slug: "como-saber-se-tem-emprestimo-no-meu-nome-banco-central",
-    source: "Original",
+    slug: "bets-orcamento-familiar-armadilha",
+    source: "Coluna",
     category: "Defesa do Consumidor",
-    title: "Como saber se tem empréstimo no meu nome: o guia completo para consultar pelo Banco Central",
-    subTitle: "Descubra como consultar se tem empréstimo no seu nome pelo Registrato do Banco Central. Passo a passo, riscos de fraude e o que fazer se aparecer dívida que não reconhece.",
-    excerpt: "Descubra como consultar se tem empréstimo no seu nome pelo Registrato do Banco Central. Passo a passo, riscos de fraude e o que fazer se aparecer dívida que não reconhece.",
+    title: "Bets e o orçamento familiar: quando o jogo vira uma armadilha",
+    subTitle:
+      "Apostas online e jogos de cassino digital podem comprometer o orçamento familiar e exigem acolhimento, fiscalização e proteção ao consumidor.",
+    excerpt:
+      "Apostas online e jogos de cassino digital podem comprometer o orçamento familiar e exigem acolhimento, fiscalização e proteção ao consumidor.",
     author: "Gutemberg Fonseca",
-    role: "Especialista em Defesa do Consumidor",
-    date: "2026-04-20",
-    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/emprestimo-scaled.jpeg",
-    metaTitle: "Como saber se tem empréstimo no meu nome? Consulte grátis no Banco Central",
-    metaDescription: "Descubra como consultar se tem empréstimo no seu nome pelo Registrato do Banco Central. Passo a passo, riscos de fraude e o que fazer se aparecer dívida que não reconhece.",
-    readingTime: "7 min de leitura",
+    role: "Especialista em defesa do consumidor e ex-secretário de Estado de Defesa do Consumidor",
+    date: "2026-05-17",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/05/artigo2.png",
+    metaTitle: "Bets e o orçamento familiar: quando o jogo vira uma armadilha",
+    metaDescription:
+      "Apostas online e cassino digital ameaçam o orçamento das famílias. Entenda como o CDC e o Balcão do Consumidor protegem o cidadão fluminense.",
+    readingTime: "5 min de leitura",
     tags: [
-      "como saber se tem empréstimo no meu nome",
-      "consulta empréstimo no meu nome",
-      "empréstimo no CPF",
-      "Registrato Banco Central",
-      "fraude empréstimo no meu nome",
-      "dívida no nome que não reconhece",
-      "SCR Banco Central"
+      "Bets",
+      "Apostas online",
+      "Superendividamento",
+      "Defesa do consumidor",
+      "Ludopatia",
+      "Balcão do Consumidor",
     ],
     featured: true,
     content: `
+      <p><strong>Bets e o orçamento familiar: quando o jogo vira uma armadilha</strong></p>
 
-      <h1>Como saber se tem empréstimo no meu nome: o guia completo para consultar pelo Banco Central</h1>
-      <p>Você sabe exatamente quais empréstimos e financiamentos estão vinculados ao seu CPF agora?</p>
-      <p>Se a resposta for \"não tenho certeza\", você não está sozinho. Milhares de brasileiros descobrem, na hora de tentar um crédito ou fechar um financiamento, que existem contratos no seu nome que eles nem se lembram de ter assinado, ou pior, que nunca assinaram.</p>
-      <p>A boa notícia: como saber se tem empréstimo no seu nome é mais simples do que parece. E a consulta é gratuita, oficial e leva menos de cinco minutos.</p>
+      <br/>
 
-      <h2>Por que você pode ter empréstimos no seu nome sem saber</h2>
-      <p>Isso acontece com mais frequência do que as pessoas imaginam. Existem pelo menos três situações comuns:</p>
-      <ul>
-        <li><strong>Contratos esquecidos:</strong> empréstimos antigos, renegociações ou financiamentos que ainda constam no sistema mesmo depois de pagos.</li>
-        <li><strong>Fraudes e golpes:</strong> uso indevido do CPF para contratar crédito sem a sua autorização, um crime que cresce a cada ano no Brasil.</li>
-        <li><strong>Erros cadastrais:</strong> registros incorretos feitos por instituições financeiras.</li>
-      </ul>
-      <p>Em todos esses casos, o primeiro passo é o mesmo: consultar o sistema oficial do Banco Central para saber o que está registrado no seu nome.</p>
+      <p>O cenário do consumo no Brasil atravessa uma transformação silenciosa e perigosa. O que antes era restrito a casas de apostas físicas ou cassinos clandestinos, hoje está na palma da mão, acessível a um toque no celular. A explosão das "bets" e de jogos de cassino online, como o popular "Jogo do tigrinho", deixou de ser um fenômeno de entretenimento para se tornar uma crise de proteção ao consumidor. O que assistimos agora é a invasão de algoritmos agressivos que, sob a promessa de dinheiro fácil, estão drenando o orçamento de famílias fluminenses e comprometendo recursos que deveriam ir para aluguel, a educação e a comida na mesa.</p>
 
-      <h2>O que é o Registrato e por que ele existe</h2>
-      <p>O Registrato é uma plataforma oficial do Banco Central do Brasil. Ela funciona como uma espécie de extrato financeiro completo: reúne todas as informações sobre empréstimos, financiamentos e operações de crédito vinculadas ao seu CPF, independentemente da instituição financeira que originou o contrato.</p>
-      <p>As informações vêm do SCR — Sistema de Informações de Crédito, um banco de dados que todas as instituições financeiras do país são obrigadas a alimentar. Ou seja: se existe um empréstimo no seu nome, ele está lá.</p>
-      <p>O acesso é gratuito, o site é oficial (<a href=\"https://registrato.bcb.gov.br\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">registrato.bcb.gov.br</a>) e qualquer cidadão pode consultar.</p>
+      <br/>
 
-      <h2>Como saber se tem empréstimo no seu nome: passo a passo pelo Registrato</h2>
-      <p>Siga as etapas abaixo. Você vai precisar de uma conta gov.br com nível prata ou ouro para autenticar o acesso.</p>
-      <ol>
-        <li><strong>Acesse o site oficial:</strong> Entre em <a href=\"https://registrato.bcb.gov.br\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">registrato.bcb.gov.br</a>. Esse é o endereço oficial. Desconfie de qualquer site parecido com nome diferente.</li>
-        <li><strong>Faça login com sua conta gov.br:</strong> Clique em \"Entrar com gov.br\" e use seu CPF e senha. Se sua conta ainda for nível bronze, você precisará subir para prata ou ouro para acessar os dados de crédito. Isso pode ser feito pelo próprio aplicativo gov.br, validando sua identidade por biometria facial ou outros métodos.</li>
-        <li><strong>Autorize o acesso aos seus dados:</strong> O sistema vai pedir que você autorize a consulta às suas informações financeiras. É uma etapa de segurança obrigatória. Confirme a autorização para continuar.</li>
-        <li><strong>Selecione \"Empréstimos e Financiamentos — SCR\":</strong> Na página inicial do Registrato, você vai ver várias categorias de consulta. Clique em \"Empréstimos e Financiamentos — o SCR\".</li>
-        <li><strong>Solicite o relatório:</strong> Clique em \"Solicite um novo relatório\". Em seguida, vá em \"Histórico\", escolha o período que deseja consultar (mês e ano) e clique em \"Próximo\".</li>
-      </ol>
-      <p>Em poucos segundos, o sistema gera um relatório completo com tudo que está registrado no seu nome no sistema financeiro nacional.</p>
+      <h2>Vulnerabilidade e dever de cuidado</h2>
+      <p>No Direito do Consumidor, tratamos essa questão sob a ótica da vulnerabilidade. A publicidade abusiva dessas plataformas, muitas vezes utilizando influenciadores digitais para simular ganhos financeiros, fere o princípio básico da transparência e do dever de informação. Mais do que isso, as empresas possuem o chamado "dever de cuidado", especialmente com o consumidor superendividado.</p>
 
-      <h2>O que você vai encontrar no relatório</h2>
-      <p>O relatório do SCR mostra informações como:</p>
-      <ul>
-        <li>Nome da instituição financeira</li>
-        <li>Tipo de operação (crédito pessoal, financiamento de veículo, consignado, etc.)</li>
-        <li>Valor contratado</li>
-        <li>Situação do contrato (em aberto, quitado, em atraso)</li>
-        <li>Data da operação</li>
-      </ul>
-      <p>Se aparecer algo que você não reconhece, não ignore. Pode ser um erro ou o início de uma fraude.</p>
+      <br/>
 
-      <h2>O que fazer se encontrar algo errado</h2>
-      <p>Encontrou um contrato que não é seu? Veja o que fazer:</p>
-      <ol>
-        <li><strong>Anote todos os detalhes do registro:</strong> Nome da instituição, tipo de operação, valor e data. Você vai precisar dessas informações.</li>
-        <li><strong>Entre em contato com a instituição financeira:</strong> Acesse os canais oficiais de atendimento da instituição que aparece no relatório e informe que não reconhece a operação. Exija cancelamento e esclarecimentos formais.</li>
-        <li><strong>Registre um boletim de ocorrência:</strong> Se suspeitar de fraude, registre o B.O. na delegacia ou pelo site da Polícia Civil do seu estado. É um passo importante para sua proteção jurídica.</li>
-        <li><strong>Faça a reclamação formal no <a href=\"https://consumidor.gov.br\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">consumidor.gov.br</a>:</strong> O consumidor.gov.br é a plataforma oficial do governo federal para reclamações contra empresas. É gratuito e as empresas têm prazo para responder.</li>
-        <li><strong>Procure o Procon do seu estado:</strong> Se a instituição não resolver, o Procon pode intermediar e aplicar sanções. No Rio de Janeiro, o Procon-RJ atende presencialmente e online.</li>
-      </ol>
+      <p>Quando uma plataforma utiliza mecanismos psicológicos para manter o usuário apostando compulsivamente, ela ultrapassa o limite do serviço e passa a explorar a fragilidade do cidadão. É aqui que o vício em jogos, a ludopatia, entra definitivamente na pauta da defesa do consumidor.</p>
 
-      <h2>Erros comuns que as pessoas cometem nessa situação</h2>
-      <ul>
-        <li><strong>Entrar em contato por canais não oficiais:</strong> Cuidado com números de WhatsApp ou telefones encontrados em buscas no Google. Use sempre os canais oficiais da instituição, disponíveis no site do Banco Central ou no próprio site da empresa.</li>
-        <li><strong>Pagar uma dívida sem verificar se é legítima:</strong> Antes de pagar qualquer cobrança que chegue por SMS, WhatsApp ou ligação, consulte o Registrato para confirmar se aquela operação realmente existe no seu nome.</li>
-        <li><strong>Achar que não tem direito porque \"assinou um contrato\":</strong> Mesmo que tenha assinado algo, se as condições foram abusivas, a informação foi omitida ou você foi induzido ao erro, você tem direito de questionar. O Código de Defesa do Consumidor protege você.</li>
-        <li><strong>Deixar pra depois:</strong> Quanto mais tempo passa, mais difícil fica reverter algumas situações. A consulta é gratuita e rápida. Não tem motivo para esperar.</li>
-      </ul>
+      <br/>
 
-      <h2>Com que frequência você deve consultar o Registrato</h2>
-      <p>Não existe uma regra oficial, mas uma boa prática é consultar ao menos uma vez por ano — ou sempre que:</p>
-      <ul>
-        <li>Você for solicitar um novo crédito ou financiamento</li>
-        <li>Suspeitar que seus dados foram vazados</li>
-        <li>Receber cobranças de dívidas que não reconhece</li>
-        <li>Notar movimentações estranhas na sua vida financeira</li>
-      </ul>
-      <p>Fazer isso com regularidade é uma forma de monitorar sua vida financeira e agir rápido se algo estiver errado.</p>
+      <h2>O CDC e a Lei do Superendividamento</h2>
+      <p>O Código de Defesa do Consumidor (CDC) é uma ferramenta poderosa, mas que precisa ser aplicada com rigor diante dessa nova realidade. Um consumidor que perde o controle de suas finanças devido a práticas comerciais agressivas ou indução ao erro está sendo vítima de um mercado que, muitas vezes, opera à margem da ética e da responsabilidade social. A Lei do Superendividamento já nos dá um caminho: o crédito e o consumo não podem atingir a dignidade da pessoa humana.</p>
 
-      <h2>Conclusão</h2>
-      <p>Saber se tem empréstimo no seu nome não é complicado. O Banco Central disponibilizou uma ferramenta gratuita, oficial e acessível justamente para isso,  e a maioria das pessoas simplesmente não sabe que ela existe.</p>
-      <p>Se você chegou até aqui, já deu o primeiro passo: buscou a informação.</p>
-      <p>Agora o próximo passo é simples: acesse o <a href=\"https://registrato.bcb.gov.br\" rel=\"nofollow noopener noreferrer\" target=\"_blank\">registrato.bcb.gov.br</a>, faça a consulta e veja com seus próprios olhos o que está registrado no seu CPF.</p>
-      <p>Se encontrar algo que não reconhece, não entre em pânico, mas também não ignore. Você tem direitos, e existem caminhos concretos para resolver.</p>
-      <p>Compartilhe esse conteúdo com alguém que pode precisar. Muita gente está pagando dívidas que não são suas ou sendo negativadas por contratos que nunca assinou,  e não sabe que pode mudar isso.</p>
+      <br/>
 
-      <p><em>Gutemberg Fonseca é Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro. Acompanhe mais conteúdos sobre seus direitos no Instagram @gutembergpfonseca.</em></p>
-    `
+      <h2>O Balcão do Consumidor — RJ na vanguarda</h2>
+      <p>Reconhecendo a gravidade desse cenário, o Rio de Janeiro deu um passo inédito no país com a criação do Balcão do Consumidor. Esta iniciativa da Secretaria de Estado de Defesa do Consumidor (SEDCON) e do PROCON-RJ nasceu com a missão de ir além da simples reclamação técnica.</p>
+
+      <br/>
+
+      <p>O superendividamento causado pelas apostas online é um problema multidisciplinar. Por isso, oferece um acolhimento diferenciado, contando com psicólogos e assistentes sociais para atender gratuitamente as famílias que já sofrem com as consequências devastadoras do vício.</p>
+
+      <br/>
+
+      <p>O objetivo dessa política pública é resgatar o cidadão, e está voltada à renegociação de dívidas, suporte à manutenção do patrimônio familiar. O Estado do Rio de Janeiro se posiciona na vanguarda ao entender que a defesa do consumidor em 2026 exige um atendimento personalizado e focado no consumidor superendividado por perdas financeiras causadas pelas apostas digitais.</p>
+
+      <br/>
+
+      <h2>Educar, fiscalizar e acolher</h2>
+      <p>É preciso educar para o consumo, fiscalizar a publicidade predatória e, acima de tudo, acolher quem foi capturado por essas armadilhas digitais.</p>
+
+      <br/>
+
+      <p>A diversão não pode custar a paz de um lar. Os órgãos de defesa do consumidor seguem atuantes. O consumidor fluminense deve saber que não está sozinho nessa batalha: o Balcão do Consumidor é o porto seguro para quem precisa retomar as rédeas da própria vida financeira e garantir que o pão de cada dia não seja colocado em jogo.</p>
+
+      <br/>
+
+      <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo WhatsApp <strong>+55 (21) 96619-2498</strong>.</p>
+    `,
   },
-  // ...existing code...
   {
     slug: "crime-relacao-consumo-virus-silencioso",
     source: "O Dia",
@@ -519,8 +198,8 @@ export const blogPosts: BlogPost[] = [
     date: "2026-04-10",
     authorImage:
       "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-      coverImage:
-        "https://kngofnnx.com/wp-content/uploads/2026/04/comprasonline.png",
+    coverImage:
+      "https://kngofnnx.com/wp-content/uploads/2026/04/delivery.png",
     metaTitle:
       "Compras online: prazos de entrega e direitos do consumidor",
     metaDescription:
@@ -596,7 +275,6 @@ export const blogPosts: BlogPost[] = [
     `
   },
 
-
   {
     slug: "corte-indevido-servicos-essenciais-direitos-consumidor",
     source: "Coluna Defesa do Consumidor",
@@ -608,7 +286,7 @@ export const blogPosts: BlogPost[] = [
     role: "Coluna de Defesa do Consumidor",
     date: "2026-04-06",
     authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-      coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/luz.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/luz.png",
     metaTitle: "Corte de luz ou água: quando é ilegal e quais são seus direitos",
     metaDescription: "Saiba quando o corte de serviços essenciais é abusivo e o que fazer para garantir seus direitos.",
     readingTime: "5 min de leitura",
@@ -789,7 +467,7 @@ export const blogPosts: BlogPost[] = [
     role: "Coluna de Defesa do Consumidor",
     date: "2026-03-30",
     authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-      coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/Design-sem-nome-2.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/Design-sem-nome-1.png",
     metaTitle: "Páscoa: conheça seus direitos ao comprar ovos de chocolate",
     metaDescription: "Saiba como evitar prejuízos na Páscoa ao comprar chocolates e conheça seus direitos como consumidor.",
     readingTime: "4 min de leitura",
@@ -923,7 +601,7 @@ export const blogPosts: BlogPost[] = [
   role: "Secretário de Estado de Defesa do Consumidor",
   date: "2025-03-25",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/Design-sem-nome-1.png",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/Design-sem-nome-2.png",
   metaTitle: "Vagão feminino RJ 24 horas: segurança das mulheres no transporte público",
   metaDescription: "Vagão feminino RJ agora funciona 24h. Entenda o impacto na rotina e na segurança das mulheres no transporte público.",
   readingTime: "4 min de leitura",
@@ -1009,7 +687,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-26",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/side-view-people-running-treadmill-gym.jpg-scaled.jpeg",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/side-view-people-running-treadmill-gym.jpg-scaled.jpeg",
   metaTitle: "Contrato de academia: direitos do consumidor antes de assinar",
   metaDescription: "Vai se matricular em academia? Saiba o que o contrato precisa ter, quando o reajuste é abusivo e como funciona o cancelamento. Conheça seus direitos.",
   readingTime: "4 min de leitura",
@@ -1107,7 +785,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-30",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/african-american-man-carrying-bags-hotel-lobby-arriving-reception-counter-with-woman-check-guests-preparing-fill-registration-forms-staff-welcoming-tourists.jpg-scaled.jpeg",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/african-american-man-carrying-bags-hotel-lobby-arriving-reception-counter-with-woman-check-guests-preparing-fill-registration-forms-staff-welcoming-tourists.jpg-scaled.jpeg",
   metaTitle: "Viagem de verão: conheça os direitos do hóspede em hotéis e pousadas",
   metaDescription: "Foto diferente da realidade, reserva não honrada ou cobrança indevida? Conheça os direitos do hóspede em hotéis e pousadas e saiba o que exigir.",
   readingTime: "6 min de leitura",
@@ -1216,7 +894,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-26",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/man-shaking-hands-with-lady.jpg-scaled.jpeg",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/man-shaking-hands-with-lady.jpg-scaled.jpeg",
   metaTitle: "Direitos básicos do consumidor: o que você precisa saber",
   metaDescription: "Produto com defeito, propaganda enganosa ou cobrança indevida? Conheça os direitos básicos do consumidor e saiba como o CDC protege você no dia a dia.",
   readingTime: "5 min de leitura",
@@ -1308,7 +986,7 @@ export const blogPosts: BlogPost[] = [
   role: "Coluna de Defesa do Consumidor",
   date: "2026-03-30",
   authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/mature-woman-getting-angry-yelling-phone-call-desk.jpg-scaled.jpeg",
+  coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/mature-woman-getting-angry-yelling-phone-call-desk.jpg-scaled.jpeg",
   metaTitle: "Prazo de entrega e atrasos: o que fazer quando a compra não chega",
   metaDescription: "Saiba o que fazer quando a entrega atrasa: conheça seus direitos, as opções de reembolso e como reclamar nos órgãos de defesa do consumidor.",
   readingTime: "6 min de leitura",
@@ -1728,7 +1406,7 @@ export const blogPosts: BlogPost[] = [
   author: "Gutemberg Fonseca",
   role: "Coluna de Defesa do Consumidor",
   date: "2026-01-14",
-  authorImage: "https://kngofnnx.com/wp-content/uploads/2026/04/creditoconsignado-1-scaled.jpeg",
+  authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
   coverImage: "https://kngofnnx.com/wp-content/uploads/2026/04/creditoconsignado-1-scaled.jpeg",
   metaTitle: "Crédito consignado: direitos do consumidor e cuidados antes de contratar",
   metaDescription: "Saiba seus direitos no crédito consignado, como evitar descontos indevidos e o que fazer em caso de fraude.",

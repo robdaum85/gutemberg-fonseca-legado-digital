@@ -17,12 +17,12 @@ const CategoryPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : undefined;
 
-  // If post does not belong to this category, fall back to /blog/:slug
+  // If post does not exist or doesn't belong to this category, send back to hub
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to="/direitos-do-consumidor" replace />;
   }
   if (getCategorySlug(post.category) !== CATEGORY_SLUG) {
-    return <Navigate to={`/blog/${post.slug}`} replace />;
+    return <Navigate to="/direitos-do-consumidor" replace />;
   }
 
   const canonical = getCanonicalUrl(`/${CATEGORY_SLUG}/${post.slug}`);

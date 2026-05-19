@@ -1,429 +1,184 @@
-import { useEffect, useMemo, useState } from "react";
-import {
-  Accessibility,
-  Contrast,
-  Ear,
-  Eye,
-  Minus,
-  Palette,
-  Plus,
-  RotateCcw,
-  Type,
-  Volume2,
-  VolumeX,
-  X,
-} from "lucide-react";
-
-type ColorMode =
-  | "default"
-  | "high-contrast"
-  | "grayscale"
-  | "protanopia"
-  | "deuteranopia"
-  | "tritanopia";
-
-type Preferences = {
-  colorMode: ColorMode;
-  fontScale: number;
-  readableFont: boolean;
-  reducedMotion: boolean;
-};
-
-declare global {
-  interface Window {
-    VLibras?: {
-      Widget: new (url: string) => unknown;
-    };
-    __vlibrasWidgetLoaded?: boolean;
-  }
-}
-
-const STORAGE_KEY = "gutemberg-accessibility-preferences";
-
-const defaultPreferences: Preferences = {
-  colorMode: "default",
-  fontScale: 1,
-  readableFont: false,
-  reducedMotion: false,
-};
-
-const colorOptions: Array<{
-  value: ColorMode;
-  label: string;
-  description: string;
-}> = [
-  {
-    value: "default",
-    label: "Padrão",
-    description: "Cores originais do site",
-  },
-  {
-    value: "high-contrast",
-    label: "Alto contraste",
-    description: "Mais contraste para baixa visão",
-  },
-  {
-    value: "grayscale",
-    label: "Sem cores",
-    description: "Remove cores para foco em contraste",
-  },
-  {
-    value: "protanopia",
-    label: "Protanopia",
-    description: "Ajuste para dificuldade com tons vermelhos",
-  },
-  {
-    value: "deuteranopia",
-    label: "Deuteranopia",
-    description: "Ajuste para dificuldade com tons verdes",
-  },
-  {
-    value: "tritanopia",
-    label: "Tritanopia",
-    description: "Ajuste para dificuldade com tons azuis",
-  },
-];
-
-const clampFontScale = (value: number) => Math.min(1.4, Math.max(0.9, value));
-
-const loadPreferences = (): Preferences => {
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-
-    if (!stored) {
-      return defaultPreferences;
-    }
-
-    return {
-      ...defaultPreferences,
-      ...JSON.parse(stored),
-    };
-  } catch {
-    return defaultPreferences;
-  }
-};
-
-const getReadableText = () => {
-  const mainContent =
-    document.getElementById("main-content") ?? document.querySelector("main");
-
-  return (
-    mainContent?.textContent?.replace(/\s+/g, " ").trim() ??
-    document.body.textContent?.replace(/\s+/g, " ").trim() ??
-    ""
-  );
-};
+import { useEffect, useRef, useState } from 'react';
+import { Accessibility, RotateCcw, X } from 'lucide-react';
+import { useAccessibilityPrefs, type ColorBlindMode, type FontSize } from '@/hooks/useAccessibilityPrefs';
 
 const AccessibilityWidget = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const [status, setStatus] = useState("");
-  const [preferences, setPreferences] = useState<Preferences>(() => {
-    if (typeof window === "undefined") {
-      return defaultPreferences;
-    }
-
-    return loadPreferences();
-  });
-
-  const selectedColorMode = useMemo(
-    () => colorOptions.find((option) => option.value === preferences.colorMode),
-    [preferences.colorMode]
-  );
+  const { prefs, update, reset } = useAccessibilityPrefs();
+  const [open, setOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const root = document.documentElement;
-
-    root.dataset.a11yColorMode = preferences.colorMode;
-    root.dataset.a11yReadableFont = String(preferences.readableFont);
-    root.dataset.a11yReducedMotion = String(preferences.reducedMotion);
-    root.style.setProperty("--a11y-font-scale", String(preferences.fontScale));
-
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(preferences));
-  }, [preferences]);
-
-  useEffect(() => {
-    const handleSpeechEnd = () => setIsSpeaking(false);
-
-    window.speechSynthesis?.addEventListener("voiceschanged", handleSpeechEnd);
-
-    return () => {
-      window.speechSynthesis?.cancel();
-      window.speechSynthesis?.removeEventListener(
-        "voiceschanged",
-        handleSpeechEnd
-      );
-    };
-  }, []);
-
-  const updatePreferences = (next: Partial<Preferences>) => {
-    setPreferences((current) => ({
-      ...current,
-      ...next,
-    }));
-  };
-
-  const changeFontScale = (step: number) => {
-    updatePreferences({
-      fontScale: Number(clampFontScale(preferences.fontScale + step).toFixed(2)),
-    });
-  };
-
-  const resetPreferences = () => {
-    window.speechSynthesis?.cancel();
-    setIsSpeaking(false);
-    setPreferences(defaultPreferences);
-    setStatus("Preferências de acessibilidade redefinidas.");
-  };
-
-  const toggleSpeech = () => {
-    if (!("speechSynthesis" in window)) {
-      setStatus("Seu navegador não oferece leitura em voz alta.");
-      return;
-    }
-
-    if (isSpeaking) {
-      window.speechSynthesis.cancel();
-      setIsSpeaking(false);
-      setStatus("Leitura em voz alta pausada.");
-      return;
-    }
-
-    const text = getReadableText();
-
-    if (!text) {
-      setStatus("Não encontrei texto suficiente para leitura.");
-      return;
-    }
-
-    const utterance = new SpeechSynthesisUtterance(text.slice(0, 12000));
-    utterance.lang = "pt-BR";
-    utterance.rate = 0.95;
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => {
-      setIsSpeaking(false);
-      setStatus("Não foi possível concluir a leitura em voz alta.");
-    };
-
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utterance);
-    setIsSpeaking(true);
-    setStatus("Leitura em voz alta iniciada.");
-  };
-
-  const enableVLibras = () => {
-    const existingContainer = document.querySelector("[vw]");
-
-    if (!existingContainer) {
-      const wrapper = document.createElement("div");
-      wrapper.setAttribute("vw", "");
-      wrapper.className = "enabled";
-      wrapper.innerHTML = `
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-          <div class="vw-plugin-top-wrapper"></div>
-        </div>
-      `;
-      document.body.appendChild(wrapper);
-    }
-
-    const startWidget = () => {
-      if (window.VLibras && !window.__vlibrasWidgetLoaded) {
-        window.__vlibrasWidgetLoaded = true;
-        new window.VLibras.Widget("https://vlibras.gov.br/app");
+    if (!open) return;
+    const onClick = (e: MouseEvent) => {
+      if (
+        panelRef.current &&
+        !panelRef.current.contains(e.target as Node) &&
+        triggerRef.current &&
+        !triggerRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
       }
-      setStatus("VLibras ativado. Use o botão flutuante para tradução em Libras.");
     };
-
-    if (window.VLibras) {
-      startWidget();
-      return;
-    }
-
-    const existingScript = document.querySelector<HTMLScriptElement>(
-      'script[src="https://vlibras.gov.br/app/vlibras-plugin.js"]'
-    );
-
-    if (existingScript) {
-      existingScript.addEventListener("load", startWidget, { once: true });
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://vlibras.gov.br/app/vlibras-plugin.js";
-    script.async = true;
-    script.onload = startWidget;
-    script.onerror = () => {
-      setStatus("Não foi possível carregar o VLibras agora.");
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
     };
-    document.body.appendChild(script);
-  };
+    document.addEventListener('mousedown', onClick);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onClick);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
+
+  const fontSizes: { value: FontSize; label: string }[] = [
+    { value: 'normal', label: 'A' },
+    { value: 'large', label: 'A+' },
+    { value: 'xlarge', label: 'A++' },
+  ];
+
+  const colorBlindModes: { value: ColorBlindMode; label: string }[] = [
+    { value: 'none', label: 'Nenhum' },
+    { value: 'protanopia', label: 'Protanopia (vermelho)' },
+    { value: 'deuteranopia', label: 'Deuteranopia (verde)' },
+    { value: 'tritanopia', label: 'Tritanopia (azul)' },
+  ];
+
+  const toggles: { key: keyof typeof prefs; label: string }[] = [
+    { key: 'highContrast', label: 'Alto contraste' },
+    { key: 'grayscale', label: 'Escala de cinza' },
+    { key: 'underlineLinks', label: 'Sublinhar links' },
+    { key: 'reduceMotion', label: 'Reduzir animações' },
+    { key: 'readable', label: 'Leitura ampliada' },
+    { key: 'bigCursor', label: 'Cursor grande' },
+  ];
 
   return (
     <>
-      <a className="skip-link" href="#main-content">
-        Pular para o conteúdo principal
-      </a>
-
-      <section
-        className="accessibility-widget"
-        aria-label="Ferramentas de acessibilidade"
+      {/* Filtros SVG para daltonismo */}
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}
       >
-        <button
-          type="button"
-          className="accessibility-trigger"
-          aria-expanded={isOpen}
-          aria-controls="accessibility-panel"
-          onClick={() => setIsOpen((current) => !current)}
+        <defs>
+          <filter id="a11y-protanopia">
+            <feColorMatrix
+              type="matrix"
+              values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"
+            />
+          </filter>
+          <filter id="a11y-deuteranopia">
+            <feColorMatrix
+              type="matrix"
+              values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0"
+            />
+          </filter>
+          <filter id="a11y-tritanopia">
+            <feColorMatrix
+              type="matrix"
+              values="0.95 0.05 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0"
+            />
+          </filter>
+        </defs>
+      </svg>
+
+      <button
+        ref={triggerRef}
+        type="button"
+        className="a11y-toggle"
+        aria-label="Abrir opções de acessibilidade"
+        aria-expanded={open}
+        aria-controls="a11y-panel"
+        title="Acessibilidade"
+        onClick={() => setOpen((v) => !v)}
+      >
+        <Accessibility size={22} aria-hidden="true" />
+      </button>
+
+      {open && (
+        <div
+          ref={panelRef}
+          id="a11y-panel"
+          className="a11y-panel"
+          role="dialog"
+          aria-label="Opções de acessibilidade"
         >
-          <Accessibility aria-hidden="true" />
-          <span>Acessibilidade</span>
-        </button>
-
-        {isOpen && (
-          <div id="accessibility-panel" className="accessibility-panel">
-            <div className="accessibility-panel-header">
-              <div>
-                <p className="accessibility-eyebrow">Acessibilidade</p>
-                <h2>Adapte sua navegação</h2>
-              </div>
-              <button
-                type="button"
-                className="accessibility-icon-button"
-                aria-label="Fechar painel de acessibilidade"
-                onClick={() => setIsOpen(false)}
-              >
-                <X aria-hidden="true" />
-              </button>
-            </div>
-
-            <div className="accessibility-group">
-              <h3>
-                <Palette aria-hidden="true" />
-                Daltonismo e contraste
-              </h3>
-              <div className="accessibility-options-grid">
-                {colorOptions.map((option) => (
-                  <button
-                    key={option.value}
-                    type="button"
-                    className="accessibility-option"
-                    aria-pressed={preferences.colorMode === option.value}
-                    onClick={() => updatePreferences({ colorMode: option.value })}
-                  >
-                    <span>{option.label}</span>
-                    <small>{option.description}</small>
-                  </button>
-                ))}
-              </div>
-              <p className="accessibility-current">
-                Modo atual: {selectedColorMode?.label}
-              </p>
-            </div>
-
-            <div className="accessibility-group">
-              <h3>
-                <Eye aria-hidden="true" />
-                Leitura visual
-              </h3>
-              <div className="accessibility-actions-row">
-                <button
-                  type="button"
-                  className="accessibility-action"
-                  onClick={() => changeFontScale(-0.1)}
-                  disabled={preferences.fontScale <= 0.9}
-                >
-                  <Minus aria-hidden="true" />
-                  A-
-                </button>
-                <span className="accessibility-font-value">
-                  {Math.round(preferences.fontScale * 100)}%
-                </span>
-                <button
-                  type="button"
-                  className="accessibility-action"
-                  onClick={() => changeFontScale(0.1)}
-                  disabled={preferences.fontScale >= 1.4}
-                >
-                  <Plus aria-hidden="true" />
-                  A+
-                </button>
-              </div>
-              <div className="accessibility-actions-grid">
-                <button
-                  type="button"
-                  className="accessibility-action"
-                  aria-pressed={preferences.readableFont}
-                  onClick={() =>
-                    updatePreferences({
-                      readableFont: !preferences.readableFont,
-                    })
-                  }
-                >
-                  <Type aria-hidden="true" />
-                  Fonte legível
-                </button>
-                <button
-                  type="button"
-                  className="accessibility-action"
-                  aria-pressed={preferences.reducedMotion}
-                  onClick={() =>
-                    updatePreferences({
-                      reducedMotion: !preferences.reducedMotion,
-                    })
-                  }
-                >
-                  <Contrast aria-hidden="true" />
-                  Reduzir movimento
-                </button>
-              </div>
-            </div>
-
-            <div className="accessibility-group">
-              <h3>
-                <Ear aria-hidden="true" />
-                Libras e áudio
-              </h3>
-              <div className="accessibility-actions-grid">
-                <button
-                  type="button"
-                  className="accessibility-action"
-                  onClick={enableVLibras}
-                >
-                  <Ear aria-hidden="true" />
-                  Ativar VLibras
-                </button>
-                <button
-                  type="button"
-                  className="accessibility-action"
-                  aria-pressed={isSpeaking}
-                  onClick={toggleSpeech}
-                >
-                  {isSpeaking ? (
-                    <VolumeX aria-hidden="true" />
-                  ) : (
-                    <Volume2 aria-hidden="true" />
-                  )}
-                  {isSpeaking ? "Parar leitura" : "Ler página"}
-                </button>
-              </div>
-            </div>
-
+          <div className="a11y-panel__header">
+            <h3 className="a11y-panel__title">Acessibilidade</h3>
             <button
               type="button"
-              className="accessibility-reset"
-              onClick={resetPreferences}
+              className="a11y-panel__close"
+              onClick={() => setOpen(false)}
+              aria-label="Fechar painel"
             >
-              <RotateCcw aria-hidden="true" />
-              Redefinir ajustes
+              <X size={18} />
             </button>
-
-            <p className="sr-only" aria-live="polite">
-              {status}
-            </p>
           </div>
-        )}
-      </section>
+          <p className="a11y-panel__subtitle">Ajustes seguem WCAG 2.1.</p>
+
+          <div className="a11y-panel__group">
+            <span className="a11y-panel__label">Tamanho da fonte</span>
+            <div className="a11y-panel__row">
+              {fontSizes.map((s) => (
+                <button
+                  key={s.value}
+                  type="button"
+                  className={`a11y-pill ${prefs.fontSize === s.value ? 'is-active' : ''}`}
+                  aria-pressed={prefs.fontSize === s.value}
+                  onClick={() => update('fontSize', s.value)}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="a11y-panel__group">
+            <label htmlFor="a11y-cb" className="a11y-panel__label">
+              Filtro para daltonismo
+            </label>
+            <select
+              id="a11y-cb"
+              className="a11y-panel__select"
+              value={prefs.colorBlind}
+              onChange={(e) => update('colorBlind', e.target.value as ColorBlindMode)}
+            >
+              {colorBlindModes.map((m) => (
+                <option key={m.value} value={m.value}>
+                  {m.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="a11y-panel__list">
+            {toggles.map((t) => {
+              const checked = prefs[t.key] as boolean;
+              return (
+                <div key={t.key} className="a11y-panel__item">
+                  <span className="a11y-panel__item-label">{t.label}</span>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={checked}
+                    aria-label={t.label}
+                    className={`a11y-switch ${checked ? 'is-on' : ''}`}
+                    onClick={() => update(t.key, !checked as never)}
+                  >
+                    <span className="a11y-switch__thumb" />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          <button type="button" className="a11y-panel__reset" onClick={reset}>
+            <RotateCcw size={14} aria-hidden="true" />
+            Restaurar padrões
+          </button>
+        </div>
+      )}
     </>
   );
 };

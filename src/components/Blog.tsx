@@ -35,16 +35,18 @@ const Blog = () => {
           {previewPosts.map((post) => (
             <Link
               key={post.slug}
-              to={`/blog/${post.slug}`}
-              className="group bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border hover:border-primary/30"
+              to={`/direitos-do-consumidor/${post.slug}`}
+              className="group bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border hover:border-primary/30 flex flex-col"
             >
               {post.coverImage && (
-                <img
-                  src={post.coverImage}
-                  alt={post.title}
-                  className="w-full h-48 object-cover object-center"
-                  loading="lazy"
-                />
+                <div className="aspect-video w-full overflow-hidden bg-muted">
+                  <img
+                    src={post.coverImage}
+                    alt={post.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
               )}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
@@ -63,7 +65,7 @@ const Blog = () => {
         </div>
 
         <div className="text-center mt-10">
-          <Link to="/blog">
+          <Link to="/direitos-do-consumidor">
             <Button variant="outline" size="lg" className="gap-2">
               Ver todos os artigos
               <ArrowRight className="h-4 w-4" />

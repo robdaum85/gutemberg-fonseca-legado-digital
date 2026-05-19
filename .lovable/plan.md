@@ -1,88 +1,38 @@
-## Plano: Arquitetura SEO — Hub Temático "Direitos do Consumidor"
+## Mudanças
 
-Manter `/blog` e `/blog/:slug` exatamente como estão (modal + URL dinâmica) e adicionar, em paralelo, a página pilar `/direitos-do-consumidor` com seus próprios posts em `/direitos-do-consumidor/:slug`, melhorando SEO técnico (canonical, Open Graph, Article schema, breadcrumb) e atualizando o `sitemap.xml`.
+### 1. Campos dos forms invisíveis
+**Causa:** No Modo Copa, `body.theme-copa { color: #f5f7fb }` é herdado pelos `<input>`, `<textarea>` e `<label>`, deixando o texto branco sobre o card branco.
 
----
+**Fix:** Adicionar em `src/styles/theme-copa.css` regras escopadas:
+- `body.theme-copa input, body.theme-copa textarea, body.theme-copa select { color: #1a1a1a !important; background: #ffffff !important; }`
+- `body.theme-copa label { color: #1a1a1a !important; }`
+- `body.theme-copa ::placeholder { color: #64748b !important; }`
 
-### Arquivos a Criar
+### 2. Substituir os 2 primeiros posts do Instagram
+Em `src/components/InstagramFeed.tsx`, trocar os dois primeiros itens do array:
+- **insta1:** url `https://www.instagram.com/p/DYF6cP0mIbw/?igsh=OG1kNDhzMGlvdm1t`, imagem `https://kngofnnx.com/wp-content/uploads/2026/05/br.png`
+- **insta2:** url `https://www.instagram.com/p/DYVtrxlxav4/?igsh=MWpyczN5a283aTk1NA==`, imagem `https://kngofnnx.com/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-15-at-13.37.39.jpeg`
+- Mudar o `type` desses dois de `reel` para `post` (já que o badge mostra "Reel"). Vou ajustar o badge condicionalmente para mostrar "Post" quando `type === 'post'`.
+- Terceiro post permanece igual.
 
-**1. `src/lib/blogUtils.ts`** — Helpers centrais
-- `CATEGORY_SLUG_MAP`: `{ "Defesa do Consumidor": "direitos-do-consumidor", "Segurança Pública": "seguranca-publica" }`
-- `getCategorySlug(category)` → retorna o slug da categoria
-- `getCategoryFromSlug(slug)` → reverso
-- `getPostsByCategory(category)` → filtra `blogPosts`
-- `getPostCategoryUrl(post)` → `/direitos-do-consumidor/{slug}` quando aplicável; caso contrário `/blog/{slug}`
-- `getCanonicalUrl(path)` → `https://gutembergfonseca.com.br{path}`
-- `SITE_URL` constante
+### 3. Novo post no blog
+Adicionar no topo de `blogPosts` em `src/data/blogPosts.ts`:
+- `slug`: `bets-orcamento-familiar-armadilha`
+- `category`: `Defesa do Consumidor` → URL canônica `/direitos-do-consumidor/bets-orcamento-familiar-armadilha`
+- `title`: "Bets e o orçamento familiar: quando o jogo vira uma armadilha"
+- `date`: `2026-05-17`
+- `readingTime`: `5 min de leitura`
+- `excerpt/subTitle`: "Apostas online e jogos de cassino digital podem comprometer o orçamento familiar e exigem acolhimento, fiscalização e proteção ao consumidor."
+- `coverImage`: `https://kngofnnx.com/wp-content/uploads/2026/05/artigo2.png`
+- `author`/`role`/`authorImage`: mesmos padrões dos outros posts
+- `content`: HTML formatado com `<h2>` e `<p>` a partir do texto fornecido
+- `featured`: `true`
+- `metaTitle`/`metaDescription`/`tags` adequados a SEO
 
-**2. `src/lib/useSeo.ts`** — Hook de SEO sem dependências
-- Atualiza `document.title`, `meta[name=description]`, `link[rel=canonical]`
-- Injeta/atualiza Open Graph (`og:title`, `og:description`, `og:image`, `og:type=article`, `og:url`) e `article:published_time`
-- Injeta JSON-LD `Article` + `BreadcrumbList` quando aplicável
-- Limpa tudo no unmount restaurando valores anteriores
+Adicionar a URL canônica `/direitos-do-consumidor/bets-orcamento-familiar-armadilha` em `public/sitemap.xml`.
 
-**3. `src/pages/CategoryPage.tsx`** — Página pilar `/direitos-do-consumidor`
-- H1 "Direitos do Consumidor"
-- Texto introdutório institucional fornecido
-- Grid de cards dos posts da categoria, linkando para `/direitos-do-consumidor/:slug` via `<Link>` (links internos crawláveis)
-- `useSeo` com `metaTitle` e `metaDescription` próprios da categoria + canonical
-- JSON-LD `CollectionPage` + `ItemList`
-
-**4. `src/pages/CategoryPostPage.tsx`** — Post canônico em `/direitos-do-consumidor/:slug`
-- Renderização full page (não modal) do post
-- Header, breadcrumb "Início > Direitos do Consumidor > Título", artigo com `prose`, ShareButtons e CTA (mesma estrutura do `BlogPostModal`)
-- `useSeo` com canonical apontando para `/direitos-do-consumidor/:slug` (URL canônica preferida para posts da categoria)
-- Schema.org `Article` + `BreadcrumbList`
-- Se slug não pertence à categoria, redireciona para `/blog/:slug`
-
----
-
-### Arquivos a Editar
-
-**5. `src/App.tsx`** — Adicionar rotas (lazy)
-```tsx
-<Route path="/direitos-do-consumidor" element={<CategoryPage />} />
-<Route path="/direitos-do-consumidor/:slug" element={<CategoryPostPage />} />
-```
-Manter `/blog` e `/blog/:slug` intactos.
-
-**6. `src/components/BlogPostModal.tsx`** — Melhorias SEO no modal
-- Usar `getPostCategoryUrl(post)` para a URL canônica/compartilhamento
-- Adicionar `<link rel=canonical>` apontando para a URL canônica do post (categoria quando aplicável)
-- Adicionar OG tags (`og:title`, `og:description`, `og:image`, `og:type=article`, `og:url`, `article:published_time`) via hook `useSeo`
-- Manter comportamento atual (abre/fecha, restaura tags)
-
-**7. `src/pages/BlogPage.tsx`** — Pequeno ajuste
-- Cards usam `<Link>` para `getPostCategoryUrl(post)` quando a categoria mapeia, mantendo o comportamento de modal apenas dentro de `/blog`. (Sem mudança visual; melhora links internos para SEO.)
-- Adicionar `useSeo` para meta da listagem `/blog`.
-
-**8. `public/sitemap.xml`** — Regenerar
-Incluir:
-- `/`
-- `/blog`
-- `/direitos-do-consumidor`
-- `/blog/{slug}` para todos os posts (mantém URLs antigas)
-- `/direitos-do-consumidor/{slug}` para posts da categoria "Defesa do Consumidor"
-Adicionar `<lastmod>` baseado em `post.date`.
-
-**9. `src/pages/BlogPostPage.tsx`** — Remover (arquivo órfão, não roteado, usa `react-helmet-async` sem provider). A funcionalidade está coberta por `BlogPostModal` e o novo `CategoryPostPage`.
-
----
-
-### Detalhes Técnicos
-
-- **Canonical strategy**: para posts com `category === "Defesa do Consumidor"`, a URL canônica é `/direitos-do-consumidor/{slug}`. O modal em `/blog/{slug}` aponta `<link rel=canonical>` para essa URL canônica, evitando conteúdo duplicado.
-- **Breadcrumb visual** em `CategoryPostPage` usa o componente `src/components/ui/breadcrumb.tsx` já existente.
-- **Sem novas dependências** (`react-helmet-async` não está instalado; o hook `useSeo` manipula `document.head` direto).
-- **Lazy loading** das novas páginas via `React.lazy` no `App.tsx`.
-- **Vercel rewrites**: `vercel.json` já tem fallback genérico que cobre `/direitos-do-consumidor/*`. Sem mudança necessária.
-- **Texto introdutório** da página pilar: usar exatamente o texto institucional fornecido.
-
-### Resultado
-
-- `/blog` continua funcionando (modal + URL dinâmica) ✓
-- `/direitos-do-consumidor` vira hub temático com posts de "Defesa do Consumidor" ✓
-- Cada post de Defesa do Consumidor é acessível por duas URLs, com canonical apontando para a versão `/direitos-do-consumidor/{slug}` ✓
-- Breadcrumb, Open Graph, Article schema e canonical em todas as páginas ✓
-- Sitemap atualizado com todas as URLs ✓
-- Zero quebra na estrutura atual ✓
+## Arquivos alterados
+- `src/styles/theme-copa.css`
+- `src/components/InstagramFeed.tsx`
+- `src/data/blogPosts.ts`
+- `public/sitemap.xml`
