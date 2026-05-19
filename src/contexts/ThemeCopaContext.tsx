@@ -12,8 +12,9 @@ const STORAGE_KEY = 'theme-copa';
 
 export const ThemeCopaProvider = ({ children }: { children: ReactNode }) => {
   const [enabled, setEnabledState] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false;
-    return window.localStorage.getItem(STORAGE_KEY) === '1';
+    if (typeof window === 'undefined') return true;
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    return stored === null ? true : stored === '1';
   });
 
   useEffect(() => {
