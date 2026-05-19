@@ -25,11 +25,11 @@
       "destination": "https://lp-lixo.vercel.app/:path*"
     },
     {
-      "source": "/blog/:slug",
+      "source": "/blog",
       "destination": "/index.html"
     },
     {
-      "source": "/blog",
+      "source": "/blog/:slug",
       "destination": "/index.html"
     },
     {
