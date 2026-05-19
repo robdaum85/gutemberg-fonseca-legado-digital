@@ -36,6 +36,82 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "bets-orcamento-familiar-armadilha",
+    source: "Coluna",
+    category: "Defesa do Consumidor",
+    title: "Bets e o orçamento familiar: quando o jogo vira uma armadilha",
+    subTitle:
+      "Apostas online e jogos de cassino digital podem comprometer o orçamento familiar e exigem acolhimento, fiscalização e proteção ao consumidor.",
+    excerpt:
+      "Apostas online e jogos de cassino digital podem comprometer o orçamento familiar e exigem acolhimento, fiscalização e proteção ao consumidor.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em defesa do consumidor e ex-secretário de Estado de Defesa do Consumidor",
+    date: "2026-05-17",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/05/artigo2.png",
+    metaTitle: "Bets e o orçamento familiar: quando o jogo vira uma armadilha",
+    metaDescription:
+      "Apostas online e cassino digital ameaçam o orçamento das famílias. Entenda como o CDC e o Balcão do Consumidor protegem o cidadão fluminense.",
+    readingTime: "5 min de leitura",
+    tags: [
+      "Bets",
+      "Apostas online",
+      "Superendividamento",
+      "Defesa do consumidor",
+      "Ludopatia",
+      "Balcão do Consumidor",
+    ],
+    featured: true,
+    content: `
+      <p><strong>Bets e o orçamento familiar: quando o jogo vira uma armadilha</strong></p>
+
+      <br/>
+
+      <p>O cenário do consumo no Brasil atravessa uma transformação silenciosa e perigosa. O que antes era restrito a casas de apostas físicas ou cassinos clandestinos, hoje está na palma da mão, acessível a um toque no celular. A explosão das "bets" e de jogos de cassino online, como o popular "Jogo do tigrinho", deixou de ser um fenômeno de entretenimento para se tornar uma crise de proteção ao consumidor. O que assistimos agora é a invasão de algoritmos agressivos que, sob a promessa de dinheiro fácil, estão drenando o orçamento de famílias fluminenses e comprometendo recursos que deveriam ir para aluguel, a educação e a comida na mesa.</p>
+
+      <br/>
+
+      <h2>Vulnerabilidade e dever de cuidado</h2>
+      <p>No Direito do Consumidor, tratamos essa questão sob a ótica da vulnerabilidade. A publicidade abusiva dessas plataformas, muitas vezes utilizando influenciadores digitais para simular ganhos financeiros, fere o princípio básico da transparência e do dever de informação. Mais do que isso, as empresas possuem o chamado "dever de cuidado", especialmente com o consumidor superendividado.</p>
+
+      <br/>
+
+      <p>Quando uma plataforma utiliza mecanismos psicológicos para manter o usuário apostando compulsivamente, ela ultrapassa o limite do serviço e passa a explorar a fragilidade do cidadão. É aqui que o vício em jogos, a ludopatia, entra definitivamente na pauta da defesa do consumidor.</p>
+
+      <br/>
+
+      <h2>O CDC e a Lei do Superendividamento</h2>
+      <p>O Código de Defesa do Consumidor (CDC) é uma ferramenta poderosa, mas que precisa ser aplicada com rigor diante dessa nova realidade. Um consumidor que perde o controle de suas finanças devido a práticas comerciais agressivas ou indução ao erro está sendo vítima de um mercado que, muitas vezes, opera à margem da ética e da responsabilidade social. A Lei do Superendividamento já nos dá um caminho: o crédito e o consumo não podem atingir a dignidade da pessoa humana.</p>
+
+      <br/>
+
+      <h2>O Balcão do Consumidor — RJ na vanguarda</h2>
+      <p>Reconhecendo a gravidade desse cenário, o Rio de Janeiro deu um passo inédito no país com a criação do Balcão do Consumidor. Esta iniciativa da Secretaria de Estado de Defesa do Consumidor (SEDCON) e do PROCON-RJ nasceu com a missão de ir além da simples reclamação técnica.</p>
+
+      <br/>
+
+      <p>O superendividamento causado pelas apostas online é um problema multidisciplinar. Por isso, oferece um acolhimento diferenciado, contando com psicólogos e assistentes sociais para atender gratuitamente as famílias que já sofrem com as consequências devastadoras do vício.</p>
+
+      <br/>
+
+      <p>O objetivo dessa política pública é resgatar o cidadão, e está voltada à renegociação de dívidas, suporte à manutenção do patrimônio familiar. O Estado do Rio de Janeiro se posiciona na vanguarda ao entender que a defesa do consumidor em 2026 exige um atendimento personalizado e focado no consumidor superendividado por perdas financeiras causadas pelas apostas digitais.</p>
+
+      <br/>
+
+      <h2>Educar, fiscalizar e acolher</h2>
+      <p>É preciso educar para o consumo, fiscalizar a publicidade predatória e, acima de tudo, acolher quem foi capturado por essas armadilhas digitais.</p>
+
+      <br/>
+
+      <p>A diversão não pode custar a paz de um lar. Os órgãos de defesa do consumidor seguem atuantes. O consumidor fluminense deve saber que não está sozinho nessa batalha: o Balcão do Consumidor é o porto seguro para quem precisa retomar as rédeas da própria vida financeira e garantir que o pão de cada dia não seja colocado em jogo.</p>
+
+      <br/>
+
+      <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo WhatsApp <strong>+55 (21) 96619-2498</strong>.</p>
+    `,
+  },
+  {
     slug: "crime-relacao-consumo-virus-silencioso",
     source: "O Dia",
     category: "Defesa do Consumidor",

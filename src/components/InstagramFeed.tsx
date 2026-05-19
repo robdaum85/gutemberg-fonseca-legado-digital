@@ -14,14 +14,14 @@ const InstagramFeed = () => {
 
   const instagramPosts = [
     {
-      url: 'https://www.instagram.com/reel/DWRTgxCjqpL/?igsh=MWlxbnVhOXpxbnBiOA==',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/03/noticia1.png',
-      type: 'reel' as const,
+      url: 'https://www.instagram.com/p/DYF6cP0mIbw/?igsh=OG1kNDhzMGlvdm1t',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/05/br.png',
+      type: 'post' as const,
     },
     {
-      url: 'https://www.instagram.com/reel/DWPw1L9S3PF/?igsh=Z2prNHhvMnlpeXds',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/03/noticia2.png',
-      type: 'reel' as const,
+      url: 'https://www.instagram.com/p/DYVtrxlxav4/?igsh=MWpyczN5a283aTk1NA==',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-15-at-13.37.39.jpeg',
+      type: 'post' as const,
     },
     {
       url: 'https://www.instagram.com/reel/DWkfKhEjAwf/?igsh=MW50MnV6MDRyYnVkNQ==',
@@ -80,7 +80,7 @@ const InstagramFeed = () => {
                   {/* Badge */}
                   <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5 text-white">
                     <Camera className="w-3.5 h-3.5" />
-                    <span className="text-xs font-semibold">Reel</span>
+                    <span className="text-xs font-semibold">{post.type === 'reel' ? 'Reel' : 'Post'}</span>
                   </div>
                   
                   {/* Hover Overlay */}
