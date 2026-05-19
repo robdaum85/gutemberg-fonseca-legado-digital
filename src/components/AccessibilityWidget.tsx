@@ -1,12 +1,35 @@
-import { Accessibility, RotateCcw } from 'lucide-react';
-import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
+import { useEffect, useRef, useState } from 'react';
+import { Accessibility, RotateCcw, X } from 'lucide-react';
 import { useAccessibilityPrefs, type ColorBlindMode, type FontSize } from '@/hooks/useAccessibilityPrefs';
 
 const AccessibilityWidget = () => {
   const { prefs, update, reset } = useAccessibilityPrefs();
+  const [open, setOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onClick = (e: MouseEvent) => {
+      if (
+        panelRef.current &&
+        !panelRef.current.contains(e.target as Node) &&
+        triggerRef.current &&
+        !triggerRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('mousedown', onClick);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onClick);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
 
   const fontSizes: { value: FontSize; label: string }[] = [
     { value: 'normal', label: 'A' },
@@ -16,9 +39,18 @@ const AccessibilityWidget = () => {
 
   const colorBlindModes: { value: ColorBlindMode; label: string }[] = [
     { value: 'none', label: 'Nenhum' },
-    { value: 'protanopia', label: 'Protanopia' },
-    { value: 'deuteranopia', label: 'Deuteranopia' },
-    { value: 'tritanopia', label: 'Tritanopia' },
+    { value: 'protanopia', label: 'Protanopia (vermelho)' },
+    { value: 'deuteranopia', label: 'Deuteranopia (verde)' },
+    { value: 'tritanopia', label: 'Tritanopia (azul)' },
+  ];
+
+  const toggles: { key: keyof typeof prefs; label: string }[] = [
+    { key: 'highContrast', label: 'Alto contraste' },
+    { key: 'grayscale', label: 'Escala de cinza' },
+    { key: 'underlineLinks', label: 'Sublinhar links' },
+    { key: 'reduceMotion', label: 'Reduzir animações' },
+    { key: 'readable', label: 'Leitura ampliada' },
+    { key: 'bigCursor', label: 'Cursor grande' },
   ];
 
   return (
@@ -33,135 +65,120 @@ const AccessibilityWidget = () => {
           <filter id="a11y-protanopia">
             <feColorMatrix
               type="matrix"
-              values="0.567 0.433 0 0 0
-                      0.558 0.442 0 0 0
-                      0 0.242 0.758 0 0
-                      0 0 0 1 0"
+              values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"
             />
           </filter>
           <filter id="a11y-deuteranopia">
             <feColorMatrix
               type="matrix"
-              values="0.625 0.375 0 0 0
-                      0.7 0.3 0 0 0
-                      0 0.3 0.7 0 0
-                      0 0 0 1 0"
+              values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0"
             />
           </filter>
           <filter id="a11y-tritanopia">
             <feColorMatrix
               type="matrix"
-              values="0.95 0.05 0 0 0
-                      0 0.433 0.567 0 0
-                      0 0.475 0.525 0 0
-                      0 0 0 1 0"
+              values="0.95 0.05 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0"
             />
           </filter>
         </defs>
       </svg>
 
-      <Popover>
-        <PopoverTrigger asChild>
-          <button
-            type="button"
-            className="a11y-toggle"
-            aria-label="Abrir opções de acessibilidade"
-            title="Acessibilidade"
-          >
-            <Accessibility size={22} aria-hidden="true" />
-          </button>
-        </PopoverTrigger>
-        <PopoverContent
-          align="end"
-          side="top"
-          sideOffset={8}
-          className="w-80 max-h-[80vh] overflow-y-auto"
-          aria-label="Painel de acessibilidade"
+      <button
+        ref={triggerRef}
+        type="button"
+        className="a11y-toggle"
+        aria-label="Abrir opções de acessibilidade"
+        aria-expanded={open}
+        aria-controls="a11y-panel"
+        title="Acessibilidade"
+        onClick={() => setOpen((v) => !v)}
+      >
+        <Accessibility size={22} aria-hidden="true" />
+      </button>
+
+      {open && (
+        <div
+          ref={panelRef}
+          id="a11y-panel"
+          className="a11y-panel"
+          role="dialog"
+          aria-label="Opções de acessibilidade"
         >
-          <div className="space-y-4">
-            <div>
-              <h3 className="font-bold text-sm mb-1">Acessibilidade</h3>
-              <p className="text-xs text-muted-foreground">
-                Ajustes seguem padrões internacionais (WCAG 2.1).
-              </p>
-            </div>
+          <div className="a11y-panel__header">
+            <h3 className="a11y-panel__title">Acessibilidade</h3>
+            <button
+              type="button"
+              className="a11y-panel__close"
+              onClick={() => setOpen(false)}
+              aria-label="Fechar painel"
+            >
+              <X size={18} />
+            </button>
+          </div>
+          <p className="a11y-panel__subtitle">Ajustes seguem WCAG 2.1.</p>
 
-            {/* Tamanho da fonte */}
-            <div>
-              <Label className="text-xs font-semibold mb-2 block">Tamanho da fonte</Label>
-              <div className="flex gap-1">
-                {fontSizes.map((s) => (
-                  <button
-                    key={s.value}
-                    type="button"
-                    onClick={() => update('fontSize', s.value)}
-                    aria-pressed={prefs.fontSize === s.value}
-                    className={`flex-1 py-2 rounded-md border text-sm font-bold transition-colors ${
-                      prefs.fontSize === s.value
-                        ? 'bg-primary text-primary-foreground border-primary'
-                        : 'bg-background hover:bg-accent'
-                    }`}
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Daltonismo */}
-            <div>
-              <Label htmlFor="a11y-cb" className="text-xs font-semibold mb-2 block">
-                Filtro para daltonismo
-              </Label>
-              <select
-                id="a11y-cb"
-                value={prefs.colorBlind}
-                onChange={(e) => update('colorBlind', e.target.value as ColorBlindMode)}
-                className="w-full rounded-md border bg-background px-3 py-2 text-sm"
-              >
-                {colorBlindModes.map((m) => (
-                  <option key={m.value} value={m.value}>
-                    {m.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Toggles */}
-            <div className="space-y-3">
-              {[
-                { key: 'highContrast', label: 'Alto contraste' },
-                { key: 'grayscale', label: 'Escala de cinza' },
-                { key: 'underlineLinks', label: 'Sublinhar links' },
-                { key: 'reduceMotion', label: 'Reduzir animações' },
-                { key: 'readable', label: 'Leitura ampliada' },
-                { key: 'bigCursor', label: 'Cursor grande' },
-              ].map((t) => (
-                <div key={t.key} className="flex items-center justify-between">
-                  <Label htmlFor={`a11y-${t.key}`} className="text-sm cursor-pointer">
-                    {t.label}
-                  </Label>
-                  <Switch
-                    id={`a11y-${t.key}`}
-                    checked={prefs[t.key as keyof typeof prefs] as boolean}
-                    onCheckedChange={(v) => update(t.key as never, v as never)}
-                  />
-                </div>
+          <div className="a11y-panel__group">
+            <span className="a11y-panel__label">Tamanho da fonte</span>
+            <div className="a11y-panel__row">
+              {fontSizes.map((s) => (
+                <button
+                  key={s.value}
+                  type="button"
+                  className={`a11y-pill ${prefs.fontSize === s.value ? 'is-active' : ''}`}
+                  aria-pressed={prefs.fontSize === s.value}
+                  onClick={() => update('fontSize', s.value)}
+                >
+                  {s.label}
+                </button>
               ))}
             </div>
-
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={reset}
-              className="w-full gap-2"
-            >
-              <RotateCcw className="h-3.5 w-3.5" />
-              Restaurar padrões
-            </Button>
           </div>
-        </PopoverContent>
-      </Popover>
+
+          <div className="a11y-panel__group">
+            <label htmlFor="a11y-cb" className="a11y-panel__label">
+              Filtro para daltonismo
+            </label>
+            <select
+              id="a11y-cb"
+              className="a11y-panel__select"
+              value={prefs.colorBlind}
+              onChange={(e) => update('colorBlind', e.target.value as ColorBlindMode)}
+            >
+              {colorBlindModes.map((m) => (
+                <option key={m.value} value={m.value}>
+                  {m.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="a11y-panel__list">
+            {toggles.map((t) => {
+              const checked = prefs[t.key] as boolean;
+              return (
+                <div key={t.key} className="a11y-panel__item">
+                  <span className="a11y-panel__item-label">{t.label}</span>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={checked}
+                    aria-label={t.label}
+                    className={`a11y-switch ${checked ? 'is-on' : ''}`}
+                    onClick={() => update(t.key, !checked as never)}
+                  >
+                    <span className="a11y-switch__thumb" />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          <button type="button" className="a11y-panel__reset" onClick={reset}>
+            <RotateCcw size={14} aria-hidden="true" />
+            Restaurar padrões
+          </button>
+        </div>
+      )}
     </>
   );
 };
