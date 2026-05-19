@@ -472,5 +472,5 @@ body.theme-copa main article strong { color: #ffffff !important; }
 @media (max-width: 768px) {
   body.theme-copa { background-attachment: scroll; }
   body.theme-copa::before { opacity: 0.6; }
-  .theme-copa-toggle { padding: 9px 13px; font-size: 12px; }
+  .theme-copa-toggle { width: 36px; height: 36px; }
 }
