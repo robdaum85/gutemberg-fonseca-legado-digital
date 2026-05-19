@@ -74,9 +74,6 @@ const WelcomePopup = () => {
           <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className={externalBtn}>
             <Facebook className="h-5 w-5" /> Facebook
           </a>
-          <a href={SOCIAL_LINKS.site} target="_blank" rel="noopener noreferrer" className={externalBtn}>
-            <Globe className="h-5 w-5" /> Site oficial
-          </a>
 
           <div className="pt-2 border-t border-gray-200" />
 
