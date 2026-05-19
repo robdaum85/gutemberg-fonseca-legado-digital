@@ -1,27 +1,30 @@
-## Toggle Modo Copa mais discreto (ícone bola de futebol)
+## Objetivo
+Fazer o Modo Copa vir ativado por padrão para todos os visitantes, só sendo desligado se o usuário clicar no botão (Volleyball) ou se desativarmos via código.
 
-Trocar o botão atual (pílula com texto "Modo Copa ON/OFF") por um botão circular pequeno com o ícone de bola de futebol, posicionado no canto inferior direito.
+## Alteração
 
-### `src/components/ThemeCopaToggle.tsx`
-- Importar `import { Volleyball } from 'lucide-react'` (é o ícone de bola/futebol disponível no lucide; visual de gomos clássicos).
-- Renderizar um `<button>` quadrado/circular (~40px), `aria-label` mantido ("Ativar/Desativar Modo Copa"), `aria-pressed={enabled}`.
-- Conteúdo: apenas o ícone `<Volleyball size={20} />`. Remover o `__label` com texto e o `__dot`.
-- Tooltip nativo via `title="Modo Copa"`.
+**`src/contexts/ThemeCopaContext.tsx`** — mudar o estado inicial:
 
-### `src/styles/theme-copa.css`
-- Reescrever `.theme-copa-toggle` como botão circular discreto:
-  - `width: 40px; height: 40px; padding: 0; border-radius: 999px;`
-  - Fundo neutro semitransparente: `background: rgba(2, 17, 43, 0.55); backdrop-filter: blur(8px);`
-  - Borda fina: `border: 1px solid rgba(255,255,255,0.15);`
-  - Cor do ícone (OFF): `color: rgba(255,255,255,0.65);`
-  - Sombra suave: `box-shadow: 0 4px 12px rgba(0,0,0,0.25);`
-  - Opacidade base `0.7`, vai a `1` no hover.
-- Estado ativo (quando `body.theme-copa` está aplicado): `.theme-copa .theme-copa-toggle { color: #FCF10B; border-color: rgba(252,241,11,0.55); box-shadow: 0 0 12px rgba(252,241,11,0.35); opacity: 1; }`.
-- Remover regras `.theme-copa-toggle__dot` e `.theme-copa-toggle__label` (não usadas).
-- Ajustar a media query da linha 480 para o novo tamanho (`width: 36px; height: 36px;` em telas pequenas).
+- Hoje: `enabled` inicia em `false` quando não há nada no `localStorage`.
+- Novo comportamento: `enabled` inicia em `true` por padrão. Só fica `false` quando o `localStorage` tem explicitamente o valor `'0'` (ou seja, o usuário já clicou no botão para desligar nesta sessão/dispositivo).
 
-### Considerações
-- Sem novas dependências (`lucide-react` já está no projeto).
-- Posição/`z-index` preservados (fixed, canto inferior direito).
-- Acessibilidade mantida via `aria-label` + `aria-pressed`.
-- Reversível: apenas edição de dois arquivos existentes.
+Lógica do estado inicial:
+```
+const stored = localStorage.getItem('theme-copa');
+return stored === null ? true : stored === '1';
+```
+
+Assim:
+- Primeiro acesso → Modo Copa ON.
+- Usuário clica no botão para desligar → grava `'0'` → continua OFF nas próximas visitas naquele dispositivo.
+- Usuário clica de novo para ligar → grava `'1'` → volta para ON.
+- Para forçar OFF globalmente via código futuramente, basta trocar o default `true` por `false`.
+
+## Fora do escopo
+- Sem mudanças no botão `ThemeCopaToggle`, no CSS do tema, nos componentes visuais ou em qualquer outra parte do site.
+- Sem alteração de rotas, SEO ou backend.
+
+## Validação
+- Abrir o site em um navegador sem `localStorage` da chave `theme-copa` → tema Copa aparece ativo.
+- Clicar no botão Volleyball → desliga e persiste como OFF ao recarregar.
+- Clicar novamente → liga e persiste como ON.
