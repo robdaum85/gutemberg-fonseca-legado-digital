@@ -1,41 +1,87 @@
-## Problema
+# Plano: Exército do Consumidor
 
-O projeto usa `vite-plugin-pwa` com `registerType: "autoUpdate"`, que registra um service worker em produção. Dentro do iframe de preview da Lovable isso causa exatamente o sintoma que você descreveu: o SW intercepta navegações e serve HTML/JS antigos do cache, mesmo após mudanças no código.
+Adicionar uma área de mobilização ao site sem alterar estrutura, sections ou identidade visual existentes. Todos os envios abrem WhatsApp com mensagem pré-formatada (`https://wa.me/...` + `encodeURIComponent`). Sem backend, sem Google Forms.
 
-Além disso, dispositivos que já visitaram o site publicado têm o SW antigo instalado — só remover o plugin **não** desinstala o SW desses navegadores. Eles continuariam servindo cache para sempre.
+## Arquivos novos
 
-## Plano
+```text
+src/config/mobilizacao.ts         → constantes (WhatsApp, redes sociais, labels)
+src/lib/whatsapp.ts               → helper buildWhatsAppUrl(tipo, campos)
+src/components/mobilizacao/
+  ExercitoHero.tsx                → section principal com CTAs
+  FormApoiador.tsx                → formulário Apoiador
+  FormLideranca.tsx               → formulário Liderança
+  FormDenuncia.tsx                → formulário Denúncia (com aviso)
+  WelcomePopup.tsx                → pop-up inicial (mini-Linktree)
+```
 
-### 1. Remover o PWA do build
-- Desinstalar `vite-plugin-pwa`.
-- Remover o bloco `VitePWA({...})` de `vite.config.ts`.
-- Remover a importação do plugin.
+## Arquivos modificados
 
-### 2. Substituir o service worker por um "kill-switch"
-Criar `public/sw.js` estático cujo único trabalho é:
-- limpar todos os caches (`caches.keys()` + `caches.delete`),
-- forçar reload das abas abertas com um query param de cache-bust,
-- chamar `self.registration.unregister()`.
+- `src/pages/Index.tsx` — inserir `<ExercitoHero />`, `<FormApoiador />`, `<FormLideranca />`, `<FormDenuncia />` após `<Blog />` (ou antes de `<ContactSection />`), e montar `<WelcomePopup />` no topo.
+- `src/components/Footer.tsx` — adicionar links rápidos: Apoiador, Liderança, Denúncia (opcional, mantém padrão).
 
-Assim, qualquer dispositivo que já tinha o SW antigo instalado vai, na próxima visita, baixar este SW novo, limpar tudo e se auto-desinstalar.
+Nada mais é alterado. Componentes existentes (`Button`, `Input`, `Label`, `Textarea`, `useToast`) são reaproveitados. Tokens do design system (`bg-primary`, `bg-gradient-primary`, Poppins/Inter) mantidos.
 
-### 3. Garantir que nada re-registre o SW
-- Verificar `src/main.tsx`, `index.html` e `src/App.tsx` — se houver chamada `navigator.serviceWorker.register(...)` ou `registerSW()`, remover.
-- Adicionar (defensivamente) em `src/main.tsx` um bloco que desregistra qualquer SW existente ao iniciar, garantindo limpeza mesmo se o `sw.js` não for buscado.
+## Section 1 — Mobilização (ExercitoHero)
+- id: `exercito`
+- Título: "Faça parte do Exército do Consumidor."
+- Subtítulo conforme briefing.
+- 3 botões com `scrollIntoView({behavior:'smooth'})` para `#apoiador`, `#lideranca`, `#denuncia`.
+- Visual: fundo gradiente `bg-gradient-primary` com texto em `text-primary`, mesma vibe da seção Hero/Stats.
 
-### 4. Manter manifest mínimo (opcional)
-O `index.html` já tem `theme-color`, `apple-touch-icon` e meta tags PWA-friendly. Isso continua funcionando para "Adicionar à tela inicial" sem precisar de service worker. Não mexer.
+## Section 2 — Apoiador (`#apoiador`)
+Campos obrigatórios: Nome, Cidade, Bairro, WhatsApp. Opcional: Mensagem.
+Botão "Enviar como apoiador" → WhatsApp tipo `APOIADOR`.
 
-### 5. Comunicar limitações
-- O preview da Lovable e novos visitantes verão a versão mais recente imediatamente.
-- Usuários que já instalaram o PWA antigo na tela inicial podem precisar abrir o site uma vez no navegador para o kill-switch rodar.
-- A app perde funcionalidade offline (consequência esperada de desativar o SW).
+## Section 3 — Liderança (`#lideranca`)
+Campos obrigatórios: Nome, Cidade, Bairro, WhatsApp, Área de atuação. Opcionais: Redes sociais, Mensagem.
+Botão "Enviar cadastro de liderança" → WhatsApp tipo `LIDERANÇA`.
 
-## Arquivos afetados
+## Section 4 — Denúncia (`#denuncia`)
+Campos obrigatórios: Nome, WhatsApp, Empresa/serviço, Cidade, Bairro, Tipo de problema, Descrição.
+Aviso: "As informações serão enviadas diretamente pelo WhatsApp. Não compartilhe dados sensíveis além do necessário."
+Botão "Enviar denúncia pelo WhatsApp" → WhatsApp tipo `DENÚNCIA`.
 
-- `vite.config.ts` — remover bloco VitePWA e import.
-- `package.json` — remover `vite-plugin-pwa` (via `bun remove`).
-- `public/sw.js` — novo arquivo, kill-switch.
-- `src/main.tsx` — adicionar bloco de unregister defensivo.
+Validação client-side com mensagens via `useToast` (padrão já usado em `ContactSection`).
 
-Posso seguir?
+## Pop-up de boas-vindas (WelcomePopup)
+- Aparece 1x por sessão (`sessionStorage.setItem('welcome_popup_seen','1')`).
+- Título "Bem-vindo ao canal do Guto" + subtítulo.
+- Botões: WhatsApp, Instagram, Facebook, Site oficial, Fazer denúncia, Ser apoiador, Ser liderança.
+  - Externos abrem em nova aba; internos fecham o popup e fazem scroll para a section.
+- Botão X de fechar + link discreto "continuar navegando".
+- Desktop: modal central com `backdrop-blur-sm` e `animate-scale-in`.
+- Mobile: ocupa ~quase toda a tela (`max-w-md w-[92vw]`), tipografia confortável.
+- Implementado com `Dialog` do shadcn (já disponível).
+
+## Detalhes técnicos
+
+`src/config/mobilizacao.ts`:
+```ts
+export const WHATSAPP_NUMBER = "5521966192498";
+export const SOCIAL_LINKS = {
+  instagram: "https://www.instagram.com/gutembergpfonseca/",
+  facebook:  "https://www.facebook.com/gutembergpfonseca",
+  site:      "https://gutemberg-fonseca-legado-digital.lovable.app",
+  whatsapp:  `https://wa.me/${WHATSAPP_NUMBER}`,
+};
+```
+
+`src/lib/whatsapp.ts`:
+```ts
+type Tipo = "APOIADOR" | "LIDERANÇA" | "DENÚNCIA";
+export function buildWhatsAppUrl(tipo: Tipo, intro: string, campos: Record<string,string>) {
+  const linhas = Object.entries(campos)
+    .filter(([,v]) => v?.trim())
+    .map(([k,v]) => `${k}: ${v}`).join("\n");
+  const texto = `${intro}\n\n${linhas}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+}
+```
+
+Cada form chama `window.open(url, '_blank')` após validar campos obrigatórios.
+
+## Fora de escopo
+- Não remover/alterar sections existentes.
+- Não tocar em rotas, blog, ou estilo global.
+- Sem persistência de dados.

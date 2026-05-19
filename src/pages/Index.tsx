@@ -11,6 +11,11 @@ import InstagramFeed from '@/components/InstagramFeed';
 import Testimonials from '@/components/Testimonials';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import ExercitoHero from '@/components/mobilizacao/ExercitoHero';
+import FormApoiador from '@/components/mobilizacao/FormApoiador';
+import FormLideranca from '@/components/mobilizacao/FormLideranca';
+import FormDenuncia from '@/components/mobilizacao/FormDenuncia';
+import WelcomePopup from '@/components/mobilizacao/WelcomePopup';
 
 const Index = () => {
   // Scroll to top when the page loads
@@ -20,6 +25,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <WelcomePopup />
       <Header />
       <Hero />
       <About />
@@ -30,6 +36,10 @@ const Index = () => {
       <PodcastHighlight />
       <InstagramFeed />
       <Testimonials />
+      <ExercitoHero />
+      <FormApoiador />
+      <FormLideranca />
+      <FormDenuncia />
       <ContactSection />
       <Footer />
     </div>
