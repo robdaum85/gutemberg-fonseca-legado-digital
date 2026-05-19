@@ -38,7 +38,6 @@ export const blogPosts: BlogPost[] = [
   tags: [
     "bets",
     "apostas online",
-    "orçamento familiar",
     "superendividamento",
     "ludopatia",
     "direitos do consumidor",
