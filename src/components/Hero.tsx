@@ -29,7 +29,7 @@ const Hero = () => {
   return (
     <section 
       id="hero" 
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative h-[100svh] min-h-[560px] w-full flex items-center justify-center overflow-hidden"
     >
       {/* Background image with responsive sizing */}
       <div 

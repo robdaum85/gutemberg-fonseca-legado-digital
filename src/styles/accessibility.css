@@ -1,0 +1,107 @@
+/* ============================================================
+   Acessibilidade — classes utilitárias aplicadas no <html>
+   ============================================================ */
+
+/* Tamanho de fonte */
+html.a11y-font-lg { font-size: 112.5%; }
+html.a11y-font-xl { font-size: 125%; }
+
+/* Alto contraste */
+html.a11y-high-contrast body {
+  background: #000 !important;
+  color: #fff !important;
+}
+html.a11y-high-contrast body * {
+  color: #fff !important;
+  border-color: #fff !important;
+  text-shadow: none !important;
+}
+html.a11y-high-contrast a,
+html.a11y-high-contrast a * {
+  color: #ffeb3b !important;
+  text-decoration: underline !important;
+}
+html.a11y-high-contrast button,
+html.a11y-high-contrast input,
+html.a11y-high-contrast textarea,
+html.a11y-high-contrast select {
+  background: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+html.a11y-high-contrast img,
+html.a11y-high-contrast video,
+html.a11y-high-contrast iframe {
+  filter: grayscale(1) contrast(1.2);
+}
+
+/* Escala de cinza */
+html.a11y-grayscale body { filter: grayscale(1); }
+
+/* Filtros de daltonismo (via SVG global em index) */
+html.a11y-protanopia body { filter: url('#a11y-protanopia'); }
+html.a11y-deuteranopia body { filter: url('#a11y-deuteranopia'); }
+html.a11y-tritanopia body { filter: url('#a11y-tritanopia'); }
+
+/* Sublinhar links */
+html.a11y-underline-links a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+/* Reduzir animações */
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Espaçamento de leitura */
+html.a11y-readable body {
+  line-height: 1.8 !important;
+  letter-spacing: 0.02em !important;
+  word-spacing: 0.08em !important;
+}
+html.a11y-readable p,
+html.a11y-readable li { line-height: 1.9 !important; }
+
+/* Cursor grande */
+html.a11y-big-cursor,
+html.a11y-big-cursor * {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M2 2 L2 30 L10 22 L14 34 L20 32 L16 20 L28 20 Z' fill='black' stroke='white' stroke-width='2'/></svg>") 2 2, auto !important;
+}
+
+/* ============================================================
+   Botão flutuante de Acessibilidade — discreto, acima do Modo Copa
+   ============================================================ */
+.a11y-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 64px; /* acima do Modo Copa (bottom:16, altura 40) */
+  z-index: 61;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(2, 17, 43, 0.85);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  opacity: 0.85;
+  backdrop-filter: blur(8px);
+  transition: opacity 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+.a11y-toggle:hover,
+.a11y-toggle:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px rgba(136, 220, 81, 0.45);
+  outline: none;
+}

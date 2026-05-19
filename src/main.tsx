@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import './styles/theme-copa.css'
+import './styles/accessibility.css'
 
 // Desregistra qualquer service worker antigo e limpa caches para evitar
 // que versões antigas do app sejam servidas (preview e produção).
