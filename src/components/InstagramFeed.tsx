@@ -14,18 +14,18 @@ const InstagramFeed = () => {
 
   const instagramPosts = [
     {
-      url: 'https://www.instagram.com/p/DYF6cP0mIbw/?igsh=OG1kNDhzMGlvdm1t',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/05/br.png',
-      type: 'post' as const,
+      url: 'https://www.instagram.com/reel/DYpZtwgxQV3/?igsh=MW1hNTdmeTZ0OGVseQ==',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/05/instagutoImposto.png',
+      type: 'reel' as const,
     },
     {
-      url: 'https://www.instagram.com/p/DYVtrxlxav4/?igsh=MWpyczN5a283aTk1NA==',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-15-at-13.37.39.jpeg',
-      type: 'post' as const,
+      url: 'https://www.instagram.com/reel/DYkXVycxF91/?igsh=MW1oM3NjdmZ0NzExcw==',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/05/CAPA-REELS-consumidor.png',
+      type: 'reel' as const,
     },
     {
-      url: 'https://www.instagram.com/reel/DWkfKhEjAwf/?igsh=MW50MnV6MDRyYnVkNQ==',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/04/instaguto1.png',
+      url: 'https://www.instagram.com/reel/DYkNIioxSPL/?igsh=MWt3MG9scG0wMHV5Zw==',
+      image: 'https://kngofnnx.com/wp-content/uploads/2026/05/CAPA-REELS-golpes.png',
       type: 'reel' as const,
     },
   ];

@@ -10,6 +10,7 @@ import { getPostBySlug, getCategorySlug } from "./lib/blogUtils";
 import { ThemeCopaProvider } from "./contexts/ThemeCopaContext";
 import ThemeCopaToggle from "./components/ThemeCopaToggle";
 import AccessibilityWidget from "./components/AccessibilityWidget";
+import CookieConsent from "./components/CookieConsent";
 
 const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 const CategoryPostPage = lazy(() => import("./pages/CategoryPostPage"));
@@ -37,6 +38,7 @@ const App = () => (
       <Sonner />
       <ThemeCopaToggle />
       <AccessibilityWidget />
+      <CookieConsent />
       <a href="#conteudo-principal" className="skip-link">
         Ir para o conteudo principal
       </a>
