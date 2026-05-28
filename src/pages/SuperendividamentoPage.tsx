@@ -52,11 +52,24 @@ const SuperendividamentoPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useSeo({
-    title: "Virada de Chave - Junte-se a causa",
+    title: "Superendividamento: Ebook Gratuito | Gutemberg Fonseca",
     description:
-      "Cadastre-se para receber informacoes e baixar o ebook de Gutemberg Fonseca.",
+      "Cadastre-se para baixar o ebook gratuito sobre superendividamento e receber informacoes de Gutemberg Fonseca.",
     canonical: "https://gutembergfonseca.com.br/superendividamento",
     type: "website",
+    extraJsonLd: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "Superendividamento: Ebook Gratuito",
+      description:
+        "Landing page para cadastro e download do ebook gratuito sobre superendividamento de Gutemberg Fonseca.",
+      url: "https://gutembergfonseca.com.br/superendividamento",
+      publisher: {
+        "@type": "Person",
+        name: "Gutemberg Fonseca",
+        url: "https://gutembergfonseca.com.br",
+      },
+    },
   });
 
   useEffect(() => {
@@ -452,8 +465,9 @@ const SuperendividamentoPage = () => {
           <div className="super-eyebrow">VIRADA DE CHAVE</div>
           <h1>O momento e agora.</h1>
           <p className="super-lead">
-            Essas mudancas estao acontecendo, e quem estiver informado sai na
-            frente. Ao se cadastrar, voce:
+            Baixe o ebook gratuito sobre superendividamento e acompanhe
+            informacoes importantes para agir com seguranca. Ao se cadastrar,
+            voce:
           </p>
 
           {benefits.map((benefit) => (
