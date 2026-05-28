@@ -112,8 +112,9 @@ export default function LandingSuperendividamento() {
             </span>
 
             <h1 className="mb-6 text-4xl font-extrabold leading-tight md:text-5xl">
-              SUPERENDIVIDAMENTO:
-              <br />
+              <span className="block whitespace-nowrap text-[clamp(1.75rem,7.3vw,2.125rem)] md:text-5xl">
+                SUPERENDIVIDAMENTO:
+              </span>
               <span className="text-[#ffd60a]">Entenda seus Direitos</span>
               <br />e saiba como sair das dívidas.
             </h1>
