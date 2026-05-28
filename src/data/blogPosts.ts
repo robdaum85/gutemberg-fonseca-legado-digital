@@ -36,6 +36,75 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "beleza-sem-trauma-direitos-saloes-clinicas-estetica",
+    source: "Diario do Rio",
+    category: "Defesa do Consumidor",
+    title:
+      "Beleza sem trauma. Conheca os seus direitos em saloes ou clinicas de estetica",
+    subTitle:
+      "Coluna de Defesa do Consumidor explica quais sao os direitos de clientes em saloes de beleza e clinicas de estetica em casos de cobranca indevida, danos fisicos ou servico mal executado.",
+    excerpt:
+      "Saiba quais sao os direitos do consumidor em saloes de beleza e clinicas de estetica diante de cobranca indevida, danos fisicos ou servico mal executado.",
+    author: "Gutemberg Fonseca",
+    role: "Coluna de Defesa do Consumidor",
+    date: "2026-05-27",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/05/blogblog.png",
+    metaTitle:
+      "Beleza sem trauma: direitos em saloes e clinicas de estetica",
+    metaDescription:
+      "Entenda seus direitos em saloes de beleza e clinicas de estetica em casos de cobranca indevida, acidente de consumo, dano fisico ou servico mal executado.",
+    readingTime: "4 min de leitura",
+    tags: [
+      "Saloes de beleza",
+      "Clinicas de estetica",
+      "Direitos do consumidor",
+      "Cobranca indevida",
+      "Acidente de consumo",
+      "Danos morais",
+    ],
+    featured: true,
+    content: `
+      <p><strong>Beleza sem trauma. Conheca os seus direitos em saloes ou clinicas de estetica</strong></p>
+
+      <br/>
+
+      <p>Para muitos, ir ao salao de beleza ou a uma clinica de estetica e um momento de autocuidado. No entanto, o que deveria ser um prazer pode virar pesadelo quando o resultado e uma queimadura causada por um procedimento mal executado ou ha uma cobranca indevida. Nessas horas, o Codigo de Defesa do Consumidor e o seu aliado.</p>
+
+      <br/>
+
+      <h2>O orcamento e um direito</h2>
+      <p>Muitas vezes, a surpresa negativa comeca no caixa. O CDC e claro: o prestador de servico e obrigado a informar um orcamento previo. Ele deve conter o valor da mao de obra, os materiais e produtos que serao usados e as condicoes de pagamento. Nunca aceite "precos estimados" que mudam ao final do servico. O orcamento aprovado deve ser cumprido a risca.</p>
+
+      <br/>
+
+      <h2>Quando o procedimento causa um acidente de consumo</h2>
+      <p>Clinicas e saloes tem responsabilidade objetiva. Isso significa que, se houver um dano como uma mancha na pele ou queda de cabelo, o estabelecimento responde pelo erro, independentemente de "culpa" direta do profissional, porque deve garantir a seguranca do servico.</p>
+
+      <br/>
+
+      <p>Se o servico ficou ruim ou diferente do prometido, voce pode solicitar a reexecucao gratuita do servico, quando possivel, ou o abatimento proporcional do preco ou a restituicao imediata do valor pago, monetariamente atualizado.</p>
+
+      <br/>
+
+      <h2>Danos e indenizacoes</h2>
+      <p>Em casos de danos, o consumidor tem direito a reparacao integral. Isso inclui gastos com remedios, consultas dermatologicas de urgencia e ate indenizacao por danos morais.</p>
+
+      <br/>
+
+      <p><strong>Dica de ouro:</strong> tire fotos do "antes e depois", guarde notas fiscais e, se possivel, peca o rotulo dos produtos utilizados. Se o problema nao for resolvido diretamente com o estabelecimento, procure a Secretaria de Estado de Defesa do Consumidor ou o PROCON-RJ.</p>
+
+      <br/>
+
+      <p>Se quiser fazer uma denuncia sobre esse tema ou qualquer outro, os canais sao: Fala Consumidor (SEDCON) pelo WhatsApp <strong>(21) 99336-4848</strong> ou pelo Disque <strong>151</strong> do PROCON-RJ. Quem quiser, pode falar comigo pelo "Zap do Guto" <strong>(21) 96619-2498</strong>. Tambem estou no <strong>@gutembergpfonseca</strong>.</p>
+
+      <br/>
+
+      <p>Leia a publicacao original no <a href="https://diariodorio.com/beleza-sem-trauma-conheca-os-seus-direitos-em-saloes-ou-clinicas-de-estetica/" target="_blank" rel="noopener noreferrer">Diario do Rio</a>.</p>
+    `,
+  },
+  {
     slug: "bets-orcamento-familiar-armadilha",
     source: "Coluna",
     category: "Defesa do Consumidor",
