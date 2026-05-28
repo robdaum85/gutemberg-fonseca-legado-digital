@@ -1,5 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
-import { useSeo } from "@/lib/useSeo";
+import { useEffect, useState } from "react";
 
 const FORM_ID = "1FAIpQLSdXT9BNJJNyT3vrO_NeLB35atJGoor6ltb8opxG-Ui4celV0g";
 
@@ -9,632 +8,359 @@ const ENTRY = {
   email: "entry.893845814",
 };
 
-const EBOOK_URL =
-  "https://kngofnnx.com/wp-content/uploads/2026/05/ebook-gutemberg.pdf";
+const EBOOK_URL = "/ebook%20gutemberg.pdf";
 
-const maskWhatsapp = (value: string) => {
-  const digits = value.replace(/\D/g, "").slice(0, 11);
-
-  if (digits.length > 6) {
-    return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
-  }
-
-  if (digits.length > 2) {
-    return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-  }
-
-  if (digits.length > 0) {
-    return `(${digits}`;
-  }
-
-  return "";
-};
-
-const BenefitIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <circle cx="12" cy="12" r="10" stroke="#f5c518" strokeWidth="2" />
-    <path
-      d="M8 12l2.5 2.5L16 9"
-      stroke="#f5c518"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const SuperendividamentoPage = () => {
+export default function LandingSuperendividamento() {
   const [nome, setNome] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  useSeo({
-    title: "Superendividamento: Ebook Gratuito | Gutemberg Fonseca",
-    description:
-      "Cadastre-se para baixar o ebook gratuito sobre superendividamento e receber informacoes de Gutemberg Fonseca.",
-    canonical: "https://gutembergfonseca.com.br/superendividamento",
-    type: "website",
-    extraJsonLd: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: "Superendividamento: Ebook Gratuito",
-      description:
-        "Landing page para cadastro e download do ebook gratuito sobre superendividamento de Gutemberg Fonseca.",
-      url: "https://gutembergfonseca.com.br/superendividamento",
-      publisher: {
-        "@type": "Person",
-        name: "Gutemberg Fonseca",
-        url: "https://gutembergfonseca.com.br",
-      },
-    },
-  });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    const preconnectGoogle = document.createElement("link");
-    preconnectGoogle.rel = "preconnect";
-    preconnectGoogle.href = "https://fonts.googleapis.com";
-
-    const preconnectGstatic = document.createElement("link");
-    preconnectGstatic.rel = "preconnect";
-    preconnectGstatic.href = "https://fonts.gstatic.com";
-    preconnectGstatic.crossOrigin = "anonymous";
-
-    const fontLink = document.createElement("link");
-    fontLink.rel = "stylesheet";
-    fontLink.href =
-      "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap";
-
-    document.head.append(preconnectGoogle, preconnectGstatic, fontLink);
-    window.scrollTo(0, 0);
+    const hadThemeCopa = document.body.classList.contains("theme-copa");
+    document.body.classList.add("theme-copa-disabled-route");
+    document.body.classList.remove("theme-copa");
+    const frame = window.requestAnimationFrame(() => {
+      document.body.classList.remove("theme-copa");
+    });
 
     return () => {
-      preconnectGoogle.remove();
-      preconnectGstatic.remove();
-      fontLink.remove();
+      window.cancelAnimationFrame(frame);
+      document.body.classList.remove("theme-copa-disabled-route");
+      if (hadThemeCopa) {
+        document.body.classList.add("theme-copa");
+      }
     };
   }, []);
 
-  const startDownload = () => {
-    const link = document.createElement("a");
-    link.href = EBOOK_URL;
-    link.setAttribute("download", "");
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  };
+  function formatWhatsapp(value: string) {
+    let v = value.replace(/\D/g, "").slice(0, 11);
 
-  const showSuccess = () => {
-    setIsSuccess(true);
-    startDownload();
-  };
+    if (v.length > 6) {
+      v = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+    } else if (v.length > 2) {
+      v = `(${v.slice(0, 2)}) ${v.slice(2)}`;
+    } else if (v.length > 0) {
+      v = `(${v}`;
+    }
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    return v;
+  }
+
+  function startDownload() {
+    const a = document.createElement("a");
+    a.href = EBOOK_URL;
+    a.setAttribute("download", "");
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setErrorMessage("");
+    setError("");
 
-    const trimmedNome = nome.trim();
-    const trimmedWhatsapp = whatsapp.trim();
-    const trimmedEmail = email.trim();
-
-    if (!trimmedNome || !trimmedWhatsapp) {
-      setErrorMessage("Preencha pelo menos o nome e o WhatsApp.");
+    if (!nome.trim() || !whatsapp.trim()) {
+      setError("Preencha pelo menos o nome e o WhatsApp.");
       return;
     }
 
-    setIsSubmitting(true);
+    setLoading(true);
 
     const body = new URLSearchParams();
-    body.append(ENTRY.nome, trimmedNome);
-    body.append(ENTRY.whatsapp, trimmedWhatsapp);
-    if (trimmedEmail) body.append(ENTRY.email, trimmedEmail);
+    body.append(ENTRY.nome, nome.trim());
+    body.append(ENTRY.whatsapp, whatsapp.trim());
+
+    if (email.trim()) {
+      body.append(ENTRY.email, email.trim());
+    }
 
     const url = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
 
     try {
-      await fetch(url, { method: "POST", mode: "no-cors", body });
-      showSuccess();
-    } catch {
-      setErrorMessage(
-        "Nao foi possivel concluir. Verifique sua conexao e tente novamente."
-      );
-      setIsSubmitting(false);
-    }
-  };
+      await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        body,
+      });
 
-  const benefits = [
-    "Recebe informacoes verificadas sobre projetos de lei em tramitacao.",
-    "E notificado sobre votacoes importantes no Congresso.",
-    "Participa de mobilizacoes civicas legais e transparentes.",
-    "Integra uma rede de cidadaos comprometidos com a seguranca e a causa.",
-  ];
+      setSuccess(true);
+      setTimeout(startDownload, 300);
+    } catch (err) {
+      setError("Não foi possível concluir. Verifique sua conexão e tente novamente.");
+      setLoading(false);
+    }
+  }
 
   return (
-    <main className="super-page">
+    <main className="min-h-screen bg-white font-[Poppins,system-ui,sans-serif] text-slate-900">
       <style>{`
-        .super-page {
-          --bg-deep: #0a3a2a;
-          --bg-deep-2: #0c4632;
-          --card-tint: rgba(255, 255, 255, 0.04);
-          --card-tint-border: rgba(255, 255, 255, 0.08);
-          --highlight-box: rgba(0, 0, 0, 0.22);
-          --gold: #f5c518;
-          --green-btn: #19a64a;
-          --green-btn-hover: #15923f;
-          --white: #ffffff;
-          --text-soft: rgba(255, 255, 255, 0.78);
-          --text-muted: rgba(255, 255, 255, 0.55);
-          --ink: #1f2937;
-          --ink-soft: #6b7280;
-          --field-bg: #f8fafc;
-          --field-border: #e2e8f0;
-          position: relative;
-          display: flex;
-          min-height: 100vh;
-          align-items: center;
-          justify-content: center;
-          overflow-x: hidden;
-          background:
-            radial-gradient(1200px 600px at 85% -10%, var(--bg-deep-2), transparent 60%),
-            var(--bg-deep);
-          color: var(--white);
-          font-family: "Poppins", system-ui, sans-serif;
-          padding: 48px 24px;
-        }
-
-        .super-page::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg width='56' height='100' viewBox='0 0 56 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28 0L56 16v32L28 64 0 48V16z' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E");
-          background-size: 56px 64px;
-          opacity: 0.6;
-          pointer-events: none;
-        }
-
-        .super-hero {
-          position: relative;
-          z-index: 1;
-          display: grid;
-          width: 100%;
-          max-width: 1240px;
-          grid-template-columns: 1fr 1fr;
-          gap: 64px;
-          align-items: center;
-        }
-
-        .super-eyebrow {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          color: var(--gold);
-          font-size: 13px;
-          font-weight: 700;
-          letter-spacing: 2px;
-          margin-bottom: 18px;
-        }
-
-        .super-eyebrow::before {
-          content: "";
-          width: 36px;
-          height: 2px;
-          background: var(--gold);
-        }
-
-        .super-left h1 {
-          font-size: clamp(40px, 5vw, 60px);
-          font-weight: 800;
-          line-height: 1.05;
-          margin-bottom: 22px;
-        }
-
-        .super-lead {
-          color: var(--text-soft);
-          font-size: 18px;
-          line-height: 1.55;
-          max-width: 520px;
-          margin-bottom: 28px;
-        }
-
-        .super-benefit {
-          display: flex;
-          gap: 14px;
-          align-items: flex-start;
-          background: var(--card-tint);
-          border: 1px solid var(--card-tint-border);
-          border-radius: 14px;
-          padding: 16px 18px;
-          margin-bottom: 14px;
-        }
-
-        .super-benefit svg {
-          flex-shrink: 0;
-          margin-top: 2px;
-        }
-
-        .super-benefit p {
-          font-size: 15.5px;
-          font-weight: 500;
-          line-height: 1.4;
-        }
-
-        .super-pledge {
-          display: flex;
-          gap: 14px;
-          align-items: flex-start;
-          background: var(--highlight-box);
-          border: 1px solid rgba(25, 166, 74, 0.35);
-          border-radius: 14px;
-          padding: 18px 20px;
-          margin-top: 22px;
-        }
-
-        .super-pledge h3 {
-          font-size: 16px;
-          font-weight: 700;
-          margin-bottom: 4px;
-        }
-
-        .super-pledge p {
-          color: var(--text-muted);
-          font-size: 13.5px;
-          line-height: 1.45;
-        }
-
-        .super-card {
-          background: var(--white);
-          border-radius: 24px;
-          padding: 40px 38px;
-          color: var(--ink);
-          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-        }
-
-        .super-card-title {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          color: #14532d;
-          font-size: 24px;
-          font-weight: 700;
-          margin-bottom: 8px;
-        }
-
-        .super-card-sub {
-          color: var(--ink-soft);
-          font-size: 15px;
-          line-height: 1.5;
-          margin-bottom: 26px;
-        }
-
-        .super-field {
-          margin-bottom: 18px;
-        }
-
-        .super-field label {
-          display: block;
-          color: #374151;
-          font-size: 14px;
-          font-weight: 600;
-          margin-bottom: 8px;
-        }
-
-        .super-field label span {
-          color: var(--ink-soft);
-          font-weight: 400;
-        }
-
-        .super-field input {
-          width: 100%;
-          border: 1px solid var(--field-border);
-          border-radius: 12px;
-          background: var(--field-bg);
-          color: var(--ink);
-          font-family: inherit;
-          font-size: 15px;
-          outline: none;
-          padding: 14px 16px;
-          transition: border-color .15s, box-shadow .15s;
-        }
-
-        .super-field input::placeholder {
-          color: #9ca3af;
-        }
-
-        .super-field input:focus {
-          border-color: var(--green-btn);
-          box-shadow: 0 0 0 3px rgba(25, 166, 74, 0.15);
-        }
-
-        .super-submit-btn,
-        .super-download-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          color: #fff;
-          background: var(--green-btn);
-          border: none;
-          border-radius: 12px;
-          font-family: inherit;
-          font-size: 16px;
-          font-weight: 700;
-          letter-spacing: .5px;
-          transition: background .15s, transform .05s;
-        }
-
-        .super-submit-btn {
-          width: 100%;
-          cursor: pointer;
-          margin-top: 8px;
-          padding: 17px;
-        }
-
-        .super-submit-btn:hover,
-        .super-download-btn:hover {
-          background: var(--green-btn-hover);
-        }
-
-        .super-submit-btn:active {
-          transform: scale(.99);
-        }
-
-        .super-submit-btn:disabled {
-          cursor: progress;
-          opacity: .7;
-        }
-
-        .super-privacy {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 7px;
-          color: var(--ink-soft);
-          font-size: 13px;
-          margin-top: 16px;
-        }
-
-        .super-success {
-          text-align: center;
-          padding: 8px 0;
-        }
-
-        .super-check-circle {
-          display: flex;
-          width: 64px;
-          height: 64px;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto 18px;
-          border-radius: 50%;
-          background: #dcfce7;
-        }
-
-        .super-success h2 {
-          color: #14532d;
-          font-size: 22px;
-          margin-bottom: 8px;
-        }
-
-        .super-success p {
-          color: var(--ink-soft);
-          font-size: 15px;
-          line-height: 1.5;
-          margin-bottom: 24px;
-        }
-
-        .super-download-btn {
-          display: inline-flex;
-          padding: 16px 28px;
-          text-decoration: none;
-        }
-
-        .super-error-msg {
-          background: #fef2f2;
-          color: #b91c1c;
-          border: 1px solid #fecaca;
-          border-radius: 10px;
-          font-size: 13.5px;
-          margin-bottom: 16px;
-          padding: 12px 14px;
-        }
-
-        @media (max-width: 900px) {
-          .super-hero {
-            grid-template-columns: 1fr;
-            gap: 40px;
-          }
-
-        }
-
-        @media (max-width: 520px) {
-          .super-page {
-            padding: 28px 16px;
-          }
-
-          .super-card {
-            border-radius: 18px;
-            padding: 28px 22px;
-          }
+        body.theme-copa-disabled-route .theme-copa-toggle {
+          display: none !important;
         }
       `}</style>
 
-      <section className="super-hero" aria-label="Virada de Chave">
-        <section className="super-left">
-          <div className="super-eyebrow">VIRADA DE CHAVE</div>
-          <h1>O momento e agora.</h1>
-          <p className="super-lead">
-            Baixe o ebook gratuito sobre superendividamento e acompanhe
-            informacoes importantes para agir com seguranca. Ao se cadastrar,
-            voce:
-          </p>
+      <section className="relative overflow-hidden bg-[radial-gradient(900px_500px_at_90%_-20%,#1a52cf,transparent_60%),linear-gradient(135deg,#061f5a,#0c3fae_55%,#082c7d)] py-16 text-white md:py-24">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,.08)_1px,transparent_1px)] bg-[length:22px_22px] opacity-50" />
 
-          {benefits.map((benefit) => (
-            <div className="super-benefit" key={benefit}>
-              <BenefitIcon />
-              <p>{benefit}</p>
+        <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-[1.15fr_.85fr]">
+          <div>
+            <span className="mb-6 inline-block rounded-full bg-white/15 px-4 py-2 text-xs font-bold uppercase tracking-[.18em]">
+              Material gratuito
+            </span>
+
+            <h1 className="mb-6 text-4xl font-extrabold leading-tight md:text-5xl">
+              SUPERENDIVIDAMENTO:
+              <br />
+              <span className="text-[#ffd60a]">Entenda seus Direitos</span>
+              <br />e saiba como sair das dívidas.
+            </h1>
+
+            <p className="mb-8 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
+              Está endividado e não sabe por onde começar? Baixe gratuitamente o e-book que preparamos para você e organize sua vida financeira com segurança.
+            </p>
+
+            <a
+              href="#cadastro"
+              className="inline-flex items-center justify-center rounded-xl bg-[#ffd60a] px-7 py-4 text-sm font-extrabold tracking-wide text-[#082c7d] shadow-[0_10px_24px_rgba(255,214,10,.35)] transition hover:bg-[#e6be00]"
+            >
+              BAIXAR E-BOOK GRATUITO
+            </a>
+          </div>
+
+          <div className="relative flex justify-center">
+            <div className="relative h-[360px] w-[270px] rotate-3 overflow-hidden rounded-lg bg-[#ffd60a] p-3 shadow-[0_30px_60px_rgba(0,0,0,.45),inset_0_0_0_10px_#fff]">
+              <div className="absolute left-5 top-[70px] h-[230px] w-[230px] rounded-full bg-[#0c3fae]" />
+              <div className="absolute bottom-[-90px] left-[-40px] h-40 w-40 rotate-45 bg-[#16a34a] opacity-90" />
+
+              <div className="relative z-10 flex h-full flex-col px-2 py-1">
+                <span className="text-[8px] font-bold uppercase tracking-widest text-[#082c7d]">
+                  Guia · Superendividamento
+                </span>
+
+                <h3 className="mt-[70px] text-base font-extrabold leading-tight text-white drop-shadow">
+                  SUPERENDIVIDAMENTO: ENTENDA SEUS DIREITOS E SAIA DAS DÍVIDAS
+                </h3>
+
+                <p className="mt-3 text-[9.5px] font-medium leading-snug text-white/90">
+                  Um guia simples e prático para consultar dívidas, renegociar da forma correta e evitar golpes financeiros.
+                </p>
+              </div>
             </div>
-          ))}
 
-          <div className="super-pledge">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"
-                stroke="#19a64a"
-                strokeWidth="2"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M9 12l2 2 4-4"
-                stroke="#19a64a"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <div>
-              <h3>Cidadania pura e simples</h3>
-              <p>
-                Nao e filiacao partidaria. Nao e obrigacao politica. E
-                participacao cidada organizada e transparente.
+            <span className="absolute bottom-2 right-6 inline-flex rounded-full bg-[#16a34a] px-4 py-2 text-sm font-bold text-white shadow-lg">
+              Grátis
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
+          <div>
+            <span className="mb-6 inline-block rounded-full bg-[#eef2fc] px-4 py-2 text-xs font-bold uppercase tracking-[.18em] text-[#0c3fae]">
+              O que tem no material?
+            </span>
+
+            <h2 className="mb-4 text-3xl font-extrabold leading-tight text-[#0c3fae] md:text-4xl">
+              Um guia simples e prático para retomar o controle.
+            </h2>
+
+            <p className="mb-8 max-w-xl text-slate-600">
+              Descubra o passo a passo para se organizar financeiramente e proteger os seus direitos.
+            </p>
+
+            <ul className="space-y-5">
+              {[
+                ["Consultar Dívidas", "Aprenda a consultar todas as dívidas vinculadas ao seu CPF."],
+                ["Identificar Empréstimos Indevidos", "Saiba como identificar cobranças abusivas ou créditos indevidos."],
+                ["Entender Seus Direitos", "Conheça a Lei do Superendividamento e como ela protege você."],
+              ].map(([title, text]) => (
+                <li key={title} className="flex gap-4">
+                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#16a34a] text-sm font-bold text-white">
+                    ✓
+                  </span>
+                  <div>
+                    <strong>{title}</strong>
+                    <p className="text-sm text-slate-500">{text}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <aside className="rounded-3xl bg-gradient-to-br from-[#0c3fae] to-[#082c7d] p-8 text-white shadow-[0_24px_60px_rgba(8,31,90,.14)]">
+            <span className="mb-5 inline-block rounded-full bg-[#ffd60a] px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#082c7d]">
+              100% gratuito
+            </span>
+
+            <h3 className="mb-3 text-2xl font-bold">Pronto para ler em qualquer dispositivo</h3>
+
+            <p className="mb-6 text-white/80">
+              Um material direto ao ponto, em PDF, para você consultar sempre que precisar.
+            </p>
+
+            <ul className="mb-7 space-y-3 text-sm text-white/90">
+              <li>• Linguagem simples</li>
+              <li>• Passo a passo aplicável hoje</li>
+              <li>• Baseado na Lei do Superendividamento</li>
+            </ul>
+
+            <a
+              href="#cadastro"
+              className="flex w-full items-center justify-center rounded-xl bg-[#ffd60a] px-7 py-4 text-sm font-extrabold tracking-wide text-[#082c7d] transition hover:bg-[#e6be00]"
+            >
+              Quero meu e-book
+            </a>
+          </aside>
+        </div>
+      </section>
+
+      <section className="bg-[#f4f6fb] py-20">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="overflow-hidden rounded-3xl bg-white shadow-[0_24px_60px_rgba(8,31,90,.14)]">
+            <div className="bg-red-50 p-7">
+              <h3 className="text-xl font-extrabold text-red-600">ALERTA IMPORTANTE</h3>
+              <p className="text-sm text-red-700">
+                Informação é o primeiro passo para proteger seu dinheiro e seus direitos.
               </p>
+            </div>
+
+            <div className="p-7">
+              <p className="mb-5 text-slate-600">
+                Muitos consumidores só descobrem quando é tarde demais que estão pagando por:
+              </p>
+
+              <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+                {["Empréstimos indevidos", "Cartões não solicitados", "Refinanciamentos automáticos", "Seguros embutidos"].map((item) => (
+                  <div key={item} className="rounded-xl border border-slate-200 bg-[#f4f6fb] p-4 font-semibold">
+                    {item}
+                  </div>
+                ))}
+              </div>
+
+              <div className="rounded-xl bg-[#0c3fae] p-5 text-center font-semibold text-white">
+                Não seja mais uma vítima. Baixe o guia gratuito e crie uma <span className="text-[#ffd60a]">blindagem contra abusos</span>.
+              </div>
             </div>
           </div>
-        </section>
-
-        <aside className="super-card">
-          {!isSuccess ? (
-            <div>
-              <div className="super-card-title">Junte-se a causa</div>
-              <p className="super-card-sub">
-                Preencha seus dados para receber os alertas e fazer parte da
-                mudanca.
-              </p>
-
-              {errorMessage && (
-                <div className="super-error-msg" role="alert">
-                  {errorMessage}
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} noValidate>
-                <div className="super-field">
-                  <label htmlFor="nome">Seu Nome Completo</label>
-                  <input
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    placeholder="Ex: Joao da Silva"
-                    value={nome}
-                    onChange={(event) => setNome(event.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="super-field">
-                  <label htmlFor="whatsapp">Seu WhatsApp</label>
-                  <input
-                    type="tel"
-                    id="whatsapp"
-                    name="whatsapp"
-                    placeholder="(00) 00000-0000"
-                    value={whatsapp}
-                    onChange={(event) =>
-                      setWhatsapp(maskWhatsapp(event.target.value))
-                    }
-                    required
-                  />
-                </div>
-
-                <div className="super-field">
-                  <label htmlFor="email">
-                    Seu E-mail <span>(Opcional)</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="seu.email@exemplo.com"
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="super-submit-btn"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Enviando..." : "CONCLUIR CADASTRO"}
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path
-                      d="M5 12h14M13 6l6 6-6 6"
-                      stroke="#fff"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </form>
-
-              <div className="super-privacy">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <rect
-                    x="5"
-                    y="11"
-                    width="14"
-                    height="9"
-                    rx="2"
-                    stroke="#6b7280"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M8 11V8a4 4 0 018 0v3"
-                    stroke="#6b7280"
-                    strokeWidth="2"
-                  />
-                </svg>
-                Suas informacoes estao seguras. Nao enviamos spam.
-              </div>
-            </div>
-          ) : (
-            <div className="super-success">
-              <div className="super-check-circle">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M5 12l5 5L20 7"
-                    stroke="#16a34a"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <h2>Cadastro concluido!</h2>
-              <p>
-                Obrigado por fazer parte da causa. Seu ebook esta pronto para
-                download.
-              </p>
-              <a href={EBOOK_URL} className="super-download-btn" download>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"
-                    stroke="#fff"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                Baixar o Ebook
-              </a>
-            </div>
-          )}
-        </aside>
+        </div>
       </section>
+
+      <section id="cadastro" className="bg-[radial-gradient(800px_400px_at_10%_0%,#1a52cf,transparent_60%),linear-gradient(135deg,#082c7d,#061f5a)] py-20 text-white">
+        <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
+          <div>
+            <span className="mb-6 inline-block rounded-full bg-white/15 px-4 py-2 text-xs font-bold uppercase tracking-[.18em]">
+              Último passo
+            </span>
+
+            <h2 className="mb-4 text-3xl font-extrabold leading-tight md:text-4xl">
+              Preencha e <span className="text-[#ffd60a]">baixe seu e-book</span> gratuitamente.
+            </h2>
+
+            <p className="text-white/80">
+              Informe seus dados abaixo para liberar o download imediato.
+            </p>
+          </div>
+
+          <div className="rounded-3xl bg-white p-8 text-slate-900 shadow-[0_24px_60px_rgba(8,31,90,.14)]">
+            {!success ? (
+              <>
+                <h3 className="mb-2 text-2xl font-extrabold text-[#0c3fae]">Baixe o seu e-book</h3>
+                <p className="mb-6 text-sm text-slate-500">Preencha seus dados para liberar o download.</p>
+
+                {error && (
+                  <div className="mb-4 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+                    {error}
+                  </div>
+                )}
+
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div>
+                    <label htmlFor="nome" className="mb-2 block text-sm font-semibold text-slate-700">
+                      Seu Nome Completo
+                    </label>
+                    <input
+                      id="nome"
+                      type="text"
+                      value={nome}
+                      onChange={(event) => setNome(event.target.value)}
+                      placeholder="Ex: João da Silva"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#0c3fae] focus:ring-4 focus:ring-blue-100"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="whatsapp" className="mb-2 block text-sm font-semibold text-slate-700">
+                      Seu WhatsApp
+                    </label>
+                    <input
+                      id="whatsapp"
+                      type="tel"
+                      value={whatsapp}
+                      onChange={(event) => setWhatsapp(formatWhatsapp(event.target.value))}
+                      placeholder="(00) 00000-0000"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#0c3fae] focus:ring-4 focus:ring-blue-100"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="mb-2 block text-sm font-semibold text-slate-700">
+                      Seu E-mail <span className="font-normal text-slate-500">(Opcional)</span>
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      value={email}
+                      onChange={(event) => setEmail(event.target.value)}
+                      placeholder="seu.email@exemplo.com"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#0c3fae] focus:ring-4 focus:ring-blue-100"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="flex w-full items-center justify-center rounded-xl bg-[#ffd60a] px-7 py-4 text-sm font-extrabold tracking-wide text-[#082c7d] shadow-[0_10px_24px_rgba(255,214,10,.35)] transition hover:bg-[#e6be00] disabled:cursor-progress disabled:opacity-70"
+                  >
+                    {loading ? "Enviando..." : "BAIXAR E-BOOK GRATUITO"}
+                  </button>
+                </form>
+
+                <p className="mt-4 text-center text-xs text-slate-500">
+                  Suas informações estão seguras. Não enviamos spam.
+                </p>
+              </>
+            ) : (
+              <div className="text-center">
+                <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-3xl">
+                  ✅
+                </div>
+
+                <h3 className="mb-2 text-2xl font-extrabold text-[#128a3e]">Cadastro concluído!</h3>
+
+                <p className="mb-6 text-sm text-slate-500">
+                  Seu e-book está pronto. Se o download não começar sozinho, clique no botão abaixo.
+                </p>
+
+                <a
+                  href={EBOOK_URL}
+                  download
+                  className="inline-flex items-center justify-center rounded-xl bg-[#ffd60a] px-7 py-4 text-sm font-extrabold tracking-wide text-[#082c7d] shadow-[0_10px_24px_rgba(255,214,10,.35)] transition hover:bg-[#e6be00]"
+                >
+                  Baixar o e-book
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-[#0b1220] px-6 py-8 text-center text-sm text-white/70">
+        <p>© 2026 Guia Superendividamento. Todos os direitos reservados.</p>
+      </footer>
     </main>
   );
-};
-
-export default SuperendividamentoPage;
+}
