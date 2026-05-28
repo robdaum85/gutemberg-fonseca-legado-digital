@@ -433,9 +433,6 @@ const SuperendividamentoPage = () => {
             gap: 40px;
           }
 
-          .super-card {
-            order: -1;
-          }
         }
 
         @media (max-width: 520px) {
