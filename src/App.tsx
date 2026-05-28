@@ -14,6 +14,8 @@ import CookieConsent from "./components/CookieConsent";
 
 const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 const CategoryPostPage = lazy(() => import("./pages/CategoryPostPage"));
+const CodigoDeDefesaPage = lazy(() => import("./pages/CodigoDeDefesaPage"));
+const SuperendividamentoPage = lazy(() => import("./pages/SuperendividamentoPage"));
 
 const queryClient = new QueryClient();
 
@@ -58,6 +60,8 @@ const App = () => (
             <Route path="/blog/:slug" element={<BlogPostRedirect />} />
             <Route path="/direitos-do-consumidor" element={<CategoryPage />} />
             <Route path="/direitos-do-consumidor/:slug" element={<CategoryPostPage />} />
+            <Route path="/codigodedefesa" element={<CodigoDeDefesaPage />} />
+            <Route path="/superendividamento" element={<SuperendividamentoPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
