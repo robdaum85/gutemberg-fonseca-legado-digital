@@ -60,7 +60,8 @@ const App = () => (
             <Route path="/blog/:slug" element={<BlogPostRedirect />} />
             <Route path="/direitos-do-consumidor" element={<CategoryPage />} />
             <Route path="/direitos-do-consumidor/:slug" element={<CategoryPostPage />} />
-            <Route path="/codigodedefesa" element={<CodigoDeDefesaPage />} />
+            <Route path="/codigodedefesa" element={<Navigate to="/codigo-de-defesa-do-consumidor" replace />} />
+            <Route path="/codigo-de-defesa-do-consumidor" element={<CodigoDeDefesaPage />} />
             <Route path="/superendividamento" element={<SuperendividamentoPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
