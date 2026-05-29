@@ -55,16 +55,6 @@
       "source": "/seguranca/:path*",
       "destination": "https://foco-democr.vercel.app/:path*",
       "permanent": false
-    },
-    {
-      "source": "/catadoresdelixo",
-      "destination": "https://lp-lixo.vercel.app",
-      "permanent": false
-    },
-    {
-      "source": "/catadoresdelixo/:path*",
-      "destination": "https://lp-lixo.vercel.app/:path*",
-      "permanent": false
     }
   ],
   "rewrites": [

@@ -16,6 +16,7 @@ const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 const CategoryPostPage = lazy(() => import("./pages/CategoryPostPage"));
 const CodigoDeDefesaPage = lazy(() => import("./pages/CodigoDeDefesaPage"));
 const SuperendividamentoPage = lazy(() => import("./pages/SuperendividamentoPage"));
+const CatadoresDeLixoPage = lazy(() => import("./pages/CatadoresDeLixoPage"));
 
 const queryClient = new QueryClient();
 
@@ -45,7 +46,7 @@ const App = () => (
         Ir para o conteudo principal
       </a>
       <div id="site-content">
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Suspense
           fallback={
             <div className="min-h-screen flex items-center justify-center">
@@ -63,6 +64,7 @@ const App = () => (
             <Route path="/codigodedefesa" element={<Navigate to="/codigo-de-defesa-do-consumidor" replace />} />
             <Route path="/codigo-de-defesa-do-consumidor" element={<CodigoDeDefesaPage />} />
             <Route path="/superendividamento" element={<SuperendividamentoPage />} />
+            <Route path="/catadoresdelixo" element={<CatadoresDeLixoPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
