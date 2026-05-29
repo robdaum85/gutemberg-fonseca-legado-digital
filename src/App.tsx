@@ -17,6 +17,7 @@ const CategoryPostPage = lazy(() => import("./pages/CategoryPostPage"));
 const CodigoDeDefesaPage = lazy(() => import("./pages/CodigoDeDefesaPage"));
 const SuperendividamentoPage = lazy(() => import("./pages/SuperendividamentoPage"));
 const CatadoresDeLixoPage = lazy(() => import("./pages/CatadoresDeLixoPage"));
+const MotociclistasPage = lazy(() => import("./pages/MotociclistasPage"));
 
 const queryClient = new QueryClient();
 
@@ -65,6 +66,7 @@ const App = () => (
             <Route path="/codigo-de-defesa-do-consumidor" element={<CodigoDeDefesaPage />} />
             <Route path="/superendividamento" element={<SuperendividamentoPage />} />
             <Route path="/catadoresdelixo" element={<CatadoresDeLixoPage />} />
+            <Route path="/motociclistas" element={<MotociclistasPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

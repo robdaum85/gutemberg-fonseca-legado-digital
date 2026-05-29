@@ -196,7 +196,7 @@ export default function CatadoresPage() {
         id="cadastro-form"
         className="relative z-10 overflow-hidden bg-green-900 px-6 py-20 text-white"
       >
-        <div className="absolute inset-0 opacity-10 [background-image:url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+        <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(30deg,rgba(255,255,255,.18)_12%,transparent_12.5%,transparent_87%,rgba(255,255,255,.18)_87.5%,rgba(255,255,255,.18)),linear-gradient(150deg,rgba(255,255,255,.18)_12%,transparent_12.5%,transparent_87%,rgba(255,255,255,.18)_87.5%,rgba(255,255,255,.18)),linear-gradient(30deg,rgba(255,255,255,.18)_12%,transparent_12.5%,transparent_87%,rgba(255,255,255,.18)_87.5%,rgba(255,255,255,.18)),linear-gradient(150deg,rgba(255,255,255,.18)_12%,transparent_12.5%,transparent_87%,rgba(255,255,255,.18)_87.5%,rgba(255,255,255,.18))] [background-position:0_0,0_0,16px_28px,16px_28px] [background-size:32px_56px]" />
         <RecycleIcon className="pointer-events-none absolute -left-24 -top-32 h-[600px] w-[600px] text-green-300 opacity-5" />
 
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-20">

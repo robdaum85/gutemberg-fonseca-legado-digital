@@ -20,10 +20,6 @@
           "value": "strict-origin-when-cross-origin"
         },
         {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
-        },
-        {
           "key": "Content-Security-Policy",
           "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://vlibras.gov.br; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://vlibras.gov.br; connect-src 'self' https://docs.google.com https://script.google.com https://script.googleusercontent.com https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://vlibras.gov.br; media-src 'self' https:; form-action 'self' https://docs.google.com https://script.google.com https://script.googleusercontent.com; worker-src 'self'; upgrade-insecure-requests"
         }
@@ -35,16 +31,6 @@
       "source": "/codigodedefesa",
       "destination": "/codigo-de-defesa-do-consumidor",
       "permanent": true
-    },
-    {
-      "source": "/motociclistas",
-      "destination": "https://motos-livres.vercel.app",
-      "permanent": false
-    },
-    {
-      "source": "/motociclistas/:path*",
-      "destination": "https://motos-livres.vercel.app/:path*",
-      "permanent": false
     },
     {
       "source": "/seguranca",
