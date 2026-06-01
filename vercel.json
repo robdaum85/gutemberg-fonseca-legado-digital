@@ -31,16 +31,6 @@
       "source": "/codigodedefesa",
       "destination": "/codigo-de-defesa-do-consumidor",
       "permanent": true
-    },
-    {
-      "source": "/seguranca",
-      "destination": "https://foco-democr.vercel.app",
-      "permanent": false
-    },
-    {
-      "source": "/seguranca/:path*",
-      "destination": "https://foco-democr.vercel.app/:path*",
-      "permanent": false
     }
   ],
   "rewrites": [
