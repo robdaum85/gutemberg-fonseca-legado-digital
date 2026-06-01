@@ -242,7 +242,7 @@ export default function SegurancaPage() {
           </p>
 
           <a
-            href="#cadastro"
+            href="#formulario-cadastro"
             className="mt-10 inline-flex min-h-14 items-center justify-center rounded-[10px] bg-gradient-to-br from-[#c19031] to-[#d9ad55] px-10 py-4 text-lg font-extrabold text-[#101a2d] no-underline shadow-[0_12px_30px_rgba(193,144,49,.34)] transition hover:-translate-y-0.5 hover:brightness-105 max-sm:w-full"
           >
             Quero participar
@@ -340,8 +340,9 @@ export default function SegurancaPage() {
             </div>
 
             <form
+              id="formulario-cadastro"
               onSubmit={handleSubmit}
-              className="rounded-lg border border-[#e4e7ec] bg-white p-6 shadow-[0_20px_50px_rgba(16,26,45,.16)] md:p-9"
+              className="scroll-mt-8 rounded-lg border border-[#e4e7ec] bg-white p-6 shadow-[0_20px_50px_rgba(16,26,45,.16)] md:p-9"
             >
               <p className="mb-6 text-center text-[#667085]">
                 Preencha seus dados abaixo
@@ -517,7 +518,7 @@ export default function SegurancaPage() {
 
           <p className="text-center">
             <a
-              href="#cadastro"
+              href="#formulario-cadastro"
               className="inline-flex min-h-14 items-center justify-center rounded-[10px] bg-gradient-to-br from-[#c19031] to-[#d9ad55] px-7 py-4 font-extrabold text-[#101a2d] no-underline shadow-[0_12px_30px_rgba(193,144,49,.34)] transition hover:-translate-y-0.5 hover:brightness-105 max-sm:w-full"
             >
               Quero participar agora

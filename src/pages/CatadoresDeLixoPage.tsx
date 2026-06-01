@@ -101,7 +101,7 @@ export default function CatadoresPage() {
           </p>
 
           <a
-            href="#cadastro-form"
+            href="#formulario-cadastro"
             className="inline-flex items-center justify-center rounded-full bg-yellow-400 px-8 py-4 text-lg font-bold text-green-900 shadow-[0_0_40px_-10px_rgba(250,204,21,.5)] transition hover:scale-105 hover:bg-yellow-300"
           >
             QUERO PARTICIPAR →
@@ -245,7 +245,10 @@ export default function CatadoresPage() {
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-lg rounded-3xl bg-white p-8 text-slate-900 shadow-2xl md:p-10">
+          <div
+            id="formulario-cadastro"
+            className="mx-auto w-full max-w-lg scroll-mt-8 rounded-3xl bg-white p-8 text-slate-900 shadow-2xl md:p-10"
+          >
             {!success ? (
               <>
                 <div className="mb-8 text-center sm:text-left">
