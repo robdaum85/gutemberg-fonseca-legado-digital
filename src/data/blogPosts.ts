@@ -36,6 +36,103 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "golpe-da-voz-inteligencia-artificial-consumidor",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Golpe da voz: quando a inteligência artificial vira arma contra o seu bolso",
+    subTitle:
+      "Criminosos usam inteligência artificial para imitar vozes de familiares e amigos em pedidos urgentes de dinheiro. Saiba como reconhecer o golpe e se proteger.",
+    excerpt:
+      "Entenda como funciona o golpe da voz, em que criminosos usam inteligência artificial para imitar familiares e pedir dinheiro. Saiba como se proteger.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-06-02T12:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "https://kngofnnx.com/wp-content/uploads/2026/06/post0206.png",
+    metaTitle:
+      "Golpe da voz: como a inteligência artificial está sendo usada por criminosos",
+    metaDescription:
+      "Entenda como funciona o golpe da voz, em que criminosos usam inteligência artificial para imitar familiares e pedir dinheiro. Saiba como se proteger.",
+    readingTime: "4 min de leitura",
+    tags: [
+      "Inteligência Artificial",
+      "Golpe da Voz",
+      "Fraudes Digitais",
+      "Segurança Digital",
+      "Defesa do Consumidor",
+      "Golpes Online",
+      "IA",
+      "Educação Financeira",
+    ],
+    featured: true,
+    content: `
+      <p><strong>O telefone toca e, do outro lado da linha, uma voz conhecida pede ajuda.</strong> Pode ser um filho, um pai, uma mãe ou um amigo em uma suposta situação de emergência. O tom de desespero convence a vítima de que precisa agir imediatamente. No entanto, o que parece uma tragédia familiar pode, na verdade, ser fruto de um sofisticado golpe digital.</p>
+
+      <br/>
+
+      <h2>O novo golpe da era da inteligência artificial</h2>
+      <p>Com o avanço da inteligência artificial, criminosos passaram a utilizar recursos capazes de reproduzir vozes reais com impressionante precisão. Pequenos trechos de áudio retirados de redes sociais, vídeos ou aplicativos de mensagens já são suficientes para criar uma imitação convincente da voz de uma pessoa.</p>
+
+      <p>Essa tecnologia, que possui aplicações legítimas em diversas áreas, também vem sendo utilizada por quadrilhas para enganar consumidores e obter vantagens financeiras.</p>
+
+      <br/>
+
+      <h2>Como funciona o golpe</h2>
+      <p>Os criminosos coletam gravações disponíveis publicamente e utilizam ferramentas de inteligência artificial para gerar uma cópia da voz da vítima. Em seguida, entram em contato com familiares ou amigos alegando situações urgentes e solicitando transferências bancárias ou pagamentos imediatos.</p>
+
+      <p>A principal arma desse golpe é a pressa. Os golpistas tentam impedir que a vítima tenha tempo para refletir, verificar a informação ou entrar em contato diretamente com a pessoa supostamente envolvida.</p>
+
+      <p>Em momentos de tensão, é comum que o senso crítico seja reduzido, aumentando as chances de que a fraude seja bem-sucedida.</p>
+
+      <br/>
+
+      <h2>Como se proteger</h2>
+      <p>A melhor forma de prevenção continua sendo a confirmação das informações recebidas.</p>
+
+      <p>Antes de realizar qualquer transferência ou pagamento:</p>
+
+      <ul>
+        <li>Desconfie de pedidos urgentes de dinheiro;</li>
+        <li>Entre em contato diretamente com a pessoa por outro canal;</li>
+        <li>Faça perguntas pessoais que apenas ela saberia responder;</li>
+        <li>Estabeleça códigos ou palavras de segurança entre familiares;</li>
+        <li>Evite tomar decisões financeiras sob pressão.</li>
+      </ul>
+
+      <br/>
+
+      <h2>O papel das instituições financeiras</h2>
+      <p>Além da atenção dos consumidores, bancos e instituições financeiras também possuem papel importante no combate a esse tipo de fraude.</p>
+
+      <p>Sistemas de monitoramento de transações atípicas, mecanismos de verificação adicionais e ferramentas de prevenção podem ajudar a reduzir os prejuízos causados por golpes cada vez mais sofisticados.</p>
+
+      <br/>
+
+      <h2>Tecnologia a favor do consumidor</h2>
+      <p>A tecnologia não deve ser vista como inimiga. Ferramentas de inteligência artificial trazem benefícios significativos para a sociedade. O desafio está em garantir que seu uso ocorra de forma ética e segura.</p>
+
+      <p>Por isso, informação e educação digital continuam sendo as principais armas para proteger consumidores em um ambiente cada vez mais conectado.</p>
+
+      <br/>
+
+      <h2>Em caso de golpe</h2>
+      <p>Se houver suspeita de fraude:</p>
+
+      <ul>
+        <li>Registre imediatamente um boletim de ocorrência;</li>
+        <li>Entre em contato com o banco ou instituição financeira;</li>
+        <li>Solicite o bloqueio ou rastreamento da transação, quando possível;</li>
+        <li>Formalize reclamação junto aos canais de atendimento da instituição;</li>
+        <li>Procure os órgãos de defesa do consumidor para orientação.</li>
+      </ul>
+
+      <br/>
+
+      <p><strong>A prevenção, a informação e a cautela continuam sendo as melhores defesas contra os golpes digitais da nova era.</strong></p>
+    `,
+  },
+  {
     slug: "beleza-sem-trauma-direitos-saloes-clinicas-estetica",
     source: "Diario do Rio",
     category: "Defesa do Consumidor",
