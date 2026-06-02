@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { BookOpen } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import BlogPostModal from '@/components/BlogPostModal';
-import { blogPosts } from '@/data/blogPosts';
-import { useSeo } from '@/lib/useSeo';
-import { getCanonicalUrl, SITE_URL } from '@/lib/blogUtils';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { BookOpen } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import BlogPostModal from "@/components/BlogPostModal";
+import { useSeo } from "@/lib/useSeo";
+import {
+  getCanonicalUrl,
+  getPublishedBlogPosts,
+  SITE_URL,
+} from "@/lib/blogUtils";
 
 const BlogPage = () => {
   const { slug } = useParams<{ slug?: string }>();
@@ -14,11 +17,11 @@ const BlogPage = () => {
   const [selectedSlug, setSelectedSlug] = useState<string | null>(slug || null);
 
   useSeo({
-    title: 'Blog | Gutemberg Fonseca — Defesa do Consumidor',
+    title: "Blog | Gutemberg Fonseca — Defesa do Consumidor",
     description:
-      'Artigos, colunas e notícias sobre defesa do consumidor por Gutemberg Fonseca.',
-    canonical: getCanonicalUrl('/blog'),
-    type: 'website',
+      "Artigos, colunas e notícias sobre defesa do consumidor por Gutemberg Fonseca.",
+    canonical: getCanonicalUrl("/blog"),
+    type: "website",
     image: `${SITE_URL}/lovable-uploads/c003fb8b-1544-42bc-881b-af1b83f1ac15.png`,
   });
 
@@ -29,33 +32,35 @@ const BlogPage = () => {
     }
   }, [slug]);
 
+  const publishedPosts = getPublishedBlogPosts();
+
   const selectedPost = selectedSlug
-    ? blogPosts.find((p) => p.slug === selectedSlug) || null
+    ? publishedPosts.find((p) => p.slug === selectedSlug) || null
     : null;
 
   const handleOpen = (postSlug: string) => {
     setSelectedSlug(postSlug);
-    window.history.pushState(null, '', `/blog/${postSlug}`);
+    window.history.pushState(null, "", `/blog/${postSlug}`);
   };
 
   const handleClose = () => {
     setSelectedSlug(null);
-    navigate('/blog', { replace: true });
+    navigate("/blog", { replace: true });
   };
 
   // Handle popstate (browser back)
   useEffect(() => {
     const onPop = () => {
       const path = window.location.pathname;
-      if (path.startsWith('/blog/')) {
-        const s = path.replace('/blog/', '');
+      if (path.startsWith("/blog/")) {
+        const s = path.replace("/blog/", "");
         setSelectedSlug(s);
       } else {
         setSelectedSlug(null);
       }
     };
-    window.addEventListener('popstate', onPop);
-    return () => window.removeEventListener('popstate', onPop);
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
   }, []);
 
   return (
@@ -63,13 +68,16 @@ const BlogPage = () => {
       <Header />
       <main className="flex-1 pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-6xl">
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-2 text-center">Blog</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-2 text-center">
+            Blog
+          </h1>
           <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Artigos, colunas e notícias sobre defesa do consumidor por Gutemberg Fonseca
+            Artigos, colunas e notícias sobre defesa do consumidor por Gutemberg
+            Fonseca
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogPosts.map((post) => (
+            {publishedPosts.map((post) => (
               <button
                 key={post.slug}
                 onClick={() => handleOpen(post.slug)}
@@ -92,7 +100,9 @@ const BlogPage = () => {
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-3 mb-2">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {post.excerpt}
+                  </p>
                 </div>
               </button>
             ))}

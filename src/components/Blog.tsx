@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
-import { BookOpen, ArrowRight } from 'lucide-react';
-import { blogPosts } from '@/data/blogPosts';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { BookOpen, ArrowRight } from "lucide-react";
+import { getPublishedBlogPosts } from "@/lib/blogUtils";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.1 });
@@ -16,20 +16,21 @@ const Blog = () => {
   }, [isIntersecting]);
 
   // Show only first 6 posts as preview
-  const previewPosts = blogPosts.slice(0, 6);
+  const previewPosts = getPublishedBlogPosts().slice(0, 6);
 
   return (
     <section id="blog" className="py-20 bg-muted/50">
       <div className="section-container">
         <h2 className="section-title">Blog</h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Artigos, colunas e notícias sobre defesa do consumidor por Gutemberg Fonseca
+          Artigos, colunas e notícias sobre defesa do consumidor por Gutemberg
+          Fonseca
         </p>
 
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-1000 transform ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           {previewPosts.map((post) => (
@@ -58,7 +59,9 @@ const Blog = () => {
                 <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-3 mb-2">
                   {post.title}
                 </h3>
-                <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
+                <p className="text-sm text-muted-foreground line-clamp-2">
+                  {post.excerpt}
+                </p>
               </div>
             </Link>
           ))}

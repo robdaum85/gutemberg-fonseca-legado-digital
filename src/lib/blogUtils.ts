@@ -1,18 +1,21 @@
-import { blogPosts, type BlogPost } from '@/data/blogPosts';
+import { blogPosts, type BlogPost } from "@/data/blogPosts";
 
-export const SITE_URL = 'https://gutembergfonseca.com.br';
+export const SITE_URL = "https://gutembergfonseca.com.br";
 
 export const CATEGORY_SLUG_MAP: Record<string, string> = {
-  'Defesa do Consumidor': 'direitos-do-consumidor',
-  'Segurança Pública': 'seguranca-publica',
+  "Defesa do Consumidor": "direitos-do-consumidor",
+  "Segurança Pública": "seguranca-publica",
 };
 
 export const CATEGORY_LABEL_MAP: Record<string, string> = Object.entries(
-  CATEGORY_SLUG_MAP
-).reduce((acc, [label, slug]) => {
-  acc[slug] = label;
-  return acc;
-}, {} as Record<string, string>);
+  CATEGORY_SLUG_MAP,
+).reduce(
+  (acc, [label, slug]) => {
+    acc[slug] = label;
+    return acc;
+  },
+  {} as Record<string, string>,
+);
 
 export function getCategorySlug(category: string): string | null {
   return CATEGORY_SLUG_MAP[category] ?? null;
@@ -22,12 +25,22 @@ export function getCategoryFromSlug(slug: string): string | null {
   return CATEGORY_LABEL_MAP[slug] ?? null;
 }
 
+export function isPostPublished(post: BlogPost, now = new Date()): boolean {
+  const publishTime = Date.parse(post.date);
+  if (Number.isNaN(publishTime)) return true;
+  return publishTime <= now.getTime();
+}
+
+export function getPublishedBlogPosts(): BlogPost[] {
+  return blogPosts.filter((post) => isPostPublished(post));
+}
+
 export function getPostsByCategory(category: string): BlogPost[] {
-  return blogPosts.filter((p) => p.category === category);
+  return getPublishedBlogPosts().filter((p) => p.category === category);
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find((p) => p.slug === slug);
+  return getPublishedBlogPosts().find((p) => p.slug === slug);
 }
 
 /**
@@ -43,6 +56,6 @@ export function getPostCategoryUrl(post: BlogPost): string {
 }
 
 export function getCanonicalUrl(path: string): string {
-  const clean = path.startsWith('/') ? path : `/${path}`;
+  const clean = path.startsWith("/") ? path : `/${path}`;
   return `${SITE_URL}${clean}`;
 }
