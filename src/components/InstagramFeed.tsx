@@ -14,19 +14,29 @@ const InstagramFeed = () => {
 
   const instagramPosts = [
     {
-      url: 'https://www.instagram.com/reel/DYpZtwgxQV3/?igsh=MW1hNTdmeTZ0OGVseQ==',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/05/instagutoImposto.png',
+      url: 'https://www.instagram.com/reel/DaQ8vVushvN/?igsh=ZDF2NnljdjEwYXdo',
+      image: '/instagram/DaQ8vVushvN.jpg',
       type: 'reel' as const,
     },
     {
-      url: 'https://www.instagram.com/reel/DYkXVycxF91/?igsh=MW1oM3NjdmZ0NzExcw==',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/05/CAPA-REELS-consumidor.png',
+      url: 'https://www.instagram.com/p/DaOdOa5vZRy/?igsh=MTJrcThzbHNweGkzbA==',
+      image: '/instagram/DaOdOa5vZRy.jpg',
+      type: 'post' as const,
+    },
+    {
+      url: 'https://www.instagram.com/p/DaOxCd5GoEH/?img_index=15&igsh=aXBzZTlud2k4Zmtq',
+      image: '/instagram/DaOxCd5GoEH.jpg',
+      type: 'post' as const,
+    },
+    {
+      url: 'https://www.instagram.com/reel/DaOd1AXh8Th/?igsh=Zm1wbjN5bm10N3h4',
+      image: '/instagram/DaOd1AXh8Th.jpg',
       type: 'reel' as const,
     },
     {
-      url: 'https://www.instagram.com/reel/DYkNIioxSPL/?igsh=MWt3MG9scG0wMHV5Zw==',
-      image: 'https://kngofnnx.com/wp-content/uploads/2026/05/CAPA-REELS-golpes.png',
-      type: 'reel' as const,
+      url: 'https://www.instagram.com/p/DaRM6bzhE1i/?igsh=MXhxbzZrN2t5cGpraw==',
+      image: '/instagram/DaRM6bzhE1i.jpg',
+      type: 'post' as const,
     },
   ];
 
@@ -57,7 +67,7 @@ const InstagramFeed = () => {
             </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {instagramPosts.map((post, index) => (
               <div
                 key={index}
@@ -74,6 +84,7 @@ const InstagramFeed = () => {
                   <img 
                     src={post.image} 
                     alt="Post do Instagram"
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                   
@@ -85,7 +96,7 @@ const InstagramFeed = () => {
                   
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="text-white font-semibold text-sm">Ver no Instagram →</span>
+                    <span className="text-white font-semibold text-sm">Ver no Instagram -&gt;</span>
                   </div>
                 </a>
               </div>

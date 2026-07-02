@@ -91,6 +91,34 @@ const PodcastHighlight = () => {
               Assistir no YouTube
             </a>
           </div>
+
+          <div className="mt-12">
+            <h3 className="font-heading font-semibold text-xl text-foreground mb-4">
+              Outros podcasts
+            </h3>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-card rounded-xl overflow-hidden shadow-lg">
+                <div className="aspect-video">
+                  <iframe
+                    src="https://www.youtube.com/embed/Q-CR1k94IPY"
+                    title="Podcast com Fred Macedo entrevistando Gutemberg Fonseca"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+                <div className="p-4">
+                  <h4 className="font-heading font-semibold text-lg text-foreground">
+                    Podcast com Fred Macedo
+                  </h4>
+                  <p className="text-muted-foreground text-sm mt-1">
+                    Entrevista com Gutemberg Fonseca no Frontin de Verdade O Jornal
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
