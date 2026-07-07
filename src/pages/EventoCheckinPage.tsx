@@ -81,6 +81,7 @@ export default function EventoCheckinPage() {
   const [scannerOn, setScannerOn] = useState(false);
   const [scannerError, setScannerError] = useState("");
   const scannerRef = useRef<Html5Qrcode | null>(null);
+  const isReady = unlocked && config.fiscal.trim().length > 0;
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -125,6 +126,13 @@ export default function EventoCheckinPage() {
     };
   }, []);
 
+  useEffect(() => {
+    if (isReady && !scannerOn && !scannerRef.current) {
+      startScanner();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isReady]);
+
   function unlock(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoginError("");
@@ -145,6 +153,7 @@ export default function EventoCheckinPage() {
   }
 
   function logout() {
+    stopScanner();
     localStorage.removeItem(AUTH_STORAGE_KEY);
     setUnlocked(false);
     setLogin("");
@@ -162,7 +171,6 @@ export default function EventoCheckinPage() {
 
   async function startScanner() {
     setScannerError("");
-    setResult(null);
 
     if (!isEventoApiConfigured()) {
       setScannerError("Configure VITE_EVENTO_API_URL antes de usar a portaria.");
@@ -247,10 +255,14 @@ export default function EventoCheckinPage() {
       });
     } finally {
       setLoading(false);
+      startScanner();
     }
   }
 
-  const isReady = unlocked && config.fiscal.trim().length > 0;
+  function rescan() {
+    setResult(null);
+    startScanner();
+  }
 
   if (!unlocked) {
     return (
@@ -409,7 +421,7 @@ export default function EventoCheckinPage() {
                 </Button>
               </div>
 
-              <ResultCard result={result} loading={loading} onConfirm={confirmEntry} />
+              <ResultCard result={result} loading={loading} onConfirm={confirmEntry} onDismiss={rescan} />
             </div>
           </div>
         </section>
@@ -422,10 +434,12 @@ function ResultCard({
   result,
   loading,
   onConfirm,
+  onDismiss,
 }: {
   result: CheckinResult | null;
   loading: boolean;
   onConfirm: () => void;
+  onDismiss: () => void;
 }) {
   if (!result) {
     return (
@@ -443,6 +457,9 @@ function ResultCard({
         <p className="mt-2 text-sm font-semibold">
           {result.message ?? "Verifique o QR Code ou digite o codigo manualmente."}
         </p>
+        <Button variant="outline" className="mt-4 w-full" onClick={onDismiss}>
+          Escanear proximo
+        </Button>
       </div>
     );
   }
@@ -463,6 +480,9 @@ function ResultCard({
         <XCircle className="mb-2 h-7 w-7" />
         <h2 className="text-xl font-extrabold">Convite ja utilizado</h2>
         <InfoRows result={result} />
+        <Button variant="outline" className="mt-4 w-full" onClick={onDismiss}>
+          Escanear proximo
+        </Button>
       </div>
     );
   }
