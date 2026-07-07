@@ -121,6 +121,14 @@ export function consultarCodigo(codigo: string) {
   return get<EventoConsultaResponse>("consulta", { codigo: normalizeCodigo(codigo) });
 }
 
+export function consultarPorCpf(cpf: string) {
+  return get<EventoConsultaResponse>("buscarcpf", { cpf: onlyDigitsCpf(cpf) });
+}
+
+export function onlyDigitsCpf(value: string) {
+  return value.replace(/\D/g, "").slice(0, 11);
+}
+
 export function validarCodigo(codigo: string, fiscal: string, portaria: string) {
   return post<EventoValidarResponse>("validar", {
     codigo: normalizeCodigo(codigo),

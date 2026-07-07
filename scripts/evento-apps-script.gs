@@ -62,6 +62,10 @@ function doGet(e) {
       if (!authorized_(e.parameter.token)) return json_(unauthorized_());
       return json_(consulta_(e.parameter.codigo));
     }
+    if (action === "buscarcpf") {
+      if (!authorized_(e.parameter.token)) return json_(unauthorized_());
+      return json_(buscarPorCpf_(e.parameter.cpf));
+    }
     if (action === "dashboard") {
       if (!authorized_(e.parameter.token)) return json_(unauthorized_());
       return json_(dashboard_());
@@ -198,6 +202,22 @@ function consulta_(codigo) {
   };
 }
 
+function buscarPorCpf_(cpf) {
+  const record = findByCpf_(cpf);
+  if (!record) {
+    return { success: false, message: "CPF nao encontrado." };
+  }
+  return {
+    success: true,
+    status: record.row.status,
+    nome: record.row.nome,
+    codigo: record.row.codigo,
+    dataValidacao: record.row.data_validacao,
+    horaValidacao: record.row.hora_validacao,
+    validadoPor: record.row.validado_por,
+  };
+}
+
 function validar_(payload) {
   const lock = LockService.getScriptLock();
   lock.waitLock(20000);
@@ -234,6 +254,7 @@ function validar_(payload) {
     sheet.getRange(record.rowNumber, 16).setValue(fiscal + " - " + portaria);
 
     CacheService.getScriptCache().remove("inscritos_index");
+    CacheService.getScriptCache().remove("inscritos_index_cpf");
     log_("VALIDADO_COM_SUCESSO", codigo, record.row.nome, fiscal, portaria, "");
 
     return {

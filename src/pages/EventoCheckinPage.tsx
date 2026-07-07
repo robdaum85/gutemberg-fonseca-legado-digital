@@ -9,6 +9,7 @@ import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
 import { useDisableThemeCopa } from "@/hooks/useDisableThemeCopa";
 import {
   consultarCodigo,
+  consultarPorCpf,
   extractCodigoFromScan,
   isEventoApiConfigured,
   normalizeCodigo,
@@ -16,6 +17,18 @@ import {
   type EventoConsultaResponse,
   type EventoValidarResponse,
 } from "@/lib/eventoApi";
+
+function onlyDigits(value: string, max: number) {
+  return value.replace(/\D/g, "").slice(0, max);
+}
+
+function formatCpf(value: string) {
+  const digits = onlyDigits(value, 11);
+  return digits
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+}
 
 const STORAGE_KEY = "evento-checkin-fiscal";
 const AUTH_STORAGE_KEY = "evento-checkin-auth";
@@ -62,6 +75,7 @@ export default function EventoCheckinPage() {
   const [loginError, setLoginError] = useState("");
   const [config, setConfig] = useState<FiscalConfig>({ fiscal: "", portaria: "" });
   const [manualCode, setManualCode] = useState("");
+  const [cpfQuery, setCpfQuery] = useState("");
   const [result, setResult] = useState<CheckinResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [scannerOn, setScannerOn] = useState(false);
@@ -190,6 +204,27 @@ export default function EventoCheckinPage() {
         kind: "consulta",
         success: false,
         message: err instanceof Error ? err.message : "Erro ao consultar codigo.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function consultByCpf() {
+    const digits = onlyDigits(cpfQuery, 11);
+    if (!digits) return;
+
+    setLoading(true);
+    setResult(null);
+    try {
+      const response = await consultarPorCpf(digits);
+      setResult({ kind: "consulta", ...response });
+      if (response.codigo) setManualCode(response.codigo);
+    } catch (err) {
+      setResult({
+        kind: "consulta",
+        success: false,
+        message: err instanceof Error ? err.message : "Erro ao buscar CPF.",
       });
     } finally {
       setLoading(false);
@@ -350,6 +385,30 @@ export default function EventoCheckinPage() {
                 </Button>
               </div>
 
+              <Label htmlFor="cpf-query" className="mt-4 block">
+                Buscar por CPF (para quem nao tem o QR Code)
+              </Label>
+              <div className="mt-2 flex gap-2">
+                <Input
+                  id="cpf-query"
+                  inputMode="numeric"
+                  value={cpfQuery}
+                  onChange={(event) => setCpfQuery(formatCpf(event.target.value))}
+                  onKeyDown={(event) => event.key === "Enter" && consultByCpf()}
+                  placeholder="000.000.000-00"
+                />
+                <Button
+                  size="icon"
+                  onClick={consultByCpf}
+                  disabled={!isReady || loading}
+                  aria-label="Buscar por CPF"
+                  className="text-white"
+                  style={{ backgroundColor: EVENTO_COLORS.green }}
+                >
+                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
+                </Button>
+              </div>
+
               <ResultCard result={result} loading={loading} onConfirm={confirmEntry} />
             </div>
           </div>
@@ -388,21 +447,21 @@ function ResultCard({
     );
   }
 
-  if (result.status === "VALIDADO" || result.resultado === "JA_VALIDADO") {
-    return (
-      <div className="mt-5 rounded-lg border border-red-200 bg-red-50 p-4 text-red-800">
-        <XCircle className="mb-2 h-7 w-7" />
-        <h2 className="text-xl font-extrabold">Convite ja utilizado</h2>
-        <InfoRows result={result} />
-      </div>
-    );
-  }
-
   if (result.kind === "validacao" && result.resultado === "VALIDADO_COM_SUCESSO") {
     return (
       <div className="mt-5 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-emerald-900">
         <CheckCircle2 className="mb-2 h-7 w-7" />
         <h2 className="text-xl font-extrabold">Entrada registrada</h2>
+        <InfoRows result={result} />
+      </div>
+    );
+  }
+
+  if (result.status === "VALIDADO" || result.resultado === "JA_VALIDADO") {
+    return (
+      <div className="mt-5 rounded-lg border border-red-200 bg-red-50 p-4 text-red-800">
+        <XCircle className="mb-2 h-7 w-7" />
+        <h2 className="text-xl font-extrabold">Convite ja utilizado</h2>
         <InfoRows result={result} />
       </div>
     );
