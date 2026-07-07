@@ -360,7 +360,12 @@ function readRows_(sheetName, headers) {
   return values.map(function(row) {
     const obj = {};
     headers.forEach(function(header, index) {
-      obj[header] = row[index] instanceof Date ? date_(row[index]) : row[index];
+      const cell = row[index];
+      if (cell instanceof Date) {
+        obj[header] = header.indexOf("hora") !== -1 ? time_(cell) : date_(cell);
+      } else {
+        obj[header] = cell;
+      }
     });
     return obj;
   });
