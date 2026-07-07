@@ -27,6 +27,11 @@ const SuperendividamentoPage = lazy(
 const CatadoresDeLixoPage = lazy(() => import("./pages/CatadoresDeLixoPage"));
 const MotociclistasPage = lazy(() => import("./pages/MotociclistasPage"));
 const SegurancaPage = lazy(() => import("./pages/SegurancaPage"));
+const AniversarioPage = lazy(() => import("./pages/AniversarioPage"));
+const EventoPage = lazy(() => import("./pages/EventoPage"));
+const EventoSucessoPage = lazy(() => import("./pages/EventoSucessoPage"));
+const EventoCheckinPage = lazy(() => import("./pages/EventoCheckinPage"));
+const EventoDashboardPage = lazy(() => import("./pages/EventoDashboardPage"));
 
 const queryClient = new QueryClient();
 
@@ -102,6 +107,11 @@ const App = () => (
                 />
                 <Route path="/motociclistas" element={<MotociclistasPage />} />
                 <Route path="/seguranca" element={<SegurancaPage />} />
+                <Route path="/aniversario" element={<AniversarioPage />} />
+                <Route path="/evento" element={<EventoPage />} />
+                <Route path="/evento/sucesso" element={<EventoSucessoPage />} />
+                <Route path="/evento/checkin" element={<EventoCheckinPage />} />
+                <Route path="/evento/dashboard" element={<EventoDashboardPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

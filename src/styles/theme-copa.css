@@ -38,6 +38,10 @@ body.theme-copa .theme-copa-toggle {
   opacity: 1;
 }
 
+body.theme-copa-disabled-route .theme-copa-toggle {
+  display: none !important;
+}
+
 /* ---------- Transição suave ao alternar tema ---------- */
 body.theme-copa-transitioning,
 body.theme-copa-transitioning * {
