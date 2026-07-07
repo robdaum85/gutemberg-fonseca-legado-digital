@@ -18,8 +18,8 @@ const CATEGORIAS = [
   "Convidado",
   "Apoiador",
   "Lideranca",
-  "Equipe",
-  "Imprensa",
+  "Staff",
+  "Autoridade",
 ];
 
 const initialForm: EventoCadastroPayload = {
