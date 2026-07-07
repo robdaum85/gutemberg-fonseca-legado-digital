@@ -19,8 +19,9 @@ const SPREADSHEET_ID = "1omMi6g2ntDj6-avj2S9PdWNBJZXXAnINoCmy1tYeprU";
 const BASE_VALIDATION_URL = "https://gutembergfonseca.com.br/evento/checkin";
 const INSCRITOS_SHEET = "inscritos";
 const LOGS_SHEET = "logs_validacao";
-const CACHE_SECONDS = 120;
 const APP_TOKEN_PROPERTY = "APP_TOKEN";
+const CODIGO_COLUMN = 2;
+const CPF_COLUMN = 4;
 
 const INSCRITOS_HEADERS = [
   "id",
@@ -149,11 +150,10 @@ function cadastro_(payload) {
     }
 
     const sheet = getSheet_(INSCRITOS_SHEET);
-    const index = getIndex_();
     let codigo = "";
     do {
       codigo = generateCode_();
-    } while (index[codigo]);
+    } while (findByCode_(codigo));
 
     const now = new Date();
     const qrcodeUrl = BASE_VALIDATION_URL + "?codigo=" + encodeURIComponent(codigo);
@@ -177,8 +177,6 @@ function cadastro_(payload) {
       "SITE",
       clean_(payload.observacoes),
     ]);
-    CacheService.getScriptCache().remove("inscritos_index");
-    CacheService.getScriptCache().remove("inscritos_index_cpf");
     return { success: true, codigo: codigo, qrcodeUrl: qrcodeUrl, nome: nome };
   } finally {
     lock.releaseLock();
@@ -253,8 +251,6 @@ function validar_(payload) {
     sheet.getRange(record.rowNumber, 15).setValue(time_(now));
     sheet.getRange(record.rowNumber, 16).setValue(fiscal + " - " + portaria);
 
-    CacheService.getScriptCache().remove("inscritos_index");
-    CacheService.getScriptCache().remove("inscritos_index_cpf");
     log_("VALIDADO_COM_SUCESSO", codigo, record.row.nome, fiscal, portaria, "");
 
     return {
@@ -315,41 +311,43 @@ function getSheet_(name) {
   return SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(name);
 }
 
-function getIndex_() {
-  const cache = CacheService.getScriptCache();
-  const cached = cache.get("inscritos_index");
-  if (cached) return JSON.parse(cached);
-
-  const rows = readRows_(INSCRITOS_SHEET, INSCRITOS_HEADERS);
-  const index = {};
-  rows.forEach(function(row, i) {
-    if (row.codigo) index[row.codigo] = { rowNumber: i + 2, row: row };
-  });
-  cache.put("inscritos_index", JSON.stringify(index), CACHE_SECONDS);
-  return index;
-}
-
-function getIndexByCpf_() {
-  const cache = CacheService.getScriptCache();
-  const cached = cache.get("inscritos_index_cpf");
-  if (cached) return JSON.parse(cached);
-
-  const rows = readRows_(INSCRITOS_SHEET, INSCRITOS_HEADERS);
-  const index = {};
-  rows.forEach(function(row, i) {
-    const cpf = onlyDigits_(row.cpf);
-    if (cpf) index[cpf] = { rowNumber: i + 2, row: row };
-  });
-  cache.put("inscritos_index_cpf", JSON.stringify(index), CACHE_SECONDS);
-  return index;
-}
-
 function findByCode_(codigo) {
-  return getIndex_()[normalizeCode_(codigo)] || null;
+  const normalized = normalizeCode_(codigo);
+  if (!normalized) return null;
+  return findRowByColumnValue_(CODIGO_COLUMN, normalized);
 }
 
 function findByCpf_(cpf) {
-  return getIndexByCpf_()[onlyDigits_(cpf)] || null;
+  const digits = onlyDigits_(cpf);
+  if (!digits) return null;
+  return findRowByColumnValue_(CPF_COLUMN, digits);
+}
+
+function findRowByColumnValue_(column, value) {
+  const sheet = getSheet_(INSCRITOS_SHEET);
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) return null;
+
+  const range = sheet.getRange(2, column, lastRow - 1, 1);
+  const cell = range.createTextFinder(value).matchEntireCell(true).findNext();
+  if (!cell) return null;
+
+  const rowNumber = cell.getRow();
+  const values = sheet.getRange(rowNumber, 1, 1, INSCRITOS_HEADERS.length).getValues()[0];
+  return { rowNumber: rowNumber, row: rowToObject_(INSCRITOS_HEADERS, values) };
+}
+
+function rowToObject_(headers, values) {
+  const obj = {};
+  headers.forEach(function(header, index) {
+    const cell = values[index];
+    if (cell instanceof Date) {
+      obj[header] = header.indexOf("hora") !== -1 ? time_(cell) : date_(cell);
+    } else {
+      obj[header] = cell;
+    }
+  });
+  return obj;
 }
 
 function readRows_(sheetName, headers) {
@@ -358,16 +356,7 @@ function readRows_(sheetName, headers) {
   if (lastRow < 2) return [];
   const values = sheet.getRange(2, 1, lastRow - 1, headers.length).getValues();
   return values.map(function(row) {
-    const obj = {};
-    headers.forEach(function(header, index) {
-      const cell = row[index];
-      if (cell instanceof Date) {
-        obj[header] = header.indexOf("hora") !== -1 ? time_(cell) : date_(cell);
-      } else {
-        obj[header] = cell;
-      }
-    });
-    return obj;
+    return rowToObject_(headers, row);
   });
 }
 
