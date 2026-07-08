@@ -100,7 +100,7 @@ export default function EventoDashboardPage() {
               <thead className="bg-zinc-50 text-xs uppercase text-zinc-500">
                 <tr>
                   <th className="px-4 py-3">Hora</th>
-                  <th className="px-4 py-3">Codigo</th>
+                  <th className="px-4 py-3">Código</th>
                   <th className="px-4 py-3">Resultado</th>
                   <th className="px-4 py-3">Nome</th>
                   <th className="px-4 py-3">Fiscal</th>

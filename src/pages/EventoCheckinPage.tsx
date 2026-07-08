@@ -81,6 +81,7 @@ export default function EventoCheckinPage() {
   const [scannerOn, setScannerOn] = useState(false);
   const [scannerError, setScannerError] = useState("");
   const scannerRef = useRef<Html5Qrcode | null>(null);
+  const resultadoRef = useRef<HTMLDivElement>(null);
   const isReady = unlocked && config.fiscal.trim().length > 0;
 
   useEffect(() => {
@@ -132,6 +133,15 @@ export default function EventoCheckinPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isReady]);
+
+  useEffect(() => {
+    if (result) {
+      resultadoRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [result]);
 
   function unlock(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -211,7 +221,7 @@ export default function EventoCheckinPage() {
       setResult({
         kind: "consulta",
         success: false,
-        message: err instanceof Error ? err.message : "Erro ao consultar codigo.",
+        message: err instanceof Error ? err.message : "Erro ao consultar código.",
       });
     } finally {
       setLoading(false);
@@ -268,10 +278,16 @@ export default function EventoCheckinPage() {
     return (
       <main
         id="conteudo-principal"
-        className="flex min-h-screen items-center justify-center px-5 text-white"
-        style={{ backgroundColor: EVENTO_COLORS.navy }}
+        className="evento-checkin-bg relative flex min-h-screen flex-col items-center justify-center bg-cover bg-center bg-no-repeat px-5 text-white"
+        style={{ backgroundColor: EVENTO_COLORS.navy, backgroundImage: "url(/hero/herodesktop.jpg)" }}
       >
-        <form onSubmit={unlock} className="w-full max-w-sm overflow-hidden rounded-lg border border-white/10 bg-white text-zinc-950 shadow-xl">
+        <style>{`
+          .evento-checkin-bg {
+            background-image: image-set(url(/hero/herodesktop.webp) type("image/webp"), url(/hero/herodesktop.jpg) type("image/jpeg"));
+          }
+        `}</style>
+        <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
+        <form onSubmit={unlock} className="relative my-6 w-full max-w-sm overflow-hidden rounded-lg border border-white/10 bg-white text-zinc-950 shadow-xl">
           <div className="h-2" style={{ backgroundColor: EVENTO_COLORS.yellow }} />
           <div className="p-5">
           <Shield className="mb-4 h-9 w-9" style={{ color: EVENTO_COLORS.green }} />
@@ -317,39 +333,32 @@ export default function EventoCheckinPage() {
   return (
     <main
       id="conteudo-principal"
-      className="min-h-screen px-4 py-5 text-zinc-950"
+      className="min-h-screen px-3 py-3 text-zinc-950 sm:px-4 sm:py-5"
       style={{ backgroundColor: EVENTO_COLORS.lightGray }}
     >
-      <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[22rem_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-3 sm:gap-5 lg:grid-cols-[22rem_1fr]">
         <aside className="overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm">
-          <div className="p-4 text-white" style={{ backgroundColor: EVENTO_COLORS.navy }}>
-            <p className="text-xs font-black uppercase tracking-[0.16em]" style={{ color: EVENTO_COLORS.yellow }}>
+          <div className="p-3 text-white sm:p-4" style={{ backgroundColor: EVENTO_COLORS.navy }}>
+            <p className="text-[11px] font-black uppercase tracking-[0.14em] sm:text-xs" style={{ color: EVENTO_COLORS.yellow }}>
               {EVENTO_GUTEMBERG.title}
             </p>
-            <p className="mt-1 text-sm font-bold">{EVENTO_GUTEMBERG.name} {EVENTO_GUTEMBERG.year}</p>
+            <p className="mt-0.5 text-xs font-bold sm:text-sm">{EVENTO_GUTEMBERG.name} {EVENTO_GUTEMBERG.year}</p>
           </div>
-          <div className="p-4">
+          <div className="p-3 sm:p-4">
           <div className="flex items-center justify-between gap-3">
-            <h1 className="text-xl font-extrabold">Check-in</h1>
+            <h1 className="text-lg font-extrabold sm:text-xl">Check-in</h1>
             <Button type="button" variant="ghost" size="sm" onClick={logout}>
               Sair
             </Button>
           </div>
-          <div className="mt-4 space-y-4">
-            <div>
-              <Label htmlFor="fiscal">Nome do fiscal</Label>
-              <Input
-                id="fiscal"
-                value={config.fiscal}
-                onChange={(event) => setConfig((current) => ({ ...current, fiscal: event.target.value }))}
-                className="mt-2"
-              />
-            </div>
+          <div className="mt-2 rounded-md bg-zinc-50 px-3 py-2 text-sm text-zinc-700">
+            <span className="font-semibold text-zinc-500">Fiscal:</span>{" "}
+            <span className="font-bold text-zinc-950">{config.fiscal || "-"}</span>
           </div>
           </div>
         </aside>
 
-        <section className="rounded-lg border border-zinc-200 bg-white p-4 shadow-sm">
+        <section className="rounded-lg border border-zinc-200 bg-white p-3 shadow-sm sm:p-4">
           {!isReady && (
             <div className="mb-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm font-semibold text-amber-800">
               Informe o nome do fiscal antes de validar convites.
@@ -358,7 +367,7 @@ export default function EventoCheckinPage() {
 
           <div className="grid gap-4 md:grid-cols-[1fr_20rem]">
             <div>
-              <div id="evento-qr-reader" className="min-h-[18rem] overflow-hidden rounded-lg border border-zinc-200 bg-zinc-950" />
+              <div id="evento-qr-reader" className="min-h-[15rem] overflow-hidden rounded-lg border border-zinc-200 bg-zinc-950 sm:min-h-[18rem]" />
               {scannerError && <p className="mt-2 text-sm font-semibold text-red-700">{scannerError}</p>}
               <div className="mt-3 flex flex-wrap gap-2">
                 <Button
@@ -377,7 +386,7 @@ export default function EventoCheckinPage() {
             </div>
 
             <div>
-              <Label htmlFor="manual-code">Codigo manual</Label>
+              <Label htmlFor="manual-code">Código manual</Label>
               <div className="mt-2 flex gap-2">
                 <Input
                   id="manual-code"
@@ -389,7 +398,7 @@ export default function EventoCheckinPage() {
                   size="icon"
                   onClick={() => consult()}
                   disabled={!isReady || loading}
-                  aria-label="Consultar codigo"
+                  aria-label="Consultar código"
                   className="text-white"
                   style={{ backgroundColor: EVENTO_COLORS.green }}
                 >
@@ -421,7 +430,9 @@ export default function EventoCheckinPage() {
                 </Button>
               </div>
 
-              <ResultCard result={result} loading={loading} onConfirm={confirmEntry} onDismiss={rescan} />
+              <div ref={resultadoRef}>
+                <ResultCard result={result} loading={loading} onConfirm={confirmEntry} onDismiss={rescan} />
+              </div>
             </div>
           </div>
         </section>
@@ -444,7 +455,7 @@ function ResultCard({
   if (!result) {
     return (
       <div className="mt-5 rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-600">
-        Escaneie um QR Code ou digite o codigo para consultar.
+        Escaneie um QR Code ou digite o código para consultar.
       </div>
     );
   }
@@ -453,9 +464,9 @@ function ResultCard({
     return (
       <div className="mt-5 rounded-lg border border-red-200 bg-red-50 p-4 text-red-800">
         <XCircle className="mb-2 h-7 w-7" />
-        <h2 className="text-xl font-extrabold">Codigo nao encontrado</h2>
+        <h2 className="text-xl font-extrabold">Código não encontrado</h2>
         <p className="mt-2 text-sm font-semibold">
-          {result.message ?? "Verifique o QR Code ou digite o codigo manualmente."}
+          {result.message ?? "Verifique o QR Code ou digite o código manualmente."}
         </p>
         <Button variant="outline" className="mt-4 w-full" onClick={onDismiss}>
           Escanear proximo
@@ -508,7 +519,7 @@ function InfoRows({ result }: { result: CheckinResult }) {
         <dd className="font-bold">{result.nome ?? "-"}</dd>
       </div>
       <div>
-        <dt className="font-semibold opacity-70">Codigo</dt>
+        <dt className="font-semibold opacity-70">Código</dt>
         <dd className="font-mono font-bold">{result.codigo ?? "-"}</dd>
       </div>
       {"status" in result && result.status && (

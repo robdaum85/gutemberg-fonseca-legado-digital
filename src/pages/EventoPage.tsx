@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { CalendarDays, Check, Loader2, MapPin, ShieldCheck, Vote } from "lucide-react";
+import { CalendarDays, Loader2, MapPin, ShieldCheck, Vote } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import EventoMapa from "@/components/evento/EventoMapa";
+import { EventoHero } from "@/components/evento/EventoHero";
 import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
 import { useDisableThemeCopa } from "@/hooks/useDisableThemeCopa";
 import {
@@ -18,8 +19,6 @@ const CATEGORIAS = [
   "Convidado",
   "Apoiador",
   "Lideranca",
-  "Staff",
-  "Autoridade",
 ];
 
 const initialForm: EventoCadastroPayload = {
@@ -31,6 +30,7 @@ const initialForm: EventoCadastroPayload = {
   bairro: "",
   categoria: "Convidado",
   lgpd: false,
+  observacoes: "",
 };
 
 function onlyDigits(value: string, max: number) {
@@ -109,6 +109,7 @@ export default function EventoPage() {
       className="min-h-screen text-zinc-950"
       style={{ backgroundColor: EVENTO_COLORS.lightGray }}
     >
+      <EventoHero variant="full" />
       <section
         className="relative overflow-hidden border-b border-white/10"
         style={{ backgroundColor: EVENTO_COLORS.navy }}
@@ -138,7 +139,7 @@ export default function EventoPage() {
               </span>
             </div>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-white/82">
-              Garanta sua credencial para o evento. O cadastro gera um codigo unico
+              Garanta sua credencial para o evento. O cadastro gera um código único
               e um QR Code para apresentar na entrada.
             </p>
             <div className="mt-6 grid gap-3 text-sm font-bold sm:grid-cols-2">
@@ -154,18 +155,6 @@ export default function EventoPage() {
             <p className="mt-3 max-w-xl text-sm font-medium text-white/72">
               {EVENTO_GUTEMBERG.address}
             </p>
-
-            <div className="mt-6 grid gap-3 text-sm font-semibold text-white/90 sm:grid-cols-3">
-              <span className="flex items-center gap-2">
-                <Check className="h-4 w-4" style={{ color: EVENTO_COLORS.yellow }} /> Codigo unico
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="h-4 w-4" style={{ color: EVENTO_COLORS.yellow }} /> QR Code
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="h-4 w-4" style={{ color: EVENTO_COLORS.yellow }} /> Sem dados no QR
-              </span>
-            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="rounded-lg border border-white/20 bg-white p-5 shadow-2xl md:p-7">
@@ -267,6 +256,18 @@ export default function EventoPage() {
                   ))}
                 </select>
               </div>
+
+              {form.categoria === "Convidado" && (
+                <div className="sm:col-span-2">
+                  <Label htmlFor="evento-convidado-por">Quem te convidou?</Label>
+                  <Input
+                    id="evento-convidado-por"
+                    value={form.observacoes}
+                    onChange={(event) => updateField("observacoes", event.target.value)}
+                    className="mt-2"
+                  />
+                </div>
+              )}
             </div>
 
             <label className="mt-5 flex items-start gap-3 rounded-md border border-zinc-200 bg-zinc-50 p-3 text-sm text-zinc-700">
@@ -276,7 +277,7 @@ export default function EventoPage() {
                 className="mt-0.5"
               />
               <span>
-                Autorizo o uso dos meus dados para organizacao, comunicacao e controle
+                Autorizo o uso dos meus dados para organização, comunicação e controle
                 de entrada deste evento.
               </span>
             </label>

@@ -68,11 +68,17 @@ export default function EventoSucessoPage() {
   return (
     <main
       id="conteudo-principal"
-      className="min-h-screen px-5 py-8 text-zinc-950"
-      style={{ backgroundColor: EVENTO_COLORS.lightGray }}
+      className="evento-sucesso-bg relative min-h-screen bg-cover bg-center bg-no-repeat px-5 py-8 text-zinc-950"
+      style={{ backgroundColor: EVENTO_COLORS.navy, backgroundImage: "url(/hero/heromobile.jpg)" }}
     >
-      <section className="mx-auto max-w-xl overflow-hidden rounded-lg border border-zinc-200 bg-white text-center shadow-sm">
-        <div className="px-5 py-6 text-white md:px-8" style={{ backgroundColor: EVENTO_COLORS.navy }}>
+      <style>{`
+        .evento-sucesso-bg {
+          background-image: image-set(url(/hero/heromobile.webp) type("image/webp"), url(/hero/heromobile.jpg) type("image/jpeg"));
+        }
+      `}</style>
+      <div className="absolute inset-0 bg-black/35" aria-hidden="true" />
+      <section className="relative mx-auto max-w-xl overflow-hidden rounded-lg border border-white/20 bg-white text-center shadow-2xl">
+        <div className="px-5 pt-6 text-white md:px-8" style={{ backgroundColor: EVENTO_COLORS.navy }}>
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20">
             <QrCode className="h-7 w-7" style={{ color: EVENTO_COLORS.yellow }} />
           </div>
@@ -80,7 +86,7 @@ export default function EventoSucessoPage() {
             {EVENTO_GUTEMBERG.title}
           </p>
           <h1 className="mt-2 text-3xl font-black">Cadastro realizado com sucesso!</h1>
-          <p className="mt-3 text-sm text-white/78">
+          <p className="mt-3 pb-6 text-sm text-white/78">
             {EVENTO_GUTEMBERG.name} {EVENTO_GUTEMBERG.year} - {EVENTO_GUTEMBERG.date} as {EVENTO_GUTEMBERG.time}
           </p>
         </div>
@@ -94,7 +100,7 @@ export default function EventoSucessoPage() {
           <div className="mt-6 rounded-md border border-zinc-200 bg-zinc-50 p-4">
             <p className="text-sm font-semibold text-zinc-500">Nome</p>
             <p className="text-lg font-bold">{data.nome}</p>
-            <p className="mt-4 text-sm font-semibold text-zinc-500">Seu codigo</p>
+            <p className="mt-4 text-sm font-semibold text-zinc-500">Seu código</p>
             <p className="break-all font-mono text-2xl font-black" style={{ color: EVENTO_COLORS.green }}>
               {data.codigo}
             </p>
@@ -109,7 +115,7 @@ export default function EventoSucessoPage() {
           <div className="grid gap-3 sm:grid-cols-2">
             <Button variant="outline" onClick={copyCode}>
               <Copy className="h-4 w-4" />
-              Copiar codigo
+              Copiar código
             </Button>
             <Button onClick={downloadQr} className="text-white" style={{ backgroundColor: EVENTO_COLORS.green }}>
               <Download className="h-4 w-4" />

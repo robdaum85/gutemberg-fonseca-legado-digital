@@ -7,6 +7,7 @@ export type EventoCadastroPayload = {
   bairro: string;
   categoria: string;
   lgpd: boolean;
+  observacoes?: string;
 };
 
 export type EventoCadastroResponse = {

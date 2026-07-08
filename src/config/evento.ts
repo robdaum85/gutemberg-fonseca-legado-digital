@@ -1,5 +1,5 @@
 export const EVENTO_GUTEMBERG = {
-  title: "Lancamento pre-campanha",
+  title: "Lançamento pré-campanha",
   office: "Deputado Federal",
   name: "Gutemberg Fonseca",
   year: "2026",
@@ -17,11 +17,11 @@ export const EVENTO_GUTEMBERG = {
 };
 
 export const EVENTO_COLORS = {
-  navy: "#041f46",
+  navy: "#002B5B",
   blue: "#052d63",
-  green: "#0fa13a",
+  green: "#016C28",
   darkGreen: "#064d28",
-  yellow: "#f4d000",
+  yellow: "#F1DA67",
   white: "#ffffff",
   lightGray: "#f4f4f5",
 };
