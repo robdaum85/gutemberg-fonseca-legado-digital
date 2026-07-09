@@ -554,7 +554,7 @@ const Statistics = () => {
 
         <div
           id="resultados-detalhados"
-          className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 xl:mt-12 xl:grid-cols-3 xl:gap-6"
+          className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 xl:mt-10 xl:grid-cols-3"
         >
           {visibleResults.map((result, index) => {
             const Icon = iconMap[result.icon] ?? ShieldCheck;
@@ -565,23 +565,23 @@ const Statistics = () => {
                 type="button"
                 onClick={() => setSelectedResult(result)}
                 data-result-tags={result.tags.join(' ')}
-                className="statistics-premium-card scroll-mt-24 group flex min-h-[19rem] flex-col rounded-[20px] border border-[rgba(184,255,59,.18)] bg-[rgba(10,32,70,.82)] p-5 text-left shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:border-[#B8FF3B] hover:shadow-[0_22px_70px_rgba(0,0,0,.38)] sm:min-h-[21rem] sm:p-7 xl:min-h-[22rem] xl:p-8"
+                className="statistics-premium-card scroll-mt-24 group flex min-h-[12.75rem] flex-col rounded-2xl border border-[rgba(184,255,59,.18)] bg-[rgba(10,32,70,.82)] p-4 text-left shadow-[0_10px_32px_rgba(0,0,0,0.16)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#B8FF3B] hover:shadow-[0_18px_54px_rgba(0,0,0,.32)] sm:min-h-[13.75rem] xl:min-h-[14rem] xl:p-5"
                 style={{ transitionDelay: `${Math.min(index, 8) * 60}ms` }}
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#B8FF3B]/20 bg-[#081B3F]/80 text-[#B8FF3B] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_26px_rgba(184,255,59,0.32)]">
-                    <Icon className="h-7 w-7" aria-hidden="true" />
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#B8FF3B]/20 bg-[#081B3F]/80 text-[#B8FF3B] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_22px_rgba(184,255,59,0.28)] sm:h-11 sm:w-11">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
                   </div>
-                  <span className="max-w-[9rem] text-right text-[0.65rem] font-black uppercase leading-4 tracking-[0.14em] text-[#19C3FF] sm:max-w-none sm:text-xs sm:tracking-[0.16em]">
+                  <span className="max-w-[9rem] text-right text-[0.62rem] font-black uppercase leading-4 tracking-[0.12em] text-[#19C3FF] sm:max-w-none sm:text-[0.68rem] sm:tracking-[0.14em]">
                     {toDisplayText(result.category)}
                   </span>
                 </div>
 
-                <div className="mt-8 flex flex-wrap gap-2">
-                  <span className="rounded-full bg-[#B8FF3B]/10 px-3 py-1 text-xs font-black uppercase tracking-[0.14em] text-[#B8FF3B] transition-colors group-hover:bg-[#B8FF3B] group-hover:text-[#081B3F]">
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="rounded-full bg-[#B8FF3B]/10 px-2.5 py-0.5 text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#B8FF3B] transition-colors group-hover:bg-[#B8FF3B] group-hover:text-[#081B3F]">
                     {toDisplayText(result.government)}
                   </span>
-                  <span className="rounded-full bg-[#B8FF3B]/10 px-3 py-1 text-xs font-black uppercase tracking-[0.14em] text-[#B8FF3B] transition-colors group-hover:bg-[#B8FF3B] group-hover:text-[#081B3F]">
+                  <span className="rounded-full bg-[#B8FF3B]/10 px-2.5 py-0.5 text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#B8FF3B] transition-colors group-hover:bg-[#B8FF3B] group-hover:text-[#081B3F]">
                     {result.period}
                   </span>
                 </div>
@@ -589,12 +589,12 @@ const Statistics = () => {
                 <AnimatedNumber
                   result={result}
                   enabled={hasAnimated}
-                  className="mt-6 break-words text-3xl font-black leading-none text-white transition-colors duration-300 group-hover:text-[#B8FF3B] sm:mt-7 sm:text-4xl md:text-5xl"
+                  className="mt-3 break-words text-2xl font-black leading-none text-white transition-colors duration-300 group-hover:text-[#B8FF3B] sm:text-3xl xl:text-[2.35rem]"
                 />
-                <h3 className="mt-5 text-lg font-black leading-tight text-white sm:text-xl">
+                <h3 className="mt-3 text-base font-black leading-tight text-white">
                   {toDisplayText(result.title)}
                 </h3>
-                <p className="mt-4 flex-1 text-sm leading-6 text-[#BFC9DA] sm:leading-7">
+                <p className="mt-2.5 flex-1 text-[0.8125rem] leading-5 text-[#BFC9DA] sm:text-sm">
                   {toDisplayText(result.description)}
                 </p>
               </button>
