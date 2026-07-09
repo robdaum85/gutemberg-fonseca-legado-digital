@@ -20,6 +20,7 @@ const BASE_VALIDATION_URL = "https://gutembergfonseca.com.br/evento/checkin";
 const INSCRITOS_SHEET = "inscritos";
 const LOGS_SHEET = "logs_validacao";
 const APP_TOKEN_PROPERTY = "APP_TOKEN";
+const SISTEMA_ATIVO_PROPERTY = "SISTEMA_ATIVO";
 const CODIGO_COLUMN = 2;
 const CPF_COLUMN = 4;
 
@@ -56,19 +57,23 @@ const LOG_HEADERS = [
 ];
 
 function doGet(e) {
-  const action = (e.parameter.action || "").toLowerCase();
   try {
+    if (!isSistemaAtivo_()) {
+      return json_({ success: false, message: "Sistema temporariamente indisponivel." });
+    }
+    const params = e && e.parameter ? e.parameter : {};
+    const action = (params.action || "").toLowerCase();
     setupSheets_();
     if (action === "consulta") {
-      if (!authorized_(e.parameter.token)) return json_(unauthorized_());
-      return json_(consulta_(e.parameter.codigo));
+      if (!authorized_(params.token)) return json_(unauthorized_());
+      return json_(consulta_(params.codigo));
     }
     if (action === "buscarcpf") {
-      if (!authorized_(e.parameter.token)) return json_(unauthorized_());
-      return json_(buscarPorCpf_(e.parameter.cpf));
+      if (!authorized_(params.token)) return json_(unauthorized_());
+      return json_(buscarPorCpf_(params.cpf));
     }
     if (action === "dashboard") {
-      if (!authorized_(e.parameter.token)) return json_(unauthorized_());
+      if (!authorized_(params.token)) return json_(unauthorized_());
       return json_(dashboard_());
     }
     return json_({ success: false, message: "Acao invalida." });
@@ -79,6 +84,9 @@ function doGet(e) {
 
 function doPost(e) {
   try {
+    if (!isSistemaAtivo_()) {
+      return json_({ success: false, message: "Sistema temporariamente indisponivel." });
+    }
     setupSheets_();
     const payload = parseBody_(e);
     const action = (payload.action || "").toLowerCase();
@@ -102,6 +110,10 @@ function doPost(e) {
     log_("ERRO", "", "", "", "", String(err));
     return json_({ success: false, resultado: "ERRO", message: String(err) });
   }
+}
+
+function isSistemaAtivo_() {
+  return PropertiesService.getScriptProperties().getProperty(SISTEMA_ATIVO_PROPERTY) !== "false";
 }
 
 function authorized_(token) {

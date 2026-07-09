@@ -34,6 +34,7 @@ const EventoCheckinPage = lazy(() => import("./pages/EventoCheckinPage"));
 const EventoDashboardPage = lazy(() => import("./pages/EventoDashboardPage"));
 
 const queryClient = new QueryClient();
+const EVENTO_ATIVO = import.meta.env.VITE_EVENTO_ATIVO === "true";
 
 // Redirects legacy /blog/:slug URLs to the canonical category URL.
 const BlogPostRedirect = () => {
@@ -108,10 +109,26 @@ const App = () => (
                 <Route path="/motociclistas" element={<MotociclistasPage />} />
                 <Route path="/seguranca" element={<SegurancaPage />} />
                 <Route path="/aniversario" element={<AniversarioPage />} />
-                <Route path="/evento" element={<EventoPage />} />
-                <Route path="/evento/sucesso" element={<EventoSucessoPage />} />
-                <Route path="/evento/checkin" element={<EventoCheckinPage />} />
-                <Route path="/evento/dashboard" element={<EventoDashboardPage />} />
+                {EVENTO_ATIVO && (
+                  <>
+                    <Route path="/evento" element={<EventoPage />} />
+                    <Route
+                      path="/evento/sucesso"
+                      element={<EventoSucessoPage />}
+                    />
+                    <Route
+                      path="/evento/checkin"
+                      element={<EventoCheckinPage />}
+                    />
+                    <Route
+                      path="/evento/dashboard"
+                      element={<EventoDashboardPage />}
+                    />
+                  </>
+                )}
+                {!EVENTO_ATIVO && (
+                  <Route path="/evento/*" element={<Navigate to="/" replace />} />
+                )}
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
