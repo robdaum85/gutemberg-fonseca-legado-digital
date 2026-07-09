@@ -4,7 +4,6 @@ import QRCode from "qrcode";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
-import { useDisableThemeCopa } from "@/hooks/useDisableThemeCopa";
 
 type SuccessState = {
   nome?: string;
@@ -13,7 +12,6 @@ type SuccessState = {
 };
 
 export default function EventoSucessoPage() {
-  useDisableThemeCopa();
   const { state } = useLocation();
   const data = (state ?? {}) as SuccessState;
   const [qrDataUrl, setQrDataUrl] = useState("");

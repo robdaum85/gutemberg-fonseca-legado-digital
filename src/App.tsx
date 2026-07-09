@@ -13,8 +13,6 @@ import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { getPostBySlug, getCategorySlug } from "./lib/blogUtils";
-import { ThemeCopaProvider } from "./contexts/ThemeCopaContext";
-import ThemeCopaToggle from "./components/ThemeCopaToggle";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import CookieConsent from "./components/CookieConsent";
 
@@ -52,27 +50,25 @@ const BlogPostRedirect = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <ThemeCopaProvider>
-        <Toaster />
-        <Sonner />
-        <ThemeCopaToggle />
-        <AccessibilityWidget />
-        <CookieConsent />
-        <a href="#conteudo-principal" className="skip-link">
-          Ir para o conteudo principal
-        </a>
-        <div id="site-content">
-          <BrowserRouter
-            future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      <Toaster />
+      <Sonner />
+      <AccessibilityWidget />
+      <CookieConsent />
+      <a href="#conteudo-principal" className="skip-link">
+        Ir para o conteudo principal
+      </a>
+      <div id="site-content">
+        <BrowserRouter
+          future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+        >
+          <Suspense
+            fallback={
+              <div className="min-h-screen flex items-center justify-center">
+                Carregando...
+              </div>
+            }
           >
-            <Suspense
-              fallback={
-                <div className="min-h-screen flex items-center justify-center">
-                  Carregando...
-                </div>
-              }
-            >
-              <Routes>
+            <Routes>
                 <Route path="/" element={<Index />} />
                 {/* Legacy /blog routes redirect to the consolidated hub */}
                 <Route
@@ -130,11 +126,10 @@ const App = () => (
                   <Route path="/evento/*" element={<Navigate to="/" replace />} />
                 )}
                 <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
-        </div>
-      </ThemeCopaProvider>
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </div>
     </TooltipProvider>
   </QueryClientProvider>
 );

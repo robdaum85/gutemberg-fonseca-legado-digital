@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import EventoMapa from "@/components/evento/EventoMapa";
 import { EventoHero } from "@/components/evento/EventoHero";
 import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
-import { useDisableThemeCopa } from "@/hooks/useDisableThemeCopa";
 import {
   cadastrarEvento,
   isEventoApiConfigured,
@@ -54,7 +53,6 @@ function formatPhone(value: string) {
 }
 
 export default function EventoPage() {
-  useDisableThemeCopa();
   const navigate = useNavigate();
   const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);

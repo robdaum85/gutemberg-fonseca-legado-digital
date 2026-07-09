@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useSearchParams } from "react-router-dom";
 import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
-import { useDisableThemeCopa } from "@/hooks/useDisableThemeCopa";
 import {
   consultarCodigo,
   consultarPorCpf,
@@ -67,7 +66,6 @@ type CheckinResult =
   | ({ kind: "validacao" } & EventoValidarResponse);
 
 export default function EventoCheckinPage() {
-  useDisableThemeCopa();
   const [searchParams] = useSearchParams();
   const [unlocked, setUnlocked] = useState(false);
   const [login, setLogin] = useState("");

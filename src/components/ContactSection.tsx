@@ -170,33 +170,10 @@ const ContactSection = () => {
                 </a>
               </div>
 
-              <div className="mt-10 rounded-2xl bg-gradient-primary p-6 sm:p-8 shadow-2xl border border-white/20">
-                <div className="text-center md:text-left">
-                  <h4 className="font-bold text-white text-xl md:text-2xl leading-snug" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                    O Álbum do Brasil precisa dessas figurinhas para completar um Brasil melhor.
-                  </h4>
-                  <p className="mt-2 text-white/90 text-sm md:text-base">
-                    Cole, compartilhe e ajude a completar o álbum.
-                  </p>
-                </div>
-                <div className="mt-6 flex flex-wrap items-end justify-center gap-6">
-                  <img
-                    src="https://kngofnnx.com/wp-content/uploads/2026/05/BOLSONARO.png"
-                    alt="Figurinha Flávio Bolsonaro"
-                    className="h-44 sm:h-52 md:h-64 w-auto object-contain drop-shadow-2xl -rotate-3 hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                  <img
-                    src="https://kngofnnx.com/wp-content/uploads/2026/05/GUTEMBERG-1.png"
-                    alt="Figurinha Gutemberg Fonseca"
-                    className="h-44 sm:h-52 md:h-64 w-auto object-contain drop-shadow-2xl rotate-3 hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
+
               </div>
             </div>
           </div>
-        </div>
       </div>
     </section>
   );

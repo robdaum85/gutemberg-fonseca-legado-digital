@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { RefreshCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
-import { useDisableThemeCopa } from "@/hooks/useDisableThemeCopa";
 import { carregarDashboard, isEventoApiConfigured, type EventoDashboardResponse } from "@/lib/eventoApi";
 
 const emptyDashboard: EventoDashboardResponse = {
@@ -17,7 +16,6 @@ const emptyDashboard: EventoDashboardResponse = {
 };
 
 export default function EventoDashboardPage() {
-  useDisableThemeCopa();
   const [data, setData] = useState<EventoDashboardResponse>(emptyDashboard);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

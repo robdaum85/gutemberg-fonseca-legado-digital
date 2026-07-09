@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const GOOGLE_SHEET_URL =
   "https://script.google.com/macros/s/AKfycbwCqE6Or8leTViJqZwdEMNOGEUyypjWFNFKnq0-HAl7QOkhT_U6Zp1IsdyQ-NYycBpg/exec";
@@ -32,23 +32,6 @@ export async function submitSignature(data: SignatureFormData): Promise<void> {
 }
 
 export default function MotosLivresPage() {
-  useEffect(() => {
-    const hadThemeCopa = document.body.classList.contains("theme-copa");
-    document.body.classList.add("theme-copa-disabled-route");
-    document.body.classList.remove("theme-copa");
-    const frame = window.requestAnimationFrame(() => {
-      document.body.classList.remove("theme-copa");
-    });
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      document.body.classList.remove("theme-copa-disabled-route");
-      if (hadThemeCopa) {
-        document.body.classList.add("theme-copa");
-      }
-    };
-  }, []);
-
   const [form, setForm] = useState<SignatureFormData>(initialForm);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -95,12 +78,6 @@ export default function MotosLivresPage() {
 
   return (
     <main className="min-h-screen bg-[#f7f6f3] text-[#0f172a]">
-      <style>{`
-        body.theme-copa-disabled-route .theme-copa-toggle {
-          display: none !important;
-        }
-      `}</style>
-
       <section className="relative overflow-hidden bg-[#171c26] px-4 py-24 text-center text-white md:py-36">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,184,0,.18),transparent_55%)]" />
 

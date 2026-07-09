@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSeo } from "@/lib/useSeo";
 
 const GOOGLE_SHEET_URL =
@@ -100,23 +100,6 @@ export default function SegurancaPage() {
     null,
   );
 
-  useEffect(() => {
-    const hadThemeCopa = document.body.classList.contains("theme-copa");
-    document.body.classList.add("theme-copa-disabled-route");
-    document.body.classList.remove("theme-copa");
-    const frame = window.requestAnimationFrame(() => {
-      document.body.classList.remove("theme-copa");
-    });
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      document.body.classList.remove("theme-copa-disabled-route");
-      if (hadThemeCopa) {
-        document.body.classList.add("theme-copa");
-      }
-    };
-  }, []);
-
   useSeo({
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
@@ -188,10 +171,6 @@ export default function SegurancaPage() {
     <main className="min-h-screen scroll-smooth bg-[#f6f1e8] font-[Inter,system-ui,sans-serif] text-[#172033] antialiased">
       <style>{`
         @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-
-        body.theme-copa-disabled-route .theme-copa-toggle {
-          display: none !important;
-        }
 
         .seguranca-display {
           font-family: "Bebas Neue", Impact, sans-serif;

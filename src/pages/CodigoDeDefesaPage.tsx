@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSeo } from "@/lib/useSeo";
 
 const SCRIPT_URL =
@@ -61,23 +61,6 @@ function formatPhone(value: string) {
 }
 
 export default function DefesaConsumidorPL2766Page() {
-  useEffect(() => {
-    const hadThemeCopa = document.body.classList.contains("theme-copa");
-    document.body.classList.add("theme-copa-disabled-route");
-    document.body.classList.remove("theme-copa");
-    const frame = window.requestAnimationFrame(() => {
-      document.body.classList.remove("theme-copa");
-    });
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      document.body.classList.remove("theme-copa-disabled-route");
-      if (hadThemeCopa) {
-        document.body.classList.add("theme-copa");
-      }
-    };
-  }, []);
-
   useSeo({
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
@@ -166,10 +149,6 @@ export default function DefesaConsumidorPL2766Page() {
   return (
     <main className="min-h-screen scroll-smooth bg-[#f8fafc] font-[Inter,system-ui,sans-serif] text-[#0f172a] antialiased selection:bg-[#1d4ed8] selection:text-white">
       <style>{`
-        body.theme-copa-disabled-route .theme-copa-toggle {
-          display: none !important;
-        }
-
         @keyframes pulseGold {
           0% { box-shadow: 0 0 0 0 rgba(255, 183, 0, 0.7); }
           70% { box-shadow: 0 0 0 15px rgba(255, 183, 0, 0); }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const FORM_ID = "1FAIpQLSdXT9BNJJNyT3vrO_NeLB35atJGoor6ltb8opxG-Ui4celV0g";
 
@@ -17,23 +17,6 @@ export default function LandingSuperendividamento() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-
-  useEffect(() => {
-    const hadThemeCopa = document.body.classList.contains("theme-copa");
-    document.body.classList.add("theme-copa-disabled-route");
-    document.body.classList.remove("theme-copa");
-    const frame = window.requestAnimationFrame(() => {
-      document.body.classList.remove("theme-copa");
-    });
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      document.body.classList.remove("theme-copa-disabled-route");
-      if (hadThemeCopa) {
-        document.body.classList.add("theme-copa");
-      }
-    };
-  }, []);
 
   function formatWhatsapp(value: string) {
     let v = value.replace(/\D/g, "").slice(0, 11);
@@ -96,12 +79,6 @@ export default function LandingSuperendividamento() {
 
   return (
     <main className="min-h-screen bg-white font-[Poppins,system-ui,sans-serif] text-slate-900">
-      <style>{`
-        body.theme-copa-disabled-route .theme-copa-toggle {
-          display: none !important;
-        }
-      `}</style>
-
       <section className="relative overflow-hidden bg-[radial-gradient(900px_500px_at_90%_-20%,#1a52cf,transparent_60%),linear-gradient(135deg,#061f5a,#0c3fae_55%,#082c7d)] py-16 text-white md:py-24">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,.08)_1px,transparent_1px)] bg-[length:22px_22px] opacity-50" />
 

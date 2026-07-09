@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Image as ImageIcon } from "lucide-react";
 import html2canvas from "html2canvas";
 import { Button } from "@/components/ui/button";
@@ -51,23 +51,6 @@ export default function AniversarioPage() {
   const [lideranca, setLideranca] = useState<string | null>(null);
   const [generatingTicket, setGeneratingTicket] = useState(false);
   const ticketRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const hadThemeCopa = document.body.classList.contains("theme-copa");
-    document.body.classList.add("theme-copa-disabled-route");
-    document.body.classList.remove("theme-copa");
-    const frame = window.requestAnimationFrame(() => {
-      document.body.classList.remove("theme-copa");
-    });
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      document.body.classList.remove("theme-copa-disabled-route");
-      if (hadThemeCopa) {
-        document.body.classList.add("theme-copa");
-      }
-    };
-  }, []);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -173,12 +156,6 @@ export default function AniversarioPage() {
 
   return (
     <main className="min-h-screen bg-white font-body text-slate-900">
-      <style>{`
-        body.theme-copa-disabled-route .theme-copa-toggle {
-          display: none !important;
-        }
-      `}</style>
-
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary py-20 text-white md:py-28">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,.08)_1px,transparent_1px)] bg-[length:22px_22px] opacity-50" />

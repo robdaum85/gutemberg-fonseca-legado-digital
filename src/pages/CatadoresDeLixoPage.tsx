@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const SHEET_URL =
   "https://script.google.com/macros/s/AKfycbxeK2QANgItpinK5Vf__G3H5CxMJjc8tkyL2ql9bFwNDXzbcdjNoezDguBdP-r7-JlJ/exec";
@@ -9,23 +9,6 @@ export default function CatadoresPage() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-
-  useEffect(() => {
-    const hadThemeCopa = document.body.classList.contains("theme-copa");
-    document.body.classList.add("theme-copa-disabled-route");
-    document.body.classList.remove("theme-copa");
-    const frame = window.requestAnimationFrame(() => {
-      document.body.classList.remove("theme-copa");
-    });
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      document.body.classList.remove("theme-copa-disabled-route");
-      if (hadThemeCopa) {
-        document.body.classList.add("theme-copa");
-      }
-    };
-  }, []);
 
   function formatWhatsapp(value: string) {
     let v = value.replace(/\D/g, "").substring(0, 11);
@@ -69,12 +52,6 @@ export default function CatadoresPage() {
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-slate-50 font-[Inter,sans-serif] text-slate-900">
-      <style>{`
-        body.theme-copa-disabled-route .theme-copa-toggle {
-          display: none !important;
-        }
-      `}</style>
-
       <div className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center overflow-hidden">
         <RecycleIcon className="h-[120vw] w-[120vw] rotate-12 text-green-900 opacity-[0.03] md:h-[80vw] md:w-[80vw]" />
       </div>

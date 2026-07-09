@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { X, MessageCircle, Instagram, Facebook, Globe, AlertCircle, Heart, Users } from "lucide-react";
+import { X, MessageCircle, Instagram, Facebook, AlertCircle, Heart, Users, Camera } from "lucide-react";
 import { SOCIAL_LINKS } from "@/config/mobilizacao";
 
 const STORAGE_KEY = "welcome_popup_seen_v1";
+const TWIBBONIZE_URL = "https://www.twibbonize.com/exercitodoconsumidor";
 
 const WelcomePopup = () => {
   const [open, setOpen] = useState(false);
@@ -62,6 +63,36 @@ const WelcomePopup = () => {
             Bem-vindo ao canal do Guto
           </h3>
           <p className="text-sm text-graphite mt-1">Escolha como deseja continuar:</p>
+        </div>
+
+        <div className="mb-5 rounded-2xl border border-[rgba(184,255,59,.25)] bg-[rgba(184,255,59,.10)] p-4 text-primary">
+          <div className="flex items-start gap-3">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[rgba(184,255,59,.35)] bg-white/75">
+              <Camera className="h-6 w-6" aria-hidden="true" />
+            </div>
+            <div className="min-w-0">
+              <h4 className="text-base font-bold leading-tight">
+                Entre para o Exército do Consumidor
+              </h4>
+              <p className="mt-2 text-sm leading-5 text-graphite">
+                Coloque o filtro oficial da campanha na sua foto e ajude a
+                fortalecer essa mobilização pela defesa dos direitos do consumidor.
+              </p>
+            </div>
+          </div>
+          <a
+            href={TWIBBONIZE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-primary px-4 py-3 text-sm font-bold text-primary transition hover:opacity-90"
+          >
+            <Camera className="h-4 w-4" aria-hidden="true" />
+            Personalizar minha foto
+          </a>
+          <p className="mt-2 text-center text-xs leading-5 text-graphite/75">
+            Você será direcionado para o Twibbonize para enviar sua foto e
+            aplicar o filtro da campanha.
+          </p>
         </div>
 
         <div className="space-y-3">

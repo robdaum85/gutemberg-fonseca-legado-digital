@@ -1,12 +1,10 @@
 
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { useState, useEffect } from 'react';
-import { useThemeCopa } from '@/contexts/ThemeCopaContext';
 
 const About = () => {
   const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.1 });
   const [isVisible, setIsVisible] = useState(false);
-  const { enabled: isCopa } = useThemeCopa();
 
   useEffect(() => {
     if (isIntersecting) {
@@ -14,26 +12,25 @@ const About = () => {
     }
   }, [isIntersecting]);
 
-  const imgSrc = isCopa
-    ? 'https://kngofnnx.com/wp-content/uploads/2026/05/gutoselecao.png'
-    : '/lovable-uploads/424487f0-dee5-4f8e-bdab-8e3e234b08c7.png';
+  const imgSrc =
+    'https://kngofnnx.com/wp-content/uploads/2026/07/ChatGPT-Image-9-de-jul.-de-2026-15_18_39.png';
 
   return (
     <section id="sobre" className="py-20 bg-white">
       <div className="section-container">
         <h2 className="section-title">Sobre Gutemberg</h2>
         
-        <div className={`flex flex-col ${isCopa ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-start mt-12`}>
+        <div className="flex flex-col lg:flex-row gap-12 items-start mt-12">
           <div 
             ref={ref as React.RefObject<HTMLDivElement>}
             className={`lg:w-2/5 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-x-0' : `opacity-0 ${isCopa ? 'translate-x-20' : '-translate-x-20'}`
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'
             }`}
           >
             <div className="relative">
               <img 
                 src={imgSrc}
-                alt={isCopa ? 'Gutemberg Fonseca - Copa' : 'Gutemberg Fonseca'}
+                alt="Gutemberg Fonseca"
                 className="w-full max-w-sm mx-auto lg:mx-0 rounded-xl shadow-2xl object-cover"
               />
             </div>
@@ -41,7 +38,7 @@ const About = () => {
           
           <div 
             className={`lg:w-3/5 transition-all duration-1000 delay-300 ${
-              isVisible ? 'opacity-100 translate-x-0' : `opacity-0 ${isCopa ? '-translate-x-20' : 'translate-x-20'}`
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'
             }`}
           >
             <h3 className="text-2xl font-bold text-primary mb-4">Gutemberg Fonseca</h3>
