@@ -14,29 +14,19 @@ const InstagramFeed = () => {
 
   const instagramPosts = [
     {
-      url: 'https://www.instagram.com/reel/DaQ8vVushvN/?igsh=ZDF2NnljdjEwYXdo',
-      image: '/instagram/DaQ8vVushvN.jpg',
+      url: 'https://www.instagram.com/reel/DajEqnptyVQ/?igsh=MWs2ZDU1dmt5MGYybQ%3D%3D',
+      image: '/instagram/DajEqnptyVQ.jpg',
       type: 'reel' as const,
     },
     {
-      url: 'https://www.instagram.com/p/DaOdOa5vZRy/?igsh=MTJrcThzbHNweGkzbA==',
-      image: '/instagram/DaOdOa5vZRy.jpg',
-      type: 'post' as const,
-    },
-    {
-      url: 'https://www.instagram.com/p/DaOxCd5GoEH/?img_index=15&igsh=aXBzZTlud2k4Zmtq',
-      image: '/instagram/DaOxCd5GoEH.jpg',
-      type: 'post' as const,
-    },
-    {
-      url: 'https://www.instagram.com/reel/DaOd1AXh8Th/?igsh=Zm1wbjN5bm10N3h4',
-      image: '/instagram/DaOd1AXh8Th.jpg',
+      url: 'https://www.instagram.com/reel/DagyHs_O8G3/?igsh=MTExdHNlMmk1Zm1wbg%3D%3D',
+      image: '/instagram/DagyHs_O8G3.jpg',
       type: 'reel' as const,
     },
     {
-      url: 'https://www.instagram.com/p/DaRM6bzhE1i/?igsh=MXhxbzZrN2t5cGpraw==',
-      image: '/instagram/DaRM6bzhE1i.jpg',
-      type: 'post' as const,
+      url: 'https://www.instagram.com/reel/Dak5ZjZxkDC/?igsh=dndvazJzdDVzbTFj',
+      image: '/instagram/Dak5ZjZxkDC.jpg',
+      type: 'reel' as const,
     },
   ];
 
@@ -67,7 +57,7 @@ const InstagramFeed = () => {
             </a>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {instagramPosts.map((post, index) => (
               <div
                 key={index}
