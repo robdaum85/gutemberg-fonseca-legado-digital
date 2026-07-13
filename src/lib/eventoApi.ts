@@ -147,13 +147,11 @@ export function carregarDashboard() {
 
 export function atualizarMidiaParticipante(
   participanteId: string,
-  fotoRealizada: boolean,
-  videoRealizado: boolean,
+  changes: Partial<Pick<EventoDashboardParticipante, "fotoRealizada" | "videoRealizado">>,
 ) {
   return post<EventoDashboardResponse>("atualizarmidia", {
     participanteId,
-    fotoRealizada,
-    videoRealizado,
+    ...changes,
   });
 }
 

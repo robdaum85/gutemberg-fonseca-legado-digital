@@ -24,6 +24,7 @@ const APP_TOKEN_PROPERTY = "APP_TOKEN";
 const SISTEMA_ATIVO_PROPERTY = "SISTEMA_ATIVO";
 const CODIGO_COLUMN = 2;
 const CPF_COLUMN = 4;
+let spreadsheetCache_ = null;
 
 const INSCRITOS_HEADERS = [
   "id",
@@ -355,8 +356,17 @@ function atualizarMidia_(payload) {
       return { success: false, message: "Participante nao encontrado." };
     }
 
-    const fotoRealizada = bool_(payload.fotoRealizada);
-    const videoRealizado = bool_(payload.videoRealizado);
+    const controleAtual = findLatestMediaControl_(participanteId);
+    let fotoRealizada = controleAtual ? bool_(controleAtual.foto_realizada) : false;
+    let videoRealizado = controleAtual ? bool_(controleAtual.video_realizado) : false;
+
+    if (hasOwn_(payload, "fotoRealizada")) fotoRealizada = bool_(payload.fotoRealizada);
+    if (hasOwn_(payload, "videoRealizado")) videoRealizado = bool_(payload.videoRealizado);
+
+    if (!hasOwn_(payload, "fotoRealizada") && !hasOwn_(payload, "videoRealizado")) {
+      return { success: false, message: "Nenhuma alteracao de midia foi informada." };
+    }
+
     const now = new Date();
 
     getSheet_(CONTROLE_MIDIA_SHEET).appendRow([
@@ -372,10 +382,11 @@ function atualizarMidia_(payload) {
       "DASHBOARD",
     ]);
 
-    return dashboard_();
   } finally {
     lock.releaseLock();
   }
+
+  return dashboard_();
 }
 
 function setupSheets_() {
@@ -385,7 +396,7 @@ function setupSheets_() {
 }
 
 function ensureSheet_(name, headers) {
-  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const ss = getSpreadsheet_();
   let sheet = ss.getSheetByName(name);
   if (!sheet) sheet = ss.insertSheet(name);
   const current = sheet.getRange(1, 1, 1, headers.length).getValues()[0];
@@ -396,7 +407,12 @@ function ensureSheet_(name, headers) {
 }
 
 function getSheet_(name) {
-  return SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(name);
+  return getSpreadsheet_().getSheetByName(name);
+}
+
+function getSpreadsheet_() {
+  if (!spreadsheetCache_) spreadsheetCache_ = SpreadsheetApp.openById(SPREADSHEET_ID);
+  return spreadsheetCache_;
 }
 
 function findByCode_(codigo) {
@@ -415,6 +431,20 @@ function findById_(id) {
   const normalized = clean_(id);
   if (!normalized) return null;
   return findRowByColumnValue_(1, normalized);
+}
+
+function findLatestMediaControl_(participanteId) {
+  const sheet = getSheet_(CONTROLE_MIDIA_SHEET);
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) return null;
+
+  const values = sheet.getRange(2, 1, lastRow - 1, CONTROLE_MIDIA_HEADERS.length).getValues();
+  for (let index = values.length - 1; index >= 0; index--) {
+    if (clean_(values[index][1]) === participanteId) {
+      return rowToObject_(CONTROLE_MIDIA_HEADERS, values[index]);
+    }
+  }
+  return null;
 }
 
 function findRowByColumnValue_(column, value) {
@@ -502,6 +532,10 @@ function bool_(value) {
   if (value === true) return true;
   const normalized = clean_(value).toUpperCase();
   return normalized === "TRUE" || normalized === "SIM" || normalized === "1";
+}
+
+function hasOwn_(object, property) {
+  return Object.prototype.hasOwnProperty.call(object || {}, property);
 }
 
 function date_(date) {

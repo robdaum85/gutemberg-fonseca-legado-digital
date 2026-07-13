@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { Camera, CheckCircle2, RefreshCcw, Save, Search, Video } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Camera, CheckCircle2, ChevronLeft, ChevronRight, RefreshCcw, Save, Search, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -58,45 +58,89 @@ function progressOf(draft: Draft) {
 export default function EventoDashboardPage() {
   const [data, setData] = useState<EventoDashboardResponse>(emptyDashboard);
   const [drafts, setDrafts] = useState<Record<string, Draft>>({});
+  const dataRef = useRef<EventoDashboardResponse>(emptyDashboard);
+  const draftsRef = useRef<Record<string, Draft>>({});
+  const requestInFlightRef = useRef(false);
+  const savingIdsRef = useRef<Set<string>>(new Set());
+  const mutationVersionRef = useRef(0);
   const [savingIds, setSavingIds] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<Filter>("todos");
   const [category, setCategory] = useState("todas");
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(25);
+  const [lastSync, setLastSync] = useState("");
 
-  function resetWithResponse(response: EventoDashboardResponse) {
+  function applyResponse(
+    response: EventoDashboardResponse,
+    preserveDrafts: boolean,
+    forceServerIds = new Set<string>(),
+  ) {
     const normalized = normalizeDashboard(response);
+    const previousById = new Map(dataRef.current.participantes.map((item) => [item.id, item]));
+    const nextDrafts: Record<string, Draft> = {};
+
+    normalized.participantes.forEach((participante) => {
+      const previous = previousById.get(participante.id);
+      const currentDraft = draftsRef.current[participante.id];
+      const preserveLocal = preserveDrafts && previous && currentDraft && !forceServerIds.has(participante.id);
+
+      nextDrafts[participante.id] = {
+        fotoRealizada:
+          preserveLocal && currentDraft.fotoRealizada !== previous.fotoRealizada
+            ? currentDraft.fotoRealizada
+            : participante.fotoRealizada,
+        videoRealizado:
+          preserveLocal && currentDraft.videoRealizado !== previous.videoRealizado
+            ? currentDraft.videoRealizado
+            : participante.videoRealizado,
+      };
+    });
+
+    dataRef.current = normalized;
+    draftsRef.current = nextDrafts;
     setData(normalized);
-    setDrafts(
-      Object.fromEntries(normalized.participantes.map((participante) => [participante.id, draftFrom(participante)])),
-    );
+    setDrafts(nextDrafts);
+    setLastSync(new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
   }
 
-  async function load() {
-    setError("");
+  async function load({ preserveDrafts = true, silent = false } = {}) {
+    if (requestInFlightRef.current || savingIdsRef.current.size > 0) return;
     if (!isEventoApiConfigured()) {
       setError("Configure VITE_EVENTO_API_URL para carregar o dashboard.");
       return;
     }
 
-    setLoading(true);
+    requestInFlightRef.current = true;
+    const mutationVersionAtStart = mutationVersionRef.current;
+    if (!silent) {
+      setError("");
+      setLoading(true);
+    }
     try {
       const response = await carregarDashboard();
       if (!response.success) {
-        setError(response.message ?? "Erro ao carregar dashboard.");
+        if (!silent) setError(response.message ?? "Erro ao carregar dashboard.");
         return;
       }
-      resetWithResponse(response);
+      if (mutationVersionAtStart !== mutationVersionRef.current) return;
+      applyResponse(response, preserveDrafts);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Erro ao carregar dashboard.");
+      if (!silent) setError(err instanceof Error ? err.message : "Erro ao carregar dashboard.");
     } finally {
-      setLoading(false);
+      requestInFlightRef.current = false;
+      if (!silent) setLoading(false);
     }
   }
 
   useEffect(() => {
-    load();
+    void load({ preserveDrafts: false });
+    const intervalId = window.setInterval(() => {
+      void load({ preserveDrafts: true, silent: true });
+    }, 15000);
+    return () => window.clearInterval(intervalId);
   }, []);
 
   function updateDraft(participanteId: string, field: keyof Draft, value: boolean) {
@@ -108,48 +152,45 @@ export default function EventoDashboardPage() {
     ) {
       return;
     }
-    setDrafts((current) => ({
-      ...current,
+    const nextDrafts = {
+      ...draftsRef.current,
       [participanteId]: {
-        ...(current[participanteId] ?? { fotoRealizada: false, videoRealizado: false }),
+        ...(draftsRef.current[participanteId] ?? { fotoRealizada: false, videoRealizado: false }),
         [field]: value,
       },
-    }));
+    };
+    draftsRef.current = nextDrafts;
+    setDrafts(nextDrafts);
   }
 
   async function save(participante: EventoDashboardParticipante) {
     const draft = drafts[participante.id] ?? draftFrom(participante);
     setError("");
-    setSavingIds((current) => new Set(current).add(participante.id));
+    mutationVersionRef.current += 1;
+    const nextSavingIds = new Set(savingIdsRef.current).add(participante.id);
+    savingIdsRef.current = nextSavingIds;
+    setSavingIds(nextSavingIds);
 
     try {
-      const response = await atualizarMidiaParticipante(
-        participante.id,
-        draft.fotoRealizada,
-        draft.videoRealizado,
-      );
+      const changes: Partial<Draft> = {};
+      if (draft.fotoRealizada !== participante.fotoRealizada) changes.fotoRealizada = draft.fotoRealizada;
+      if (draft.videoRealizado !== participante.videoRealizado) changes.videoRealizado = draft.videoRealizado;
+      if (Object.keys(changes).length === 0) return;
+
+      const response = await atualizarMidiaParticipante(participante.id, changes);
       if (!response.success) {
         setError(response.message ?? `Não foi possível atualizar ${participante.nome}.`);
         return;
       }
 
-      const normalized = normalizeDashboard(response);
-      setData(normalized);
-      setDrafts((current) => {
-        const next = { ...current };
-        normalized.participantes.forEach((item) => {
-          if (!next[item.id] || item.id === participante.id) next[item.id] = draftFrom(item);
-        });
-        return next;
-      });
+      applyResponse(response, true, new Set([participante.id]));
     } catch (err) {
       setError(err instanceof Error ? err.message : `Erro ao atualizar ${participante.nome}.`);
     } finally {
-      setSavingIds((current) => {
-        const next = new Set(current);
-        next.delete(participante.id);
-        return next;
-      });
+      const next = new Set(savingIdsRef.current);
+      next.delete(participante.id);
+      savingIdsRef.current = next;
+      setSavingIds(next);
     }
   }
 
@@ -184,6 +225,20 @@ export default function EventoDashboardPage() {
       });
   }, [category, data.participantes, drafts, filter, search]);
 
+  useEffect(() => {
+    setPage(1);
+  }, [category, filter, pageSize, search]);
+
+  const totalPages = Math.max(1, Math.ceil(visibleParticipants.length / pageSize));
+  const pagedParticipants = useMemo(
+    () => visibleParticipants.slice((page - 1) * pageSize, page * pageSize),
+    [page, pageSize, visibleParticipants],
+  );
+
+  useEffect(() => {
+    setPage((current) => Math.min(current, totalPages));
+  }, [totalPages]);
+
   return (
     <main
       id="conteudo-principal"
@@ -203,10 +258,15 @@ export default function EventoDashboardPage() {
                 {EVENTO_GUTEMBERG.date} às {EVENTO_GUTEMBERG.time} — {EVENTO_GUTEMBERG.venue}
               </p>
             </div>
-            <Button onClick={load} disabled={loading} variant="outline" className="border-white bg-white text-zinc-950 hover:bg-zinc-100">
-              <RefreshCcw className={loading ? "h-4 w-4 animate-spin" : "h-4 w-4"} />
-              Atualizar
-            </Button>
+            <div className="text-right">
+              <Button onClick={() => void load({ preserveDrafts: true })} disabled={loading} variant="outline" className="border-white bg-white text-zinc-950 hover:bg-zinc-100">
+                <RefreshCcw className={loading ? "h-4 w-4 animate-spin" : "h-4 w-4"} />
+                Atualizar
+              </Button>
+              <p className="mt-2 text-xs text-white/60">
+                Sincronização automática a cada 15s{lastSync ? ` · Última: ${lastSync}` : ""}
+              </p>
+            </div>
           </div>
         </header>
 
@@ -281,12 +341,13 @@ export default function EventoDashboardPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-100">
-                {visibleParticipants.map((participante) => (
+                {pagedParticipants.map((participante) => (
                   <ParticipantRow
                     key={participante.id}
                     participante={participante}
                     draft={drafts[participante.id] ?? draftFrom(participante)}
                     saving={savingIds.has(participante.id)}
+                    blocked={savingIds.size > 0 && !savingIds.has(participante.id)}
                     onChange={updateDraft}
                     onSave={save}
                   />
@@ -296,12 +357,13 @@ export default function EventoDashboardPage() {
           </div>
 
           <div className="divide-y divide-zinc-100 lg:hidden">
-            {visibleParticipants.map((participante) => (
+            {pagedParticipants.map((participante) => (
               <ParticipantCard
                 key={participante.id}
                 participante={participante}
                 draft={drafts[participante.id] ?? draftFrom(participante)}
                 saving={savingIds.has(participante.id)}
+                blocked={savingIds.size > 0 && !savingIds.has(participante.id)}
                 onChange={updateDraft}
                 onSave={save}
               />
@@ -310,6 +372,41 @@ export default function EventoDashboardPage() {
 
           {visibleParticipants.length === 0 && (
             <p className="px-4 py-10 text-center text-sm text-zinc-500">Nenhum participante encontrado.</p>
+          )}
+
+          {visibleParticipants.length > 0 && (
+            <div className="flex flex-col gap-3 border-t border-zinc-200 bg-zinc-50 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+              <label className="flex items-center gap-2 text-sm text-zinc-600">
+                Exibir
+                <select
+                  value={pageSize}
+                  onChange={(event) => setPageSize(Number(event.target.value))}
+                  className="h-9 rounded-md border border-input bg-white px-2 text-sm"
+                  aria-label="Participantes por página"
+                >
+                  <option value={25}>25</option>
+                  <option value={50}>50</option>
+                  <option value={100}>100</option>
+                </select>
+                por página
+              </label>
+
+              <div className="flex items-center justify-between gap-3 sm:justify-end">
+                <span className="text-sm font-semibold text-zinc-600">
+                  Página {page} de {totalPages}
+                </span>
+                <div className="flex gap-2">
+                  <Button variant="outline" size="sm" disabled={page <= 1} onClick={() => setPage((current) => Math.max(1, current - 1))}>
+                    <ChevronLeft className="h-4 w-4" />
+                    Anterior
+                  </Button>
+                  <Button variant="outline" size="sm" disabled={page >= totalPages} onClick={() => setPage((current) => Math.min(totalPages, current + 1))}>
+                    Próxima
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </div>
           )}
         </section>
       </div>
@@ -321,11 +418,12 @@ type ParticipantProps = {
   participante: EventoDashboardParticipante;
   draft: Draft;
   saving: boolean;
+  blocked: boolean;
   onChange: (id: string, field: keyof Draft, value: boolean) => void;
   onSave: (participante: EventoDashboardParticipante) => void;
 };
 
-function ParticipantRow({ participante, draft, saving, onChange, onSave }: ParticipantProps) {
+function ParticipantRow({ participante, draft, saving, blocked, onChange, onSave }: ParticipantProps) {
   const dirty = draft.fotoRealizada !== participante.fotoRealizada || draft.videoRealizado !== participante.videoRealizado;
   return (
     <tr className="align-middle">
@@ -338,12 +436,12 @@ function ParticipantRow({ participante, draft, saving, onChange, onSave }: Parti
       <td className="px-4 py-4 text-center"><MediaCheckbox label={`Foto de ${participante.nome}`} checked={draft.fotoRealizada} onChange={(value) => onChange(participante.id, "fotoRealizada", value)} /></td>
       <td className="px-4 py-4 text-center"><MediaCheckbox label={`Vídeo de ${participante.nome}`} checked={draft.videoRealizado} onChange={(value) => onChange(participante.id, "videoRealizado", value)} /></td>
       <td className="px-4 py-4"><ProgressBadge draft={draft} /></td>
-      <td className="px-4 py-4 text-right"><SaveButton dirty={dirty} saving={saving} onClick={() => onSave(participante)} /></td>
+      <td className="px-4 py-4 text-right"><SaveButton dirty={dirty} saving={saving} blocked={blocked} onClick={() => onSave(participante)} /></td>
     </tr>
   );
 }
 
-function ParticipantCard({ participante, draft, saving, onChange, onSave }: ParticipantProps) {
+function ParticipantCard({ participante, draft, saving, blocked, onChange, onSave }: ParticipantProps) {
   const dirty = draft.fotoRealizada !== participante.fotoRealizada || draft.videoRealizado !== participante.videoRealizado;
   return (
     <article className="p-4">
@@ -360,7 +458,7 @@ function ParticipantCard({ participante, draft, saving, onChange, onSave }: Part
         <MediaCard label="Foto" icon={<Camera />} checked={draft.fotoRealizada} onChange={(value) => onChange(participante.id, "fotoRealizada", value)} />
         <MediaCard label="Vídeo" icon={<Video />} checked={draft.videoRealizado} onChange={(value) => onChange(participante.id, "videoRealizado", value)} />
       </div>
-      <SaveButton dirty={dirty} saving={saving} onClick={() => onSave(participante)} className="mt-4 w-full" />
+      <SaveButton dirty={dirty} saving={saving} blocked={blocked} onClick={() => onSave(participante)} className="mt-4 w-full" />
     </article>
   );
 }
@@ -388,9 +486,9 @@ function ProgressBadge({ draft }: { draft: Draft }) {
   return <span className={`inline-flex whitespace-nowrap rounded-full border px-2.5 py-1 text-xs font-black ${config.className}`}>{config.label}</span>;
 }
 
-function SaveButton({ dirty, saving, onClick, className = "" }: { dirty: boolean; saving: boolean; onClick: () => void; className?: string }) {
+function SaveButton({ dirty, saving, blocked, onClick, className = "" }: { dirty: boolean; saving: boolean; blocked: boolean; onClick: () => void; className?: string }) {
   return (
-    <Button size="sm" disabled={!dirty || saving} onClick={onClick} className={className} style={dirty ? { backgroundColor: EVENTO_COLORS.green } : undefined}>
+    <Button size="sm" disabled={!dirty || saving || blocked} onClick={onClick} className={className} style={dirty ? { backgroundColor: EVENTO_COLORS.green } : undefined}>
       {saving ? <RefreshCcw className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
       {saving ? "Salvando..." : dirty ? "Salvar" : "Salvo"}
     </Button>
