@@ -17,8 +17,8 @@
 
 const SPREADSHEET_ID = "1omMi6g2ntDj6-avj2S9PdWNBJZXXAnINoCmy1tYeprU";
 const BASE_VALIDATION_URL = "https://gutembergfonseca.com.br/evento/checkin";
-const INSCRITOS_SHEET = "inscritos";
-const LOGS_SHEET = "logs_validacao";
+const INSCRITOS_SHEET = "inscritos_palestra_20260713";
+const LOGS_SHEET = "logs_palestra_20260713";
 const APP_TOKEN_PROPERTY = "APP_TOKEN";
 const SISTEMA_ATIVO_PROPERTY = "SISTEMA_ATIVO";
 const CODIGO_COLUMN = 2;
@@ -178,7 +178,7 @@ function cadastro_(payload) {
       email,
       clean_(payload.cidade),
       clean_(payload.bairro),
-      clean_(payload.categoria || "Convidado"),
+      clean_(payload.categoria || "Lideranca/Coordenador"),
       "PENDENTE",
       qrcodeUrl,
       date_(now),
@@ -401,7 +401,7 @@ function generateCode_() {
   for (let i = 0; i < 6; i++) {
     suffix += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
   }
-  return "GTB26-" + suffix;
+  return "GTBPAL-" + suffix;
 }
 
 function normalizeCode_(value) {

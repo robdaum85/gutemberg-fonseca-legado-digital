@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { RefreshCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { EventoHero } from "@/components/evento/EventoHero";
 import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
 import { carregarDashboard, isEventoApiConfigured, type EventoDashboardResponse } from "@/lib/eventoApi";
 
@@ -46,10 +47,11 @@ export default function EventoDashboardPage() {
   return (
     <main
       id="conteudo-principal"
-      className="min-h-screen px-5 py-6 text-zinc-950"
+      className="min-h-screen pb-6 text-zinc-950"
       style={{ backgroundColor: EVENTO_COLORS.lightGray }}
     >
-      <div className="mx-auto max-w-6xl">
+      <EventoHero variant="compact" theme="light" />
+      <div className="mx-auto max-w-6xl px-5 pt-6">
         <div
           className="rounded-lg border border-white/10 p-5 text-white shadow-sm"
           style={{ backgroundColor: EVENTO_COLORS.navy }}
@@ -61,7 +63,7 @@ export default function EventoDashboardPage() {
             </p>
             <h1 className="mt-1 text-3xl font-black">Dashboard do evento</h1>
             <p className="mt-1 text-sm text-white/75">
-              {EVENTO_GUTEMBERG.name} {EVENTO_GUTEMBERG.year} - {EVENTO_GUTEMBERG.date} as {EVENTO_GUTEMBERG.time} - {EVENTO_GUTEMBERG.venue}
+              {EVENTO_GUTEMBERG.date} ({EVENTO_GUTEMBERG.weekday}) às {EVENTO_GUTEMBERG.time} — {EVENTO_GUTEMBERG.venue}
             </p>
           </div>
           <Button onClick={load} disabled={loading} variant="outline" className="border-white bg-white text-zinc-950 hover:bg-zinc-100">
@@ -85,13 +87,13 @@ export default function EventoDashboardPage() {
         </section>
 
         <section className="mt-4 grid gap-4 sm:grid-cols-2">
-          <Metric label="Tentativas invalidas" value={data.tentativasInvalidas} tone="red" />
+          <Metric label="Tentativas inválidas" value={data.tentativasInvalidas} tone="red" />
           <Metric label="Convites reutilizados" value={data.convitesReutilizados} tone="red" />
         </section>
 
         <section className="mt-6 overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm">
           <div className="border-b border-zinc-200 p-4">
-            <h2 className="text-xl font-extrabold">Ultimas validacoes</h2>
+            <h2 className="text-xl font-extrabold">Últimas validações</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[760px] text-left text-sm">

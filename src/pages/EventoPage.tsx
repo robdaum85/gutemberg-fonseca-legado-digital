@@ -1,24 +1,17 @@
 import { useState } from "react";
-import { CalendarDays, Loader2, MapPin, ShieldCheck, Vote } from "lucide-react";
+import { CalendarDays, Clock3, Loader2, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import EventoMapa from "@/components/evento/EventoMapa";
-import { EventoHero } from "@/components/evento/EventoHero";
 import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
 import {
   cadastrarEvento,
   isEventoApiConfigured,
   type EventoCadastroPayload,
 } from "@/lib/eventoApi";
-
-const CATEGORIAS = [
-  "Convidado",
-  "Apoiador",
-  "Lideranca",
-];
 
 const initialForm: EventoCadastroPayload = {
   nome: "",
@@ -27,7 +20,7 @@ const initialForm: EventoCadastroPayload = {
   email: "",
   cidade: "",
   bairro: "",
-  categoria: "Convidado",
+  categoria: "Liderança",
   lgpd: false,
   observacoes: "",
 };
@@ -90,8 +83,6 @@ export default function EventoPage() {
       navigate("/evento/sucesso", {
         state: {
           nome: response.nome ?? form.nome,
-          codigo: response.codigo,
-          qrcodeUrl: response.qrcodeUrl,
         },
       });
     } catch (err) {
@@ -107,58 +98,78 @@ export default function EventoPage() {
       className="min-h-screen text-zinc-950"
       style={{ backgroundColor: EVENTO_COLORS.lightGray }}
     >
-      <EventoHero variant="full" />
       <section
-        className="relative overflow-hidden border-b border-white/10"
-        style={{ backgroundColor: EVENTO_COLORS.navy }}
+        className="relative overflow-hidden border-b border-zinc-200 py-6 lg:py-10"
+        style={{ backgroundColor: EVENTO_COLORS.backgroundLight }}
       >
-        <div className="absolute inset-x-0 top-0 h-2" style={{ backgroundColor: EVENTO_COLORS.yellow }} />
-        <div className="absolute bottom-0 left-0 h-24 w-full" style={{ backgroundColor: EVENTO_COLORS.green }} />
+        <div
+          className="absolute inset-x-0 top-0 h-1.5"
+          style={{
+            background: `linear-gradient(90deg, ${EVENTO_COLORS.green} 0 34%, ${EVENTO_COLORS.gold} 34% 66%, ${EVENTO_COLORS.navy} 66%)`,
+          }}
+        />
 
-        <div className="relative mx-auto grid max-w-6xl gap-8 px-5 py-10 lg:grid-cols-[.95fr_1.05fr] lg:py-14">
-          <div className="flex flex-col justify-center text-white">
-            <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-sm font-bold text-white ring-1 ring-white/15">
-              <ShieldCheck className="h-4 w-4" />
-              Credenciamento oficial
+        <div className="relative mx-auto grid max-w-7xl items-start gap-5 px-4 sm:px-5 lg:grid-cols-[minmax(360px,.82fr)_minmax(0,1.18fr)] lg:gap-8">
+          <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl lg:sticky lg:top-6">
+            <img
+              src="/evento/palestra-comunicacao-2026.jpeg"
+              alt="Cartaz da Palestra de Comunicação com Gutemberg Fonseca"
+              className="hidden h-auto w-full lg:block"
+              loading="eager"
+              fetchpriority="high"
+            />
+
+            <div className="h-[300px] overflow-hidden sm:h-[400px] lg:hidden">
+              <img
+                src="/evento/palestra-comunicacao-2026.jpeg"
+                alt="Cartaz da Palestra de Comunicação com Gutemberg Fonseca"
+                className="h-full w-full object-cover object-top"
+                loading="eager"
+                fetchpriority="high"
+              />
             </div>
-            <p className="text-sm font-black uppercase tracking-[0.18em]" style={{ color: EVENTO_COLORS.yellow }}>
-              {EVENTO_GUTEMBERG.title}
-            </p>
-            <h1 className="mt-2 text-4xl font-black leading-tight md:text-6xl">
-              {EVENTO_GUTEMBERG.name}
-            </h1>
-            <div className="mt-3 flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-2 text-sm font-black" style={{ color: EVENTO_COLORS.navy }}>
-                <Vote className="h-4 w-4" />
-                {EVENTO_GUTEMBERG.office}
-              </span>
-              <span className="text-5xl font-black leading-none" style={{ color: EVENTO_COLORS.yellow }}>
-                {EVENTO_GUTEMBERG.year}
-              </span>
+
+            <div className="p-4 sm:p-5 lg:hidden">
+              <p className="text-xs font-black uppercase tracking-[0.14em]" style={{ color: EVENTO_COLORS.green }}>
+                {EVENTO_GUTEMBERG.attention}
+              </p>
+              <h1 className="mt-1 text-2xl font-black leading-tight" style={{ color: EVENTO_COLORS.navy }}>
+                {EVENTO_GUTEMBERG.title}
+              </h1>
+              <p className="mt-2 text-sm font-semibold leading-relaxed" style={{ color: EVENTO_COLORS.blue }}>
+                {EVENTO_GUTEMBERG.theme}
+              </p>
+
+              <div className="mt-4 grid grid-cols-2 gap-2 text-xs font-bold">
+                <span className="flex items-center gap-2 rounded-md bg-zinc-50 p-2.5 ring-1 ring-zinc-200">
+                  <CalendarDays className="h-4 w-4 shrink-0" style={{ color: EVENTO_COLORS.navy }} />
+                  {EVENTO_GUTEMBERG.date}
+                </span>
+                <span className="flex items-center gap-2 rounded-md bg-zinc-50 p-2.5 ring-1 ring-zinc-200">
+                  <Clock3 className="h-4 w-4 shrink-0" style={{ color: EVENTO_COLORS.navy }} />
+                  {EVENTO_GUTEMBERG.time}
+                </span>
+                <span className="col-span-2 flex items-center gap-2 rounded-md bg-zinc-50 p-2.5 ring-1 ring-zinc-200">
+                  <MapPin className="h-4 w-4 shrink-0" style={{ color: EVENTO_COLORS.navy }} />
+                  {EVENTO_GUTEMBERG.venue}
+                </span>
+              </div>
             </div>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/82">
-              Garanta sua credencial para o evento. O cadastro gera um código único
-              e um QR Code para apresentar na entrada.
-            </p>
-            <div className="mt-6 grid gap-3 text-sm font-bold sm:grid-cols-2">
-              <span className="flex items-center gap-2 rounded-md bg-white/10 p-3 ring-1 ring-white/10">
-                <CalendarDays className="h-5 w-5" style={{ color: EVENTO_COLORS.yellow }} />
-                {EVENTO_GUTEMBERG.date} as {EVENTO_GUTEMBERG.time}
-              </span>
-              <span className="flex items-center gap-2 rounded-md bg-white/10 p-3 ring-1 ring-white/10">
-                <MapPin className="h-5 w-5" style={{ color: EVENTO_COLORS.yellow }} />
-                {EVENTO_GUTEMBERG.venue}
-              </span>
-            </div>
-            <p className="mt-3 max-w-xl text-sm font-medium text-white/72">
-              {EVENTO_GUTEMBERG.address}
-            </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="rounded-lg border border-white/20 bg-white p-5 shadow-2xl md:p-7">
+          <form onSubmit={handleSubmit} className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xl sm:p-7 lg:p-8">
             <div className="mb-5 border-b border-zinc-200 pb-4">
-              <p className="text-xs font-black uppercase tracking-[0.16em]" style={{ color: EVENTO_COLORS.green }}>
-                Inscricao
+              <p className="hidden text-xs font-black uppercase tracking-[0.16em] lg:block" style={{ color: EVENTO_COLORS.green }}>
+                {EVENTO_GUTEMBERG.attention}
+              </p>
+              <h1 className="mt-1 hidden text-3xl font-black leading-tight lg:block" style={{ color: EVENTO_COLORS.navy }}>
+                Inscrição para a {EVENTO_GUTEMBERG.title}
+              </h1>
+              <p className="mt-2 hidden text-sm font-medium leading-relaxed text-zinc-600 lg:block">
+                {EVENTO_GUTEMBERG.date}, às {EVENTO_GUTEMBERG.time}, no {EVENTO_GUTEMBERG.venue}.
+              </p>
+              <p className="text-xs font-black uppercase tracking-[0.16em] lg:mt-6" style={{ color: EVENTO_COLORS.green }}>
+                Credenciamento
               </p>
               <h2 className="mt-1 text-xl font-extrabold">Dados do participante</h2>
             </div>
@@ -240,29 +251,32 @@ export default function EventoPage() {
               </div>
 
               <div className="sm:col-span-2">
-                <Label htmlFor="evento-categoria">Categoria</Label>
+                <Label htmlFor="evento-categoria">Status *</Label>
                 <select
                   id="evento-categoria"
                   value={form.categoria}
-                  onChange={(event) => updateField("categoria", event.target.value)}
-                  className="mt-2 h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  onChange={(event) => {
+                    const categoria = event.target.value;
+                    updateField("categoria", categoria);
+                    if (categoria !== "Convidado") updateField("observacoes", "");
+                  }}
+                  className="mt-2 h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  required
                 >
-                  {CATEGORIAS.map((categoria) => (
-                    <option key={categoria} value={categoria}>
-                      {categoria}
-                    </option>
-                  ))}
+                  <option value="Liderança">Liderança</option>
+                  <option value="Convidado">Convidado</option>
                 </select>
               </div>
 
               {form.categoria === "Convidado" && (
                 <div className="sm:col-span-2">
-                  <Label htmlFor="evento-convidado-por">Quem te convidou?</Label>
+                  <Label htmlFor="evento-convidado-por">Quem convidou? *</Label>
                   <Input
                     id="evento-convidado-por"
                     value={form.observacoes}
                     onChange={(event) => updateField("observacoes", event.target.value)}
                     className="mt-2"
+                    required
                   />
                 </div>
               )}
@@ -288,7 +302,7 @@ export default function EventoPage() {
               style={{ backgroundColor: EVENTO_COLORS.green }}
             >
               {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-              {loading ? "Gerando credencial..." : "Concluir cadastro"}
+              {loading ? "Enviando cadastro..." : "Concluir cadastro"}
             </Button>
           </form>
         </div>

@@ -1,29 +1,20 @@
 import { EVENTO_COLORS } from "@/config/evento";
 
 type EventoHeroProps = {
-  /**
-   * "full": banner exibido por inteiro, sem corte, trocando para a arte
-   * vertical (stories) no mobile. Usado no topo do /evento.
-   * "compact": recorta a faixa superior do banner desktop (a arte mobile e
-   * um poster vertical de stories, nao serve para recorte em faixa baixa).
-   * Usado em paginas secundarias (sucesso, checkin).
-   */
   variant?: "full" | "compact";
+  theme?: "dark" | "light";
 };
 
-const HERO_DESKTOP_JPG = "/hero/herodesktop.jpg";
-const HERO_DESKTOP_WEBP = "/hero/herodesktop.webp";
-const HERO_MOBILE_JPG = "/hero/heromobile.jpg";
-const HERO_MOBILE_WEBP = "/hero/heromobile.webp";
+const HERO_IMAGE = "/evento/palestra-comunicacao-2026.jpeg";
 
 const ALT_TEXT =
-  "Lançamento Pré-Campanha - Deputado Federal Gutemberg Fonseca, 27/07 as 19h no Espaco Hall";
+  "Palestra de Comunicação com Gutemberg Fonseca, dia 13 de julho de 2026 às 16h30, no Windsor Barra Hotel";
 
 // Lowercase "fetchpriority" (vs. React 19's camelCase fetchPriority) avoids a
 // DOM-attribute warning on this project's React 18.
 function eventoHeroImgProps(className: string) {
   return {
-    src: HERO_DESKTOP_JPG,
+    src: HERO_IMAGE,
     alt: ALT_TEXT,
     className,
     loading: "eager" as const,
@@ -31,38 +22,38 @@ function eventoHeroImgProps(className: string) {
   };
 }
 
-export function EventoHero({ variant = "full" }: EventoHeroProps) {
+export function EventoHero({ variant = "full", theme = "dark" }: EventoHeroProps) {
+  const backgroundColor = theme === "light" ? EVENTO_COLORS.backgroundLight : EVENTO_COLORS.navy;
+
   if (variant === "compact") {
     return (
       <div
-        className="relative h-40 w-full overflow-hidden md:h-52"
-        style={{ backgroundColor: EVENTO_COLORS.navy }}
+        className={`evento-hero evento-hero--theme-${theme} relative h-44 w-full overflow-hidden md:h-64`}
+        style={{ backgroundColor }}
       >
-        <picture>
-          <source srcSet={HERO_DESKTOP_WEBP} type="image/webp" />
-          <img
-            {...eventoHeroImgProps("absolute inset-0 h-full w-full object-cover object-top")}
-          />
-        </picture>
+        <img
+          {...eventoHeroImgProps("absolute inset-0 h-full w-full object-cover object-top")}
+        />
+        <div
+          className="evento-hero__overlay pointer-events-none absolute inset-0"
+          style={{
+            background:
+              theme === "light"
+                ? "linear-gradient(180deg, rgba(239,241,246,0) 40%, rgba(239,241,246,0.9) 100%)"
+                : "linear-gradient(180deg, rgba(2,53,120,0) 35%, rgba(5,15,35,0.72) 100%)",
+          }}
+          aria-hidden="true"
+        />
       </div>
     );
   }
 
   return (
     <div
-      className="flex h-[340px] max-h-[340px] w-full justify-center overflow-hidden md:h-[340px] md:max-h-[340px] lg:h-[380px] lg:max-h-[380px] xl:h-auto xl:max-h-none xl:overflow-visible"
-      style={{ backgroundColor: EVENTO_COLORS.navy }}
+      className={`evento-hero evento-hero--theme-${theme} flex h-[min(150vw,720px)] min-h-[420px] w-full justify-center overflow-hidden md:h-[min(78vh,760px)] md:min-h-[560px]`}
+      style={{ backgroundColor }}
     >
-      <picture className="block h-full w-full xl:h-auto">
-        <source media="(max-width: 767px)" srcSet={HERO_MOBILE_WEBP} type="image/webp" />
-        <source media="(max-width: 767px)" srcSet={HERO_MOBILE_JPG} />
-        <source srcSet={HERO_DESKTOP_WEBP} type="image/webp" />
-        <img
-          {...eventoHeroImgProps(
-            "h-full w-full max-w-none object-cover object-top md:w-[200%] md:object-[0%_25%] xl:h-auto xl:w-full xl:max-w-full",
-          )}
-        />
-      </picture>
+      <img {...eventoHeroImgProps("h-full w-full object-contain object-top")} />
     </div>
   );
 }

@@ -390,7 +390,7 @@ export default function EventoCheckinPage() {
                   id="manual-code"
                   value={manualCode}
                   onChange={(event) => setManualCode(event.target.value.toUpperCase())}
-                  placeholder="GTB26-A8K3P9"
+                  placeholder="GTBPAL-A8K3P9"
                 />
                 <Button
                   size="icon"
