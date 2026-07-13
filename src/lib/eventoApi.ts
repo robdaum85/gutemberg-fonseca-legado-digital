@@ -45,24 +45,27 @@ export type EventoValidarResponse = {
   message?: string;
 };
 
+export type EventoDashboardParticipante = {
+  id: string;
+  nome: string;
+  categoria: string;
+  convidadoPor: string;
+  fotoRealizada: boolean;
+  videoRealizado: boolean;
+  statusMidia: "PENDENTE" | "VALIDADO";
+  dataAtualizacao: string;
+  horaAtualizacao: string;
+};
+
 export type EventoDashboardResponse = {
   success: boolean;
   totalInscritos: number;
+  totalFotos: number;
+  totalVideos: number;
   totalValidados: number;
   totalPendentes: number;
-  percentualComparecimento: number;
-  ultimasValidacoes: Array<{
-    data: string;
-    hora: string;
-    codigo: string;
-    resultado: string;
-    nome: string;
-    fiscal: string;
-    portaria: string;
-    observacao: string;
-  }>;
-  tentativasInvalidas: number;
-  convitesReutilizados: number;
+  percentualConcluido: number;
+  participantes: EventoDashboardParticipante[];
   message?: string;
 };
 
@@ -142,6 +145,18 @@ export function carregarDashboard() {
   return get<EventoDashboardResponse>("dashboard");
 }
 
+export function atualizarMidiaParticipante(
+  participanteId: string,
+  fotoRealizada: boolean,
+  videoRealizado: boolean,
+) {
+  return post<EventoDashboardResponse>("atualizarmidia", {
+    participanteId,
+    fotoRealizada,
+    videoRealizado,
+  });
+}
+
 export function normalizeCodigo(value: string) {
   return value.trim().toUpperCase();
 }
@@ -158,4 +173,3 @@ export function extractCodigoFromScan(value: string) {
     return normalizeCodigo(match ? decodeURIComponent(match[1]) : trimmed);
   }
 }
-

@@ -19,6 +19,7 @@ const SPREADSHEET_ID = "1omMi6g2ntDj6-avj2S9PdWNBJZXXAnINoCmy1tYeprU";
 const BASE_VALIDATION_URL = "https://gutembergfonseca.com.br/evento/checkin";
 const INSCRITOS_SHEET = "inscritos_palestra_20260713";
 const LOGS_SHEET = "logs_palestra_20260713";
+const CONTROLE_MIDIA_SHEET = "controle_midia_20260713";
 const APP_TOKEN_PROPERTY = "APP_TOKEN";
 const SISTEMA_ATIVO_PROPERTY = "SISTEMA_ATIVO";
 const CODIGO_COLUMN = 2;
@@ -54,6 +55,19 @@ const LOG_HEADERS = [
   "fiscal",
   "portaria",
   "observacao",
+];
+
+const CONTROLE_MIDIA_HEADERS = [
+  "id_registro",
+  "participante_id",
+  "codigo",
+  "nome",
+  "foto_realizada",
+  "video_realizado",
+  "status_midia",
+  "data_atualizacao",
+  "hora_atualizacao",
+  "origem",
 ];
 
 function doGet(e) {
@@ -104,6 +118,10 @@ function doPost(e) {
         return json_(unauthorized_());
       }
       return json_(validar_(payload));
+    }
+    if (action === "atualizarmidia") {
+      if (!authorized_(payload.token)) return json_(unauthorized_());
+      return json_(atualizarMidia_(payload));
     }
     return json_({ success: false, message: "Acao invalida." });
   } catch (err) {
@@ -285,27 +303,85 @@ function validar_(payload) {
 
 function dashboard_() {
   const rows = readRows_(INSCRITOS_SHEET, INSCRITOS_HEADERS);
-  const logs = readRows_(LOGS_SHEET, LOG_HEADERS);
+  const controles = readRows_(CONTROLE_MIDIA_SHEET, CONTROLE_MIDIA_HEADERS);
+  const controlePorParticipante = {};
+
+  controles.forEach(function(controle) {
+    controlePorParticipante[clean_(controle.participante_id)] = controle;
+  });
+
+  const participantes = rows.map(function(row) {
+    const controle = controlePorParticipante[clean_(row.id)] || {};
+    const fotoRealizada = bool_(controle.foto_realizada);
+    const videoRealizado = bool_(controle.video_realizado);
+    return {
+      id: clean_(row.id),
+      nome: clean_(row.nome),
+      categoria: clean_(row.categoria),
+      convidadoPor: clean_(row.observacoes),
+      fotoRealizada: fotoRealizada,
+      videoRealizado: videoRealizado,
+      statusMidia: fotoRealizada && videoRealizado ? "VALIDADO" : "PENDENTE",
+      dataAtualizacao: clean_(controle.data_atualizacao),
+      horaAtualizacao: clean_(controle.hora_atualizacao),
+    };
+  });
+
   const totalInscritos = rows.length;
-  const totalValidados = rows.filter(function(row) { return row.status === "VALIDADO"; }).length;
-  const totalPendentes = rows.filter(function(row) { return row.status === "PENDENTE"; }).length;
-  const ultimasValidacoes = logs.slice(-20).reverse();
+  const totalFotos = participantes.filter(function(item) { return item.fotoRealizada; }).length;
+  const totalVideos = participantes.filter(function(item) { return item.videoRealizado; }).length;
+  const totalValidados = participantes.filter(function(item) { return item.statusMidia === "VALIDADO"; }).length;
+  const totalPendentes = totalInscritos - totalValidados;
 
   return {
     success: true,
     totalInscritos: totalInscritos,
+    totalFotos: totalFotos,
+    totalVideos: totalVideos,
     totalValidados: totalValidados,
     totalPendentes: totalPendentes,
-    percentualComparecimento: totalInscritos ? Math.round((totalValidados / totalInscritos) * 1000) / 10 : 0,
-    ultimasValidacoes: ultimasValidacoes,
-    tentativasInvalidas: logs.filter(function(log) { return log.resultado === "CODIGO_NAO_ENCONTRADO"; }).length,
-    convitesReutilizados: logs.filter(function(log) { return log.resultado === "JA_VALIDADO"; }).length,
+    percentualConcluido: totalInscritos ? Math.round((totalValidados / totalInscritos) * 1000) / 10 : 0,
+    participantes: participantes,
   };
+}
+
+function atualizarMidia_(payload) {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    const participanteId = clean_(payload.participanteId);
+    const participante = findById_(participanteId);
+    if (!participante) {
+      return { success: false, message: "Participante nao encontrado." };
+    }
+
+    const fotoRealizada = bool_(payload.fotoRealizada);
+    const videoRealizado = bool_(payload.videoRealizado);
+    const now = new Date();
+
+    getSheet_(CONTROLE_MIDIA_SHEET).appendRow([
+      Utilities.getUuid(),
+      participanteId,
+      clean_(participante.row.codigo),
+      clean_(participante.row.nome),
+      fotoRealizada ? "SIM" : "NAO",
+      videoRealizado ? "SIM" : "NAO",
+      fotoRealizada && videoRealizado ? "VALIDADO" : "PENDENTE",
+      date_(now),
+      time_(now),
+      "DASHBOARD",
+    ]);
+
+    return dashboard_();
+  } finally {
+    lock.releaseLock();
+  }
 }
 
 function setupSheets_() {
   ensureSheet_(INSCRITOS_SHEET, INSCRITOS_HEADERS);
   ensureSheet_(LOGS_SHEET, LOG_HEADERS);
+  ensureSheet_(CONTROLE_MIDIA_SHEET, CONTROLE_MIDIA_HEADERS);
 }
 
 function ensureSheet_(name, headers) {
@@ -333,6 +409,12 @@ function findByCpf_(cpf) {
   const digits = onlyDigits_(cpf);
   if (!digits) return null;
   return findRowByColumnValue_(CPF_COLUMN, digits);
+}
+
+function findById_(id) {
+  const normalized = clean_(id);
+  if (!normalized) return null;
+  return findRowByColumnValue_(1, normalized);
 }
 
 function findRowByColumnValue_(column, value) {
@@ -414,6 +496,12 @@ function clean_(value) {
 
 function onlyDigits_(value) {
   return String(value || "").replace(/\D/g, "");
+}
+
+function bool_(value) {
+  if (value === true) return true;
+  const normalized = clean_(value).toUpperCase();
+  return normalized === "TRUE" || normalized === "SIM" || normalized === "1";
 }
 
 function date_(date) {
