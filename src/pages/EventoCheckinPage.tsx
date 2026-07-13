@@ -62,7 +62,7 @@ type FiscalConfig = {
 };
 
 type CheckinResult =
-  | ({ kind: "consulta" } & EventoConsultaResponse)
+  | ({ kind: "consulta"; lookup: "codigo" | "cpf" } & EventoConsultaResponse)
   | ({ kind: "validacao" } & EventoValidarResponse);
 
 export default function EventoCheckinPage() {
@@ -214,10 +214,11 @@ export default function EventoCheckinPage() {
     setResult(null);
     try {
       const response = await consultarCodigo(normalized);
-      setResult({ kind: "consulta", ...response });
+      setResult({ kind: "consulta", lookup: "codigo", ...response });
     } catch (err) {
       setResult({
         kind: "consulta",
+        lookup: "codigo",
         success: false,
         message: err instanceof Error ? err.message : "Erro ao consultar código.",
       });
@@ -228,17 +229,26 @@ export default function EventoCheckinPage() {
 
   async function consultByCpf() {
     const digits = onlyDigits(cpfQuery, 11);
-    if (!digits) return;
+    if (digits.length !== 11) {
+      setResult({
+        kind: "consulta",
+        lookup: "cpf",
+        success: false,
+        message: "Informe os 11 dígitos do CPF para verificar o cadastro.",
+      });
+      return;
+    }
 
     setLoading(true);
     setResult(null);
     try {
       const response = await consultarPorCpf(digits);
-      setResult({ kind: "consulta", ...response });
+      setResult({ kind: "consulta", lookup: "cpf", ...response });
       if (response.codigo) setManualCode(response.codigo);
     } catch (err) {
       setResult({
         kind: "consulta",
+        lookup: "cpf",
         success: false,
         message: err instanceof Error ? err.message : "Erro ao buscar CPF.",
       });
@@ -405,8 +415,11 @@ export default function EventoCheckinPage() {
               </div>
 
               <Label htmlFor="cpf-query" className="mt-4 block">
-                Buscar por CPF (para quem nao tem o QR Code)
+                Verificar cadastro por CPF
               </Label>
+              <p className="mt-1 text-xs text-zinc-500">
+                Use esta busca quando a pessoa se cadastrou online e não estiver com o QR Code.
+              </p>
               <div className="mt-2 flex gap-2">
                 <Input
                   id="cpf-query"
@@ -459,12 +472,17 @@ function ResultCard({
   }
 
   if (!result.success || result.resultado === "CODIGO_NAO_ENCONTRADO") {
+    const isCpfLookup = result.kind === "consulta" && result.lookup === "cpf";
     return (
       <div className="mt-5 rounded-lg border border-red-200 bg-red-50 p-4 text-red-800">
         <XCircle className="mb-2 h-7 w-7" />
-        <h2 className="text-xl font-extrabold">Código não encontrado</h2>
+        <h2 className="text-xl font-extrabold">
+          {isCpfLookup ? "Cadastro não encontrado" : "Código não encontrado"}
+        </h2>
         <p className="mt-2 text-sm font-semibold">
-          {result.message ?? "Verifique o QR Code ou digite o código manualmente."}
+          {result.message ?? (isCpfLookup
+            ? "Confira o CPF informado antes de realizar um novo cadastro."
+            : "Verifique o QR Code ou digite o código manualmente.")}
         </p>
         <Button variant="outline" className="mt-4 w-full" onClick={onDismiss}>
           Escanear proximo

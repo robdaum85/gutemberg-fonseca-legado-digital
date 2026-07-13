@@ -11,6 +11,7 @@ import {
   isEventoApiConfigured,
   type EventoDashboardParticipante,
   type EventoDashboardResponse,
+  type EventoMidiaUpdateResponse,
 } from "@/lib/eventoApi";
 
 type Draft = {
@@ -163,8 +164,60 @@ export default function EventoDashboardPage() {
     setDrafts(nextDrafts);
   }
 
+  function applySavedMedia(
+    response: EventoMidiaUpdateResponse,
+    participante: EventoDashboardParticipante,
+    draft: Draft,
+  ) {
+    // Compatibilidade com o backend anterior, que devolvia o dashboard inteiro.
+    if (response.participantes) {
+      applyResponse(response as EventoDashboardResponse, true, new Set([participante.id]));
+      return;
+    }
+
+    const fotoRealizada = response.fotoRealizada ?? draft.fotoRealizada;
+    const videoRealizado = response.videoRealizado ?? draft.videoRealizado;
+    const participantes = dataRef.current.participantes.map((item) =>
+      item.id === participante.id
+        ? {
+            ...item,
+            fotoRealizada,
+            videoRealizado,
+            statusMidia: response.statusMidia ?? (fotoRealizada && videoRealizado ? "VALIDADO" : "PENDENTE"),
+            dataAtualizacao: response.dataAtualizacao ?? item.dataAtualizacao,
+            horaAtualizacao: response.horaAtualizacao ?? item.horaAtualizacao,
+          }
+        : item,
+    );
+    const totalFotos = participantes.filter((item) => item.fotoRealizada).length;
+    const totalVideos = participantes.filter((item) => item.videoRealizado).length;
+    const totalValidados = participantes.filter((item) => item.fotoRealizada && item.videoRealizado).length;
+    const nextData: EventoDashboardResponse = {
+      ...dataRef.current,
+      success: true,
+      participantes,
+      totalFotos,
+      totalVideos,
+      totalValidados,
+      totalPendentes: participantes.length - totalValidados,
+      percentualConcluido: participantes.length
+        ? Math.round((totalValidados / participantes.length) * 1000) / 10
+        : 0,
+    };
+    const nextDrafts = {
+      ...draftsRef.current,
+      [participante.id]: { fotoRealizada, videoRealizado },
+    };
+
+    dataRef.current = nextData;
+    draftsRef.current = nextDrafts;
+    setData(nextData);
+    setDrafts(nextDrafts);
+    setLastSync(new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
+  }
+
   async function save(participante: EventoDashboardParticipante) {
-    const draft = drafts[participante.id] ?? draftFrom(participante);
+    const draft = draftsRef.current[participante.id] ?? draftFrom(participante);
     setError("");
     mutationVersionRef.current += 1;
     const nextSavingIds = new Set(savingIdsRef.current).add(participante.id);
@@ -183,7 +236,7 @@ export default function EventoDashboardPage() {
         return;
       }
 
-      applyResponse(response, true, new Set([participante.id]));
+      applySavedMedia(response, participante, draft);
     } catch (err) {
       setError(err instanceof Error ? err.message : `Erro ao atualizar ${participante.nome}.`);
     } finally {
@@ -217,12 +270,10 @@ export default function EventoDashboardPage() {
         const matchesCategory = category === "todas" || participante.categoria === category;
         return matchesSearch && matchesFilter && matchesCategory;
       })
-      .sort((a, b) => {
-        const rank = { pendente: 0, parcial: 1, validado: 2 };
-        const aProgress = progressOf(drafts[a.id] ?? draftFrom(a));
-        const bProgress = progressOf(drafts[b.id] ?? draftFrom(b));
-        return rank[aProgress] - rank[bProgress] || a.nome.localeCompare(b.nome, "pt-BR");
-      });
+      // Manter a posição visual estável ao marcar Foto/Vídeo. Ordenar pelo
+      // andamento fazia o participante mudar de lugar antes mesmo de salvar,
+      // dando a impressão de que o nome havia sido alterado.
+      .sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
   }, [category, data.participantes, drafts, filter, search]);
 
   useEffect(() => {

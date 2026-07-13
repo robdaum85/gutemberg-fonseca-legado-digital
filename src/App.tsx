@@ -29,6 +29,7 @@ const AniversarioPage = lazy(() => import("./pages/AniversarioPage"));
 const EventoPage = lazy(() => import("./pages/EventoPage"));
 const EventoSucessoPage = lazy(() => import("./pages/EventoSucessoPage"));
 const EventoDashboardPage = lazy(() => import("./pages/EventoDashboardPage"));
+const EventoCheckinPage = lazy(() => import("./pages/EventoCheckinPage"));
 
 const queryClient = new QueryClient();
 
@@ -114,7 +115,7 @@ const App = () => (
                 />
                 <Route
                   path="/evento/checkin"
-                  element={<Navigate to="/evento" replace />}
+                  element={<EventoCheckinPage />}
                 />
                 <Route path="*" element={<NotFound />} />
             </Routes>

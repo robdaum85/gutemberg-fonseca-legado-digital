@@ -4,7 +4,7 @@
 
 - `/evento`: formulario publico de cadastro.
 - `/evento/sucesso`: confirmacao com codigo e QR Code.
-- `/evento/checkin`: tela da portaria com camera e digitacao manual.
+- `/evento/checkin`: tela da portaria com camera, digitacao manual e verificacao de cadastro por CPF.
 - `/evento/dashboard`: indicadores simples do evento.
 
 ## Configuracao do site
@@ -47,5 +47,6 @@ O script cria automaticamente as abas `inscritos` e `logs_validacao` com os cabe
   - `portaria02` / `Gutemberg@02`
   - `portaria03` / `Gutemberg@03`
 - A portaria precisa informar a entrada uma vez por aparelho; o fiscal vem do login e os dados ficam no navegador.
+- Quando o participante estiver sem o QR Code, a equipe pode informar o CPF para confirmar se o cadastro online ja existe e, se estiver pendente, registrar a entrada normalmente.
 - A validacao usa bloqueio no Apps Script para evitar dupla validacao simultanea.
 - O indice de inscritos fica em cache por curto periodo para acelerar consultas em uma lista de milhares de pessoas.

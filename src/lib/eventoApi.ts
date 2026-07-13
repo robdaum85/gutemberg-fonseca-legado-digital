@@ -69,6 +69,17 @@ export type EventoDashboardResponse = {
   message?: string;
 };
 
+export type EventoMidiaUpdateResponse = Partial<EventoDashboardResponse> & {
+  success: boolean;
+  participanteId?: string;
+  fotoRealizada?: boolean;
+  videoRealizado?: boolean;
+  statusMidia?: "PENDENTE" | "VALIDADO";
+  dataAtualizacao?: string;
+  horaAtualizacao?: string;
+  message?: string;
+};
+
 const API_URL = import.meta.env.VITE_EVENTO_API_URL?.trim() ?? "";
 const API_TOKEN = import.meta.env.VITE_EVENTO_API_TOKEN?.trim() ?? "";
 
@@ -149,7 +160,7 @@ export function atualizarMidiaParticipante(
   participanteId: string,
   changes: Partial<Pick<EventoDashboardParticipante, "fotoRealizada" | "videoRealizado">>,
 ) {
-  return post<EventoDashboardResponse>("atualizarmidia", {
+  return post<EventoMidiaUpdateResponse>("atualizarmidia", {
     participanteId,
     ...changes,
   });

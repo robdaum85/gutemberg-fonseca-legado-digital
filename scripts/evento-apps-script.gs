@@ -349,6 +349,7 @@ function dashboard_() {
 function atualizarMidia_(payload) {
   const lock = LockService.getScriptLock();
   lock.waitLock(20000);
+  let response;
   try {
     const participanteId = clean_(payload.participanteId);
     const participante = findById_(participanteId);
@@ -382,11 +383,22 @@ function atualizarMidia_(payload) {
       "DASHBOARD",
     ]);
 
+    SpreadsheetApp.flush();
+    response = {
+      success: true,
+      participanteId: participanteId,
+      fotoRealizada: fotoRealizada,
+      videoRealizado: videoRealizado,
+      statusMidia: fotoRealizada && videoRealizado ? "VALIDADO" : "PENDENTE",
+      dataAtualizacao: date_(now),
+      horaAtualizacao: time_(now),
+    };
+
   } finally {
     lock.releaseLock();
   }
 
-  return dashboard_();
+  return response;
 }
 
 function setupSheets_() {
