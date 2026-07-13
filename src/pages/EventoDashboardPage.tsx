@@ -327,7 +327,7 @@ export default function EventoDashboardPage() {
           </div>
         )}
 
-        <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <section className="mt-6 hidden gap-3 lg:grid lg:grid-cols-5">
           <Metric label="Total de inscritos" value={data.totalInscritos} />
           <Metric label="Fotos realizadas" value={data.totalFotos} tone="blue" icon={<Camera />} />
           <Metric label="Vídeos realizados" value={data.totalVideos} tone="blue" icon={<Video />} />
