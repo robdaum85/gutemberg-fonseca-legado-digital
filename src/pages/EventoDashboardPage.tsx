@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { EventoHero } from "@/components/evento/EventoHero";
+import { EventoCadastroRapido } from "@/components/evento/EventoCadastroRapido";
 import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
 import {
   atualizarMidiaParticipante,
@@ -461,6 +462,7 @@ export default function EventoDashboardPage() {
           )}
         </section>
       </div>
+      <EventoCadastroRapido onRegistered={() => void load({ preserveDrafts: true })} />
     </main>
   );
 }
