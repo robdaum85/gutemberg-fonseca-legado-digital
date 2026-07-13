@@ -8,6 +8,14 @@ export default defineConfig({
     port: 8080,
   },
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        evento: path.resolve(__dirname, "evento.html"),
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
