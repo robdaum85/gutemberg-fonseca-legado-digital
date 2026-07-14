@@ -26,9 +26,11 @@ const CatadoresDeLixoPage = lazy(() => import("./pages/CatadoresDeLixoPage"));
 const MotociclistasPage = lazy(() => import("./pages/MotociclistasPage"));
 const SegurancaPage = lazy(() => import("./pages/SegurancaPage"));
 const AniversarioPage = lazy(() => import("./pages/AniversarioPage"));
-const EventoPage = lazy(() => import("./pages/EventoPage"));
-const EventoSucessoPage = lazy(() => import("./pages/EventoSucessoPage"));
-const EventoDashboardPage = lazy(() => import("./pages/EventoDashboardPage"));
+// Páginas do evento temporariamente fora do ar. Descomente os imports e as
+// rotas abaixo para reativá-las no futuro.
+// const EventoPage = lazy(() => import("./pages/EventoPage"));
+// const EventoSucessoPage = lazy(() => import("./pages/EventoSucessoPage"));
+// const EventoDashboardPage = lazy(() => import("./pages/EventoDashboardPage"));
 const EventoCheckinPage = lazy(() => import("./pages/EventoCheckinPage"));
 
 const queryClient = new QueryClient();
@@ -104,6 +106,7 @@ const App = () => (
                 <Route path="/motociclistas" element={<MotociclistasPage />} />
                 <Route path="/seguranca" element={<SegurancaPage />} />
                 <Route path="/aniversario" element={<AniversarioPage />} />
+                {/* Páginas do evento temporariamente fora do ar.
                 <Route path="/evento" element={<EventoPage />} />
                 <Route
                   path="/evento/sucesso"
@@ -113,6 +116,7 @@ const App = () => (
                   path="/evento/dashboard"
                   element={<EventoDashboardPage />}
                 />
+                */}
                 <Route
                   path="/evento/checkin"
                   element={<EventoCheckinPage />}
