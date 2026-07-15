@@ -14,19 +14,24 @@ const InstagramFeed = () => {
 
   const instagramPosts = [
     {
-      url: 'https://www.instagram.com/reel/DajEqnptyVQ/?igsh=MWs2ZDU1dmt5MGYybQ%3D%3D',
-      image: '/instagram/DajEqnptyVQ.jpg',
+      url: 'https://www.instagram.com/p/DawJ2iwmt_B/?igsh=c3Fuc3hhbHRibHV6',
+      image: '/instagram/DawJ2iwmt_B.jpg',
+      type: 'post' as const,
+    },
+    {
+      url: 'https://www.instagram.com/p/Dax344KkXLX/?igsh=Y3ZpNWZqbTFta281',
+      image: '/instagram/Dax344KkXLX.jpg',
+      type: 'post' as const,
+    },
+    {
+      url: 'https://www.instagram.com/reel/Dayg82sBNHs/?igsh=MTBhYWU0cTFoNW1rbQ%3D%3D',
+      image: '/instagram/Dayg82sBNHs.jpg',
       type: 'reel' as const,
     },
     {
-      url: 'https://www.instagram.com/reel/DagyHs_O8G3/?igsh=MTExdHNlMmk1Zm1wbg%3D%3D',
-      image: '/instagram/DagyHs_O8G3.jpg',
-      type: 'reel' as const,
-    },
-    {
-      url: 'https://www.instagram.com/reel/Dak5ZjZxkDC/?igsh=dndvazJzdDVzbTFj',
-      image: '/instagram/Dak5ZjZxkDC.jpg',
-      type: 'reel' as const,
+      url: 'https://www.instagram.com/p/DayxovqGh0O/?igsh=YzB4dXo3c2oyd3Zt',
+      image: '/instagram/DayxovqGh0O.jpg',
+      type: 'post' as const,
     },
   ];
 
@@ -57,10 +62,10 @@ const InstagramFeed = () => {
             </a>
           </div>
 
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {instagramPosts.map((post, index) => (
               <div
-                key={index}
+                key={post.url}
                 className={`transition-all duration-700`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
