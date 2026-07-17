@@ -1,13 +1,11 @@
 export type EventoCadastroPayload = {
   nome: string;
-  cpf: string;
+  cpf?: string;
   telefone: string;
   email: string;
   cidade: string;
   bairro: string;
-  categoria: string;
   lgpd: boolean;
-  observacoes?: string;
 };
 
 export type EventoCadastroResponse = {

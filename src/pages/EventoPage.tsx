@@ -21,9 +21,7 @@ const initialForm: EventoCadastroPayload = {
   email: "",
   cidade: "",
   bairro: "",
-  categoria: "Liderança",
   lgpd: false,
-  observacoes: "",
 };
 
 function onlyDigits(value: string, max: number) {
@@ -64,6 +62,11 @@ export default function EventoPage() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
+
+    if (form.cpf && onlyDigits(form.cpf, 11).length !== 11) {
+      setError("Informe um CPF válido ou deixe o campo em branco.");
+      return;
+    }
 
     if (!form.lgpd) {
       setError("Autorize o uso dos dados para concluir a inscrição.");
@@ -158,8 +161,8 @@ export default function EventoPage() {
                   <Input id="evento-nome" value={form.nome} onChange={(event) => updateField("nome", event.target.value)} className="mt-2" autoComplete="name" required />
                 </div>
                 <div>
-                  <Label htmlFor="evento-cpf">CPF *</Label>
-                  <Input id="evento-cpf" inputMode="numeric" value={form.cpf} onChange={(event) => updateField("cpf", formatCpf(event.target.value))} className="mt-2" required />
+                  <Label htmlFor="evento-cpf">CPF (opcional)</Label>
+                  <Input id="evento-cpf" inputMode="numeric" value={form.cpf ?? ""} onChange={(event) => updateField("cpf", formatCpf(event.target.value))} className="mt-2" />
                 </div>
                 <div>
                   <Label htmlFor="evento-telefone">Telefone / WhatsApp *</Label>
@@ -177,28 +180,6 @@ export default function EventoPage() {
                   <Label htmlFor="evento-bairro">Bairro *</Label>
                   <Input id="evento-bairro" value={form.bairro} onChange={(event) => updateField("bairro", event.target.value)} className="mt-2" autoComplete="address-level3" required />
                 </div>
-                <div className="sm:col-span-2">
-                  <Label htmlFor="evento-categoria">Status *</Label>
-                  <select
-                    id="evento-categoria"
-                    value={form.categoria}
-                    onChange={(event) => {
-                      updateField("categoria", event.target.value);
-                      if (event.target.value !== "Convidado") updateField("observacoes", "");
-                    }}
-                    className="mt-2 h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    required
-                  >
-                    <option value="Liderança">Liderança</option>
-                    <option value="Convidado">Convidado</option>
-                  </select>
-                </div>
-                {form.categoria === "Convidado" && (
-                  <div className="sm:col-span-2">
-                    <Label htmlFor="evento-convidado-por">Quem convidou? *</Label>
-                    <Input id="evento-convidado-por" value={form.observacoes} onChange={(event) => updateField("observacoes", event.target.value)} className="mt-2" required />
-                  </div>
-                )}
               </div>
 
               <label className="mt-5 flex items-start gap-3 rounded-md border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">

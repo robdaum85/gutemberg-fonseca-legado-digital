@@ -162,14 +162,14 @@ function cadastro_(payload) {
     const telefone = clean_(payload.telefone);
     const email = clean_(payload.email);
 
-    if (!nome || cpf.length !== 11 || !telefone || !email) {
+    if (!nome || !telefone || !email || (cpf && cpf.length !== 11)) {
       return { success: false, message: "Dados obrigatorios ausentes ou invalidos." };
     }
     if (payload.lgpd !== true && payload.lgpd !== "true") {
       return { success: false, message: "E necessario autorizar o uso dos dados (LGPD)." };
     }
 
-    const existente = findByCpf_(cpf);
+    const existente = cpf ? findByCpf_(cpf) : null;
     if (existente) {
       return {
         success: true,
@@ -197,7 +197,7 @@ function cadastro_(payload) {
       email,
       clean_(payload.cidade),
       clean_(payload.bairro),
-      clean_(payload.categoria || "Lideranca/Coordenador"),
+      "",
       "PENDENTE",
       qrcodeUrl,
       date_(now),
@@ -206,7 +206,7 @@ function cadastro_(payload) {
       "",
       "",
       "SITE",
-      clean_(payload.observacoes),
+      "",
     ]);
     return { success: true, codigo: codigo, qrcodeUrl: qrcodeUrl, nome: nome };
   } finally {
