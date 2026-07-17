@@ -1,21 +1,21 @@
 export const EVENTO_GUTEMBERG = {
-  attention: "Atenção, lideranças e coordenadores!",
-  title: "Palestra de Comunicação",
-  theme: "Comunicação eficaz para a pré-campanha e foto oficial",
+  attention: "Inscrições abertas",
+  title: "Grande Evento São Gonçalo",
+  theme: "Grande Evento São Gonçalo - Luiz Social",
   name: "Gutemberg Fonseca",
   year: "2026",
-  date: "13/07/2026",
-  weekday: "segunda-feira",
-  time: "16h30",
-  venue: "Windsor Barra Hotel",
-  address: "Av. Lúcio Costa, 2630 - Barra da Tijuca, Rio de Janeiro - RJ",
+  date: "17/07/2026",
+  weekday: "sexta-feira",
+  time: "20h",
+  venue: "Luiz Social",
+  address: "Av. Humberto de Alencar Castelo Branco, 2820 - Rocha, São Gonçalo - RJ",
   slogan: "Juntos somos mais fortes",
-  lat: -23.0114386,
-  lng: -43.3217887,
+  lat: -22.8269,
+  lng: -43.0634,
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=" +
     encodeURIComponent(
-      "Windsor Barra Hotel, Av. Lúcio Costa, 2630 - Barra da Tijuca, Rio de Janeiro - RJ",
+      "Luiz Social, Av. Humberto de Alencar Castelo Branco, 2820 - Rocha, São Gonçalo - RJ",
     ),
 };
 

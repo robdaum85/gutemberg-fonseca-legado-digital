@@ -1,10 +1,10 @@
-import { CheckCircle2, Instagram, MessageCircle, X } from "lucide-react";
+import { useEffect } from "react";
+import { CalendarDays, CheckCircle2, Clock3, MapPin } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
-import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
-
-const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/EQnrzZVVdhmH3HsfpHoXRL";
-const INSTAGRAM_URL = "https://www.instagram.com/gutembergpfonseca/";
+import { EVENTO_GUTEMBERG } from "@/config/evento";
 
 type SuccessState = {
   nome?: string;
@@ -12,80 +12,65 @@ type SuccessState = {
 
 export default function EventoSucessoPage() {
   const { state } = useLocation();
-  const { nome } = (state ?? {}) as SuccessState;
+  const nome = ((state ?? {}) as SuccessState).nome?.trim();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <main
-      id="conteudo-principal"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-8"
-      style={{ backgroundColor: EVENTO_COLORS.backgroundLight }}
-    >
-      <img
-        src="/evento/palestra-comunicacao-2026.jpeg"
-        alt=""
-        className="absolute inset-0 h-full w-full scale-105 object-cover object-center opacity-25 blur-[2px]"
-        aria-hidden="true"
-      />
-      <div className="absolute inset-0 bg-white/65" aria-hidden="true" />
+    <div className="min-h-screen bg-slate-50">
+      <Header />
+      <main id="conteudo-principal" tabIndex={-1} className="bg-primary px-4 pb-16 pt-32 md:pb-24 md:pt-40">
+        <section className="container mx-auto max-w-2xl rounded-2xl bg-white p-6 text-center shadow-2xl sm:p-10">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-600 text-white">
+            <CheckCircle2 className="h-9 w-9" />
+          </div>
+          <p className="mt-6 text-sm font-bold uppercase tracking-widest text-primary">
+            {EVENTO_GUTEMBERG.title}
+          </p>
+          <h1 className="mt-2 text-3xl font-extrabold text-slate-900 sm:text-4xl">
+            Inscrição realizada com sucesso!
+          </h1>
+          <p className="mt-4 text-lg text-slate-700">
+            {nome ? `Obrigado, ${nome}!` : "Obrigado por se inscrever!"}
+          </p>
+          <p className="mx-auto mt-2 max-w-lg leading-relaxed text-slate-600">
+            Agradecemos a sua confirmação. Esperamos você no Grande Evento São Gonçalo.
+          </p>
 
-      <section className="relative w-full max-w-lg rounded-2xl border border-white/80 bg-white/95 p-6 text-center shadow-2xl backdrop-blur-sm sm:p-9">
-        <Button
-          asChild
-          variant="ghost"
-          size="icon"
-          className="absolute right-3 top-3 rounded-full text-zinc-500 hover:bg-zinc-100 hover:text-zinc-950"
-        >
-          <Link to="/" aria-label="Fechar e voltar para o site principal">
-            <X className="h-5 w-5" />
-          </Link>
-        </Button>
+          <div className="mt-7 space-y-3 rounded-xl bg-slate-50 p-5 text-left">
+            <div className="flex items-start gap-3">
+              <CalendarDays className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <div><strong className="block text-slate-900">Data</strong><span className="text-slate-600">{EVENTO_GUTEMBERG.date}</span></div>
+            </div>
+            <div className="flex items-start gap-3">
+              <Clock3 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <div><strong className="block text-slate-900">Horário</strong><span className="text-slate-600">20:00</span></div>
+            </div>
+            <div className="flex items-start gap-3">
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <div>
+                <strong className="block text-slate-900">{EVENTO_GUTEMBERG.venue}</strong>
+                <span className="text-slate-600">{EVENTO_GUTEMBERG.address}</span>
+              </div>
+            </div>
+          </div>
 
-        <div
-          className="mx-auto flex h-16 w-16 items-center justify-center rounded-full text-white shadow-lg"
-          style={{ backgroundColor: EVENTO_COLORS.green }}
-        >
-          <CheckCircle2 className="h-9 w-9" />
-        </div>
-
-        <p
-          className="mt-5 text-xs font-black uppercase tracking-[0.16em]"
-          style={{ color: EVENTO_COLORS.green }}
-        >
-          {EVENTO_GUTEMBERG.title}
-        </p>
-        <h1 className="mt-2 text-3xl font-black leading-tight sm:text-4xl" style={{ color: EVENTO_COLORS.navy }}>
-          Cadastro feito com sucesso!
-        </h1>
-        {nome && <p className="mt-3 text-lg font-bold text-zinc-800">Obrigado, {nome}.</p>}
-        <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-zinc-600 sm:text-base">
-          Sua inscrição foi confirmada. Entre no nosso grupo para acompanhar os avisos e as próximas ações.
-        </p>
-
-        <Button
-          asChild
-          size="lg"
-          className="mt-7 h-auto min-h-11 w-full whitespace-normal py-3 font-black leading-tight text-white hover:opacity-95"
-          style={{ backgroundColor: EVENTO_COLORS.green }}
-        >
-          <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer">
-            <MessageCircle className="h-5 w-5" />
-            Entrar no grupo Exército do Consumidor
-          </a>
-        </Button>
-
-        <div className="my-6 flex items-center gap-3" aria-hidden="true">
-          <span className="h-px flex-1 bg-zinc-200" />
-          <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">Siga nossas redes</span>
-          <span className="h-px flex-1 bg-zinc-200" />
-        </div>
-
-        <Button asChild variant="outline" size="lg" className="w-full font-bold">
-          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
-            <Instagram className="h-5 w-5" />
-            Seguir no Instagram
-          </a>
-        </Button>
-      </section>
-    </main>
+          <div className="mt-7 grid gap-3 sm:grid-cols-2">
+            <Button asChild size="lg" className="font-bold">
+              <a href={EVENTO_GUTEMBERG.mapsUrl} target="_blank" rel="noopener noreferrer">
+                <MapPin className="h-4 w-4" />
+                Abrir rota
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="font-bold">
+              <Link to="/">Voltar ao site</Link>
+            </Button>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
   );
 }

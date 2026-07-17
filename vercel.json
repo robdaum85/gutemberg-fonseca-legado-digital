@@ -43,10 +43,6 @@
       "destination": "/evento.html"
     },
     {
-      "source": "/evento/dashboard",
-      "destination": "/evento.html"
-    },
-    {
       "source": "/blog",
       "destination": "/index.html"
     },

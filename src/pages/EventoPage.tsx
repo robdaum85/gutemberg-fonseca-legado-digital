@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CalendarDays, Clock3, Loader2, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import EventoMapa from "@/components/evento/EventoMapa";
-import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
+import { EVENTO_GUTEMBERG } from "@/config/evento";
 import {
   cadastrarEvento,
   isEventoApiConfigured,
@@ -30,8 +31,7 @@ function onlyDigits(value: string, max: number) {
 }
 
 function formatCpf(value: string) {
-  const digits = onlyDigits(value, 11);
-  return digits
+  return onlyDigits(value, 11)
     .replace(/(\d{3})(\d)/, "$1.$2")
     .replace(/(\d{3})(\d)/, "$1.$2")
     .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
@@ -39,10 +39,9 @@ function formatCpf(value: string) {
 
 function formatPhone(value: string) {
   const digits = onlyDigits(value, 11);
-  if (digits.length > 10) {
-    return digits.replace(/(\d{2})(\d{5})(\d{1,4})/, "($1) $2-$3");
-  }
-  return digits.replace(/(\d{2})(\d{4})(\d{1,4})/, "($1) $2-$3");
+  return digits.length > 10
+    ? digits.replace(/(\d{2})(\d{5})(\d{1,4})/, "($1) $2-$3")
+    : digits.replace(/(\d{2})(\d{4})(\d{1,4})/, "($1) $2-$3");
 }
 
 export default function EventoPage() {
@@ -50,6 +49,10 @@ export default function EventoPage() {
   const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   function updateField<K extends keyof EventoCadastroPayload>(
     key: K,
@@ -63,12 +66,12 @@ export default function EventoPage() {
     setError("");
 
     if (!form.lgpd) {
-      setError("Autorize o uso dos dados para concluir o credenciamento.");
+      setError("Autorize o uso dos dados para concluir a inscrição.");
       return;
     }
 
     if (!isEventoApiConfigured()) {
-      setError("Configure VITE_EVENTO_API_URL para ativar o cadastro na planilha.");
+      setError("O cadastro está temporariamente indisponível. Tente novamente em instantes.");
       return;
     }
 
@@ -76,14 +79,12 @@ export default function EventoPage() {
     try {
       const response = await cadastrarEvento(form);
       if (!response.success) {
-        setError(response.message ?? "Nao foi possivel concluir o cadastro.");
+        setError(response.message ?? "Não foi possível concluir o cadastro.");
         return;
       }
 
       navigate("/evento/sucesso", {
-        state: {
-          nome: response.nome ?? form.nome,
-        },
+        state: { nome: response.nome ?? form.nome },
       });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erro ao enviar cadastro.");
@@ -93,221 +94,127 @@ export default function EventoPage() {
   }
 
   return (
-    <main
-      id="conteudo-principal"
-      className="min-h-screen text-zinc-950"
-      style={{ backgroundColor: EVENTO_COLORS.lightGray }}
-    >
-      <section
-        className="relative overflow-hidden border-b border-zinc-200 py-6 lg:py-10"
-        style={{ backgroundColor: EVENTO_COLORS.backgroundLight }}
-      >
-        <div
-          className="absolute inset-x-0 top-0 h-1.5"
-          style={{
-            background: `linear-gradient(90deg, ${EVENTO_COLORS.green} 0 34%, ${EVENTO_COLORS.gold} 34% 66%, ${EVENTO_COLORS.navy} 66%)`,
-          }}
-        />
+    <div className="min-h-screen bg-slate-50">
+      <Header />
+      <main id="conteudo-principal" tabIndex={-1}>
+        <section className="bg-primary px-4 pb-16 pt-32 text-white md:pb-20 md:pt-36">
+          <div className="container mx-auto max-w-6xl">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-300">
+              {EVENTO_GUTEMBERG.attention}
+            </p>
+            <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl">
+              {EVENTO_GUTEMBERG.title}
+            </h1>
+            <p className="mt-3 text-xl font-semibold text-white/85">{EVENTO_GUTEMBERG.venue}</p>
 
-        <div className="relative mx-auto grid max-w-7xl items-start gap-5 px-4 sm:px-5 lg:grid-cols-[minmax(360px,.82fr)_minmax(0,1.18fr)] lg:gap-8">
-          <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl lg:sticky lg:top-6">
-            <img
-              src="/evento/palestra-comunicacao-2026.jpeg"
-              alt="Cartaz da Palestra de Comunicação com Gutemberg Fonseca"
-              className="hidden h-auto w-full lg:block"
-              loading="eager"
-              fetchpriority="high"
-            />
-
-            <div className="h-[300px] overflow-hidden sm:h-[400px] lg:hidden">
-              <img
-                src="/evento/palestra-comunicacao-2026.jpeg"
-                alt="Cartaz da Palestra de Comunicação com Gutemberg Fonseca"
-                className="h-full w-full object-cover object-top"
-                loading="eager"
-                fetchpriority="high"
-              />
-            </div>
-
-            <div className="p-4 sm:p-5 lg:hidden">
-              <p className="text-xs font-black uppercase tracking-[0.14em]" style={{ color: EVENTO_COLORS.green }}>
-                {EVENTO_GUTEMBERG.attention}
-              </p>
-              <h1 className="mt-1 text-2xl font-black leading-tight" style={{ color: EVENTO_COLORS.navy }}>
-                {EVENTO_GUTEMBERG.title}
-              </h1>
-              <p className="mt-2 text-sm font-semibold leading-relaxed" style={{ color: EVENTO_COLORS.blue }}>
-                {EVENTO_GUTEMBERG.theme}
-              </p>
-
-              <div className="mt-4 grid grid-cols-2 gap-2 text-xs font-bold">
-                <span className="flex items-center gap-2 rounded-md bg-zinc-50 p-2.5 ring-1 ring-zinc-200">
-                  <CalendarDays className="h-4 w-4 shrink-0" style={{ color: EVENTO_COLORS.navy }} />
-                  {EVENTO_GUTEMBERG.date}
-                </span>
-                <span className="flex items-center gap-2 rounded-md bg-zinc-50 p-2.5 ring-1 ring-zinc-200">
-                  <Clock3 className="h-4 w-4 shrink-0" style={{ color: EVENTO_COLORS.navy }} />
-                  {EVENTO_GUTEMBERG.time}
-                </span>
-                <span className="col-span-2 flex items-center gap-2 rounded-md bg-zinc-50 p-2.5 ring-1 ring-zinc-200">
-                  <MapPin className="h-4 w-4 shrink-0" style={{ color: EVENTO_COLORS.navy }} />
-                  {EVENTO_GUTEMBERG.venue}
-                </span>
+            <div className="mt-8 grid max-w-5xl gap-3 text-sm font-semibold sm:grid-cols-2 lg:grid-cols-4">
+              <div className="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 p-4">
+                <CalendarDays className="h-5 w-5 shrink-0 text-emerald-300" />
+                <span>{EVENTO_GUTEMBERG.date}</span>
+              </div>
+              <div className="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 p-4">
+                <Clock3 className="h-5 w-5 shrink-0 text-emerald-300" />
+                <span>20:00</span>
+              </div>
+              <div className="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 p-4 sm:col-span-2">
+                <MapPin className="h-5 w-5 shrink-0 text-emerald-300" />
+                <span>{EVENTO_GUTEMBERG.address}</span>
               </div>
             </div>
           </div>
+        </section>
 
-          <form onSubmit={handleSubmit} className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xl sm:p-7 lg:p-8">
-            <div className="mb-5 border-b border-zinc-200 pb-4">
-              <p className="hidden text-xs font-black uppercase tracking-[0.16em] lg:block" style={{ color: EVENTO_COLORS.green }}>
-                {EVENTO_GUTEMBERG.attention}
-              </p>
-              <h1 className="mt-1 hidden text-3xl font-black leading-tight lg:block" style={{ color: EVENTO_COLORS.navy }}>
-                Inscrição para a {EVENTO_GUTEMBERG.title}
-              </h1>
-              <p className="mt-2 hidden text-sm font-medium leading-relaxed text-zinc-600 lg:block">
-                {EVENTO_GUTEMBERG.date}, às {EVENTO_GUTEMBERG.time}, no {EVENTO_GUTEMBERG.venue}.
-              </p>
-              <p className="text-xs font-black uppercase tracking-[0.16em] lg:mt-6" style={{ color: EVENTO_COLORS.green }}>
-                Credenciamento
-              </p>
-              <h2 className="mt-1 text-xl font-extrabold">Dados do participante</h2>
+        <section className="px-4 py-12 md:py-16">
+          <div className="container mx-auto grid max-w-6xl items-start gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="rounded-2xl bg-primary p-6 text-white shadow-lg md:p-8">
+              <p className="text-sm font-bold uppercase tracking-widest text-emerald-300">Local do evento</p>
+              <h2 className="mt-3 text-3xl font-extrabold">{EVENTO_GUTEMBERG.venue}</h2>
+              <p className="mt-4 leading-relaxed text-white/80">{EVENTO_GUTEMBERG.address}</p>
+              <a
+                href={EVENTO_GUTEMBERG.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-bold text-primary transition-opacity hover:opacity-90"
+              >
+                <MapPin className="h-4 w-4" />
+                Abrir rota no mapa
+              </a>
             </div>
 
-            {error && (
-              <div className="mb-5 rounded-md border border-red-200 bg-red-50 p-3 text-sm font-medium text-red-700">
-                {error}
-              </div>
-            )}
+            <form onSubmit={handleSubmit} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-lg sm:p-8">
+              <p className="text-sm font-bold uppercase tracking-widest text-primary">Inscrição</p>
+              <h2 className="mt-2 text-3xl font-extrabold text-slate-900">Garanta sua presença</h2>
+              <p className="mt-2 text-slate-600">Preencha seus dados para participar do evento.</p>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="sm:col-span-2">
-                <Label htmlFor="evento-nome">Nome completo *</Label>
-                <Input
-                  id="evento-nome"
-                  value={form.nome}
-                  onChange={(event) => updateField("nome", event.target.value)}
-                  className="mt-2"
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="evento-cpf">CPF *</Label>
-                <Input
-                  id="evento-cpf"
-                  inputMode="numeric"
-                  value={form.cpf}
-                  onChange={(event) => updateField("cpf", formatCpf(event.target.value))}
-                  className="mt-2"
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="evento-telefone">Telefone / WhatsApp *</Label>
-                <Input
-                  id="evento-telefone"
-                  inputMode="tel"
-                  value={form.telefone}
-                  onChange={(event) => updateField("telefone", formatPhone(event.target.value))}
-                  className="mt-2"
-                  required
-                />
-              </div>
-
-              <div className="sm:col-span-2">
-                <Label htmlFor="evento-email">E-mail *</Label>
-                <Input
-                  id="evento-email"
-                  type="email"
-                  value={form.email}
-                  onChange={(event) => updateField("email", event.target.value)}
-                  className="mt-2"
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="evento-cidade">Cidade *</Label>
-                <Input
-                  id="evento-cidade"
-                  value={form.cidade}
-                  onChange={(event) => updateField("cidade", event.target.value)}
-                  className="mt-2"
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="evento-bairro">Bairro *</Label>
-                <Input
-                  id="evento-bairro"
-                  value={form.bairro}
-                  onChange={(event) => updateField("bairro", event.target.value)}
-                  className="mt-2"
-                  required
-                />
-              </div>
-
-              <div className="sm:col-span-2">
-                <Label htmlFor="evento-categoria">Status *</Label>
-                <select
-                  id="evento-categoria"
-                  value={form.categoria}
-                  onChange={(event) => {
-                    const categoria = event.target.value;
-                    updateField("categoria", categoria);
-                    if (categoria !== "Convidado") updateField("observacoes", "");
-                  }}
-                  className="mt-2 h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  required
-                >
-                  <option value="Liderança">Liderança</option>
-                  <option value="Convidado">Convidado</option>
-                </select>
-              </div>
-
-              {form.categoria === "Convidado" && (
-                <div className="sm:col-span-2">
-                  <Label htmlFor="evento-convidado-por">Quem convidou? *</Label>
-                  <Input
-                    id="evento-convidado-por"
-                    value={form.observacoes}
-                    onChange={(event) => updateField("observacoes", event.target.value)}
-                    className="mt-2"
-                    required
-                  />
+              {error && (
+                <div role="alert" className="mt-5 rounded-md border border-red-200 bg-red-50 p-3 text-sm font-medium text-red-700">
+                  {error}
                 </div>
               )}
-            </div>
 
-            <label className="mt-5 flex items-start gap-3 rounded-md border border-zinc-200 bg-zinc-50 p-3 text-sm text-zinc-700">
-              <Checkbox
-                checked={form.lgpd}
-                onCheckedChange={(checked) => updateField("lgpd", checked === true)}
-                className="mt-0.5"
-              />
-              <span>
-                Autorizo o uso dos meus dados para organização, comunicação e controle
-                de entrada deste evento.
-              </span>
-            </label>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <div className="sm:col-span-2">
+                  <Label htmlFor="evento-nome">Nome completo *</Label>
+                  <Input id="evento-nome" value={form.nome} onChange={(event) => updateField("nome", event.target.value)} className="mt-2" autoComplete="name" required />
+                </div>
+                <div>
+                  <Label htmlFor="evento-cpf">CPF *</Label>
+                  <Input id="evento-cpf" inputMode="numeric" value={form.cpf} onChange={(event) => updateField("cpf", formatCpf(event.target.value))} className="mt-2" required />
+                </div>
+                <div>
+                  <Label htmlFor="evento-telefone">Telefone / WhatsApp *</Label>
+                  <Input id="evento-telefone" inputMode="tel" value={form.telefone} onChange={(event) => updateField("telefone", formatPhone(event.target.value))} className="mt-2" autoComplete="tel" required />
+                </div>
+                <div className="sm:col-span-2">
+                  <Label htmlFor="evento-email">E-mail *</Label>
+                  <Input id="evento-email" type="email" value={form.email} onChange={(event) => updateField("email", event.target.value)} className="mt-2" autoComplete="email" required />
+                </div>
+                <div>
+                  <Label htmlFor="evento-cidade">Cidade *</Label>
+                  <Input id="evento-cidade" value={form.cidade} onChange={(event) => updateField("cidade", event.target.value)} className="mt-2" autoComplete="address-level2" required />
+                </div>
+                <div>
+                  <Label htmlFor="evento-bairro">Bairro *</Label>
+                  <Input id="evento-bairro" value={form.bairro} onChange={(event) => updateField("bairro", event.target.value)} className="mt-2" autoComplete="address-level3" required />
+                </div>
+                <div className="sm:col-span-2">
+                  <Label htmlFor="evento-categoria">Status *</Label>
+                  <select
+                    id="evento-categoria"
+                    value={form.categoria}
+                    onChange={(event) => {
+                      updateField("categoria", event.target.value);
+                      if (event.target.value !== "Convidado") updateField("observacoes", "");
+                    }}
+                    className="mt-2 h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    required
+                  >
+                    <option value="Liderança">Liderança</option>
+                    <option value="Convidado">Convidado</option>
+                  </select>
+                </div>
+                {form.categoria === "Convidado" && (
+                  <div className="sm:col-span-2">
+                    <Label htmlFor="evento-convidado-por">Quem convidou? *</Label>
+                    <Input id="evento-convidado-por" value={form.observacoes} onChange={(event) => updateField("observacoes", event.target.value)} className="mt-2" required />
+                  </div>
+                )}
+              </div>
 
-            <Button
-              type="submit"
-              className="mt-6 w-full font-black text-white hover:opacity-95"
-              size="lg"
-              disabled={loading}
-              style={{ backgroundColor: EVENTO_COLORS.green }}
-            >
-              {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-              {loading ? "Enviando cadastro..." : "Concluir cadastro"}
-            </Button>
-          </form>
-        </div>
-      </section>
-      <EventoMapa />
-    </main>
+              <label className="mt-5 flex items-start gap-3 rounded-md border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">
+                <Checkbox checked={form.lgpd} onCheckedChange={(checked) => updateField("lgpd", checked === true)} className="mt-0.5" />
+                <span>Autorizo o uso dos meus dados para organização e comunicação deste evento.</span>
+              </label>
+
+              <Button type="submit" size="lg" className="mt-6 w-full font-bold" disabled={loading}>
+                {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+                {loading ? "Enviando cadastro..." : "Concluir cadastro"}
+              </Button>
+            </form>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
   );
 }
