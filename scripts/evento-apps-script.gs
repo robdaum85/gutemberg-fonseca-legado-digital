@@ -22,6 +22,7 @@ const LOGS_SHEET = "logs_palestra_20260713";
 const CONTROLE_MIDIA_SHEET = "controle_midia_20260713";
 const APP_TOKEN_PROPERTY = "APP_TOKEN";
 const SISTEMA_ATIVO_PROPERTY = "SISTEMA_ATIVO";
+const CPF_NAO_INFORMADO = "00000000000";
 const CODIGO_COLUMN = 2;
 const CPF_COLUMN = 4;
 let spreadsheetCache_ = null;
@@ -169,7 +170,7 @@ function cadastro_(payload) {
       return { success: false, message: "E necessario autorizar o uso dos dados (LGPD)." };
     }
 
-    const existente = cpf ? findByCpf_(cpf) : null;
+    const existente = cpf && cpf !== CPF_NAO_INFORMADO ? findByCpf_(cpf) : null;
     if (existente) {
       return {
         success: true,
@@ -303,7 +304,10 @@ function validar_(payload) {
 }
 
 function dashboard_() {
-  const rows = readRows_(INSCRITOS_SHEET, INSCRITOS_HEADERS);
+  const hoje = date_(new Date());
+  const rows = readRows_(INSCRITOS_SHEET, INSCRITOS_HEADERS).filter(function(row) {
+    return clean_(row.data_cadastro) === hoje;
+  });
   const controles = readRows_(CONTROLE_MIDIA_SHEET, CONTROLE_MIDIA_HEADERS);
   const controlePorParticipante = {};
 

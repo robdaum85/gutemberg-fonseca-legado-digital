@@ -28,6 +28,7 @@ const SegurancaPage = lazy(() => import("./pages/SegurancaPage"));
 const AniversarioPage = lazy(() => import("./pages/AniversarioPage"));
 const EventoPage = lazy(() => import("./pages/EventoPage"));
 const EventoSucessoPage = lazy(() => import("./pages/EventoSucessoPage"));
+const EventoDashboardPage = lazy(() => import("./pages/EventoDashboardPage"));
 
 const queryClient = new QueryClient();
 
@@ -106,6 +107,10 @@ const App = () => (
                 <Route
                   path="/evento/sucesso"
                   element={<EventoSucessoPage />}
+                />
+                <Route
+                  path="/evento/dashboard"
+                  element={<EventoDashboardPage />}
                 />
                 <Route path="*" element={<NotFound />} />
             </Routes>

@@ -80,6 +80,7 @@ export type EventoMidiaUpdateResponse = Partial<EventoDashboardResponse> & {
 
 const API_URL = import.meta.env.VITE_EVENTO_API_URL?.trim() ?? "";
 const API_TOKEN = import.meta.env.VITE_EVENTO_API_TOKEN?.trim() ?? "";
+const CPF_NAO_INFORMADO = "00000000000";
 
 export function isEventoApiConfigured() {
   return API_URL.length > 0 && !API_URL.includes("SUBSTITUIR");
@@ -127,7 +128,10 @@ async function get<T>(action: string, params?: Record<string, string>): Promise<
 }
 
 export function cadastrarEvento(payload: EventoCadastroPayload) {
-  return post<EventoCadastroResponse>("cadastro", payload);
+  return post<EventoCadastroResponse>("cadastro", {
+    ...payload,
+    cpf: onlyDigitsCpf(payload.cpf ?? "") || CPF_NAO_INFORMADO,
+  });
 }
 
 export function consultarCodigo(codigo: string) {
