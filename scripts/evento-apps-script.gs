@@ -304,50 +304,45 @@ function validar_(payload) {
 }
 
 function dashboard_() {
-  const hoje = date_(new Date());
-  const rows = readRows_(INSCRITOS_SHEET, INSCRITOS_HEADERS).filter(function(row) {
-    return clean_(row.data_cadastro) === hoje;
-  });
-  const controles = readRows_(CONTROLE_MIDIA_SHEET, CONTROLE_MIDIA_HEADERS);
-  const controlePorParticipante = {};
-
-  controles.forEach(function(controle) {
-    controlePorParticipante[clean_(controle.participante_id)] = controle;
-  });
+  const rows = readRows_(INSCRITOS_SHEET, INSCRITOS_HEADERS);
 
   const participantes = rows.map(function(row) {
-    const controle = controlePorParticipante[clean_(row.id)] || {};
-    const fotoRealizada = bool_(controle.foto_realizada);
-    const videoRealizado = bool_(controle.video_realizado);
     return {
       id: clean_(row.id),
       nome: clean_(row.nome),
-      categoria: clean_(row.categoria),
-      convidadoPor: clean_(row.observacoes),
-      fotoRealizada: fotoRealizada,
-      videoRealizado: videoRealizado,
-      statusMidia: fotoRealizada && videoRealizado ? "VALIDADO" : "PENDENTE",
-      dataAtualizacao: clean_(controle.data_atualizacao),
-      horaAtualizacao: clean_(controle.hora_atualizacao),
+      telefone: clean_(row.telefone),
+      dataCadastro: clean_(row.data_cadastro),
+      horaCadastro: clean_(row.hora_cadastro),
+      bairro: clean_(row.bairro),
+      cidade: clean_(row.cidade),
     };
   });
 
-  const totalInscritos = rows.length;
-  const totalFotos = participantes.filter(function(item) { return item.fotoRealizada; }).length;
-  const totalVideos = participantes.filter(function(item) { return item.videoRealizado; }).length;
-  const totalValidados = participantes.filter(function(item) { return item.statusMidia === "VALIDADO"; }).length;
-  const totalPendentes = totalInscritos - totalValidados;
+  participantes.sort(function(a, b) {
+    return registrationTimestamp_(b.dataCadastro, b.horaCadastro) -
+      registrationTimestamp_(a.dataCadastro, a.horaCadastro);
+  });
 
   return {
     success: true,
-    totalInscritos: totalInscritos,
-    totalFotos: totalFotos,
-    totalVideos: totalVideos,
-    totalValidados: totalValidados,
-    totalPendentes: totalPendentes,
-    percentualConcluido: totalInscritos ? Math.round((totalValidados / totalInscritos) * 1000) / 10 : 0,
+    totalInscritos: participantes.length,
     participantes: participantes,
   };
+}
+
+function registrationTimestamp_(data, hora) {
+  const dateParts = clean_(data).split("/");
+  const timeParts = clean_(hora).split(":");
+  if (dateParts.length !== 3) return 0;
+
+  return new Date(
+    Number(dateParts[2]),
+    Number(dateParts[1]) - 1,
+    Number(dateParts[0]),
+    Number(timeParts[0] || 0),
+    Number(timeParts[1] || 0),
+    Number(timeParts[2] || 0),
+  ).getTime();
 }
 
 function atualizarMidia_(payload) {

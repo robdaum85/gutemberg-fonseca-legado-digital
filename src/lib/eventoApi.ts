@@ -46,35 +46,17 @@ export type EventoValidarResponse = {
 export type EventoDashboardParticipante = {
   id: string;
   nome: string;
-  categoria: string;
-  convidadoPor: string;
-  fotoRealizada: boolean;
-  videoRealizado: boolean;
-  statusMidia: "PENDENTE" | "VALIDADO";
-  dataAtualizacao: string;
-  horaAtualizacao: string;
+  telefone: string;
+  dataCadastro: string;
+  horaCadastro: string;
+  bairro: string;
+  cidade: string;
 };
 
 export type EventoDashboardResponse = {
   success: boolean;
   totalInscritos: number;
-  totalFotos: number;
-  totalVideos: number;
-  totalValidados: number;
-  totalPendentes: number;
-  percentualConcluido: number;
   participantes: EventoDashboardParticipante[];
-  message?: string;
-};
-
-export type EventoMidiaUpdateResponse = Partial<EventoDashboardResponse> & {
-  success: boolean;
-  participanteId?: string;
-  fotoRealizada?: boolean;
-  videoRealizado?: boolean;
-  statusMidia?: "PENDENTE" | "VALIDADO";
-  dataAtualizacao?: string;
-  horaAtualizacao?: string;
   message?: string;
 };
 
@@ -156,16 +138,6 @@ export function validarCodigo(codigo: string, fiscal: string, portaria: string) 
 
 export function carregarDashboard() {
   return get<EventoDashboardResponse>("dashboard");
-}
-
-export function atualizarMidiaParticipante(
-  participanteId: string,
-  changes: Partial<Pick<EventoDashboardParticipante, "fotoRealizada" | "videoRealizado">>,
-) {
-  return post<EventoMidiaUpdateResponse>("atualizarmidia", {
-    participanteId,
-    ...changes,
-  });
 }
 
 export function normalizeCodigo(value: string) {
