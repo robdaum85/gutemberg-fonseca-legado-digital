@@ -56,6 +56,10 @@ export type EventoDashboardParticipante = {
 export type EventoDashboardResponse = {
   success: boolean;
   totalInscritos: number;
+  totaisPorData: Array<{
+    data: string;
+    total: number;
+  }>;
   participantes: EventoDashboardParticipante[];
   message?: string;
 };

@@ -24,6 +24,7 @@ import {
 const emptyDashboard: EventoDashboardResponse = {
   success: false,
   totalInscritos: 0,
+  totaisPorData: [],
   participantes: [],
 };
 
@@ -61,6 +62,8 @@ export default function EventoDashboardPage() {
         ...emptyDashboard,
         ...response,
         participantes: response.participantes ?? [],
+        totaisPorData:
+          response.totaisPorData ?? buildTotalsByDate(response.participantes ?? []),
       });
       setLastSync(
         new Date().toLocaleTimeString("pt-BR", {
@@ -164,16 +167,20 @@ export default function EventoDashboardPage() {
           </div>
         )}
 
-        <section className="mt-6 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm sm:p-5">
-          <div className="flex items-center gap-3">
-            <span className="rounded-lg bg-blue-50 p-3 text-blue-800">
-              <Users className="h-6 w-6" />
-            </span>
-            <div>
-              <p className="text-sm font-semibold text-zinc-500">Total de inscritos</p>
-              <p className="text-3xl font-extrabold">{data.totalInscritos}</p>
-            </div>
-          </div>
+        <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <SummaryCard
+            label="Total de inscritos"
+            value={data.totalInscritos}
+            icon={<Users className="h-6 w-6" />}
+          />
+          {data.totaisPorData.map((item) => (
+            <SummaryCard
+              key={item.data}
+              label={item.data === "Sem data" ? item.data : `Inscritos em ${item.data}`}
+              value={item.total}
+              icon={<CalendarDays className="h-6 w-6" />}
+            />
+          ))}
         </section>
 
         <section className="mt-6 overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
@@ -283,6 +290,40 @@ function registrationTimestamp(data?: string, hora?: string) {
   const [hour = 0, minute = 0, second = 0] = (hora ?? "").split(":").map(Number);
   if (!day || !month || !year) return 0;
   return new Date(year, month - 1, day, hour, minute, second).getTime();
+}
+
+function buildTotalsByDate(participantes: EventoDashboardParticipante[]) {
+  const totals = new Map<string, number>();
+  participantes.forEach((participante) => {
+    const date = participante.dataCadastro || "Sem data";
+    totals.set(date, (totals.get(date) ?? 0) + 1);
+  });
+
+  return Array.from(totals, ([data, total]) => ({ data, total })).sort(
+    (a, b) => registrationTimestamp(b.data) - registrationTimestamp(a.data),
+  );
+}
+
+function SummaryCard({
+  label,
+  value,
+  icon,
+}: {
+  label: string;
+  value: number;
+  icon: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm sm:p-5">
+      <div className="flex items-center gap-3">
+        <span className="rounded-lg bg-blue-50 p-3 text-blue-800">{icon}</span>
+        <div>
+          <p className="text-sm font-semibold text-zinc-500">{label}</p>
+          <p className="text-3xl font-extrabold">{value}</p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function ParticipantRow({ participante }: { participante: EventoDashboardParticipante }) {

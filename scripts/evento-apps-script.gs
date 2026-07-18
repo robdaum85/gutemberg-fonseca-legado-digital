@@ -323,9 +323,23 @@ function dashboard_() {
       registrationTimestamp_(a.dataCadastro, a.horaCadastro);
   });
 
+  const totaisPorDataMap = {};
+  participantes.forEach(function(participante) {
+    const data = participante.dataCadastro || "Sem data";
+    totaisPorDataMap[data] = (totaisPorDataMap[data] || 0) + 1;
+  });
+
+  const totaisPorData = Object.keys(totaisPorDataMap).map(function(data) {
+    return { data: data, total: totaisPorDataMap[data] };
+  });
+  totaisPorData.sort(function(a, b) {
+    return registrationTimestamp_(b.data, "") - registrationTimestamp_(a.data, "");
+  });
+
   return {
     success: true,
     totalInscritos: participantes.length,
+    totaisPorData: totaisPorData,
     participantes: participantes,
   };
 }
