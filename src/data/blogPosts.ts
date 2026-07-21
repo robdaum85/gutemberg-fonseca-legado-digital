@@ -37,6 +37,101 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "divida-ativa-como-consultar-regularizar-debitos",
+    source: "Blog",
+    category: "Direitos do Cidadão",
+    title: "Um débito esquecido pode virar dívida ativa",
+    subTitle:
+      "IPVA, IPTU, multas, impostos e taxas que não foram pagos podem entrar na cobrança oficial do governo e, em casos mais avançados, chegar à Justiça.",
+    excerpt:
+      "IPVA, IPTU, multas e taxas atrasadas podem ser inscritos em dívida ativa. Entenda os riscos, onde consultar e como regularizar o débito.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-23T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/divida-ativa-como-consultar-regularizar-debitos.png",
+    coverImageAlt:
+      "Pessoa consultando no computador informações sobre impostos e débitos inscritos em dívida ativa.",
+    metaTitle: "Dívida ativa: como consultar e regularizar débitos",
+    metaDescription:
+      "IPVA, IPTU, multas e taxas atrasadas podem ser inscritos em dívida ativa. Entenda os riscos, onde consultar e como regularizar o débito.",
+    readingTime: "4 min de leitura",
+    tags: [
+      "Consultar dívida ativa",
+      "Dívida ativa no CPF",
+      "REGULARIZE PGFN",
+      "Débito de IPVA",
+      "Débito de IPTU",
+      "Execução fiscal",
+      "Negociação de dívida pública",
+    ],
+    featured: true,
+    content: `
+      <p><strong>Uma guia vencida parece um problema pequeno quando não há cobrança imediata. O tempo passa, o débito sai da lembrança e muita gente só volta a pensar nele quando recebe uma notificação ou encontra dificuldades para emitir uma certidão.</strong></p>
+
+      <p>É assim que dívidas de IPVA, IPTU, impostos, taxas e algumas multas podem acabar inscritas em dívida ativa.</p>
+
+      <p>A inscrição ocorre quando um valor devido ao poder público não é pago dentro do prazo e passa a integrar o cadastro oficial de cobrança da União, do estado ou do município responsável. A dívida pode ser tributária, como um imposto, ou ter outra origem, como determinadas multas e obrigações com órgãos públicos. <a href="https://www2.camara.leg.br/legin/fed/lei/1960-1969/lei-5172-25-outubro-1966-358971-norma-pl.html" target="_blank" rel="noopener noreferrer">Consulte o Código Tributário Nacional</a>.</p>
+
+      <br/>
+
+      <h2>O que pode acontecer depois da inscrição</h2>
+      <p>A dívida ativa não é apenas uma conta atrasada guardada no sistema do governo. Depois da inscrição, o valor pode receber juros, multa e outros encargos previstos para aquele tipo de débito.</p>
+
+      <p>A Certidão de Dívida Ativa também pode ser enviada a protesto em cartório. Esse registro pode dificultar a obtenção de crédito e a realização de alguns negócios enquanto a pendência permanecer aberta.</p>
+
+      <p>Se a cobrança administrativa não resolver, o governo pode iniciar uma execução fiscal. Nesse processo, o devedor é chamado a pagar ou garantir a dívida. Em determinadas situações, a Justiça pode autorizar o bloqueio de valores em conta e a penhora de bens, sempre respeitando os limites e as proteções previstos em lei. <a href="https://www.gov.br/pgfn/pt-br/servicos/perguntas-frequentes/sobre-a-divida" target="_blank" rel="noopener noreferrer">Veja as orientações oficiais da PGFN sobre dívida ativa</a>.</p>
+
+      <p>Isso não significa que toda dívida atrasada resultará imediatamente em bloqueio ou penhora. Existe um processo até chegar a esse ponto. Mesmo assim, ignorar notificações costuma tornar a solução mais cara e mais difícil.</p>
+
+      <p>Também é importante verificar se a cobrança realmente pertence ao contribuinte. Erros de identificação, pagamentos não reconhecidos pelo sistema e débitos já quitados podem acontecer. Antes de negociar, confira a origem, o período, o valor inicial e os acréscimos aplicados.</p>
+
+      <br/>
+
+      <h2>Onde consultar uma dívida ativa</h2>
+      <p>Não existe um único portal que reúna todas as dívidas públicas. O canal correto depende de quem está cobrando.</p>
+
+      <p>Para débitos inscritos na Dívida Ativa da União, a consulta e os serviços de negociação são feitos pelo <a href="https://www.regularize.pgfn.gov.br/" target="_blank" rel="noopener noreferrer">REGULARIZE, plataforma oficial da Procuradoria-Geral da Fazenda Nacional</a>.</p>
+
+      <p>As dívidas estaduais, como débitos de IPVA já inscritos, devem ser pesquisadas no site da Procuradoria-Geral do Estado ou no portal indicado pela Secretaria Estadual de Fazenda.</p>
+
+      <p>No caso de IPTU, taxas municipais e outras cobranças da prefeitura, a consulta costuma estar disponível no portal da Secretaria Municipal de Fazenda ou da Procuradoria do Município.</p>
+
+      <p>Em termos práticos:</p>
+
+      <ul>
+        <li><strong>Débito federal:</strong> consulte o REGULARIZE, da PGFN;</li>
+        <li><strong>Débito estadual:</strong> procure a PGE ou a Secretaria de Fazenda do seu estado;</li>
+        <li><strong>Débito municipal:</strong> acesse o portal da prefeitura ou da Secretaria Municipal de Fazenda.</li>
+      </ul>
+
+      <p>Desconfie de mensagens que chegam por WhatsApp, SMS ou e-mail com boletos e ameaças de bloqueio imediato. Entre no portal oficial por conta própria e compare todas as informações antes de fazer qualquer pagamento.</p>
+
+      <br/>
+
+      <h2>Como regularizar sem perder o controle da cobrança</h2>
+      <p>Depois de localizar o débito, confira qual órgão fez a inscrição e qual foi a origem da dívida. Não olhe apenas o valor final. Verifique também o período cobrado, o vencimento e a composição dos encargos.</p>
+
+      <p>Se reconhecer a pendência, veja as condições disponíveis. Dependendo do órgão e do débito, pode haver pagamento à vista, parcelamento ou programas específicos de negociação.</p>
+
+      <p>Caso não reconheça a cobrança, não faça um acordo apenas para encerrar o assunto. Procure o órgão responsável e peça os documentos que deram origem à inscrição. Um parcelamento normalmente representa o reconhecimento da dívida e deve ser feito somente depois da conferência dos dados.</p>
+
+      <p>Após o pagamento, acompanhe a atualização do sistema. A baixa nem sempre aparece no mesmo momento. Guarde o comprovante, o número da negociação e os protocolos de atendimento até que a situação esteja regularizada.</p>
+
+      <p>Se houver protesto, também será necessário conferir o procedimento para retirada do registro no cartório. O pagamento ao governo resolve a dívida, mas pode haver etapas adicionais para cancelar formalmente o protesto. <a href="https://www.gov.br/pgfn/pt-br/servicos/perguntas-frequentes/protesto" target="_blank" rel="noopener noreferrer">Consulte as orientações oficiais sobre protesto</a>.</p>
+
+      <br/>
+
+      <p>Uma dívida pública não desaparece porque deixou de chegar pelo correio. Mudanças de endereço, notificações ignoradas e débitos de valores menores podem esconder uma cobrança que continua avançando.</p>
+
+      <p>Consultar os canais oficiais leva poucos minutos e permite descobrir o problema antes que ele chegue ao cartório ou à Justiça.</p>
+
+      <p><strong>Tem algum imposto, multa ou taxa antiga que ficou sem confirmação de pagamento? Consulte o órgão responsável e confira a situação antes que a cobrança avance. Quanto mais cedo o débito é identificado, mais caminhos existem para resolver.</strong></p>
+    `,
+  },
+  {
     slug: "lei-de-acesso-a-informacao-como-pedir-dados-ao-governo",
     source: "Blog",
     category: "Direitos do Cidadão",
