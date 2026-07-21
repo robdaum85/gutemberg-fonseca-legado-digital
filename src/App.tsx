@@ -29,6 +29,9 @@ const AniversarioPage = lazy(() => import("./pages/AniversarioPage"));
 const EventoPage = lazy(() => import("./pages/EventoPage"));
 const EventoSucessoPage = lazy(() => import("./pages/EventoSucessoPage"));
 const EventoDashboardPage = lazy(() => import("./pages/EventoDashboardPage"));
+const ApresentacaoFederalPage = lazy(
+  () => import("./pages/ApresentacaoFederalPage"),
+);
 
 const queryClient = new QueryClient();
 
@@ -45,16 +48,22 @@ const BlogPostRedirect = () => {
   return <Navigate to={target} replace />;
 };
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
+const App = () => {
+  const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
+  const isFederalPresentation = normalizedPath === "/apresentacao-federal";
+
+  return (
+    <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <AccessibilityWidget />
-      <CookieConsent />
-      <a href="#conteudo-principal" className="skip-link">
-        Ir para o conteudo principal
-      </a>
+      {!isFederalPresentation && <AccessibilityWidget />}
+      {!isFederalPresentation && <CookieConsent />}
+      {!isFederalPresentation && (
+        <a href="#conteudo-principal" className="skip-link">
+          Ir para o conteudo principal
+        </a>
+      )}
       <div id="site-content">
         <BrowserRouter
           future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
@@ -130,6 +139,10 @@ const App = () => (
                   path="/evento/dashboard"
                   element={<EventoDashboardPage />}
                 />
+                <Route
+                  path="/apresentacao-federal"
+                  element={<ApresentacaoFederalPage />}
+                />
                 <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
@@ -137,6 +150,7 @@ const App = () => (
       </div>
     </TooltipProvider>
   </QueryClientProvider>
-);
+  );
+};
 
 export default App;
