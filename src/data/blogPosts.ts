@@ -26,6 +26,7 @@ export type BlogPost = {
   date: string;
   authorImage: string;
   coverImage?: string;
+  coverImageAlt?: string;
   metaTitle: string;
   metaDescription: string;
   readingTime?: string;
@@ -35,6 +36,260 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "lei-de-acesso-a-informacao-como-pedir-dados-ao-governo",
+    source: "Blog",
+    category: "Direitos do Cidadão",
+    title: "Existe uma lei que obriga o governo a responder você",
+    subTitle:
+      "A Lei de Acesso à Informação permite que qualquer pessoa solicite documentos e dados públicos sem precisar de advogado ou apresentar uma justificativa.",
+    excerpt:
+      "Qualquer pessoa pode usar a Lei de Acesso à Informação para solicitar documentos e dados públicos. Veja o que pedir, onde registrar e qual é o prazo.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-22T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/lei-de-acesso-a-informacao-como-pedir-dados-ao-governo.png",
+    coverImageAlt:
+      "Pessoa acessando um portal do governo para solicitar informações sobre gastos e documentos públicos.",
+    metaTitle:
+      "Lei de Acesso à Informação: saiba como pedir dados ao governo",
+    metaDescription:
+      "Qualquer pessoa pode usar a Lei de Acesso à Informação para solicitar documentos e dados públicos. Veja o que pedir, onde registrar e qual é o prazo.",
+    readingTime: "4 min de leitura",
+    tags: [
+      "Lei de Acesso à Informação",
+      "Como fazer um pedido pela LAI",
+      "Acesso a dados públicos",
+      "Transparência pública",
+      "Pedido de informação ao governo",
+      "Informa.BR",
+      "Portal 1746",
+    ],
+    featured: true,
+    content: `
+      <p><strong>Quanto custou uma obra pública? Qual foi o valor de um contrato? Quanto determinado órgão gastou em uma ação? Para onde foi o orçamento de uma secretaria?</strong></p>
+
+      <p>Essas informações não pertencem ao governo. São públicas e podem ser solicitadas por qualquer cidadão.</p>
+
+      <p>Esse direito é garantido pela Lei nº 12.527/2011, conhecida como Lei de Acesso à Informação, ou simplesmente LAI. Ela vale para órgãos públicos federais, estaduais e municipais e permite acompanhar de perto o uso do dinheiro público.</p>
+
+      <p>Não é preciso contratar advogado nem explicar por que deseja ter acesso ao documento. O pedido deve apenas ser claro o suficiente para que o órgão consiga identificar a informação procurada. <a href="https://www.1746.rio/hc/articles/9567624997403" target="_blank" rel="noopener noreferrer">Consulte as orientações do Portal 1746</a>.</p>
+
+      <br/>
+
+      <h2>O que pode ser solicitado pela Lei de Acesso à Informação</h2>
+      <p>A LAI pode ser usada para pedir dados que já tenham sido produzidos ou estejam armazenados pelo poder público.</p>
+
+      <p>É possível solicitar, por exemplo, informações sobre licitações, contratos administrativos, repasses de recursos, despesas, projetos, obras, programas governamentais e remuneração de agentes públicos, respeitados os dados pessoais protegidos por lei.</p>
+
+      <p>Imagine que uma praça do seu bairro esteja em reforma há meses. Você pode perguntar quanto a obra custou, qual empresa foi contratada, quando o serviço deveria terminar e se houve algum pagamento adicional.</p>
+
+      <p>Também é possível pedir cópias de contratos, relatórios, planilhas, atas e outros documentos públicos.</p>
+
+      <p>O órgão, porém, não é obrigado a criar um estudo ou produzir uma informação que ainda não existe. Perguntas genéricas, pedidos de opinião e solicitações que exijam a elaboração de novos documentos podem ser recusados. <a href="https://www.1746.rio/hc/articles/9567624997403" target="_blank" rel="noopener noreferrer">Veja o que pode ser solicitado pelo Portal 1746</a>.</p>
+
+      <br/>
+
+      <h2>Onde registrar o pedido e quanto tempo o governo tem para responder</h2>
+      <p>Para informações relacionadas a órgãos do Governo Federal, o pedido pode ser registrado pela plataforma Informa.BR.</p>
+
+      <p>No município do Rio de Janeiro, a solicitação é feita pelo Portal Rio 1746, na área dedicada à Lei de Acesso à Informação. Para órgãos estaduais e prefeituras de outras cidades, o cidadão deve procurar o Serviço de Informação ao Cidadão, geralmente identificado pela sigla SIC ou e-SIC, no site oficial do órgão. <a href="https://www.gov.br/pt-br/servicos/realizar-pedido-de-acesso-a-informacao" target="_blank" rel="noopener noreferrer">Acesse o serviço federal de pedido de informação</a>.</p>
+
+      <p>Antes de enviar o pedido, vale consultar o Portal da Transparência correspondente. Muitas informações sobre salários, contratos, licitações e despesas já estão disponíveis e podem ser encontradas sem a abertura de uma solicitação.</p>
+
+      <p>Caso a resposta não possa ser fornecida imediatamente, o prazo é de até 20 dias corridos. O órgão pode pedir mais 10 dias, mas precisa justificar a prorrogação. <a href="https://www.gov.br/pt-br/servicos/realizar-pedido-de-acesso-a-informacao" target="_blank" rel="noopener noreferrer">Consulte os prazos e procedimentos oficiais</a>.</p>
+
+      <p>Para aumentar as chances de receber uma resposta completa, evite escrever apenas “quero saber quanto foi gasto na obra”. Identifique o local, o período e o tipo de documento desejado.</p>
+
+      <p>Um pedido mais preciso seria:</p>
+
+      <blockquote>“Solicito cópia do contrato, dos pagamentos realizados e do cronograma da obra de reforma da Praça X, localizada no bairro Y, entre janeiro e junho de 2026.”</blockquote>
+
+      <p>Depois do envio, guarde o número do protocolo. Ele será necessário para acompanhar a solicitação e apresentar recurso caso a resposta seja incompleta ou o acesso seja negado.</p>
+
+      <br/>
+
+      <h2>O governo pode negar uma informação?</h2>
+      <p>Existem dados que não podem ser divulgados livremente, como determinadas informações pessoais, documentos protegidos por sigilo legal e conteúdos cuja publicação possa colocar em risco a segurança da sociedade ou do Estado.</p>
+
+      <p>Mas o sigilo não pode ser usado como uma resposta automática para qualquer pedido. A transparência é a regra; a restrição precisa estar prevista em lei e ser devidamente fundamentada.</p>
+
+      <p>O dever de responder também não significa que o órgão seja obrigado a entregar qualquer documento solicitado. Quando o acesso não puder ser concedido, o cidadão deve receber uma explicação e ser informado sobre a possibilidade de recorrer.</p>
+
+      <p>A Lei de Acesso à Informação existe para permitir que a população acompanhe decisões, contratos e gastos feitos em seu nome. Usá-la não é um favor pedido ao governo. É o exercício de um direito.</p>
+
+      <br/>
+
+      <p>Dinheiro público exige prestação de contas. Quando uma obra atrasa, um contrato chama atenção ou uma despesa não está clara, o cidadão não precisa ficar apenas com a dúvida.</p>
+
+      <p>Pode procurar o documento, registrar o pedido e cobrar uma resposta.</p>
+
+      <p><strong>Na próxima vez que você quiser saber onde o dinheiro público foi aplicado, faça a pergunta pelo canal oficial e guarde o protocolo. Fiscalizar também é exercer cidadania.</strong></p>
+    `,
+  },
+  {
+    slug: "publicidade-de-bets-regras-e-riscos",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Publicidade de bets tem limite: saiba o que é proibido",
+    subTitle:
+      "Anúncios de apostas não podem prometer ganho fácil, apresentar o jogo como fonte de renda nem usar mensagens voltadas a crianças e adolescentes.",
+    excerpt:
+      "Propagandas de bets não podem prometer dinheiro fácil, tratar apostas como investimento nem direcionar anúncios a crianças e adolescentes.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-21T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/publicidade-de-bets-regras-e-riscos.png",
+    coverImageAlt:
+      "Pessoa segurando um celular com anúncios de apostas esportivas durante a transmissão de uma partida de futebol.",
+    metaTitle: "Publicidade de bets tem limite: saiba o que é proibido",
+    metaDescription:
+      "Propagandas de bets não podem prometer dinheiro fácil, tratar apostas como investimento nem direcionar anúncios a crianças e adolescentes.",
+    readingTime: "4 min de leitura",
+    tags: [
+      "Publicidade de bets",
+      "Propaganda de apostas",
+      "Regras para bets",
+      "Jogo responsável",
+      "Vício em apostas",
+      "Apostas esportivas",
+      "Direitos do consumidor",
+    ],
+    featured: true,
+    content: `
+      <p><strong>Você abre o celular para acompanhar uma partida e, antes mesmo de encontrar o placar, aparecem cupons, bônus e promessas de prêmio. A publicidade de bets passou a ocupar transmissões esportivas, redes sociais, uniformes, programas de televisão e perfis de influenciadores.</strong></p>
+
+      <p>A repetição ajuda a criar uma imagem perigosa: a de que apostar é uma forma simples de ganhar dinheiro. Não é.</p>
+
+      <p>A aposta depende de probabilidade e envolve risco de perda. Quando deixa de ser tratada como entretenimento e passa a ser vista como saída para pagar dívidas ou completar a renda, o prejuízo pode alcançar o orçamento, a saúde e a relação com a família.</p>
+
+      <br/>
+
+      <h2>O que a publicidade de bets não pode prometer</h2>
+      <p>As regras brasileiras proíbem anúncios que associem apostas a dinheiro fácil, sucesso pessoal ou melhoria da condição financeira. A propaganda também não pode apresentar a bet como investimento, renda extra, alternativa ao emprego ou solução para problemas financeiros. <a href="https://www.in.gov.br/en/web/dou/-/portaria-spa/mf-n-1.231-de-31-de-julho-de-2024-575670297" target="_blank" rel="noopener noreferrer">Consulte a regulamentação na Imprensa Nacional</a>.</p>
+
+      <p>Também são proibidas mensagens que incentivem apostas excessivas, sugiram que o consumidor precisa agir imediatamente ou deem a entender que experiência e habilidade garantem um resultado favorável.</p>
+
+      <p>Na prática, frases como “aproveite agora”, “não perca esta oportunidade” ou “ganho garantido” merecem atenção. A pressa reduz o tempo de reflexão e pode levar o consumidor a depositar um dinheiro que fará falta depois.</p>
+
+      <p>Todo anúncio deve trazer a indicação de que o conteúdo é destinado a maiores de 18 anos e uma advertência clara sobre os riscos de dependência e de transtornos relacionados ao jogo. <a href="https://www.in.gov.br/en/web/dou/-/portaria-spa/mf-n-1.231-de-31-de-julho-de-2024-575670297" target="_blank" rel="noopener noreferrer">Veja as regras oficiais</a>.</p>
+
+      <br/>
+
+      <h2>Influenciadores também precisam respeitar as regras</h2>
+      <p>A publicidade não deixa de ser publicidade porque foi publicada no perfil de uma pessoa conhecida.</p>
+
+      <p>As normas alcançam conteúdos patrocinados, merchandising, depoimentos e divulgações feitas em blogs e redes sociais. A natureza comercial da publicação precisa estar clara para o público. <a href="https://www.in.gov.br/en/web/dou/-/portaria-spa/mf-n-1.231-de-31-de-julho-de-2024-575670297" target="_blank" rel="noopener noreferrer">Consulte a Portaria SPA/MF nº 1.231/2024</a>.</p>
+
+      <p>Por isso, vale desconfiar de perfis que mostram apenas apostas vencedoras, comemoram prêmios o tempo inteiro e escondem as perdas. Esse recorte cria a impressão de que ganhar é frequente, quando nenhum apostador tem garantia de resultado.</p>
+
+      <p>Anúncios também não podem utilizar crianças, adolescentes ou elementos criados para atrair esse público. Pessoas menores de 18 anos não podem apostar, e a comunicação das empresas deve respeitar essa proibição. <a href="https://www.in.gov.br/en/web/dou/-/portaria-spa/mf-n-1.231-de-31-de-julho-de-2024-575670297" target="_blank" rel="noopener noreferrer">Confira a norma na Imprensa Nacional</a>.</p>
+
+      <br/>
+
+      <h2>Quando a aposta deixa de ser diversão</h2>
+      <p>Perder o controle do valor apostado, tentar recuperar prejuízos com novas apostas, esconder gastos e deixar contas importantes para depois são sinais de alerta.</p>
+
+      <p>O Ministério da Fazenda reconhece que o jogo problemático pode causar endividamento, isolamento, conflitos familiares e danos à saúde mental. As plataformas autorizadas devem oferecer limites de gastos, mecanismos de pausa, autoexclusão e informações sobre canais de ajuda. <a href="https://www.gov.br/fazenda/pt-br/composicao/orgaos/secretaria-de-premios-e-apostas/jogo-responsavel" target="_blank" rel="noopener noreferrer">Saiba mais sobre jogo responsável</a>.</p>
+
+      <p>Desde julho de 2026, uma plataforma federal de autoexclusão permite bloquear de uma só vez as contas mantidas em sites de apostas autorizados. O cadastro também impede a abertura de novas contas e o recebimento de publicidade direcionada durante o período escolhido. <a href="https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/julho/plataforma-centralizada-de-autoexclusao-permite-bloquear-sites-de-apostas-autorizados-de-uma-so-vez" target="_blank" rel="noopener noreferrer">Conheça a plataforma centralizada de autoexclusão</a>.</p>
+
+      <p>No Rio de Janeiro, quem está enfrentando problemas com apostas também pode procurar o Balcão do Consumidor, que oferece orientação e apoio psicológico gratuito. O atendimento mais próximo pode ser localizado no <a href="https://balcaodoconsumidor.com.br/" target="_blank" rel="noopener noreferrer">site do serviço</a>.</p>
+
+      <br/>
+
+      <p>Bet não é investimento, renda extra ou caminho para recuperar dinheiro perdido. Quanto maior a promessa de facilidade, maior deve ser o cuidado com a mensagem apresentada.</p>
+
+      <p>A publicidade pode divulgar uma plataforma. O que ela não pode fazer é esconder os riscos, explorar a vulnerabilidade do consumidor ou vender a aposta como solução para uma vida financeira difícil.</p>
+
+      <p><strong>Se a aposta já está tirando dinheiro das contas, sono ou paz dentro de casa, o próximo passo não é tentar recuperar a perda. É pedir ajuda.</strong></p>
+
+      <p><strong>Encaminhe este conteúdo a quem precisa dar esse passo.</strong></p>
+    `,
+  },
+  {
+    slug: "estacionamento-gratuito-shopping-rio-de-janeiro",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Estacionamento de shopping pode ficar gratuito no Rio de Janeiro",
+    subTitle:
+      "Proposta em análise na Alerj prevê até seis horas de gratuidade mediante apresentação de nota fiscal, sem exigir valor mínimo de compra.",
+    excerpt:
+      "Projeto em análise na Alerj prevê até seis horas de estacionamento gratuito para clientes que apresentarem comprovante de consumo.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-20T12:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/estacionamento-gratuito-shopping-rio-de-janeiro.png",
+    coverImageAlt:
+      "Entrada de estacionamento de shopping com veículos aguardando a liberação da cancela.",
+    metaTitle:
+      "Estacionamento de shopping pode ficar gratuito no Rio de Janeiro",
+    metaDescription:
+      "Projeto em análise na Alerj prevê até seis horas de estacionamento gratuito para clientes que apresentarem comprovante de consumo.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Estacionamento gratuito em shopping",
+      "Shopping",
+      "Alerj",
+      "Direitos do Consumidor",
+      "Rio de Janeiro",
+    ],
+    featured: true,
+    content: `
+      <p><strong>Quem vai a um shopping costuma pagar duas vezes: primeiro pelo que consome e, depois, pelo tempo em que deixou o carro no estacionamento. Uma proposta em análise no Rio de Janeiro quer mudar essa regra.</strong></p>
+
+      <p>O Projeto de Lei nº 7.926/2026, em tramitação na Assembleia Legislativa do Estado do Rio de Janeiro, prevê estacionamento gratuito por até seis horas para clientes que realizarem uma compra ou contratarem algum serviço no local.</p>
+
+      <p>A proposta vale para shoppings, centros comerciais e estabelecimentos semelhantes.</p>
+
+      <br/>
+
+      <h2>Como a gratuidade funcionaria</h2>
+      <p>Para ter direito ao benefício, o consumidor precisaria apresentar a nota fiscal ou outro comprovante de consumo.</p>
+
+      <p>O estabelecimento não poderia exigir um valor mínimo de compra. Assim, não seria permitido condicionar a gratuidade a gastos acima de R$ 50, R$ 100 ou qualquer outra quantia.</p>
+
+      <p>Comprou um produto ou contratou um serviço, apresentou o comprovante, teria direito às seis horas gratuitas.</p>
+
+      <p>Quem permanecesse no local por mais tempo pagaria apenas pelo período excedente. Se o consumidor ficasse sete horas, por exemplo, a cobrança seria referente somente ao tempo que ultrapassou as seis horas.</p>
+
+      <br/>
+
+      <h2>O projeto ainda não está valendo</h2>
+      <p>Apesar da repercussão, a gratuidade ainda não pode ser exigida.</p>
+
+      <p>O texto precisa avançar na Alerj, passar pela votação dos deputados estaduais e, caso seja aprovado, seguir para sanção. Durante esse caminho, o projeto ainda pode ser alterado.</p>
+
+      <p>Até que todo esse processo seja concluído e a nova regra seja publicada, os shoppings podem continuar cobrando o estacionamento conforme as condições atuais.</p>
+
+      <p>Por isso, cuidado com manchetes que apresentam a proposta como uma lei já em vigor. Hoje, ela ainda está em discussão.</p>
+
+      <br/>
+
+      <h2>Uma cobrança que pesa no bolso</h2>
+      <p>O projeto coloca novamente em debate uma reclamação comum: o consumidor já compra, utiliza restaurantes, cinemas, clínicas e outros serviços, mas ainda precisa pagar para estacionar.</p>
+
+      <p>Para quem frequenta esses espaços com a família ou permanece algumas horas no local, a cobrança pode representar um custo considerável no fim do passeio.</p>
+
+      <p>Caso a proposta seja aprovada, a mudança não significará estacionamento gratuito para qualquer pessoa. O benefício estará ligado ao consumo e à apresentação do comprovante.</p>
+
+      <p>Essa informação precisa estar clara para evitar falsas expectativas.</p>
+
+      <br/>
+
+      <p>A proposta ainda tem um longo caminho até virar lei, mas levanta uma pergunta que interessa a quem frequenta shoppings no Rio: depois de consumir dentro do estabelecimento, ainda é justo pagar pelo estacionamento?</p>
+
+      <p><strong>Você concorda com a proposta ou acha que o estacionamento deve continuar sendo cobrado? Quero saber a sua opinião.</strong></p>
+    `,
+  },
   {
     slug: "labirinto-do-credito-escolha-saida-menos-custosa",
     source: "Diário do Rio",

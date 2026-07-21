@@ -6,41 +6,52 @@ import { getPostsByCategory } from '@/lib/blogUtils';
 import { useSeo } from '@/lib/useSeo';
 import { SITE_URL, getCanonicalUrl } from '@/lib/blogUtils';
 
-const CATEGORY_LABEL = 'Defesa do Consumidor';
-const CATEGORY_SLUG = 'direitos-do-consumidor';
-const META_TITLE =
-  'Direitos do Consumidor: guia prático e atualizado | Gutemberg Fonseca';
-const META_DESCRIPTION =
-  'Guia de direitos do consumidor com orientações sobre cobranças, contratos, compras online, golpes digitais, serviços essenciais e como reclamar.';
+type CategoryPageProps = {
+  categoryLabel?: string;
+  categorySlug?: string;
+};
 
-const CategoryPage = () => {
-  const posts = getPostsByCategory(CATEGORY_LABEL).sort((a, b) =>
+const CategoryPage = ({
+  categoryLabel = 'Defesa do Consumidor',
+  categorySlug = 'direitos-do-consumidor',
+}: CategoryPageProps) => {
+  const isCitizenCategory = categorySlug === 'direitos-do-cidadao';
+  const publicCategoryLabel = isCitizenCategory
+    ? 'Direitos do Cidadão'
+    : 'Direitos do Consumidor';
+  const metaTitle = isCitizenCategory
+    ? 'Direitos do Cidadão: informação e transparência | Gutemberg Fonseca'
+    : 'Direitos do Consumidor: guia prático e atualizado | Gutemberg Fonseca';
+  const metaDescription = isCitizenCategory
+    ? 'Conteúdos sobre direitos do cidadão, acesso à informação, transparência pública e participação na fiscalização do poder público.'
+    : 'Guia de direitos do consumidor com orientações sobre cobranças, contratos, compras online, golpes digitais, serviços essenciais e como reclamar.';
+  const posts = getPostsByCategory(categoryLabel).sort((a, b) =>
     a.date < b.date ? 1 : -1
   );
-  const canonical = getCanonicalUrl(`/${CATEGORY_SLUG}`);
+  const canonical = getCanonicalUrl(`/${categorySlug}`);
 
   useSeo({
-    title: META_TITLE,
-    description: META_DESCRIPTION,
+    title: metaTitle,
+    description: metaDescription,
     canonical,
     type: 'website',
     image: `${SITE_URL}/lovable-uploads/c003fb8b-1544-42bc-881b-af1b83f1ac15.png`,
     breadcrumbs: [
       { name: 'Início', url: SITE_URL + '/' },
-      { name: 'Direitos do Consumidor', url: canonical },
+      { name: publicCategoryLabel, url: canonical },
     ],
     extraJsonLd: {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      name: 'Direitos do Consumidor',
-      description: META_DESCRIPTION,
+      name: publicCategoryLabel,
+      description: metaDescription,
       url: canonical,
       mainEntity: {
         '@type': 'ItemList',
         itemListElement: posts.map((p, i) => ({
           '@type': 'ListItem',
           position: i + 1,
-          url: `${SITE_URL}/${CATEGORY_SLUG}/${p.slug}`,
+          url: `${SITE_URL}/${categorySlug}/${p.slug}`,
           name: p.title,
         })),
       },
@@ -61,37 +72,50 @@ const CategoryPage = () => {
                 </Link>
               </li>
               <li aria-hidden>/</li>
-              <li className="text-foreground font-medium">Direitos do Consumidor</li>
+              <li className="text-foreground font-medium">{publicCategoryLabel}</li>
             </ol>
           </nav>
 
           <header className="max-w-3xl mb-10">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Direitos do Consumidor
+              {publicCategoryLabel}
             </h1>
-            <p className="text-lg text-foreground/80 leading-relaxed mb-4">
-              <strong>
-                Informação clara para proteger você no dia a dia.
-              </strong>
-            </p>
-            <p className="text-foreground/80 leading-relaxed mb-4">
-              Conhecer os direitos do consumidor é essencial para evitar prejuízos
-              em compras, contratos, serviços, bancos, delivery, viagens,
-              telefonia, energia, água e no ambiente digital. Nesta página,
-              reunimos orientações práticas sobre os principais problemas
-              enfrentados pelos consumidores, com explicações simples, exemplos
-              reais e caminhos para buscar solução.
-            </p>
-            <p className="text-foreground/80 leading-relaxed">
-              Aqui você encontra conteúdos sobre atraso na entrega, cobrança
-              indevida, golpes digitais, cartão de crédito, compras online,
-              serviços essenciais, contratos, cancelamentos, garantias e formas
-              de reclamação junto aos órgãos de defesa do consumidor.
-            </p>
+            {isCitizenCategory ? (
+              <>
+                <p className="text-lg text-foreground/80 leading-relaxed mb-4">
+                  <strong>Informação para conhecer, exercer e defender seus direitos.</strong>
+                </p>
+                <p className="text-foreground/80 leading-relaxed">
+                  Nesta página, você encontra orientações práticas sobre acesso à
+                  informação, transparência pública, serviços governamentais e
+                  participação cidadã.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-lg text-foreground/80 leading-relaxed mb-4">
+                  <strong>Informação clara para proteger você no dia a dia.</strong>
+                </p>
+                <p className="text-foreground/80 leading-relaxed mb-4">
+                  Conhecer os direitos do consumidor é essencial para evitar prejuízos
+                  em compras, contratos, serviços, bancos, delivery, viagens,
+                  telefonia, energia, água e no ambiente digital. Nesta página,
+                  reunimos orientações práticas sobre os principais problemas
+                  enfrentados pelos consumidores, com explicações simples, exemplos
+                  reais e caminhos para buscar solução.
+                </p>
+                <p className="text-foreground/80 leading-relaxed">
+                  Aqui você encontra conteúdos sobre atraso na entrega, cobrança
+                  indevida, golpes digitais, cartão de crédito, compras online,
+                  serviços essenciais, contratos, cancelamentos, garantias e formas
+                  de reclamação junto aos órgãos de defesa do consumidor.
+                </p>
+              </>
+            )}
           </header>
 
           <h2 className="text-2xl font-bold text-foreground mb-6">
-            Artigos sobre Direitos do Consumidor
+            Artigos sobre {publicCategoryLabel}
           </h2>
 
           {posts.length === 0 ? (
@@ -103,14 +127,14 @@ const CategoryPage = () => {
               {posts.map((post) => (
                 <Link
                   key={post.slug}
-                  to={`/${CATEGORY_SLUG}/${post.slug}`}
+                  to={`/${categorySlug}/${post.slug}`}
                   className="group bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border hover:border-primary/30 flex flex-col"
                 >
                   {post.coverImage && (
                     <div className="aspect-video w-full overflow-hidden bg-muted">
                       <img
                         src={post.coverImage}
-                        alt={post.title}
+                        alt={post.coverImageAlt || post.title}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />

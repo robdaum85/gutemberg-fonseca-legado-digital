@@ -4,6 +4,7 @@ export const SITE_URL = "https://gutembergfonseca.com.br";
 
 export const CATEGORY_SLUG_MAP: Record<string, string> = {
   "Defesa do Consumidor": "direitos-do-consumidor",
+  "Direitos do Cidadão": "direitos-do-cidadao",
   "Segurança Pública": "seguranca-publica",
 };
 

@@ -82,7 +82,7 @@ const BlogPostModal = ({ post, open, onClose }: BlogPostModalProps) => {
             {post.coverImage && (
               <img
                 src={post.coverImage}
-                alt={post.title}
+                alt={post.coverImageAlt || post.title}
                 className="w-full rounded-lg mb-6 object-cover max-h-[400px]"
                 loading="lazy"
               />

@@ -11,23 +11,28 @@ import {
 import { sanitizeHtml } from '@/lib/security';
 import { useSeo } from '@/lib/useSeo';
 
-const CATEGORY_LABEL = 'Defesa do Consumidor';
-const CATEGORY_SLUG = 'direitos-do-consumidor';
+type CategoryPostPageProps = {
+  categoryLabel?: string;
+  categorySlug?: string;
+};
 
-const CategoryPostPage = () => {
+const CategoryPostPage = ({
+  categoryLabel = 'Defesa do Consumidor',
+  categorySlug = 'direitos-do-consumidor',
+}: CategoryPostPageProps) => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : undefined;
 
   // If post does not exist or doesn't belong to this category, send back to hub
   if (!post) {
-    return <Navigate to="/direitos-do-consumidor" replace />;
+    return <Navigate to={`/${categorySlug}`} replace />;
   }
-  if (getCategorySlug(post.category) !== CATEGORY_SLUG) {
-    return <Navigate to="/direitos-do-consumidor" replace />;
+  if (getCategorySlug(post.category) !== categorySlug) {
+    return <Navigate to={`/${categorySlug}`} replace />;
   }
 
-  const canonical = getCanonicalUrl(`/${CATEGORY_SLUG}/${post.slug}`);
-  const categoryUrl = getCanonicalUrl(`/${CATEGORY_SLUG}`);
+  const canonical = getCanonicalUrl(`/${categorySlug}/${post.slug}`);
+  const categoryUrl = getCanonicalUrl(`/${categorySlug}`);
 
   const formattedDate = new Date(post.date).toLocaleDateString('pt-BR', {
     day: '2-digit',
@@ -46,7 +51,7 @@ const CategoryPostPage = () => {
     articleSchema: true,
     breadcrumbs: [
       { name: 'Início', url: SITE_URL + '/' },
-      { name: 'Direitos do Consumidor', url: categoryUrl },
+      { name: categoryLabel, url: categoryUrl },
       { name: post.title, url: canonical },
     ],
   });
@@ -66,8 +71,8 @@ const CategoryPostPage = () => {
               </li>
               <li aria-hidden>/</li>
               <li>
-                <Link to={`/${CATEGORY_SLUG}`} className="hover:text-primary">
-                  Direitos do Consumidor
+                <Link to={`/${categorySlug}`} className="hover:text-primary">
+                  {categoryLabel}
                 </Link>
               </li>
               <li aria-hidden>/</li>
@@ -121,7 +126,7 @@ const CategoryPostPage = () => {
             {post.coverImage && (
               <img
                 src={post.coverImage}
-                alt={post.title}
+                alt={post.coverImageAlt || post.title}
                 className="w-full rounded-lg mb-8 object-cover max-h-[420px]"
                 loading="lazy"
               />
@@ -161,10 +166,10 @@ const CategoryPostPage = () => {
           {/* Back to hub */}
           <div className="mt-10 text-center">
             <Link
-              to={`/${CATEGORY_SLUG}`}
+              to={`/${categorySlug}`}
               className="text-primary hover:underline font-medium"
             >
-              ← Voltar para Direitos do Consumidor
+              ← Voltar para {categoryLabel}
             </Link>
           </div>
         </div>

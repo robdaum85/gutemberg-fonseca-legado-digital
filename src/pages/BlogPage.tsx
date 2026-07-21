@@ -86,7 +86,7 @@ const BlogPage = () => {
                 {post.coverImage && (
                   <img
                     src={post.coverImage}
-                    alt={post.title}
+                    alt={post.coverImageAlt || post.title}
                     className="w-full h-48 object-cover object-center"
                   />
                 )}

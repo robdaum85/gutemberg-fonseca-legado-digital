@@ -83,6 +83,24 @@ const App = () => (
                   element={<CategoryPostPage />}
                 />
                 <Route
+                  path="/direitos-do-cidadao"
+                  element={
+                    <CategoryPage
+                      categoryLabel="Direitos do Cidadão"
+                      categorySlug="direitos-do-cidadao"
+                    />
+                  }
+                />
+                <Route
+                  path="/direitos-do-cidadao/:slug"
+                  element={
+                    <CategoryPostPage
+                      categoryLabel="Direitos do Cidadão"
+                      categorySlug="direitos-do-cidadao"
+                    />
+                  }
+                />
+                <Route
                   path="/codigodedefesa"
                   element={
                     <Navigate to="/codigo-de-defesa-do-consumidor" replace />

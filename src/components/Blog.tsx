@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { BookOpen, ArrowRight } from "lucide-react";
-import { getPublishedBlogPosts } from "@/lib/blogUtils";
+import { getPostCategoryUrl, getPublishedBlogPosts } from "@/lib/blogUtils";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -36,14 +36,14 @@ const Blog = () => {
           {previewPosts.map((post) => (
             <Link
               key={post.slug}
-              to={`/direitos-do-consumidor/${post.slug}`}
+              to={getPostCategoryUrl(post)}
               className="group bg-card rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border hover:border-primary/30 flex flex-col"
             >
               {post.coverImage && (
                 <div className="aspect-video w-full overflow-hidden bg-muted">
                   <img
                     src={post.coverImage}
-                    alt={post.title}
+                    alt={post.coverImageAlt || post.title}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
