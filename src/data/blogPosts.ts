@@ -39,7 +39,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "divida-ativa-como-consultar-regularizar-debitos",
     source: "Blog",
-    category: "Direitos do Cidadão",
+    category: "Defesa do Consumidor",
     title: "Um débito esquecido pode virar dívida ativa",
     subTitle:
       "IPVA, IPTU, multas, impostos e taxas que não foram pagos podem entrar na cobrança oficial do governo e, em casos mais avançados, chegar à Justiça.",
@@ -134,7 +134,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "lei-de-acesso-a-informacao-como-pedir-dados-ao-governo",
     source: "Blog",
-    category: "Direitos do Cidadão",
+    category: "Defesa do Consumidor",
     title: "Existe uma lei que obriga o governo a responder você",
     subTitle:
       "A Lei de Acesso à Informação permite que qualquer pessoa solicite documentos e dados públicos sem precisar de advogado ou apresentar uma justificativa.",
