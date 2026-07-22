@@ -37,6 +37,290 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "mercado-pode-limitar-produtos-em-promocao",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Mercado pode limitar a quantidade de produtos em promoção?",
+    excerpt:
+      "Descobriu apenas no caixa que o produto em promoção tinha limite de unidades? Entenda quando essa regra é válida e o que fazer.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-27T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/mercado-pode-limitar-produtos-em-promocao.png",
+    coverImageAlt:
+      "Consumidor conferindo no caixa a quantidade permitida de um produto anunciado em promoção.",
+    metaTitle: "Mercado pode limitar produtos em promoção?",
+    metaDescription:
+      "Descobriu apenas no caixa que o produto em promoção tinha limite de unidades? Entenda quando essa regra é válida e o que fazer.",
+    readingTime: "2 min de leitura",
+    tags: [
+      "Limite de produtos em promoção",
+      "Promoção de supermercado",
+      "Limite por CPF",
+      "Oferta no mercado",
+      "Direito do consumidor",
+    ],
+    featured: true,
+    content: `
+      <p><strong>Você encontra um produto por um bom preço, calcula quantas unidades vai levar e organiza a compra. Quando chega ao caixa, escuta: “A promoção só vale para duas unidades”.</strong></p>
+
+      <p>A loja pode estabelecer um limite máximo quando houver justa causa, como permitir que a promoção alcance mais consumidores. O que ela não pode é esconder a regra até o momento do pagamento.</p>
+
+      <p>Se houver quantidade máxima por CPF, cliente ou compra, essa condição precisa aparecer de forma clara no cartaz, na etiqueta, no encarte ou no anúncio. A informação deve estar próxima do preço e ser fácil de ler.</p>
+
+      <p>O Código de Defesa do Consumidor determina que a oferta apresente informações corretas, claras, precisas e ostensivas, inclusive sobre quantidade. A informação suficientemente precisa também vincula o fornecedor. <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener noreferrer">Consulte os artigos 30 e 31 do Código de Defesa do Consumidor</a>.</p>
+
+      <p>Quando o consumidor só descobre a restrição no caixa, ele tomou a decisão de compra com base em uma oferta incompleta. A orientação do Procon-SP aos supermercados é informar de maneira simples qualquer limite de unidades por consumidor, como “máximo de duas unidades por CPF”. <a href="https://www.procon.sp.gov.br/wp-content/uploads/2026/02/CartilhaOrientativa-Final-5.pdf" target="_blank" rel="noopener noreferrer">Veja a cartilha para supermercados do Procon-SP</a>.</p>
+
+      <br/>
+
+      <h2>Descobriu o limite apenas na hora de pagar?</h2>
+
+      <p>Registre o anúncio ou a etiqueta e procure o responsável pela loja. Se a restrição não estava informada, peça que a oferta seja cumprida conforme foi apresentada.</p>
+
+      <p>Caso o estabelecimento se recuse, guarde as fotos e o comprovante da compra, se houver. Esses registros podem ser usados em uma reclamação no Procon.</p>
+
+      <p>O mercado pode limitar a quantidade quando houver uma justificativa legítima. A regra escondida é que não pode fazer parte da promoção.</p>
+
+      <p><strong>Para acompanhar orientações sobre compras, ofertas e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
+    slug: "conta-de-luz-alta-energia-limpa-cosip",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "O Brasil produz energia limpa. Então por que a conta de luz continua alta?",
+    subTitle:
+      "Cerca de 87% da eletricidade ofertada no país vem de fontes renováveis, mas o consumo é apenas uma parte do valor cobrado na fatura.",
+    excerpt:
+      "O Brasil tem uma matriz elétrica majoritariamente renovável, mas a conta inclui transmissão, distribuição, encargos, impostos e a COSIP. Entenda a cobrança.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-26T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/conta-de-luz-alta-energia-limpa-cosip.png",
+    coverImageAlt:
+      "Consumidor conferindo os valores, tributos e contribuições cobrados em uma conta de energia elétrica.",
+    metaTitle: "Conta de luz alta: por que a energia limpa ainda custa caro?",
+    metaDescription:
+      "O Brasil tem uma matriz elétrica majoritariamente renovável, mas a conta inclui transmissão, distribuição, encargos, impostos e a COSIP. Entenda a cobrança.",
+    readingTime: "4 min de leitura",
+    tags: [
+      "Conta de luz alta",
+      "Conta de energia",
+      "COSIP no Rio de Janeiro",
+      "Tarifa de energia elétrica",
+      "Cobrança indevida",
+      "Direitos do consumidor",
+    ],
+    featured: true,
+    content: `
+      <p><strong>O Brasil encerrou 2025 com 86,8% da matriz elétrica formada por fontes renováveis. Hidrelétricas, parques eólicos e usinas solares colocam o país em uma posição privilegiada na produção de energia limpa.</strong></p>
+
+      <p>O dado consta do Relatório Síntese do Balanço Energético Nacional 2026, publicado pela Empresa de Pesquisa Energética. <a href="https://www.epe.gov.br/pt/imprensa/noticias/epe-publica-o-relatorio-sintese-do-balanco-energetico-nacional-2026" target="_blank" rel="noopener noreferrer">Consulte o levantamento da EPE</a>.</p>
+
+      <p>Essa vantagem, porém, não chega ao consumidor na forma de uma conta necessariamente mais barata.</p>
+
+      <p>O valor pago todos os meses não corresponde apenas à energia usada dentro de casa. A fatura também cobre o caminho percorrido até que ela chegue à tomada.</p>
+
+      <br/>
+
+      <h2>O que entra no valor da conta de luz</h2>
+
+      <p>A tarifa reúne os custos de geração, transmissão e distribuição da energia. Também entram encargos do setor elétrico e tributos como PIS/Cofins e ICMS. <a href="https://www.gov.br/aneel/pt-br/assuntos/tarifas/entenda-a-tarifa/custo-da-energia-que-chega-aos-consumidores" target="_blank" rel="noopener noreferrer">Veja como a Aneel explica a composição da tarifa</a>.</p>
+
+      <p>Na cidade do Rio de Janeiro, a conta ainda inclui a Contribuição para Custeio do Serviço de Iluminação Pública, conhecida como COSIP. A Light faz a arrecadação por meio da fatura, mas o valor é destinado ao município.</p>
+
+      <p>A forma de calcular essa contribuição mudou em 2026. Desde as faturas de referência de maio, o enquadramento passou a considerar a média de consumo dos 12 ciclos anteriores, de maio de 2025 a abril de 2026. Como regra, a faixa definida permanece até o próximo reajuste tarifário da Light, previsto para 2027.</p>
+
+      <p>Existem exceções para unidades sem 12 meses de consumo, instalações novas e casos de troca de titularidade. Por isso, uma redução recente no consumo pode não alterar imediatamente o valor da COSIP. <a href="https://fazenda.prefeitura.rio/cosip/" target="_blank" rel="noopener noreferrer">Consulte as regras e tabelas da COSIP na Prefeitura do Rio</a>.</p>
+
+      <br/>
+
+      <h2>Como conferir se a cobrança está correta</h2>
+
+      <p>Comece comparando a quantidade de quilowatts-hora consumida com a dos meses anteriores. Uma variação repentina pode estar relacionada a novos aparelhos, problemas na instalação, mudança no período de leitura ou erro no medidor.</p>
+
+      <p>Confira também a bandeira tarifária, os tributos, a COSIP e eventuais serviços ou parcelamentos incluídos na fatura.</p>
+
+      <p>No caso da COSIP, não basta olhar o consumo do mês atual. O consumidor deve verificar a faixa utilizada pela Prefeitura e consultar a tabela correspondente ao período da conta.</p>
+
+      <p>Ao encontrar uma cobrança que não reconhece, procure a distribuidora e peça uma explicação detalhada. Guarde a fatura e o protocolo do atendimento. Caso o problema não seja resolvido, a reclamação pode ser levada à ouvidoria da empresa, à Aneel ou a um órgão de defesa do consumidor.</p>
+
+      <p>Também é preciso cuidado com conteúdos que prometem a devolução automática de cinco anos de ICMS cobrado sobre as tarifas de transmissão e distribuição. O Superior Tribunal de Justiça decidiu, no Tema Repetitivo 986, que a TUST e a TUSD integram a base de cálculo do imposto quando são lançadas na fatura como encargo pago diretamente pelo consumidor final. Não existe, portanto, um direito geral à restituição desses valores. <a href="https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2024/13032024-TUSD-e-TUST-integram-base-de-calculo-do-ICMS-sobre-energia--define-Primeira-Secao.aspx" target="_blank" rel="noopener noreferrer">Consulte a decisão divulgada pelo STJ</a>.</p>
+
+      <br/>
+
+      <p>Produzir energia renovável é importante para o país, mas isso não basta para reduzir a fatura. Antes de chegar à casa do consumidor, a energia passa por uma estrutura que envolve rede, encargos, impostos e contribuições.</p>
+
+      <p>A conta pode ser técnica, mas a cobrança precisa ser compreensível. O consumidor tem o direito de saber o que está pagando e de questionar qualquer valor que não esteja claro.</p>
+
+      <p><strong>Para entender as cobranças que chegam à sua casa e acompanhar outros conteúdos sobre direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acompanhe <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
+    slug: "banco-cobrando-servico-nao-contratado-como-contestar",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "O banco está cobrando por um serviço que você nunca pediu?",
+    subTitle:
+      "Tarifas, seguros e cobranças adicionais podem passar despercebidos no extrato. O consumidor tem direito a informações claras e pode contestar o que não reconhece.",
+    excerpt:
+      "Tarifas, seguros e outros serviços podem aparecer no extrato sem autorização clara. Veja como conferir o contrato, contestar a cobrança e registrar a reclamação.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-25T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/banco-cobrando-servico-nao-contratado-como-contestar.png",
+    coverImageAlt:
+      "Consumidor conferindo no celular tarifas e cobranças desconhecidas em seu extrato bancário.",
+    metaTitle: "Banco cobrando serviço não contratado? Saiba como contestar",
+    metaDescription:
+      "Tarifas, seguros e outros serviços podem aparecer no extrato sem autorização clara. Veja como conferir o contrato, contestar a cobrança e registrar a reclamação.",
+    readingTime: "4 min de leitura",
+    tags: [
+      "Cobrança bancária indevida",
+      "Serviço bancário não contratado",
+      "Tarifa bancária indevida",
+      "Seguro embutido",
+      "Cláusula abusiva",
+      "Reclamação contra banco",
+    ],
+    featured: true,
+    content: `
+      <p><strong>Você confere o extrato bancário todos os meses ou olha apenas o saldo disponível?</strong></p>
+
+      <p>Cobranças pequenas e recorrentes costumam passar despercebidas. Pode ser uma tarifa, um pacote de serviços, um seguro ou algum produto incluído junto com um empréstimo. O valor parece baixo, mas, somado durante meses, pesa no bolso.</p>
+
+      <p>Uma cobrança que não foi autorizada pode ser indevida. O Código de Defesa do Consumidor garante informação clara sobre os serviços contratados e protege o cliente contra cláusulas que provoquem desvantagem excessiva. O Banco Central também informa que uma tarifa só pode ser cobrada quando o serviço estiver previsto no contrato ou tiver sido previamente solicitado e for efetivamente prestado. Se a cobrança for indevida, o cliente pode pedir o reembolso à instituição. <a href="https://www.bcb.gov.br/meubc/faqs/s/tarifas" target="_blank" rel="noopener noreferrer">Consulte as orientações do Banco Central sobre tarifas</a>.</p>
+
+      <p>Já os juros exigem uma análise mais cuidadosa. Estar acima da média do mercado não significa, sozinho, que a cobrança seja abusiva. É preciso conferir a taxa contratada, o Custo Efetivo Total, o prazo e as condições apresentadas no momento da contratação.</p>
+
+      <br/>
+
+      <h2>Antes de reclamar, confira o contrato e o extrato</h2>
+
+      <p>Comece identificando o nome exato da cobrança, a data em que ela apareceu e quantas vezes foi descontada.</p>
+
+      <p>Depois, peça ao banco acesso ao contrato completo e aos documentos relacionados ao serviço. Em empréstimos e financiamentos, o contrato deve apresentar informações como as taxas de juros, as tarifas, outras despesas, o Custo Efetivo Total e os critérios de cobrança em caso de atraso. <a href="https://www.bcb.gov.br/meubc/faqs/s/emprestimos-e-financiamentos" target="_blank" rel="noopener noreferrer">Veja as informações exigidas pelo Banco Central</a>.</p>
+
+      <p>Confira principalmente:</p>
+
+      <ul>
+        <li>tarifas que não aparecem na proposta inicial;</li>
+        <li>seguros que você não se lembra de ter autorizado;</li>
+        <li>serviços incluídos junto com empréstimos ou financiamentos;</li>
+        <li>diferença entre os juros informados e os efetivamente cobrados;</li>
+        <li>pacotes bancários que você não utiliza.</li>
+      </ul>
+
+      <p>O banco não pode obrigar o consumidor a contratar um produto para ter acesso a outro. Condicionar um empréstimo à contratação obrigatória de seguro, por exemplo, pode caracterizar venda casada. <a href="https://www.bcb.gov.br/meubc/faqs/p/venda-casada" target="_blank" rel="noopener noreferrer">Entenda o que é venda casada</a>.</p>
+
+      <p>Ao encontrar algo errado, tire prints, baixe o extrato e separe os documentos. Quanto mais específica for a contestação, menor será o espaço para uma resposta genérica.</p>
+
+      <br/>
+
+      <h2>Como contestar uma cobrança bancária</h2>
+
+      <p>Registre primeiro a reclamação no SAC do banco. Informe qual cobrança não reconhece, quando ela começou e o que deseja: cancelamento, explicação detalhada ou devolução dos valores.</p>
+
+      <p>Faça o contato por um canal que permita guardar a conversa. Pode ser chat, e-mail ou formulário. Caso ligue, anote o dia, o horário, o nome do atendente e o protocolo.</p>
+
+      <p>Se o SAC não resolver, procure a ouvidoria da própria instituição. Ela é o canal indicado para reavaliar reclamações que já passaram pelo atendimento comum. <a href="https://www.bcb.gov.br/meubc/lista_ouvidorias" target="_blank" rel="noopener noreferrer">Consulte a lista de ouvidorias no Banco Central</a>.</p>
+
+      <p>O problema continua? A reclamação pode ser registrada no <a href="https://consumidor.gov.br/pages/principal/como-funciona" target="_blank" rel="noopener noreferrer">Consumidor.gov.br</a>, desde que o banco participe da plataforma. A empresa terá até dez dias para analisar e responder.</p>
+
+      <p>Também é possível <a href="https://www.bcb.gov.br/meubc/registrar_reclamacao?modalAberto=reclamacao_contra_bancos_instituicoes_financeiras" target="_blank" rel="noopener noreferrer">registrar uma reclamação no Banco Central</a> pela internet ou pelo telefone 145. O BC encaminha a demanda à instituição e utiliza os registros em suas ações de supervisão, mas não resolve o conflito individual nem determina o pagamento de indenizações.</p>
+
+      <br/>
+
+      <p>Ler o contrato e conferir o extrato não deveria ser uma disputa contra letras miúdas. O banco precisa informar o que está sendo contratado e quanto será cobrado.</p>
+
+      <p>Encontrou uma tarifa, um seguro ou outro serviço que não reconhece? Não deixe o desconto continuar. Reúna os documentos, registre a contestação e guarde cada protocolo.</p>
+
+      <p><strong>Para acompanhar orientações sobre bancos, cobranças e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acompanhe <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
+    slug: "familias-endividadas-lei-superendividamento",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "8 em cada 10 famílias brasileiras estão endividadas",
+    subTitle:
+      "Em março de 2026, o endividamento das famílias chegou a 80,4%, o maior nível já registrado pela pesquisa da CNC.",
+    excerpt:
+      "Em março de 2026, 80,4% das famílias brasileiras tinham dívidas. Entenda quando o problema se torna superendividamento e quais direitos protegem o consumidor.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-24T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/familias-endividadas-lei-superendividamento.png",
+    coverImageAlt:
+      "Pessoa analisando contas, empréstimos e faturas de cartão de crédito sobre uma mesa.",
+    metaTitle: "8 em cada 10 famílias brasileiras estão endividadas",
+    metaDescription:
+      "Em março de 2026, 80,4% das famílias brasileiras tinham dívidas. Entenda quando o problema se torna superendividamento e quais direitos protegem o consumidor.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Lei do Superendividamento",
+      "Famílias endividadas",
+      "Renegociação de dívidas",
+      "Mínimo existencial",
+      "Cartão de crédito",
+      "Direitos do consumidor",
+    ],
+    featured: true,
+    content: `
+      <p><strong>Cartão de crédito, empréstimos, financiamentos e compras parceladas já fazem parte do orçamento de grande parte das famílias brasileiras.</strong></p>
+
+      <p>O problema começa quando as parcelas deixam de caber na renda e passam a disputar espaço com alimentação, aluguel, medicamentos e contas básicas.</p>
+
+      <p>Em março de 2026, 80,4% das famílias brasileiras tinham algum tipo de dívida a vencer, segundo a Pesquisa de Endividamento e Inadimplência do Consumidor, realizada pela Confederação Nacional do Comércio de Bens, Serviços e Turismo. O número representa o maior percentual já registrado pelo levantamento. <a href="https://portaldocomercio.org.br/acoes-institucionais/cnc-endividamento-recorde-de-804-reforca-alerta-no-orcamento-familiar/" target="_blank" rel="noopener noreferrer">Consulte os dados da CNC</a>.</p>
+
+      <br/>
+
+      <h2>Quando a dívida deixa de ser apenas uma conta</h2>
+
+      <p>Ter uma dívida não significa, por si só, estar inadimplente. Uma família pode ter compras parceladas e manter os pagamentos em dia.</p>
+
+      <p>O superendividamento aparece quando a pessoa já não consegue pagar suas dívidas de consumo, atuais e futuras, sem comprometer o necessário para viver.</p>
+
+      <p>Isso pode acontecer depois da perda de renda, do acúmulo de empréstimos, do uso frequente do cartão de crédito ou da contratação de crédito com juros altos.</p>
+
+      <p>Quando metade do salário está comprometida com parcelas, tratar o problema apenas como falta de planejamento é ignorar uma realidade que atinge milhões de pessoas.</p>
+
+      <br/>
+
+      <h2>O que a lei garante ao consumidor</h2>
+
+      <p>A Lei nº 14.181/2021, conhecida como Lei do Superendividamento, incluiu novas proteções no Código de Defesa do Consumidor.</p>
+
+      <p>O consumidor pessoa natural e de boa-fé pode buscar uma renegociação que considere sua renda e preserve recursos para despesas essenciais. Dependendo do caso, as dívidas de consumo podem ser discutidas em conjunto, com a participação dos credores e a apresentação de um plano de pagamento possível de cumprir.</p>
+
+      <p>Isso não significa perdão automático da dívida. O objetivo é evitar acordos que mantenham o consumidor preso a parcelas que nunca caberão no orçamento. A lei também prevê exceções: entre outras, dívidas com garantia real, financiamentos imobiliários e crédito rural não entram nesse processo de repactuação.</p>
+
+      <p>Juros e cobranças abusivas também podem ser questionados, mas cada contrato precisa ser analisado. <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14181.htm" target="_blank" rel="noopener noreferrer">Consulte a Lei do Superendividamento</a>.</p>
+
+      <p>Antes de aceitar um novo empréstimo ou trocar várias dívidas por uma única parcela, o consumidor deve conferir o Custo Efetivo Total e a soma de tudo o que será pago. Uma prestação menor pode esconder um prazo mais longo e um custo muito maior.</p>
+
+      <br/>
+
+      <p>O aumento do endividamento não afeta apenas o bolso. Ele interfere na saúde, na rotina da família e na capacidade de manter despesas básicas.</p>
+
+      <p>A dívida precisa ser paga, mas a cobrança não pode retirar do consumidor as condições mínimas para viver.</p>
+
+      <p><strong>Para entender melhor os seus direitos e acompanhar conteúdos sobre dívidas, cobranças e defesa do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
     slug: "divida-ativa-como-consultar-regularizar-debitos",
     source: "Blog",
     category: "Defesa do Consumidor",

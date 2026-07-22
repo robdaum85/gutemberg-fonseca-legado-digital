@@ -40,8 +40,12 @@ export function getPostsByCategory(category: string): BlogPost[] {
   return getPublishedBlogPosts().filter((p) => p.category === category);
 }
 
-export function getPostBySlug(slug: string): BlogPost | undefined {
-  return getPublishedBlogPosts().find((p) => p.slug === slug);
+export function getPostBySlug(
+  slug: string,
+  includeUnpublished = false,
+): BlogPost | undefined {
+  const posts = includeUnpublished ? blogPosts : getPublishedBlogPosts();
+  return posts.find((p) => p.slug === slug);
 }
 
 /**

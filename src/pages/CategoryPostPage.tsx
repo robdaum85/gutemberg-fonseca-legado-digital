@@ -21,7 +21,10 @@ const CategoryPostPage = ({
   categorySlug = 'direitos-do-consumidor',
 }: CategoryPostPageProps) => {
   const { slug } = useParams<{ slug: string }>();
-  const post = slug ? getPostBySlug(slug) : undefined;
+  const isLocalPreview =
+    import.meta.env.DEV &&
+    new URLSearchParams(window.location.search).get('preview') === '1';
+  const post = slug ? getPostBySlug(slug, isLocalPreview) : undefined;
 
   // If post does not exist or doesn't belong to this category, send back to hub
   if (!post) {
