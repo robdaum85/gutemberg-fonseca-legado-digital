@@ -24,9 +24,9 @@ const InstagramFeed = () => {
 
   const instagramPosts = [
     {
-      url: 'https://www.instagram.com/p/DawJ2iwmt_B/?igsh=c3Fuc3hhbHRibHV6',
-      image: '/instagram/DawJ2iwmt_B.jpg',
-      type: 'post' as const,
+      url: 'https://www.instagram.com/reel/Da7tQV_xMx4/?igsh=MW0wM2w1aHltNzNnOQ%3D%3D',
+      image: '/instagram/Da7tQV_xMx4.jpg',
+      type: 'reel' as const,
     },
     {
       url: 'https://www.instagram.com/p/Dax344KkXLX/?igsh=Y3ZpNWZqbTFta281',
