@@ -13,11 +13,13 @@ const InstagramFeed = () => {
   }, [isIntersecting]);
 
   const featuredPost = {
-    url: 'https://www.instagram.com/reel/Da7tQV_xMx4/?igsh=MW0wM2w1aHltNzNnOQ%3D%3D',
-    image: '/instagram/Da7tQV_xMx4.jpg',
-    title: 'Estacionamento de graça: você é a favor ou contra?',
+    url: 'https://www.instagram.com/reel/DbTO_h0Rgx7/?igsh=dnRmaTZ3NTI4ZHM0',
+    image: '/instagram/DbTO_h0Rgx7.jpg',
+    title: 'Caiu em um golpe numa compra pela internet? Saiba o que fazer',
     description:
-      'Entenda a proposta de estacionamento gratuito no Rio de Janeiro, quem poderá ser beneficiado e quais pontos exigem atenção dos consumidores.',
+      'Comprou um produto, abriu a caixa e descobriu que foi enganado? Veja a orientação que pode fazer a diferença para registrar o golpe e buscar seus direitos.',
+    imageAlt:
+      'Gutemberg Fonseca explicando o que fazer ao cair em um golpe durante uma compra de videogame pela internet.',
   };
 
   const instagramPosts = [
@@ -84,7 +86,7 @@ const InstagramFeed = () => {
                   Reel em destaque
                 </span>
                 <span className="rounded-full border border-primary/25 bg-background/70 px-3 py-1.5 text-xs font-semibold text-foreground">
-                  Tema importante
+                  Alerta ao consumidor
                 </span>
               </div>
 
@@ -104,7 +106,7 @@ const InstagramFeed = () => {
             <div className="relative order-1 min-h-[420px] overflow-hidden bg-black md:order-2 md:min-h-[480px]">
               <img
                 src={featuredPost.image}
-                alt="Entrada do estacionamento do Shopping Leblon com chamada para entender a nova regra do estacionamento gratuito"
+                alt={featuredPost.imageAlt}
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
