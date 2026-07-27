@@ -37,6 +37,91 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "parcelar-comida-ifood-endividamento",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "A pizza acaba hoje. A parcela fica por seis meses",
+    subTitle:
+      "Uma refeição pode durar poucos minutos. O pagamento, agora, pode acompanhar o consumidor por vários meses.",
+    excerpt:
+      "Pedidos parcelados no iFood passaram de 1,3 milhão em dois meses. Entenda por que o crescimento preocupa em um país com 81,6% das famílias endividadas.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-27T11:29:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/parcelar-comida-ifood-endividamento.png",
+    coverImageAlt:
+      "Consumidor fazendo um pedido de comida pelo celular e escolhendo o pagamento parcelado no cartão de crédito.",
+    metaTitle: "Parcelar comida no iFood: facilidade ou sinal de aperto?",
+    metaDescription:
+      "Pedidos parcelados no iFood passaram de 1,3 milhão em dois meses. Entenda por que o crescimento preocupa em um país com 81,6% das famílias endividadas.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Consumo e Endividamento",
+      "Parcelar comida no iFood",
+      "Parcelamento no iFood",
+      "Pedidos parcelados",
+      "Dívida no cartão de crédito",
+      "Endividamento das famílias",
+      "Crédito para alimentação",
+    ],
+    featured: true,
+    content: `
+      <p><strong>Uma refeição pode durar poucos minutos. O pagamento, agora, pode acompanhar o consumidor por vários meses.</strong></p>
+
+      <p>O parcelamento no iFood começou em categorias como mercado e farmácia e depois chegou aos pedidos de restaurantes. Entre dezembro de 2025 e janeiro de 2026, a plataforma registrou 1,3 milhão de pedidos parcelados. O volume foi mais que o dobro dos pouco mais de 500 mil contabilizados entre setembro e novembro do ano anterior. <a href="https://www.ecommerceupdate.com.br/modalidade-pagamento-parcelado-no-ifood-mais-que-duplica-e-supera-13-milhao-de-pedidos-em-dois-meses/" target="_blank" rel="noopener noreferrer">Consulte os dados divulgados pelo iFood Pago</a>.</p>
+
+      <p>Para o iFood, a modalidade oferece flexibilidade e amplia o poder de compra. <a href="https://www.cnnbrasil.com.br/economia/negocios/ifood-vai-estender-compra-parcelada-para-todo-o-aplicativo-em-dezembro/" target="_blank" rel="noopener noreferrer">Veja como a empresa apresentou a expansão do parcelamento</a>. Mas crédito não aumenta salário. Apenas leva uma parte do pagamento para os meses seguintes.</p>
+
+      <br/>
+
+      <h2>Quando a refeição vira dívida</h2>
+
+      <p>O crescimento do parcelamento acontece enquanto o orçamento das famílias já está pressionado.</p>
+
+      <p>Em junho de 2026, 81,6% das famílias brasileiras declararam ter dívidas a vencer. Quase 30% estavam com contas atrasadas, segundo a Pesquisa de Endividamento e Inadimplência do Consumidor, da CNC. <a href="https://portaldocomercio.org.br/economia/peic-endividamento-e-inadimplencia-estabilizam-em-junho/" target="_blank" rel="noopener noreferrer">Consulte a Peic de junho de 2026</a>.</p>
+
+      <p>Esses números não significam que todo pedido parcelado seja resultado de dificuldade financeira. Uma compra maior, uma comemoração ou um pedido para várias pessoas podem justificar a divisão.</p>
+
+      <p>A preocupação surge quando o crédito passa a bancar refeições comuns porque o dinheiro terminou antes do mês.</p>
+
+      <p>O pedido de hoje entra na mesma fatura das compras anteriores. Quando isso se repete, parcelas de refeições já consumidas começam a disputar espaço com aluguel, contas da casa, supermercado e novos gastos com alimentação.</p>
+
+      <p><strong>Parcelar não resolve a falta de renda. Adia o pagamento.</strong></p>
+
+      <br/>
+
+      <h2>Confira o custo antes de confirmar o pedido</h2>
+
+      <p>O parcelamento de pedidos em restaurantes pode chegar a seis vezes e incluir juros. Por isso, o consumidor precisa olhar além do valor de cada parcela e conferir quanto pagará no total. <a href="https://www.melhorescartoes.com.br/ifood-libera-parcelamento-de-pedidos-em-restaurantes-veja-juros-e-regras.html" target="_blank" rel="noopener noreferrer">Confira as condições identificadas na modalidade</a>.</p>
+
+      <p>O Código de Defesa do Consumidor determina que as ofertas de crédito informem dados como o custo efetivo da operação e a soma total a pagar. Essas condições devem aparecer de forma clara antes da contratação. <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener noreferrer">Consulte os artigos 52 e 54-B do Código de Defesa do Consumidor</a>.</p>
+
+      <p>Antes de dividir o pedido, confira:</p>
+
+      <ul>
+        <li>o preço à vista;</li>
+        <li>o valor total com juros;</li>
+        <li>a quantidade de parcelas;</li>
+        <li>quanto do limite do cartão já está comprometido;</li>
+        <li>quais compras ainda chegarão nas próximas faturas.</li>
+      </ul>
+
+      <p>Uma parcela pequena pode parecer inofensiva sozinha. O problema aparece quando ela se soma a várias outras.</p>
+
+      <br/>
+
+      <p>O parcelamento pode ser útil em situações pontuais. O que não pode parecer normal é depender de crédito para conseguir fazer uma refeição.</p>
+
+      <p>Facilidade de pagamento não é a mesma coisa que poder de compra. A refeição acaba. A dívida continua na fatura.</p>
+
+      <p><strong>Parcelar comida é uma facilidade ou um sinal de que o salário já não chega até o fim do mês?</strong></p>
+
+      <p><strong>Deixe sua opinião, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acompanhe os novos conteúdos em <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
     slug: "mercado-pode-limitar-produtos-em-promocao",
     source: "Blog",
     category: "Defesa do Consumidor",
