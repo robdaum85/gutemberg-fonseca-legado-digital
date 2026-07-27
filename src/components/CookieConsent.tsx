@@ -39,8 +39,8 @@ const loadGoogleAnalytics = () => {
   if (document.querySelector(`script[src*="${GA_MEASUREMENT_ID}"]`)) return;
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = (...args: unknown[]) => {
-    window.dataLayer?.push(args);
+  window.gtag = function gtag() {
+    window.dataLayer?.push(arguments);
   };
   window.gtag("js", new Date());
   window.gtag("config", GA_MEASUREMENT_ID);
