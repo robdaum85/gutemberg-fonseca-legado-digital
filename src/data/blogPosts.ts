@@ -1186,7 +1186,7 @@ export const blogPosts: BlogPost[] = [
       Disque 151</p>
 
       <p><strong>Zap do Guto</strong><br/>
-      (21) 96619-2498</p>
+      +55 21 92011-2255</p>
 
       <p>Instagram: <strong>@gutembergpfonseca</strong></p>
     `,
@@ -1354,7 +1354,7 @@ export const blogPosts: BlogPost[] = [
 
       <br/>
 
-      <p>Se quiser fazer uma denuncia sobre esse tema ou qualquer outro, os canais sao: Fala Consumidor (SEDCON) pelo WhatsApp <strong>(21) 99336-4848</strong> ou pelo Disque <strong>151</strong> do PROCON-RJ. Quem quiser, pode falar comigo pelo "Zap do Guto" <strong>(21) 96619-2498</strong>. Tambem estou no <strong>@gutembergpfonseca</strong>.</p>
+      <p>Se quiser fazer uma denuncia sobre esse tema ou qualquer outro, os canais sao: Fala Consumidor (SEDCON) pelo WhatsApp <strong>(21) 99336-4848</strong> ou pelo Disque <strong>151</strong> do PROCON-RJ. Quem quiser, pode falar comigo pelo "Zap do Guto" <strong>+55 21 92011-2255</strong>. Tambem estou no <strong>@gutembergpfonseca</strong>.</p>
 
       <br/>
 
@@ -1434,7 +1434,7 @@ export const blogPosts: BlogPost[] = [
 
       <br/>
 
-      <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo WhatsApp <strong>+55 (21) 96619-2498</strong>.</p>
+      <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo WhatsApp <strong>+55 21 92011-2255</strong>.</p>
     `,
   },
   {
@@ -1507,7 +1507,7 @@ export const blogPosts: BlogPost[] = [
       <br/>
 
       <h2>Denuncie</h2>
-      <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo whatsapp <strong>+55 (21) 96619-2498</strong> ou pelo <strong>@gutembergfonseca</strong>.</p>
+      <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo whatsapp <strong>+55 21 92011-2255</strong> ou pelo <strong>@gutembergfonseca</strong>.</p>
     `,
   },
   {
@@ -2246,7 +2246,7 @@ export const blogPosts: BlogPost[] = [
 
     <ul>
       <li><strong>Fala Consumidor (SEDCON):</strong> WhatsApp (21) 99336-4848 ou Disque 151 (PROCON-RJ)</li>
-      <li><strong>Zap do Guto:</strong> (21) 96619-2498</li>
+      <li><strong>Zap do Guto:</strong> +55 21 92011-2255</li>
       <li><strong>Instagram:</strong> @gutembergfonseca</li>
     </ul>
   `,

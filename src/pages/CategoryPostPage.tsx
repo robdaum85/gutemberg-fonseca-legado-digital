@@ -152,7 +152,7 @@ const CategoryPostPage = ({
               <ul className="space-y-2 text-sm text-foreground/90">
                 <li>📱 <strong>Fala Consumidor (WhatsApp):</strong> (21) 99336-4848</li>
                 <li>📞 <strong>Disque 151</strong> – PROCON-RJ</li>
-                <li>💬 <strong>Zap do Guto:</strong> (21) 96619-2498</li>
+                <li>💬 <strong>Zap do Guto:</strong> +55 21 92011-2255</li>
                 <li>📷 <strong>Instagram:</strong> @gutembergfonseca</li>
               </ul>
             </div>
