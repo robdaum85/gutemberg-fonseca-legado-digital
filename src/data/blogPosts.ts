@@ -37,6 +37,132 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "carro-usado-com-defeito-garantia-90-dias",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Comprou um carro usado e ele começou a dar problema?",
+    excerpt:
+      "Carro usado comprado em loja ou concessionária também tem garantia. Saiba quais documentos guardar e o que fazer se o defeito não for resolvido.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-28T18:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/carro-usado-com-defeito-garantia-90-dias.png",
+    coverImageAlt:
+      "Proprietário observando um defeito mecânico em um carro usado comprado em uma concessionária.",
+    metaTitle: "Carro usado com defeito: entenda a garantia de 90 dias",
+    metaDescription:
+      "Carro usado comprado em loja ou concessionária também tem garantia. Saiba quais documentos guardar e o que fazer se o defeito não for resolvido.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Garantia de carro usado",
+      "Carro usado com defeito",
+      "Garantia de 90 dias",
+      "Vício oculto em veículo",
+      "Concessionária",
+      "Direitos do consumidor",
+    ],
+    featured: true,
+    content: `
+      <p>O carro saiu da loja funcionando, mas poucos dias depois começaram os ruídos, falhas elétricas ou problemas no motor. Quando o consumidor procura a empresa, muitas vezes escuta que veículo usado não tem garantia ou que a cobertura vale apenas para motor e câmbio.</p>
+
+      <p>Nenhuma dessas respostas afasta a garantia prevista no Código de Defesa do Consumidor.</p>
+
+      <p>Veículos são produtos duráveis. Quando a compra é feita em loja ou concessionária, o consumidor tem 90 dias para reclamar de defeitos aparentes ou de fácil identificação, contados a partir da entrega. A garantia legal cobre o veículo como um todo e não pode ser limitada, por decisão da empresa, a determinadas peças. <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener noreferrer">Consulte o Código de Defesa do Consumidor</a>.</p>
+
+      <p>Isso não significa que todo desgaste de um automóvel usado seja responsabilidade da loja. A idade, a quilometragem e o estado de conservação precisam ser considerados. Porém, qualquer avaria conhecida antes da venda deve ser informada com clareza no contrato ou na nota fiscal. Expressões como “vendido no estado” não podem servir para esconder defeitos que comprometam o uso do veículo. <a href="https://www.procon.sp.gov.br/wp-content/uploads/2026/06/Guia-Consumidor-Consciente-2026.pdf" target="_blank" rel="noopener noreferrer">Veja as orientações do Procon-SP</a>.</p>
+
+      <br/>
+
+      <h2>O que fazer quando o defeito aparece</h2>
+
+      <p>Avise a loja por escrito assim que identificar o problema. Descreva o defeito e guarde contrato, nota fiscal, anúncio, fotos, vídeos, conversas e protocolos.</p>
+
+      <p>Se o veículo ficar com a empresa ou com uma oficina indicada por ela, peça uma ordem de serviço com a data de entrada, a quilometragem e a descrição do reparo solicitado.</p>
+
+      <p>Em regra, o fornecedor tem até 30 dias para solucionar o defeito. Se o conserto não for concluído nesse prazo, o consumidor pode escolher entre:</p>
+
+      <ul>
+        <li>receber outro veículo equivalente e em condições adequadas;</li>
+        <li>cancelar a compra e ter o valor pago devolvido;</li>
+        <li>aceitar um abatimento proporcional no preço.</li>
+      </ul>
+
+      <p><a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener noreferrer">Consulte as alternativas previstas no Código de Defesa do Consumidor</a>.</p>
+
+      <p>Quando o problema estava escondido e só apareceu depois, o prazo de 90 dias começa no momento em que o defeito se torna evidente. É o chamado vício oculto. Essa regra não cobre desgaste natural, mas protege o comprador contra falhas que já existiam e não podiam ser percebidas no momento da compra. <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener noreferrer">Confira a regra sobre vício oculto no Código de Defesa do Consumidor</a>.</p>
+
+      <p>Se a loja se recusar a receber a reclamação, negar a garantia ou não resolver o caso, procure o Procon. A queixa também pode ser registrada no Consumidor.gov.br quando a empresa estiver cadastrada na plataforma. <a href="https://www.consumidor.gov.br/" target="_blank" rel="noopener noreferrer">Acesse o Consumidor.gov.br</a>.</p>
+
+      <p>Cabe uma ressalva: essas regras se aplicam às compras feitas de fornecedores. Na negociação direta entre duas pessoas físicas, o caso não é tratado como relação de consumo e segue as regras do Código Civil. <a href="https://www.procon.sp.gov.br/wp-content/uploads/2026/06/Guia-Consumidor-Consciente-2026.pdf" target="_blank" rel="noopener noreferrer">Consulte o guia do Procon-SP</a>.</p>
+
+      <p><strong>Para acompanhar orientações sobre compras, garantias e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
+    slug: "fiscalizacao-postos-combustiveis-rio-resultados",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title:
+      "Fiscalização iniciada em 2024 segue encontrando irregularidades nos postos do Rio",
+    excerpt:
+      "Em 2026, quase metade dos postos fiscalizados pelo Procon-RJ foi autuada. O trabalho ganhou força em 2024, durante a gestão de Gutemberg Fonseca na Defesa do Consumidor.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-28T12:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/fiscalizacao-postos-combustiveis-rio-resultados.png",
+    coverImageAlt:
+      "Agentes fiscalizam bombas e combustíveis em um posto no Estado do Rio de Janeiro.",
+    metaTitle:
+      "Fiscalização iniciada em 2024 segue encontrando irregularidades nos postos do Rio",
+    metaDescription:
+      "Em 2026, quase metade dos postos fiscalizados pelo Procon-RJ foi autuada. O trabalho ganhou força em 2024, durante a gestão de Gutemberg Fonseca na Defesa do Consumidor.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Fiscalização de postos de combustíveis",
+      "Procon-RJ",
+      "Postos interditados",
+      "Combustível adulterado",
+      "Bomba fraudada",
+      "Defesa do consumidor no Rio",
+    ],
+    featured: true,
+    content: `
+      <p>Até 23 de julho de 2026, o Procon-RJ fiscalizou 71 postos de combustíveis no estado. Foram 33 autuações e 18 interdições. Quase metade dos estabelecimentos vistoriados apresentou algum problema. Em 2025, o órgão já havia realizado 129 fiscalizações, com 70 autuações e 35 interdições. <a href="https://temporealrj.com/procon-autua-postos-de-combustiveis-rj" target="_blank" rel="noopener noreferrer">Consulte os dados publicados pelo Tempo Real RJ</a>.</p>
+
+      <p>Deixei a Secretaria de Estado de Defesa do Consumidor em março deste ano, mas esse resultado tem origem em um trabalho que começamos em 2024, quando colocamos o setor de combustíveis entre as prioridades da fiscalização.</p>
+
+      <p>A decisão partiu de um cenário preocupante. O comércio ilegal provocou perdas estimadas em R$ 468,3 bilhões no país em 2024. Vestuário liderava a lista, com R$ 87 bilhões, seguido por bebidas, com R$ 85 bilhões, e combustíveis, com R$ 29 bilhões. <a href="https://www.rj.gov.br/procon/node/512" target="_blank" rel="noopener noreferrer">Confira os dados divulgados pelo Governo do Estado do Rio de Janeiro</a>.</p>
+
+      <br/>
+
+      <h2>Fiscalização permanente e trabalho integrado</h2>
+
+      <p>Nos postos, a fraude atinge diretamente quem abastece. O motorista pode pagar por uma quantidade e receber menos, colocar combustível adulterado no veículo ou entrar em um estabelecimento sem condições seguras de funcionamento.</p>
+
+      <p>Por isso, passamos a realizar operações frequentes com o Procon-RJ e outros órgãos, como ANP, Ipem, Polícia Militar, Polícia Civil e Secretaria de Fazenda.</p>
+
+      <p>Durante esse trabalho, encontramos bombas com diferença na quantidade entregue, combustível fora das especificações e equipamentos eletrônicos usados para alterar os dados exibidos ao consumidor. Em uma das operações, quem pagasse por 20 litros receberia aproximadamente 11. <a href="https://www.rj.gov.br/procon/node/575" target="_blank" rel="noopener noreferrer">Veja os resultados da operação divulgados pelo Governo do Estado do Rio de Janeiro</a>.</p>
+
+      <p>Também houve interdições por riscos graves à segurança, como o vazamento de gás identificado perto de uma área de abastecimento de GNV. <a href="https://www.rj.gov.br/procon/node/583" target="_blank" rel="noopener noreferrer">Leia o balanço da fiscalização publicado pelo Governo do Estado do Rio de Janeiro</a>.</p>
+
+      <p>A fiscalização continuou depois da minha saída da Secretaria, como deve acontecer com toda política pública bem estruturada. O trabalho não pode depender do nome que ocupa o cargo. Precisa ter equipe, método e continuidade.</p>
+
+      <br/>
+
+      <p>Quem abastece não consegue verificar sozinho se a bomba está entregando a quantidade correta ou se o combustível está dentro das normas. Essa responsabilidade é do poder público.</p>
+
+      <p>Os resultados de 2026 confirmam que manter as equipes nas ruas foi uma decisão necessária. Posto irregular precisa ser fiscalizado, autuado e, nos casos mais graves, interditado.</p>
+
+      <p><strong>Para acompanhar esse trabalho e outros conteúdos sobre defesa do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
     slug: "parcelar-comida-ifood-endividamento",
     source: "Blog",
     category: "Defesa do Consumidor",
