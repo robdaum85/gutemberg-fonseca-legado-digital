@@ -37,6 +37,203 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "golpe-falso-familiar-numero-novo-pix",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title:
+      "“Troquei de número. Salva esse aqui”: cuidado com essa mensagem",
+    excerpt:
+      "Um suposto familiar trocou de número e pediu um Pix? Entenda como funciona o golpe e saiba o que fazer antes de transferir dinheiro.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-31T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/golpe-falso-familiar-numero-novo-pix.png",
+    coverImageAlt:
+      "Pessoa recebendo pelo WhatsApp uma mensagem de um falso familiar dizendo que trocou de número e pedindo um Pix.",
+    metaTitle:
+      "Golpe do falso familiar: cuidado com mensagens de número novo",
+    metaDescription:
+      "Um suposto familiar trocou de número e pediu um Pix? Entenda como funciona o golpe e saiba o que fazer antes de transferir dinheiro.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Golpes e Fraudes",
+      "Golpe do falso familiar",
+      "Golpe do novo número",
+      "Golpe no WhatsApp",
+      "Fraude no Pix",
+      "MED do Pix",
+      "Pedido de dinheiro falso",
+    ],
+    featured: true,
+    content: `
+      <p>Um número desconhecido aparece no WhatsApp com a foto de alguém da família. A mensagem informa que o contato mudou e pede para você salvar o novo telefone.</p>
+
+      <p>Pouco depois, surge uma urgência: o aplicativo do banco não funciona, uma conta precisa ser paga ou alguém está esperando uma transferência. O pedido costuma ser um Pix para uma conta de terceiro, com a promessa de devolução ainda naquele dia.</p>
+
+      <p>É o golpe do falso familiar. O criminoso usa uma foto conhecida para conquistar confiança e cria um problema urgente para não dar tempo de a vítima pensar.</p>
+
+      <p>Quando a pessoa tenta ligar, começam as desculpas: está em reunião, o microfone quebrou, não pode falar ou só consegue conversar por mensagem. A recusa em atender é um dos principais sinais de alerta.</p>
+
+      <br/>
+
+      <h2>Antes de fazer o Pix, procure a pessoa por outro canal</h2>
+
+      <p>Ligue para o número antigo. Caso não consiga contato, fale com outro familiar ou faça uma chamada de vídeo.</p>
+
+      <p>Uma pergunta que apenas a pessoa saberia responder também pode ajudar, mas não deve ser a única verificação. Informações pessoais e familiares podem estar disponíveis nas redes sociais.</p>
+
+      <p>Confira ainda o nome de quem vai receber o dinheiro. Não faça uma transferência para outra pessoa apenas porque o contato diz estar com problemas na conta.</p>
+
+      <p>Também vale combinar uma regra dentro de casa: pedidos de dinheiro só serão atendidos depois de uma conversa por telefone. Essa orientação é especialmente importante para familiares mais velhos, que costumam ser alvos frequentes desse tipo de fraude.</p>
+
+      <br/>
+
+      <h2>Fez a transferência? Fale com o banco imediatamente</h2>
+
+      <p>Conteste o Pix no aplicativo ou entre em contato com o banco pelos canais oficiais. Peça o acionamento do Mecanismo Especial de Devolução, o MED.</p>
+
+      <p>O banco poderá analisar a fraude e tentar bloquear o dinheiro que ainda estiver na conta de destino. A devolução não é garantida, mas agir rapidamente aumenta as chances de recuperação.</p>
+
+      <p>Registre um boletim de ocorrência e guarde:</p>
+
+      <ul>
+        <li>os prints da conversa;</li>
+        <li>o número utilizado pelo golpista;</li>
+        <li>a chave Pix;</li>
+        <li>o nome do recebedor;</li>
+        <li>o comprovante da transferência.</li>
+      </ul>
+
+      <p>Não apague as mensagens antes de reunir esses registros.</p>
+
+      <br/>
+
+      <p>Na dúvida, interrompa a conversa e procure seu familiar por outro número. Quem realmente precisa de ajuda vai entender a confirmação. O golpista vai tentar impedir que ela aconteça.</p>
+
+      <p><strong>Acompanhe novos alertas sobre golpes e direitos do consumidor no perfil <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e em <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
+    slug: "voo-cancelado-alterado-direitos-passageiro",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Seu voo foi cancelado ou mudou de horário?",
+    excerpt:
+      "Seu voo foi cancelado ou teve o horário alterado? Saiba quando pedir reembolso, reacomodação e assistência no aeroporto.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-30T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/voo-cancelado-alterado-direitos-passageiro.png",
+    coverImageAlt:
+      "Passageiro consultando no aeroporto informações sobre um voo cancelado.",
+    metaTitle: "Voo cancelado ou alterado: conheça os seus direitos",
+    metaDescription:
+      "Seu voo foi cancelado ou teve o horário alterado? Saiba quando pedir reembolso, reacomodação e assistência no aeroporto.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Voo cancelado",
+      "Voo alterado",
+      "Direitos do passageiro",
+      "Reembolso de passagem",
+      "Assistência no aeroporto",
+      "Reacomodação de voo",
+    ],
+    featured: true,
+    content: `
+      <p>Uma mudança de poucas horas pode fazer o passageiro perder uma conexão, uma reserva de hotel ou um compromisso importante. Quando a alteração parte da companhia aérea, o consumidor não é obrigado a aceitar qualquer solução.</p>
+
+      <p>Em caso de cancelamento, o passageiro pode escolher entre reacomodação em outro voo, reembolso integral ou, quando possível, conclusão da viagem por outro meio de transporte. A decisão não cabe à empresa. <a href="https://www.gov.br/anac/pt-br/acesso-a-informacao/participacao-social/consultas-publicas/audiencias/2016/03/ra20160400retificada.pdf/@@download/file" target="_blank" rel="noopener noreferrer">Consulte a Resolução nº 400 da Anac</a>.</p>
+
+      <p>As mudanças programadas de horário ou itinerário devem ser comunicadas com pelo menos 72 horas de antecedência. Quando o aviso chega fora desse prazo, a companhia deve oferecer reacomodação ou reembolso integral. <a href="https://www.gov.br/anac/en/topics/air-services/files/resolution_400_2016_en_us.pdf" target="_blank" rel="noopener noreferrer">Consulte a Resolução nº 400 da Anac</a>.</p>
+
+      <p>O mesmo vale quando a alteração supera 30 minutos em voos domésticos ou uma hora em voos internacionais e o novo horário não atende ao passageiro. <a href="https://www.gov.br/anac/pt-br/noticias/2025/anac-orienta-passageiros-da-voepass-sobre-cancelamentos-e-remarcacoes-de-voos" target="_blank" rel="noopener noreferrer">Veja as orientações da Anac sobre cancelamentos e remarcações</a>.</p>
+
+      <br/>
+
+      <h2>Está esperando no aeroporto? A empresa deve prestar assistência</h2>
+
+      <p>Nos aeroportos brasileiros, a assistência varia de acordo com o tempo de espera:</p>
+
+      <ul>
+        <li>após uma hora, a empresa deve oferecer meios de comunicação;</li>
+        <li>após duas horas, alimentação;</li>
+        <li>após quatro horas, hospedagem, quando houver necessidade de pernoite, além do transporte entre o aeroporto e o local da acomodação.</li>
+      </ul>
+
+      <p><a href="https://www.gov.br/anac/pt-br/assuntos/passageiros/atrasos-cancelamentos-pretericao-e-assistencia-material" target="_blank" rel="noopener noreferrer">Consulte as regras de assistência material da Anac</a>.</p>
+
+      <p>Esses direitos valem independentemente do motivo do cancelamento ou do atraso. A companhia também deve comunicar o problema e manter o passageiro informado sobre a previsão do voo. <a href="https://www.gov.br/anac/pt-br/assuntos/passageiros/atrasos-cancelamentos-pretericao-e-assistencia-material" target="_blank" rel="noopener noreferrer">Veja as orientações da Anac para atrasos e cancelamentos</a>.</p>
+
+      <p>Peça uma declaração por escrito com o motivo da ocorrência. Guarde o cartão de embarque, os e-mails, as mensagens, os protocolos e os comprovantes de gastos provocados pelo problema.</p>
+
+      <p>Caso precise pagar alimentação, transporte ou hospedagem porque a empresa não prestou a assistência devida, guarde as notas fiscais.</p>
+
+      <p>Procure primeiro os canais da companhia. Se o atendimento não resolver, registre a reclamação no Anac Passageiro, no Consumidor.gov.br ou no Procon. No Anac Passageiro, a empresa tem até dez dias corridos para responder diretamente ao consumidor. <a href="https://www.gov.br/anac/pt-br/canais_atendimento/anacpassageiro" target="_blank" rel="noopener noreferrer">Acesse o Anac Passageiro</a>.</p>
+
+      <p>Nem toda mudança de voo pode ser evitada. O que não pode faltar é informação, atendimento e uma solução que respeite a escolha do passageiro.</p>
+
+      <p><strong>Vai viajar? Siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a> para saber como agir quando seus direitos não forem respeitados.</strong></p>
+    `,
+  },
+  {
+    slug: "valor-minimo-pagamento-cartao",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Loja pode exigir valor mínimo para pagamento no cartão?",
+    excerpt:
+      "A loja aceita cartão, mas exige uma compra mínima? Entenda por que essa prática pode ser abusiva e saiba como registrar uma reclamação.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-07-29T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/valor-minimo-pagamento-cartao.png",
+    coverImageAlt:
+      "Consumidor tentando pagar uma compra de baixo valor com cartão em um estabelecimento comercial.",
+    metaTitle: "Loja pode exigir valor mínimo para pagamento no cartão?",
+    metaDescription:
+      "A loja aceita cartão, mas exige uma compra mínima? Entenda por que essa prática pode ser abusiva e saiba como registrar uma reclamação.",
+    readingTime: "2 min de leitura",
+    tags: [
+      "Valor mínimo no cartão",
+      "Compra mínima no cartão",
+      "Pagamento no crédito",
+      "Pagamento no débito",
+      "Prática abusiva",
+      "Direitos do consumidor",
+    ],
+    featured: true,
+    content: `
+      <p>Você escolhe um produto de R$ 8 e, na hora de pagar, escuta que o cartão só pode ser usado em compras acima de R$ 20.</p>
+
+      <p>Para concluir a compra, a loja sugere que você leve mais alguma coisa. Mas o consumidor não é obrigado a gastar além do que pretendia.</p>
+
+      <p>O estabelecimento pode decidir quais formas de pagamento aceita. Porém, quando disponibiliza cartão de crédito ou débito, não deve impor um valor mínimo para a utilização. Essa exigência é tratada pelos órgãos de defesa do consumidor como prática abusiva, porque condiciona a compra de um produto à aquisição de outros itens. <a href="https://www.procon.sp.gov.br/wp-content/uploads/2021/02/CartaodeCredito.pdf" target="_blank" rel="noopener noreferrer">Consulte as orientações do Procon-SP</a>.</p>
+
+      <p>A loja pode oferecer desconto para pagamento em dinheiro ou Pix e cobrar outro preço no cartão, desde que essa diferença seja informada de maneira visível antes da compra. Isso é diferente de recusar o cartão porque o valor escolhido pelo cliente seria “baixo demais”. <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13455.htm" target="_blank" rel="noopener noreferrer">Consulte a Lei nº 13.455/2017</a>.</p>
+
+      <br/>
+
+      <h2>O que fazer se a loja mantiver a exigência</h2>
+
+      <p>Fotografe o aviso sobre o valor mínimo, quando houver, e peça para falar com o responsável pelo estabelecimento.</p>
+
+      <p>Anote o endereço, a data e o horário da tentativa de compra. Se chegou a realizar o pagamento levando um produto adicional, guarde o comprovante.</p>
+
+      <p>Caso a exigência continue, a reclamação pode ser registrada no Procon. No Rio de Janeiro, o consumidor também pode buscar orientação pelo telefone 151 ou pelos canais digitais do Procon-RJ. <a href="https://www.rj.gov.br/procon/registresuareclamacao" target="_blank" rel="noopener noreferrer">Veja como registrar uma reclamação no Procon-RJ</a>.</p>
+
+      <p>O custo da operação com cartão faz parte da atividade comercial. Ele não pode ser transferido ao consumidor por meio da obrigação de comprar algo que não deseja.</p>
+
+      <p><strong>Para acompanhar orientações sobre compras, cobranças e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
     slug: "carro-usado-com-defeito-garantia-90-dias",
     source: "Blog",
     category: "Defesa do Consumidor",
