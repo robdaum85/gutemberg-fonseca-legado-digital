@@ -28,6 +28,7 @@ const SegurancaPage = lazy(() => import("./pages/SegurancaPage"));
 const AniversarioPage = lazy(() => import("./pages/AniversarioPage"));
 const EventoPage = lazy(() => import("./pages/EventoPage"));
 const EventoSucessoPage = lazy(() => import("./pages/EventoSucessoPage"));
+const EventoCheckinPage = lazy(() => import("./pages/EventoCheckinPage"));
 const EventoDashboardPage = lazy(() => import("./pages/EventoDashboardPage"));
 const ApresentacaoFederalPage = lazy(
   () => import("./pages/ApresentacaoFederalPage"),
@@ -51,15 +52,18 @@ const BlogPostRedirect = () => {
 const App = () => {
   const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
   const isFederalPresentation = normalizedPath === "/apresentacao-federal";
+  const isCheckinOperation = normalizedPath === "/evento/checkin";
+  const hidesGlobalOverlays = isFederalPresentation || isCheckinOperation;
+  const hidesAccessibility = isCheckinOperation;
 
   return (
     <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <AccessibilityWidget />
-      {!isFederalPresentation && <CookieConsent />}
-      {!isFederalPresentation && (
+      {!hidesAccessibility && <AccessibilityWidget />}
+      {!hidesGlobalOverlays && <CookieConsent />}
+      {!hidesGlobalOverlays && (
         <a href="#conteudo-principal" className="skip-link">
           Ir para o conteudo principal
         </a>
@@ -134,6 +138,10 @@ const App = () => {
                 <Route
                   path="/evento/sucesso"
                   element={<EventoSucessoPage />}
+                />
+                <Route
+                  path="/evento/checkin"
+                  element={<EventoCheckinPage />}
                 />
                 <Route
                   path="/evento/dashboard"

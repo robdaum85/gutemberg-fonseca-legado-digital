@@ -17,9 +17,9 @@
 
 const SPREADSHEET_ID = "1omMi6g2ntDj6-avj2S9PdWNBJZXXAnINoCmy1tYeprU";
 const BASE_VALIDATION_URL = "https://gutembergfonseca.com.br/evento/checkin";
-const INSCRITOS_SHEET = "inscritos_palestra_20260713";
-const LOGS_SHEET = "logs_palestra_20260713";
-const CONTROLE_MIDIA_SHEET = "controle_midia_20260713";
+const INSCRITOS_SHEET = "inscritos_lancamento_20260824";
+const LOGS_SHEET = "logs_lancamento_20260824";
+const CONTROLE_MIDIA_SHEET = "controle_midia_20260824";
 const APP_TOKEN_PROPERTY = "APP_TOKEN";
 const SISTEMA_ATIVO_PROPERTY = "SISTEMA_ATIVO";
 const CPF_NAO_INFORMADO = "00000000000";
@@ -305,16 +305,23 @@ function validar_(payload) {
 
 function dashboard_() {
   const rows = readRows_(INSCRITOS_SHEET, INSCRITOS_HEADERS);
+  const logs = readRows_(LOGS_SHEET, LOG_HEADERS);
 
   const participantes = rows.map(function(row) {
     return {
       id: clean_(row.id),
+      codigo: clean_(row.codigo),
       nome: clean_(row.nome),
       telefone: clean_(row.telefone),
       dataCadastro: clean_(row.data_cadastro),
       horaCadastro: clean_(row.hora_cadastro),
       bairro: clean_(row.bairro),
       cidade: clean_(row.cidade),
+      categoria: clean_(row.categoria),
+      status: clean_(row.status),
+      dataValidacao: clean_(row.data_validacao),
+      horaValidacao: clean_(row.hora_validacao),
+      validadoPor: clean_(row.validado_por),
     };
   });
 
@@ -336,11 +343,43 @@ function dashboard_() {
     return registrationTimestamp_(b.data, "") - registrationTimestamp_(a.data, "");
   });
 
+  const totalValidados = participantes.filter(function(participante) {
+    return participante.status === "VALIDADO";
+  }).length;
+  const ultimasValidacoes = logs
+    .filter(function(log) {
+      return log.resultado === "VALIDADO_COM_SUCESSO" || log.resultado === "JA_VALIDADO";
+    })
+    .slice(-20)
+    .reverse()
+    .map(function(log) {
+      return {
+        data: clean_(log.data),
+        hora: clean_(log.hora),
+        codigo: clean_(log.codigo),
+        resultado: clean_(log.resultado),
+        nome: clean_(log.nome),
+        fiscal: clean_(log.fiscal),
+        portaria: clean_(log.portaria),
+      };
+    });
+
   return {
     success: true,
     totalInscritos: participantes.length,
+    totalValidados: totalValidados,
+    totalPendentes: participantes.filter(function(participante) {
+      return participante.status === "PENDENTE";
+    }).length,
+    totalTentativasInvalidas: logs.filter(function(log) {
+      return log.resultado === "CODIGO_NAO_ENCONTRADO";
+    }).length,
+    totalReutilizados: logs.filter(function(log) {
+      return log.resultado === "JA_VALIDADO";
+    }).length,
     totaisPorData: totaisPorData,
     participantes: participantes,
+    ultimasValidacoes: ultimasValidacoes,
   };
 }
 
@@ -538,7 +577,7 @@ function generateCode_() {
   for (let i = 0; i < 6; i++) {
     suffix += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
   }
-  return "GTBPAL-" + suffix;
+  return "GTFED-" + suffix;
 }
 
 function normalizeCode_(value) {

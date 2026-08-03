@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { CalendarDays, Clock3, Loader2, MapPin } from "lucide-react";
+import { ArrowRight, CalendarDays, Clock3, Loader2, MapPin, ShieldCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -13,6 +11,7 @@ import {
   isEventoApiConfigured,
   type EventoCadastroPayload,
 } from "@/lib/eventoApi";
+import "./EventoPage.css";
 
 const initialForm: EventoCadastroPayload = {
   nome: "",
@@ -86,9 +85,13 @@ export default function EventoPage() {
         return;
       }
 
-      navigate("/evento/sucesso", {
-        state: { nome: response.nome ?? form.nome },
-      });
+      const credential = {
+        nome: response.nome ?? form.nome,
+        codigo: response.codigo,
+        qrcodeUrl: response.qrcodeUrl,
+      };
+      sessionStorage.setItem("evento-credential", JSON.stringify(credential));
+      navigate("/evento/sucesso", { state: credential });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erro ao enviar cadastro.");
     } finally {
@@ -97,105 +100,101 @@ export default function EventoPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Header />
+    <div className="campaign-registration">
       <main id="conteudo-principal" tabIndex={-1}>
-        <section className="bg-primary px-4 pb-16 pt-32 text-white md:pb-20 md:pt-36">
-          <div className="container mx-auto max-w-6xl">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-300">
-              {EVENTO_GUTEMBERG.attention}
-            </p>
-            <h1 className="mt-3 max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl">
-              {EVENTO_GUTEMBERG.title}
-            </h1>
-            <p className="mt-3 text-xl font-semibold text-white/85">{EVENTO_GUTEMBERG.venue}</p>
+        <section className="campaign-registration__hero" id="inicio">
+          <div className="campaign-registration__shell campaign-registration__grid">
+            <div className="campaign-registration__copy">
+              <p className="campaign-registration__eyebrow">{EVENTO_GUTEMBERG.title}</p>
+              <h1>Gutemberg<br /><span>Fonseca</span></h1>
+              <p className="campaign-registration__office">Candidato a Deputado Federal</p>
+              <p className="campaign-registration__slogan">O Federal do <strong>Consumidor</strong></p>
 
-            <div className="mt-8 grid max-w-5xl gap-3 text-sm font-semibold sm:grid-cols-2 lg:grid-cols-4">
-              <div className="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 p-4">
-                <CalendarDays className="h-5 w-5 shrink-0 text-emerald-300" />
-                <span>{EVENTO_GUTEMBERG.date}</span>
+              <div className="campaign-registration__event-data" aria-label="Informações do lançamento">
+                <div><CalendarDays /><span><small>Data</small><strong>{EVENTO_GUTEMBERG.dateLong}</strong></span></div>
+                <div><Clock3 /><span><small>Horário</small><strong>{EVENTO_GUTEMBERG.time}</strong></span></div>
+                <div className="campaign-registration__event-location"><MapPin /><span><small>Local</small><strong>{EVENTO_GUTEMBERG.venue}</strong><em>{EVENTO_GUTEMBERG.address}</em></span></div>
               </div>
-              <div className="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 p-4">
-                <Clock3 className="h-5 w-5 shrink-0 text-emerald-300" />
-                <span>20:00</span>
-              </div>
-              <div className="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 p-4 sm:col-span-2">
-                <MapPin className="h-5 w-5 shrink-0 text-emerald-300" />
-                <span>{EVENTO_GUTEMBERG.address}</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="px-4 py-12 md:py-16">
-          <div className="container mx-auto grid max-w-6xl items-start gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-            <div className="rounded-2xl bg-primary p-6 text-white shadow-lg md:p-8">
-              <p className="text-sm font-bold uppercase tracking-widest text-emerald-300">Local do evento</p>
-              <h2 className="mt-3 text-3xl font-extrabold">{EVENTO_GUTEMBERG.venue}</h2>
-              <p className="mt-4 leading-relaxed text-white/80">{EVENTO_GUTEMBERG.address}</p>
-              <a
-                href={EVENTO_GUTEMBERG.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-bold text-primary transition-opacity hover:opacity-90"
-              >
-                <MapPin className="h-4 w-4" />
-                Abrir rota no mapa
+              <a className="campaign-registration__mobile-cta" href="#formulario-inscricao">
+                Confirmar minha presença <ArrowRight />
               </a>
             </div>
 
-            <form onSubmit={handleSubmit} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-lg sm:p-8">
-              <p className="text-sm font-bold uppercase tracking-widest text-primary">Inscrição</p>
-              <h2 className="mt-2 text-3xl font-extrabold text-slate-900">Garanta sua presença</h2>
-              <p className="mt-2 text-slate-600">Preencha seus dados para participar do evento.</p>
+            <div className="campaign-registration__portrait" aria-hidden="true">
+              <div className="campaign-registration__brazil-emblem"><span /></div>
+              <picture>
+                <source
+                  type="image/webp"
+                  sizes="(max-width: 680px) 80vw, (max-width: 1100px) 42vw, 26vw"
+                  srcSet="/images/federal/hero/section-01-hero-gutemberg-retrato-02-480x600.webp 480w, /images/federal/hero/section-01-hero-gutemberg-retrato-02-768x960.webp 768w, /images/federal/hero/section-01-hero-gutemberg-retrato-02-1024x1280.webp 1024w"
+                />
+                <img src="/images/federal/hero/section-01-hero-gutemberg-retrato-02.png" alt="" width="1800" height="2250" />
+              </picture>
+            </div>
+
+            <form id="formulario-inscricao" onSubmit={handleSubmit} className="campaign-registration__form">
+              <p className="campaign-registration__form-kicker">Inscrições abertas</p>
+              <h2>Confirme sua presença</h2>
+              <p>Preencha seus dados e receba sua identificação para a entrada.</p>
 
               {error && (
-                <div role="alert" className="mt-5 rounded-md border border-red-200 bg-red-50 p-3 text-sm font-medium text-red-700">
+                <div role="alert" className="campaign-registration__error">
                   {error}
                 </div>
               )}
 
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <div className="sm:col-span-2">
+              <div className="campaign-registration__fields">
+                <div className="campaign-registration__field--full">
                   <Label htmlFor="evento-nome">Nome completo *</Label>
-                  <Input id="evento-nome" value={form.nome} onChange={(event) => updateField("nome", event.target.value)} className="mt-2" autoComplete="name" required />
+                  <Input id="evento-nome" value={form.nome} onChange={(event) => updateField("nome", event.target.value)} autoComplete="name" required />
                 </div>
                 <div>
                   <Label htmlFor="evento-cpf">CPF (opcional)</Label>
-                  <Input id="evento-cpf" inputMode="numeric" value={form.cpf ?? ""} onChange={(event) => updateField("cpf", formatCpf(event.target.value))} className="mt-2" />
+                  <Input id="evento-cpf" inputMode="numeric" value={form.cpf ?? ""} onChange={(event) => updateField("cpf", formatCpf(event.target.value))} />
                 </div>
                 <div>
                   <Label htmlFor="evento-telefone">Telefone / WhatsApp *</Label>
-                  <Input id="evento-telefone" inputMode="tel" value={form.telefone} onChange={(event) => updateField("telefone", formatPhone(event.target.value))} className="mt-2" autoComplete="tel" required />
+                  <Input id="evento-telefone" inputMode="tel" value={form.telefone} onChange={(event) => updateField("telefone", formatPhone(event.target.value))} autoComplete="tel" required />
                 </div>
-                <div className="sm:col-span-2">
+                <div className="campaign-registration__field--full">
                   <Label htmlFor="evento-email">E-mail *</Label>
-                  <Input id="evento-email" type="email" value={form.email} onChange={(event) => updateField("email", event.target.value)} className="mt-2" autoComplete="email" required />
+                  <Input id="evento-email" type="email" value={form.email} onChange={(event) => updateField("email", event.target.value)} autoComplete="email" required />
                 </div>
                 <div>
                   <Label htmlFor="evento-cidade">Cidade *</Label>
-                  <Input id="evento-cidade" value={form.cidade} onChange={(event) => updateField("cidade", event.target.value)} className="mt-2" autoComplete="address-level2" required />
+                  <Input id="evento-cidade" value={form.cidade} onChange={(event) => updateField("cidade", event.target.value)} autoComplete="address-level2" required />
                 </div>
                 <div>
                   <Label htmlFor="evento-bairro">Bairro *</Label>
-                  <Input id="evento-bairro" value={form.bairro} onChange={(event) => updateField("bairro", event.target.value)} className="mt-2" autoComplete="address-level3" required />
+                  <Input id="evento-bairro" value={form.bairro} onChange={(event) => updateField("bairro", event.target.value)} autoComplete="address-level3" required />
                 </div>
               </div>
 
-              <label className="mt-5 flex items-start gap-3 rounded-md border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">
+              <label className="campaign-registration__consent">
                 <Checkbox checked={form.lgpd} onCheckedChange={(checked) => updateField("lgpd", checked === true)} className="mt-0.5" />
                 <span>Autorizo o uso dos meus dados para organização e comunicação deste evento.</span>
               </label>
 
-              <Button type="submit" size="lg" className="mt-6 w-full font-bold" disabled={loading}>
+              <Button type="submit" size="lg" className="campaign-registration__submit" disabled={loading}>
                 {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-                {loading ? "Enviando cadastro..." : "Concluir cadastro"}
+                {loading ? "Enviando inscrição..." : "Confirmar minha presença"}
+                {!loading && <ArrowRight className="h-4 w-4" />}
               </Button>
+              <p className="campaign-registration__privacy"><ShieldCheck /> Seus dados serão utilizados somente para organização e comunicação do evento.</p>
             </form>
           </div>
         </section>
       </main>
-      <Footer />
+      <footer className="campaign-registration__footer">
+        <div className="campaign-registration__footer-side">
+          <strong>Gutemberg Fonseca</strong>
+          <span>O Federal do Consumidor</span>
+        </div>
+        <div className="campaign-registration__footer-side campaign-registration__footer-side--right">
+          <strong>Evento de lançamento · 24 de agosto de 2026</strong>
+          <span>CNPJ: 68.237.089/0001-48</span>
+        </div>
+      </footer>
     </div>
   );
 }

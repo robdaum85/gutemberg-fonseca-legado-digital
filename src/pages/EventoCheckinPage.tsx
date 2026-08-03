@@ -1,6 +1,22 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Html5Qrcode } from "html5-qrcode";
-import { Camera, CheckCircle2, Loader2, Search, Shield, XCircle } from "lucide-react";
+import {
+  Activity,
+  Camera,
+  CheckCircle2,
+  Clock3,
+  Loader2,
+  LogOut,
+  RefreshCcw,
+  Search,
+  Shield,
+  ShieldAlert,
+  UserCheck,
+  Users,
+  Wifi,
+  WifiOff,
+  XCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,11 +25,14 @@ import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
 import {
   consultarCodigo,
   consultarPorCpf,
+  carregarDashboard,
   extractCodigoFromScan,
   isEventoApiConfigured,
   normalizeCodigo,
   validarCodigo,
   type EventoConsultaResponse,
+  type EventoDashboardResponse,
+  type EventoDashboardValidacao,
   type EventoValidarResponse,
 } from "@/lib/eventoApi";
 
@@ -36,6 +55,9 @@ const DEFAULT_CHECKIN_USERS = [
   { login: "portaria01", senha: "Gutemberg@01", fiscal: "Portaria 01" },
   { login: "portaria02", senha: "Gutemberg@02", fiscal: "Portaria 02" },
   { login: "portaria03", senha: "Gutemberg@03", fiscal: "Portaria 03" },
+  { login: "portaria04", senha: "Gutemberg@04", fiscal: "Portaria 04" },
+  { login: "portaria05", senha: "Gutemberg@05", fiscal: "Portaria 05" },
+  { login: "portaria06", senha: "Gutemberg@06", fiscal: "Portaria 06" },
 ];
 
 function getCheckinUsers() {
@@ -78,9 +100,50 @@ export default function EventoCheckinPage() {
   const [loading, setLoading] = useState(false);
   const [scannerOn, setScannerOn] = useState(false);
   const [scannerError, setScannerError] = useState("");
+  const [dashboard, setDashboard] = useState<EventoDashboardResponse | null>(null);
+  const [dashboardError, setDashboardError] = useState("");
+  const [lastSync, setLastSync] = useState("");
+  const [online, setOnline] = useState(() => navigator.onLine);
+  const [now, setNow] = useState(() => new Date());
+  const [sessionTotals, setSessionTotals] = useState({ validated: 0, reused: 0 });
+  const [localHistory, setLocalHistory] = useState<EventoDashboardValidacao[]>([]);
   const scannerRef = useRef<Html5Qrcode | null>(null);
+  const scanLockedRef = useRef(false);
+  const dashboardRequestRef = useRef(false);
   const resultadoRef = useRef<HTMLDivElement>(null);
   const isReady = unlocked && config.fiscal.trim().length > 0;
+
+  const loadOperationalDashboard = useCallback(async ({ silent = false } = {}) => {
+    if (!unlocked || dashboardRequestRef.current || !isEventoApiConfigured()) return;
+    dashboardRequestRef.current = true;
+    if (!silent) setDashboardError("");
+    try {
+      const response = await carregarDashboard();
+      if (!response.success) {
+        setDashboardError(response.message ?? "Não foi possível atualizar os indicadores.");
+        return;
+      }
+      setDashboard(response);
+      setDashboardError("");
+      setLastSync(new Date().toLocaleTimeString("pt-BR"));
+    } catch (err) {
+      setDashboardError(err instanceof Error ? err.message : "Falha de conexão com o painel.");
+    } finally {
+      dashboardRequestRef.current = false;
+    }
+  }, [unlocked]);
+
+  const operationalTotals = useMemo(() => {
+    const participants = dashboard?.participantes ?? [];
+    const validated = dashboard?.totalValidados ?? participants.filter((item) => item.status === "VALIDADO").length;
+    const registered = dashboard?.totalInscritos ?? 0;
+    return {
+      registered,
+      validated,
+      pending: dashboard?.totalPendentes ?? Math.max(0, registered - validated),
+      reused: dashboard?.totalReutilizados ?? 0,
+    };
+  }, [dashboard]);
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -124,6 +187,29 @@ export default function EventoCheckinPage() {
       scannerRef.current?.clear();
     };
   }, []);
+
+  useEffect(() => {
+    const clockId = window.setInterval(() => setNow(new Date()), 1000);
+    const handleOnline = () => setOnline(true);
+    const handleOffline = () => setOnline(false);
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+    return () => {
+      window.clearInterval(clockId);
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!unlocked) return;
+    void loadOperationalDashboard();
+    const intervalId = window.setInterval(
+      () => void loadOperationalDashboard({ silent: true }),
+      10_000,
+    );
+    return () => window.clearInterval(intervalId);
+  }, [loadOperationalDashboard, unlocked]);
 
   useEffect(() => {
     if (isReady && !scannerOn && !scannerRef.current) {
@@ -170,10 +256,11 @@ export default function EventoCheckinPage() {
   }
 
   async function stopScanner() {
-    if (!scannerRef.current) return;
-    await scannerRef.current.stop().catch(() => undefined);
-    scannerRef.current.clear();
+    const scanner = scannerRef.current;
+    if (!scanner) return;
     scannerRef.current = null;
+    await scanner.stop().catch(() => undefined);
+    scanner.clear();
     setScannerOn(false);
   }
 
@@ -192,6 +279,8 @@ export default function EventoCheckinPage() {
         { facingMode: "environment" },
         { fps: 10, qrbox: { width: 260, height: 260 } },
         async (decodedText) => {
+          if (scanLockedRef.current) return;
+          scanLockedRef.current = true;
           const codigo = extractCodigoFromScan(decodedText);
           await stopScanner();
           setManualCode(codigo);
@@ -201,6 +290,8 @@ export default function EventoCheckinPage() {
       );
       setScannerOn(true);
     } catch (err) {
+      scannerRef.current?.clear();
+      scannerRef.current = null;
       setScannerError("Nao foi possivel abrir a camera. Use a digitacao manual.");
       setScannerOn(false);
     }
@@ -210,6 +301,7 @@ export default function EventoCheckinPage() {
     const normalized = normalizeCodigo(codigo);
     if (!normalized) return;
 
+    if (scannerOn) await stopScanner();
     setLoading(true);
     setResult(null);
     try {
@@ -239,6 +331,7 @@ export default function EventoCheckinPage() {
       return;
     }
 
+    if (scannerOn) await stopScanner();
     setLoading(true);
     setResult(null);
     try {
@@ -264,6 +357,24 @@ export default function EventoCheckinPage() {
     try {
       const response = await validarCodigo(result.codigo, config.fiscal, config.portaria);
       setResult({ kind: "validacao", ...response });
+      const historyItem: EventoDashboardValidacao = {
+        data: response.dataValidacao ?? new Date().toLocaleDateString("pt-BR"),
+        hora: response.horaValidacao ?? new Date().toLocaleTimeString("pt-BR"),
+        codigo: response.codigo ?? result.codigo,
+        resultado: response.resultado,
+        nome: response.nome ?? result.nome ?? "",
+        fiscal: config.fiscal,
+        portaria: config.portaria,
+      };
+      setLocalHistory((current) => [historyItem, ...current].slice(0, 8));
+      if (response.resultado === "VALIDADO_COM_SUCESSO") {
+        setSessionTotals((current) => ({ ...current, validated: current.validated + 1 }));
+        navigator.vibrate?.(120);
+      } else if (response.resultado === "JA_VALIDADO") {
+        setSessionTotals((current) => ({ ...current, reused: current.reused + 1 }));
+        navigator.vibrate?.([120, 80, 120]);
+      }
+      void loadOperationalDashboard({ silent: true });
     } catch (err) {
       setResult({
         kind: "validacao",
@@ -273,13 +384,15 @@ export default function EventoCheckinPage() {
       });
     } finally {
       setLoading(false);
-      startScanner();
     }
   }
 
   function rescan() {
     setResult(null);
-    startScanner();
+    setManualCode("");
+    setCpfQuery("");
+    scanLockedRef.current = false;
+    void startScanner();
   }
 
   if (!unlocked) {
@@ -341,41 +454,82 @@ export default function EventoCheckinPage() {
   return (
     <main
       id="conteudo-principal"
-      className="min-h-screen px-3 py-3 text-zinc-950 sm:px-4 sm:py-5"
+      className="min-h-screen pb-8 text-zinc-950"
       style={{ backgroundColor: EVENTO_COLORS.lightGray }}
     >
-      <div className="mx-auto grid max-w-6xl gap-3 sm:gap-5 lg:grid-cols-[22rem_1fr]">
-        <aside className="overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm">
-          <div className="p-3 text-white sm:p-4" style={{ backgroundColor: EVENTO_COLORS.navy }}>
-            <p className="text-[11px] font-black uppercase tracking-[0.14em] sm:text-xs" style={{ color: EVENTO_COLORS.yellow }}>
-              {EVENTO_GUTEMBERG.title}
+      <header className="sticky top-0 z-30 border-b border-white/10 text-white shadow-lg" style={{ backgroundColor: EVENTO_COLORS.navy }}>
+        <div className="mx-auto flex max-w-[1500px] flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[0.18em]" style={{ color: EVENTO_COLORS.yellow }}>
+              Central operacional de entrada
             </p>
-            <p className="mt-0.5 text-xs font-bold sm:text-sm">{EVENTO_GUTEMBERG.name} {EVENTO_GUTEMBERG.year}</p>
+            <h1 className="text-lg font-black sm:text-2xl">{EVENTO_GUTEMBERG.title}</h1>
           </div>
-          <div className="p-3 sm:p-4">
-          <div className="flex items-center justify-between gap-3">
-            <h1 className="text-lg font-extrabold sm:text-xl">Check-in</h1>
-            <Button type="button" variant="ghost" size="sm" onClick={logout}>
-              Sair
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="text-right">
+              <p className="text-xs font-black sm:text-sm">{config.fiscal}</p>
+              <p className="text-[10px] text-white/60 sm:text-[11px]">Terminal {config.portaria}</p>
+            </div>
+            <span className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-black ${online ? "bg-emerald-500/20 text-emerald-200" : "bg-red-500/25 text-red-100"}`}>
+              {online ? <Wifi className="h-3.5 w-3.5" /> : <WifiOff className="h-3.5 w-3.5" />}
+              {online ? "Online" : "Sem rede"}
+            </span>
+            <span className="hidden items-center gap-1 text-sm font-bold md:flex">
+              <Clock3 className="h-4 w-4" />
+              {now.toLocaleTimeString("pt-BR")}
+            </span>
+            <Button type="button" variant="outline" size="sm" onClick={logout} className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white">
+              <LogOut className="h-4 w-4" /> Sair
             </Button>
           </div>
-          <div className="mt-2 rounded-md bg-zinc-50 px-3 py-2 text-sm text-zinc-700">
-            <span className="font-semibold text-zinc-500">Fiscal:</span>{" "}
-            <span className="font-bold text-zinc-950">{config.fiscal || "-"}</span>
-          </div>
-          </div>
-        </aside>
+        </div>
+      </header>
 
-        <section className="rounded-lg border border-zinc-200 bg-white p-3 shadow-sm sm:p-4">
+      <div className="mx-auto max-w-[1500px] px-3 pt-4 sm:px-6">
+        <section className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
+          <OperationMetric label="Inscritos" value={operationalTotals.registered} icon={<Users />} tone="blue" />
+          <OperationMetric label="Entraram" value={operationalTotals.validated} icon={<UserCheck />} tone="green" />
+          <OperationMetric label="Aguardando" value={operationalTotals.pending} icon={<Clock3 />} tone="amber" />
+          <OperationMetric label="Reutilizações" value={operationalTotals.reused} icon={<ShieldAlert />} tone="red" />
+          <OperationMetric label="Nesta sessão" value={sessionTotals.validated} icon={<Activity />} tone="green" />
+          <OperationMetric label="Alertas locais" value={sessionTotals.reused} icon={<XCircle />} tone="red" />
+        </section>
+
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-zinc-500">
+          <p>
+            Painel sincronizado a cada 10 segundos{lastSync ? ` · Última atualização: ${lastSync}` : ""}
+          </p>
+          <Button variant="ghost" size="sm" onClick={() => void loadOperationalDashboard()} className="h-8">
+            <RefreshCcw className="h-3.5 w-3.5" /> Atualizar agora
+          </Button>
+        </div>
+        {dashboardError && (
+          <div className="mt-2 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm font-semibold text-amber-900">
+            Os indicadores estão temporariamente sem atualização. A validação individual continua disponível. {dashboardError}
+          </div>
+        )}
+
+        <div className="mt-4 grid gap-4 xl:grid-cols-[minmax(0,1fr)_22rem]">
+        <section className="rounded-xl border border-zinc-200 bg-white p-3 shadow-sm sm:p-5">
           {!isReady && (
             <div className="mb-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm font-semibold text-amber-800">
               Informe o nome do fiscal antes de validar convites.
             </div>
           )}
 
-          <div className="grid gap-4 md:grid-cols-[1fr_20rem]">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-zinc-100 pb-4">
             <div>
-              <div id="evento-qr-reader" className="min-h-[15rem] overflow-hidden rounded-lg border border-zinc-200 bg-zinc-950 sm:min-h-[18rem]" />
+              <h2 className="text-xl font-black">Validar entrada</h2>
+              <p className="text-sm text-zinc-500">Leia o QR Code ou localize o inscrito por código ou CPF.</p>
+            </div>
+            <span className={`rounded-full px-3 py-1 text-xs font-black ${scannerOn ? "bg-emerald-100 text-emerald-800" : "bg-zinc-100 text-zinc-600"}`}>
+              {scannerOn ? "Câmera pronta" : "Câmera pausada"}
+            </span>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-[minmax(18rem,1.15fr)_minmax(18rem,.85fr)]">
+            <div>
+              <div id="evento-qr-reader" className="min-h-[18rem] overflow-hidden rounded-xl border-2 border-zinc-200 bg-zinc-950 sm:min-h-[24rem]" />
               {scannerError && <p className="mt-2 text-sm font-semibold text-red-700">{scannerError}</p>}
               <div className="mt-3 flex flex-wrap gap-2">
                 <Button
@@ -394,28 +548,35 @@ export default function EventoCheckinPage() {
             </div>
 
             <div>
-              <Label htmlFor="manual-code">Código manual</Label>
+              <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4">
+              <Label htmlFor="manual-code" className="font-black">Código do convite</Label>
               <div className="mt-2 flex gap-2">
                 <Input
                   id="manual-code"
                   value={manualCode}
                   onChange={(event) => setManualCode(event.target.value.toUpperCase())}
-                  placeholder="GTBPAL-A8K3P9"
+                  onKeyDown={(event) => event.key === "Enter" && consult()}
+                  placeholder="GTFED-A8K3P9"
+                  className="h-12 bg-white font-mono text-base font-bold uppercase"
                 />
                 <Button
-                  size="icon"
+                  className="h-12 px-4 text-white"
                   onClick={() => consult()}
                   disabled={!isReady || loading}
                   aria-label="Consultar código"
-                  className="text-white"
                   style={{ backgroundColor: EVENTO_COLORS.green }}
                 >
                   {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
+                  <span className="hidden sm:inline">Buscar</span>
                 </Button>
               </div>
 
-              <Label htmlFor="cpf-query" className="mt-4 block">
-                Verificar cadastro por CPF
+              <div className="my-4 flex items-center gap-3 text-xs font-black uppercase tracking-widest text-zinc-400">
+                <span className="h-px flex-1 bg-zinc-200" /> ou <span className="h-px flex-1 bg-zinc-200" />
+              </div>
+
+              <Label htmlFor="cpf-query" className="block font-black">
+                CPF do inscrito
               </Label>
               <p className="mt-1 text-xs text-zinc-500">
                 Use esta busca quando a pessoa se cadastrou online e não estiver com o QR Code.
@@ -428,17 +589,19 @@ export default function EventoCheckinPage() {
                   onChange={(event) => setCpfQuery(formatCpf(event.target.value))}
                   onKeyDown={(event) => event.key === "Enter" && consultByCpf()}
                   placeholder="000.000.000-00"
+                  className="h-12 bg-white text-base"
                 />
                 <Button
-                  size="icon"
+                  className="h-12 px-4 text-white"
                   onClick={consultByCpf}
                   disabled={!isReady || loading}
                   aria-label="Buscar por CPF"
-                  className="text-white"
                   style={{ backgroundColor: EVENTO_COLORS.green }}
                 >
                   {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
+                  <span className="hidden sm:inline">Buscar</span>
                 </Button>
+              </div>
               </div>
 
               <div ref={resultadoRef}>
@@ -447,8 +610,100 @@ export default function EventoCheckinPage() {
             </div>
           </div>
         </section>
+        <OperationalHistory
+          items={[
+            ...localHistory,
+            ...(dashboard?.ultimasValidacoes ?? []).filter(
+              (remote) => !localHistory.some(
+                (local) => local.codigo === remote.codigo && local.hora === remote.hora,
+              ),
+            ),
+          ]}
+          usingLocalHistory={localHistory.length > 0}
+        />
+        </div>
       </div>
     </main>
+  );
+}
+
+function OperationMetric({
+  label,
+  value,
+  icon,
+  tone,
+}: {
+  label: string;
+  value: number;
+  icon: React.ReactNode;
+  tone: "blue" | "green" | "amber" | "red";
+}) {
+  const tones = {
+    blue: "bg-blue-50 text-blue-800",
+    green: "bg-emerald-50 text-emerald-800",
+    amber: "bg-amber-50 text-amber-800",
+    red: "bg-red-50 text-red-800",
+  };
+
+  return (
+    <article className="rounded-xl border border-zinc-200 bg-white p-3 shadow-sm sm:p-4">
+      <div className="flex items-center gap-3">
+        <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg [&>svg]:h-4 [&>svg]:w-4 ${tones[tone]}`}>
+          {icon}
+        </span>
+        <div className="min-w-0">
+          <p className="truncate text-[11px] font-bold uppercase tracking-wide text-zinc-500">{label}</p>
+          <p className="text-2xl font-black leading-none text-zinc-950">{value}</p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function OperationalHistory({
+  items,
+  usingLocalHistory,
+}: {
+  items: EventoDashboardValidacao[];
+  usingLocalHistory: boolean;
+}) {
+  return (
+    <aside className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
+      <div className="border-b border-zinc-200 px-4 py-4">
+        <h2 className="font-black">Últimas movimentações</h2>
+        <p className="mt-1 text-xs text-zinc-500">
+          {usingLocalHistory ? "Neste terminal e visão geral sincronizada" : "Visão geral de todas as portarias"}
+        </p>
+      </div>
+      <div className="max-h-[48rem] divide-y divide-zinc-100 overflow-y-auto">
+        {items.slice(0, 12).map((item, index) => {
+          const reused = item.resultado === "JA_VALIDADO";
+          return (
+            <article className="p-4" key={`${item.codigo}-${item.hora}-${index}`}>
+              <div className="flex items-start gap-3">
+                <span className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full ${reused ? "bg-red-100 text-red-700" : "bg-emerald-100 text-emerald-700"}`}>
+                  {reused ? <ShieldAlert className="h-4 w-4" /> : <CheckCircle2 className="h-4 w-4" />}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-black">{item.nome || "Participante"}</p>
+                  <p className="mt-0.5 font-mono text-xs text-zinc-500">{item.codigo}</p>
+                  <div className="mt-2 flex flex-wrap gap-x-2 text-[11px] text-zinc-500">
+                    <span>{item.hora}</span>
+                    <span>{item.fiscal || item.portaria}</span>
+                  </div>
+                  {reused && <p className="mt-1 text-xs font-black text-red-700">Entrada já utilizada</p>}
+                </div>
+              </div>
+            </article>
+          );
+        })}
+        {items.length === 0 && (
+          <div className="p-8 text-center text-sm text-zinc-500">
+            As validações aparecerão aqui em tempo real.
+          </div>
+        )}
+      </div>
+    </aside>
   );
 }
 
@@ -497,6 +752,9 @@ function ResultCard({
         <CheckCircle2 className="mb-2 h-7 w-7" />
         <h2 className="text-xl font-extrabold">Entrada registrada</h2>
         <InfoRows result={result} />
+        <Button className="mt-4 h-12 w-full bg-emerald-700 text-base font-black hover:bg-emerald-800" onClick={onDismiss}>
+          Próximo convidado
+        </Button>
       </div>
     );
   }

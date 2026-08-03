@@ -1,21 +1,23 @@
 export const EVENTO_GUTEMBERG = {
   attention: "Inscrições abertas",
-  title: "Grande Evento São Gonçalo",
-  theme: "Grande Evento São Gonçalo - Luiz Social",
+  title: "Lançamento da Campanha",
+  theme: "Lançamento da Campanha a Deputado Federal",
   name: "Gutemberg Fonseca",
   year: "2026",
-  date: "17/07/2026",
-  weekday: "sexta-feira",
-  time: "20h",
-  venue: "Luiz Social",
-  address: "Av. Humberto de Alencar Castelo Branco, 2820 - Rocha, São Gonçalo - RJ",
-  slogan: "Juntos somos mais fortes",
-  lat: -22.8269,
-  lng: -43.0634,
+  office: "Deputado Federal",
+  date: "24/08/2026",
+  dateLong: "24 de agosto de 2026",
+  weekday: "segunda-feira",
+  time: "19h",
+  venue: "Espaço Hall",
+  address: "Av. Ayrton Senna, 5850 - Gardênia Azul, Rio de Janeiro - RJ, 22775-005",
+  slogan: "O Federal do Consumidor",
+  lat: -22.9608319,
+  lng: -43.3565454,
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=" +
     encodeURIComponent(
-      "Luiz Social, Av. Humberto de Alencar Castelo Branco, 2820 - Rocha, São Gonçalo - RJ",
+      "Espaço Hall, Av. Ayrton Senna, 5850 - Gardênia Azul, Rio de Janeiro - RJ, 22775-005",
     ),
 };
 

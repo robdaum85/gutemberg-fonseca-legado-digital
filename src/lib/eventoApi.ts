@@ -45,22 +45,43 @@ export type EventoValidarResponse = {
 
 export type EventoDashboardParticipante = {
   id: string;
+  codigo?: string;
   nome: string;
   telefone: string;
   dataCadastro: string;
   horaCadastro: string;
   bairro: string;
   cidade: string;
+  categoria?: string;
+  status?: "PENDENTE" | "VALIDADO" | "CANCELADO" | "DUPLICADO";
+  dataValidacao?: string;
+  horaValidacao?: string;
+  validadoPor?: string;
+};
+
+export type EventoDashboardValidacao = {
+  data: string;
+  hora: string;
+  codigo: string;
+  resultado: string;
+  nome: string;
+  fiscal: string;
+  portaria: string;
 };
 
 export type EventoDashboardResponse = {
   success: boolean;
   totalInscritos: number;
+  totalValidados?: number;
+  totalPendentes?: number;
+  totalTentativasInvalidas?: number;
+  totalReutilizados?: number;
   totaisPorData: Array<{
     data: string;
     total: number;
   }>;
   participantes: EventoDashboardParticipante[];
+  ultimasValidacoes?: EventoDashboardValidacao[];
   message?: string;
 };
 

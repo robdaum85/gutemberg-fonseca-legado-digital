@@ -1,0 +1,654 @@
+.campaign-registration {
+  --event-green: #04220f;
+  --event-green-mid: #0d5c2e;
+  --event-navy: #0c2450;
+  --event-yellow: #ffd400;
+  --event-cream: #faf6ed;
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--event-green);
+  color: #fff;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.campaign-registration__shell {
+  width: min(100% - 32px, 1420px);
+  margin-inline: auto;
+}
+
+.campaign-registration__header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 20;
+  padding: 20px 0;
+}
+
+.campaign-registration__header .campaign-registration__shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.campaign-registration__brand {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  line-height: .9;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.campaign-registration__brand small {
+  color: var(--event-yellow);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .25em;
+}
+
+.campaign-registration__brand strong {
+  margin-top: 5px;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: 20px;
+  font-weight: 950;
+}
+
+.campaign-registration__header-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  padding: 10px 15px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.campaign-registration__header-tag svg { width: 16px; height: 16px; color: var(--event-yellow); }
+
+.campaign-registration__hero {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100vh - 56px);
+  padding: 112px 0 44px;
+  background: radial-gradient(90% 100% at 12% 10%, var(--event-green-mid), #07341a 48%, var(--event-green) 100%);
+}
+
+.campaign-registration__hero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-image: radial-gradient(rgba(255,255,255,.16) 1px, transparent 1px);
+  background-size: 28px 28px;
+  content: "";
+  mask-image: linear-gradient(90deg, #000, transparent 65%);
+  opacity: .28;
+}
+
+.campaign-registration__flag {
+  position: absolute;
+  z-index: -2;
+  top: 12%;
+  left: 38%;
+  width: min(42vw, 600px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ffd400;
+  box-shadow: 0 0 0 28px rgba(255,212,0,.08), 0 30px 100px rgba(0,0,0,.2);
+  transform: rotate(-11deg);
+}
+
+.campaign-registration__flag::before {
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  background: #1a3a8f;
+  content: "";
+}
+
+.campaign-registration__flag span {
+  position: absolute;
+  top: 49%;
+  left: 18%;
+  width: 64%;
+  height: 8%;
+  border-radius: 50%;
+  background: #fff;
+  transform: rotate(5deg);
+}
+
+.campaign-registration__dots {
+  position: absolute;
+  right: 4%;
+  bottom: 4%;
+  width: 180px;
+  height: 120px;
+  background-image: radial-gradient(var(--event-yellow) 2px, transparent 2.5px);
+  background-size: 18px 18px;
+  opacity: .18;
+}
+
+.campaign-registration__grid {
+  display: grid;
+  grid-template-columns: minmax(300px,.9fr) minmax(280px,.72fr) minmax(390px,1.08fr);
+  align-items: center;
+  gap: clamp(18px, 2vw, 36px);
+}
+
+.campaign-registration__copy { position: relative; z-index: 2; padding-block: 22px; }
+.campaign-registration__eyebrow {
+  display: inline-flex;
+  border-radius: 999px;
+  background: var(--event-yellow);
+  color: var(--event-green);
+  padding: 8px 14px;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.campaign-registration__copy h1 {
+  margin-top: 18px;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: clamp(48px, 5.1vw, 82px);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: .82;
+  text-transform: uppercase;
+}
+
+.campaign-registration__copy h1 span { color: var(--event-yellow); }
+.campaign-registration__office { margin-top: 22px; font-size: 14px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.campaign-registration__slogan { margin-top: 8px; font-size: clamp(22px, 2.2vw, 34px); font-weight: 300; line-height: 1.06; }
+.campaign-registration__slogan strong { display: block; color: var(--event-yellow); font-weight: 950; }
+
+.campaign-registration__event-data { display: grid; gap: 9px; margin-top: 28px; }
+.campaign-registration__event-data > div { display: flex; align-items: center; gap: 12px; }
+.campaign-registration__event-data svg { width: 20px; height: 20px; color: var(--event-yellow); }
+.campaign-registration__event-data span { display: flex; flex-direction: column; }
+.campaign-registration__event-data small { color: rgba(255,255,255,.58); font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.campaign-registration__event-data strong { font-size: 13px; }
+.campaign-registration__map { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; color: var(--event-yellow); font-size: 12px; font-weight: 900; text-decoration: none; }
+.campaign-registration__map svg { width: 15px; }
+
+.campaign-registration__portrait { align-self: end; height: min(76vh, 780px); min-height: 580px; }
+.campaign-registration__portrait picture,
+.campaign-registration__portrait img { width: 100%; height: 100%; }
+.campaign-registration__portrait img { object-fit: contain; object-position: center bottom; filter: drop-shadow(0 28px 28px rgba(0,0,0,.28)); }
+
+.campaign-registration__form {
+  position: relative;
+  z-index: 4;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 22px;
+  background: rgba(255,255,255,.98);
+  color: #0d1b12;
+  padding: clamp(24px, 3vw, 38px);
+  box-shadow: 0 30px 90px rgba(0,0,0,.32);
+}
+
+.campaign-registration__form-kicker { color: #0d5c2e; font-size: 10px; font-weight: 950; letter-spacing: .17em; text-transform: uppercase; }
+.campaign-registration__form h2 { margin-top: 7px; color: var(--event-navy); font-family: Montserrat, Inter, sans-serif; font-size: clamp(26px, 2.3vw, 36px); font-weight: 950; line-height: 1.04; }
+.campaign-registration__form > p:not(.campaign-registration__form-kicker):not(.campaign-registration__privacy) { margin-top: 9px; color: #667067; font-size: 13px; line-height: 1.5; }
+.campaign-registration__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+.campaign-registration__field--full { grid-column: 1 / -1; }
+.campaign-registration__fields label { display: block; margin-bottom: 6px; color: #26342b; font-size: 11px; font-weight: 850; }
+.campaign-registration__fields input { height: 46px; border-color: #d8ddd8; border-radius: 9px; background: #f9faf9; font-size: 14px; }
+.campaign-registration__fields input:focus { border-color: #0d5c2e; box-shadow: 0 0 0 3px rgba(13,92,46,.12); }
+.campaign-registration__consent { display: flex; align-items: flex-start; gap: 10px; margin-top: 16px; border-radius: 9px; background: #f2f6f3; padding: 12px; color: #526058; font-size: 11px; line-height: 1.45; cursor: pointer; }
+.campaign-registration__submit { width: 100%; min-height: 50px; margin-top: 18px; border-radius: 999px; background: var(--event-yellow) !important; color: var(--event-green) !important; font-size: 12px; font-weight: 950; letter-spacing: .04em; text-transform: uppercase; }
+.campaign-registration__privacy { display: flex; justify-content: center; gap: 6px; margin-top: 12px !important; color: #738078 !important; font-size: 9px !important; text-align: center; }
+.campaign-registration__privacy svg { width: 12px; height: 12px; flex: none; }
+.campaign-registration__error { margin-top: 15px; border: 1px solid #fecaca; border-radius: 9px; background: #fef2f2; padding: 11px; color: #b91c1c; font-size: 12px; font-weight: 700; }
+
+.campaign-registration__footer { display: flex; justify-content: space-between; gap: 20px; padding: 18px max(20px, calc((100vw - 1420px)/2)); background: #061b34; color: rgba(255,255,255,.62); font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+
+@media (max-width: 1100px) {
+  .campaign-registration__grid { grid-template-columns: 1fr .75fr; }
+  .campaign-registration__form { grid-column: 1 / -1; width: min(100%, 760px); margin-inline: auto; }
+  .campaign-registration__portrait { min-height: 490px; height: 60vh; }
+  .campaign-registration__flag { left: auto; right: 4%; width: 50vw; }
+}
+
+@media (max-width: 680px) {
+  .campaign-registration__shell { width: min(100% - 24px, 1420px); }
+  .campaign-registration__header { padding-top: 14px; }
+  .campaign-registration__header-tag { padding: 8px 10px; font-size: 9px; }
+  .campaign-registration__hero { padding-top: 96px; }
+  .campaign-registration__grid { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .campaign-registration__copy { padding-bottom: 0; }
+  .campaign-registration__copy h1 { font-size: clamp(46px, 16vw, 68px); }
+  .campaign-registration__office { font-size: 11px; }
+  .campaign-registration__event-data { grid-template-columns: 1fr 1fr; }
+  .campaign-registration__event-data > div:last-child { grid-column: 1 / -1; }
+  .campaign-registration__portrait { height: 370px; min-height: 0; margin-top: -32px; }
+  .campaign-registration__portrait img { object-position: right bottom; }
+  .campaign-registration__flag { top: 28%; right: -28%; width: 92vw; opacity: .9; }
+  .campaign-registration__form { margin-top: -18px; border-radius: 18px; padding: 24px 18px; }
+  .campaign-registration__fields { grid-template-columns: 1fr; }
+  .campaign-registration__field--full { grid-column: auto; }
+  .campaign-registration__footer { flex-direction: column; gap: 4px; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campaign-registration * { scroll-behavior: auto !important; }
+}
+
+.campaign-success__main {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 48px 16px;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255,212,0,.18), transparent 30%),
+    radial-gradient(circle at 85% 85%, rgba(26,58,143,.35), transparent 34%),
+    var(--event-green);
+}
+
+.campaign-success__card {
+  width: min(100%, 680px);
+  border-radius: 24px;
+  background: #fff;
+  padding: clamp(24px, 5vw, 44px);
+  color: #0d1b12;
+  text-align: center;
+  box-shadow: 0 34px 100px rgba(0,0,0,.35);
+}
+
+.campaign-success__credential {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 26px;
+  border: 2px dashed #b9c7bc;
+  border-radius: 18px;
+  background: #f7faf7;
+  padding: 20px;
+}
+
+.campaign-success__credential p { color: #0d5c2e; font-size: 10px; font-weight: 950; letter-spacing: .12em; text-transform: uppercase; }
+.campaign-success__credential img { width: min(240px, 70vw); margin-top: 12px; }
+.campaign-success__credential strong { margin-top: 10px; color: var(--event-navy); font-family: ui-monospace, monospace; font-size: 20px; letter-spacing: .08em; }
+.campaign-success__credential small { max-width: 390px; margin-top: 8px; color: #667067; font-size: 11px; line-height: 1.5; }
+.campaign-success__security { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 22px; color: #667067; font-size: 11px; font-weight: 700; }
+.campaign-success__security svg { width: 15px; height: 15px; color: #0d5c2e; }
+
+/* Identidade de campanha — sistema visual oficial */
+.campaign-registration {
+  --event-green: #028e2f;
+  --event-green-mid: #026f1b;
+  --event-navy: #01276f;
+  --event-yellow: #edd12a;
+  --event-white: #f7f8f7;
+  background: var(--event-green);
+}
+
+.campaign-registration__hero {
+  background-color: var(--event-green);
+  background-image:
+    linear-gradient(112deg, transparent 0 57%, rgba(1,39,111,.92) 57.2% 70%, transparent 70.2%),
+    repeating-linear-gradient(165deg, rgba(255,255,255,.035) 0 2px, transparent 2px 13px);
+}
+
+.campaign-registration__hero::before {
+  background-image:
+    radial-gradient(circle, rgba(0,0,0,.28) 0 1px, transparent 1.5px),
+    repeating-linear-gradient(8deg, transparent 0 9px, rgba(255,255,255,.025) 10px 11px);
+  background-size: 19px 19px, auto;
+  mask-image: none;
+  opacity: .32;
+}
+
+.campaign-registration__header-tag,
+.campaign-registration__eyebrow,
+.campaign-registration__form,
+.campaign-registration__fields input,
+.campaign-registration__consent,
+.campaign-registration__submit,
+.campaign-registration__error,
+.campaign-success__card,
+.campaign-success__credential { border-radius: 6px; }
+
+.campaign-registration__header-tag {
+  background: var(--event-navy);
+  border-color: rgba(255,255,255,.15);
+  backdrop-filter: none;
+}
+
+.campaign-registration__copy h1,
+.campaign-registration__form h2,
+.campaign-registration__brand strong,
+.campaign-success__card h1 {
+  font-family: Anton, "Arial Narrow", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.campaign-registration__copy h1 { line-height: .9; text-shadow: 4px 5px 0 rgba(1,39,111,.38); }
+.campaign-registration__copy h1 span { color: var(--event-yellow); }
+.campaign-registration__eyebrow { transform: skewX(-5deg); box-shadow: 5px 5px 0 var(--event-navy); }
+.campaign-registration__flag { box-shadow: 9px 10px 0 rgba(1,39,111,.45); }
+.campaign-registration__portrait img { filter: contrast(1.08) saturate(1.04) drop-shadow(8px 12px 0 rgba(0,0,0,.18)); }
+
+.campaign-registration__form {
+  border: 0;
+  background: var(--event-white);
+  box-shadow: 8px 10px 0 rgba(1,39,111,.72), 0 8px 20px rgba(0,0,0,.18);
+}
+
+.campaign-registration__submit {
+  box-shadow: 4px 5px 0 #a7961e;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+.campaign-registration__submit:hover { background: #f4da49 !important; transform: translate(-1px,-1px); }
+.campaign-registration__footer { background: var(--event-navy); }
+.campaign-success__main { background-color: var(--event-green); background-image: repeating-linear-gradient(165deg, rgba(255,255,255,.035) 0 2px, transparent 2px 14px); }
+.campaign-success__card { box-shadow: 8px 10px 0 var(--event-navy), 0 8px 20px rgba(0,0,0,.18); }
+
+@media (max-width: 680px) {
+  .campaign-registration__form { border-radius: 6px; }
+  .campaign-registration__hero { background-image: repeating-linear-gradient(165deg, rgba(255,255,255,.035) 0 2px, transparent 2px 13px); }
+}
+
+/* Composição final da inscrição: fundo chapado e três blocos ancorados */
+.campaign-registration__hero {
+  min-height: calc(100vh - 54px);
+  padding: 0;
+  background: #028e2f;
+}
+.campaign-registration__hero::before,
+.campaign-registration__flag,
+.campaign-registration__dots { display: none; }
+.campaign-registration__grid {
+  min-height: calc(100vh - 54px);
+  grid-template-columns: minmax(310px,.92fr) minmax(300px,.72fr) minmax(440px,1.12fr);
+  align-items: stretch;
+  gap: clamp(22px,2.5vw,46px);
+}
+.campaign-registration__copy {
+  align-self: center;
+  padding: 40px 0;
+}
+.campaign-registration__portrait {
+  align-self: end;
+  height: min(88vh,880px);
+  min-height: 650px;
+  margin: 0;
+}
+.campaign-registration__portrait img {
+  object-position: center bottom;
+  filter: contrast(1.06) saturate(1.03);
+}
+.campaign-registration__portrait picture {
+  display:block;
+  transform:scale(1.4);
+  transform-origin:center bottom;
+}
+.campaign-registration__form {
+  align-self: center;
+  margin-block: 32px;
+}
+
+@media (max-width:1100px) {
+  .campaign-registration__grid {
+    min-height: auto;
+    grid-template-columns: minmax(300px,1fr) minmax(280px,.8fr);
+  }
+  .campaign-registration__copy { padding-top: 56px; }
+  .campaign-registration__portrait { height: 640px; min-height: 0; }
+  .campaign-registration__form { grid-column:1/-1; margin:0 auto 42px; }
+}
+
+@media (max-width:680px) {
+  .campaign-registration__hero { padding: 0; background:#028e2f; }
+  .campaign-registration__grid { display:flex; min-height:0; gap:0; }
+  .campaign-registration__copy { padding:34px 0 0; }
+  .campaign-registration__portrait {
+    width:100%;
+    height:430px;
+    margin:0;
+  }
+  .campaign-registration__portrait img {
+    object-position:center bottom;
+  }
+  .campaign-registration__portrait picture {
+    transform:scale(1.12);
+  }
+  .campaign-registration__form {
+    width:100%;
+    margin:0 0 28px;
+  }
+}
+
+/* Reforço de hierarquia, localização e assinatura legal */
+.campaign-registration__shell {
+  width: min(100% - 36px, 1540px);
+}
+.campaign-registration__grid {
+  grid-template-columns: minmax(380px, 1.03fr) minmax(300px, .78fr) minmax(430px, 1.1fr);
+  gap: clamp(18px, 2vw, 38px);
+}
+.campaign-registration__copy {
+  align-self: start;
+  padding-top: clamp(24px, 4vh, 44px);
+  padding-bottom: 24px;
+}
+.campaign-registration__eyebrow {
+  padding: 10px 18px;
+  font-size: 12px;
+}
+.campaign-registration__copy h1 {
+  margin-top: 16px;
+  font-size: clamp(68px, 5.7vw, 104px);
+  line-height: .84;
+}
+.campaign-registration__office {
+  margin-top: 20px;
+  font-size: 15px;
+}
+.campaign-registration__slogan {
+  font-size: clamp(28px, 2.45vw, 42px);
+}
+.campaign-registration__event-data {
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+  margin-top: 24px;
+}
+.campaign-registration__event-data > div {
+  align-items: flex-start;
+}
+.campaign-registration__event-data > .campaign-registration__event-location {
+  grid-column: 1 / -1;
+}
+.campaign-registration__event-data svg {
+  width: 23px;
+  height: 23px;
+}
+.campaign-registration__event-data small {
+  color: rgba(255,255,255,.72);
+  font-size: 10px;
+}
+.campaign-registration__event-data strong {
+  font-size: 16px;
+  line-height: 1.25;
+}
+.campaign-registration__event-data em {
+  max-width: 440px;
+  margin-top: 3px;
+  color: rgba(255,255,255,.88);
+  font-size: 11px;
+  font-style: normal;
+  line-height: 1.35;
+}
+.campaign-registration__mini-map {
+  z-index: 1;
+  width: 100%;
+  height: 112px;
+  margin-top: 14px;
+  overflow: hidden;
+  border: 3px solid rgba(255,255,255,.9);
+  border-radius: 6px;
+  background: #dce6dc;
+  box-shadow: 5px 5px 0 rgba(1,39,111,.7);
+}
+.campaign-registration__mini-map .leaflet-control-attribution {
+  font-size: 7px;
+}
+.campaign-registration__map {
+  margin-top: 12px;
+  font-size: 13px;
+}
+.campaign-registration__mobile-cta { display: none; }
+.campaign-registration__portrait {
+  position: relative;
+  height: min(94vh, 960px);
+  min-height: 690px;
+}
+.campaign-registration__brazil-emblem {
+  position: absolute;
+  z-index: 0;
+  top: 47%;
+  left: 50%;
+  width: min(29vw, 465px);
+  aspect-ratio: 1;
+  border-radius: 20%;
+  background: var(--event-yellow);
+  transform: translate(-50%, -50%) rotate(45deg);
+  box-shadow: 0 12px 0 rgba(1,39,111,.18);
+}
+.campaign-registration__brazil-emblem span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 58%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--event-navy);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.campaign-registration__brazil-emblem span::after {
+  position: absolute;
+  top: 45%;
+  left: -14%;
+  width: 128%;
+  height: 13%;
+  border-radius: 50%;
+  background: #fff;
+  content: "";
+  transform: rotate(7deg);
+}
+.campaign-registration__portrait picture {
+  position: relative;
+  z-index: 1;
+  transform: scale(1.58);
+}
+.campaign-registration__footer {
+  position: relative;
+  min-height: 68px;
+  align-items: center;
+  padding-block: 10px;
+  color: #fff;
+  font-size: 10px;
+}
+.campaign-registration__footer-side {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+  color: #fff;
+}
+.campaign-registration__footer-side strong {
+  font-size: 11px;
+  font-weight: 950;
+}
+.campaign-registration__footer-side span {
+  color: rgba(255,255,255,.86);
+}
+.campaign-registration__footer-side--right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+@media (max-width: 1250px) {
+  .campaign-registration__grid {
+    grid-template-columns: minmax(340px, 1fr) minmax(280px, .72fr) minmax(400px, 1.05fr);
+  }
+  .campaign-registration__copy h1 { font-size: clamp(64px, 6.6vw, 86px); }
+  .campaign-registration__portrait picture { transform: scale(1.48); }
+  .campaign-registration__brazil-emblem { width: min(31vw, 410px); }
+}
+
+@media (max-width: 1100px) {
+  .campaign-registration__grid {
+    grid-template-columns: minmax(330px, 1fr) minmax(300px, .85fr);
+  }
+  .campaign-registration__copy { padding-top: 38px; }
+  .campaign-registration__portrait { height: 720px; }
+  .campaign-registration__portrait picture { transform: scale(1.5); }
+  .campaign-registration__brazil-emblem { width: min(48vw, 430px); }
+}
+
+@media (max-width: 680px) {
+  .campaign-registration__shell { width: min(100% - 28px, 1540px); }
+  .campaign-registration__copy { padding-top: 24px; }
+  .campaign-registration__eyebrow { font-size: 10px; }
+  .campaign-registration__copy h1 {
+    margin-top: 15px;
+    font-size: clamp(60px, 19vw, 78px);
+  }
+  .campaign-registration__office { font-size: 12px; }
+  .campaign-registration__slogan { font-size: 30px; }
+  .campaign-registration__event-data strong { font-size: 15px; }
+  .campaign-registration__mobile-cta {
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background: var(--event-yellow);
+    color: var(--event-green);
+    font-size: 12px;
+    font-weight: 950;
+    letter-spacing: .04em;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 5px 5px 0 var(--event-navy);
+  }
+  .campaign-registration__mobile-cta svg { width: 17px; }
+  .campaign-registration__portrait {
+    height: 410px;
+    margin-top: -58px;
+  }
+  .campaign-registration__portrait picture { transform: scale(1.34); }
+  .campaign-registration__brazil-emblem {
+    top: 53%;
+    width: min(78vw, 330px);
+    border-radius: 18%;
+  }
+  .campaign-registration__form {
+    scroll-margin-top: 12px;
+  }
+  .campaign-registration__footer {
+    min-height: 118px;
+    align-items: stretch;
+    gap: 14px;
+    padding: 18px 16px;
+  }
+  .campaign-registration__footer-side,
+  .campaign-registration__footer-side--right {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* O endereço permanece em texto; o mapa interativo foi retirado desta abertura. */
+.campaign-registration__mini-map { display: none; }
