@@ -684,11 +684,11 @@ a{color:inherit}
 @media(max-width:959px){.cta-photo img{clip-path:none;object-position:center 24%}}
 
 /* =====================================================================
-   9. RODAPÉ — navy, 4 colunas + newsletter + barra legal
+   9. RODAPÉ — navy, identidade, contato, partido e barra legal
    ===================================================================== */
 .footer{background:var(--navy-950);color:rgba(255,255,255,.82);padding-top:56px}
 .f-grid{display:grid;gap:36px}
-@media(min-width:960px){.f-grid{grid-template-columns:1.15fr .7fr 1fr 1.05fr}}
+@media(min-width:960px){.f-grid{grid-template-columns:1.15fr .85fr 1fr;align-items:center}}
 .f-logo .logo-office{font-size:8px}
 .f-logo .logo-name{font-size:17px}
 .f-logo .logo-number{font-size:23px}
@@ -704,10 +704,10 @@ a{color:inherit}
 }
 .f-social a:hover{background:var(--yellow-500);border-color:var(--yellow-500);color:var(--navy-950)}
 .f-social svg{width:17px;height:17px}
-.f-party{display:flex;flex-direction:column;align-items:center;justify-content:center;align-self:stretch;min-height:170px;border-left:1px solid rgba(255,255,255,.12)}
-.f-party .party-logo{width:142px;height:142px}
+.f-party{display:flex;flex-direction:column;align-items:center;justify-content:center;align-self:stretch;min-height:210px;border-left:1px solid rgba(255,255,255,.12);text-align:center}
+.f-party .party-logo{width:180px;height:180px}
 .f-party p{margin-top:8px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
-@media(max-width:959px){.f-party{align-items:flex-start;border-left:0;border-top:1px solid rgba(255,255,255,.12);padding-top:28px}.f-party .party-logo{width:120px;height:120px}}
+@media(max-width:959px){.f-party{width:100%;align-items:center;border-left:0;border-top:1px solid rgba(255,255,255,.12);padding-top:32px}.f-party .party-logo{width:170px;height:170px}}
 .f-col h4{
   font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
   color:var(--white);margin-bottom:16px;
