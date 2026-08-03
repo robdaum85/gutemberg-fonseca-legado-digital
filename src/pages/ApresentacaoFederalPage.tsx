@@ -198,7 +198,7 @@ function useFederalGsapPilot(disabled: boolean) {
     if (disabled || document.documentElement.classList.contains("a11y-reduce-motion")) return;
 
     gsap.registerPlugin(ScrollTrigger);
-    let mediaContext: { revert: () => void } | undefined;
+    let mediaContext: ReturnType<typeof gsap.matchMedia> | undefined;
     const gsapContext = gsap.context(() => {
         gsap.fromTo(
           ".pillar",
