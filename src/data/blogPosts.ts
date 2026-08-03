@@ -37,6 +37,81 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "consumidor-gov-br-como-registrar-reclamacao",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "O SAC não resolveu? Registre a reclamação no Consumidor.gov.br",
+    excerpt:
+      "O atendimento da empresa não resolveu seu problema? Veja como registrar uma reclamação no Consumidor.gov.br, quais documentos anexar e os prazos de resposta.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-01T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/consumidor-gov-br-como-registrar-reclamacao.png",
+    coverImageAlt:
+      "Consumidor registrando pelo computador uma reclamação contra uma empresa na plataforma Consumidor.gov.br.",
+    metaTitle: "Consumidor.gov.br: como reclamar quando o SAC não resolve",
+    metaDescription:
+      "O atendimento da empresa não resolveu seu problema? Veja como registrar uma reclamação no Consumidor.gov.br, quais documentos anexar e os prazos de resposta.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Consumidor.gov.br",
+      "Reclamação contra empresa",
+      "SAC não resolveu",
+      "Plataforma do consumidor",
+      "Direitos do consumidor",
+      "Reclamação online",
+    ],
+    featured: true,
+    content: `
+      <p>Você entrou em contato com a empresa, explicou o problema e anotou o protocolo. Os dias passaram, mas a resposta não chegou ou não resolveu nada.</p>
+
+      <p>Nessa situação, o Consumidor.gov.br pode abrir um novo caminho para a negociação.</p>
+
+      <p>A plataforma é um serviço público e gratuito que coloca consumidores em contato direto com empresas cadastradas. A reclamação fica registrada, pode ser acompanhada pela internet e deve receber uma resposta da empresa em até dez dias. (<a href="https://www.consumidor.gov.br/pages/conteudo/publico/1" target="_blank" rel="noopener noreferrer">Consumidor.gov.br</a>)</p>
+
+      <p>O serviço atende problemas relacionados a compras, cobranças, contratos e prestação de serviços. Antes de começar, procure o nome da empresa no site. Nem todos os fornecedores participam da plataforma. (<a href="https://www.gov.br/mj/pt-br/assuntos/seus-direitos/consumidor/consumidor-gov.br" target="_blank" rel="noopener noreferrer">Ministério da Justiça e Segurança Pública</a>)</p>
+
+      <br/>
+
+      <h2>Como fazer uma reclamação</h2>
+
+      <p>O acesso é feito com uma conta gov.br de nível Prata ou Ouro. Depois de localizar a empresa, escolha o assunto mais próximo do seu caso e conte o que aconteceu. (<a href="https://www.consumidor.gov.br/pages/principal/como-funciona" target="_blank" rel="noopener noreferrer">Veja como funciona</a>)</p>
+
+      <p>Não é preciso escrever um texto longo. Informe as datas, os valores envolvidos, os contatos já feitos e a resposta recebida. Termine dizendo com clareza o que espera da empresa: cancelamento, conserto, entrega, estorno ou correção da cobrança.</p>
+
+      <p>Anexe os documentos que ajudam a comprovar o relato, como nota fiscal, contrato, comprovantes de pagamento, prints e protocolos. (<a href="https://www.gov.br/mj/pt-br/assuntos/noticias-1/consumidor-gov-br-saiba-como-registrar-uma-reclamacao-pela-plataforma" target="_blank" rel="noopener noreferrer">Consulte o passo a passo do Ministério da Justiça e Segurança Pública</a>)</p>
+
+      <p>Um exemplo:</p>
+
+      <blockquote>“A compra foi realizada em 5 de julho e deveria ter sido entregue até o dia 12. Entrei em contato com o SAC nos dias 14 e 17, pelos protocolos informados em anexo, mas não recebi o produto nem o reembolso. Solicito o cancelamento da compra e a devolução integral do valor pago.”</blockquote>
+
+      <p>O relato da reclamação pode ficar disponível para consulta pública. Por isso, não escreva CPF, telefone, endereço, número de cartão ou outros dados que permitam sua identificação. Os anexos e as informações complementares trocadas com a empresa não são públicos. (<a href="https://www.consumidor.gov.br/pages/conteudo/publico/1" target="_blank" rel="noopener noreferrer">Conheça as regras de privacidade da plataforma</a>)</p>
+
+      <br/>
+
+      <h2>O que acontece após o envio</h2>
+
+      <p>A empresa tem até dez dias para analisar o caso e apresentar uma resposta. Durante esse período, pode pedir documentos ou informações complementares pela própria plataforma. (<a href="https://www.consumidor.gov.br/pages/principal/como-funciona" target="_blank" rel="noopener noreferrer">Veja os prazos da reclamação</a>)</p>
+
+      <p>Depois da resposta, o consumidor tem até 20 dias para dizer se o problema foi resolvido e avaliar o atendimento. Essa etapa é importante: é a avaliação dos usuários que alimenta os indicadores públicos de cada empresa. (<a href="https://www.consumidor.gov.br/pages/indicador/geral/abrir" target="_blank" rel="noopener noreferrer">Consulte os indicadores</a>)</p>
+
+      <p>Na área de indicadores, é possível consultar o índice de solução, a satisfação dos consumidores, o prazo médio de resposta e o percentual de reclamações respondidas. Os dados também são acompanhados pelos órgãos de defesa do consumidor. (<a href="https://www.consumidor.gov.br/pages/indicador/geral/abrir" target="_blank" rel="noopener noreferrer">Veja o desempenho das empresas</a>)</p>
+
+      <p>O Consumidor.gov.br não substitui o Procon nem impede que o consumidor procure outros caminhos. Se a empresa não estiver cadastrada ou se a resposta continuar insatisfatória, o caso pode ser levado ao Procon, à Defensoria Pública, ao Ministério Público ou ao Juizado Especial Cível. (<a href="https://www.consumidor.gov.br/pages/conteudo/publico/1" target="_blank" rel="noopener noreferrer">Conheça os canais alternativos</a>)</p>
+
+      <br/>
+
+      <p>Uma reclamação bem registrada tem mais força do que uma sequência de ligações sem resultado. Reúna os documentos, explique o problema sem rodeios e deixe claro qual solução está buscando.</p>
+
+      <p><strong>O atendimento da empresa não resolveu? <a href="https://www.consumidor.gov.br/" target="_blank" rel="noopener noreferrer">Acesse o Consumidor.gov.br</a> e registre o problema.</strong></p>
+
+      <p><strong>Para acompanhar outras orientações sobre os seus direitos, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
     slug: "plano-de-saude-negou-atendimento-o-que-fazer",
     source: "Blog",
     category: "Defesa do Consumidor",

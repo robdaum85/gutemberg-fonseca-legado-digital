@@ -33,7 +33,9 @@ export function isPostPublished(post: BlogPost, now = new Date()): boolean {
 }
 
 export function getPublishedBlogPosts(): BlogPost[] {
-  return blogPosts.filter((post) => isPostPublished(post));
+  return blogPosts
+    .filter((post) => isPostPublished(post))
+    .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 }
 
 export function getPostsByCategory(category: string): BlogPost[] {
