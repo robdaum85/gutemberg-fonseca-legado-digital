@@ -57,7 +57,7 @@ const App = () => {
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      {!isFederalPresentation && <AccessibilityWidget />}
+      <AccessibilityWidget />
       {!isFederalPresentation && <CookieConsent />}
       {!isFederalPresentation && (
         <a href="#conteudo-principal" className="skip-link">

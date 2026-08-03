@@ -37,6 +37,75 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "plano-de-saude-negou-atendimento-o-que-fazer",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Plano de saúde negou atendimento? Saiba como agir",
+    excerpt:
+      "Teve um atendimento, exame ou internação negados pelo plano de saúde? Veja quais documentos pedir e como registrar uma reclamação na ANS.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-02T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/plano-de-saude-negou-atendimento-o-que-fazer.png",
+    coverImageAlt:
+      "Paciente no hospital consulta pelo celular uma negativa de atendimento enviada pelo plano de saúde.",
+    metaTitle: "Plano de saúde negou atendimento? Saiba como agir",
+    metaDescription:
+      "Teve um atendimento, exame ou internação negados pelo plano de saúde? Veja quais documentos pedir e como registrar uma reclamação na ANS.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Plano de saúde negou atendimento",
+      "Negativa do plano de saúde",
+      "Reclamação na ANS",
+      "Cobertura de urgência",
+      "Carência do plano",
+      "Direitos do paciente",
+    ],
+    featured: true,
+    content: `
+      <p>A negativa pode acontecer no pior momento: quando o paciente já está no hospital, com uma solicitação médica em mãos e precisando de atendimento.</p>
+
+      <p>Diante da recusa, é comum que a operadora apresente justificativas genéricas, como falta de cobertura, carência ou ausência de autorização. O consumidor não precisa aceitar uma resposta sem explicação.</p>
+
+      <p>A operadora deve informar o motivo da negativa por escrito, em linguagem clara e em formato que possa ser salvo ou impresso. Respostas vagas não atendem às regras da Agência Nacional de Saúde Suplementar.</p>
+
+      <br/>
+
+      <h2>Peça a justificativa e guarde o protocolo</h2>
+
+      <p>Solicite o documento que explica a recusa e confira qual regra contratual foi usada. Anote o número do protocolo, o horário do atendimento e, quando possível, o nome do atendente.</p>
+
+      <p>Guarde também o pedido médico, os exames, os relatórios e as mensagens trocadas com o plano. Esses registros serão importantes caso seja necessário contestar a decisão.</p>
+
+      <p>Nos planos contratados a partir de janeiro de 1999 ou adaptados à legislação, a carência máxima para casos de urgência e emergência é de 24 horas após a contratação. A ANS considera urgência os acidentes pessoais e as complicações na gestação; emergência é a situação com risco imediato de vida ou de lesão irreparável. (<a href="https://www.gov.br/ans/pt-br/assuntos/consumidor/carencia" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Pedidos relacionados a urgência e emergência devem receber resposta imediata da operadora.</p>
+
+      <br/>
+
+      <h2>A operadora não resolveu? Registre uma reclamação na ANS</h2>
+
+      <p>Procure primeiro os canais do plano e peça a revisão da negativa. Caso a recusa seja mantida, registre a reclamação na ANS com o protocolo do atendimento.</p>
+
+      <p>A demanda gera uma Notificação de Intermediação Preliminar, a NIP, enviada diretamente à operadora. Nos casos relacionados à cobertura assistencial, a empresa tem até cinco dias úteis para responder. (<a href="https://www.gov.br/ans/pt-br/canais_atendimento/canais-de-atendimento-ao-consumidor-1" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>A reclamação pode ser feita pelo atendimento eletrônico da ANS ou pelo telefone 0800 701 9656. (<a href="https://www.gov.br/ans/pt-br/canais_atendimento/canais-de-atendimento-ao-consumidor-1" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Se houver risco imediato para a saúde, não espere o fim da discussão administrativa para procurar atendimento. A documentação e a contestação da negativa podem ser feitas depois.</p>
+
+      <br/>
+
+      <p>Uma recusa verbal deixa o consumidor sem saber por que o atendimento foi negado e dificulta qualquer contestação. Por isso, o primeiro passo é transformar a resposta do plano em um registro formal.</p>
+
+      <p>Com a justificativa, os documentos médicos e os protocolos em mãos, fica mais fácil cobrar a revisão do caso e levar a reclamação à ANS.</p>
+
+      <p><strong>Para acompanhar orientações sobre planos de saúde e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
     slug: "golpe-falso-familiar-numero-novo-pix",
     source: "Blog",
     category: "Defesa do Consumidor",

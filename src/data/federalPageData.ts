@@ -66,8 +66,8 @@ export const federalPageData = {
     firstName: "Gutemberg",
     lastName: "Fonseca",
     office: "Apresentação federal — sujeito a confirmação jurídica",
-    number: "2255",
-    numberLabel: "Número de apresentação",
+    number: "",
+    numberLabel: "Número ainda não divulgado",
     slogan: "O Defensor do Consumidor",
   },
   prototype: {
@@ -273,7 +273,7 @@ export const federalPageData = {
   },
   legal: {
     campaignLegalName: "",
-    campaignCnpj: "",
+    campaignCnpj: "68.237.089/0001-48",
     candidateNumber: "",
     partyName: "",
     federationName: "",
