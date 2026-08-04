@@ -27,7 +27,7 @@ export function getCategoryFromSlug(slug: string): string | null {
 }
 
 export function isPostPublished(post: BlogPost, now = new Date()): boolean {
-  const publishTime = Date.parse(post.date);
+  const publishTime = Date.parse(post.availableFrom ?? post.date);
   if (Number.isNaN(publishTime)) return true;
   return publishTime <= now.getTime();
 }

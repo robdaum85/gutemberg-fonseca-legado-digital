@@ -24,6 +24,7 @@ export type BlogPost = {
   author: string;
   role: string;
   date: string;
+  availableFrom?: string;
   authorImage: string;
   coverImage?: string;
   coverImageAlt?: string;
@@ -36,6 +37,74 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "reajuste-extraordinario-plano-de-saude-2026",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Seu plano de saúde aumentou por “reajuste extraordinário”?",
+    excerpt:
+      "A ANS não autorizou reajuste extraordinário para planos individuais e familiares em 2026. Veja como identificar o tipo de contrato e conferir o aumento.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-05T00:00:00-03:00",
+    availableFrom: "2026-08-04T18:11:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/reajuste-extraordinario-plano-de-saude-2026.png",
+    coverImageAlt:
+      "Consumidor compara dois boletos do plano de saúde após identificar um aumento na mensalidade.",
+    metaTitle: "Reajuste extraordinário no plano de saúde: saiba como conferir",
+    metaDescription:
+      "A ANS não autorizou reajuste extraordinário para planos individuais e familiares em 2026. Veja como identificar o tipo de contrato e conferir o aumento.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Reajuste extraordinário no plano de saúde",
+      "Reajuste de plano de saúde",
+      "Plano individual ou familiar",
+      "Reajuste ANS 2026",
+      "Mensalidade do plano",
+      "Reclamação na ANS",
+    ],
+    featured: true,
+    content: `
+      <p>O boleto chega mais caro e a justificativa aparece em duas palavras: “reajuste extraordinário”. Antes de aceitar a cobrança, é preciso saber qual é o tipo do seu contrato.</p>
+
+      <p>Essa informação costuma aparecer no próprio boleto, na carteirinha ou nos documentos entregues pela operadora. Ela define como o reajuste anual pode ser aplicado.</p>
+
+      <br/>
+
+      <h2>A regra muda conforme o tipo de plano</h2>
+
+      <p>O plano individual ou familiar é contratado diretamente por uma pessoa para si ou para seus dependentes. Para os contratos médico-hospitalares firmados após janeiro de 1999, ou adaptados à legislação, a ANS determina o limite do reajuste anual.</p>
+
+      <p>Em 2026, o percentual máximo é de 5,11%. Ele vale para contratos com aniversário entre maio de 2026 e abril de 2027 e só pode ser aplicado a partir do mês de aniversário do plano. Quem contratou em setembro, por exemplo, só pode receber o reajuste anual a partir de setembro. (<a href="https://www.gov.br/ans/pt-br/assuntos/consumidor/reajuste-variacao-de-mensalidade/reajuste-anual-de-planos-individuais-familiares-1/IRPI2026_NTAprovao.pdf/@@download/file" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>A ANS também esclareceu que não autorizou nenhum reajuste extraordinário para esses planos. O único índice anual aprovado para o período foi o de 5,11%. (<a href="https://www.gov.br/ans/pt-br/assuntos/noticias-1/periodo-eleitoral/nota-de-esclarecimento/" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Planos antigos, contratados antes de 1999, e contratos exclusivamente odontológicos podem seguir outras regras. Por isso, a data e o tipo da contratação também precisam ser verificados. (<a href="https://www.gov.br/ans/pt-br/assuntos/consumidor/reajuste-variacao-de-mensalidade/reajuste-anual-de-planos-individuais-familiares-1/IRPI2026_NT_MinFazenda.pdf/@@download/file" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Já os planos coletivos, oferecidos por empresas, sindicatos ou associações, não seguem o teto de 5,11%. Neles, o percentual é definido conforme as regras do contrato e o perfil do grupo. Ainda assim, a operadora deve explicar como chegou ao aumento. (<a href="https://www.gov.br/ans/pt-br/arquivos/assuntos/consumidor/caminho-do-consumidor/cartilha_reajuste_de_mensalidade_2025.pdf/@@download/file" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <br/>
+
+      <h2>Como conferir e contestar a cobrança</h2>
+
+      <p>Compare o boleto atual com o anterior e calcule quanto a mensalidade aumentou. Em seguida, procure no documento a justificativa apresentada pela operadora.</p>
+
+      <p>Veja também se houve mudança de faixa etária. O reajuste anual e o aumento por idade são cobranças diferentes e podem ocorrer no mesmo período, desde que estejam previstos no contrato e respeitem as regras da ANS. (<a href="https://www.gov.br/ans/pt-br/arquivos/assuntos/consumidor/caminho-do-consumidor/cartilhas-para-o-consumidor/Cartilha_Reajuste.pdf" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Caso o plano seja individual ou familiar e apareça um “reajuste extraordinário”, peça à operadora uma explicação por escrito. Solicite o cálculo, a regra utilizada e a correção do boleto, quando houver erro. Guarde o protocolo e todos os documentos recebidos.</p>
+
+      <p>Se a empresa não corrigir ou não explicar a cobrança, registre uma reclamação na ANS. Não aceite apenas a informação de que “o sistema reajustou”. Todo aumento precisa ter uma origem identificável.</p>
+
+      <br/>
+
+      <p>O valor da mensalidade não pode mudar sem explicação. Saber o tipo do plano, o aniversário do contrato e o motivo do aumento ajuda a identificar cobranças que precisam ser contestadas.</p>
+
+      <p><strong>Para acompanhar informações sobre planos de saúde e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
   {
     slug: "influenciador-propaganda-enganosa-bet-responsabilidade",
     source: "Blog",
