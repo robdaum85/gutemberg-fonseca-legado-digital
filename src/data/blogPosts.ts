@@ -37,6 +37,78 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "influenciador-propaganda-enganosa-bet-responsabilidade",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Influenciador pode ser responsabilizado por propaganda enganosa de bet?",
+    excerpt:
+      "Influenciadores podem responder por publicidade enganosa ou abusiva de apostas. Entenda quando isso pode ocorrer e quais provas o consumidor deve guardar.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-04T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/influenciador-propaganda-enganosa-bet-responsabilidade.png",
+    coverImageAlt:
+      "Influenciador divulga uma plataforma de apostas em um celular enquanto o consumidor analisa perdas financeiras.",
+    metaTitle:
+      "Influenciador pode ser responsabilizado por propaganda enganosa de bet?",
+    metaDescription:
+      "Influenciadores podem responder por publicidade enganosa ou abusiva de apostas. Entenda quando isso pode ocorrer e quais provas o consumidor deve guardar.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Publicidade enganosa de bet",
+      "Influenciadores e apostas",
+      "Propaganda de bet",
+      "Promessa de dinheiro fácil",
+      "Plataforma de aposta irregular",
+      "Direitos do consumidor",
+    ],
+    featured: true,
+    content: `
+      <p>A recomendação de uma pessoa conhecida transmite confiança. Quando um influenciador mostra ganhos, oferece um cupom e afirma que aquela plataforma é uma oportunidade para ganhar dinheiro, muitos seguidores acreditam que estão diante de uma experiência real.</p>
+
+      <p>O prejuízo, porém, costuma aparecer fora do vídeo.</p>
+
+      <p>Perder uma aposta não torna a publicidade ilegal por si só. Bets envolvem risco, e nenhum resultado é garantido. A situação muda quando o anúncio esconde esse risco, promete lucro, apresenta a aposta como renda extra ou direciona o público para uma plataforma sem autorização.</p>
+
+      <br/>
+
+      <h2>Quando a publicidade ultrapassa o limite</h2>
+
+      <p>O Código de Defesa do Consumidor proíbe publicidade enganosa e abusiva. (<a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener noreferrer">Presidência da República</a>)</p>
+
+      <p>As regras específicas do setor também impedem que apostas sejam apresentadas como investimento, fonte de renda ou solução para problemas financeiros. Desde julho de 2026, os anúncios devem trazer uma advertência clara, como “Aposta não é investimento” ou “Apostar faz você perder dinheiro”. (<a href="https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/julho/ministerio-da-fazenda-amplia-exigencias-de-publicidade-de-apostas-no-pais" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Essas obrigações não recaem apenas sobre a casa de apostas. As normas mais recentes ampliaram o alcance das regras para os demais envolvidos na divulgação, inclusive influenciadores. A responsabilidade, no entanto, não é automática: depende do conteúdo publicado, das provas, do prejuízo sofrido e da ligação entre o anúncio e o dano. (<a href="https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/julho/ministerio-da-fazenda-amplia-exigencias-de-publicidade-de-apostas-no-pais" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Também é proibido divulgar empresas não autorizadas. O Ministério da Fazenda mantém uma relação pública dos operadores que podem atuar no mercado regulado. (<a href="https://www.gov.br/fazenda/pt-br/composicao/orgaos/secretaria-de-premios-e-apostas/lista-de-empresas/planilha-de-autorizacoes-02-04-2026.pdf" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>O alcance dessas campanhas entrou no debate nacional durante a CPI das Bets. Virgínia Fonseca e Rico Melquiades prestaram depoimento como testemunhas para explicar contratos e conteúdos ligados à divulgação de apostas. A convocação não representa condenação; fez parte da apuração sobre a participação de influenciadores nesse mercado. (<a href="https://www12.senado.leg.br/noticias/materias/2025/05/13/influenciadora-virginia-diz-que-nao-lucra-com-perdas-de-seguidores-em-jogos" target="_blank" rel="noopener noreferrer">Depoimento de Virgínia Fonseca no Senado Federal</a>; <a href="https://www12.senado.leg.br/noticias/materias/2025/05/14/rico-melquiades-admite-acordo-com-ministerio-publico-mas-nega-ilegalidades" target="_blank" rel="noopener noreferrer">depoimento de Rico Melquiades no Senado Federal</a>)</p>
+
+      <br/>
+
+      <h2>Foi enganado por um anúncio? Guarde as provas</h2>
+
+      <p>Stories e publicações podem desaparecer rapidamente. Por isso, registre o conteúdo assim que perceber o problema.</p>
+
+      <p>Guarde o vídeo, o nome do perfil, a data da publicação, o cupom, o link divulgado e as frases usadas no anúncio. Preserve também os comprovantes dos depósitos, as conversas com a plataforma e as tentativas de atendimento.</p>
+
+      <p>Se o influenciador prometeu retorno garantido, mostrou apenas resultados positivos ou afirmou que a aposta funcionaria como renda, registre exatamente como isso foi apresentado. Não basta dizer que a propaganda causou prejuízo; é preciso mostrar o que foi anunciado e como aquela mensagem influenciou a decisão.</p>
+
+      <p>A denúncia pode ser feita à própria rede social, ao Procon e à Secretaria de Prêmios e Apostas, responsável por fiscalizar o setor. (<a href="https://www.gov.br/fazenda/pt-br/composicao/orgaos/secretaria-de-premios-e-apostas" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <br/>
+
+      <p>Ter muitos seguidores não autoriza ninguém a vender ilusão. Quem recebe para anunciar uma bet precisa deixar claro que existe risco de perda e verificar se a empresa pode operar no Brasil.</p>
+
+      <p>Confiança também gera responsabilidade.</p>
+
+      <p><strong>Para acompanhar alertas sobre apostas, publicidade e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
     slug: "internet-lenta-velocidade-contratada-como-reclamar",
     source: "Blog",
     category: "Defesa do Consumidor",
