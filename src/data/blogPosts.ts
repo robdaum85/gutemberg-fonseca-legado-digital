@@ -37,6 +37,75 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "internet-lenta-velocidade-contratada-como-reclamar",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Contratou 500 mega, mas a internet continua travando?",
+    excerpt:
+      "Sua internet entrega menos do que foi contratado? Veja como medir a velocidade corretamente, reunir provas e registrar uma reclamação na Anatel.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-03T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage:
+      "/images/blog/internet-lenta-velocidade-contratada-como-reclamar.png",
+    coverImageAlt:
+      "Consumidor realiza no computador um teste para comparar a velocidade da internet com o plano contratado.",
+    metaTitle: "Internet mais lenta que o contratado: saiba como comprovar",
+    metaDescription:
+      "Sua internet entrega menos do que foi contratado? Veja como medir a velocidade corretamente, reunir provas e registrar uma reclamação na Anatel.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Internet mais lenta que o contratado",
+      "Teste de velocidade da internet",
+      "Internet lenta",
+      "Brasil Banda Larga",
+      "Anatel Consumidor",
+      "Reclamação contra operadora",
+    ],
+    featured: true,
+    content: `
+      <p>Na propaganda, a promessa é de conexão rápida. Em casa, o vídeo demora para carregar, a chamada de trabalho cai e até uma página simples parece levar tempo demais para abrir.</p>
+
+      <p>Nem todo travamento, porém, prova que a operadora está entregando menos do que deveria. A distância do roteador, o uso simultâneo por vários aparelhos e as limitações do próprio equipamento podem afetar a conexão pelo Wi-Fi.</p>
+
+      <p>Antes de reclamar, é preciso medir o serviço em condições que permitam comparar o resultado com o contrato.</p>
+
+      <br/>
+
+      <h2>Como fazer um teste de velocidade confiável</h2>
+
+      <p>Conecte um computador ao roteador por cabo. Durante a medição, pause downloads, feche programas que utilizem a internet e desconecte, sempre que possível, os demais aparelhos da rede.</p>
+
+      <p>O teste por cabo reduz as interferências comuns do Wi-Fi. A plataforma Brasil Banda Larga também orienta que outros aplicativos sejam fechados e alerta que equipamentos conectados ao mesmo tempo podem alterar o resultado. (<a href="https://www.brasilbandalarga.com.br/" target="_blank" rel="noopener noreferrer">Brasil Banda Larga</a>)</p>
+
+      <p>Faça a medição pelo Brasil Banda Larga ou pelo velocímetro do aplicativo Anatel Qualidade. As ferramentas apresentam dados como velocidade de download, upload e latência. (<a href="https://www.gov.br/anatel/pt-br/consumidor/conheca-seus-direitos-2/banda-larga/velocidade-de-conexao" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Um único teste não mostra o comportamento da conexão ao longo do dia. Repita a medição em horários e datas diferentes e guarde os resultados. Depois, compare os números com as velocidades mínima e média informadas no contrato ou na oferta contratada.</p>
+
+      <p>A Anatel estabelece que essas condições devem ser apresentadas ao consumidor antes da contratação e que a operadora deve fornecer a velocidade acordada. (<a href="https://www.gov.br/anatel/pt-br/consumidor/conheca-seus-direitos-2/banda-larga/velocidade-de-conexao" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <br/>
+
+      <h2>O resultado ficou muito abaixo? Registre a reclamação</h2>
+
+      <p>Envie as medições para a operadora e peça uma verificação técnica. Informe quando os travamentos acontecem e guarde o protocolo.</p>
+
+      <p>Se o atendimento comum não resolver, procure a ouvidoria da empresa. Persistindo o problema, registre a reclamação pelo Anatel Consumidor. É necessário informar os protocolos anteriores para mostrar que a prestadora já teve a oportunidade de corrigir a falha.</p>
+
+      <p>Após receber a reclamação pela Anatel, a operadora tem até dez dias corridos para apresentar uma resposta ou solução. O andamento pode ser acompanhado pela própria plataforma. (<a href="https://www.gov.br/anatel/pt-br/consumidor/quer-reclamar/reclamacao" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <br/>
+
+      <p>A velocidade indicada no plano não deve existir apenas na propaganda. Medições feitas corretamente ajudam a separar uma falha momentânea de um serviço que permanece abaixo do contratado.</p>
+
+      <p>Com os resultados e os protocolos em mãos, o consumidor consegue reclamar com mais segurança e cobrar uma solução objetiva.</p>
+
+      <p><strong>Para acompanhar orientações sobre internet, telefonia e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
     slug: "consumidor-gov-br-como-registrar-reclamacao",
     source: "Blog",
     category: "Defesa do Consumidor",
