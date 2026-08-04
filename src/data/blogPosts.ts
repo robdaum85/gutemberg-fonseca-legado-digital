@@ -38,6 +38,70 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "plano-celular-mudou-sem-autorizacao",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Seu plano de celular mudou sem você pedir?",
+    excerpt:
+      "A fatura aumentou, a internet diminuiu ou o benefício desapareceu? Veja como conferir as condições do plano e reclamar à operadora e à Anatel.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-06T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/plano-celular-mudou-sem-autorizacao.png",
+    coverImageAlt:
+      "Consumidor compara duas faturas de celular após perceber aumento no valor e redução dos benefícios do plano.",
+    metaTitle: "Plano de celular mudou sem autorização? Saiba como contestar",
+    metaDescription:
+      "A fatura aumentou, a internet diminuiu ou o benefício desapareceu? Veja como conferir as condições do plano e reclamar à operadora e à Anatel.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Plano de celular alterado sem autorização",
+      "Cobrança indevida na conta de celular",
+      "Mudança de plano",
+      "Reclamação na Anatel",
+      "Fatura de celular",
+      "Operadora de telefonia",
+    ],
+    featured: true,
+    content: `
+      <p>A diferença pode parecer pequena no início. Alguns reais a mais na fatura, menos internet disponível ou um benefício que simplesmente deixou de aparecer.</p>
+
+      <p>Quando o consumidor percebe, já está pagando por uma oferta diferente daquela que contratou.</p>
+
+      <p>Para descobrir o que aconteceu, não olhe apenas o valor final. Compare a conta atual com as anteriores e consulte as condições originais do plano.</p>
+
+      <br/>
+
+      <h2>Reajuste e mudança de plano são coisas diferentes</h2>
+
+      <p>O preço do serviço pode ser reajustado, desde que sejam respeitadas as condições da oferta e o intervalo mínimo de 12 meses. Reduzir a franquia de internet, retirar benefícios ou vincular o cliente a outra oferta não é apenas um reajuste. Durante a validade da oferta, mudanças no preço ou nas condições dependem da concordância do consumidor. (<a href="https://www.gov.br/anatel/pt-br/consumidor/conheca-seus-direitos/oferta-e-contratacao" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>A operadora também pode encerrar uma oferta, mas precisa avisar com pelo menos 30 dias de antecedência. Se o cliente não escolher outro plano, poderá ser transferido para uma opção semelhante e sem nova fidelização. (<a href="https://www.gov.br/anatel/pt-br/consumidor/conheca-seus-direitos/oferta-e-contratacao" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Serviços adicionais, como aplicativos, seguros ou assinaturas, só podem ser cobrados com autorização prévia e expressa. Cabe à operadora comprovar que houve essa contratação. (<a href="https://www.gov.br/anatel/pt-br/consumidor/conheca-seus-direitos/cobranca" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <br/>
+
+      <h2>Encontrou uma mudança que não autorizou?</h2>
+
+      <p>Separe o contrato, as faturas anteriores e as mensagens recebidas da operadora. No aplicativo ou no site da empresa, procure também o código e o resumo da oferta contratada.</p>
+
+      <p>Entre em contato com a operadora, informe exatamente o que mudou e peça a correção. Se houver cobrança desconhecida, conteste o valor e solicite o comprovante da autorização. Guarde o protocolo.</p>
+
+      <p>Caso o atendimento não resolva, leve a demanda à ouvidoria da empresa. A etapa seguinte é registrar a reclamação no Anatel Consumidor. Depois que a Anatel encaminha o caso, a operadora tem até dez dias corridos para responder. (<a href="https://www.gov.br/anatel/pt-br/consumidor/quer-reclamar/reclamacao" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Se um valor indevido já tiver sido pago, peça a devolução. As regras da Anatel preveem restituição em dobro do que foi pago a mais, com correção e juros. (<a href="https://www.gov.br/anatel/pt-br/consumidor/conheca-seus-direitos/cobranca" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <br/>
+
+      <p>A fatura não deve mudar aos poucos sem que o consumidor entenda o motivo. Ao perceber qualquer diferença, compare os documentos e peça que a operadora explique de onde veio a alteração.</p>
+
+      <p><strong>Para acompanhar orientações sobre telefonia, cobranças e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
     slug: "reajuste-extraordinario-plano-de-saude-2026",
     source: "Blog",
     category: "Defesa do Consumidor",
