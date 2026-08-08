@@ -38,6 +38,147 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "registrato-contas-emprestimos-cpf",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Seu CPF pode estar ligado a uma conta que você nunca abriu",
+    excerpt:
+      "O Registrato permite consultar contas bancárias, empréstimos e chaves Pix vinculados ao seu CPF. Saiba como identificar e contestar registros desconhecidos.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-08T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/registrato-contas-emprestimos-cpf.png",
+    coverImageAlt:
+      "Pessoa consulta no Meu BC contas bancárias, empréstimos e chaves Pix vinculados ao seu CPF.",
+    metaTitle:
+      "Registrato: como descobrir contas e empréstimos abertos no seu nome",
+    metaDescription:
+      "O Registrato permite consultar contas bancárias, empréstimos e chaves Pix vinculados ao seu CPF. Saiba como identificar e contestar registros desconhecidos.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Golpes e Fraudes",
+      "Registrato Banco Central",
+      "Conta aberta no meu nome",
+      "Empréstimo não reconhecido",
+      "Chave Pix desconhecida",
+      "Fraude com CPF",
+      "BC Protege+",
+    ],
+    featured: true,
+    content: `
+      <p>Uma fraude financeira nem sempre é descoberta no momento em que acontece. O primeiro sinal pode surgir meses depois, por meio de uma cobrança desconhecida, uma negativação ou um aviso enviado por um banco com o qual você nunca teve contato.</p>
+
+      <p>Consultar apenas a situação do CPF na Receita Federal não é suficiente para encontrar esse tipo de problema. A indicação “regular” informa que não há pendências no cadastro, mas não mostra contas, empréstimos ou chaves Pix registrados em instituições financeiras. (<a href="https://www.gov.br/pt-br/servicos/consultar-cadastro-de-pessoas-fisicas" target="_blank" rel="noopener noreferrer">Consulte a situação cadastral do CPF na Receita Federal</a>)</p>
+
+      <p>Essas informações podem ser verificadas gratuitamente no Registrato, sistema do Banco Central disponível na área <a href="https://www.gov.br/pt-br/temas/meu-bc-servicos-digitais" target="_blank" rel="noopener noreferrer">Meu BC</a>.</p>
+
+      <br/>
+
+      <h2>O que pode ser consultado no Registrato</h2>
+
+      <p>O acesso exige uma conta gov.br de nível prata ou ouro, com a verificação em duas etapas ativada. Depois do login, o usuário pode emitir diferentes relatórios sobre sua vida financeira. (<a href="https://www.gov.br/pt-br/temas/meu-bc-servicos-digitais" target="_blank" rel="noopener noreferrer">Serviços digitais do Meu BC</a>)</p>
+
+      <p>O relatório de <a href="https://www.gov.br/pt-br/servicos/gerar-relatorio-de-contas-e-investimentos-ccs" target="_blank" rel="noopener noreferrer">Contas e Relacionamentos em Bancos</a> mostra em quais instituições você tem ou já teve conta, investimento ou outro vínculo. Ele informa as datas de início e encerramento do relacionamento, mas não apresenta saldo, movimentações ou número da conta.</p>
+
+      <p>Também é possível consultar <a href="https://www.gov.br/pt-br/servicos/obter-relatorio-do-sistema-de-informacoes-de-credito-scr" target="_blank" rel="noopener noreferrer">empréstimos e financiamentos informados ao Banco Central</a> e verificar as <a href="https://www.gov.br/pt-br/servicos/emitir-relatorio-de-chaves-pix" target="_blank" rel="noopener noreferrer">chaves Pix vinculadas às suas contas</a>, inclusive as que já foram encerradas.</p>
+
+      <p>Ao analisar os relatórios, observe nomes de instituições que você não reconhece, dívidas que nunca contratou e chaves Pix que não criou.</p>
+
+      <br/>
+
+      <h2>Encontrou um registro desconhecido?</h2>
+
+      <p>Entre em contato diretamente com a instituição que aparece no relatório. Informe que não reconhece a conta ou o empréstimo e peça o bloqueio, a correção do registro e os documentos usados na contratação.</p>
+
+      <p>Guarde os protocolos, as respostas recebidas e uma cópia do relatório do Registrato. Registre também um boletim de ocorrência com as informações disponíveis.</p>
+
+      <p>Se o atendimento não resolver, procure a ouvidoria da instituição. A reclamação também pode ser registrada no Banco Central, embora o órgão não decida o conflito individual nem determine diretamente a exclusão da dívida. (<a href="https://www.gov.br/pt-br/servicos/registrar-reclamacao-contra-instituicao-supervisionada-pelo-banco-central" target="_blank" rel="noopener noreferrer">Registre uma reclamação contra instituição supervisionada pelo Banco Central</a>)</p>
+
+      <p>Para reforçar a proteção, ative gratuitamente o <a href="https://www.gov.br/pt-br/servicos/proteger-se-com-o-bc-protege" target="_blank" rel="noopener noreferrer">BC Protege+</a>, disponível no Meu BC. Enquanto a restrição estiver ligada, as instituições não podem abrir contas correntes, contas de poupança ou contas de pagamento pré-pagas em seu nome, nem incluí-lo como titular ou representante nesses tipos de conta.</p>
+
+      <p>O BC Protege+ não impede todas as modalidades de fraude e não substitui a consulta periódica ao Registrato. Ele funciona como uma barreira adicional contra a abertura indevida de contas.</p>
+
+      <br/>
+
+      <p>Não espere uma cobrança aparecer para descobrir que seus dados foram usados. Uma consulta periódica ao Registrato ajuda a identificar vínculos financeiros que não deveriam estar associados ao seu CPF.</p>
+
+      <p><strong>Para acompanhar alertas sobre golpes, bancos e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
+    slug: "mala-extraviada-o-que-fazer-aeroporto",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Sua mala não apareceu na esteira?",
+    excerpt:
+      "Sua bagagem não apareceu na esteira? Saiba como registrar o extravio, pedir o ressarcimento de despesas e cobrar a indenização da companhia aérea.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-07T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/mala-extraviada-o-que-fazer-aeroporto.png",
+    coverImageAlt:
+      "Passageiro diante de uma esteira vazia após perceber que sua bagagem não chegou ao destino.",
+    metaTitle: "Mala extraviada: o que fazer ainda no aeroporto",
+    metaDescription:
+      "Sua bagagem não apareceu na esteira? Saiba como registrar o extravio, pedir o ressarcimento de despesas e cobrar a indenização da companhia aérea.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Mala extraviada",
+      "Bagagem extraviada",
+      "Direitos do passageiro",
+      "Indenização por bagagem",
+      "Anac Passageiro",
+      "Companhia aérea",
+    ],
+    featured: true,
+    content: `
+      <p>O desembarque terminou, a esteira esvaziou e a bagagem não chegou. Nessa hora, sair do aeroporto sem registrar o problema pode dificultar a cobrança depois.</p>
+
+      <p>Procure o balcão da companhia aérea ou de sua representante, de preferência ainda na sala de desembarque. Apresente o comprovante de despacho e peça o registro formal do extravio. A empresa deve fornecer uma cópia do documento ou um número de protocolo. (<a href="https://www.anac.gov.br/acesso-a-informacao/perguntas-frequentes/passageiros/bagagem/o-que-devo-fazer-se-minha-bagagem-for-extraviada-1" target="_blank" rel="noopener noreferrer">Consulte as orientações da Anac sobre bagagem extraviada</a>)</p>
+
+      <p>Informe também onde deseja receber a mala caso ela seja localizada. A entrega deverá ser feita no endereço indicado por você.</p>
+
+      <br/>
+
+      <h2>Está fora de casa? Guarde as notas fiscais</h2>
+
+      <p>Quem fica sem os próprios pertences durante uma viagem pode precisar comprar roupas, produtos de higiene e outros itens básicos.</p>
+
+      <p>Quando o passageiro está fora de seu domicílio, a companhia deve ressarcir os gastos emergenciais causados pelo extravio. Os critérios e limites adotados precisam ser informados pela empresa. Por isso, compre apenas o necessário e preserve todas as notas fiscais. (<a href="https://www.anac.gov.br/acesso-a-informacao/perguntas-frequentes/passageiros/bagagem/minha-bagagem-foi-extraviada-e-eu-fiquei-sem-meus-pertences-essenciais-no-meu-local-de-destino-quais-os-meus-direitos" target="_blank" rel="noopener noreferrer">Veja os direitos do passageiro sem seus pertences essenciais</a>)</p>
+
+      <p>Também mantenha o cartão de embarque, a etiqueta da bagagem e as mensagens trocadas com a companhia. Esses documentos comprovam o ocorrido e as despesas assumidas durante a espera.</p>
+
+      <br/>
+
+      <h2>Quanto tempo a empresa tem para devolver a bagagem?</h2>
+
+      <p>A mala pode permanecer como extraviada por até:</p>
+
+      <ul>
+        <li>sete dias corridos, em voos nacionais;</li>
+        <li>21 dias corridos, em voos internacionais.</li>
+      </ul>
+
+      <p>Os prazos começam a contar a partir do registro feito pelo passageiro. Se a bagagem for localizada, deverá ser entregue no endereço informado. (<a href="https://www.gov.br/anac/pt-br/assuntos/passageiros/bagagem" target="_blank" rel="noopener noreferrer">Consulte as regras da Anac sobre bagagem</a>)</p>
+
+      <p>Se isso não acontecer, a bagagem passa a ser considerada perdida e a companhia deverá indenizar o passageiro. Segundo a Anac, o pagamento deve ocorrer em até sete dias após o fim do prazo de localização. (<a href="https://www.gov.br/anac/pt-br/assuntos/passageiros/bagagem" target="_blank" rel="noopener noreferrer">Consulte as regras da Anac sobre bagagem</a>)</p>
+
+      <p>Caso o atendimento da empresa não resolva, a reclamação pode ser registrada no Anac Passageiro. A plataforma encaminha o caso à companhia aérea, que tem até dez dias corridos para responder. (<a href="https://www.gov.br/anac/pt-br/canais_atendimento/anacpassageiro" target="_blank" rel="noopener noreferrer">Acesse o Anac Passageiro</a>)</p>
+
+      <br/>
+
+      <p>O registro feito ainda no aeroporto marca o início da cobrança e dos prazos. Não deixe o balcão apenas com uma promessa verbal.</p>
+
+      <p>Saia com o protocolo, indique o endereço de entrega e reúna os comprovantes do que precisar comprar enquanto estiver sem a mala.</p>
+
+      <p><strong>Vai viajar? Siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a> para conhecer os seus direitos antes do embarque.</strong></p>
+    `,
+  },
+  {
     slug: "plano-celular-mudou-sem-autorizacao",
     source: "Blog",
     category: "Defesa do Consumidor",
