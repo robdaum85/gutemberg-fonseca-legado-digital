@@ -112,7 +112,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "maes-atipicas-inss-contribuicao-5-projeto-lei",
     source: "Blog",
-    category: "Direitos do Cidadão",
+    category: "Defesa do Consumidor",
     title: "Mães atípicas podem ter novas regras para contribuir com o INSS",
     excerpt:
       "Projeto em análise na Câmara propõe ampliar a contribuição de 5% ao INSS para quem deixou de trabalhar para cuidar de filho ou dependente com deficiência.",
