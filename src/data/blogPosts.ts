@@ -38,6 +38,225 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "endividamento-rio-dividas-inadimplencia-2026",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Mais da metade dos consumidores do Rio começou 2026 com dívidas",
+    excerpt:
+      "Mais da metade dos consumidores pesquisados na Região Metropolitana do Rio começou 2026 com dívidas. Entenda a diferença entre endividamento e inadimplência.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-11T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/endividamento-rio-dividas-inadimplencia-2026.png",
+    coverImageAlt:
+      "Consumidor confere faturas e contas enquanto organiza as dívidas do orçamento familiar.",
+    metaTitle: "Endividamento no Rio: mais da metade começou 2026 com dívidas",
+    metaDescription:
+      "Mais da metade dos consumidores pesquisados na Região Metropolitana do Rio começou 2026 com dívidas. Entenda a diferença entre endividamento e inadimplência.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Endividamento no Rio de Janeiro",
+      "Inadimplência",
+      "Nome negativado",
+      "Dívidas",
+      "Cartão de crédito",
+      "Renegociação de dívidas",
+    ],
+    featured: true,
+    content: `
+      <p>O ano começou com o orçamento apertado para boa parte dos consumidores da Região Metropolitana do Rio de Janeiro.</p>
+
+      <p>Uma pesquisa do Instituto Fecomércio de Pesquisas e Análises mostrou que 53,2% dos entrevistados iniciaram 2026 com dívidas, sem considerar despesas mensais regulares, como água, luz e condomínio. (Fecomércio RJ)</p>
+
+      <p>O cenário no restante do país também preocupa. Em junho, 81,6% das famílias brasileiras tinham alguma dívida a vencer, segundo a Pesquisa de Endividamento e Inadimplência do Consumidor, da CNC. (Portal do Comércio)</p>
+
+      <p>Mas há uma diferença importante nesses números: ter dívida não significa estar inadimplente.</p>
+
+      <br/>
+
+      <h2>Endividado e negativado não são a mesma coisa</h2>
+
+      <p>Quem compra parcelado, financia um carro ou tem uma fatura de cartão ainda a vencer já pode aparecer nas pesquisas de endividamento.</p>
+
+      <p>A inadimplência começa quando uma conta deixa de ser paga no prazo. A negativação ocorre quando a dívida em atraso é registrada em cadastros de proteção ao crédito.</p>
+
+      <p>Em junho, 50,9% da população adulta brasileira estava negativada, de acordo com a Serasa. Eram centenas de milhões de dívidas em aberto, somando mais de R$ 579 bilhões. (Serasa)</p>
+
+      <p>O peso é maior entre quem ganha menos. Levantamento divulgado pela Serasa mostrou que 48% dos inadimplentes recebem até um salário mínimo. Para essa parcela da população, qualquer aumento no custo de vida reduz ainda mais o espaço para pagar dívidas antigas. (Exame)</p>
+
+      <br/>
+
+      <h2>Quando o crédito começa a completar o salário</h2>
+
+      <p>O cartão continua sendo a principal modalidade usada pelas famílias endividadas. Em maio, estava presente em 84,6% dos casos pesquisados pela CNC. (Portal do Comércio)</p>
+
+      <p>O problema aparece quando o crédito deixa de financiar uma compra planejada e passa a pagar despesas que deveriam caber na renda do mês.</p>
+
+      <p>Supermercado, conta de luz, remédio e outras despesas básicas começam a disputar espaço com parcelas antigas. Se uma conta atrasa, entram juros e multas. A dívida que já estava difícil de pagar fica maior.</p>
+
+      <p>Renegociar pode ajudar, mas o acordo precisa caber no orçamento. Uma parcela menor não resolve o problema quando obriga a família a deixar outra conta para trás.</p>
+
+      <br/>
+
+      <p>O tamanho da inadimplência mostra que a discussão não pode ficar restrita à ideia de que milhões de pessoas simplesmente deixaram de se organizar.</p>
+
+      <p>Quando quase metade dos inadimplentes vive com até um salário mínimo, é preciso olhar também para renda, custo de vida, juros e acesso ao crédito.</p>
+
+      <p>Sair da dívida é importante. Entender por que tanta gente está entrando nela também.</p>
+
+      <p><strong>Para acompanhar informações sobre dívidas, cobranças e direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
+    slug: "maes-atipicas-inss-contribuicao-5-projeto-lei",
+    source: "Blog",
+    category: "Direitos do Cidadão",
+    title: "Mães atípicas podem ter novas regras para contribuir com o INSS",
+    excerpt:
+      "Projeto em análise na Câmara propõe ampliar a contribuição de 5% ao INSS para quem deixou de trabalhar para cuidar de filho ou dependente com deficiência.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-10T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/maes-atipicas-inss-contribuicao-5-projeto-lei.png",
+    coverImageAlt:
+      "Mãe acompanha o filho com deficiência enquanto consulta informações sobre contribuição e direitos previdenciários.",
+    metaTitle: "Mães atípicas e INSS: projeto propõe contribuição reduzida de 5%",
+    metaDescription:
+      "Projeto em análise na Câmara propõe ampliar a contribuição de 5% ao INSS para quem deixou de trabalhar para cuidar de filho ou dependente com deficiência.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "INSS para mães atípicas",
+      "PL 1225/2024",
+      "Contribuição de 5% ao INSS",
+      "Segurado facultativo",
+      "Mães atípicas",
+      "Proteção previdenciária",
+    ],
+    featured: true,
+    content: `
+      <p>Deixar o emprego para cuidar de um filho que precisa de acompanhamento permanente tem uma consequência que nem sempre aparece de imediato: os anos fora do mercado de trabalho também podem virar anos sem contribuição para a Previdência.</p>
+
+      <p>É justamente essa situação que o Projeto de Lei 1.225/2024 tenta enfrentar.</p>
+
+      <p>A proposta foi apresentada na Câmara para facilitar o acesso à contribuição reduzida de 5% do salário mínimo por quem precisa se afastar do trabalho para assumir esses cuidados. O projeto, porém, ainda está em tramitação e não criou um novo direito até o momento. (Portal da Câmara dos Deputados)</p>
+
+      <br/>
+
+      <h2>O que o projeto pretende mudar</h2>
+
+      <p>Hoje, já existe a categoria de segurado facultativo de baixa renda, que permite contribuição de 5% do salário mínimo. Para utilizar essa modalidade, é preciso atender a critérios específicos, entre eles não exercer atividade remunerada, não ter renda própria, dedicar-se ao trabalho doméstico na própria residência e estar inscrito no CadÚnico dentro das condições exigidas pelo INSS. (Serviços e Informações do Brasil)</p>
+
+      <p>O PL 1.225/2024 quer alcançar uma situação diferente.</p>
+
+      <p>O texto aprovado pela Comissão de Defesa dos Direitos das Pessoas com Deficiência prevê a alíquota de 5% para a pessoa sem renda própria que se dedique exclusivamente aos cuidados de filho ou dependente com deficiência física que necessite de auxílio permanente para atividades como locomoção, alimentação, higiene e cuidados pessoais. (Portal da Câmara dos Deputados)</p>
+
+      <p>A proposta original falava especificamente em mães atípicas. Durante a análise na Câmara, o texto foi alterado para abranger o cuidador que se enquadre nos critérios previstos.</p>
+
+      <p>Isso também não significa aposentadoria automática. A proposta facilita a forma de contribuição ao INSS; o acesso aos benefícios continua dependendo do cumprimento das regras previdenciárias aplicáveis. (Previdenciarista)</p>
+
+      <br/>
+
+      <h2>O projeto ainda precisa avançar na Câmara</h2>
+
+      <p>O PL foi apresentado em abril de 2024 e passou pela Comissão de Defesa dos Direitos das Pessoas com Deficiência, onde recebeu parecer favorável com substitutivo em junho de 2025.</p>
+
+      <p>Atualmente, aguarda a designação de relator na Comissão de Previdência, Assistência Social, Infância, Adolescência e Família. Depois, ainda deverá passar pelas comissões de Finanças e Tributação e de Constituição e Justiça e de Cidadania. Portanto, a contribuição especial prevista no projeto ainda não está valendo. (Portal da Câmara dos Deputados)</p>
+
+      <p>O debate toca em uma realidade conhecida por muitas famílias: quando uma pessoa precisa de cuidado diário, alguém frequentemente reduz a jornada ou deixa o emprego para assumir essa responsabilidade.</p>
+
+      <p>O tempo dedicado ao cuidado não pode ser ignorado quando se discute o futuro previdenciário dessas famílias.</p>
+
+      <br/>
+
+      <p>O PL 1.225/2024 ainda tem caminho pela frente, mas coloca uma questão importante no Congresso: como proteger quem passa anos fora do mercado de trabalho porque assumiu o cuidado permanente de um filho ou dependente?</p>
+
+      <p>Acompanhar a tramitação também é importante para não confundir projeto de lei com direito já garantido.</p>
+
+      <p><strong>Quer acompanhar esse e outros projetos que podem afetar diretamente a vida das famílias brasileiras? Siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acompanhe <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
+    slug: "bets-bolsa-prouni-movimentacoes-renda-familiar",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title: "Movimentações em bets barram bolsa do Prouni de estudante",
+    excerpt:
+      "Estudante teve bolsa integral do Prouni negada após movimentações com apostas serem consideradas na renda familiar. Entenda o caso e a discussão.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-09T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/bets-bolsa-prouni-movimentacoes-renda-familiar.png",
+    coverImageAlt:
+      "Estudante analisa documentos do Prouni enquanto movimentações relacionadas a apostas aparecem em extrato bancário.",
+    metaTitle:
+      "Movimentações em bets barram bolsa do Prouni e acendem alerta sobre endividamento",
+    metaDescription:
+      "Estudante teve bolsa integral do Prouni negada após movimentações com apostas serem consideradas na renda familiar. Entenda o caso e a discussão.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Bets e Prouni",
+      "Apostas online",
+      "Bolsa do Prouni",
+      "Renda familiar",
+      "Ludopatia",
+      "Endividamento com bets",
+    ],
+    featured: true,
+    content: `
+      <p>Depois de quase três anos se preparando para entrar na faculdade, Eduardo Luvizetto dos Santos conseguiu a nota necessária e foi pré-selecionado para uma bolsa integral de Psicologia pelo Prouni, na Universidade Paulista (Unip).</p>
+
+      <p>A bolsa, porém, foi negada na etapa de comprovação socioeconômica.</p>
+
+      <p>Na análise dos extratos bancários da família, a universidade identificou movimentações recorrentes relacionadas a plataformas de apostas e considerou esses valores no cálculo da renda. Com isso, entendeu que a família ultrapassava o limite exigido pelo programa. (Correio Braziliense)</p>
+
+      <p>Eduardo contestou. Segundo ele, o extrato também mostrava dinheiro sendo enviado de volta às bets, além de dívidas e um empréstimo consignado contratado para cobrir prejuízos com apostas. O recurso administrativo foi negado e, agora, o estudante busca assistência jurídica para tentar garantir a bolsa. (Correio Braziliense)</p>
+
+      <br/>
+
+      <h2>Movimentação bancária é o mesmo que renda?</h2>
+
+      <p>Esse é o principal ponto da discussão.</p>
+
+      <p>Para receber uma bolsa integral do Prouni, a renda familiar bruta mensal por pessoa deve ser de até um salário mínimo e meio. A instituição de ensino é responsável por analisar os documentos e verificar se o estudante cumpre os critérios. (Serviços e Informações do Brasil)</p>
+
+      <p>No caso de Eduardo, a Unip afirmou que considerou como renda as entradas recorrentes registradas na conta e destacou que ganhos provenientes de apostas não estão entre as exclusões previstas pelas regras do programa. (Correio Braziliense)</p>
+
+      <p>A interpretação é contestada por especialista ouvida pelo Correio Braziliense. Segundo a assistente social Claudia Barros do Nascimento, depósitos frequentes podem indicar renda, mas precisam ser analisados dentro do contexto. Valores que entram na conta e são novamente destinados às plataformas de apostas não representam, necessariamente, dinheiro incorporado à renda da família. (Correio Braziliense)</p>
+
+      <p>É justamente essa diferença que torna o caso relevante. Um extrato pode registrar uma grande circulação de dinheiro sem que isso signifique que aquela família teve o mesmo valor disponível para pagar aluguel, alimentação ou outras despesas.</p>
+
+      <br/>
+
+      <h2>O impacto das apostas já ultrapassou a conta bancária</h2>
+
+      <p>O caso também chama atenção para um problema que não termina quando a aposta acaba.</p>
+
+      <p>Segundo o Ministério da Saúde, o uso problemático das bets pode comprometer o orçamento, afetar relações familiares e provocar danos à saúde mental. O transtorno do jogo é reconhecido como um transtorno de comportamento aditivo. (Serviços e Informações do Brasil)</p>
+
+      <p>Em julho de 2026, o Ministério lançou uma campanha nacional de prevenção aos danos das apostas online e passou a divulgar os serviços do SUS destinados tanto a apostadores quanto aos familiares afetados. (Serviços e Informações do Brasil)</p>
+
+      <p>O que aconteceu com Eduardo mostra outra dimensão desse problema. Uma família que já relata dívidas decorrentes das apostas passou a enfrentar também uma discussão sobre o acesso de um de seus integrantes ao ensino superior.</p>
+
+      <p>Ainda caberá às instâncias competentes decidir se a análise feita nesse caso foi correta. Mas tratar toda entrada registrada em conta como aumento efetivo da capacidade financeira, sem examinar a origem e o destino daquele dinheiro, merece atenção.</p>
+
+      <br/>
+
+      <p>As apostas entraram no cotidiano das famílias brasileiras com muito mais velocidade do que as estruturas de prevenção e tratamento.</p>
+
+      <p>Quando seus efeitos chegam ao endividamento, à saúde e até ao acesso à educação, o debate deixa de ser apenas sobre quem ganhou ou perdeu uma aposta.</p>
+
+      <p>É sobre o tamanho do prejuízo que pode ficar dentro de casa.</p>
+
+      <p><strong>Esse assunto precisa chegar a mais famílias. Compartilhe este conteúdo e acompanhe <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a> para mais informações sobre defesa do consumidor.</strong></p>
+    `,
+  },
+  {
     slug: "registrato-contas-emprestimos-cpf",
     source: "Blog",
     category: "Defesa do Consumidor",
