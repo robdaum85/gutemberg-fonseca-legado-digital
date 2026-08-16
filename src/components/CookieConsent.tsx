@@ -71,6 +71,7 @@ const CookieConsent = () => {
   const saveConsent = (value: CookieConsentValue) => {
     window.localStorage.setItem(CONSENT_STORAGE_KEY, value);
     setConsent(value);
+    window.dispatchEvent(new Event("gf:cookie-consent"));
   };
 
   if (consent) return null;

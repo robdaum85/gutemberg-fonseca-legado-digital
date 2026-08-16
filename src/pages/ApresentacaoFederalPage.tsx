@@ -8,19 +8,18 @@ import {
 } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight, Facebook, Instagram, Linkedin, MessageCircle, Twitter } from "lucide-react";
+import { ArrowUpRight, Facebook, Instagram, Linkedin, MessageCircle, Pause, Play, Square, Twitter } from "lucide-react";
 import { TikTokIcon, ThreadsIcon } from "@/components/SocialIcons";
-import { BolsonaroAllianceSection } from "@/components/federal/BolsonaroAllianceSection";
-import { CampaignMaterialsSection } from "@/components/federal/CampaignMaterialsSection";
-import { TruthSection } from "@/components/federal/TruthSection";
 import { WHATSAPP_NUMBER } from "@/config/mobilizacao";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { getPostCategoryUrl, getPostsByCategory } from "@/lib/blogUtils";
+import { useCampaignAnalytics } from "@/lib/campaignAnalytics";
+import { useSeo } from "@/lib/useSeo";
 import "./ApresentacaoFederalPage.css";
 import "@/components/federal/FederalSections.css";
 
 type RevealDirection = "up" | "down" | "left" | "right" | "fade";
-type RevealElement = "div" | "article" | "section";
+type RevealElement = "div" | "article" | "section" | "li";
 
 type MotionStyle = CSSProperties & {
   "--reveal-delay"?: string;
@@ -346,6 +345,8 @@ type CampaignIconName =
   | "phone"
   | "email"
   | "clock"
+  | "handshake"
+  | "smartphone"
   | "menu";
 
 type Pillar = {
@@ -373,7 +374,6 @@ type Area = {
 type Proposal = {
   title: string;
   description: string;
-  commitments: readonly string[];
   icon: CampaignIconName;
 };
 
@@ -403,13 +403,89 @@ const areas: Area[] = [
 ];
 
 const proposals: Proposal[] = [
-  { title: "Defesa do Consumidor", description: "Fortalecer a proteção de quem compra, contrata e utiliza serviços.", commitments: ["Combate a fraudes e práticas abusivas", "Informação clara e educação para o consumo"], icon: "consumer" },
-  { title: "Segurança e Cidadania", description: "Apoiar políticas integradas de prevenção, inteligência e proteção.", commitments: ["Integração entre forças e municípios", "Tecnologia aplicada à segurança pública"], icon: "shield" },
-  { title: "Saúde mais próxima", description: "Ampliar o acesso e valorizar o atendimento que chega primeiro ao cidadão.", commitments: ["Fortalecimento da atenção básica", "Mais estrutura e atendimento humanizado"], icon: "heart" },
-  { title: "Educação e futuro", description: "Preparar crianças e jovens para novas oportunidades de formação e trabalho.", commitments: ["Qualificação profissional conectada ao mercado", "Tecnologia e inovação nas escolas"], icon: "education" },
-  { title: "Emprego e renda", description: "Criar um ambiente favorável para quem trabalha, produz e empreende.", commitments: ["Incentivo ao pequeno empreendedor", "Formação para novos postos de trabalho"], icon: "briefcase" },
-  { title: "Família e inclusão", description: "Cuidar das famílias e ampliar a autonomia de quem mais precisa.", commitments: ["Proteção à infância e à pessoa idosa", "Inclusão e acessibilidade nas políticas públicas"], icon: "family" },
+  { title: "Patrulha do Consumidor", description: "Vamos trabalhar pela criação e fortalecimento de estruturas especializadas no combate aos golpes, fraudes e crimes contra o consumidor.", icon: "shield" },
+  { title: "Mutirão de Negociação de Dívidas", description: "Vamos trabalhar para ampliar as oportunidades de renegociação e criar políticas permanentes de enfrentamento ao superendividamento.", icon: "handshake" },
+  { title: "Consumidor Tá On", description: "Vamos trabalhar pelo aprimoramento do atendimento digital ao consumidor, buscando uma defesa mais simples, integrada e acessível 24 horas pelo celular.", icon: "smartphone" },
 ];
+
+const legacyTimeline = [
+  { year: "2007", title: "Primeiros passos na gestão pública", description: "Atuação ligada ao desenvolvimento do SINE e à ampliação de oportunidades para trabalhadores em busca de emprego." },
+  { year: "2008–2011", title: "Câmara Municipal do Rio", description: "Experiência como chefe de gabinete, acompanhando projetos, equipes e demandas diretas da população." },
+  { year: "2012", title: "Meio ambiente", description: "Passagem pela Subsecretaria de Meio Ambiente de São João de Meriti." },
+  { year: "2013", title: "Turismo, esporte e lazer", description: "Gestão municipal em Japeri, reunindo políticas de turismo, esporte e lazer." },
+  { year: "2019", title: "Articulação estadual", description: "Atuação na Secretaria de Governo do Estado e em iniciativas de integração como o Segurança Presente." },
+  { year: "2020", title: "Ordem pública e gestão de crise", description: "Coordenação de ações urbanas e participação no Gabinete de Crise durante a pandemia de Covid-19." },
+  { year: "2021", title: "Esporte como inclusão", description: "Retomada de programas de incentivo, apoio a atletas e ampliação da estrutura esportiva." },
+  { year: "2023", title: "Defesa do consumidor", description: "Fortalecimento do atendimento, da fiscalização, da conciliação e das ações contra práticas abusivas." },
+] as const;
+
+const legacyEvidence = [
+  { value: "1,3 milhão", label: "de atendimentos", description: "Volume atribuído à estrutura SEDCON e PROCON-RJ desde 2023 no acervo institucional." },
+  { value: "+ R$ 14 mi", label: "em dívidas renegociadas", description: "Resultado citado para mutirões do programa Dívida Zero RJ." },
+  { value: "600", label: "bolsas para atletas", description: "Apoio financeiro citado para atletas e paratletas do estado." },
+  { value: "+15", label: "campos esportivos", description: "Estruturas de grama sintética citadas no material histórico da gestão." },
+] as const;
+
+const legacyCases = [
+  { icon: "shield" as const, eyebrow: "Gestão de crise", title: "Decidir sob pressão", description: "Experiência na coordenação de respostas públicas durante a pandemia, conciliando ordem urbana, serviços essenciais e proteção da população." },
+  { icon: "consumer" as const, eyebrow: "Defesa do consumidor", title: "Fiscalização presente nas ruas", description: "Ações contra cobranças indevidas, venda casada, produtos vencidos e falhas na prestação de serviços essenciais." },
+  { icon: "medal" as const, eyebrow: "Esporte e oportunidade", title: "Inclusão que chega aos territórios", description: "Programas de incentivo, recuperação de espaços e aproximação das políticas esportivas com atletas e comunidades." },
+] as const;
+
+const ELECTION_DATE = "2026-10-04";
+const ELECTION_TIMESTAMP = Date.parse("2026-10-04T00:00:00-03:00");
+const SITE_LAUNCH_TIMESTAMP = Date.parse("2026-08-16T00:01:00-03:00");
+
+type SiteLaunchCountdown = {
+  active: boolean;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
+function getSiteLaunchCountdown(now = new Date()): SiteLaunchCountdown {
+  const remainingSeconds = Math.max(0, Math.ceil((SITE_LAUNCH_TIMESTAMP - now.getTime()) / 1_000));
+
+  return {
+    active: remainingSeconds > 0,
+    hours: Math.floor(remainingSeconds / 3_600),
+    minutes: Math.floor((remainingSeconds % 3_600) / 60),
+    seconds: remainingSeconds % 60,
+  };
+}
+
+type ElectionCountdown = {
+  status: "counting" | "today" | "finished";
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
+function getElectionCountdown(now = new Date()): ElectionCountdown {
+  const saoPauloDate = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Sao_Paulo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(now);
+  if (saoPauloDate === ELECTION_DATE) {
+    return { status: "today", days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+
+  const remainingSeconds = Math.max(0, Math.floor((ELECTION_TIMESTAMP - now.getTime()) / 1_000));
+  if (remainingSeconds === 0) {
+    return { status: "finished", days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+
+  return {
+    status: "counting",
+    days: Math.floor(remainingSeconds / 86_400),
+    hours: Math.floor((remainingSeconds % 86_400) / 3_600),
+    minutes: Math.floor((remainingSeconds % 3_600) / 60),
+    seconds: remainingSeconds % 60,
+  };
+}
 
 const trajectoryImages = [
   {
@@ -460,10 +536,9 @@ const consumerArticles = getPostsByCategory("Defesa do Consumidor")
   .slice(0, 3);
 
 const instagramHighlights = [
-  { href: "https://www.instagram.com/reel/DbTO_h0Rgx7/", image: "/instagram/DbTO_h0Rgx7.jpg", alt: "Gutemberg Fonseca orientando consumidores sobre compras pela internet" },
-  { href: "https://www.instagram.com/p/Dax344KkXLX/", image: "/instagram/Dax344KkXLX.jpg", alt: "Publicação de Gutemberg Fonseca sobre energia e direitos do consumidor" },
-  { href: "https://www.instagram.com/p/DayxovqGh0O/", image: "/instagram/DayxovqGh0O.jpg", alt: "Gutemberg Fonseca durante entrega de homenagem" },
-  { href: "https://www.instagram.com/p/DawJ2iwmt_B/", image: "/instagram/DawJ2iwmt_B.jpg", alt: "Gutemberg Fonseca reunido com apoiadores" },
+  { href: "https://www.instagram.com/p/DcChFFymgG4/?igsh=Z2RuYTVqNmxybXpw", image: "/instagram/DcChFFymgG4.jpg", alt: "Gutemberg Fonseca reunido com lideranças e apoiadores" },
+  { href: "https://www.instagram.com/p/Db_wTLyiQVO/?igsh=MXp2cHcydHV1ZzZw", image: "/instagram/Db_wTLyiQVO.webp", alt: "Convite de Gutemberg Fonseca para o Resgate do Brasil em Copacabana" },
+  { href: "https://www.instagram.com/reel/Db_tHaZJgFu/?igsh=cWJ3bmVxYmExNno0", image: "/instagram/Db_tHaZJgFu.jpg", alt: "Gutemberg Fonseca falando sobre transformação em entrevista" },
 ] as const;
 
 const consumerArmyActions = [
@@ -473,6 +548,7 @@ const consumerArmyActions = [
 ] as const;
 
 const gutoWhatsAppUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá, meu candidato, tudo bem?  cheguei pelo site, gostaria de conversar com você!")}`;
+const supportWhatsAppUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Quero apoiar")}`;
 
 function CampaignIcon({ name, className }: { name: CampaignIconName; className?: string }) {
   const common = {
@@ -502,6 +578,8 @@ function CampaignIcon({ name, className }: { name: CampaignIconName; className?:
     case "phone": return <svg {...common}><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>;
     case "email": return <svg {...common}><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>;
     case "clock": return <svg {...common}><circle cx="12" cy="12" r="9.5"/><path d="M12 7v5l3.5 2"/></svg>;
+    case "handshake": return <svg {...common}><path d="m8.5 11.5 2 2a2 2 0 0 0 2.8 0l3.2-3.2"/><path d="m14 8 2-2 5 5-6.2 6.2a2 2 0 0 1-2.8 0L6.8 12"/><path d="m10 7-2-1-5 5 5.5 5.5"/></svg>;
+    case "smartphone": return <svg {...common}><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 5h4M11 18h2"/><path d="m9 12 2 2 4-4"/></svg>;
     case "menu": return <svg {...common} strokeWidth={2.4}><path d="M3 6h18M3 12h18M3 18h18"/></svg>;
   }
 }
@@ -520,8 +598,8 @@ function PartyLogo({ className = "" }: { className?: string }) {
 }
 
 const heroPortrait = {
-  fallback: "/images/federal/hero/section-01-hero-gutemberg-retrato-03.png",
-  webpSrcSet: "/images/federal/hero/section-01-hero-gutemberg-retrato-03-480x600.webp 480w, /images/federal/hero/section-01-hero-gutemberg-retrato-03-768x960.webp 768w, /images/federal/hero/section-01-hero-gutemberg-retrato-03-1024x1280.webp 1024w",
+  fallback: "/images/federal/hero/hero-candidato-recorte.png",
+  webp: "/images/federal/hero/hero-candidato-recorte.webp",
   width: 1800,
   height: 2250,
 } as const;
@@ -529,12 +607,28 @@ const heroPortrait = {
 export default function FederalPreviewPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerScrolled, setHeaderScrolled] = useState(false);
+  const [campaignPopupOpen, setCampaignPopupOpen] = useState(false);
+  const [jingleStatus, setJingleStatus] = useState<"idle" | "playing" | "paused">("idle");
   const [activePeopleImageIndex, setActivePeopleImageIndex] = useState(0);
+  const [siteLaunchCountdown, setSiteLaunchCountdown] = useState(getSiteLaunchCountdown);
+  const [electionCountdown, setElectionCountdown] = useState(getElectionCountdown);
+  const launchGateRef = useRef<HTMLDivElement>(null);
+  const campaignPopupCloseRef = useRef<HTMLButtonElement>(null);
+  const jingleAudioRef = useRef<HTMLAudioElement>(null);
+  const confirmationAudioRef = useRef<HTMLAudioElement>(null);
   const activePeopleImage = peopleImages[activePeopleImageIndex];
   const reducedMotion = useReducedMotion();
   const gsapScopeRef = useFederalGsapPilot(reducedMotion);
   const flagGlobeRef = useParallax<HTMLDivElement>(0.18);
   const heroPortraitRef = useParallax<HTMLDivElement>(0.04);
+
+  useSeo({
+    title: "Gutemberg Fonseca 2255 | O Federal do Consumidor",
+    description: "Conheça a trajetória, os resultados e as propostas de Gutemberg Fonseca para defender o consumidor no Rio e em Brasília.",
+    canonical: "https://gutembergfonseca.com.br/",
+    image: "https://gutembergfonseca.com.br/images/federal/social/og-campanha-2255.png",
+  });
+  useCampaignAnalytics();
 
   useEffect(() => {
     document.body.classList.add("federal-page");
@@ -542,60 +636,227 @@ export default function FederalPreviewPage() {
   }, []);
 
   useEffect(() => {
-    const previousTitle = document.title;
-    const existingRobots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
-    const previousRobots = existingRobots?.content;
-    const robots = existingRobots ?? document.createElement("meta");
+    const updateLaunchCountdown = () => setSiteLaunchCountdown(getSiteLaunchCountdown());
+    updateLaunchCountdown();
+    const interval = window.setInterval(updateLaunchCountdown, 250);
+    return () => window.clearInterval(interval);
+  }, []);
 
-    if (!existingRobots) {
-      robots.name = "robots";
-      document.head.appendChild(robots);
+  useEffect(() => {
+    const updateCountdown = () => setElectionCountdown(getElectionCountdown());
+    updateCountdown();
+    const interval = window.setInterval(updateCountdown, 1_000);
+    return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (siteLaunchCountdown.active) return;
+
+    let popupTimer = 0;
+    const schedulePopup = () => {
+      window.clearTimeout(popupTimer);
+      popupTimer = window.setTimeout(() => setCampaignPopupOpen(true), 700);
+    };
+
+    if (window.localStorage.getItem("gf_cookie_consent")) {
+      schedulePopup();
+    } else {
+      window.addEventListener("gf:cookie-consent", schedulePopup, { once: true });
     }
 
-    document.title = "Apresentação Federal | Gutemberg Fonseca";
-    robots.content = "noindex, nofollow, noarchive";
+    return () => {
+      window.clearTimeout(popupTimer);
+      window.removeEventListener("gf:cookie-consent", schedulePopup);
+    };
+  }, [siteLaunchCountdown.active]);
+
+  useEffect(() => {
+    if (!siteLaunchCountdown.active) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const keepFocusOnGate = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") return;
+      const gate = launchGateRef.current;
+      if (!gate) return;
+      const focusable = Array.from(gate.querySelectorAll<HTMLElement>("a[href]"));
+      if (!focusable.length) {
+        event.preventDefault();
+        gate.focus();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === gate)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", keepFocusOnGate);
+    launchGateRef.current?.focus();
 
     return () => {
-      document.title = previousTitle;
-      if (existingRobots && previousRobots !== undefined) existingRobots.content = previousRobots;
-      else robots.remove();
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", keepFocusOnGate);
     };
-  }, []);
+  }, [siteLaunchCountdown.active]);
+
+  useEffect(() => {
+    if (!campaignPopupOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setCampaignPopupOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", closeOnEscape);
+    campaignPopupCloseRef.current?.focus();
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [campaignPopupOpen]);
+
+  const playJingle = async (restart = false) => {
+    const audio = jingleAudioRef.current;
+    if (!audio) return;
+
+    if (restart) audio.currentTime = 0;
+    audio.volume = 0.65;
+
+    try {
+      await audio.play();
+      setJingleStatus("playing");
+    } catch {
+      setJingleStatus("paused");
+    }
+  };
+
+  const pauseJingle = () => {
+    jingleAudioRef.current?.pause();
+    setJingleStatus("paused");
+  };
+
+  const stopJingle = () => {
+    const audio = jingleAudioRef.current;
+    if (!audio) return;
+    audio.pause();
+    audio.currentTime = 0;
+    setJingleStatus("idle");
+  };
+
+  const playConfirmationSound = () => {
+    const audio = confirmationAudioRef.current;
+    if (!audio) return Promise.resolve();
+
+    audio.pause();
+    audio.currentTime = 0;
+
+    return new Promise<void>((resolve) => {
+      const finish = () => {
+        audio.removeEventListener("ended", finish);
+        audio.removeEventListener("error", finish);
+        resolve();
+      };
+
+      audio.addEventListener("ended", finish, { once: true });
+      audio.addEventListener("error", finish, { once: true });
+      audio.play().catch(finish);
+    });
+  };
+
+  const handleVoteClick = () => {
+    setCampaignPopupOpen(false);
+    void playConfirmationSound().then(() => playJingle(true));
+  };
 
   return (
     <>
       <a className="skip" href="#main">Pular para o conteúdo</a>
-      <a className="federal-whatsapp" href={gutoWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Falar com Guto pelo WhatsApp" title="WhatsApp do Guto"><MessageCircle aria-hidden="true"/></a>
+      {siteLaunchCountdown.active && (
+        <div ref={launchGateRef} className="site-launch-gate" role="dialog" aria-modal="true" aria-labelledby="site-launch-title" tabIndex={-1}>
+          <div className="site-launch-card">
+            <img src="/lovable-uploads/c003fb8b-1544-42bc-881b-af1b83f1ac15.png" alt="Gutemberg Fonseca" width="986" height="405" decoding="async"/>
+            <nav className="site-launch-social" aria-label="Redes sociais de Gutemberg Fonseca">
+              {socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} data-campaign-event="social_click" data-campaign-label={`Pré-lançamento: ${label}`} key={label}><SocialIcon/></a>)}
+            </nav>
+            <span>Uma nova caminhada está prestes a começar</span>
+            <h2 id="site-launch-title">O novo site entra no ar em</h2>
+            <time className="site-launch-countdown" dateTime="2026-08-16T00:01:00-03:00" aria-label={`${siteLaunchCountdown.hours} horas, ${siteLaunchCountdown.minutes} minutos e ${siteLaunchCountdown.seconds} segundos`}>
+              <span><strong>{String(siteLaunchCountdown.hours).padStart(2, "0")}</strong><small>Horas</small></span>
+              <b aria-hidden="true">:</b>
+              <span><strong>{String(siteLaunchCountdown.minutes).padStart(2, "0")}</strong><small>Minutos</small></span>
+              <b aria-hidden="true">:</b>
+              <span><strong>{String(siteLaunchCountdown.seconds).padStart(2, "0")}</strong><small>Segundos</small></span>
+            </time>
+            <p>16 de agosto de 2026 · 00:01 · Horário de Brasília</p>
+          </div>
+        </div>
+      )}
+      {campaignPopupOpen && (
+        <div className="campaign-popup-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setCampaignPopupOpen(false); }}>
+          <section className="campaign-popup" role="dialog" aria-modal="true" aria-labelledby="campaign-popup-title" aria-describedby="campaign-popup-description">
+            <button ref={campaignPopupCloseRef} className="campaign-popup-close" type="button" aria-label="Fechar" onClick={() => setCampaignPopupOpen(false)}>×</button>
+            <div className="campaign-popup-brand">
+              <img src="/images/federal/brand/logo-hero-2255-completa.png" alt="Gutemberg Fonseca, deputado federal, número 2255. O Defensor do Consumidor." width="1200" height="800" decoding="async"/>
+            </div>
+            <div className="campaign-popup-content">
+              <span className="campaign-popup-kicker">Vamos juntos pelo Brasil</span>
+              <h2 id="campaign-popup-title">Acompanhe, compartilhe e faça parte</h2>
+              <p id="campaign-popup-description">Siga Gutemberg Fonseca nas redes sociais e acompanhe as propostas, agendas e a caminhada até Brasília.</p>
+              <div className="campaign-popup-social" aria-label="Siga Gutemberg Fonseca nas redes sociais">
+                {socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Seguir no ${label}`} title={label} data-campaign-event="social_click" data-campaign-label={`Pop-up: ${label}`} key={label}><SocialIcon/><span>{label}</span></a>)}
+              </div>
+              <div className="campaign-popup-vote">
+                <p><strong>Dia 4 de outubro, vote</strong><span>Gutemberg Fonseca 2255</span></p>
+                <a href="#inicio" onClick={handleVoteClick} data-campaign-event="support_click" data-campaign-label="Pop-up: Eu voto 2255">Eu voto 2255<CampaignIcon name="arrow"/></a>
+              </div>
+            </div>
+          </section>
+        </div>
+      )}
+      <audio ref={confirmationAudioRef} src="/audio/confirma-urna.mp3" preload="auto"/>
+      <audio ref={jingleAudioRef} src="/audio/jingle-campanha-2255.mp3" preload="metadata" loop onPlay={() => setJingleStatus("playing")} onPause={() => setJingleStatus((status) => status === "idle" ? status : "paused")}/>
+      <aside className="campaign-jingle-player" aria-label="Player do jingle da campanha">
+        <span className="campaign-jingle-copy"><small>Jingle da campanha</small><strong>Gutemberg 2255</strong></span>
+        <button type="button" aria-label={jingleStatus === "playing" ? "Pausar jingle" : "Reproduzir jingle"} title={jingleStatus === "playing" ? "Pausar" : "Reproduzir"} data-campaign-event={jingleStatus === "playing" ? "jingle_pause" : "jingle_play"} data-campaign-label={jingleStatus === "playing" ? "Pausar jingle" : "Reproduzir jingle"} onClick={() => { if (jingleStatus === "playing") pauseJingle(); else void playJingle(jingleStatus === "idle"); }}>
+          {jingleStatus === "playing" ? <Pause aria-hidden="true"/> : <Play aria-hidden="true"/>}
+        </button>
+        <button type="button" aria-label="Parar jingle" title="Parar" data-campaign-event="jingle_stop" data-campaign-label="Parar jingle" onClick={stopJingle} disabled={jingleStatus === "idle"}>
+          <Square aria-hidden="true"/>
+        </button>
+      </aside>
+      <a className="federal-whatsapp" href={gutoWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Falar com Guto pelo WhatsApp" title="WhatsApp do Guto" data-campaign-event="whatsapp_click" data-campaign-label="WhatsApp flutuante"><MessageCircle aria-hidden="true"/></a>
 
       <header className={`header ${headerScrolled ? "is-scrolled" : ""}`}>
         <div className="shell">
           <a className="header-brand" href="#inicio" aria-label="Gutemberg Fonseca, Deputado Federal">
-            <span className="logo">
-              <span className="logo-office">Deputado Federal</span>
-              <span className="logo-name">Gutemberg<br/>Fonseca</span>
-            </span>
+            <img className="header-campaign-logo" src="/images/federal/brand/logo-navbar-2255-horizontal.png" alt="" width="1000" height="500" decoding="async"/>
           </a>
-          <span className="header-number" aria-label="Número 2255">2255</span>
 
           <nav className="nav" aria-label="Navegação principal">
             <a className="is-active" href="#inicio">Início</a>
             <a href="#trajetoria">Trajetória</a>
             <a href="#resultados">Resultados</a>
             <a href="#propostas">Propostas</a>
-            <a href="#verdade">Verdade</a>
-            <a href="#bolsonaro">Alianças</a>
-            <a href="#materiais">Materiais</a>
             <a href="#contato">Contato</a>
           </nav>
 
-          <a className="btn btn--yellow header-support" href="#contato"><CampaignIcon name="heart"/>Quero apoiar</a>
+          <a className="btn btn--yellow header-support" href={supportWhatsAppUrl} target="_blank" rel="noopener noreferrer" onClick={() => { void playConfirmationSound(); }} data-campaign-event="support_click" data-campaign-label="Quero apoiar no cabeçalho"><CampaignIcon name="heart"/>Quero apoiar</a>
           <button className="menu-btn" type="button" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}><CampaignIcon name="menu"/></button>
         </div>
 
         <ScrollProgress onScrolledChange={setHeaderScrolled}/>
 
         {menuOpen && <nav className="mobile-nav" aria-label="Navegação mobile">
-          <div className="mobile-nav-links">{[["Início", "#inicio"],["Trajetória", "#trajetoria"],["Resultados", "#resultados"],["Propostas", "#propostas"],["Verdade", "#verdade"],["Alianças", "#bolsonaro"],["Materiais", "#materiais"],["Contato", "#contato"]].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</div>
+          <div className="mobile-nav-links">{[["Início", "#inicio"],["Trajetória", "#trajetoria"],["Resultados", "#resultados"],["Propostas", "#propostas"],["Contato", "#contato"]].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</div>
           <div className="mobile-nav-social" aria-label="Redes sociais">{socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} key={label}><SocialIcon/></a>)}</div>
         </nav>}
       </header>
@@ -605,28 +866,24 @@ export default function FederalPreviewPage() {
           <div className="hero-background" aria-hidden="true"/>
           <div className="shell hero-grid">
             <div className="hero-copy-main">
-              <p className="hero-office">Deputado Federal</p>
-              <h1 className="hero-name" id="hero-title">Gutemberg<br/>Fonseca</h1>
-              <div className="hero-campaign-line"><p className="hero-slogan">O Federal do <b>Consumidor</b></p><p className="hero-candidate-number">2255</p></div>
+              <h1 className="sr-only" id="hero-title">Gutemberg Fonseca 2255 — O Defensor do Consumidor</h1>
+              <img className="hero-campaign-logo" src="/images/federal/brand/logo-hero-2255-completa.png" alt="Gutemberg Fonseca, deputado federal, número 2255. O Defensor do Consumidor." width="1200" height="800" loading="eager" fetchPriority="high" decoding="async"/>
             </div>
 
             <div className="hero-copy-secondary">
               <p className="hero-statement">Trabalho sério, transparente e presente. Por você, por sua família e por um Brasil mais justo para todos.</p>
               <div className="hero-actions">
-                <a className="btn btn--yellow" href="#video"><CampaignIcon name="play"/>Assista ao vídeo</a>
-                <a className="btn btn--outline-w" href="#propostas">Conheça minhas propostas</a>
+                <a className="btn btn--outline-w" href="#propostas" onClick={() => { void playConfirmationSound(); }} data-campaign-event="proposal_click" data-campaign-label="Conheça minhas propostas">Conheça minhas propostas</a>
               </div>
             </div>
 
             <div className="hero-visual">
               <div className="hero-flag-card">
-                <div ref={flagGlobeRef} className="flag-globe" aria-hidden="true">
-                  <div className="flag-band" />
-                </div>
+                <img ref={flagGlobeRef} className="hero-flag-art" src="/images/federal/hero/hero-bandeira.png" alt="" width="1600" height="1600" aria-hidden="true" decoding="async"/>
                 <div className="hero-portrait-wrap" role="img" aria-label="Gutemberg Fonseca em retrato oficial">
                   <div ref={heroPortraitRef} className="hero-portrait-stage">
                     <picture className="hero-portrait-frame is-active" aria-hidden="true">
-                      <source type="image/webp" sizes="(max-width: 959px) 190px, 400px" srcSet={heroPortrait.webpSrcSet}/>
+                      <source type="image/webp" srcSet={heroPortrait.webp}/>
                       <img className="hero-portrait-image" src={heroPortrait.fallback} alt="" width={heroPortrait.width} height={heroPortrait.height} loading="eager" decoding="async"/>
                     </picture>
                   </div>
@@ -636,18 +893,52 @@ export default function FederalPreviewPage() {
           </div>
         </section>
 
+        <aside className="election-countdown" aria-label="Contagem regressiva para a eleição de 4 de outubro de 2026">
+          <div className="election-countdown-copy"><CampaignIcon name="clock"/><span><strong>Rumo à eleição</strong><small>4 de outubro de 2026</small></span></div>
+          {electionCountdown.status === "counting" ? (
+            <time className="countdown-grid" dateTime="2026-10-04T00:00:00-03:00">
+              {([
+                [electionCountdown.days, "dias"],
+                [electionCountdown.hours, "horas"],
+                [electionCountdown.minutes, "minutos"],
+                [electionCountdown.seconds, "segundos"],
+              ] as const).map(([value, label]) => <span className="countdown-unit" key={label}><b>{String(value).padStart(2, "0")}</b><small>{label}</small></span>)}
+            </time>
+          ) : <strong className="countdown-message">{electionCountdown.status === "today" ? "É dia de votar!" : "A eleição foi em 4 de outubro"}</strong>}
+        </aside>
+
         <section className="pillars" aria-label="Pilares de atuação"><div className="shell"><div className="pillars-card">
           {pillars.map((pillar) => <a className="pillar" href={pillar.href} key={pillar.title}><span className="pillar-icon"><CampaignIcon name={pillar.icon}/></span><span><h3>{pillar.title}</h3><p>{pillar.description}</p></span></a>)}
         </div></div></section>
+
+        <section className="legacy-origin" id="origem" aria-labelledby="legacy-origin-title"><div className="shell">
+          <Reveal className="legacy-origin-heading" direction="up"><span className="section-kicker">Raízes que explicam o caminho</span><h2 id="legacy-origin-title">Da Merck <em>para o Brasil</em></h2><p>Antes dos gabinetes, vieram o trabalho, a responsabilidade e o contato direto com quem acorda cedo para construir a própria vida.</p></Reveal>
+          <div className="legacy-origin-grid">
+            <Reveal as="article" className="legacy-origin-story" direction="left"><span className="legacy-index">01</span><div><h3>Uma história moldada no trabalho</h3><p>Nascido e criado em Jacarepaguá, Gutemberg cresceu na comunidade da Merck. Ainda jovem, ajudava a família nas feiras, carregando e vendendo alimentos. Foi ali que aprendeu o valor do esforço, da palavra e do respeito por quem trabalha.</p><p>Essa origem acompanha sua atuação pública: presença no território, escuta direta e compromisso com soluções que façam diferença na vida real.</p><div className="legacy-values" aria-label="Valores construídos nessa trajetória"><span>Trabalho</span><span>Resiliência</span><span>Presença</span></div></div></Reveal>
+            <Reveal className="legacy-photo-slot legacy-photo-slot--origin" direction="right">{null}</Reveal>
+          </div>
+          <Reveal as="article" className="legacy-method" direction="up"><div className="legacy-method-title"><span className="legacy-index">02</span><div><span className="section-kicker">Do apito à gestão</span><h3>Regra, equilíbrio e coragem para decidir</h3></div></div><p>Foram doze anos de arbitragem até integrar o quadro da FIFA. A experiência de tomar decisões sob pressão ajudou a formar um método de gestão baseado em preparo, firmeza e respeito às regras.</p><div className="legacy-method-principles"><span><b>01</b>Escutar antes de decidir</span><span><b>02</b>Aplicar a regra com equilíbrio</span><span><b>03</b>Assumir responsabilidade pelo resultado</span></div></Reveal>
+        </div></section>
 
         <section className="trajectory" id="trajetoria" aria-labelledby="trajectory-title"><div className="shell trajectory-inner"><div className="trajectory-grid">
           <Reveal direction="left"><h2 className="t-title" id="trajectory-title">Trajetória de<br/>Trabalho e Fé</h2><div className="t-line" aria-hidden="true"/><div className="t-story"><p>Administrador e especialista em gestão de cidades, marketing e ciências políticas, Gutemberg construiu sua vida pública atuando em funções estratégicas no Estado e na cidade do Rio de Janeiro.</p><p>Sua trajetória reúne experiência em gestão, segurança, ordem pública, esporte e defesa do consumidor, sempre com presença nos territórios e diálogo direto com a população.</p><p>Esse caminho consolidou um método de trabalho baseado em planejamento, responsabilidade, escuta e capacidade de transformar demandas reais em ação pública.</p></div></Reveal>
           <div className="t-slices" role="group" aria-label="Fotos da trajetória">{trajectoryImages.map((image, index) => <Reveal className="t-slice" direction="right" delay={index * 100} key={image.src}><img src={image.src} alt={image.alt} width="1200" height="1600" loading="lazy" decoding="async"/></Reveal>)}</div>
         </div></div></section>
 
+        <section className="legacy-timeline" aria-labelledby="legacy-timeline-title"><div className="shell">
+          <Reveal className="legacy-timeline-heading" direction="up"><span className="section-kicker">Uma vida de serviço</span><h2 id="legacy-timeline-title">Experiência construída <em>etapa por etapa</em></h2><p>Uma visão objetiva dos principais capítulos apresentados no acervo histórico da trajetória pública.</p></Reveal>
+          <ol className="legacy-timeline-list">{legacyTimeline.map((event, index) => <Reveal as="li" className="legacy-timeline-item" direction="up" delay={(index % 4) * 60} key={`${event.year}-${event.title}`}><span className="legacy-timeline-year">{event.year}</span><span className="legacy-timeline-dot" aria-hidden="true"/><div><h3>{event.title}</h3><p>{event.description}</p></div></Reveal>)}</ol>
+        </div></section>
+
         <section className="results" id="resultados" aria-labelledby="results-title"><div className="shell results-grid">
           <Reveal direction="up"><h2 className="r-title" id="results-title"><span className="g">Resultados que</span><span className="b">Transformam</span></h2><div className="r-line" aria-hidden="true"/><p className="r-text">Nosso trabalho já gerou conquistas reais e benefícios que melhoram a vida das pessoas todos os dias.</p></Reveal>
           <div className="r-stats">{results.map((result, index) => <Reveal as="article" className="r-stat" direction="up" delay={index * 70} key={result.label}><span className={`r-icon r-icon--${result.tone}`}><CampaignIcon name={result.icon}/></span><AnimatedCounter result={result}/><p className="r-label">{result.label}</p><p className="r-desc">{result.description}</p></Reveal>)}</div>
+        </div></section>
+
+        <section className="legacy-proof" aria-labelledby="legacy-proof-title"><div className="shell">
+          <Reveal className="legacy-proof-heading" direction="up"><span className="section-kicker">Legado em números e ações</span><h2 id="legacy-proof-title">Entregas que ajudam a contar <em>essa história</em></h2><p>Indicadores e casos levantados no material histórico para futura consolidação com documentos e fontes públicas.</p></Reveal>
+          <div className="legacy-evidence-grid">{legacyEvidence.map((item, index) => <Reveal as="article" className="legacy-evidence-card" direction="up" delay={index * 70} key={item.label}><strong>{item.value}</strong><h3>{item.label}</h3><p>{item.description}</p></Reveal>)}</div>
+          <div className="legacy-cases-grid">{legacyCases.map((item, index) => <Reveal as="article" className="legacy-case-card" direction="up" delay={index * 80} key={item.title}><span className="legacy-case-icon"><CampaignIcon name={item.icon}/></span><small>{item.eyebrow}</small><h3>{item.title}</h3><p>{item.description}</p></Reveal>)}</div>
         </div></section>
 
         <section className="people" id="pessoas" aria-labelledby="people-title"><div className="shell people-grid">
@@ -659,8 +950,9 @@ export default function FederalPreviewPage() {
         </div></section>
 
         <section className="proposals" id="propostas" aria-labelledby="proposals-title"><div className="shell">
-          <Reveal className="proposals-heading" direction="up"><span className="section-kicker">Compromissos com o futuro</span><h2 id="proposals-title">Propostas para <em>cuidar das pessoas</em></h2><p>Prioridades para um mandato federal presente, responsável e conectado às necessidades de quem vive e trabalha no Rio de Janeiro.</p></Reveal>
-          <div className="proposals-grid">{proposals.map((proposal, index) => <Reveal as="article" className="proposal-item" direction="up" delay={(index % 3) * 80} key={proposal.title}><span className="proposal-icon"><CampaignIcon name={proposal.icon}/></span><h3>{proposal.title}</h3><p>{proposal.description}</p><ul>{proposal.commitments.map((commitment) => <li key={commitment}>{commitment}</li>)}</ul></Reveal>)}</div>
+          <Reveal className="proposals-heading" direction="up"><span className="section-kicker">Do Rio para Brasília</span><h2 id="proposals-title">Um mandato em defesa <em>do consumidor</em></h2><p>Em Brasília, nosso mandato vai trabalhar para fortalecer a defesa do consumidor através de leis, recursos e articulação política.</p><p>Vamos trabalhar junto ao Governo Federal, ao Governo do Estado, à Assembleia Legislativa, aos municípios e aos órgãos de defesa do consumidor para transformar boas ideias em políticas que cheguem à população.</p></Reveal>
+          <div className="proposals-grid">{proposals.map((proposal, index) => <Reveal as="article" className="proposal-item" direction="up" delay={(index % 3) * 80} key={proposal.title}><span className="proposal-icon"><CampaignIcon name={proposal.icon}/></span><h3>{proposal.title}</h3><p>{proposal.description}</p></Reveal>)}</div>
+          <Reveal className="proposals-closing" direction="fade"><p>Em Brasília, a defesa do consumidor terá voz, trabalho e prioridade.</p></Reveal>
         </div></section>
 
         <section className="areas" id="areas" aria-labelledby="areas-title"><div className="shell"><Reveal direction="up"><h2 className="a-title" id="areas-title">Áreas de <em>Atuação</em></h2></Reveal><div className="a-grid">{areas.map((area, index) => <Reveal as="article" className="a-item" direction="up" delay={index * 80} key={area.title}><span className="a-icon"><CampaignIcon name={area.icon}/></span><h3>{area.title}</h3><p>{area.description}</p></Reveal>)}</div></div></section>
@@ -673,29 +965,23 @@ export default function FederalPreviewPage() {
 
         <section className="consumer-army" id="exercito" aria-labelledby="consumer-army-title"><div className="shell consumer-army-grid">
           <Reveal direction="left"><span className="section-kicker">Mobilização que protege</span><h2 id="consumer-army-title">Faça parte do <em>Exército do Consumidor</em></h2><p>Consumidor unido tem força. Participe, mobilize sua comunidade e ajude a construir uma rede ativa de defesa dos direitos do consumidor.</p><blockquote>“Nenhum consumidor sozinho. A mobilização começa com você.”</blockquote></Reveal>
-          <div className="consumer-army-actions">{consumerArmyActions.map((action, index) => <Reveal as="article" className="consumer-army-action" direction="right" delay={index * 80} key={action.label}><span><CampaignIcon name={action.icon}/></span><h3>{action.label}</h3><p>A conversa continua diretamente no WhatsApp do Guto, com a finalidade já identificada.</p><a href={action.href} target="_blank" rel="noopener noreferrer">Enviar pelo WhatsApp<MessageCircle/></a></Reveal>)}</div>
+          <div className="consumer-army-actions">{consumerArmyActions.map((action, index) => <Reveal as="article" className="consumer-army-action" direction="right" delay={index * 80} key={action.label}><span><CampaignIcon name={action.icon}/></span><h3>{action.label}</h3><p>A conversa continua diretamente no WhatsApp do Guto, com a finalidade já identificada.</p><a href={action.href} target="_blank" rel="noopener noreferrer" data-campaign-event="whatsapp_conversion" data-campaign-label={action.label}>Enviar pelo WhatsApp<MessageCircle/></a></Reveal>)}</div>
         </div></section>
-
-        <TruthSection/>
-
-        <BolsonaroAllianceSection/>
 
         <section className="federal-instagram" id="instagram" aria-labelledby="federal-instagram-title"><div className="shell federal-instagram-grid">
           <Reveal className="federal-instagram-copy" direction="left"><Instagram aria-hidden="true"/><span className="section-kicker">Acompanhe a rotina</span><h2 id="federal-instagram-title">Direto do <em>Instagram</em></h2><p>Informação, agendas e encontros em um canal direto com você.</p><a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca<ArrowUpRight/></a></Reveal>
-          <div className="federal-instagram-posts">{instagramHighlights.map((post, index) => <Reveal direction="up" delay={index * 70} key={post.href}><a href={post.href} target="_blank" rel="noopener noreferrer" aria-label={`${post.alt}. Abrir no Instagram`}><img src={post.image} alt={post.alt} width="1080" height="1080" loading="lazy" decoding="async"/><span><Instagram/>Ver publicação</span></a></Reveal>)}</div>
+          <div className="federal-instagram-posts">{instagramHighlights.map((post, index) => <Reveal direction="up" delay={index * 70} key={post.href}><a href={post.href} target="_blank" rel="noopener noreferrer" aria-label={`${post.alt}. Abrir no Instagram`} data-campaign-event="social_click" data-campaign-label={`Destaque do Instagram ${index + 1}`}><img src={post.image} alt={post.alt} width="1080" height="1080" loading="lazy" decoding="async"/><span><Instagram/>Ver publicação</span></a></Reveal>)}</div>
         </div></section>
-
-        <CampaignMaterialsSection/>
 
         <section className="cta" id="participe" aria-labelledby="cta-title"><div className="shell cta-grid">
           <div className="cta-copy"><h2 id="cta-title"><span className="y">Vamos juntos</span>por um Brasil melhor!</h2><p>Sua participação é o que nos move a seguir em frente. Apoie, compartilhe e faça parte dessa mudança.</p></div>
-          <div className="cta-support"><span className="heart" aria-hidden="true"><CampaignIcon name="heart"/></span><p className="lead">Eu apoio</p><h3>Gutemberg<br/>Fonseca</h3><a className="btn btn--yellow" href="#contato">Quero apoiar agora<CampaignIcon name="arrow"/></a></div>
+          <div className="cta-support"><span className="heart" aria-hidden="true"><CampaignIcon name="heart"/></span><p className="lead">Eu apoio</p><h3>Gutemberg<br/>Fonseca</h3><a className="btn btn--yellow" href={supportWhatsAppUrl} target="_blank" rel="noopener noreferrer" onClick={() => { void playConfirmationSound(); }} data-campaign-event="support_click" data-campaign-label="Quero apoiar no CTA final">Quero apoiar<CampaignIcon name="arrow"/></a></div>
           <div className="cta-photo"><img src="/images/federal/people/section-09-cta-retrato-institucional.webp" alt="Gutemberg Fonseca durante agenda institucional" width="854" height="1280" loading="lazy" decoding="async"/></div>
         </div></section>
 
         <footer className="footer" id="contato"><div className="shell f-grid">
-          <div className="f-logo"><div className="f-brand-row"><a className="logo" href="#inicio" aria-label="Gutemberg Fonseca"><span className="logo-office">Deputado Federal</span><span className="logo-name">Gutemberg<br/>Fonseca</span></a><strong className="f-candidate-number" aria-label="Número 2255">2255</strong></div><p className="f-slogan">Compromisso, experiência e coragem para representar você em Brasília.</p><div className="f-social">{socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} key={label}><SocialIcon size={18}/></a>)}</div></div>
-          <div className="f-col"><h4>Fale conosco</h4><a className="f-contact-item" href={gutoWhatsAppUrl} target="_blank" rel="noopener noreferrer"><MessageCircle/><span>(21) 92011-2255</span></a></div>
+          <div className="f-logo"><a className="footer-brand" href="#inicio" aria-label="Gutemberg Fonseca 2255, O Defensor do Consumidor"><img className="footer-campaign-logo" src="/images/federal/brand/logo-rodape-2255-completa.png" alt="" width="1200" height="800" loading="lazy" decoding="async"/></a><p className="f-slogan">Compromisso, experiência e coragem para representar você em Brasília.</p><div className="f-social">{socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} key={label}><SocialIcon size={18}/></a>)}</div></div>
+          <div className="f-col"><h4>Fale conosco</h4><a className="f-contact-item" href={gutoWhatsAppUrl} target="_blank" rel="noopener noreferrer" data-campaign-event="whatsapp_click" data-campaign-label="WhatsApp do rodapé"><MessageCircle/><span>(21) 92011-2255</span></a><a className="f-contact-item" href="mailto:contato@gutembergfonseca.com.br" data-campaign-event="contact_email_click" data-campaign-label="E-mail do rodapé"><CampaignIcon name="email"/><span>contato@gutembergfonseca.com.br</span></a></div>
           <div className="f-party"><PartyLogo/><p>Partido Liberal</p></div>
         </div><div className="f-bar"><div className="shell"><span>© 2026 Gutemberg Fonseca — Todos os direitos reservados.</span><span>CNPJ: 68.237.089/0001-48&nbsp;|&nbsp; <a href="#">Política de Privacidade</a>&nbsp;|&nbsp; <a href="#">Termos de Uso</a></span></div></div></footer>
       </main>

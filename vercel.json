@@ -40,6 +40,11 @@
       "source": "/codigodedefesa",
       "destination": "/codigo-de-defesa-do-consumidor",
       "permanent": true
+    },
+    {
+      "source": "/apresentacao-federal",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "rewrites": [

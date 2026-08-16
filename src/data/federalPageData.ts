@@ -54,12 +54,12 @@ const recentConsumerArticles = [...blogPosts]
 
 export const federalPageData = {
   seo: {
-    title: "Apresentação Federal | Gutemberg Fonseca",
+    title: "Gutemberg Fonseca 2255 | O Federal do Consumidor",
     description:
-      "Protótipo de apresentação da trajetória, resultados e áreas de atuação de Gutemberg Fonseca.",
-    canonical: "https://gutembergfonseca.com.br/apresentacao-federal",
-    robots: "noindex, nofollow, noarchive",
-    googlebot: "noindex, nofollow, noimageindex",
+      "Conheça a trajetória, os resultados e as propostas de Gutemberg Fonseca para defender o consumidor no Rio e em Brasília.",
+    canonical: "https://gutembergfonseca.com.br/",
+    robots: "index, follow",
+    googlebot: "index, follow, max-image-preview:large",
   },
   candidate: {
     name: "Gutemberg Fonseca",
@@ -244,13 +244,13 @@ export const federalPageData = {
     whatsappIntro: "Olá! Vim pela página de apresentação federal.",
     honeypotLabel: "Não preencha este campo",
     consentVersion: "federal-contact-v1-2026-07-20",
-    origin: "/apresentacao-federal",
+    origin: "/",
     consentAuditLabel: "Consentimento",
   },
   contacts: {
     phone: "+55 21 92011-2255",
     whatsapp: "5521920112255",
-    email: "",
+    email: "contato@gutembergfonseca.com.br",
     instagramLabel: "@gutembergpfonseca",
     instagramUrl: "https://www.instagram.com/gutembergpfonseca/",
     facebookUrl: "https://www.facebook.com/gutembergpfonseca",

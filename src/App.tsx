@@ -51,9 +51,9 @@ const BlogPostRedirect = () => {
 
 const App = () => {
   const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
-  const isFederalPresentation = normalizedPath === "/apresentacao-federal";
+  const isFederalCampaign = normalizedPath === "/" || normalizedPath === "/apresentacao-federal";
   const isCheckinOperation = normalizedPath === "/evento/checkin";
-  const hidesGlobalOverlays = isFederalPresentation || isCheckinOperation;
+  const hidesGlobalSkipLink = isFederalCampaign || isCheckinOperation;
   const hidesAccessibility = isCheckinOperation;
 
   return (
@@ -62,8 +62,8 @@ const App = () => {
       <Toaster />
       <Sonner />
       {!hidesAccessibility && <AccessibilityWidget />}
-      {!hidesGlobalOverlays && <CookieConsent />}
-      {!hidesGlobalOverlays && (
+      {!isCheckinOperation && <CookieConsent />}
+      {!hidesGlobalSkipLink && (
         <a href="#conteudo-principal" className="skip-link">
           Ir para o conteudo principal
         </a>
@@ -80,7 +80,8 @@ const App = () => {
             }
           >
             <Routes>
-                <Route path="/" element={<Index />} />
+                <Route path="/" element={<ApresentacaoFederalPage />} />
+                <Route path="/institucional" element={<Index />} />
                 {/* Legacy /blog routes redirect to the consolidated hub */}
                 <Route
                   path="/blog"
@@ -149,7 +150,7 @@ const App = () => {
                 />
                 <Route
                   path="/apresentacao-federal"
-                  element={<ApresentacaoFederalPage />}
+                  element={<Navigate to="/" replace />}
                 />
                 <Route path="*" element={<NotFound />} />
             </Routes>

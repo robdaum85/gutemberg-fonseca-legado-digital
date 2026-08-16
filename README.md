@@ -19,6 +19,8 @@ Uma plataforma digital moderna, responsiva e orientada a SEO, desenvolvida para 
 **Produção:**  
 https://gutembergfonseca.com.br
 
+Documentação da migração da campanha: [`docs/campanha-2255-implementacao.md`](docs/campanha-2255-implementacao.md).
+
 ---
 
 ## 🧠 Visão do Projeto
