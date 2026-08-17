@@ -15,6 +15,7 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { getPostCategoryUrl, getPostsByCategory } from "@/lib/blogUtils";
 import { useCampaignAnalytics } from "@/lib/campaignAnalytics";
 import { useSeo } from "@/lib/useSeo";
+import { PhotoFramesSection } from "@/components/molduras/PhotoFramesSection";
 import "./ApresentacaoFederalPage.css";
 import "@/components/federal/FederalSections.css";
 
@@ -846,6 +847,7 @@ export default function FederalPreviewPage() {
             <a href="#trajetoria">Trajetória</a>
             <a href="#resultados">Resultados</a>
             <a href="#propostas">Propostas</a>
+            <a href="/molduras">Molduras</a>
             <a href="#contato">Contato</a>
           </nav>
 
@@ -856,7 +858,7 @@ export default function FederalPreviewPage() {
         <ScrollProgress onScrolledChange={setHeaderScrolled}/>
 
         {menuOpen && <nav className="mobile-nav" aria-label="Navegação mobile">
-          <div className="mobile-nav-links">{[["Início", "#inicio"],["Trajetória", "#trajetoria"],["Resultados", "#resultados"],["Propostas", "#propostas"],["Contato", "#contato"]].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</div>
+          <div className="mobile-nav-links">{[["Início", "#inicio"],["Trajetória", "#trajetoria"],["Resultados", "#resultados"],["Propostas", "#propostas"],["Molduras", "/molduras"],["Contato", "#contato"]].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</div>
           <div className="mobile-nav-social" aria-label="Redes sociais">{socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} key={label}><SocialIcon/></a>)}</div>
         </nav>}
       </header>
@@ -967,6 +969,8 @@ export default function FederalPreviewPage() {
           <Reveal direction="left"><span className="section-kicker">Mobilização que protege</span><h2 id="consumer-army-title">Faça parte do <em>Exército do Consumidor</em></h2><p>Consumidor unido tem força. Participe, mobilize sua comunidade e ajude a construir uma rede ativa de defesa dos direitos do consumidor.</p><blockquote>“Nenhum consumidor sozinho. A mobilização começa com você.”</blockquote></Reveal>
           <div className="consumer-army-actions">{consumerArmyActions.map((action, index) => <Reveal as="article" className="consumer-army-action" direction="right" delay={index * 80} key={action.label}><span><CampaignIcon name={action.icon}/></span><h3>{action.label}</h3><p>A conversa continua diretamente no WhatsApp do Guto, com a finalidade já identificada.</p><a href={action.href} target="_blank" rel="noopener noreferrer" data-campaign-event="whatsapp_conversion" data-campaign-label={action.label}>Enviar pelo WhatsApp<MessageCircle/></a></Reveal>)}</div>
         </div></section>
+
+        <PhotoFramesSection />
 
         <section className="federal-instagram" id="instagram" aria-labelledby="federal-instagram-title"><div className="shell federal-instagram-grid">
           <Reveal className="federal-instagram-copy" direction="left"><Instagram aria-hidden="true"/><span className="section-kicker">Acompanhe a rotina</span><h2 id="federal-instagram-title">Direto do <em>Instagram</em></h2><p>Informação, agendas e encontros em um canal direto com você.</p><a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca<ArrowUpRight/></a></Reveal>
