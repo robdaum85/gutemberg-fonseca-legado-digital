@@ -207,6 +207,26 @@ export const photoFrames: PhotoFrameDefinition[] = [
     ...frameDefaults(),
   },
   {
+    slug: "guto-dra-gabriela",
+    title: "Guto & Dra. Gabriela",
+    allies: [{ name: "Dra. Gabriela", office: "Deputada Estadual", number: "22122" }],
+    description: "Mostre seu apoio a Gutemberg Fonseca 2255 e Dra. Gabriela 22122.",
+    frameSrc: "/images/molduras/guto-dra-gabriela.webp",
+    photoArea: PAIR_PHOTO_AREA,
+    fileName: "voto-e-indico-guto-dra-gabriela.png",
+    ...frameDefaults(),
+  },
+  {
+    slug: "guto-alexandre-knoploch",
+    title: "Guto & Alexandre Knoploch",
+    allies: [{ name: "Alexandre Knoploch", office: "Deputado Estadual", number: "22722" }],
+    description: "Mostre seu apoio a Gutemberg Fonseca 2255 e Alexandre Knoploch 22722.",
+    frameSrc: "/images/molduras/guto-alexandre-knoploch.webp",
+    photoArea: PAIR_PHOTO_AREA,
+    fileName: "voto-e-indico-guto-alexandre-knoploch.png",
+    ...frameDefaults(),
+  },
+  {
     slug: "guto-douglas-flavio",
     title: "Chapa: Douglas Ruas & Flávio Bolsonaro",
     allies: [
