@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { EVENTO_GUTEMBERG } from "@/config/evento";
+import { CAMPAIGN_LEGAL_DISCLAIMER } from "@/config/photoFrames";
 import {
   cadastrarEvento,
   isEventoApiConfigured,
@@ -106,10 +107,16 @@ export default function EventoPage() {
           <div className="campaign-registration__shell campaign-registration__grid">
             <div className="campaign-registration__copy">
               <p className="campaign-registration__eyebrow">{EVENTO_GUTEMBERG.title}</p>
-              <h1>Gutemberg<br /><span>Fonseca</span></h1>
-              <p className="campaign-registration__office">Candidato a Deputado Federal</p>
-              <p className="campaign-registration__slogan">O Federal do <strong>Consumidor</strong></p>
-
+              <h1 className="sr-only">Gutemberg Fonseca 2255 — Candidato a Deputado Federal</h1>
+              <img
+                className="campaign-registration__logo"
+                src="/images/federal/brand/logo-hero-2255-completa.png"
+                alt="Gutemberg Fonseca, Deputado Federal, número 2255, o Defensor do Consumidor"
+                width="1200"
+                height="800"
+                loading="eager"
+                decoding="async"
+              />
               <div className="campaign-registration__event-data" aria-label="Informações do lançamento">
                 <div><CalendarDays /><span><small>Data</small><strong>{EVENTO_GUTEMBERG.dateLong}</strong></span></div>
                 <div><Clock3 /><span><small>Horário</small><strong>{EVENTO_GUTEMBERG.time}</strong></span></div>
@@ -187,12 +194,19 @@ export default function EventoPage() {
       </main>
       <footer className="campaign-registration__footer">
         <div className="campaign-registration__footer-side">
-          <strong>Gutemberg Fonseca</strong>
-          <span>O Federal do Consumidor</span>
+          <img
+            className="campaign-registration__footer-logo"
+            src="/images/federal/brand/logo-navbar-2255-horizontal.png"
+            alt="Gutemberg Fonseca, Deputado Federal, número 2255, o Defensor do Consumidor"
+            width="1000"
+            height="500"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div className="campaign-registration__footer-side campaign-registration__footer-side--right">
           <strong>Evento de lançamento · 24 de agosto de 2026</strong>
-          <span>CNPJ: 68.237.089/0001-48</span>
+          <span>{CAMPAIGN_LEGAL_DISCLAIMER.join(" - ")}</span>
         </div>
       </footer>
     </div>
