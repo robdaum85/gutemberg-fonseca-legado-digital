@@ -2,7 +2,7 @@ import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ImagePlus, LockKeyhole } from "lucide-react";
-import { activePhotoFrames, CAMPAIGN_LEGAL_DISCLAIMER, formatAlly, getPhotoFrame, type PhotoFrameDefinition } from "@/config/photoFrames";
+import { featuredPhotoFrames, CAMPAIGN_LEGAL_DISCLAIMER, formatAlly, getPhotoFrame, type PhotoFrameDefinition } from "@/config/photoFrames";
 import { MoldurasHeader } from "@/components/molduras/MoldurasHeader";
 import { PhotoFrameEditor } from "@/components/molduras/PhotoFrameEditor";
 import { useCampaignAnalytics } from "@/lib/campaignAnalytics";
@@ -38,18 +38,21 @@ export default function MoldurasPage() {
     : "Molduras de campanha | Gutemberg Fonseca";
   const seoDescription = selectedFrame?.description
     ?? "Escolha uma moldura oficial, personalize com sua foto e compartilhe seu apoio. O processamento acontece no seu próprio dispositivo.";
+  // Molduras fora da vitrine só existem via link direto: não devem ser indexadas nem revelar a grade completa.
+  const isUnlistedFrame = Boolean(selectedFrame && !selectedFrame.featured);
 
   useSeo({
     title: seoTitle,
     description: seoDescription,
     canonical: selectedFrame ? `${SITE_URL}/molduras/${selectedFrame.slug}` : `${SITE_URL}/molduras`,
     image: selectedFrame ? `${SITE_URL}${selectedFrame.frameSrc}` : undefined,
+    noindex: isUnlistedFrame,
     extraJsonLd: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       name: "Molduras de campanha",
       url: `${SITE_URL}/molduras`,
-      numberOfItems: activePhotoFrames.length,
+      numberOfItems: featuredPhotoFrames.length,
     },
   });
 
@@ -69,11 +72,12 @@ export default function MoldurasPage() {
           </div>
         </section>
 
+        {!isUnlistedFrame && (
         <section className="frames-catalog" aria-labelledby="frames-catalog-title">
           <div className="frames-shell">
             <h2 className="sr-only" id="frames-catalog-title">Molduras disponíveis</h2>
             <div className="frames-catalog-grid">
-              {activePhotoFrames.map((frame) => (
+              {featuredPhotoFrames.map((frame) => (
                 <button
                   type="button"
                   key={frame.slug}
@@ -97,6 +101,7 @@ export default function MoldurasPage() {
             </div>
           </div>
         </section>
+        )}
 
         {selectedFrame && (
           <section className="frame-tool-area" ref={editorRef} aria-labelledby="frame-tool-title">
@@ -115,6 +120,11 @@ export default function MoldurasPage() {
                     <p className="frame-tool-allies">{selectedFrame.allies.map((ally) => formatAlly(ally)).join(" · ")}</p>
                   )}
                 </div>
+                {isUnlistedFrame && (
+                  <div className="frame-tool-preview">
+                    <img src={selectedFrame.frameSrc} alt={`Exemplo da moldura: ${selectedFrame.title}`} loading="lazy" decoding="async"/>
+                  </div>
+                )}
                 <PhotoFrameEditor frame={selectedFrame}/>
               </div>
               <p className="frame-tool-note"><LockKeyhole aria-hidden="true"/>A composição acontece inteiramente no navegador. Sua foto não é enviada, armazenada ou compartilhada sem sua ação.</p>

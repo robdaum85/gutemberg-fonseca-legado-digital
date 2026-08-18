@@ -20,6 +20,8 @@ export type PhotoFrameDefinition = {
   backgroundColor: string;
   colors: { primary: string; secondary: string; accent: string };
   active: boolean;
+  /** Aparece na vitrine pública de /molduras. As demais só existem via link direto (/molduras/slug). */
+  featured: boolean;
 };
 
 // Identificação exigida pelo TSE — já vem impressa em todas as artes,
@@ -46,6 +48,7 @@ function frameDefaults() {
     backgroundColor: BRAND_BACKGROUND,
     colors: BRAND_COLORS,
     active: true,
+    featured: false,
   };
 }
 
@@ -60,6 +63,7 @@ export const photoFrames: PhotoFrameDefinition[] = [
     fileName: "voto-e-indico-gutemberg-2255.png",
     ...frameDefaults(),
     output: { width: 1080, height: 1080 },
+    featured: true,
   },
   {
     slug: "guto-dr-rogerio-amorim",
@@ -130,6 +134,7 @@ export const photoFrames: PhotoFrameDefinition[] = [
     photoArea: PAIR_PHOTO_AREA,
     fileName: "voto-e-indico-guto-flavio-bolsonaro.png",
     ...frameDefaults(),
+    featured: true,
   },
   {
     slug: "guto-greg-duarte",
@@ -213,6 +218,7 @@ export const photoFrames: PhotoFrameDefinition[] = [
     photoArea: CHAPA_PHOTO_AREA,
     fileName: "voto-e-indico-guto-douglas-flavio.png",
     ...frameDefaults(),
+    featured: true,
   },
   {
     slug: "guto-fabinho-vantoil",
@@ -270,6 +276,9 @@ export const photoFrames: PhotoFrameDefinition[] = [
 ];
 
 export const activePhotoFrames = photoFrames.filter((frame) => frame.active);
+
+// Vitrine pública de /molduras. As demais molduras ativas só existem via link direto (/molduras/slug).
+export const featuredPhotoFrames = activePhotoFrames.filter((frame) => frame.featured);
 
 export function getPhotoFrame(slug?: string) {
   return activePhotoFrames.find((frame) => frame.slug === slug);

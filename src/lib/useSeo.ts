@@ -16,6 +16,10 @@ export interface SeoOptions {
   articleSchema?: boolean;
   breadcrumbs?: SeoBreadcrumbItem[];
   /**
+   * Marca a página como noindex,follow (ex: links individuais não listados).
+   */
+  noindex?: boolean;
+  /**
    * Optional extra JSON-LD object to inject (e.g. CollectionPage / ItemList).
    */
   extraJsonLd?: Record<string, unknown>;
@@ -85,6 +89,14 @@ export function useSeo(opts: SeoOptions) {
       else if (canonical.prev !== null)
         canonical.el.setAttribute('href', canonical.prev);
     });
+
+    if (opts.noindex) {
+      const robots = setMeta('meta[name="robots"]', 'name', 'robots', 'noindex,follow');
+      restorers.push(() => {
+        if (robots.created) robots.el.remove();
+        else if (robots.prev !== null) robots.el.setAttribute('content', robots.prev);
+      });
+    }
 
     // Open Graph
     const ogPairs: Array<[string, string]> = [
@@ -179,6 +191,7 @@ export function useSeo(opts: SeoOptions) {
     opts.publishedTime,
     opts.author,
     opts.articleSchema,
+    opts.noindex,
     JSON.stringify(opts.breadcrumbs ?? []),
     JSON.stringify(opts.extraJsonLd ?? null),
   ]);
