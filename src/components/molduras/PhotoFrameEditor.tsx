@@ -285,7 +285,7 @@ export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
       const blob = await makeBlob();
       const file = new File([blob], frame.fileName, { type: "image/png" });
       if (!navigator.canShare?.({ files: [file] })) throw new Error("Compartilhamento indisponível");
-      await navigator.share({ files: [file], title: `${frame.title} — ${frame.candidateName} ${frame.candidateNumber}` });
+      await navigator.share({ files: [file], title: frame.title });
       setStatus("");
     } catch (shareError) {
       if ((shareError as DOMException).name !== "AbortError") setStatus("O compartilhamento não está disponível. Você ainda pode baixar a foto.");
@@ -315,7 +315,7 @@ export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
         <span className="frame-upload-icon"><ImagePlus aria-hidden="true"/></span>
         <h2>Envie sua foto</h2>
         <p>Escolha uma foto do seu celular ou computador para começar.</p>
-        <button className="frame-button frame-button--secondary" type="button" onClick={() => inputRef.current?.click()} data-campaign-event="photo_frame_upload" data-campaign-label={frame.candidateName}>Escolher foto</button>
+        <button className="frame-button frame-button--secondary" type="button" onClick={() => inputRef.current?.click()} data-campaign-event="photo_frame_upload" data-campaign-label={frame.title}>Escolher foto</button>
         <input ref={inputRef} className="sr-only" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" onChange={onFileChange}/>
         <span className="frame-private"><LockKeyhole aria-hidden="true"/>A foto é processada no seu dispositivo e não fica armazenada.</span>
         {status && <p className="frame-status" role="status">{status}</p>}
@@ -362,8 +362,8 @@ export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
       <div className="frame-finish">
         <div><h3>Gostou do resultado?</h3><p>Baixe em alta qualidade e publique nas suas redes.</p></div>
         <div className="frame-finish-actions">
-          <button className="frame-button frame-button--accent" type="button" onClick={() => void download()} data-campaign-event="photo_frame_download" data-campaign-label={frame.candidateName}><Download/>Baixar minha foto</button>
-          {canShareFiles && <button className="frame-button frame-button--share" type="button" onClick={() => void share()} data-campaign-event="photo_frame_share" data-campaign-label={frame.candidateName}><Share2/>Compartilhar</button>}
+          <button className="frame-button frame-button--accent" type="button" onClick={() => void download()} data-campaign-event="photo_frame_download" data-campaign-label={frame.title}><Download/>Baixar minha foto</button>
+          {canShareFiles && <button className="frame-button frame-button--share" type="button" onClick={() => void share()} data-campaign-event="photo_frame_share" data-campaign-label={frame.title}><Share2/>Compartilhar</button>}
         </div>
         <p className="frame-status" role="status" aria-live="polite">{status}</p>
       </div>
