@@ -38,6 +38,76 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "falta-de-luz-compensacao-conta-energia-rio",
+    source: "Blog",
+    category: "Defesa do Consumidor",
+    title:
+      "Ficou mais de quatro horas sem luz? Você pode ter direito a crédito na conta",
+    excerpt:
+      "Consumidores do Rio podem ter direito a crédito na conta após interrupções de energia superiores a quatro horas. Saiba como funciona e o que fazer.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-12T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/falta-de-luz-compensacao-conta-energia-rio.png",
+    coverImageAlt:
+      "Consumidor confere uma conta de energia após ficar mais de quatro horas sem fornecimento de luz.",
+    metaTitle:
+      "Ficou mais de quatro horas sem luz? Você pode ter direito a crédito na conta",
+    metaDescription:
+      "Consumidores do Rio podem ter direito a crédito na conta após interrupções de energia superiores a quatro horas. Saiba como funciona e o que fazer.",
+    readingTime: "3 min de leitura",
+    tags: [
+      "Compensação por falta de energia",
+      "Falta de luz",
+      "Crédito na conta de energia",
+      "Resolução SEDCON 05/2024",
+      "Queda de energia",
+      "Procon-RJ",
+    ],
+    featured: true,
+    content: `
+      <p>Uma queda de energia que dura horas mexe com toda a rotina. Alimentos podem estragar, quem trabalha de casa fica sem conexão e estabelecimentos precisam interromper suas atividades.</p>
+
+      <p>No Rio de Janeiro, existe uma regra específica para essas situações.</p>
+
+      <p>Em março de 2024, quando eu estava à frente da Secretaria de Estado de Defesa do Consumidor, assinei a Resolução SEDCON nº 05. A norma determina que as concessionárias registrem na fatura as interrupções ocorridas na unidade consumidora e estabelece compensação para determinados casos de falta de energia.</p>
+
+      <br/>
+
+      <h2>Quando o consumidor tem direito ao crédito</h2>
+
+      <p>A Resolução estabelece que, quando o fornecimento ficar interrompido por mais de quatro horas no mesmo dia, a concessionária deverá conceder uma compensação por meio de crédito na conta de energia.</p>
+
+      <p>Existem exceções. A regra não se aplica, por exemplo, a interrupções provocadas por situação de emergência, dia crítico, problemas nas instalações do próprio consumidor, suspensão por inadimplência e outras hipóteses previstas no texto.</p>
+
+      <p>O crédito deve entrar na fatura em até 60 dias. A concessionária também deve informar na conta as datas e os horários das interrupções registradas naquele imóvel.</p>
+
+      <p>A medida foi construída a partir das regras de proteção ao consumidor e da regulamentação da ANEEL. Hoje, a agência também prevê compensação financeira automática quando são ultrapassados os limites individuais de continuidade do fornecimento, com crédito na fatura em até dois meses após a apuração.</p>
+
+      <br/>
+
+      <h2>Faltou luz? Registre tudo</h2>
+
+      <p>Assim que perceber a interrupção, comunique a concessionária. Anote o horário em que a energia caiu e voltou e guarde o protocolo.</p>
+
+      <p>Nas faturas seguintes, confira se a ocorrência foi registrada e se houve o crédito, quando o caso estiver dentro das condições previstas na Resolução.</p>
+
+      <p>Se a compensação não aparecer, procure a concessionária e peça uma explicação. Sem solução, o consumidor pode buscar a Secretaria de Estado de Defesa do Consumidor ou o Procon-RJ pelo telefone 151.</p>
+
+      <p>A Resolução SEDCON nº 05/2024 também cita a Súmula 192 do Tribunal de Justiça do Rio, segundo a qual a interrupção indevida de serviços essenciais, entre eles a energia elétrica, configura dano moral. O próprio TJRJ ressalva, porém, que uma breve interrupção decorrente de deficiência operacional não caracteriza dano moral por si só. Cada situação precisa ser analisada de acordo com as circunstâncias.</p>
+
+      <br/>
+
+      <p>A falta de energia não precisa terminar quando a luz volta. O consumidor deve conferir o que foi registrado pela concessionária e verificar se existe compensação a receber.</p>
+
+      <p>Foi justamente para dar mais transparência a essa cobrança e facilitar a fiscalização pelo próprio consumidor que criamos essa regra em 2024.</p>
+
+      <p><strong>Conhece alguém que enfrenta quedas frequentes de energia? Compartilhe este conteúdo. Para acompanhar outras orientações sobre seus direitos e o meu trabalho na defesa do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</strong></p>
+    `,
+  },
+  {
     slug: "endividamento-rio-dividas-inadimplencia-2026",
     source: "Blog",
     category: "Defesa do Consumidor",
