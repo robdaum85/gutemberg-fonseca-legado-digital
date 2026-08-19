@@ -320,6 +320,12 @@ export const activePhotoFrames = photoFrames.filter((frame) => frame.active);
 // Vitrine pública de /molduras. As demais molduras ativas só existem via link direto (/molduras/slug).
 export const featuredPhotoFrames = activePhotoFrames.filter((frame) => frame.featured);
 
+// "Dobradas": molduras de Guto + 1 aliado que só existem via link direto (fora da vitrine).
+// Alimentam o seletor "Escolha seu deputado" na página de molduras.
+export const pairedUnlistedPhotoFrames = activePhotoFrames
+  .filter((frame) => frame.allies.length === 1 && !frame.featured)
+  .sort((a, b) => a.allies[0].name.localeCompare(b.allies[0].name, "pt-BR"));
+
 export function getPhotoFrame(slug?: string) {
   return activePhotoFrames.find((frame) => frame.slug === slug);
 }

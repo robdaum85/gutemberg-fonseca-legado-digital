@@ -2,7 +2,7 @@ import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ImagePlus, LockKeyhole } from "lucide-react";
-import { featuredPhotoFrames, CAMPAIGN_LEGAL_DISCLAIMER, formatAlly, getPhotoFrame, type PhotoFrameDefinition } from "@/config/photoFrames";
+import { featuredPhotoFrames, pairedUnlistedPhotoFrames, CAMPAIGN_LEGAL_DISCLAIMER, formatAlly, getPhotoFrame, type PhotoFrameDefinition } from "@/config/photoFrames";
 import { MoldurasHeader } from "@/components/molduras/MoldurasHeader";
 import { PhotoFrameEditor } from "@/components/molduras/PhotoFrameEditor";
 import { useCampaignAnalytics } from "@/lib/campaignAnalytics";
@@ -58,6 +58,10 @@ export default function MoldurasPage() {
 
   const handleSelect = (frame: PhotoFrameDefinition) => setSelectedSlug(frame.slug);
   const handleBackToGallery = () => setSelectedSlug(undefined);
+  const handleDeputyPick = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const frame = getPhotoFrame(e.target.value);
+    if (frame) handleSelect(frame);
+  };
 
   return (
     <div className="frames-page">
@@ -76,28 +80,48 @@ export default function MoldurasPage() {
         <section className="frames-catalog" aria-labelledby="frames-catalog-title">
           <div className="frames-shell">
             <h2 className="sr-only" id="frames-catalog-title">Molduras disponíveis</h2>
-            <div className="frames-catalog-grid">
-              {featuredPhotoFrames.map((frame) => (
-                <button
-                  type="button"
-                  key={frame.slug}
-                  className={`frames-card ${selectedFrame?.slug === frame.slug ? "is-selected" : ""}`}
-                  onClick={() => handleSelect(frame)}
-                  data-campaign-event="photo_frame_select"
-                  data-campaign-label={frame.title}
-                >
-                  <span className="frames-card-preview">
-                    <img src={frame.frameSrc} alt="" width={frame.output.width} height={frame.output.height} loading="lazy" decoding="async"/>
-                  </span>
-                  <span className="frames-card-body">
-                    <strong>{frame.title}</strong>
-                    {frame.allies.length > 0 && (
-                      <span className="frames-card-allies">{frame.allies.map((ally) => formatAlly(ally)).join(" · ")}</span>
-                    )}
-                    <span className="frames-card-cta">Usar esta moldura<ArrowRight aria-hidden="true"/></span>
-                  </span>
-                </button>
-              ))}
+            <div className="frames-catalog-layout">
+              <div className="frames-catalog-grid">
+                {featuredPhotoFrames.map((frame) => (
+                  <button
+                    type="button"
+                    key={frame.slug}
+                    className={`frames-card ${selectedFrame?.slug === frame.slug ? "is-selected" : ""}`}
+                    onClick={() => handleSelect(frame)}
+                    data-campaign-event="photo_frame_select"
+                    data-campaign-label={frame.title}
+                  >
+                    <span className="frames-card-preview">
+                      <img src={frame.frameSrc} alt="" width={frame.output.width} height={frame.output.height} loading="lazy" decoding="async"/>
+                    </span>
+                    <span className="frames-card-body">
+                      <strong>{frame.title}</strong>
+                      {frame.allies.length > 0 && (
+                        <span className="frames-card-allies">{frame.allies.map((ally) => formatAlly(ally)).join(" · ")}</span>
+                      )}
+                      <span className="frames-card-cta">Usar esta moldura<ArrowRight aria-hidden="true"/></span>
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              {pairedUnlistedPhotoFrames.length > 0 && (
+                <aside className="frames-deputy-picker" aria-labelledby="frames-deputy-picker-title">
+                  <span className="frames-deputy-picker-eyebrow">Dobradas</span>
+                  <label id="frames-deputy-picker-title" htmlFor="frames-deputy-select">Escolha seu deputado</label>
+                  <select
+                    id="frames-deputy-select"
+                    value=""
+                    onChange={handleDeputyPick}
+                    data-campaign-event="photo_frame_deputy_select"
+                  >
+                    <option value="" disabled>Selecione um deputado</option>
+                    {pairedUnlistedPhotoFrames.map((frame) => (
+                      <option key={frame.slug} value={frame.slug}>{formatAlly(frame.allies[0])}</option>
+                    ))}
+                  </select>
+                </aside>
+              )}
             </div>
           </div>
         </section>
