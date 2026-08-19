@@ -11,6 +11,7 @@
 .photo-frames-featured{position:relative;display:block;width:min(100%,520px);aspect-ratio:1;justify-self:center;overflow:hidden;background:var(--navy-800);box-shadow:14px 16px 0 var(--navy-800);text-decoration:none}
 .photo-frames-featured-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:2px}
 .photo-frames-featured-grid img{width:100%;height:100%;object-fit:cover}
+.photo-frames-featured-grid img:first-child{grid-row:1 / span 2}
 .photo-frames-featured-action{position:absolute;z-index:2;right:14px;top:14px;display:flex;align-items:center;gap:7px;background:var(--yellow-500);color:var(--navy-800);padding:10px 13px;font-size:10px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;box-shadow:3px 4px 0 rgba(0,0,0,.2)}
 .photo-frames-featured-action svg{width:14px;height:14px}
 @media(min-width:900px){.photo-frames-section-grid{grid-template-columns:minmax(0,.9fr) minmax(380px,1.1fr);gap:clamp(48px,7vw,96px)}}
