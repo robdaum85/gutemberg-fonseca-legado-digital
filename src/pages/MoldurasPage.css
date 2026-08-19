@@ -14,10 +14,10 @@
 .frames-catalog{padding-block:clamp(44px,6vw,72px)}
 .frames-catalog-layout{display:grid;gap:26px}
 .frames-catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
-.frames-deputy-picker{display:flex;flex-direction:column;align-self:start;gap:10px;padding:22px;background:#fff;border:2px solid #dce5f2;border-radius:10px;box-shadow:0 10px 26px rgba(0,38,95,.08)}
-.frames-deputy-picker-eyebrow{display:inline-flex;align-self:flex-start;align-items:center;padding:5px 11px;background:#02a556;color:#fff;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;border-radius:3px}
-.frames-deputy-picker label{color:#0b1b3a;font-size:15px;font-weight:800}
-.frames-deputy-picker select{min-height:48px;padding:0 12px;border:2px solid #dce5f2;border-radius:6px;background:#f7fafd;color:#0b1b3a;font:700 13px/1 "Inter",Arial,sans-serif;cursor:pointer}
+.frames-deputy-picker{display:flex;flex-direction:column;align-items:center;align-self:start;gap:6px;padding:18px;background:#fff;border:2px solid #dce5f2;border-radius:10px;box-shadow:0 10px 26px rgba(0,38,95,.08);text-align:center}
+.frames-deputy-picker-eyebrow{color:#007236;font-size:24px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;line-height:1.1}
+.frames-deputy-picker label{margin-bottom:4px;color:#0b1b3a;font-size:13px;font-weight:800}
+.frames-deputy-picker select{width:100%;min-height:44px;padding:0 12px;border:2px solid #dce5f2;border-radius:6px;background:#f7fafd;color:#0b1b3a;font:700 13px/1 "Inter",Arial,sans-serif;cursor:pointer}
 .frames-deputy-picker select:focus-visible{outline:2px solid var(--frame-secondary);outline-offset:2px}
 @media(min-width:960px){.frames-catalog-layout{grid-template-columns:minmax(0,1fr) 260px}}
 .frames-card{display:flex;flex-direction:column;overflow:hidden;background:#fff;border:2px solid #dce5f2;border-radius:10px;box-shadow:0 10px 26px rgba(0,38,95,.08);text-align:left;font:inherit;color:inherit;cursor:pointer;padding:0;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease}
