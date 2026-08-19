@@ -38,6 +38,84 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "vendaval-rio-prevencao-arvores-energia",
+    source: "Blog",
+    category: "Direitos do Cidadão",
+    title:
+      "Depois do vendaval, o Rio precisa olhar para o que pode ser evitado",
+    excerpt:
+      "O último vendaval deixou árvores caídas, imóveis sem energia e prejuízos no Rio. Entenda por que prevenção e manutenção precisam ser permanentes.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-13T00:00:00-03:00",
+    authorImage:
+      "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/vendaval-rio-prevencao-arvores-energia.png",
+    coverImageAlt:
+      "Árvore caída após vendaval bloqueia uma rua e atinge a rede elétrica no Rio de Janeiro.",
+    metaTitle:
+      "Vendaval no Rio: prevenção precisa começar antes da emergência",
+    metaDescription:
+      "O último vendaval deixou árvores caídas, imóveis sem energia e prejuízos no Rio. Entenda por que prevenção e manutenção precisam ser permanentes.",
+    readingTime: "4 min de leitura",
+    tags: [
+      "Vendaval no Rio de Janeiro",
+      "Ventos fortes no Rio",
+      "Queda de árvores",
+      "Falta de energia",
+      "Prevenção de vendavais",
+      "Gestão pública",
+    ],
+    featured: true,
+    content: `
+      <p>Rajadas acima de 100 km/h atingiram o Rio no fim de julho. Árvores caíram, telhados foram arrancados, vias ficaram bloqueadas e o fornecimento de energia foi afetado em diferentes regiões. Na manhã seguinte, mais de 510 mil imóveis no estado ainda estavam sem luz.</p>
+
+      <p>Um fenômeno dessa intensidade provoca estragos mesmo em cidades preparadas. A questão é outra: quanto desse prejuízo pode ser reduzido quando a prevenção funciona antes da emergência?</p>
+
+      <p>O Rio tem estrutura de monitoramento. O Centro de Operações e Resiliência acompanha as condições meteorológicas e pode mudar o estágio operacional da cidade diante da previsão de ocorrências de maior impacto. A Defesa Civil também mantém um sistema gratuito de alertas por SMS.</p>
+
+      <p>Isso é necessário, mas o aviso de que o vento está chegando é apenas uma parte do trabalho.</p>
+
+      <br/>
+
+      <h2>Prevenção também acontece quando o céu está limpo</h2>
+
+      <p>Árvores precisam ser vistoriadas antes de apresentarem risco. Placas, coberturas e outras estruturas expostas ao vento exigem fiscalização. A rede elétrica precisa de manutenção e as equipes de resposta devem estar prontas para entrar em campo.</p>
+
+      <p>A Prefeitura mantém ações de manejo arbóreo e, em 2026, ampliou operações em vias com pedidos pendentes de poda e remoção. O Programa Corredores Verdes, por exemplo, considera o estado das árvores, os registros feitos no 1746 e possíveis conflitos com equipamentos urbanos.</p>
+
+      <p>Também houve uma nova operação em parceria com a Light Conecta para serviços de poda próximos à rede elétrica, com equipes e caminhões especializados.</p>
+
+      <p>O ponto é que esse trabalho precisa acompanhar o tamanho do risco. A queda de uma árvore não representa apenas uma rua interditada. Ela pode atingir uma casa, um carro, derrubar fios e deixar bairros inteiros sem energia.</p>
+
+      <p>Foi exatamente esse efeito em cadeia que apareceu no último vendaval.</p>
+
+      <br/>
+
+      <h2>O Rio precisa estar pronto para o próximo</h2>
+
+      <p>Gestão de crise começa muito antes da crise.</p>
+
+      <p>Uma cidade sujeita a ventos fortes precisa saber quais áreas apresentam maior risco, quais árvores exigem intervenção, onde estão as estruturas mais vulneráveis e quem será responsável por cada ação quando houver um alerta.</p>
+
+      <p>Também precisa haver integração com as concessionárias. Depois do vendaval de julho, árvores sobre a rede e estruturas danificadas dificultaram o restabelecimento da energia em diferentes pontos.</p>
+
+      <p>Quem já trabalhou com gestão pública sabe que manutenção preventiva não aparece tanto quanto uma grande operação depois do desastre. Mas é justamente o trabalho feito antes que reduz o prejuízo depois.</p>
+
+      <p>O cidadão sente essa diferença dentro de casa: na comida que não estraga porque a energia voltou rápido, no carro que não foi atingido, na rua que permanece livre e na resposta que chega sem horas de espera.</p>
+
+      <br/>
+
+      <p>Não existe forma de impedir um vendaval. Existe, sim, a obrigação de preparar a cidade para enfrentar seus efeitos.</p>
+
+      <p>O Rio já possui sistemas de monitoramento e ações de prevenção. O desafio é transformar esse trabalho em uma rotina permanente, integrada e compatível com os riscos que a cidade enfrenta.</p>
+
+      <p>Esperar o próximo vento forte para descobrir os mesmos problemas custa caro. E quem paga essa conta é a população.</p>
+
+      <p><strong>Você acha que o Rio está preparado para enfrentar um novo vendaval? Para acompanhar essa discussão e o meu trabalho, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>. Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</strong></p>
+    `,
+  },
+  {
     slug: "falta-de-luz-compensacao-conta-energia-rio",
     source: "Blog",
     category: "Defesa do Consumidor",
