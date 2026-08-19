@@ -227,6 +227,26 @@ export const photoFrames: PhotoFrameDefinition[] = [
     ...frameDefaults(),
   },
   {
+    slug: "guto-jorge-felippe",
+    title: "Guto & Jorge Felippe Neto",
+    allies: [{ name: "Jorge Felippe Neto", office: "Deputado Estadual", number: "22800" }],
+    description: "Mostre seu apoio a Gutemberg Fonseca 2255 e Jorge Felippe Neto 22800.",
+    frameSrc: "/images/molduras/guto-jorge-felippe.webp",
+    photoArea: PAIR_PHOTO_AREA,
+    fileName: "voto-e-indico-guto-jorge-felippe.png",
+    ...frameDefaults(),
+  },
+  {
+    slug: "guto-felipe-pampolha",
+    title: "Guto & Felipe Pampolha",
+    allies: [{ name: "Felipe Pampolha", office: "Deputado Estadual", number: "11123" }],
+    description: "Mostre seu apoio a Gutemberg Fonseca 2255 e Felipe Pampolha 11123.",
+    frameSrc: "/images/molduras/guto-felipe-pampolha.webp",
+    photoArea: PAIR_PHOTO_AREA,
+    fileName: "voto-e-indico-guto-felipe-pampolha.png",
+    ...frameDefaults(),
+  },
+  {
     slug: "guto-douglas-flavio",
     title: "Chapa: Douglas Ruas & Flávio Bolsonaro",
     allies: [
