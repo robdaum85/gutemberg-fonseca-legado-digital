@@ -1176,7 +1176,7 @@ a{color:inherit}
   .pillars{padding-top:0}
 }
 
-/* Pop-up de entrada da campanha */
+/* Transmissão ao vivo */
 .campaign-popup-backdrop{
   position:fixed;
   inset:0;
@@ -1191,14 +1191,13 @@ a{color:inherit}
 }
 .campaign-popup{
   position:relative;
-  display:grid;
-  grid-template-columns:minmax(260px,.82fr) minmax(340px,1.18fr);
-  width:min(860px,100%);
+  width:min(980px,100%);
   max-height:calc(100svh - 40px);
   overflow:auto;
   border:1px solid rgba(255,255,255,.18);
-  border-radius:22px;
-  background:#fff;
+  border-radius:18px;
+  background:var(--brand-navy);
+  color:#fff;
   box-shadow:0 34px 90px rgba(0,0,0,.42);
   animation:campaign-popup-enter .28s ease both;
 }
@@ -1211,63 +1210,51 @@ a{color:inherit}
   place-items:center;
   width:38px;
   height:38px;
-  border:1px solid rgba(0,63,102,.15);
+  border:1px solid rgba(255,255,255,.22);
   border-radius:50%;
-  background:#fff;
-  color:var(--brand-navy);
+  background:rgba(0,28,53,.88);
+  color:#fff;
   font-size:27px;
   line-height:1;
   cursor:pointer;
   box-shadow:0 7px 20px rgba(0,0,0,.14);
 }
 .campaign-popup-close:focus-visible{outline:3px solid var(--brand-yellow);outline-offset:2px}
-.campaign-popup-brand{
-  position:relative;
-  display:grid;
-  place-items:center;
-  min-height:440px;
-  overflow:hidden;
-  padding:34px 24px;
-  background-color:var(--brand-blue);
-  background-image:linear-gradient(155deg,rgba(0,63,102,.06),rgba(0,63,102,.4)),url("/images/federal/hero/hero-fundo-mobile.webp");
-  background-position:center;
-  background-size:cover;
-}
-.campaign-popup-brand img{display:block;width:min(125%,390px);max-width:none;height:auto;filter:drop-shadow(0 14px 28px rgba(0,0,0,.2))}
-.campaign-popup-content{display:flex;flex-direction:column;justify-content:center;padding:clamp(34px,5vw,58px)}
-.campaign-popup-kicker{font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-green)}
-.campaign-popup-content h2{margin-top:9px;font-family:var(--display);font-size:clamp(34px,4vw,48px);font-weight:400;line-height:1;text-transform:uppercase;color:var(--brand-navy)}
-.campaign-popup-content>p{margin-top:16px;font-size:14px;line-height:1.65;color:#526277}
-.campaign-popup-social{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
-.campaign-popup-social a{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:8px 11px;border:1px solid rgba(0,63,102,.13);border-radius:8px;background:#f1f6f9;color:var(--brand-navy);font-size:10px;font-weight:800;text-decoration:none;transition:transform .16s ease,background-color .16s ease,color .16s ease}
-.campaign-popup-social a:hover,.campaign-popup-social a:focus-visible{background:var(--brand-blue);color:#fff;transform:translateY(-2px)}
-.campaign-popup-social svg{width:17px;height:17px;flex:none}
-.campaign-popup-vote{display:grid;justify-items:center;gap:16px;margin-top:28px;padding-top:22px;border-top:3px solid var(--brand-yellow);text-align:center}
-.campaign-popup-vote p{display:grid;justify-items:center;gap:3px;color:var(--brand-navy)}
-.campaign-popup-vote strong{font-size:11px;text-transform:uppercase;letter-spacing:.08em}
-.campaign-popup-vote span{font-family:var(--display);font-size:25px;line-height:1;text-transform:uppercase}
-.campaign-popup-vote>a{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:min(100%,250px);min-height:46px;padding:11px 18px;border-radius:8px;background:var(--brand-yellow);color:var(--brand-navy);font-size:11px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;box-shadow:4px 5px 0 var(--brand-navy)}
-.campaign-popup-vote>a svg{width:16px;height:16px}
+.campaign-popup-heading{display:flex;align-items:center;gap:18px;padding:24px 66px 20px 26px}
+.campaign-popup-heading>div{min-width:0}
+.campaign-popup-kicker{display:block;font-size:9px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-yellow)}
+.campaign-popup-heading h2{margin-top:4px;font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:400;line-height:1;text-transform:uppercase;color:#fff}
+.campaign-popup-heading p{margin-top:7px;font-size:12px;line-height:1.5;color:rgba(255,255,255,.7)}
+.campaign-live-badge{display:inline-flex;align-items:center;gap:7px;flex:none;padding:8px 11px;border-radius:6px;background:#e62117;color:#fff;font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;box-shadow:3px 4px 0 rgba(0,0,0,.25)}
+.campaign-live-badge i,.campaign-live-trigger>span{width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:campaign-live-pulse 1.6s ease-out infinite}
+.campaign-live-player{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.campaign-live-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.campaign-popup-footer{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 26px 20px}
+.campaign-popup-footer p{font-size:10px;line-height:1.5;color:rgba(255,255,255,.6)}
+.campaign-popup-footer a{display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:none;min-height:42px;padding:10px 15px;border-radius:7px;background:var(--brand-yellow);color:var(--brand-navy);font-size:10px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:transform .16s ease,background-color .16s ease}
+.campaign-popup-footer a:hover,.campaign-popup-footer a:focus-visible{transform:translateY(-2px);background:#f4da49}
+.campaign-popup-footer a svg{width:16px;height:16px}
+.campaign-live-trigger{position:fixed;right:18px;bottom:88px;z-index:63;display:flex;align-items:center;gap:8px;min-height:46px;padding:10px 15px;border:2px solid #fff;border-radius:8px;background:#e62117;color:#fff;font:900 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 26px rgba(0,0,0,.3);transition:transform .16s ease,background-color .16s ease}
+.campaign-live-trigger:hover,.campaign-live-trigger:focus-visible{transform:translateY(-2px);background:#c91810;outline:3px solid var(--brand-yellow);outline-offset:2px}
+.campaign-live-trigger svg{width:19px;height:19px}
 @keyframes campaign-popup-fade{from{opacity:0}to{opacity:1}}
 @keyframes campaign-popup-enter{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes campaign-live-pulse{0%{box-shadow:0 0 0 0 currentColor;opacity:1}70%{box-shadow:0 0 0 7px transparent;opacity:.9}100%{box-shadow:0 0 0 0 transparent;opacity:1}}
 
 @media(max-width:680px){
-  .campaign-popup-backdrop{align-items:center;padding:14px}
-  .campaign-popup{grid-template-columns:1fr;width:min(390px,100%);border-radius:16px}
-  .campaign-popup-brand{min-height:180px;padding:16px 54px 10px}
-  .campaign-popup-brand img{width:min(100%,250px)}
-  .campaign-popup-content{padding:24px 20px 22px;text-align:center}
-  .campaign-popup-content h2{font-size:32px}
-  .campaign-popup-content>p{font-size:12.5px}
-  .campaign-popup-social{justify-content:center;margin-top:18px}
-  .campaign-popup-social a{width:39px;height:39px;justify-content:center;padding:0}
-  .campaign-popup-social a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  .campaign-popup-vote{gap:14px;margin-top:20px;padding-top:18px}
-  .campaign-popup-vote>a{width:min(100%,240px)}
+  .campaign-popup-backdrop{align-items:center;padding:12px}
+  .campaign-popup{width:100%;border-radius:14px}
+  .campaign-popup-heading{align-items:flex-start;gap:12px;padding:20px 54px 16px 16px}
+  .campaign-popup-heading h2{font-size:27px}
+  .campaign-popup-heading p{font-size:10.5px}
+  .campaign-live-badge{padding:7px 9px;font-size:8px}
+  .campaign-popup-footer{align-items:stretch;flex-direction:column;padding:14px 16px 16px;text-align:center}
+  .campaign-popup-footer a{width:100%}
+  .campaign-live-trigger{right:12px;bottom:78px;padding:9px 12px}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .campaign-popup-backdrop,.campaign-popup{animation:none}
+  .campaign-popup-backdrop,.campaign-popup,.campaign-live-badge i,.campaign-live-trigger>span{animation:none}
 }
 
 /* Player persistente do jingle */
