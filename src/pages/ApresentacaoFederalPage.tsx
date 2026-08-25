@@ -8,7 +8,7 @@ import {
 } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight, Facebook, Instagram, Linkedin, MessageCircle, Pause, Play, Square, Twitter, Youtube } from "lucide-react";
+import { ArrowUpRight, Facebook, Instagram, Linkedin, MessageCircle, Pause, Play, Square, Twitter } from "lucide-react";
 import { TikTokIcon, ThreadsIcon } from "@/components/SocialIcons";
 import { WHATSAPP_NUMBER } from "@/config/mobilizacao";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
@@ -773,6 +773,11 @@ export default function FederalPreviewPage() {
     });
   };
 
+  const handleVoteClick = () => {
+    setCampaignPopupOpen(false);
+    void playConfirmationSound().then(() => playJingle(true));
+  };
+
   return (
     <>
       <a className="skip" href="#main">Pular para o conteúdo</a>
@@ -800,36 +805,23 @@ export default function FederalPreviewPage() {
         <div className="campaign-popup-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setCampaignPopupOpen(false); }}>
           <section className="campaign-popup" role="dialog" aria-modal="true" aria-labelledby="campaign-popup-title" aria-describedby="campaign-popup-description">
             <button ref={campaignPopupCloseRef} className="campaign-popup-close" type="button" aria-label="Fechar" onClick={() => setCampaignPopupOpen(false)}>×</button>
-            <div className="campaign-popup-heading">
-              <span className="campaign-live-badge"><i aria-hidden="true"/>Ao vivo</span>
-              <div>
-                <span className="campaign-popup-kicker">Lançamento da campanha</span>
-                <h2 id="campaign-popup-title">Assista à transmissão</h2>
-                <p id="campaign-popup-description">Acompanhe ao vivo o lançamento da campanha de Gutemberg Fonseca.</p>
+            <div className="campaign-popup-brand">
+              <img src="/images/federal/brand/logo-hero-2255-completa.png" alt="Gutemberg Fonseca, deputado federal, número 2255. O Defensor do Consumidor." width="1200" height="800" decoding="async"/>
+            </div>
+            <div className="campaign-popup-content">
+              <span className="campaign-popup-kicker">Vamos juntos pelo Brasil</span>
+              <h2 id="campaign-popup-title">Acompanhe, compartilhe e faça parte</h2>
+              <p id="campaign-popup-description">Siga Gutemberg Fonseca nas redes sociais e acompanhe as propostas, agendas e a caminhada até Brasília.</p>
+              <div className="campaign-popup-social" aria-label="Siga Gutemberg Fonseca nas redes sociais">
+                {socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Seguir no ${label}`} title={label} data-campaign-event="social_click" data-campaign-label={`Pop-up: ${label}`} key={label}><SocialIcon/><span>{label}</span></a>)}
               </div>
-            </div>
-            <div className="campaign-live-player">
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/23UpmrGZxiM?autoplay=1&mute=1&rel=0"
-                title="Transmissão ao vivo do lançamento da campanha de Gutemberg Fonseca"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-            <div className="campaign-popup-footer">
-              <p>O vídeo começa sem som. Ative o áudio diretamente no player.</p>
-              <a href="https://www.youtube.com/live/23UpmrGZxiM" target="_blank" rel="noopener noreferrer" data-campaign-event="live_click" data-campaign-label="Abrir transmissão no YouTube">
-                <Youtube aria-hidden="true"/>Assistir no YouTube<ArrowUpRight aria-hidden="true"/>
-              </a>
+              <div className="campaign-popup-vote">
+                <p><strong>Dia 4 de outubro, vote</strong><span>Gutemberg Fonseca 2255</span></p>
+                <a href="#inicio" onClick={handleVoteClick} data-campaign-event="support_click" data-campaign-label="Pop-up: Eu voto 2255">Eu voto 2255<CampaignIcon name="arrow"/></a>
+              </div>
             </div>
           </section>
         </div>
-      )}
-      {!siteLaunchCountdown.active && (
-        <button className="campaign-live-trigger" type="button" onClick={() => setCampaignPopupOpen(true)} aria-label="Abrir transmissão ao vivo do lançamento da campanha" data-campaign-event="live_click" data-campaign-label="Botão flutuante: abrir transmissão">
-          <span aria-hidden="true"/><Youtube aria-hidden="true"/><strong>Ao vivo</strong>
-        </button>
       )}
       <audio ref={confirmationAudioRef} src="/audio/confirma-urna.mp3" preload="auto"/>
       <audio ref={jingleAudioRef} src="/audio/jingle-campanha-2255.mp3" preload="metadata" loop onPlay={() => setJingleStatus("playing")} onPause={() => setJingleStatus((status) => status === "idle" ? status : "paused")}/>
