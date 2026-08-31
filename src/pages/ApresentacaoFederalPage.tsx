@@ -8,7 +8,43 @@ import {
 } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight, Facebook, Instagram, Linkedin, MessageCircle, Pause, Play, Square, Twitter } from "lucide-react";
+import {
+  Accessibility,
+  ArrowUpRight,
+  BadgeCheck,
+  BadgeDollarSign,
+  BookOpenCheck,
+  ChevronDown,
+  ChevronUp,
+  CircleX,
+  Download,
+  Facebook,
+  FileText,
+  Fuel,
+  Handshake,
+  Headphones,
+  Instagram,
+  Landmark,
+  LifeBuoy,
+  Linkedin,
+  LockKeyhole,
+  Megaphone,
+  MessageCircle,
+  MousePointerClick,
+  Network,
+  PackageCheck,
+  Pause,
+  Play,
+  ReceiptText,
+  RefreshCcw,
+  ShieldAlert,
+  ShoppingCart,
+  Square,
+  Twitter,
+  UtilityPole,
+  Wrench,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { TikTokIcon, ThreadsIcon } from "@/components/SocialIcons";
 import { WHATSAPP_NUMBER } from "@/config/mobilizacao";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
@@ -375,7 +411,7 @@ type Area = {
 type Proposal = {
   title: string;
   description: string;
-  icon: CampaignIconName;
+  icon: LucideIcon;
 };
 
 const pillars: Pillar[] = [
@@ -404,10 +440,59 @@ const areas: Area[] = [
 ];
 
 const proposals: Proposal[] = [
-  { title: "Patrulha do Consumidor", description: "Vamos trabalhar pela criação e fortalecimento de estruturas especializadas no combate aos golpes, fraudes e crimes contra o consumidor.", icon: "shield" },
-  { title: "Mutirão de Negociação de Dívidas", description: "Vamos trabalhar para ampliar as oportunidades de renegociação e criar políticas permanentes de enfrentamento ao superendividamento.", icon: "handshake" },
-  { title: "Consumidor Tá On", description: "Vamos trabalhar pelo aprimoramento do atendimento digital ao consumidor, buscando uma defesa mais simples, integrada e acessível 24 horas pelo celular.", icon: "smartphone" },
+  { title: "Direito ao Reparo", description: "Ampliar o acesso a peças, assistência técnica e reparos após a garantia.", icon: Wrench },
+  { title: "Renegociação de dívidas", description: "Criar períodos nacionais de estímulo à negociação de débitos.", icon: Handshake },
+  { title: "Combate ao superendividamento", description: "Fortalecer mecanismos de prevenção e tratamento previstos no CDC.", icon: LifeBuoy },
+  { title: "Preços transparentes", description: "Combater cobranças ocultas e facilitar a comparação entre preço à vista e parcelado.", icon: BadgeDollarSign },
+  { title: "Atendimento humano nos SACs", description: "Assegurar alternativa de atendimento por pessoa, inclusive em sistemas automatizados.", icon: Headphones },
+  { title: "SAC acessível", description: "Ampliar atendimento adaptado para pessoas com deficiência e oferta de Libras.", icon: Accessibility },
+  { title: "Combate aos “dark patterns”", description: "Impedir interfaces digitais desenhadas para induzir decisões contra o interesse do consumidor.", icon: MousePointerClick },
+  { title: "Proteção contra renovação automática abusiva", description: "Reforçar informação prévia e mecanismos de cancelamento.", icon: RefreshCcw },
+  { title: "Pós-venda obrigatório", description: "Estabelecer padrões mínimos de suporte depois da compra.", icon: PackageCheck },
+  { title: "Cancelamento simplificado", description: "Permitir cancelamento de serviços por canais tão acessíveis quanto os utilizados para contratação.", icon: CircleX },
+  { title: "Proteção contra publicidade enganosa", description: "Reforçar mecanismos contra alegações falsas ou sem comprovação.", icon: Megaphone },
+  { title: "Fiscalização de produtos falsificados", description: "Ampliar ações integradas contra falsificação e comércio irregular.", icon: BadgeCheck },
+  { title: "Combate a fraudes digitais", description: "Criar mecanismos de proteção para consumidores vítimas de golpes eletrônicos.", icon: ShieldAlert },
+  { title: "Proteção contra cobranças indevidas", description: "Fortalecer mecanismos de restituição e responsabilização.", icon: ReceiptText },
+  { title: "Transparência em contratos digitais", description: "Exigir informações claras sobre preço, renovação, cancelamento e período de contratação.", icon: FileText },
+  { title: "Proteção de dados do consumidor", description: "Reforçar transparência sobre utilização de dados em relações de consumo.", icon: LockKeyhole },
+  { title: "Defesa do consumidor nos serviços essenciais", description: "Aprimorar mecanismos de proteção em água, energia, telefonia e outros serviços.", icon: UtilityPole },
+  { title: "Fiscalização de combustíveis", description: "Ampliar ações contra adulteração, fraude de quantidade e irregularidades na comercialização.", icon: Fuel },
+  { title: "Proteção nas compras pela internet", description: "Facilitar reclamações, cancelamentos e ressarcimentos em operações digitais.", icon: ShoppingCart },
+  { title: "Educação para o consumo", description: "Criar programas de educação financeira e de direitos do consumidor.", icon: BookOpenCheck },
+  { title: "Integração dos órgãos de defesa do consumidor", description: "Melhorar a cooperação entre órgãos federais, estaduais e municipais.", icon: Landmark },
+  { title: "Fortalecimento do Sistema Nacional de Defesa do Consumidor", description: "Ampliar estrutura, fiscalização, atendimento e capacidade de resposta.", icon: Network },
 ];
+
+function ProposalList({ items, start }: { items: Proposal[]; start: number }) {
+  return (
+    <ol className="proposals-list" start={start}>
+      {items.map((proposal, index) => {
+        const ProposalIcon = proposal.icon;
+        const number = start + index;
+
+        return (
+          <Reveal
+            as="li"
+            className="proposal-item"
+            direction="up"
+            delay={Math.min(index, 3) * 45}
+            key={proposal.title}
+          >
+            <span className="proposal-icon" aria-hidden="true"><ProposalIcon /></span>
+            <span className={`proposal-number ${number === 13 ? "proposal-number--twelve-plus-one" : ""}`} aria-hidden="true">
+              {number === 13 ? "12+1" : number}
+            </span>
+            <div className="proposal-copy">
+              <h3>{proposal.title}</h3>
+              <p>{proposal.description}</p>
+            </div>
+          </Reveal>
+        );
+      })}
+    </ol>
+  );
+}
 
 const legacyTimeline = [
   { year: "2007", title: "Primeiros passos na gestão pública", description: "Atuação ligada ao desenvolvimento do SINE e à ampliação de oportunidades para trabalhadores em busca de emprego." },
@@ -605,11 +690,48 @@ const heroPortrait = {
   height: 2250,
 } as const;
 
+const fileLabel = (path: string) => {
+  const fileName = path.split("/").pop()?.replace(/\.[^.]+$/, "") ?? "Novo registro";
+  return fileName
+    .replace(/^\d+[\s_-]*/, "")
+    .replace(/[-_]+/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+};
+
+const galleryImports = import.meta.glob(
+  "/src/assets/fotos/*.{avif,jpg,jpeg,png,webp}",
+  { eager: true, query: "?url", import: "default" },
+) as Record<string, string>;
+
+const jingleImports = import.meta.glob(
+  "/src/assets/jingles/*.{m4a,mp3,ogg,wav}",
+  { eager: true, query: "?url", import: "default" },
+) as Record<string, string>;
+
+const driveGalleryImages = Object.entries(galleryImports)
+  .sort(([left], [right]) => left.localeCompare(right, "pt-BR"))
+  .map(([path, src], index) => ({
+    src,
+    alt: /^foto galeria$/i.test(fileLabel(path))
+      ? `Foto da campanha ${index + 1}`
+      : fileLabel(path),
+    position: "center center",
+  }));
+
+const campaignJingles = [
+  ...Object.entries(jingleImports)
+    .sort(([left], [right]) => left.localeCompare(right, "pt-BR"))
+    .map(([, src], index) => ({ title: `Jingle ${index + 2}`, src, isTheme: false })),
+  { title: "Jingle 1", src: "/audio/jingle-campanha-2255.mp3", isTheme: true },
+];
+
 export default function FederalPreviewPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const [campaignPopupOpen, setCampaignPopupOpen] = useState(false);
   const [jingleStatus, setJingleStatus] = useState<"idle" | "playing" | "paused">("idle");
+  const [activeJingleIndex, setActiveJingleIndex] = useState(campaignJingles.length - 1);
+  const [jinglePlaylistOpen, setJinglePlaylistOpen] = useState(false);
   const [activePeopleImageIndex, setActivePeopleImageIndex] = useState(0);
   const [siteLaunchCountdown, setSiteLaunchCountdown] = useState(getSiteLaunchCountdown);
   const [electionCountdown, setElectionCountdown] = useState(getElectionCountdown);
@@ -617,7 +739,9 @@ export default function FederalPreviewPage() {
   const campaignPopupCloseRef = useRef<HTMLButtonElement>(null);
   const jingleAudioRef = useRef<HTMLAudioElement>(null);
   const confirmationAudioRef = useRef<HTMLAudioElement>(null);
-  const activePeopleImage = peopleImages[activePeopleImageIndex];
+  const galleryImages = [...driveGalleryImages, ...peopleImages];
+  const activePeopleImage = galleryImages[activePeopleImageIndex] ?? galleryImages[0];
+  const activeJingle = campaignJingles[activeJingleIndex] ?? campaignJingles[0];
   const reducedMotion = useReducedMotion();
   const gsapScopeRef = useFederalGsapPilot(reducedMotion);
   const flagGlobeRef = useParallax<HTMLDivElement>(0.18);
@@ -753,6 +877,30 @@ export default function FederalPreviewPage() {
     setJingleStatus("idle");
   };
 
+  const selectJingle = (index: number) => {
+    const audio = jingleAudioRef.current;
+    audio?.pause();
+    if (audio) audio.currentTime = 0;
+    setJingleStatus("idle");
+    setActiveJingleIndex(index);
+    setJinglePlaylistOpen(false);
+    window.requestAnimationFrame(() => {
+      void playJingle(true);
+    });
+  };
+
+  const sharePhoto = (network: "whatsapp" | "facebook" | "x") => {
+    const photoUrl = new URL(activePeopleImage.src, window.location.origin).href;
+    const message = "Veja esta foto da campanha de Gutemberg Fonseca 2255";
+    const shareUrls = {
+      whatsapp: `https://wa.me/?text=${encodeURIComponent(`${message}: ${photoUrl}`)}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(photoUrl)}`,
+      x: `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(photoUrl)}`,
+    };
+
+    window.open(shareUrls[network], "_blank", "noopener,noreferrer");
+  };
+
   const playConfirmationSound = () => {
     const audio = confirmationAudioRef.current;
     if (!audio) return Promise.resolve();
@@ -812,6 +960,10 @@ export default function FederalPreviewPage() {
               <span className="campaign-popup-kicker">Vamos juntos pelo Brasil</span>
               <h2 id="campaign-popup-title">Acompanhe, compartilhe e faça parte</h2>
               <p id="campaign-popup-description">Siga Gutemberg Fonseca nas redes sociais e acompanhe as propostas, agendas e a caminhada até Brasília.</p>
+              <button className="campaign-popup-jingles" type="button" onClick={() => setCampaignPopupOpen(false)}>
+                <Headphones aria-hidden="true"/>
+                <span><strong>Tem jingle novo chegando!</strong><small>Feche o aviso e escute no player.</small></span>
+              </button>
               <div className="campaign-popup-social" aria-label="Siga Gutemberg Fonseca nas redes sociais">
                 {socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Seguir no ${label}`} title={label} data-campaign-event="social_click" data-campaign-label={`Pop-up: ${label}`} key={label}><SocialIcon/><span>{label}</span></a>)}
               </div>
@@ -824,16 +976,27 @@ export default function FederalPreviewPage() {
         </div>
       )}
       <audio ref={confirmationAudioRef} src="/audio/confirma-urna.mp3" preload="auto"/>
-      <audio ref={jingleAudioRef} src="/audio/jingle-campanha-2255.mp3" preload="metadata" loop onPlay={() => setJingleStatus("playing")} onPause={() => setJingleStatus((status) => status === "idle" ? status : "paused")}/>
-      <aside className="campaign-jingle-player" aria-label="Player do jingle da campanha">
-        <span className="campaign-jingle-copy"><small>Jingle da campanha</small><strong>Gutemberg 2255</strong></span>
-        <button type="button" aria-label={jingleStatus === "playing" ? "Pausar jingle" : "Reproduzir jingle"} title={jingleStatus === "playing" ? "Pausar" : "Reproduzir"} data-campaign-event={jingleStatus === "playing" ? "jingle_pause" : "jingle_play"} data-campaign-label={jingleStatus === "playing" ? "Pausar jingle" : "Reproduzir jingle"} onClick={() => { if (jingleStatus === "playing") pauseJingle(); else void playJingle(jingleStatus === "idle"); }}>
-          {jingleStatus === "playing" ? <Pause aria-hidden="true"/> : <Play aria-hidden="true"/>}
-        </button>
-        <button type="button" aria-label="Parar jingle" title="Parar" data-campaign-event="jingle_stop" data-campaign-label="Parar jingle" onClick={stopJingle} disabled={jingleStatus === "idle"}>
-          <Square aria-hidden="true"/>
-        </button>
-      </aside>
+      <audio key={activeJingle.src} ref={jingleAudioRef} src={activeJingle.src} preload="metadata" loop onPlay={() => setJingleStatus("playing")} onPause={() => setJingleStatus((status) => status === "idle" ? status : "paused")}/>
+      <div className="campaign-jingle-dock">
+        <div className="campaign-jingle-invite">
+          <button className="campaign-jingle-toggle" type="button" aria-expanded={jinglePlaylistOpen} aria-controls="campaign-jingle-list" onClick={() => setJinglePlaylistOpen((open) => !open)}>
+            <span><Headphones aria-hidden="true"/> Jingles</span>
+            {jinglePlaylistOpen ? <ChevronDown aria-hidden="true"/> : <ChevronUp aria-hidden="true"/>}
+          </button>
+          {jinglePlaylistOpen && <div className="campaign-jingle-list" id="campaign-jingle-list" aria-label="Jingles da campanha">
+            {campaignJingles.map((jingle, index) => <button type="button" className={activeJingleIndex === index ? "is-active" : ""} aria-pressed={activeJingleIndex === index} onClick={() => selectJingle(index)} key={jingle.src}><Play aria-hidden="true"/><span>{jingle.title}</span>{jingle.isTheme && <small>Tema</small>}</button>)}
+          </div>}
+        </div>
+        <aside className="campaign-jingle-player" aria-label={`Player do jingle ${activeJingle.title}`}>
+          <span className="campaign-jingle-copy"><small>{activeJingle.isTheme ? "Jingle tema" : "Tocando agora"}</small><strong>{activeJingle.title}</strong></span>
+          <button type="button" aria-label={jingleStatus === "playing" ? "Pausar jingle" : "Reproduzir jingle"} title={jingleStatus === "playing" ? "Pausar" : "Reproduzir"} data-campaign-event={jingleStatus === "playing" ? "jingle_pause" : "jingle_play"} data-campaign-label={`${jingleStatus === "playing" ? "Pausar" : "Reproduzir"}: ${activeJingle.title}`} onClick={() => { if (jingleStatus === "playing") pauseJingle(); else void playJingle(jingleStatus === "idle"); }}>
+            {jingleStatus === "playing" ? <Pause aria-hidden="true"/> : <Play aria-hidden="true"/>}
+          </button>
+          <button type="button" aria-label="Parar jingle" title="Parar" data-campaign-event="jingle_stop" data-campaign-label={`Parar: ${activeJingle.title}`} onClick={stopJingle} disabled={jingleStatus === "idle"}>
+            <Square aria-hidden="true"/>
+          </button>
+        </aside>
+      </div>
       <a className="federal-whatsapp" href={gutoWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Falar com Guto pelo WhatsApp" title="WhatsApp do Guto" data-campaign-event="whatsapp_click" data-campaign-label="WhatsApp flutuante"><MessageCircle aria-hidden="true"/></a>
 
       <header className={`header ${headerScrolled ? "is-scrolled" : ""}`}>
@@ -848,6 +1011,7 @@ export default function FederalPreviewPage() {
             <a href="#resultados">Resultados</a>
             <a href="#propostas">Propostas</a>
             <a href="/molduras">Molduras</a>
+            <a href="#fotos">Fotos</a>
             <a href="#contato">Contato</a>
           </nav>
 
@@ -858,7 +1022,7 @@ export default function FederalPreviewPage() {
         <ScrollProgress onScrolledChange={setHeaderScrolled}/>
 
         {menuOpen && <nav className="mobile-nav" aria-label="Navegação mobile">
-          <div className="mobile-nav-links">{[["Início", "#inicio"],["Trajetória", "#trajetoria"],["Resultados", "#resultados"],["Propostas", "#propostas"],["Molduras", "/molduras"],["Contato", "#contato"]].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</div>
+          <div className="mobile-nav-links">{[["Início", "#inicio"],["Trajetória", "#trajetoria"],["Resultados", "#resultados"],["Propostas", "#propostas"],["Molduras", "/molduras"],["Fotos", "#fotos"],["Contato", "#contato"]].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</div>
           <div className="mobile-nav-social" aria-label="Redes sociais">{socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} key={label}><SocialIcon/></a>)}</div>
         </nav>}
       </header>
@@ -943,17 +1107,29 @@ export default function FederalPreviewPage() {
           <div className="legacy-cases-grid">{legacyCases.map((item, index) => <Reveal as="article" className="legacy-case-card" direction="up" delay={index * 80} key={item.title}><span className="legacy-case-icon"><CampaignIcon name={item.icon}/></span><small>{item.eyebrow}</small><h3>{item.title}</h3><p>{item.description}</p></Reveal>)}</div>
         </div></section>
 
-        <section className="people" id="pessoas" aria-labelledby="people-title"><div className="shell people-grid">
-          <div><h2 className="p-title" id="people-title"><span className="g">Perto das pessoas,</span><span className="b">presente na vida real.</span></h2><div className="p-line" aria-hidden="true"/><p className="p-text">A política só faz sentido quando está ao lado de quem mais precisa. É ouvindo, dialogando e agindo que seguimos transformando vidas.</p></div>
+        <section className="people" id="fotos" aria-labelledby="people-title"><div className="shell people-grid">
+          <div><span className="section-kicker">Galeria de fotos</span><h2 className="p-title" id="people-title"><span className="g">Perto das pessoas,</span><span className="b">presente na vida real.</span></h2><div className="p-line" aria-hidden="true"/><p className="p-text">A política só faz sentido quando está ao lado de quem mais precisa. É ouvindo, dialogando e agindo que seguimos transformando vidas.</p></div>
           <div className="p-mosaic" role="group" aria-label="Galeria de fotos com a população" onMouseLeave={() => setActivePeopleImageIndex(0)}>
-            <div className="p-featured"><img src={activePeopleImage.src} alt={activePeopleImage.alt} width="1600" height="1066" loading="lazy" decoding="async" style={{ objectPosition: activePeopleImage.position }}/></div>
-            <div className="p-thumbnails">{peopleImages.slice(1).map((image, thumbnailIndex) => { const imageIndex = thumbnailIndex + 1; return <button className={activePeopleImageIndex === imageIndex ? "is-active" : ""} type="button" aria-label={`Exibir em destaque: ${image.alt}`} aria-pressed={activePeopleImageIndex === imageIndex} onMouseEnter={() => setActivePeopleImageIndex(imageIndex)} onFocus={() => setActivePeopleImageIndex(imageIndex)} onClick={() => setActivePeopleImageIndex(imageIndex)} key={image.src}><img src={image.src} alt="" width="400" height="267" loading="lazy" decoding="async" style={{ objectPosition: image.position }}/></button>; })}</div>
+            <div className="p-featured-column">
+              <div className="p-featured"><img src={activePeopleImage.src} alt={activePeopleImage.alt} width="1600" height="1066" loading="lazy" decoding="async"/></div>
+              <div className="p-photo-actions" aria-label="Compartilhar ou salvar esta foto">
+                <span>Compartilhe:</span>
+                <button type="button" onClick={() => sharePhoto("whatsapp")} aria-label="Compartilhar foto no WhatsApp" title="WhatsApp"><MessageCircle aria-hidden="true"/><span>WhatsApp</span></button>
+                <button type="button" onClick={() => sharePhoto("facebook")} aria-label="Compartilhar foto no Facebook" title="Facebook"><Facebook aria-hidden="true"/><span>Facebook</span></button>
+                <button type="button" onClick={() => sharePhoto("x")} aria-label="Compartilhar foto no X" title="X"><Twitter aria-hidden="true"/><span>X</span></button>
+                <a href={activePeopleImage.src} download={`gutemberg-fonseca-foto-${String(activePeopleImageIndex + 1).padStart(2, "0")}.webp`} aria-label="Salvar esta foto" title="Salvar foto"><Download aria-hidden="true"/><span>Salvar</span></a>
+              </div>
+            </div>
+            <div className="p-thumbnails">{galleryImages.slice(1).map((image, thumbnailIndex) => { const imageIndex = thumbnailIndex + 1; return <button className={activePeopleImageIndex === imageIndex ? "is-active" : ""} type="button" aria-label={`Exibir em destaque: ${image.alt}`} aria-pressed={activePeopleImageIndex === imageIndex} onMouseEnter={() => setActivePeopleImageIndex(imageIndex)} onFocus={() => setActivePeopleImageIndex(imageIndex)} onClick={() => setActivePeopleImageIndex(imageIndex)} key={image.src}><img src={image.src} alt="" width="400" height="267" loading="lazy" decoding="async" style={{ objectPosition: image.position }}/></button>; })}</div>
           </div>
         </div></section>
 
         <section className="proposals" id="propostas" aria-labelledby="proposals-title"><div className="shell">
           <Reveal className="proposals-heading" direction="up"><span className="section-kicker">Do Rio para Brasília</span><h2 id="proposals-title">Um mandato em defesa <em>do consumidor</em></h2><p>Em Brasília, nosso mandato vai trabalhar para fortalecer a defesa do consumidor através de leis, recursos e articulação política.</p><p>Vamos trabalhar junto ao Governo Federal, ao Governo do Estado, à Assembleia Legislativa, aos municípios e aos órgãos de defesa do consumidor para transformar boas ideias em políticas que cheguem à população.</p></Reveal>
-          <div className="proposals-grid">{proposals.map((proposal, index) => <Reveal as="article" className="proposal-item" direction="up" delay={(index % 3) * 80} key={proposal.title}><span className="proposal-icon"><CampaignIcon name={proposal.icon}/></span><h3>{proposal.title}</h3><p>{proposal.description}</p></Reveal>)}</div>
+          <div className="proposals-grid">
+            <ProposalList items={proposals.slice(0, 11)} start={1}/>
+            <ProposalList items={proposals.slice(11)} start={12}/>
+          </div>
           <Reveal className="proposals-closing" direction="fade"><p>Em Brasília, a defesa do consumidor terá voz, trabalho e prioridade.</p></Reveal>
         </div></section>
 
