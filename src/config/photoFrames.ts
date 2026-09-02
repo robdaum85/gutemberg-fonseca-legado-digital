@@ -11,6 +11,7 @@ export type PhotoFrameDefinition = {
   /** Aliados que aparecem na arte além do próprio Gutemberg (vazio na moldura solo). */
   allies: FrameAlly[];
   description: string;
+  /** Imagem plana usada no card da vitrine, na prévia de links não-destacados e no og:image. */
   frameSrc: string;
   output: { width: number; height: number };
   photoArea: { x: number; y: number; width: number; height: number };
@@ -22,6 +23,19 @@ export type PhotoFrameDefinition = {
   active: boolean;
   /** Aparece na vitrine pública de /molduras. As demais só existem via link direto (/molduras/slug). */
   featured: boolean;
+  /**
+   * Molduras "cutout" têm uma arte de fundo própria (não cor sólida) e a foto do usuário
+   * é recortada (remoção de fundo) antes de compor, como uma silhueta ao lado do candidato.
+   * Quando ausente, usa o modelo padrão: cor sólida + foto na janela + moldura por cima.
+   */
+  cutout?: {
+    /** Imagem de fundo (substitui backgroundColor), desenhada antes da foto do usuário. */
+    backgroundSrc: string;
+    /** Camadas desenhadas por cima da foto do usuário, na ordem (ex.: candidato, selo, número). */
+    overlaySrcs: string[];
+    /** Remove o fundo da foto do usuário (silhueta) antes de compor. */
+    removeBackground: boolean;
+  };
 };
 
 // Identificação exigida pelo TSE — já vem impressa em todas as artes,
@@ -53,6 +67,29 @@ function frameDefaults() {
 }
 
 export const photoFrames: PhotoFrameDefinition[] = [
+  {
+    slug: "gutemberg-2255-foto",
+    title: "Gutemberg Fonseca 2255 (com foto)",
+    allies: [],
+    description: "Coloque sua foto ao lado de Gutemberg Fonseca 2255 e compartilhe seu apoio.",
+    frameSrc: "/images/molduras/gutemberg-2255-foto/preview.png",
+    photoArea: { x: 10, y: 235, width: 315, height: 1090 },
+    fileName: "gutemberg-fonseca-2255-com-foto.png",
+    ...frameDefaults(),
+    output: { width: 1080, height: 1350 },
+    initialTopBias: 0.05,
+    maxZoom: 2.2,
+    cutout: {
+      backgroundSrc: "/images/molduras/gutemberg-2255-foto/fundo.png",
+      overlaySrcs: [
+        "/images/molduras/gutemberg-2255-foto/gutemberg.png",
+        "/images/molduras/gutemberg-2255-foto/selo.png",
+        "/images/molduras/gutemberg-2255-foto/numero.png",
+      ],
+      removeBackground: true,
+    },
+    featured: true,
+  },
   {
     slug: "gutemberg-fonseca-2255",
     title: "Somente Gutemberg",

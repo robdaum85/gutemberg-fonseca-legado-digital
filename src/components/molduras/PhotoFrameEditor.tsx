@@ -22,6 +22,30 @@ function canvasBlob(canvas: HTMLCanvasElement) {
   });
 }
 
+// Modelos de remoção de fundo deixam ruído de opacidade baixa (não totalmente 0) espalhado
+// pelo retângulo original da foto. Sobre um fundo colorido isso aparece como uma mancha/halo
+// retangular. Zera esse ruído e realça a transição para uma borda limpa.
+const ALPHA_NOISE_FLOOR = 30;
+async function cleanupCutoutAlpha(blob: Blob): Promise<Blob> {
+  const bitmap = await createImageBitmap(blob);
+  const canvas = document.createElement("canvas");
+  canvas.width = bitmap.width;
+  canvas.height = bitmap.height;
+  const context = canvas.getContext("2d");
+  if (!context) return blob;
+  context.drawImage(bitmap, 0, 0);
+  bitmap.close?.();
+  const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  const scale = 255 / (255 - ALPHA_NOISE_FLOOR);
+  for (let i = 3; i < data.length; i += 4) {
+    const alpha = data[i];
+    data[i] = alpha < ALPHA_NOISE_FLOOR ? 0 : Math.min(255, Math.round((alpha - ALPHA_NOISE_FLOOR) * scale));
+  }
+  context.putImageData(imageData, 0, 0);
+  return canvasBlob(canvas);
+}
+
 export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -30,12 +54,15 @@ export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
   const pinchRef = useRef<null | { distance: number; transform: Transform; anchorX: number; anchorY: number }>(null);
   const [photo, setPhoto] = useState<LoadedPhoto | null>(null);
   const [frameImage, setFrameImage] = useState<HTMLImageElement | null>(null);
+  const [cutoutBackground, setCutoutBackground] = useState<HTMLImageElement | null>(null);
+  const [cutoutOverlays, setCutoutOverlays] = useState<HTMLImageElement[]>([]);
   const [transform, setTransform] = useState<Transform>({ base: 1, zoom: 1, x: 0, y: 0 });
   const [error, setError] = useState("");
   const [status, setStatus] = useState("");
   const [lowResolution, setLowResolution] = useState(false);
   const [showProfileGuide, setShowProfileGuide] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+  const [bgRemovalProgress, setBgRemovalProgress] = useState<number | null>(null);
 
   const clampTransform = useCallback((next: Transform, source = photoRef.current) => {
     if (!source) return next;
@@ -53,26 +80,50 @@ export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
 
   const fitPhoto = useCallback((loaded: LoadedPhoto) => {
     const { photoArea } = frame;
-    const base = Math.max(photoArea.width / loaded.width, photoArea.height / loaded.height);
+    // Molduras "cutout" já vêm com o fundo removido da foto do usuário (sem moldura opaca por
+    // cima dela), então ela é só ajustada para preencher a altura da área e ancorada embaixo —
+    // sem recorte lateral forçado, igual à foto do próprio candidato nessas artes.
+    const base = frame.cutout
+      ? photoArea.height / loaded.height
+      : Math.max(photoArea.width / loaded.width, photoArea.height / loaded.height);
     const width = loaded.width * base;
     const height = loaded.height * base;
     const initial = clampTransform({
       base,
       zoom: 1,
       x: photoArea.x + (photoArea.width - width) / 2,
-      y: photoArea.y - frame.initialTopBias * height,
+      y: frame.cutout ? photoArea.y + photoArea.height - height : photoArea.y - frame.initialTopBias * height,
     }, loaded);
     setTransform(initial);
     setLowResolution(base > 1.6);
   }, [clampTransform, frame]);
 
-  useEffect(() => {
+  const loadImage = (src: string) => new Promise<HTMLImageElement>((resolve, reject) => {
     const image = new Image();
     image.decoding = "async";
-    image.onload = () => setFrameImage(image);
-    image.onerror = () => setError("Não foi possível carregar a moldura oficial.");
-    image.src = frame.frameSrc;
-  }, [frame.frameSrc]);
+    image.onload = () => resolve(image);
+    image.onerror = reject;
+    image.src = src;
+  });
+
+  useEffect(() => {
+    let cancelled = false;
+    if (frame.cutout) {
+      Promise.all([loadImage(frame.cutout.backgroundSrc), ...frame.cutout.overlaySrcs.map(loadImage)])
+        .then(([background, ...overlays]) => {
+          if (cancelled) return;
+          setCutoutBackground(background);
+          setCutoutOverlays(overlays);
+        })
+        .catch(() => { if (!cancelled) setError("Não foi possível carregar a moldura oficial."); });
+    } else {
+      loadImage(frame.frameSrc)
+        .then((image) => { if (!cancelled) setFrameImage(image); })
+        .catch(() => { if (!cancelled) setError("Não foi possível carregar a moldura oficial."); });
+    }
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [frame.frameSrc, frame.cutout]);
 
   const drawComposition = useCallback((canvas: HTMLCanvasElement) => {
     const context = canvas.getContext("2d");
@@ -80,10 +131,27 @@ export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
     canvas.width = frame.output.width;
     canvas.height = frame.output.height;
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = frame.backgroundColor;
-    context.fillRect(0, 0, canvas.width, canvas.height);
+    if (frame.cutout && cutoutBackground) {
+      context.drawImage(cutoutBackground, 0, 0, frame.output.width, frame.output.height);
+    } else {
+      context.fillStyle = frame.backgroundColor;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
-    if (photo) {
+    if (photo && frame.cutout) {
+      // Já vem sem fundo (remoção de fundo aplicada no upload): desenha direto, sem recorte
+      // retangular, para não criar uma "caixa" — a própria transparência da foto é a borda,
+      // igual à foto do candidato nessas artes.
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = "high";
+      context.drawImage(
+        photo.source,
+        transform.x,
+        transform.y,
+        photo.width * transform.base * transform.zoom,
+        photo.height * transform.base * transform.zoom,
+      );
+    } else if (photo) {
       context.save();
       context.beginPath();
       context.rect(frame.photoArea.x, frame.photoArea.y, frame.photoArea.width, frame.photoArea.height);
@@ -99,8 +167,12 @@ export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
       );
       context.restore();
     }
-    if (frameImage) context.drawImage(frameImage, 0, 0, frame.output.width, frame.output.height);
-  }, [frame, frameImage, photo, transform]);
+    if (frame.cutout) {
+      for (const overlay of cutoutOverlays) context.drawImage(overlay, 0, 0, frame.output.width, frame.output.height);
+    } else if (frameImage) {
+      context.drawImage(frameImage, 0, 0, frame.output.width, frame.output.height);
+    }
+  }, [frame, frameImage, cutoutBackground, cutoutOverlays, photo, transform]);
 
   useEffect(() => {
     if (canvasRef.current) drawComposition(canvasRef.current);
@@ -108,7 +180,7 @@ export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
 
   useEffect(() => () => photoRef.current?.dispose(), []);
 
-  const decodeFile = async (file: File): Promise<LoadedPhoto> => {
+  const decodeFile = async (file: File | Blob): Promise<LoadedPhoto> => {
     let source: ImageBitmap | HTMLImageElement;
     let dispose = () => {};
     if ("createImageBitmap" in window) {
@@ -149,6 +221,7 @@ export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
     if (!file) return;
     setError("");
     setStatus("");
+    setBgRemovalProgress(null);
     const validExtension = /\.(jpe?g|png|webp)$/i.test(file.name);
     if (!ACCEPTED_TYPES.includes(file.type.toLowerCase()) && !validExtension) {
       setError("Formato não aceito. Envie uma imagem JPG, PNG ou WebP.");
@@ -158,15 +231,42 @@ export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
       setError("Essa imagem é muito grande. Escolha uma foto de até 25 MB.");
       return;
     }
+
+    let source: File | Blob = file;
+    if (frame.cutout?.removeBackground) {
+      try {
+        setStatus("Removendo o fundo da sua foto...");
+        setBgRemovalProgress(0);
+        const { removeBackground } = await import("@imgly/background-removal");
+        const removed = await removeBackground(file, {
+          progress: (key, current, total) => {
+            setStatus(key.startsWith("fetch:") ? "Baixando modelo de IA (só na primeira vez)..." : "Removendo o fundo da sua foto...");
+            if (total > 0) setBgRemovalProgress(Math.round((current / total) * 100));
+          },
+        });
+        source = await cleanupCutoutAlpha(removed);
+      } catch (removalError) {
+        console.error("[PhotoFrameEditor] Falha ao remover o fundo da foto:", removalError);
+        setBgRemovalProgress(null);
+        setStatus("");
+        setError(typeof navigator !== "undefined" && !navigator.onLine
+          ? "Sem conexão com a internet. A remoção de fundo precisa baixar um modelo na primeira vez — verifique sua rede e tente novamente."
+          : "Não foi possível remover o fundo dessa foto. Tente uma foto com boa iluminação e um fundo mais simples, ou tente novamente.");
+        return;
+      }
+      setBgRemovalProgress(null);
+    }
+
     try {
       setStatus("Abrindo sua foto...");
-      const loaded = await decodeFile(file);
+      const loaded = await decodeFile(source);
       photoRef.current?.dispose();
       photoRef.current = loaded;
       setPhoto(loaded);
       fitPhoto(loaded);
       setStatus("");
-    } catch {
+    } catch (decodeError) {
+      console.error("[PhotoFrameEditor] Falha ao abrir a imagem:", decodeError);
       setError("Não foi possível abrir essa imagem. Tente outra foto.");
       setStatus("");
     }
@@ -318,7 +418,19 @@ export function PhotoFrameEditor({ frame }: { frame: PhotoFrameDefinition }) {
         <button className="frame-button frame-button--secondary" type="button" onClick={() => inputRef.current?.click()} data-campaign-event="photo_frame_upload" data-campaign-label={frame.title}>Escolher foto</button>
         <input ref={inputRef} className="sr-only" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" onChange={onFileChange}/>
         <span className="frame-private"><LockKeyhole aria-hidden="true"/>A foto é processada no seu dispositivo e não fica armazenada.</span>
-        {status && <p className="frame-status" role="status">{status}</p>}
+        {status && (
+          <div role="status" aria-live="polite">
+            <p className="frame-status">{status}</p>
+            {bgRemovalProgress !== null && (
+              <div className="frame-progress">
+                <div
+                  className={`frame-progress-fill${bgRemovalProgress <= 0 ? " is-indeterminate" : ""}`}
+                  style={bgRemovalProgress > 0 ? { width: `${bgRemovalProgress}%` } : undefined}
+                />
+              </div>
+            )}
+          </div>
+        )}
         {error && <p className="frame-error" role="alert">{error}</p>}
       </div>
     );
