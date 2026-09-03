@@ -1,4 +1,5 @@
 {
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*)",
@@ -33,6 +34,33 @@
           "value": "text/plain; charset=utf-8"
         }
       ]
+    },
+    {
+      "source": "/feed.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/rss+xml; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/evento/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
+    },
+    {
+      "source": "/aniversario",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
     }
   ],
   "redirects": [
@@ -45,28 +73,26 @@
       "source": "/apresentacao-federal",
       "destination": "/",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/evento",
-      "destination": "/evento.html"
-    },
-    {
-      "source": "/evento/sucesso",
-      "destination": "/evento.html"
     },
     {
       "source": "/blog",
-      "destination": "/index.html"
+      "destination": "/direitos-do-consumidor",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vendaval-rio-prevencao-arvores-energia",
+      "destination": "/direitos-do-cidadao/vendaval-rio-prevencao-arvores-energia",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vagao-feminino-rj-24-horas",
+      "destination": "/seguranca-publica/vagao-feminino-rj-24-horas",
+      "permanent": true
     },
     {
       "source": "/blog/:slug",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/((?!llms\\.txt|robots\\.txt|sitemap\\.xml|manifest\\.webmanifest|sw\\.js|registerSW\\.js|workbox-.*\\.js|favicon\\.ico|placeholder\\.svg|lovable-uploads/.*|assets/.*).*)",
-      "destination": "/index.html"
+      "destination": "/direitos-do-consumidor/:slug",
+      "permanent": true
     }
   ]
 }

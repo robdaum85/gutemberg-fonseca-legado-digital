@@ -13,6 +13,8 @@ import {
   type EventoCadastroPayload,
 } from "@/lib/eventoApi";
 import "./EventoPage.css";
+import { useSeo } from "@/lib/useSeo";
+import { STATIC_PAGE_SEO, canonicalUrl } from "@/lib/siteSeo";
 
 const initialForm: EventoCadastroPayload = {
   nome: "",
@@ -43,6 +45,14 @@ function formatPhone(value: string) {
 }
 
 export default function EventoPage() {
+  const seo = STATIC_PAGE_SEO["/evento"];
+  useSeo({
+    title: seo.title,
+    description: seo.description,
+    canonical: canonicalUrl(seo.path),
+    image: seo.image,
+    noindex: true,
+  });
   const navigate = useNavigate();
   const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);

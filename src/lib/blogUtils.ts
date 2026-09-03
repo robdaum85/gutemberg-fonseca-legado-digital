@@ -1,6 +1,7 @@
 import { blogPosts, type BlogPost } from "@/data/blogPosts";
+import { SITE_URL } from "@/lib/siteSeo";
 
-export const SITE_URL = "https://gutembergfonseca.com.br";
+export { SITE_URL } from "@/lib/siteSeo";
 
 export const CATEGORY_SLUG_MAP: Record<string, string> = {
   "Defesa do Consumidor": "direitos-do-consumidor",
@@ -65,4 +66,18 @@ export function getPostCategoryUrl(post: BlogPost): string {
 export function getCanonicalUrl(path: string): string {
   const clean = path.startsWith("/") ? path : `/${path}`;
   return `${SITE_URL}${clean}`;
+}
+
+export function getPostCitations(post: BlogPost): string[] {
+  const urls = Array.from(post.content.matchAll(/href=["'](https?:\/\/[^"']+)["']/gi), (match) => match[1]);
+  return [...new Set(urls)].filter((url) => {
+    const hostname = new URL(url).hostname.replace(/^www\./, '');
+    return ![
+      'gutembergfonseca.com.br',
+      'instagram.com',
+      'facebook.com',
+      'linkedin.com',
+      'wa.me',
+    ].includes(hostname);
+  });
 }

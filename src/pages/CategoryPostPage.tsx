@@ -6,6 +6,7 @@ import {
   getPostBySlug,
   getCategorySlug,
   getCanonicalUrl,
+  getPostCitations,
   SITE_URL,
 } from '@/lib/blogUtils';
 import { sanitizeHtml } from '@/lib/security';
@@ -24,39 +25,51 @@ const CategoryPostPage = ({
   const isLocalPreview =
     import.meta.env.DEV &&
     new URLSearchParams(window.location.search).get('preview') === '1';
-  const post = slug ? getPostBySlug(slug, isLocalPreview) : undefined;
+  const matchedPost = slug ? getPostBySlug(slug, isLocalPreview) : undefined;
+  const validPost = matchedPost && getCategorySlug(matchedPost.category) === categorySlug ? matchedPost : undefined;
+  const categoryUrl = getCanonicalUrl(`/${categorySlug}`);
+  const canonical = validPost
+    ? getCanonicalUrl(`/${categorySlug}/${validPost.slug}`)
+    : categoryUrl;
+
+  useSeo(validPost
+    ? {
+        title: validPost.metaTitle,
+        headline: validPost.title,
+        description: validPost.metaDescription,
+        canonical,
+        type: 'article',
+        image: validPost.coverImage || validPost.authorImage,
+        publishedTime: validPost.date,
+        modifiedTime: validPost.updatedAt ?? validPost.date,
+        author: validPost.author,
+        articleSection: categoryLabel,
+        keywords: validPost.tags,
+        citations: getPostCitations(validPost),
+        articleSchema: true,
+        breadcrumbs: [
+          { name: 'Início', url: SITE_URL + '/' },
+          { name: categoryLabel, url: categoryUrl },
+          { name: validPost.title, url: canonical },
+        ],
+      }
+    : {
+        title: 'Conteúdo não encontrado | Gutemberg Fonseca',
+        description: 'O conteúdo solicitado não foi encontrado.',
+        canonical: categoryUrl,
+        noindex: true,
+      });
 
   // If post does not exist or doesn't belong to this category, send back to hub
-  if (!post) {
+  if (!validPost) {
     return <Navigate to={`/${categorySlug}`} replace />;
   }
-  if (getCategorySlug(post.category) !== categorySlug) {
-    return <Navigate to={`/${categorySlug}`} replace />;
-  }
-
-  const canonical = getCanonicalUrl(`/${categorySlug}/${post.slug}`);
-  const categoryUrl = getCanonicalUrl(`/${categorySlug}`);
+  const post = validPost;
 
   const formattedDate = new Date(post.date).toLocaleDateString('pt-BR', {
     day: '2-digit',
     month: 'long',
     year: 'numeric',
-  });
-
-  useSeo({
-    title: post.metaTitle,
-    description: post.metaDescription,
-    canonical,
-    type: 'article',
-    image: post.coverImage || post.authorImage,
-    publishedTime: post.date,
-    author: post.author,
-    articleSchema: true,
-    breadcrumbs: [
-      { name: 'Início', url: SITE_URL + '/' },
-      { name: categoryLabel, url: categoryUrl },
-      { name: post.title, url: canonical },
-    ],
   });
 
   return (
@@ -91,9 +104,9 @@ const CategoryPostPage = ({
                 <span className="text-xs font-medium text-primary bg-primary/10 px-2.5 py-1 rounded-full">
                   {post.source}
                 </span>
-                <span className="text-xs text-muted-foreground">
+                <time dateTime={post.date} className="text-xs text-muted-foreground">
                   {formattedDate}
-                </span>
+                </time>
                 {post.readingTime && (
                   <span className="text-xs text-muted-foreground">
                     · {post.readingTime}
@@ -114,9 +127,9 @@ const CategoryPostPage = ({
                   GF
                 </div>
                 <div>
-                  <p className="font-semibold text-sm text-foreground">
+                  <Link rel="author" to="/institucional" className="font-semibold text-sm text-foreground hover:text-primary">
                     {post.author}
-                  </p>
+                  </Link>
                   <p className="text-xs text-muted-foreground">{post.role}</p>
                 </div>
               </div>
@@ -153,7 +166,7 @@ const CategoryPostPage = ({
                 <li>📱 <strong>Fala Consumidor (WhatsApp):</strong> (21) 99336-4848</li>
                 <li>📞 <strong>Disque 151</strong> – PROCON-RJ</li>
                 <li>💬 <strong>Zap do Guto:</strong> +55 21 92011-2255</li>
-                <li>📷 <strong>Instagram:</strong> @gutembergfonseca</li>
+                <li>📷 <strong>Instagram:</strong> @gutembergpfonseca</li>
               </ul>
             </div>
 

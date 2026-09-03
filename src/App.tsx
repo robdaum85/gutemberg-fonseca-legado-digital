@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import { getPostBySlug, getCategorySlug } from "./lib/blogUtils";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import CookieConsent from "./components/CookieConsent";
+import SiteAnalytics from "./components/SiteAnalytics";
 
 const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 const CategoryPostPage = lazy(() => import("./pages/CategoryPostPage"));
@@ -73,6 +74,7 @@ const App = () => {
         <BrowserRouter
           future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
         >
+          <SiteAnalytics />
           <Suspense
             fallback={
               <div className="min-h-screen flex items-center justify-center">
@@ -112,6 +114,24 @@ const App = () => {
                     <CategoryPostPage
                       categoryLabel="Direitos do Cidadão"
                       categorySlug="direitos-do-cidadao"
+                    />
+                  }
+                />
+                <Route
+                  path="/seguranca-publica"
+                  element={
+                    <CategoryPage
+                      categoryLabel="Segurança Pública"
+                      categorySlug="seguranca-publica"
+                    />
+                  }
+                />
+                <Route
+                  path="/seguranca-publica/:slug"
+                  element={
+                    <CategoryPostPage
+                      categoryLabel="Segurança Pública"
+                      categorySlug="seguranca-publica"
                     />
                   }
                 />

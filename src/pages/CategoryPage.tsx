@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { getPostsByCategory } from '@/lib/blogUtils';
 import { useSeo } from '@/lib/useSeo';
 import { SITE_URL, getCanonicalUrl } from '@/lib/blogUtils';
+import { STATIC_PAGE_SEO } from '@/lib/siteSeo';
 
 type CategoryPageProps = {
   categoryLabel?: string;
@@ -16,15 +17,15 @@ const CategoryPage = ({
   categorySlug = 'direitos-do-consumidor',
 }: CategoryPageProps) => {
   const isCitizenCategory = categorySlug === 'direitos-do-cidadao';
+  const isSecurityCategory = categorySlug === 'seguranca-publica';
   const publicCategoryLabel = isCitizenCategory
     ? 'Direitos do Cidadão'
-    : 'Direitos do Consumidor';
-  const metaTitle = isCitizenCategory
-    ? 'Direitos do Cidadão: informação e transparência | Gutemberg Fonseca'
-    : 'Direitos do Consumidor: guia prático e atualizado | Gutemberg Fonseca';
-  const metaDescription = isCitizenCategory
-    ? 'Conteúdos sobre direitos do cidadão, acesso à informação, transparência pública e participação na fiscalização do poder público.'
-    : 'Guia de direitos do consumidor com orientações sobre cobranças, contratos, compras online, golpes digitais, serviços essenciais e como reclamar.';
+    : isSecurityCategory
+      ? 'Segurança Pública'
+      : 'Direitos do Consumidor';
+  const pageSeo = STATIC_PAGE_SEO[`/${categorySlug}`] ?? STATIC_PAGE_SEO['/direitos-do-consumidor'];
+  const metaTitle = pageSeo.title;
+  const metaDescription = pageSeo.description;
   const posts = getPostsByCategory(categoryLabel).sort((a, b) =>
     a.date < b.date ? 1 : -1
   );
@@ -35,7 +36,7 @@ const CategoryPage = ({
     description: metaDescription,
     canonical,
     type: 'website',
-    image: `${SITE_URL}/lovable-uploads/c003fb8b-1544-42bc-881b-af1b83f1ac15.png`,
+    image: pageSeo.image,
     breadcrumbs: [
       { name: 'Início', url: SITE_URL + '/' },
       { name: publicCategoryLabel, url: canonical },
@@ -89,6 +90,16 @@ const CategoryPage = ({
                   Nesta página, você encontra orientações práticas sobre acesso à
                   informação, transparência pública, serviços governamentais e
                   participação cidadã.
+                </p>
+              </>
+            ) : isSecurityCategory ? (
+              <>
+                <p className="text-lg text-foreground/80 leading-relaxed mb-4">
+                  <strong>Informação e propostas para proteger quem vive e trabalha no Rio.</strong>
+                </p>
+                <p className="text-foreground/80 leading-relaxed">
+                  Reunimos análises sobre segurança pública, proteção das mulheres,
+                  transporte, prevenção e políticas públicas com impacto direto na população.
                 </p>
               </>
             ) : (

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSeo } from "@/lib/useSeo";
+import { STATIC_PAGE_SEO, canonicalUrl } from "@/lib/siteSeo";
 
 const FORM_ID = "1FAIpQLSdXT9BNJJNyT3vrO_NeLB35atJGoor6ltb8opxG-Ui4celV0g";
 
@@ -11,6 +13,22 @@ const ENTRY = {
 const EBOOK_URL = "/ebook%20gutemberg.pdf";
 
 export default function LandingSuperendividamento() {
+  const seo = STATIC_PAGE_SEO["/superendividamento"];
+  useSeo({
+    title: seo.title,
+    description: seo.description,
+    canonical: canonicalUrl(seo.path),
+    image: seo.image,
+    extraJsonLd: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: seo.title,
+      description: seo.description,
+      url: canonicalUrl(seo.path),
+      inLanguage: "pt-BR",
+      about: { "@type": "Thing", name: "Superendividamento" },
+    },
+  });
   const [nome, setNome] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [email, setEmail] = useState("");

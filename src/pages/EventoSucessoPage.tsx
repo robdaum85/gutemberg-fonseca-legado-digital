@@ -4,6 +4,8 @@ import { CalendarDays, Clock3, MapPin, ShieldCheck } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { EVENTO_GUTEMBERG } from "@/config/evento";
 import "./EventoPage.css";
+import { useSeo } from "@/lib/useSeo";
+import { canonicalUrl } from "@/lib/siteSeo";
 
 type SuccessState = {
   nome?: string;
@@ -20,6 +22,12 @@ function storedCredential(): SuccessState {
 }
 
 export default function EventoSucessoPage() {
+  useSeo({
+    title: "Inscrição realizada | Gutemberg Fonseca",
+    description: "Confirmação de inscrição no evento.",
+    canonical: canonicalUrl("/evento/sucesso"),
+    noindex: true,
+  });
   const { state } = useLocation();
   const successState = state ? (state as SuccessState) : storedCredential();
   const nome = successState.nome?.trim();

@@ -21,6 +21,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useSearchParams } from "react-router-dom";
+import { useSeo } from "@/lib/useSeo";
+import { canonicalUrl } from "@/lib/siteSeo";
 import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
 import {
   consultarCodigo,
@@ -88,6 +90,12 @@ type CheckinResult =
   | ({ kind: "validacao" } & EventoValidarResponse);
 
 export default function EventoCheckinPage() {
+  useSeo({
+    title: "Portaria do evento | Área operacional",
+    description: "Área operacional de check-in do evento.",
+    canonical: canonicalUrl("/evento/checkin"),
+    noindex: true,
+  });
   const [searchParams] = useSearchParams();
   const [unlocked, setUnlocked] = useState(false);
   const [login, setLogin] = useState("");

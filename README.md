@@ -141,15 +141,28 @@ Atualmente, o projeto já possui uma base técnica de SEO implementada, incluind
 - Twitter Cards
 - estrutura indexável
 - integração com Google Search Console
-- fallback de rotas SPA configurado
+- HTML pré-renderizado por rota pública
+- respostas 404 reais no deploy da Vercel
+- sitemap, `llms.txt` e RSS gerados a partir da base editorial
 - PWA funcional em produção
 
 ### Itens já alinhados
 - `https://gutembergfonseca.com.br/sitemap.xml`
 - `https://gutembergfonseca.com.br/robots.txt`
+- `https://gutembergfonseca.com.br/feed.xml`
 - rotas de blog acessíveis por slug
 - página de conteúdo disponível para o Google
 - inspeção de URL validada no Search Console
+
+### Build e descoberta
+
+`npm run build` cria o bundle do navegador, compila uma entrada SSR temporária e
+pré-renderiza todas as páginas públicas em `dist`. O mesmo processo atualiza
+automaticamente `public/sitemap.xml`, `public/llms.txt` e `public/feed.xml` com
+base nos artigos publicados em `src/data/blogPosts.ts`.
+
+Depois que um deploy estiver disponível em produção, execute `npm run indexnow`
+para notificar os buscadores participantes do IndexNow sobre as URLs atuais.
 
 ### Melhorias em andamento
 - otimização de Core Web Vitals

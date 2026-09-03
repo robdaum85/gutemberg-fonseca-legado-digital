@@ -1,9 +1,26 @@
 import { useState } from "react";
+import { useSeo } from "@/lib/useSeo";
+import { STATIC_PAGE_SEO, canonicalUrl } from "@/lib/siteSeo";
 
 const SHEET_URL =
   "https://script.google.com/macros/s/AKfycbxeK2QANgItpinK5Vf__G3H5CxMJjc8tkyL2ql9bFwNDXzbcdjNoezDguBdP-r7-JlJ/exec";
 
 export default function CatadoresPage() {
+  const seo = STATIC_PAGE_SEO["/catadoresdelixo"];
+  useSeo({
+    title: seo.title,
+    description: seo.description,
+    canonical: canonicalUrl(seo.path),
+    image: seo.image,
+    extraJsonLd: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: seo.title,
+      description: seo.description,
+      url: canonicalUrl(seo.path),
+      inLanguage: "pt-BR",
+    },
+  });
   const [nome, setNome] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [email, setEmail] = useState("");

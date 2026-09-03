@@ -16,8 +16,24 @@ import FormApoiador from '@/components/mobilizacao/FormApoiador';
 import FormLideranca from '@/components/mobilizacao/FormLideranca';
 import FormDenuncia from '@/components/mobilizacao/FormDenuncia';
 import WelcomePopup from '@/components/mobilizacao/WelcomePopup';
+import { useSeo } from '@/lib/useSeo';
+import { PERSON_ID, STATIC_PAGE_SEO, canonicalUrl } from '@/lib/siteSeo';
 
 const Index = () => {
+  const seo = STATIC_PAGE_SEO['/institucional'];
+  useSeo({
+    title: seo.title,
+    description: seo.description,
+    canonical: canonicalUrl(seo.path),
+    image: seo.image,
+    extraJsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      name: seo.title,
+      url: canonicalUrl(seo.path),
+      mainEntity: { '@id': PERSON_ID },
+    },
+  });
   // Scroll to top when the page loads
   useEffect(() => {
     window.scrollTo(0, 0);

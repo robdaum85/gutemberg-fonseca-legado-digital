@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSeo } from "@/lib/useSeo";
+import { STATIC_PAGE_SEO, canonicalUrl } from "@/lib/siteSeo";
 
 const GOOGLE_SHEET_URL =
   "https://script.google.com/macros/s/AKfycbwCqE6Or8leTViJqZwdEMNOGEUyypjWFNFKnq0-HAl7QOkhT_U6Zp1IsdyQ-NYycBpg/exec";
@@ -32,6 +34,21 @@ export async function submitSignature(data: SignatureFormData): Promise<void> {
 }
 
 export default function MotosLivresPage() {
+  const seo = STATIC_PAGE_SEO["/motociclistas"];
+  useSeo({
+    title: seo.title,
+    description: seo.description,
+    canonical: canonicalUrl(seo.path),
+    image: seo.image,
+    extraJsonLd: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: seo.title,
+      description: seo.description,
+      url: canonicalUrl(seo.path),
+      inLanguage: "pt-BR",
+    },
+  });
   const [form, setForm] = useState<SignatureFormData>(initialForm);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);

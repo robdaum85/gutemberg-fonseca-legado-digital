@@ -24,6 +24,7 @@ export type BlogPost = {
   author: string;
   role: string;
   date: string;
+  updatedAt?: string;
   availableFrom?: string;
   authorImage: string;
   coverImage?: string;

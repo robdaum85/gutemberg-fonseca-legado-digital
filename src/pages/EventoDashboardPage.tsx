@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { EventoHero } from "@/components/evento/EventoHero";
 import { EventoCadastroRapido } from "@/components/evento/EventoCadastroRapido";
+import { useSeo } from "@/lib/useSeo";
+import { canonicalUrl } from "@/lib/siteSeo";
 import { EVENTO_COLORS, EVENTO_GUTEMBERG } from "@/config/evento";
 import {
   carregarDashboard,
@@ -29,6 +31,12 @@ const emptyDashboard: EventoDashboardResponse = {
 };
 
 export default function EventoDashboardPage() {
+  useSeo({
+    title: "Participantes do evento | Área operacional",
+    description: "Área operacional de participantes do evento.",
+    canonical: canonicalUrl("/evento/dashboard"),
+    noindex: true,
+  });
   const [data, setData] = useState<EventoDashboardResponse>(emptyDashboard);
   const requestInFlightRef = useRef(false);
   const [loading, setLoading] = useState(false);

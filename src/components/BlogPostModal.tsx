@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import ShareButtons, { MobileFixedShare } from './ShareButtons';
 import type { BlogPost } from '@/data/blogPosts';
-import { getCanonicalUrl, getPostCategoryUrl, SITE_URL } from '@/lib/blogUtils';
+import { getCanonicalUrl, getPostCategoryUrl, getPostCitations, SITE_URL } from '@/lib/blogUtils';
 import { sanitizeHtml } from '@/lib/security';
 import { useSeo } from '@/lib/useSeo';
 
@@ -20,18 +20,23 @@ const BlogPostModal = ({ post, open, onClose }: BlogPostModalProps) => {
     post && open
       ? {
           title: post.metaTitle,
+          headline: post.title,
           description: post.metaDescription,
           canonical,
           type: 'article',
           image: post.coverImage || post.authorImage,
           publishedTime: post.date,
+          modifiedTime: post.updatedAt ?? post.date,
           author: post.author,
+          articleSection: post.category,
+          keywords: post.tags,
+          citations: getPostCitations(post),
           articleSchema: true,
         }
       : {
-          title: document.title,
+          title: typeof document === 'undefined' ? 'Gutemberg Fonseca' : document.title,
           description: '',
-          canonical: SITE_URL + window.location.pathname,
+          canonical: SITE_URL + (typeof window === 'undefined' ? '/' : window.location.pathname),
         }
   );
 
@@ -103,7 +108,7 @@ const BlogPostModal = ({ post, open, onClose }: BlogPostModalProps) => {
                 <li>📱 <strong>Fala Consumidor (WhatsApp):</strong> (21) 99336-4848</li>
                 <li>📞 <strong>Disque 151</strong> – PROCON-RJ</li>
                 <li>💬 <strong>Zap do Guto:</strong> +55 21 92011-2255</li>
-                <li>📷 <strong>Instagram:</strong> @gutembergfonseca</li>
+                <li>📷 <strong>Instagram:</strong> @gutembergpfonseca</li>
               </ul>
             </div>
 

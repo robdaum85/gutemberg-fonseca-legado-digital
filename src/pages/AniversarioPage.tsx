@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label";
 import { EVENT, findLideranca } from "@/config/aniversario";
 import MapaEvento from "@/components/aniversario/MapaEvento";
 import ConfirmacaoTicket from "@/components/aniversario/ConfirmacaoTicket";
+import { useSeo } from "@/lib/useSeo";
+import { STATIC_PAGE_SEO, canonicalUrl } from "@/lib/siteSeo";
 
 const WHATSAPP_SHARE_TEXT = "Confirmei presença no aniversário do Gutemberg Fonseca! 🎉";
 
@@ -41,6 +43,14 @@ function formatWhatsapp(value: string) {
 }
 
 export default function AniversarioPage() {
+  const seo = STATIC_PAGE_SEO["/aniversario"];
+  useSeo({
+    title: seo.title,
+    description: seo.description,
+    canonical: canonicalUrl(seo.path),
+    image: seo.image,
+    noindex: true,
+  });
   const [nome, setNome] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [email, setEmail] = useState("");

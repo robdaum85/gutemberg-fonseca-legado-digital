@@ -53,6 +53,8 @@ import { useCampaignAnalytics } from "@/lib/campaignAnalytics";
 import { useSeo } from "@/lib/useSeo";
 import { PhotoFramesSection } from "@/components/molduras/PhotoFramesSection";
 import "./ApresentacaoFederalPage.css";
+
+const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 import "@/components/federal/FederalSections.css";
 
 type RevealDirection = "up" | "down" | "left" | "right" | "fade";
@@ -66,7 +68,7 @@ type MotionStyle = CSSProperties & {
 
 function useReducedMotion() {
   const [reducedMotion, setReducedMotion] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
 
   useEffect(() => {
@@ -230,7 +232,7 @@ function ScrollProgress({ onScrolledChange }: { onScrolledChange: (scrolled: boo
 function useFederalGsapPilot(disabled: boolean) {
   const scope = useRef<HTMLElement>(null);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (disabled || document.documentElement.classList.contains("a11y-reduce-motion")) return;
 
     gsap.registerPlugin(ScrollTrigger);
@@ -1033,7 +1035,7 @@ export default function FederalPreviewPage() {
           <div className="shell hero-grid">
             <div className="hero-copy-main">
               <h1 className="sr-only" id="hero-title">Gutemberg Fonseca 2255 — O Defensor do Consumidor</h1>
-              <img className="hero-campaign-logo" src="/images/federal/brand/logo-hero-2255-completa.png" alt="Gutemberg Fonseca, deputado federal, número 2255. O Defensor do Consumidor." width="1200" height="800" loading="eager" fetchPriority="high" decoding="async"/>
+              <img className="hero-campaign-logo" src="/images/federal/brand/logo-hero-2255-completa.png" alt="Gutemberg Fonseca, deputado federal, número 2255. O Defensor do Consumidor." width="1200" height="800" loading="eager" {...{ fetchpriority: "high" }} decoding="async"/>
             </div>
 
             <div className="hero-copy-secondary">

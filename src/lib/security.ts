@@ -6,7 +6,13 @@ export function openExternalUrl(url: string) {
 }
 
 export function sanitizeHtml(html: string) {
-  if (typeof window === 'undefined') return '';
+  if (typeof window === 'undefined') {
+    return html
+      .replace(/<(script|iframe|object|embed|style|form)\b[^>]*>[\s\S]*?<\/\1>/gi, '')
+      .replace(/<(link|meta)\b[^>]*\/?\s*>/gi, '')
+      .replace(/\s(?:on[a-z]+|style)=(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '')
+      .replace(/\s(href|src)=(['"])(?:javascript:|data:text\/html)[\s\S]*?\2/gi, '');
+  }
 
   const template = document.createElement('template');
   template.innerHTML = html;
