@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const CONSENT_STORAGE_KEY = "gf_cookie_consent";
 const GA_MEASUREMENT_ID = "G-GQTGRP15XX";
+const GOOGLE_ADS_ID = "AW-18358930380";
 
 type CookieConsentValue = "accepted" | "rejected";
 
@@ -35,20 +36,51 @@ const clearAnalyticsCookies = () => {
     .forEach(deleteCookie);
 };
 
-const loadGoogleAnalytics = () => {
+const DENIED_CONSENT = {
+  ad_storage: "denied",
+  ad_user_data: "denied",
+  ad_personalization: "denied",
+  analytics_storage: "denied",
+} as const;
+
+const GRANTED_CONSENT = {
+  ad_storage: "granted",
+  ad_user_data: "granted",
+  ad_personalization: "granted",
+  analytics_storage: "granted",
+} as const;
+
+// Google Consent Mode v2: gtag.js loads for every visitor (even before a
+// banner decision) so GA4/Ads still receive cookieless, anonymized pings
+// and modeled conversions. No cookie is written and no personal data is
+// processed until the visitor explicitly accepts, so this stays LGPD-safe
+// while fixing the lost pageviews from visitors who never interact with
+// the banner.
+const initGoogleTags = () => {
   if (document.querySelector(`script[src*="${GA_MEASUREMENT_ID}"]`)) return;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag() {
+    // gtag.js expects the native Arguments object in its command queue.
+    // eslint-disable-next-line prefer-rest-params
     window.dataLayer?.push(arguments);
   };
+
+  const stored = window.localStorage.getItem(CONSENT_STORAGE_KEY);
+  window.gtag("consent", "default", stored === "accepted" ? GRANTED_CONSENT : DENIED_CONSENT);
+
   window.gtag("js", new Date());
   window.gtag("config", GA_MEASUREMENT_ID);
+  window.gtag("config", GOOGLE_ADS_ID);
 
   const script = document.createElement("script");
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
   document.head.appendChild(script);
+};
+
+const updateConsent = (value: CookieConsentValue) => {
+  window.gtag?.("consent", "update", value === "accepted" ? GRANTED_CONSENT : DENIED_CONSENT);
 };
 
 const CookieConsent = () => {
@@ -59,9 +91,13 @@ const CookieConsent = () => {
   });
 
   useEffect(() => {
-    if (consent === "accepted") {
-      loadGoogleAnalytics();
-    }
+    initGoogleTags();
+  }, []);
+
+  useEffect(() => {
+    if (consent === null) return;
+
+    updateConsent(consent);
 
     if (consent === "rejected") {
       clearAnalyticsCookies();
