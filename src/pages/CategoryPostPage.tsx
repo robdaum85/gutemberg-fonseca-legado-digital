@@ -74,7 +74,7 @@ const CategoryPostPage = ({
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <Header />
+      <Header solid />
       <main id="conteudo-principal" tabIndex={-1} className="flex-1 pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
           {/* Breadcrumb */}

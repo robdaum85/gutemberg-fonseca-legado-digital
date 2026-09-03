@@ -3,7 +3,11 @@ import { useState, useEffect } from 'react';
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { TikTokIcon, ThreadsIcon } from '@/components/SocialIcons';
 
-const Header = () => {
+type HeaderProps = {
+  solid?: boolean;
+};
+
+const Header = ({ solid = false }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -42,15 +46,17 @@ const Header = () => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-primary shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled || solid ? 'bg-primary shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center" aria-label="Ir para a página inicial">
           <img 
-            src="https://kngofnnx.com/wp-content/uploads/2026/05/LOGO-BRANCA.png" 
-            alt="Gutemberg Fonseca Logo" 
-            className="h-12 md:h-16"
+            src="/images/federal/brand/logo-navbar-2255-horizontal.png"
+            alt="Gutemberg Fonseca 2255 — Deputado Federal"
+            width="1000"
+            height="500"
+            className="h-16 md:h-20 w-auto"
           />
         </a>
 
