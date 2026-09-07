@@ -73,8 +73,13 @@ body.mel-nav-open {
   display: none !important;
 }
 
+/* padding:0 é necessário para neutralizar a utilidade .container do Tailwind
+   (padding: 2rem no tailwind.config.ts), que também é global e vazaria para
+   dentro desta página, roubando 64px de largura em todo lugar que usa
+   .container — proporcionalmente muito mais grave no mobile. */
 .mel-page .container {
   width: min(calc(100% - 2rem), var(--mel-container));
+  padding: 0;
   margin-inline: auto;
 }
 
