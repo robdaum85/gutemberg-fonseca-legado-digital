@@ -52,6 +52,7 @@ import { getPostCategoryUrl, getPostsByCategory } from "@/lib/blogUtils";
 import { useCampaignAnalytics } from "@/lib/campaignAnalytics";
 import { useSeo } from "@/lib/useSeo";
 import { PhotoFramesSection } from "@/components/molduras/PhotoFramesSection";
+import YouTubeSection from "@/components/YouTubeSection";
 import "./ApresentacaoFederalPage.css";
 
 const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
@@ -701,7 +702,10 @@ const fileLabel = (path: string) => {
 };
 
 const galleryImports = import.meta.glob(
-  "/src/assets/fotos/*.{avif,jpg,jpeg,png,webp}",
+  [
+    "/src/assets/fotos/**/*.{avif,jpg,jpeg,png,webp}",
+    "!/src/assets/fotos/originais/**",
+  ],
   { eager: true, query: "?url", import: "default" },
 ) as Record<string, string>;
 
@@ -962,10 +966,11 @@ export default function FederalPreviewPage() {
               <span className="campaign-popup-kicker">Vamos juntos pelo Brasil</span>
               <h2 id="campaign-popup-title">Acompanhe, compartilhe e faça parte</h2>
               <p id="campaign-popup-description">Siga Gutemberg Fonseca nas redes sociais e acompanhe as propostas, agendas e a caminhada até Brasília.</p>
-              <button className="campaign-popup-jingles" type="button" onClick={() => setCampaignPopupOpen(false)}>
-                <Headphones aria-hidden="true"/>
-                <span><strong>Tem jingle novo chegando!</strong><small>Feche o aviso e escute no player.</small></span>
-              </button>
+              <a className="campaign-popup-mel" href="/mel" target="_blank" rel="noopener noreferrer" aria-label="Conheça o MEL - Movimento Endividados Livres (abre em nova aba)" data-campaign-event="mel_click" data-campaign-label="Pop-up: Conheça o MEL">
+                <img src="/images/mel/mel-logo.png" alt="" width="709" height="307" />
+                <span><strong>Conheça o MEL - Movimento Endividados Livres.</strong><small>Acesse a página do movimento.</small></span>
+                <ArrowUpRight aria-hidden="true" />
+              </a>
               <div className="campaign-popup-social" aria-label="Siga Gutemberg Fonseca nas redes sociais">
                 {socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Seguir no ${label}`} title={label} data-campaign-event="social_click" data-campaign-label={`Pop-up: ${label}`} key={label}><SocialIcon/><span>{label}</span></a>)}
               </div>
@@ -1000,6 +1005,9 @@ export default function FederalPreviewPage() {
         </aside>
       </div>
       <a className="federal-whatsapp" href={gutoWhatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Falar com Guto pelo WhatsApp" title="WhatsApp do Guto" data-campaign-event="whatsapp_click" data-campaign-label="WhatsApp flutuante"><MessageCircle aria-hidden="true"/></a>
+      <a className="federal-mel" href="/mel" target="_blank" rel="noopener noreferrer" aria-label="Conhecer o Movimento Endividados Livres (abre em nova aba)" title="Conheça o M.E.L." data-campaign-event="mel_click" data-campaign-label="M.E.L. flutuante">
+        <img src="/images/mel/mel-logo.png" alt="M.E.L. Movimento Endividados Livres" width="709" height="307" />
+      </a>
 
       <header className={`header ${headerScrolled ? "is-scrolled" : ""}`}>
         <div className="shell">
@@ -1014,6 +1022,7 @@ export default function FederalPreviewPage() {
             <a href="#propostas">Propostas</a>
             <a href="/molduras">Molduras</a>
             <a href="#fotos">Fotos</a>
+            <a href="#youtube">Fez e Faz</a>
             <a href="#contato">Contato</a>
           </nav>
 
@@ -1024,7 +1033,7 @@ export default function FederalPreviewPage() {
         <ScrollProgress onScrolledChange={setHeaderScrolled}/>
 
         {menuOpen && <nav className="mobile-nav" aria-label="Navegação mobile">
-          <div className="mobile-nav-links">{[["Início", "#inicio"],["Trajetória", "#trajetoria"],["Resultados", "#resultados"],["Propostas", "#propostas"],["Molduras", "/molduras"],["Fotos", "#fotos"],["Contato", "#contato"]].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</div>
+          <div className="mobile-nav-links">{[["Início", "#inicio"],["Trajetória", "#trajetoria"],["Resultados", "#resultados"],["Propostas", "#propostas"],["Molduras", "/molduras"],["Fotos", "#fotos"],["Fez e Faz", "#youtube"],["Contato", "#contato"]].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</div>
           <div className="mobile-nav-social" aria-label="Redes sociais">{socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} key={label}><SocialIcon/></a>)}</div>
         </nav>}
       </header>
@@ -1127,7 +1136,7 @@ export default function FederalPreviewPage() {
         </div></section>
 
         <section className="proposals" id="propostas" aria-labelledby="proposals-title"><div className="shell">
-          <Reveal className="proposals-heading" direction="up"><span className="section-kicker">Do Rio para Brasília</span><h2 id="proposals-title">Um mandato em defesa <em>do consumidor</em></h2><p>Em Brasília, nosso mandato vai trabalhar para fortalecer a defesa do consumidor através de leis, recursos e articulação política.</p><p>Vamos trabalhar junto ao Governo Federal, ao Governo do Estado, à Assembleia Legislativa, aos municípios e aos órgãos de defesa do consumidor para transformar boas ideias em políticas que cheguem à população.</p></Reveal>
+          <Reveal className="proposals-heading" direction="up"><span className="section-kicker">Do Rio para Brasília</span><h2 id="proposals-title">Conheça 22 motivos para votar <em>Gutemberg Fonseca</em></h2><p>Em Brasília, nosso mandato vai trabalhar para fortalecer a defesa do consumidor através de leis, recursos e articulação política.</p><p>Vamos trabalhar junto ao Governo Federal, ao Governo do Estado, à Assembleia Legislativa, aos municípios e aos órgãos de defesa do consumidor para transformar boas ideias em políticas que cheguem à população.</p></Reveal>
           <div className="proposals-grid">
             <ProposalList items={proposals.slice(0, 11)} start={1}/>
             <ProposalList items={proposals.slice(11)} start={12}/>
@@ -1149,6 +1158,8 @@ export default function FederalPreviewPage() {
         </div></section>
 
         <PhotoFramesSection />
+
+        <YouTubeSection />
 
         <section className="federal-instagram" id="instagram" aria-labelledby="federal-instagram-title"><div className="shell federal-instagram-grid">
           <Reveal className="federal-instagram-copy" direction="left"><Instagram aria-hidden="true"/><span className="section-kicker">Acompanhe a rotina</span><h2 id="federal-instagram-title">Direto do <em>Instagram</em></h2><p>Informação, agendas e encontros em um canal direto com você.</p><a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca<ArrowUpRight/></a></Reveal>

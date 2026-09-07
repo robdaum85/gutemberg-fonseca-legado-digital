@@ -791,7 +791,7 @@ a{color:inherit}
 .f-bar a{color:inherit}
 
 .federal-whatsapp{
-  position:fixed;right:16px;bottom:116px;z-index:61;
+  position:fixed;right:16px;bottom:168px;z-index:61;
   display:inline-flex;align-items:center;justify-content:center;
   width:44px;height:44px;border-radius:50%;
   background:#18a957;color:#fff;text-decoration:none;
@@ -800,6 +800,15 @@ a{color:inherit}
   transition:transform .2s ease,box-shadow .2s ease;
 }
 .federal-whatsapp svg{width:22px;height:22px}
+.federal-mel{
+  position:fixed;right:16px;bottom:116px;z-index:61;
+  display:flex;align-items:center;justify-content:center;
+  width:104px;height:44px;padding:4px;border-radius:10px;
+  background:#fcf1d9;border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 5px 14px rgba(0,0,0,.28);
+}
+.federal-mel img{display:block;width:100%;height:100%;object-fit:contain}
+.federal-mel:hover,.federal-mel:focus-visible{outline:3px solid #edd12a;outline-offset:3px}
 .federal-whatsapp:hover,.federal-whatsapp:focus-visible{transform:translateY(-2px);box-shadow:0 0 0 3px rgba(237,209,42,.5),0 7px 18px rgba(0,0,0,.3)}
 .federal-page .a11y-panel{bottom:168px}
 
@@ -1125,8 +1134,8 @@ a{color:inherit}
   }
   .hero-actions .btn{width:min(100%,420px);white-space:nowrap}
   .federal-whatsapp{
-    right:8px;
-    bottom:140px;
+    right:16px;
+    bottom:168px;
   }
 }
 
@@ -1264,12 +1273,12 @@ a{color:inherit}
 .campaign-popup-kicker{font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-green)}
 .campaign-popup-content h2{margin-top:9px;font-family:var(--display);font-size:clamp(34px,4vw,48px);font-weight:400;line-height:1;text-transform:uppercase;color:var(--brand-navy)}
 .campaign-popup-content>p{margin-top:16px;font-size:14px;line-height:1.65;color:#526277}
-.campaign-popup-jingles{display:flex;align-items:center;gap:11px;width:100%;margin-top:18px;padding:12px 14px;border:1px solid rgba(0,165,86,.2);border-radius:10px;background:rgba(255,222,0,.18);color:var(--brand-navy);text-align:left;cursor:pointer;transition:transform .16s ease,background-color .16s ease}
-.campaign-popup-jingles:hover,.campaign-popup-jingles:focus-visible{background:rgba(255,222,0,.32);transform:translateY(-1px);outline:2px solid var(--brand-green);outline-offset:2px}
-.campaign-popup-jingles>svg{width:22px;height:22px;flex:none;color:var(--brand-green)}
-.campaign-popup-jingles>span{display:grid;gap:2px}
-.campaign-popup-jingles strong{font-size:11px;line-height:1.2;text-transform:uppercase;letter-spacing:.04em}
-.campaign-popup-jingles small{font-size:10px;color:#526277}
+.campaign-popup-mel{text-decoration:none;display:flex;align-items:center;gap:11px;width:100%;margin-top:18px;padding:12px 14px;border:1px solid rgba(0,165,86,.2);border-radius:10px;background:rgba(255,222,0,.18);color:var(--brand-navy);text-align:left;cursor:pointer;transition:transform .16s ease,background-color .16s ease}
+.campaign-popup-mel:hover,.campaign-popup-mel:focus-visible{background:rgba(255,222,0,.32);transform:translateY(-1px);outline:2px solid var(--brand-green);outline-offset:2px}
+.campaign-popup-mel>svg{width:22px;height:22px;flex:none;color:var(--brand-green)}
+.campaign-popup-mel>img{width:90px;height:auto;flex:none;border-radius:5px}.campaign-popup-mel>span{display:grid;gap:5px;min-width:0}
+.campaign-popup-mel strong{font-size:11px;line-height:1.2;text-transform:uppercase;letter-spacing:.04em}
+.campaign-popup-mel small{font-size:10px;color:#526277}
 .campaign-popup-social{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
 .campaign-popup-social a{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:8px 11px;border:1px solid rgba(0,63,102,.13);border-radius:8px;background:#f1f6f9;color:var(--brand-navy);font-size:10px;font-weight:800;text-decoration:none;transition:transform .16s ease,background-color .16s ease,color .16s ease}
 .campaign-popup-social a:hover,.campaign-popup-social a:focus-visible{background:var(--brand-blue);color:#fff;transform:translateY(-2px)}
@@ -1395,7 +1404,8 @@ a{color:inherit}
   .campaign-jingle-copy small{font-size:6px}
   .campaign-jingle-copy strong{overflow:hidden;font-size:8px;text-overflow:ellipsis;white-space:nowrap}
   .campaign-jingle-player button{width:29px;height:29px;min-width:29px;min-height:29px}
-  .federal-whatsapp{right:10px;bottom:116px}
+  .federal-whatsapp{right:10px;bottom:168px}
+  .federal-mel{right:10px;bottom:116px}
   .federal-page .a11y-toggle{right:10px;bottom:66px}
   .federal-page .a11y-panel{right:10px;bottom:116px;max-height:calc(100svh - 136px)}
 }

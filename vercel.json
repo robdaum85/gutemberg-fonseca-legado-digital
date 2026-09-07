@@ -65,6 +65,11 @@
   ],
   "redirects": [
     {
+      "source": "/mel",
+      "destination": "https://lp.babimendessp.com.br/mel/",
+      "permanent": false
+    },
+    {
       "source": "/codigodedefesa",
       "destination": "/codigo-de-defesa-do-consumidor",
       "permanent": true

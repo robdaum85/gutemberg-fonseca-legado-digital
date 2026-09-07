@@ -5,7 +5,7 @@ import About from '@/components/About';
 import Career from '@/components/Career';
 import Statistics from '@/components/Statistics';
 // TODO: reativar futuramente
-// import MultimediaClipping from '@/components/MultimediaClipping';
+import YouTubeSection from '@/components/YouTubeSection';
 import Blog from '@/components/Blog';
 import PodcastHighlight from '@/components/PodcastHighlight';
 import InstagramFeed from '@/components/InstagramFeed';
@@ -48,7 +48,7 @@ const Index = () => {
         <About />
         <Career />
         <Statistics />
-        {/* TODO: reativar futuramente <MultimediaClipping /> */}
+        <YouTubeSection />
         <Blog />
         <PodcastHighlight />
         <InstagramFeed />
