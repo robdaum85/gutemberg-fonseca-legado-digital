@@ -112,6 +112,14 @@ export const STATIC_PAGE_SEO: Record<string, StaticPageSeo> = {
     image: DEFAULT_SOCIAL_IMAGE,
     noindex: true,
   },
+  "/mel": {
+    title: "M.E.L. | Gutemberg Fonseca no Rio e Babi Mendes em São Paulo",
+    description:
+      "Conheça o Movimento Endividados Livres com Gutemberg Fonseca, 2255, candidato a deputado federal pelo Rio de Janeiro, e Babi Mendes, 2206, candidata por São Paulo.",
+    path: "/mel",
+    image: "https://www.gutembergfonseca.com.br/images/mel/mel-logo.png",
+    noindex: true,
+  },
 };
 
 export function absoluteUrl(value?: string): string | undefined {

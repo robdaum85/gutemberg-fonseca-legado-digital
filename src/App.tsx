@@ -35,6 +35,7 @@ const ApresentacaoFederalPage = lazy(
   () => import("./pages/ApresentacaoFederalPage"),
 );
 const MoldurasPage = lazy(() => import("./pages/MoldurasPage"));
+const MelPage = lazy(() => import("./pages/MelPage"));
 
 const queryClient = new QueryClient();
 
@@ -158,6 +159,7 @@ const App = () => {
                 <Route path="/molduras" element={<MoldurasPage />} />
                 <Route path="/molduras/:slug" element={<MoldurasPage />} />
                 <Route path="/aniversario" element={<AniversarioPage />} />
+                <Route path="/mel" element={<MelPage />} />
                 <Route path="/evento" element={<EventoPage />} />
                 <Route
                   path="/evento/sucesso"
