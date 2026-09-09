@@ -104,6 +104,8 @@ function schemaFor(urlPath, seo) {
   } else if (category) {
     const posts = publicPosts.filter((item) => item.category === category.dataLabel || (
       category.dataLabel === "Defesa do Consumidor" && item.category === "Apostas e Endividamento"
+    ) || (
+      category.dataLabel === "Direitos do Cidadão" && item.category === "Direitos e Cidadania"
     ));
     graph.push({
       "@type": "CollectionPage",
@@ -262,7 +264,7 @@ const indexableStaticPaths = Object.values(STATIC_PAGE_SEO)
   .filter((page) => !page.noindex)
   .map((page) => page.path);
 const indexablePostPaths = publicPosts.map((post) => {
-  const segment = post.category === "Direitos do Cidadão"
+  const segment = ["Direitos do Cidadão", "Direitos e Cidadania"].includes(post.category)
     ? "direitos-do-cidadao"
     : post.category === "Segurança Pública"
       ? "seguranca-publica"

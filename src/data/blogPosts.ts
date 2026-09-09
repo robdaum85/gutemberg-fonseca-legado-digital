@@ -39,6 +39,70 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "stf-autismo-nivel-1-beneficio-compra-veiculos",
+    source: "Blog",
+    category: "Direitos e Cidadania",
+    title: "Autismo nível 1 não pode, sozinho, impedir benefício na compra de veículo",
+    excerpt: "STF derrubou a restrição que excluía autistas nível 1 do benefício tributário na compra de veículos. Entenda o que mudou e quais critérios continuam valendo.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-15T00:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/stf-autismo-nivel-1-beneficio-compra-veiculos.webp",
+    coverImageAlt: "Família consulta documentos para solicitar benefício tributário na compra de veículo por pessoa com autismo.",
+    metaTitle: "STF amplia acesso de autistas nível 1 ao benefício na compra de veículos",
+    metaDescription: "STF derrubou a restrição que excluía autistas nível 1 do benefício tributário na compra de veículos. Entenda o que mudou e quais critérios continuam valendo.",
+    readingTime: "3 min de leitura",
+    tags: ["Autismo nível 1 isenção de carro", "STF autismo nível 1", "Compra de veículo PCD", "Benefício tributário PCD", "Reforma tributária", "IBS e CBS"],
+    featured: true,
+    content: `
+      <p>Uma classificação escrita no laudo estava deixando pessoas com autismo nível 1 fora de um benefício tributário destinado às pessoas com deficiência.</p>
+
+      <p>Essa restrição caiu.</p>
+
+      <p>Em agosto de 2026, o Supremo Tribunal Federal decidiu, por unanimidade, retirar da Lei Complementar nº 214/2025 as expressões que limitavam a alíquota zero de IBS e CBS na compra de veículos a determinados graus de deficiência ou de transtorno do espectro autista. (<a href="https://noticias.stf.jus.br/postsnoticias/stf-afasta-restricao-para-aliquota-zero-na-compra-de-veiculos-por-pessoas-autistas-e-com-deficiencia-intelectual/" target="_blank" rel="noopener noreferrer">Notícias STF</a>)</p>
+
+      <p>Na prática, uma pessoa com autismo nível de suporte 1 não pode ser excluída logo de início apenas porque o diagnóstico não a classifica como moderada ou grave.</p>
+
+      <br/>
+      <h2>O que o STF mudou</h2>
+
+      <p>A regulamentação da reforma tributária havia estabelecido o benefício para pessoas com deficiência intelectual severa ou profunda e para autistas classificados nos níveis moderado ou grave.</p>
+
+      <p>O problema era criar uma exclusão automática com base no grau indicado no diagnóstico.</p>
+
+      <p>Ao julgar as ADIs 7779 e 7790, o STF entendeu que a Constituição não fez essa distinção. Para o Tribunal, a lei complementar não poderia criar uma restrição que não estava prevista no texto constitucional. (<a href="https://noticias.stf.jus.br/postsnoticias/stf-afasta-restricao-para-aliquota-zero-na-compra-de-veiculos-por-pessoas-autistas-e-com-deficiencia-intelectual/" target="_blank" rel="noopener noreferrer">Notícias STF</a>)</p>
+
+      <p>Foram retiradas da lei expressões como “severa ou profunda”, “nível moderado ou grave” e “grau moderado ou grave”.</p>
+
+      <p>Isso não significa que qualquer diagnóstico garanta o benefício automaticamente. O pedido continua sujeito à documentação exigida e aos demais requisitos previstos na legislação. O que muda é que o grau da deficiência ou do autismo não pode servir, sozinho, para barrar o acesso.</p>
+
+      <br/>
+      <h2>Por que essa decisão importa para as famílias</h2>
+
+      <p>O nível de suporte indicado no diagnóstico não resume todas as dificuldades enfrentadas por uma pessoa.</p>
+
+      <p>Há autistas nível 1 que encontram obstáculos importantes no transporte coletivo, em ambientes lotados ou nos deslocamentos frequentes para consultas, terapias e escola.</p>
+
+      <p>Analisar apenas uma classificação pode deixar de fora situações que precisam ser avaliadas de forma mais ampla.</p>
+
+      <p>Foi esse tipo de exclusão abstrata que o STF afastou. (<a href="https://noticias.stf.jus.br/postsnoticias/stf-afasta-restricao-para-aliquota-zero-na-compra-de-veiculos-por-pessoas-autistas-e-com-deficiencia-intelectual/" target="_blank" rel="noopener noreferrer">Notícias STF</a>)</p>
+
+      <p>A decisão mantém os demais critérios para concessão do benefício, mas impede que pessoas sejam eliminadas apenas pelo grau registrado no laudo.</p>
+
+      <br/>
+      <p>A legislação precisa reconhecer que uma mesma classificação pode representar realidades muito diferentes.</p>
+
+      <p>A decisão do STF corrige uma barreira que atingia pessoas com deficiência leve e autistas nível 1 antes mesmo de uma análise mais completa da situação.</p>
+
+      <p><strong>Conhece uma família que pode ser alcançada por essa mudança? Compartilhe este conteúdo.</strong></p>
+
+      <p>Para acompanhar informações sobre direitos das pessoas com deficiência e defesa do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
+
+      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+    `,
+  },
+  {
     slug: "ludopatia-apostas-prejuizos-familia",
     source: "Blog",
     category: "Apostas e Endividamento",
