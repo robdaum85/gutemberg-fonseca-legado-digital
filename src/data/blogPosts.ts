@@ -41,7 +41,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "pec-seguranca-publica-uniao-autonomia-estados",
     source: "Blog",
-    category: "Segurança Pública",
+    category: "Defesa do Consumidor",
     title: "PEC da Segurança Pública: até onde a União deve definir as regras dos estados?",
     excerpt: "A PEC da Segurança Pública amplia a integração entre União, estados e municípios e muda competências das forças policiais. Entenda o que está em discussão.",
     author: "Gutemberg Fonseca",
@@ -108,7 +108,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "milicia-rio-taxas-servicos-moradores",
     source: "Blog",
-    category: "Segurança Pública",
+    category: "Defesa do Consumidor",
     title: "A “segunda conta” que a milícia cobra do morador do Rio",
     excerpt: "Moradores de áreas dominadas por milícias relatam cobranças por gás, água, internet, energia, segurança e até acesso às próprias ruas. Entenda como funciona essa economia.",
     author: "Gutemberg Fonseca",
@@ -167,7 +167,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "pcc-comando-vermelho-terrorismo-brasil-estados-unidos",
     source: "Blog",
-    category: "Segurança Pública",
+    category: "Defesa do Consumidor",
     title: "PCC e Comando Vermelho são terroristas nos EUA. E no Brasil?",
     excerpt: "Estados Unidos classificaram PCC e Comando Vermelho como organizações terroristas. Entenda por que o Brasil mantém outro enquadramento e o que está em debate.",
     author: "Gutemberg Fonseca",
@@ -235,7 +235,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "deepfakes-sexuais-escolas-inteligencia-artificial",
     source: "Blog",
-    category: "Direitos e Cidadania",
+    category: "Defesa do Consumidor",
     title: "Quando a inteligência artificial vira instrumento de violência dentro da escola",
     excerpt: "Casos de imagens e vídeos sexuais falsos criados com IA já chegaram às escolas. Entenda por que é preciso ter protocolo, prevenção e resposta rápida.",
     author: "Gutemberg Fonseca",
