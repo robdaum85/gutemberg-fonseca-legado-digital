@@ -39,6 +39,260 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "pec-seguranca-publica-uniao-autonomia-estados",
+    source: "Blog",
+    category: "Segurança Pública",
+    title: "PEC da Segurança Pública: até onde a União deve definir as regras dos estados?",
+    excerpt: "A PEC da Segurança Pública amplia a integração entre União, estados e municípios e muda competências das forças policiais. Entenda o que está em discussão.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-20T00:00:00-03:00",
+    updatedAt: "2026-09-02T19:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/pec-seguranca-publica-uniao-autonomia-estados.webp",
+    coverImageAlt: "Sessão do Congresso Nacional durante debate sobre mudanças na organização da segurança pública brasileira.",
+    metaTitle: "PEC da Segurança Pública amplia papel da União e reacende debate sobre autonomia dos estados",
+    metaDescription: "A PEC da Segurança Pública amplia a integração entre União, estados e municípios e muda competências das forças policiais. Entenda o que está em discussão.",
+    readingTime: "4 min de leitura",
+    tags: ["PEC da Segurança Pública", "PEC 18/2025", "Segurança pública", "Autonomia dos estados", "SUSP", "Polícia Federal", "Polícias municipais"],
+    featured: true,
+    content: `
+      <p>A segurança pública brasileira é organizada, em grande parte, pelos estados. São os governadores que comandam as polícias Civil e Militar e lidam diretamente com problemas que mudam muito de uma região para outra.</p>
+
+      <p>A PEC 18/2025 mexe nessa estrutura.</p>
+
+      <p>A proposta coloca o Sistema Único de Segurança Pública, o SUSP, na Constituição e amplia a cooperação entre União, estados, Distrito Federal e municípios. Também aumenta competências federais, redefine atribuições policiais e cria novas regras para o trabalho integrado das forças. (<a href="https://www25.senado.leg.br/web/atividade/materias/-/materia/172997" target="_blank" rel="noopener noreferrer">Senado Federal</a>)</p>
+
+      <p>A Câmara aprovou a PEC em março, por 461 votos a 14 no segundo turno. No Senado, o texto-base passou pela Comissão de Constituição e Justiça em setembro, mas a análise da comissão ainda não terminou. (<a href="https://www.camara.leg.br/noticias/1250434-camara-aprova-pec-da-seguranca-publica-em-2o-turno-acompanhe/" target="_blank" rel="noopener noreferrer">Portal da Câmara dos Deputados</a>; <a href="https://www12.senado.leg.br/noticias/materias/2026/09/02/pec-da-seguranca-ccj-aprova-texto-base-com-retirada-de-regra-sobre-bets" target="_blank" rel="noopener noreferrer">Senado Federal</a>)</p>
+
+      <br/>
+      <h2>O que pode mudar na segurança pública</h2>
+
+      <p>A proposta formaliza na Constituição a cooperação entre os diferentes níveis de governo, com forças-tarefa, compartilhamento de informações, integração de sistemas e atuação conjunta contra organizações criminosas. (<a href="https://www25.senado.leg.br/web/atividade/materias/-/materia/172997" target="_blank" rel="noopener noreferrer">Senado Federal</a>)</p>
+
+      <p>A Polícia Federal passa a ter competência mais clara para investigar organizações criminosas e milícias com atuação interestadual ou internacional, sem retirar as atribuições das polícias estaduais e do Ministério Público. A Polícia Rodoviária Federal também ganha novas funções, como o policiamento ostensivo em ferrovias e hidrovias federais. (<a href="https://www.camara.leg.br/noticias/1250475-SAIBA-MAIS-SOBRE-O-TEXTO-APROVADO-DA-PEC-DA-SEGURANCA-PUBLICA" target="_blank" rel="noopener noreferrer">Portal da Câmara dos Deputados</a>)</p>
+
+      <p>Outro ponto é a possibilidade de criação de polícias municipais de natureza civil, voltadas ao policiamento ostensivo e comunitário, desde que atendam aos critérios previstos na proposta. (<a href="https://www25.senado.leg.br/web/atividade/materias/-/materia/172997" target="_blank" rel="noopener noreferrer">Senado Federal</a>)</p>
+
+      <p>A PEC também dá à União espaço maior para estabelecer diretrizes nacionais e parâmetros de funcionamento do sistema. É justamente aí que aparece uma das principais discussões.</p>
+
+      <br/>
+      <h2>Integração nacional ou perda de autonomia?</h2>
+
+      <p>Os defensores da PEC argumentam que facções, milícias e redes de lavagem de dinheiro já atravessam fronteiras estaduais. Nesse cenário, cada estado trabalhar isoladamente dificulta investigações, troca de informações e operações conjuntas.</p>
+
+      <p>O relator no Senado, Rogério Carvalho, defendeu que o crime organizado ganhou dimensão nacional e internacional e que o modelo atual ainda é muito descentralizado. (<a href="https://www12.senado.leg.br/noticias/materias/2026/09/02/pec-da-seguranca-ccj-aprova-texto-base-com-retirada-de-regra-sobre-bets" target="_blank" rel="noopener noreferrer">Senado Federal</a>)</p>
+
+      <p>A preocupação do outro lado é saber até onde devem ir as regras nacionais.</p>
+
+      <p>Os estados continuam comandando suas próprias polícias, mas passam a operar dentro de uma estrutura mais padronizada em diversos pontos. Para quem critica a proposta, esse desenho pode reduzir a liberdade dos governos estaduais para organizar suas políticas de acordo com a realidade local.</p>
+
+      <p>No Rio, essa discussão não é abstrata. O estado enfrenta facções, milícias, domínio territorial e crimes que exigem integração com órgãos federais, mas também tem características próprias que precisam ser consideradas na organização das forças.</p>
+
+      <p>A discussão, portanto, não precisa ser entre integração ou autonomia. O desafio é estabelecer até onde a coordenação nacional ajuda o trabalho policial e a partir de que ponto começa a interferir em decisões que deveriam permanecer nos estados.</p>
+
+      <br/>
+      <p>A PEC ainda não alterou a Constituição.</p>
+
+      <p>Depois da conclusão da votação na CCJ, o texto precisará passar pelo Plenário do Senado em dois turnos. Como o Senado já fez mudanças em relação à versão aprovada pela Câmara, o processo legislativo ainda pode exigir nova análise entre as Casas antes da promulgação. (<a href="https://www12.senado.leg.br/noticias/materias/2026/09/02/pec-da-seguranca-ccj-aprova-texto-base-com-retirada-de-regra-sobre-bets" target="_blank" rel="noopener noreferrer">Senado Federal</a>)</p>
+
+      <p>Segurança pública precisa de integração. Mas uma mudança desse tamanho também exige clareza sobre quem decide, quem executa e quem responde pelos resultados.</p>
+
+      <p><strong>Na sua opinião, a União deve ter mais espaço para definir regras nacionais de segurança ou os estados precisam preservar maior autonomia?</strong></p>
+
+      <p>Acompanhe meu trabalho em <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e em <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
+
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+    `,
+  },
+  {
+    slug: "milicia-rio-taxas-servicos-moradores",
+    source: "Blog",
+    category: "Segurança Pública",
+    title: "A “segunda conta” que a milícia cobra do morador do Rio",
+    excerpt: "Moradores de áreas dominadas por milícias relatam cobranças por gás, água, internet, energia, segurança e até acesso às próprias ruas. Entenda como funciona essa economia.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-19T00:00:00-03:00",
+    updatedAt: "2026-08-20T19:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/milicia-rio-taxas-servicos-moradores.webp",
+    coverImageAlt: "Rua de comunidade do Rio de Janeiro com portão instalado para controlar a circulação de moradores.",
+    metaTitle: "Milícia no Rio cobra por gás, internet, segurança e até acesso à própria rua",
+    metaDescription: "Moradores de áreas dominadas por milícias relatam cobranças por gás, água, internet, energia, segurança e até acesso às próprias ruas. Entenda como funciona essa economia.",
+    readingTime: "4 min de leitura",
+    tags: ["Milícia no Rio de Janeiro", "Rio das Pedras", "Taxas da milícia", "Crime organizado", "Serviços clandestinos", "Extorsão de moradores", "Economia das milícias"],
+    featured: true,
+    content: `
+      <p>Pagar impostos, conta de luz, água, internet e gás já faz parte do orçamento de qualquer família. Em áreas dominadas pelo crime, porém, moradores relatam uma cobrança a mais: aquela imposta por quem controla o território.</p>
+
+      <p>Em Rio das Pedras, na Zona Oeste, cerca de 15 portões haviam sido instalados em vias públicas até abril de 2025. Segundo relatos publicados pela imprensa, moradores eram obrigados a pagar R$ 400 pela chave e mais R$ 50 por mês para ter acesso às próprias ruas. (<a href="https://revistaoeste.com/brasil/taxas-de-gas-agua-internet-e-seguranca-como-a-milicia-do-rio-estrangula-moradores-de-comunidades/" target="_blank" rel="noopener noreferrer">Revista Oeste</a>)</p>
+
+      <p>O portão é apenas uma parte desse sistema. Gás, água, internet e energia também aparecem entre os serviços explorados. O morador deixa de escolher onde comprar e passa a depender das condições impostas pelo grupo que domina a região.</p>
+
+      <br/>
+      <h2>Quando serviços básicos viram fonte de renda para o crime</h2>
+
+      <p>Na reportagem sobre Rio das Pedras, comerciantes relataram cobrança de 10% sobre as vendas, além de uma taxa semanal de “segurança” que poderia chegar a R$ 350. Os valores foram relatados sob anonimato por moradores e comerciantes, diante do medo de represálias. (<a href="https://revistaoeste.com/brasil/taxas-de-gas-agua-internet-e-seguranca-como-a-milicia-do-rio-estrangula-moradores-de-comunidades/" target="_blank" rel="noopener noreferrer">Revista Oeste</a>)</p>
+
+      <p>Esse modelo não está restrito a uma comunidade. Investigações da Polícia Civil já identificaram grupos que exploravam gás, água, internet, transporte e outras atividades em regiões da Baixada Fluminense. Em uma operação de 2024, duas empresas provedoras de internet foram apontadas como parte de um esquema usado para lavar dinheiro obtido com atividades ilegais. (<a href="https://www.policiacivil.rj.gov.br/news/6797" target="_blank" rel="noopener noreferrer">Polícia Civil do Estado do Rio de Janeiro</a>)</p>
+
+      <p>Em agosto de 2026, uma investigação do Ministério Público do Rio e da Polícia Federal apontou movimentações suspeitas superiores a R$ 350 milhões ligadas a uma milícia da Baixada. Entre as atividades investigadas estavam provedores de internet, venda de gás e outros serviços explorados a partir do domínio territorial. (<a href="https://www.gov.br/mj/pt-br/assuntos/noticias-1/mjsp-pf-e-mprj-atuam-de-forma-integrada-contra-organizacao-criminosa-na-baixada-fluminense" target="_blank" rel="noopener noreferrer">Ministério da Justiça e Segurança Pública</a>)</p>
+
+      <p>É por isso que combater milícia não se resume a apreender armas ou prender quem está na rua cobrando uma taxa. É preciso descobrir para onde o dinheiro vai, quais empresas são usadas, quem administra os serviços e como os recursos entram novamente na economia formal.</p>
+
+      <br/>
+      <h2>O morador perde dinheiro e perde liberdade</h2>
+
+      <p>Quando um grupo armado decide de quem o morador pode comprar gás, qual internet pode contratar ou quanto deve pagar para entrar na própria rua, não existe relação de consumo normal. Existe coerção.</p>
+
+      <p>O impacto aparece no orçamento, mas vai além dele. Comerciantes trabalham sob ameaça, empresas regulares encontram dificuldades para entrar em determinados territórios e famílias ficam presas a serviços escolhidos por quem exerce o controle armado da região.</p>
+
+      <p>O próprio Ministério da Justiça descreve as milícias como grupos que extraem recursos do controle ou da extorsão sobre mercados como água, luz, gás, internet, transporte, imóveis e taxas de segurança. (<a href="https://www.gov.br/mj/pt-br/acesso-a-informacao/convenios/ted/sal/sei_33515923_plano_de_trabalho_n-_01_ted_sal_mjsp_n-_01_2025.pdf" target="_blank" rel="noopener noreferrer">Ministério da Justiça e Segurança Pública</a>)</p>
+
+      <p>Enfrentar essa estrutura exige atacar a fonte de renda. Enquanto o domínio territorial continuar produzindo dinheiro, haverá recursos para financiar armas, ampliar negócios clandestinos e disputar novas áreas.</p>
+
+      <br/>
+      <p>Nenhum morador deveria pagar para entrar na rua onde mora ou ser obrigado a contratar um serviço escolhido pelo crime.</p>
+
+      <p>Segurança pública também passa por recuperar a liberdade de quem vive nesses territórios e cortar o dinheiro que sustenta as organizações criminosas.</p>
+
+      <p><strong>Compartilhe este conteúdo para que mais pessoas entendam como funciona a economia das milícias no Rio.</strong></p>
+
+      <p>Para acompanhar meu trabalho, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
+
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+    `,
+  },
+  {
+    slug: "pcc-comando-vermelho-terrorismo-brasil-estados-unidos",
+    source: "Blog",
+    category: "Segurança Pública",
+    title: "PCC e Comando Vermelho são terroristas nos EUA. E no Brasil?",
+    excerpt: "Estados Unidos classificaram PCC e Comando Vermelho como organizações terroristas. Entenda por que o Brasil mantém outro enquadramento e o que está em debate.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-18T00:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/pcc-comando-vermelho-terrorismo-brasil-estados-unidos.webp",
+    coverImageAlt: "Operação policial contra organizações criminosas no Brasil em meio ao debate sobre a classificação de PCC e Comando Vermelho.",
+    metaTitle: "PCC e Comando Vermelho: por que os EUA classificam como terrorismo e o Brasil não?",
+    metaDescription: "Estados Unidos classificaram PCC e Comando Vermelho como organizações terroristas. Entenda por que o Brasil mantém outro enquadramento e o que está em debate.",
+    readingTime: "4 min de leitura",
+    tags: ["PCC e Comando Vermelho terrorismo", "Crime organizado", "Lei Antiterrorismo", "Facções criminosas", "Segurança pública", "PCC", "Comando Vermelho"],
+    featured: true,
+    content: `
+      <p>Desde junho, PCC e Comando Vermelho carregam nos Estados Unidos uma classificação que não existe para essas facções no Brasil: Organizações Terroristas Estrangeiras.</p>
+
+      <p>A decisão foi anunciada pelo Departamento de Estado americano em 28 de maio. Na mesma data, os dois grupos foram classificados como Terroristas Globais Especialmente Designados. A inclusão como organizações terroristas estrangeiras entrou em vigor em 5 de junho, após publicação no registro oficial dos Estados Unidos.</p>
+
+      <p>A medida tem efeitos concretos na legislação americana. Recursos ligados às organizações podem ser bloqueados, instituições financeiras passam a ter obrigações específicas e fornecer apoio material aos grupos pode configurar crime para pessoas sujeitas à jurisdição dos Estados Unidos. (<a href="https://public-inspection.federalregister.gov/2026-11323.pdf" target="_blank" rel="noopener noreferrer">Departamento de Estado dos Estados Unidos</a>; <a href="https://public-inspection.federalregister.gov/2026-11324.pdf" target="_blank" rel="noopener noreferrer">designação como Terroristas Globais Especialmente Designados</a>)</p>
+
+      <p>No Brasil, o tratamento jurídico é outro.</p>
+
+      <br/>
+      <h2>Por que a legislação brasileira faz uma distinção</h2>
+
+      <p>A Lei Antiterrorismo brasileira, de 2016, não considera terrorismo qualquer ação violenta praticada por um grupo organizado.</p>
+
+      <p>O texto define o crime a partir de atos específicos praticados por razões como xenofobia ou preconceito de raça, cor, etnia e religião, com a finalidade de provocar terror social ou generalizado. É dentro dessa definição que uma organização pode ser considerada terrorista no país. (<a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/lei/l13260.htm" target="_blank" rel="noopener noreferrer">Presidência da República</a>)</p>
+
+      <p>PCC e Comando Vermelho, portanto, não passam automaticamente a ser organizações terroristas no Brasil porque receberam essa classificação dos Estados Unidos.</p>
+
+      <p>Isso não significa falta de instrumentos para combatê-los.</p>
+
+      <p>Em março de 2026, entrou em vigor o Marco Legal do Combate ao Crime Organizado. A nova lei criou o crime de domínio social estruturado para organizações criminosas ultraviolentas que usam violência ou grave ameaça para controlar territórios, intimidar a população ou dificultar a atuação das forças de segurança. (<a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/lei/l15358.htm" target="_blank" rel="noopener noreferrer">Presidência da República</a>)</p>
+
+      <p>A legislação também alcança quem promove, integra ou apoia essas estruturas e endureceu regras aplicáveis a esse tipo de criminalidade.</p>
+
+      <br/>
+      <h2>A discussão agora é sobre qual tratamento o Estado deve dar às facções</h2>
+
+      <p>O debate não termina no nome usado para classificar PCC e Comando Vermelho.</p>
+
+      <p>Quem defende a inclusão dessas facções na Lei Antiterrorismo argumenta que o tamanho alcançado por esses grupos, o controle territorial, os ataques contra agentes públicos e a atuação internacional justificam um enquadramento mais duro. Uma proposta nesse sentido já avançou em comissão da Câmara dos Deputados em 2026. (<a href="https://www.camara.leg.br/noticias/1262111-comissao-aprova-projeto-que-classifica-pcc-e-cv-como-grupos-terroristas-junto-a-11-carteis-latinos" target="_blank" rel="noopener noreferrer">Portal da Câmara dos Deputados</a>)</p>
+
+      <p>Há, porém, uma posição contrária. O governo brasileiro sustenta que organizações voltadas principalmente ao lucro criminoso não se confundem juridicamente com grupos terroristas e também aponta possíveis impactos da classificação sobre a soberania nacional e as relações internacionais. O Itamaraty chegou a alertar para consequências externas que poderiam decorrer desse enquadramento. (<a href="https://agenciabrasil.ebc.com.br/internacional/noticia/2026-07/itamaraty-alerta-para-risco-de-eua-usar-forca-militar-no-brasil" target="_blank" rel="noopener noreferrer">Agência Brasil</a>)</p>
+
+      <p>Na minha avaliação, o Congresso precisa continuar essa discussão sem perder o foco no que realmente importa: atingir o dinheiro, as lideranças, o domínio territorial e a estrutura que mantém essas organizações funcionando.</p>
+
+      <p>O nome jurídico escolhido precisa vir acompanhado de instrumentos capazes de enfraquecer as facções na prática.</p>
+
+      <br/>
+      <p>PCC e Comando Vermelho já ultrapassaram há muito tempo os limites de grupos criminosos locais. Atuam com tráfico de drogas e armas, lavagem de dinheiro, controle de territórios e redes que chegam a outros países.</p>
+
+      <p>Os Estados Unidos decidiram tratá-los como organizações terroristas. O Brasil escolheu reforçar a legislação contra o crime organizado sem fazer essa mesma equiparação.</p>
+
+      <p>A questão que permanece é se o modelo brasileiro é suficiente para enfrentar organizações que adquiriram tamanho poder econômico e territorial.</p>
+
+      <p><strong>Na sua opinião, PCC e Comando Vermelho deveriam receber também no Brasil a classificação de organizações terroristas?</strong></p>
+
+      <p>Acompanhe meu trabalho em <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e em <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
+
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+    `,
+  },
+  {
+    slug: "deepfakes-sexuais-escolas-inteligencia-artificial",
+    source: "Blog",
+    category: "Direitos e Cidadania",
+    title: "Quando a inteligência artificial vira instrumento de violência dentro da escola",
+    excerpt: "Casos de imagens e vídeos sexuais falsos criados com IA já chegaram às escolas. Entenda por que é preciso ter protocolo, prevenção e resposta rápida.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-17T00:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/deepfakes-sexuais-escolas-inteligencia-artificial.webp",
+    coverImageAlt: "Estudantes em ambiente escolar utilizando celulares enquanto uma tela representa a criação de conteúdo falso por inteligência artificial.",
+    metaTitle: "Deepfakes sexuais nas escolas: como agir diante desse tipo de violência",
+    metaDescription: "Casos de imagens e vídeos sexuais falsos criados com IA já chegaram às escolas. Entenda por que é preciso ter protocolo, prevenção e resposta rápida.",
+    readingTime: "4 min de leitura",
+    tags: ["Deepfakes sexuais nas escolas", "Inteligência artificial nas escolas", "Violência digital", "Deepfake sexual", "Segurança escolar", "Cyberbullying"],
+    featured: true,
+    content: `
+      <p>Uma professora de 47 anos, de Feira de Santana, descobriu que sua imagem havia sido usada em vídeos pornográficos falsos produzidos com inteligência artificial. O conteúdo chegou a uma plataforma adulta e acumulou milhares de visualizações.</p>
+
+      <p>A Polícia Civil identificou dois adolescentes como autores. Um deles era aluno da própria professora. (<a href="https://www.feiraempauta.com.br/noticia/7157/policia-identifica-dois-adolescentes-que-criaram-videos-pornograficos-falsos-com-imagem-de-professora-em-feira-de-santana" target="_blank" rel="noopener noreferrer">Feira em Pauta</a>)</p>
+
+      <p>O caso não é isolado. Um levantamento da SaferNet encontrou episódios de deepfakes sexuais em escolas de diferentes regiões do país. Em todos, a tecnologia foi usada para criar imagens de nudez ou conteúdo sexual sem o consentimento das vítimas. (<a href="https://new.safernet.org.br/content/mapeamento-da-safernet-identifica-deepfakes-sexuais-em-escolas-em-10-dos-27-estados" target="_blank" rel="noopener noreferrer">SaferNet Brasil</a>)</p>
+
+      <p>Quando isso acontece dentro de uma comunidade escolar, a direção precisa saber como agir desde o primeiro momento.</p>
+
+      <br/>
+      <h2>A escola não pode improvisar depois que a imagem circulou</h2>
+
+      <p>A primeira resposta faz diferença. A vítima precisa ser acolhida sem exposição desnecessária. As provas devem ser preservadas, a família comunicada e as autoridades competentes acionadas.</p>
+
+      <p>Também é importante registrar onde o conteúdo foi publicado e pedir sua remoção. Prints, links, nomes de perfis, mensagens e horários ajudam na investigação. O cuidado psicológico deve fazer parte da resposta, principalmente quando crianças e adolescentes estão envolvidos.</p>
+
+      <p>A legislação brasileira já exige medidas de prevenção à violência no ambiente escolar. A Lei nº 14.811/2024 determina que o poder público desenvolva, com participação da comunidade escolar e dos órgãos de segurança e saúde, protocolos de proteção contra diferentes formas de violência. A lei também prevê capacitação contínua dos profissionais da educação. (<a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14811.htm" target="_blank" rel="noopener noreferrer">Presidência da República</a>)</p>
+
+      <p>No caso de imagens sexuais falsas envolvendo crianças ou adolescentes, o problema pode ter consequências ainda mais graves. O Estatuto da Criança e do Adolescente prevê crime para a simulação de cenas de sexo explícito ou pornográficas envolvendo menores, inclusive por meio de montagem. Quando o autor também é adolescente, a conduta pode ser apurada como ato infracional. (<a href="https://www.planalto.gov.br/ccivil_03/leis/l8069compilado.htm" target="_blank" rel="noopener noreferrer">Estatuto da Criança e do Adolescente</a>)</p>
+
+      <br/>
+      <h2>Prevenção precisa chegar à sala de aula</h2>
+
+      <p>Proibir o celular ou bloquear uma ferramenta não resolve sozinho.</p>
+
+      <p>Os estudantes precisam entender o que acontece quando pegam a fotografia de uma colega ou professora, usam inteligência artificial para criar uma imagem sexual e enviam para um grupo.</p>
+
+      <p>A imagem pode ser falsa. O constrangimento, a exposição e o dano provocado à vítima são reais.</p>
+
+      <p>Esse debate precisa fazer parte da educação digital: consentimento, privacidade, responsabilidade pelo compartilhamento e consequências do uso da tecnologia para humilhar ou expor outra pessoa.</p>
+
+      <p>A própria SaferNet alerta para a rapidez com que esse tipo de conteúdo pode se espalhar e para os danos psicológicos e sociais causados às vítimas. (<a href="https://new.safernet.org.br/content/mapeamento-da-safernet-identifica-deepfakes-sexuais-em-escolas-em-10-dos-27-estados" target="_blank" rel="noopener noreferrer">SaferNet Brasil</a>)</p>
+
+      <br/>
+      <p>A inteligência artificial já está dentro das escolas. A resposta não pode chegar somente depois que surge uma vítima.</p>
+
+      <p>Famílias, professores, diretores e alunos precisam saber a quem recorrer, como preservar as provas e quais providências tomar. Ter esse caminho definido antes de um caso acontecer evita improviso justamente quando é preciso agir rápido.</p>
+
+      <p><strong>Você acha que as escolas estão preparadas para enfrentar casos de violência praticados com inteligência artificial?</strong></p>
+
+      <p>Compartilhe este conteúdo e acompanhe <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a> para mais informações sobre direitos, segurança e proteção das famílias.</p>
+    `,
+  },
+  {
     slug: "stf-autismo-nivel-1-beneficio-compra-veiculos",
     source: "Blog",
     category: "Direitos e Cidadania",
@@ -3944,3 +4198,4 @@ export const blogPosts: BlogPost[] = [
   `,
   },
 ];
+
