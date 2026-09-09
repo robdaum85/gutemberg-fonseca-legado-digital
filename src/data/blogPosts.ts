@@ -48,7 +48,7 @@ export const blogPosts: BlogPost[] = [
     role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
     date: "2026-08-14T00:00:00-03:00",
     authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
-    coverImage: "/images/blog/ludopatia-apostas-prejuizos-familia.png",
+    coverImage: "/images/blog/ludopatia-apostas-prejuizos-familia.webp",
     coverImageAlt: "Pessoa acompanha apostas pelo celular enquanto contas da família estão sobre a mesa.",
     metaTitle: "Ludopatia: quando as apostas começam a prejudicar toda a família",
     metaDescription: "Apostas podem comprometer o orçamento, as relações familiares e a saúde mental. Conheça os sinais de perda de controle e saiba onde procurar ajuda.",
