@@ -102,7 +102,9 @@ function schemaFor(urlPath, seo) {
       ],
     });
   } else if (category) {
-    const posts = publicPosts.filter((item) => item.category === category.dataLabel);
+    const posts = publicPosts.filter((item) => item.category === category.dataLabel || (
+      category.dataLabel === "Defesa do Consumidor" && item.category === "Apostas e Endividamento"
+    ));
     graph.push({
       "@type": "CollectionPage",
       "@id": canonical,

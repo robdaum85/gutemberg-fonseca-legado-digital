@@ -20,6 +20,7 @@ export const CATEGORY_LABEL_MAP: Record<string, string> = Object.entries(
 );
 
 export function getCategorySlug(category: string): string | null {
+  if (category === "Apostas e Endividamento") return "direitos-do-consumidor";
   return CATEGORY_SLUG_MAP[category] ?? null;
 }
 
@@ -40,7 +41,9 @@ export function getPublishedBlogPosts(): BlogPost[] {
 }
 
 export function getPostsByCategory(category: string): BlogPost[] {
-  return getPublishedBlogPosts().filter((p) => p.category === category);
+  return getPublishedBlogPosts().filter((p) => p.category === category || (
+    category === "Defesa do Consumidor" && p.category === "Apostas e Endividamento"
+  ));
 }
 
 export function getPostBySlug(

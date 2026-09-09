@@ -39,6 +39,64 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ludopatia-apostas-prejuizos-familia",
+    source: "Blog",
+    category: "Apostas e Endividamento",
+    title: "Quando a aposta começa a pesar dentro de casa",
+    excerpt: "Apostas podem comprometer o orçamento, as relações familiares e a saúde mental. Conheça os sinais de perda de controle e saiba onde procurar ajuda.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-14T00:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/ludopatia-apostas-prejuizos-familia.png",
+    coverImageAlt: "Pessoa acompanha apostas pelo celular enquanto contas da família estão sobre a mesa.",
+    metaTitle: "Ludopatia: quando as apostas começam a prejudicar toda a família",
+    metaDescription: "Apostas podem comprometer o orçamento, as relações familiares e a saúde mental. Conheça os sinais de perda de controle e saiba onde procurar ajuda.",
+    readingTime: "3 min de leitura",
+    tags: ["Ludopatia", "Transtorno do jogo", "Vício em apostas", "Bets", "Endividamento com apostas", "Tratamento para ludopatia", "Apostas online"],
+    featured: true,
+    content: `
+      <p>O dinheiro perdido em uma bet raramente afeta uma pessoa só. Quando sai da conta o valor reservado para o mercado, aluguel, escola ou conta de luz, o problema chega a toda a família.</p>
+
+      <p>No início, apostar pode parecer apenas diversão. O sinal de alerta aparece quando fica difícil parar, o valor gasto aumenta ou surge a tentativa de recuperar uma perda com uma nova aposta.</p>
+
+      <p>Esse comportamento pode estar relacionado ao transtorno do jogo, também conhecido como jogo patológico ou ludopatia. A condição é reconhecida como um transtorno de comportamento aditivo e pode trazer consequências financeiras, emocionais e familiares. (<a href="https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/julho/campanha-do-ministerio-da-saude-orienta-sobre-riscos-das-apostas-online-e-atendimento-em-saude-mental-no-sus" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <br/>
+      <h2>Quais sinais merecem atenção</h2>
+
+      <p>Entre os sinais apontados pelo Ministério da Saúde estão a dificuldade de reduzir ou interromper as apostas, o comprometimento do orçamento, mudanças no humor e no sono, mentiras para familiares e prejuízos nas relações pessoais ou profissionais. (<a href="https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/agosto/meu-sus-digital-oferecera-ate-100-mil-teleatendimentos-mensais-para-pessoas-com-necessidades-relacionadas-a-jogos-e-apostas" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Outro comportamento frequente é continuar apostando mesmo depois das perdas. A pessoa tenta recuperar o dinheiro, perde novamente e aumenta o valor colocado em jogo.</p>
+
+      <p>A Organização Mundial da Saúde alerta que os danos das apostas podem atingir despesas essenciais da casa e provocar dificuldades financeiras e conflitos familiares. (<a href="https://www.who.int/news-room/fact-sheets/detail/gambling" target="_blank" rel="noopener noreferrer">Organização Mundial da Saúde</a>)</p>
+
+      <p>Por isso, a família muitas vezes percebe a mudança antes da própria pessoa: contas começam a atrasar, empréstimos aparecem, o comportamento muda e falar sobre dinheiro passa a gerar discussões.</p>
+
+      <br/>
+      <h2>Onde procurar ajuda</h2>
+
+      <p>Esperar a dívida crescer costuma tornar a situação mais difícil. Quem percebe que perdeu o controle pode buscar atendimento pelo SUS.</p>
+
+      <p>Desde 2026, o Meu SUS Digital oferece um autoteste para identificar problemas relacionados às apostas. Quando há indicação de risco moderado ou elevado, o usuário pode ser encaminhado para teleatendimento especializado em saúde mental. Familiares também podem utilizar o serviço para receber orientação e acompanhamento. (<a href="https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/julho/campanha-do-ministerio-da-saude-orienta-sobre-riscos-das-apostas-online-e-atendimento-em-saude-mental-no-sus" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>O atendimento presencial pode começar em uma Unidade Básica de Saúde. Quando necessário, o paciente pode ser encaminhado para um Centro de Atenção Psicossocial, o CAPS. (<a href="https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/julho/campanha-do-ministerio-da-saude-orienta-sobre-riscos-das-apostas-online-e-atendimento-em-saude-mental-no-sus" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>A família também precisa de orientação. O problema não se resolve com novas apostas, empréstimos para cobrir perdas ou tentativas de esconder as dívidas.</p>
+
+      <br/>
+      <p>Quando o dinheiro das apostas começa a fazer falta dentro de casa, já existe um sinal que merece atenção.</p>
+
+      <p>Reconhecer o problema cedo pode impedir que uma dívida se transforme em uma sequência de perdas que comprometa o orçamento e a convivência familiar.</p>
+
+      <p><strong>Conhece alguém que está perdendo o controle com as apostas? Compartilhe este conteúdo.</strong></p>
+
+      <p>Para acompanhar informações sobre bets, endividamento e defesa do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
+
+      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+    `,
+  },
+  {
     slug: "vendaval-rio-prevencao-arvores-energia",
     source: "Blog",
     category: "Direitos do Cidadão",

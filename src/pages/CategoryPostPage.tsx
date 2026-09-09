@@ -43,7 +43,7 @@ const CategoryPostPage = ({
         publishedTime: validPost.date,
         modifiedTime: validPost.updatedAt ?? validPost.date,
         author: validPost.author,
-        articleSection: categoryLabel,
+        articleSection: validPost.category,
         keywords: validPost.tags,
         citations: getPostCitations(validPost),
         articleSchema: true,
@@ -104,6 +104,11 @@ const CategoryPostPage = ({
                 <span className="text-xs font-medium text-primary bg-primary/10 px-2.5 py-1 rounded-full">
                   {post.source}
                 </span>
+                {post.category !== categoryLabel && (
+                  <span className="text-xs font-medium text-primary bg-primary/10 px-2.5 py-1 rounded-full">
+                    {post.category}
+                  </span>
+                )}
                 <time dateTime={post.date} className="text-xs text-muted-foreground">
                   {formattedDate}
                 </time>
