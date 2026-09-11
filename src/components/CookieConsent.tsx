@@ -6,11 +6,14 @@ import { Button } from "@/components/ui/button";
 const CONSENT_STORAGE_KEY = "gf_cookie_consent";
 const GA_MEASUREMENT_ID = "G-GQTGRP15XX";
 const GOOGLE_ADS_ID = "AW-18358930380";
+const CLARITY_PROJECT_ID = "yge7ojllxb";
+type ClarityTag = ((...args: unknown[]) => void) & { q?: IArguments[] };
 
 type CookieConsentValue = "accepted" | "rejected";
 
 declare global {
   interface Window {
+    clarity?: ClarityTag;
     dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
   }
@@ -79,6 +82,22 @@ const initGoogleTags = () => {
   document.head.appendChild(script);
 };
 
+// Load session analytics only after the visitor accepts the cookie banner.
+const initClarity = () => {
+  window.clarity = window.clarity || function clarity() {
+    // Preserve the queue format used by the official Clarity snippet.
+    // eslint-disable-next-line prefer-rest-params
+    (window.clarity!.q = window.clarity!.q || []).push(arguments);
+  };
+  window.clarity("consentv2", { analytics_Storage: "granted", ad_Storage: "granted" });
+  if (document.getElementById("gf-clarity-tag")) return;
+  const script = document.createElement("script");
+  script.id = "gf-clarity-tag";
+  script.async = true;
+  script.src = `https://www.clarity.ms/tag/${CLARITY_PROJECT_ID}`;
+  document.head.appendChild(script);
+};
+
 const updateConsent = (value: CookieConsentValue) => {
   window.gtag?.("consent", "update", value === "accepted" ? GRANTED_CONSENT : DENIED_CONSENT);
 };
@@ -98,8 +117,10 @@ const CookieConsent = () => {
     if (consent === null) return;
 
     updateConsent(consent);
+    if (consent === "accepted") initClarity();
 
     if (consent === "rejected") {
+      window.clarity?.("consentv2", { analytics_Storage: "denied", ad_Storage: "denied" });
       clearAnalyticsCookies();
     }
   }, [consent]);
@@ -113,22 +134,22 @@ const CookieConsent = () => {
   if (consent) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[120] px-4 pb-4 sm:px-6" role="region" aria-label="Aviso de cookies e LGPD">
-      <div className="mx-auto flex max-w-5xl flex-col gap-4 rounded-lg border border-slate-200 bg-white p-4 text-slate-900 shadow-2xl sm:flex-row sm:items-center sm:justify-between">
+    <div className="fixed inset-x-0 bottom-0 z-[120] px-3 pb-3 sm:px-6 sm:pb-4" role="region" aria-label="Aviso de cookies e LGPD">
+      <div className="mx-auto flex max-w-5xl flex-col gap-3 rounded-lg border border-slate-200 bg-white p-3 sm:p-4 text-slate-900 shadow-2xl sm:flex-row sm:items-center sm:justify-between">
         <div className="flex gap-3">
-          <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-primary">
+          <div className="mt-1 hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-primary">
             <Cookie className="h-5 w-5" aria-hidden="true" />
           </div>
           <div>
             <h2 className="text-base font-bold leading-tight">Aviso de cookies e LGPD</h2>
-            <p className="mt-1 text-sm leading-relaxed text-slate-600">
+            <p className="mt-1 text-xs leading-snug sm:text-sm sm:leading-relaxed text-slate-600">
               Usamos cookies essenciais e armazenamento local para preferências do site. Com sua autorização, também usamos
-              Google Analytics para medir audiência e melhorar a experiência.
+              Google Analytics e Microsoft Clarity para medir audiência e entender a navegação.
             </p>
           </div>
         </div>
 
-        <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
+        <div className="grid grid-cols-2 shrink-0 gap-2 sm:flex">
           <Button type="button" variant="outline" className="border-slate-300 text-slate-800" onClick={() => saveConsent("rejected")}>
             Rejeitar
           </Button>

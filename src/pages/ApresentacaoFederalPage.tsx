@@ -783,10 +783,26 @@ export default function FederalPreviewPage() {
   useEffect(() => {
     if (siteLaunchCountdown.active) return;
 
+    const popupSeenKey = "gf_campaign_popup_seen";
+    // If session storage is unavailable, keep navigation free of automatic pop-ups.
+    try {
+      if (window.sessionStorage.getItem(popupSeenKey)) return;
+    } catch {
+      return;
+    }
+
     let popupTimer = 0;
     const schedulePopup = () => {
       window.clearTimeout(popupTimer);
-      popupTimer = window.setTimeout(() => setCampaignPopupOpen(true), 700);
+      popupTimer = window.setTimeout(() => {
+        try {
+          if (window.sessionStorage.getItem(popupSeenKey)) return;
+          window.sessionStorage.setItem(popupSeenKey, "1");
+        } catch {
+          return;
+        }
+        setCampaignPopupOpen(true);
+      }, 700);
     };
 
     if (window.localStorage.getItem("gf_cookie_consent")) {
