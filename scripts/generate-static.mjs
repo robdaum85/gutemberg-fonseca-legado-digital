@@ -103,7 +103,7 @@ function schemaFor(urlPath, seo) {
     });
   } else if (category) {
     const posts = publicPosts.filter((item) => item.category === category.dataLabel || (
-      category.dataLabel === "Defesa do Consumidor" && item.category === "Apostas e Endividamento"
+      category.dataLabel === "Defesa do Consumidor" && ["Economia e Consumidor", "Direitos do Consumidor", "Apostas e Endividamento", "Golpes e Fraudes"].includes(item.category)
     ) || (
       category.dataLabel === "Direitos do Cidadão" && item.category === "Direitos e Cidadania"
     ));

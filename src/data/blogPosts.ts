@@ -39,6 +39,298 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "isencao-imposto-renda-5-mil-quem-precisa-declarar",
+    source: "Blog",
+    category: "Direitos e Cidadania",
+    title: "Ganha até R$ 5 mil? Você ainda pode precisar declarar o Imposto de Renda",
+    excerpt: "Quem ganha até R$ 5 mil por mês passou a ter isenção do IR em 2026, mas isso não significa dispensa automática da declaração.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-25T00:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/isencao-imposto-renda-5-mil-quem-precisa-declarar-v2.png",
+    coverImageAlt: "Pessoa consulta informações da Receita Federal sobre isenção e declaração do Imposto de Renda.",
+    metaTitle: "Isenção do Imposto de Renda até R$ 5 mil: quem ainda precisa declarar?",
+    metaDescription: "Quem ganha até R$ 5 mil por mês passou a ter isenção do IR em 2026, mas isso não significa dispensa automática da declaração.",
+    readingTime: "3 min de leitura",
+    tags: ["Isenção do Imposto de Renda até R$ 5 mil", "Imposto de Renda 2026", "Declaração do IR", "Faixa de isenção", "Receita Federal", "IRPF"],
+    featured: true,
+    content: `
+      <p>Desde janeiro de 2026, quem recebe até R$ 5 mil por mês em rendimentos tributáveis sujeitos à incidência mensal passou a ter o imposto zerado. Para quem recebe entre R$ 5.000,01 e R$ 7.350, o desconto é parcial. (<a href="https://www2.camara.leg.br/legin/fed/lei/2025/lei-15270-26-novembro-2025-798354-publicacaooriginal-177117-pl.html" target="_blank" rel="noopener noreferrer">Lei nº 15.270/2025</a>)</p>
+
+      <p>A mudança reduz o imposto pago ao longo do ano, mas não elimina, por si só, a obrigação de entregar a declaração anual.</p>
+
+      <p>Isso porque a declaração entregue em 2026 considera os rendimentos de 2025. A nova regra começou a valer apenas sobre o que foi recebido a partir de janeiro deste ano. (<a href="https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/perguntas-frequentes/imposto-de-renda/dirpf" target="_blank" rel="noopener noreferrer">Receita Federal</a>)</p>
+
+      <br/>
+      <h2>Isenção e declaração são coisas diferentes</h2>
+
+      <p>A Receita Federal não olha apenas para o salário mensal.</p>
+
+      <p>Também entram na análise outros rendimentos, patrimônio, operações financeiras, atividade rural e demais situações previstas nas regras de obrigatoriedade. (<a href="https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/quem" target="_blank" rel="noopener noreferrer">Receita Federal</a>)</p>
+
+      <p>Por isso, alguém que não paga mais Imposto de Renda sobre o salário pode continuar obrigado a declarar.</p>
+
+      <p>A mesma lógica vale para 2027. Mesmo com renda mensal de até R$ 5 mil, será preciso conferir os critérios definidos pela Receita para saber se existe obrigação de entrega.</p>
+
+      <br/>
+      <h2>Antes de deixar de declarar, confira as regras</h2>
+
+      <p>A mudança na faixa de isenção mexeu com o valor do imposto, não com todos os critérios usados pela Receita para exigir a declaração.</p>
+
+      <p>Antes de simplesmente deixar de enviar o documento, consulte as regras do ano e verifique se existe algum outro motivo que obrigue a entrega.</p>
+
+      <p>Essa checagem evita atraso, multa e problemas futuros com a Receita.</p>
+
+      <br/>
+      <p>A nova faixa de isenção representa alívio para milhões de contribuintes. Mas ela não deve ser confundida com dispensa automática da declaração.</p>
+
+      <p>Não pagar imposto e não precisar declarar são situações diferentes.</p>
+
+      <p><strong>Conhece alguém que acha que, por ganhar até R$ 5 mil, não precisa mais declarar? Compartilhe este conteúdo.</strong></p>
+
+      <p>Acompanhe <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a> para mais informações sobre direitos e temas que afetam o bolso.</p>
+
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+    `,
+  },
+  {
+    slug: "voo-cancelado-direitos-passageiro-indenizacao",
+    source: "Blog",
+    category: "Direitos do Consumidor",
+    title: "Seu voo foi cancelado e você ficou horas no aeroporto?",
+    excerpt: "Teve o voo cancelado e ficou horas no aeroporto? Veja quais assistências a companhia deve oferecer, quando cabe reembolso e como comprovar prejuízos.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-24T00:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/voo-cancelado-direitos-passageiro-indenizacao.png",
+    coverImageAlt: "Passageiro aguarda no aeroporto após o cancelamento de um voo e consulta informações no painel de embarque.",
+    metaTitle: "Voo cancelado: quais são os direitos do passageiro?",
+    metaDescription: "Teve o voo cancelado e ficou horas no aeroporto? Veja quais assistências a companhia deve oferecer, quando cabe reembolso e como comprovar prejuízos.",
+    readingTime: "3 min de leitura",
+    tags: ["Voo cancelado", "Direitos do passageiro", "Atraso de voo", "Reembolso de passagem", "Assistência material", "Indenização por voo cancelado"],
+    featured: true,
+    content: `
+      <p>O painel muda, o embarque não acontece e começa a espera por uma resposta da companhia. Quando o voo é cancelado, o passageiro não precisa aceitar ficar no aeroporto sem informação ou assistência.</p>
+
+      <p>As regras da ANAC estabelecem obrigações que aumentam conforme o tempo de espera. A partir de uma hora, a empresa deve oferecer meios de comunicação. Depois de duas horas, alimentação. Se a espera chegar a quatro horas e houver necessidade de pernoite, entram hospedagem e transporte até o local de acomodação. (<a href="https://www.gov.br/pt-br/noticias/viagens-e-turismo/2022/10/saiba-as-obrigacoes-das-empresas-aereas-em-caso-de-atraso-e-cancelamentos-de-voos" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <p>Em caso de cancelamento, o passageiro também pode escolher entre reacomodação em outro voo, reembolso integral ou, quando possível, execução do serviço por outro meio de transporte. (<a href="https://www.gov.br/pt-br/noticias/viagens-e-turismo/2022/10/saiba-as-obrigacoes-das-empresas-aereas-em-caso-de-atraso-e-cancelamentos-de-voos" target="_blank" rel="noopener noreferrer">Serviços e Informações do Brasil</a>)</p>
+
+      <br/>
+      <h2>Quando o cancelamento pode gerar indenização</h2>
+
+      <p>O cancelamento, sozinho, não significa indenização automática.</p>
+
+      <p>A discussão muda quando há prejuízo concreto. Perda de conexão, diária de hotel desperdiçada, gastos extras, ausência em compromisso importante ou falta da assistência devida podem ser considerados na análise do caso.</p>
+
+      <p>Por isso, é importante reunir provas desde o aeroporto.</p>
+
+      <p>Guarde o cartão de embarque, tire fotos do painel, peça à companhia um documento com o motivo do cancelamento e salve todas as mensagens recebidas. Se precisar pagar alimentação, transporte ou hospedagem porque a assistência não foi oferecida, guarde os recibos.</p>
+
+      <p>O Correio Braziliense também reforça que despesas e prejuízos provocados pelo cancelamento podem ser discutidos quando a companhia não presta o suporte previsto. (<a href="https://www.correiobraziliense.com.br/cidades-df/2026/07/amp/7467084-voar-sem-aborrecimentos-saiba-como-evitar-problemas-na-viagem.html" target="_blank" rel="noopener noreferrer">Correio Braziliense</a>)</p>
+
+      <p>Há ainda uma discussão em andamento no STF sobre indenizações por cancelamentos e atrasos causados por caso fortuito ou força maior, como condições meteorológicas adversas. Em março de 2026, o Supremo esclareceu que a suspensão nacional desses processos não alcança casos decorrentes de falha da própria companhia aérea. (<a href="https://noticias.stf.jus.br/postsnoticias/stf-esclarece-que-suspensao-de-acoes-sobre-atrasos-de-voos-nao-vale-para-casos-de-falha-das-empresas-aereas/" target="_blank" rel="noopener noreferrer">Notícias STF</a>)</p>
+
+      <br/>
+      <h2>Não saia do aeroporto sem registrar o problema</h2>
+
+      <p>Antes de ir embora, procure o balcão ou os canais oficiais da empresa e peça o protocolo do atendimento.</p>
+
+      <p>Se optar pelo reembolso, deixe essa escolha registrada. Se preferir a reacomodação, confirme por escrito qual será o novo voo.</p>
+
+      <p>Sem solução, a reclamação pode ser levada ao <a href="https://www.gov.br/anac/pt-br/assuntos/passageiros/copy_of_anac-passageiro/sobre-o-anac-passageiro" target="_blank" rel="noopener noreferrer">Anac Passageiro</a>, ao <a href="https://www.consumidor.gov.br/" target="_blank" rel="noopener noreferrer">Consumidor.gov.br</a> ou ao Procon.</p>
+
+      <p>O mais importante é não depender apenas de uma conversa no balcão. O que ficou registrado ajuda a mostrar o que aconteceu, quanto tempo você esperou e quais gastos ou perdas vieram depois.</p>
+
+      <br/>
+      <p>Quando um voo é cancelado, a companhia não pode simplesmente deixar o passageiro esperando sem orientação.</p>
+
+      <p>Conhecer os prazos de assistência, registrar o atendimento e guardar os comprovantes faz diferença caso seja necessário cobrar reembolso ou reparação pelos prejuízos.</p>
+
+      <p><strong>Vai viajar nos próximos dias? Compartilhe este conteúdo com quem também precisa conhecer esses direitos.</strong></p>
+
+      <p>Para acompanhar outras orientações, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
+
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+    `,
+  },
+  {
+    slug: "conta-de-luz-rio-reajuste-light-enel-2026",
+    source: "Blog",
+    category: "Direitos do Consumidor",
+    title: "A conta de luz ficou mais pesada no Rio em 2026",
+    excerpt: "Light teve reajuste médio de 16,69% e Enel Rio, de 15,46% em 2026. Entenda os percentuais e por que o aumento não é igual para todos.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-23T00:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/conta-de-luz-rio-reajuste-light-enel-2026-v2.png",
+    coverImageAlt: "Consumidor compara contas de energia após reajuste das tarifas da Light e da Enel no Rio de Janeiro.",
+    metaTitle: "Conta de luz no Rio: reajustes passam de 15% em 2026",
+    metaDescription: "Light teve reajuste médio de 16,69% e Enel Rio, de 15,46% em 2026. Entenda os percentuais e por que o aumento não é igual para todos.",
+    readingTime: "3 min de leitura",
+    tags: ["Reajuste da conta de luz no Rio", "Reajuste Light 2026", "Enel Rio", "Tarifa de energia", "Conta de luz", "ANEEL", "Custo de vida"],
+    featured: true,
+    content: `
+      <p>Mercado, aluguel, transporte e, agora, uma conta de energia com reajuste de dois dígitos.</p>
+
+      <p>Em 2026, as duas principais distribuidoras do Rio tiveram aumentos expressivos. Na área atendida pela Light, o efeito médio do reajuste chegou a 16,69%. Para a Enel Rio, o efeito médio foi de 15,46%. (<a href="https://www.cnnbrasil.com.br/infra/justica-restabelece-liminar-da-light-e-aumenta-conta-de-luz-do-rj-em-1669/" target="_blank" rel="noopener noreferrer">CNN Brasil</a>; <a href="https://www.enel.com.br/pt/midia/press/d202603-aneel-aprova-reajuste-tarifas-enel-distribuicao-rio.html" target="_blank" rel="noopener noreferrer">Enel Rio</a>)</p>
+
+      <p>Os percentuais médios ajudam a medir o tamanho do reajuste, mas não significam que todas as residências tiveram exatamente esse aumento. O impacto varia conforme a classe de consumo e a tarifa aplicada.</p>
+
+      <br/>
+      <h2>Por que o reajuste da Light chegou a 16,69%</h2>
+
+      <p>A ANEEL havia aprovado inicialmente um efeito médio de 8,59% para a Light. Nesse cálculo, R$ 1,04 bilhão em créditos relacionados a PIS/Cofins seriam usados para reduzir o impacto sobre as tarifas. (<a href="https://ebs.publicnow.com/view/3E67D581CBDC2AC6502F723E65FDB093ED8D19D5" target="_blank" rel="noopener noreferrer">ANEEL via PublicNow</a>)</p>
+
+      <p>A Light questionou essa decisão na Justiça. Depois de idas e vindas no processo, uma decisão do Tribunal Regional Federal da 1ª Região restabeleceu, em maio, a liminar favorável à distribuidora. Com isso, o efeito médio voltou para 16,69%. (<a href="https://www.cnnbrasil.com.br/infra/justica-restabelece-liminar-da-light-e-aumenta-conta-de-luz-do-rj-em-1669/" target="_blank" rel="noopener noreferrer">CNN Brasil</a>)</p>
+
+      <p>Para os consumidores residenciais da Light, o percentual indicado após a decisão é de 14,58%. Na baixa tensão, grupo que inclui residências e pequenos estabelecimentos, a média ficou em 14,74%. Os 16,69% correspondem à média considerando diferentes grupos de consumidores. (<a href="https://www.publicnow.com/view/11D25E4C5A87E96FD9763EB49C779582B6B63F15" target="_blank" rel="noopener noreferrer">ANEEL via PublicNow</a>)</p>
+
+      <p>Na Enel Rio, o efeito médio do reajuste de 2026 ficou em 15,46%, enquanto a baixa tensão teve impacto médio de 14,23%. (<a href="https://www.camara.leg.br/proposicoesWeb/prop_mostrarintegra?codteor=3127647" target="_blank" rel="noopener noreferrer">Câmara dos Deputados</a>)</p>
+
+      <br/>
+      <h2>O consumidor precisa saber de onde veio o aumento</h2>
+
+      <p>Energia elétrica não é uma despesa que a família simplesmente retira do orçamento quando o preço sobe. É serviço essencial e chega todos os meses à casa do consumidor.</p>
+
+      <p>Por isso, não basta informar que houve reajuste. A fatura precisa permitir que o cliente entenda o consumo, a tarifa aplicada, os tributos e demais cobranças que formam o valor final.</p>
+
+      <p>Também é importante comparar contas com consumo semelhante. Se uma família gastou praticamente a mesma quantidade de energia em dois períodos, mas encontrou uma diferença significativa no valor, deve verificar qual tarifa foi aplicada e se houve outras cobranças.</p>
+
+      <p>O reajuste médio, sozinho, não diz quanto cada conta deveria aumentar. Consumo, bandeira tarifária, impostos e a classe da unidade também interferem no resultado.</p>
+
+      <br/>
+      <p>Uma alta de dois dígitos na energia pesa ainda mais quando outras despesas básicas já ocupam boa parte da renda.</p>
+
+      <p>Discutir custo de vida no Rio passa também pela conta de luz. E o consumidor precisa conseguir abrir a fatura e entender, sem dificuldade, por que está pagando mais.</p>
+
+      <p><strong>Sua conta de luz aumentou neste ano? Compare as últimas faturas e confira quanto mudou mesmo nos meses em que o consumo ficou parecido.</strong></p>
+
+      <p>Para acompanhar informações sobre energia, cobranças e direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
+
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+    `,
+  },
+  {
+    slug: "alimentos-subindo-mais-que-inflacao-2026",
+    source: "Blog",
+    category: "Economia e Consumidor",
+    title: "A inflação diz uma coisa. O carrinho do mercado mostra outra.",
+    excerpt: "Nos cinco primeiros meses de 2026, os alimentos consumidos em casa subiram 5,68%, enquanto o IPCA avançou 3,20%. No Rio, a cesta básica chegou a R$ 867,97 em março.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-22T00:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/alimentos-subindo-mais-que-inflacao-2026.png",
+    coverImageAlt: "Consumidor confere preços de alimentos enquanto faz compras em um supermercado.",
+    metaTitle: "Alimentos sobem mais que a inflação e apertam o orçamento das famílias",
+    metaDescription: "Nos cinco primeiros meses de 2026, os alimentos consumidos em casa subiram 5,68%, enquanto o IPCA avançou 3,20%. No Rio, a cesta básica chegou a R$ 867,97 em março.",
+    readingTime: "3 min de leitura",
+    tags: ["Preço dos alimentos", "Inflação dos alimentos", "Cesta básica no Rio", "Supermercado", "Custo de vida", "Orçamento familiar"],
+    featured: true,
+    content: `
+      <p>Quem acompanha apenas o índice geral de inflação pode não entender por que a ida ao supermercado continua tão pesada.</p>
+
+      <p>Nos cinco primeiros meses de 2026, o IPCA acumulou alta de 3,20%. No mesmo período, os alimentos consumidos dentro de casa ficaram 5,68% mais caros. A diferença aparece justamente em uma despesa que não pode ser adiada. (<a href="https://www.dieese.org.br/boletimdeconjuntura/2026/boletimconjuntura55/index.html?page=1" target="_blank" rel="noopener noreferrer">DIEESE</a>)</p>
+
+      <p>Para quem tem renda menor, comida ocupa uma parcela maior do orçamento. Um aumento no arroz, na carne, no leite ou nos legumes pesa muito mais para quem já chega ao fim do mês com pouco espaço para cortar gastos.</p>
+
+      <br/>
+      <h2>No Rio, quase 58% do salário líquido para comprar a cesta básica</h2>
+
+      <p>Em março, a cesta básica no Rio de Janeiro custou R$ 867,97, segundo levantamento da Conab e do DIEESE. Era a segunda mais cara entre as 27 capitais pesquisadas. Para um trabalhador que recebia o salário mínimo, o valor representava 57,89% da renda líquida.</p>
+
+      <p>Naquele mês, o custo da cesta aumentou em todas as 27 capitais. No Rio, a alta em relação a fevereiro foi de 4,96%. Tomate, batata, feijão preto e leite estavam entre os produtos que mais subiram. (<a href="https://www.gov.br/conab/pt-br/atuacao/informacoes-agropecuarias/precos-agropecuarios/analise-da-pesquisa-nacional-de-precos-da-cesta-basica-de-alimentos/analise-da-pesquisa-nacional-de-precos-da-cesta-basica-de-alimentos-todas-as-capitais-marco-2026.pdf" target="_blank" rel="noopener noreferrer">Conab e DIEESE</a>)</p>
+
+      <p>É nessa hora que o consumidor começa a fazer escolhas dentro do próprio carrinho. Primeiro troca uma marca por outra. Depois reduz a quantidade. Em algum momento, deixa um produto para trás porque o dinheiro não fecha.</p>
+
+      <br/>
+      <h2>Para quem ganha menos, não existe muito espaço para cortar</h2>
+
+      <p>Alimentação tem um peso diferente de outras despesas. Não dá para deixar a compra do mês para depois porque o preço subiu.</p>
+
+      <p>O DIEESE também apontou que, até maio, a inflação sentida pelas famílias de renda muito baixa foi maior do que entre as famílias de renda mais alta. A diferença ajuda a explicar por que os números gerais da economia nem sempre correspondem à experiência de quem está contando o dinheiro no caixa. (<a href="https://www.dieese.org.br/boletimdeconjuntura/2026/boletimconjuntura55/index.html?page=1" target="_blank" rel="noopener noreferrer">DIEESE</a>)</p>
+
+      <p>Controlar a inflação é importante. Mas acompanhar o preço dos alimentos também precisa estar no centro da discussão sobre renda e custo de vida.</p>
+
+      <p>No fim das contas, é no supermercado que muita gente descobre quanto o salário ainda consegue comprar.</p>
+
+      <br/>
+      <p>Uma cesta básica que consome quase 58% do salário mínimo líquido deixa pouco para aluguel, luz, transporte, remédios e todas as outras despesas do mês.</p>
+
+      <p>Quem pretende representar o Rio em Brasília precisa conhecer esses números, mas principalmente entender o que eles significam para quem precisa escolher o que cabe ou não no carrinho.</p>
+
+      <p><strong>Na sua casa, qual produto mais pesou no supermercado nos últimos meses?</strong></p>
+
+      <p>Acompanhe <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a> para acompanhar meu trabalho e outros conteúdos sobre direitos do consumidor e custo de vida.</p>
+
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+    `,
+  },
+  {
+    slug: "rio-adultos-nome-negativado-inadimplencia-2026",
+    source: "Blog",
+    category: "Direitos do Consumidor",
+    title: "Quase 6 em cada 10 adultos do Rio estão com o nome negativado",
+    excerpt: "Quase 60% da população adulta do Rio de Janeiro está negativada. Entenda a diferença entre dívida e inadimplência e o que os números revelam.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-21T00:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/rio-adultos-nome-negativado-inadimplencia-2026.png",
+    coverImageAlt: "Consumidor organiza faturas e contas atrasadas enquanto consulta a situação do CPF.",
+    metaTitle: "Rio tem quase 6 em cada 10 adultos com o nome negativado",
+    metaDescription: "Quase 60% da população adulta do Rio de Janeiro está negativada. Entenda a diferença entre dívida e inadimplência e o que os números revelam.",
+    readingTime: "3 min de leitura",
+    tags: ["Inadimplência no Rio de Janeiro", "Nome negativado", "Dívidas no Rio", "Endividamento das famílias", "Serasa", "Cartão de crédito"],
+    featured: true,
+    content: `
+      <p>O Rio de Janeiro chegou a julho de 2026 com 59,53% da população adulta negativada, segundo dados do Mapa da Inadimplência da Serasa. É um número que chama atenção não apenas pelo tamanho, mas pelo que representa no orçamento de milhões de famílias. (<a href="https://diariodocomercio.com.br/geral/mg-8-milhoes-consumidores-dividas-serasa-julho-2026/" target="_blank" rel="noopener noreferrer">Diário do Comércio</a>)</p>
+
+      <p>Nome negativado significa que uma dívida venceu, não foi paga e acabou registrada em um cadastro de inadimplência. É diferente de simplesmente ter uma dívida.</p>
+
+      <p>Quem comprou um eletrodoméstico parcelado, financiou um carro ou tem uma fatura do cartão ainda dentro do vencimento está endividado, mas não necessariamente inadimplente.</p>
+
+      <p>Essa diferença ajuda a entender dois números que costumam aparecer juntos e dizem coisas distintas sobre a situação financeira do país.</p>
+
+      <br/>
+      <h2>Endividamento bate recorde, mas o problema é maior entre quem já não consegue pagar</h2>
+
+      <p>Em julho, 82% das famílias brasileiras tinham alguma dívida a vencer, o maior percentual já registrado pela Pesquisa de Endividamento e Inadimplência do Consumidor, da CNC. A inadimplência, por outro lado, atingia 29,8% das famílias pesquisadas. (<a href="https://portaldocomercio.org.br/diario-executivo/cnc-endividamento-das-familias-sobe-para-82-mas-inadimplencia-cai/" target="_blank" rel="noopener noreferrer">Portal do Comércio</a>)</p>
+
+      <p>Outro dado ajuda a mostrar quem está sentindo esse peso com mais força. Um levantamento da Serasa apontou que 48% dos inadimplentes recebem até um salário mínimo. Outros 30% ganham até dois salários mínimos. (<a href="https://exame.com/invest/minhas-financas/metade-dos-inadimplentes-no-brasil-ganha-ate-um-salario-minimo/" target="_blank" rel="noopener noreferrer">Exame</a>)</p>
+
+      <p>Nesse cenário, reduzir o problema à falta de organização financeira é simplificar demais a realidade.</p>
+
+      <p>Quando a renda já chega comprometida por moradia, alimentação, transporte e contas básicas, um imprevisto pode ser suficiente para deixar uma fatura para o mês seguinte. Depois entram juros, multas e novas parcelas.</p>
+
+      <p>A dívida começa pequena e, em pouco tempo, passa a disputar espaço com as despesas do mês seguinte.</p>
+
+      <br/>
+      <h2>Renegociar a dívida resolve uma parte do problema</h2>
+
+      <p>Conseguir desconto, reduzir juros ou dividir um débito em parcelas que realmente caibam no orçamento pode ajudar uma família a sair da inadimplência.</p>
+
+      <p>Mas um acordo só funciona quando pode ser pago até o fim. Aceitar uma prestação para limpar o nome e, no mês seguinte, deixar a conta de luz ou o supermercado para trás apenas troca uma dívida por outra.</p>
+
+      <p>Os números do Rio mostram que essa discussão precisa ir além das campanhas de renegociação. Quase 60% dos adultos de um estado com o nome negativado não é um dado para ser tratado como parte normal da vida financeira.</p>
+
+      <p>Renda, custo de vida, juros e a forma como o crédito é oferecido também fazem parte dessa conta.</p>
+
+      <br/>
+      <p>Dívida não é sinônimo de inadimplência. Mas quando tantas pessoas já ultrapassaram a fase da parcela a vencer e chegaram à negativação, existe um problema que merece ser encarado de frente.</p>
+
+      <p>Renegociar é importante. Evitar que mais famílias entrem nesse ciclo também é.</p>
+
+      <p>Para acompanhar informações sobre dívidas, cobranças e direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
+
+      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+    `,
+  },
+  {
     slug: "pec-seguranca-publica-uniao-autonomia-estados",
     source: "Blog",
     category: "Defesa do Consumidor",
@@ -290,6 +582,70 @@ export const blogPosts: BlogPost[] = [
       <p><strong>Você acha que as escolas estão preparadas para enfrentar casos de violência praticados com inteligência artificial?</strong></p>
 
       <p>Compartilhe este conteúdo e acompanhe <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a> para mais informações sobre direitos, segurança e proteção das famílias.</p>
+    `,
+  },
+  {
+    slug: "golpe-pix-med-como-recuperar-dinheiro",
+    source: "Blog",
+    category: "Golpes e Fraudes",
+    title: "Caiu em um golpe do Pix? O tempo faz diferença",
+    excerpt: "Caiu em um golpe do Pix? Entenda como funciona o MED 2.0, por que é importante agir rápido e quais cuidados ajudam a evitar novas fraudes.",
+    author: "Gutemberg Fonseca",
+    role: "Especialista em Defesa do Consumidor e ex-Secretário de Estado de Defesa do Consumidor do Rio de Janeiro",
+    date: "2026-08-16T00:00:00-03:00",
+    authorImage: "https://diariodorio.com/wp-content/uploads/2025/12/cropped-Secretario-de-Estado-de-Defesa-do-Consumidor-Gutemberg-Fonseca--96x96.png",
+    coverImage: "/images/blog/golpe-pix-med-como-recuperar-dinheiro-v2.png",
+    coverImageAlt: "Consumidor contesta pelo aplicativo do banco uma transferência Pix realizada após um golpe.",
+    metaTitle: "Golpe do Pix: o que fazer para tentar recuperar o dinheiro",
+    metaDescription: "Caiu em um golpe do Pix? Entenda como funciona o MED 2.0, por que é importante agir rápido e quais cuidados ajudam a evitar novas fraudes.",
+    readingTime: "3 min de leitura",
+    tags: ["Golpe do Pix", "MED 2.0", "Mecanismo Especial de Devolução", "Fraude no Pix", "Comprovante falso", "Pix agendado"],
+    featured: true,
+    content: `
+      <p>O Pix leva segundos para chegar à outra conta. É justamente essa velocidade que os criminosos tentam usar a favor deles.</p>
+
+      <p>Depois de receber o dinheiro, o golpista pode transferir o valor para outras contas antes que a vítima perceba o que aconteceu. Por muito tempo, esse caminho dificultava a recuperação porque o bloqueio ficava concentrado na primeira conta que recebeu a transferência.</p>
+
+      <p>Essa regra mudou.</p>
+
+      <p>Desde 2026, o chamado MED 2.0 permite que as instituições identifiquem possíveis caminhos percorridos pelo dinheiro depois do primeiro Pix. A funcionalidade se tornou obrigatória para os participantes do sistema em fevereiro. (<a href="https://www.bcb.gov.br/detalhenoticia/20817/nota/https%3A/www3.bcb.gov.br/sgspub" target="_blank" rel="noopener noreferrer">Banco Central do Brasil</a>)</p>
+
+      <p>Isso não garante a devolução. Se o dinheiro já tiver sido sacado ou não houver saldo disponível nas contas identificadas, a vítima pode não recuperar o valor integral. Mas o rastreamento aumenta a possibilidade de encontrar recursos que antes escapavam da primeira tentativa de bloqueio.</p>
+
+      <br/>
+      <h2>Percebeu o golpe? Conteste o Pix no aplicativo</h2>
+
+      <p>Abra o aplicativo do banco e procure a opção para contestar a transação ou acionar o Mecanismo Especial de Devolução, o MED.</p>
+
+      <p>Hoje, todas as instituições participantes devem oferecer esse recurso pelo próprio aplicativo. O Banco Central orienta que a contestação seja feita o mais rápido possível. (<a href="https://www.bcb.gov.br/detalhenoticia/20817/nota/https%3A/www3.bcb.gov.br/sgspub" target="_blank" rel="noopener noreferrer">Banco Central do Brasil</a>)</p>
+
+      <p>Depois do registro, os bancos envolvidos analisam se há indícios de fraude. Confirmado o golpe, os valores encontrados podem ser devolvidos à vítima. A análise leva até sete dias corridos e, se a fraude for reconhecida, a devolução dos recursos disponíveis deve ocorrer em até 96 horas. (<a href="https://www.bcb.gov.br/meubc/faqs/p/o-que-e-e-como-funciona-o-mecanismo-especial-de-devolucao-med" target="_blank" rel="noopener noreferrer">Banco Central do Brasil</a>)</p>
+
+      <p>Registre também um boletim de ocorrência e preserve as provas: conversa com o golpista, número utilizado, chave Pix e comprovante da transferência.</p>
+
+      <p>O MED vale para casos de fraude, golpe ou crime. Ele não foi criado para resolver desacordo comercial nem uma transferência enviada por engano para a pessoa errada. (<a href="https://www.bcb.gov.br/detalhenoticia/20602/noticia" target="_blank" rel="noopener noreferrer">Banco Central do Brasil</a>)</p>
+
+      <br/>
+      <h2>Comprovante de Pix não significa dinheiro na conta</h2>
+
+      <p>Outro golpe comum começa quando alguém apresenta um comprovante e afirma que o pagamento já foi feito.</p>
+
+      <p>Não entregue um produto nem considere uma dívida paga apenas com base na imagem recebida pelo WhatsApp. Abra o aplicativo do banco e confira o saldo ou o extrato.</p>
+
+      <p>O Banco Central passou a exigir uma identificação visual diferente para pagamentos concluídos e transações apenas agendadas. Os comprovantes de pagamento efetivado recebem um ícone de confirmação, enquanto os agendamentos têm identificação própria. A mudança foi criada justamente para dificultar o uso de comprovantes falsos ou de Pix agendado em fraudes. (<a href="https://www.bcb.gov.br/detalhenoticia/20602/noticia" target="_blank" rel="noopener noreferrer">Banco Central do Brasil</a>)</p>
+
+      <p>Mesmo assim, a conferência mais segura continua sendo dentro da própria conta.</p>
+
+      <br/>
+      <p>No golpe do Pix, esperar para ver se o dinheiro volta sozinho pode reduzir as chances de recuperação.</p>
+
+      <p>Percebeu que foi enganado? Conteste a transferência no banco, acione o MED e registre a ocorrência. E, quando estiver recebendo, confirme o crédito na conta antes de confiar em qualquer comprovante.</p>
+
+      <p><strong>Compartilhe este conteúdo com quem usa Pix todos os dias.</strong></p>
+
+      <p>Para acompanhar alertas sobre golpes e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
+
+      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
     `,
   },
   {

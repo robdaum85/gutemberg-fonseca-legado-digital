@@ -20,7 +20,10 @@ export const CATEGORY_LABEL_MAP: Record<string, string> = Object.entries(
 );
 
 export function getCategorySlug(category: string): string | null {
+  if (category === "Economia e Consumidor") return "direitos-do-consumidor";
+  if (category === "Direitos do Consumidor") return "direitos-do-consumidor";
   if (category === "Apostas e Endividamento") return "direitos-do-consumidor";
+  if (category === "Golpes e Fraudes") return "direitos-do-consumidor";
   if (category === "Direitos e Cidadania") return "direitos-do-cidadao";
   return CATEGORY_SLUG_MAP[category] ?? null;
 }
@@ -43,7 +46,7 @@ export function getPublishedBlogPosts(): BlogPost[] {
 
 export function getPostsByCategory(category: string): BlogPost[] {
   return getPublishedBlogPosts().filter((p) => p.category === category || (
-    category === "Defesa do Consumidor" && p.category === "Apostas e Endividamento"
+    category === "Defesa do Consumidor" && ["Economia e Consumidor", "Direitos do Consumidor", "Apostas e Endividamento", "Golpes e Fraudes"].includes(p.category)
   ) || (
     category === "Direitos do Cidadão" && p.category === "Direitos e Cidadania"
   ));
