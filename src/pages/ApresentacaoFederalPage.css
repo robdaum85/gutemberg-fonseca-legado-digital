@@ -1227,8 +1227,8 @@ a{color:inherit}
 .campaign-popup{
   position:relative;
   display:grid;
-  grid-template-columns:minmax(260px,.82fr) minmax(340px,1.18fr);
-  width:min(860px,100%);
+  grid-template-columns:minmax(300px,.8fr) minmax(460px,1.2fr);
+  width:min(980px,100%);
   max-height:calc(100svh - 40px);
   overflow:auto;
   border:1px solid rgba(255,255,255,.18);
@@ -1269,9 +1269,10 @@ a{color:inherit}
   background-size:cover;
 }
 .campaign-popup-brand img{display:block;width:min(125%,390px);max-width:none;height:auto;filter:drop-shadow(0 14px 28px rgba(0,0,0,.2))}
-.campaign-popup-content{display:flex;flex-direction:column;justify-content:center;padding:clamp(34px,5vw,58px)}
+.campaign-popup-content{display:flex;flex-direction:column;justify-content:center;padding:clamp(32px,4vw,48px)}
 .campaign-popup-kicker{font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-green)}
-.campaign-popup-content h2{margin-top:9px;font-family:var(--display);font-size:clamp(34px,4vw,48px);font-weight:400;line-height:1;text-transform:uppercase;color:var(--brand-navy)}
+.campaign-popup-content h2{margin-top:9px;font-family:var(--display);font-size:clamp(34px,4vw,46px);font-weight:400;line-height:1;text-transform:uppercase;color:var(--brand-navy)}
+.campaign-popup-feature-video{display:block;width:100%;margin-top:22px;aspect-ratio:16/9;object-fit:contain;border-radius:12px;background:#000;box-shadow:0 14px 30px rgba(0,28,53,.18)}
 .campaign-popup-content>p{margin-top:16px;font-size:14px;line-height:1.65;color:#526277}
 .campaign-popup-mel{text-decoration:none;display:flex;align-items:center;gap:11px;width:100%;margin-top:18px;padding:12px 14px;border:1px solid rgba(0,165,86,.2);border-radius:10px;background:rgba(255,222,0,.18);color:var(--brand-navy);text-align:left;cursor:pointer;transition:transform .16s ease,background-color .16s ease}
 .campaign-popup-mel:hover,.campaign-popup-mel:focus-visible{background:rgba(255,222,0,.32);transform:translateY(-1px);outline:2px solid var(--brand-green);outline-offset:2px}
@@ -1283,7 +1284,7 @@ a{color:inherit}
 .campaign-popup-social a{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:8px 11px;border:1px solid rgba(0,63,102,.13);border-radius:8px;background:#f1f6f9;color:var(--brand-navy);font-size:10px;font-weight:800;text-decoration:none;transition:transform .16s ease,background-color .16s ease,color .16s ease}
 .campaign-popup-social a:hover,.campaign-popup-social a:focus-visible{background:var(--brand-blue);color:#fff;transform:translateY(-2px)}
 .campaign-popup-social svg{width:17px;height:17px;flex:none}
-.campaign-popup-vote{display:grid;justify-items:center;gap:16px;margin-top:28px;padding-top:22px;border-top:3px solid var(--brand-yellow);text-align:center}
+.campaign-popup-vote{display:grid;justify-items:center;gap:16px;margin-top:24px;padding-top:20px;border-top:3px solid var(--brand-yellow);text-align:center}
 .campaign-popup-vote p{display:grid;justify-items:center;gap:3px;color:var(--brand-navy)}
 .campaign-popup-vote strong{font-size:11px;text-transform:uppercase;letter-spacing:.08em}
 .campaign-popup-vote span{font-family:var(--display);font-size:25px;line-height:1;text-transform:uppercase}
@@ -1299,6 +1300,7 @@ a{color:inherit}
   .campaign-popup-brand img{width:min(100%,250px)}
   .campaign-popup-content{padding:24px 20px 22px;text-align:center}
   .campaign-popup-content h2{font-size:32px}
+  .campaign-popup-feature-video{margin-top:18px;border-radius:9px}
   .campaign-popup-content>p{font-size:12.5px}
   .campaign-popup-social{justify-content:center;margin-top:18px}
   .campaign-popup-social a{width:39px;height:39px;justify-content:center;padding:0}

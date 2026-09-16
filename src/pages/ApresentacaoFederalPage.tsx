@@ -731,6 +731,8 @@ const campaignJingles = [
   { title: "Jingle 1", src: "/audio/jingle-campanha-2255.mp3", isTheme: true },
 ];
 
+const CAMPAIGN_POPUP_VIDEO_SRC = "/videos/flavioapoiagutemberg.mp4";
+
 export default function FederalPreviewPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerScrolled, setHeaderScrolled] = useState(false);
@@ -973,23 +975,18 @@ export default function FederalPreviewPage() {
       )}
       {campaignPopupOpen && (
         <div className="campaign-popup-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setCampaignPopupOpen(false); }}>
-          <section className="campaign-popup" role="dialog" aria-modal="true" aria-labelledby="campaign-popup-title" aria-describedby="campaign-popup-description">
+          <section className="campaign-popup" role="dialog" aria-modal="true" aria-labelledby="campaign-popup-title">
             <button ref={campaignPopupCloseRef} className="campaign-popup-close" type="button" aria-label="Fechar" onClick={() => setCampaignPopupOpen(false)}>×</button>
             <div className="campaign-popup-brand">
               <img src="/images/federal/brand/logo-hero-2255-completa.png" alt="Gutemberg Fonseca, deputado federal, número 2255. O Defensor do Consumidor." width="1200" height="800" decoding="async"/>
             </div>
             <div className="campaign-popup-content">
               <span className="campaign-popup-kicker">Vamos juntos pelo Brasil</span>
-              <h2 id="campaign-popup-title">Acompanhe, compartilhe e faça parte</h2>
-              <p id="campaign-popup-description">Siga Gutemberg Fonseca nas redes sociais e acompanhe as propostas, agendas e a caminhada até Brasília.</p>
-              <a className="campaign-popup-mel" href="/mel" target="_blank" rel="noopener noreferrer" aria-label="Conheça o MEL - Movimento Endividados Livres (abre em nova aba)" data-campaign-event="mel_click" data-campaign-label="Pop-up: Conheça o MEL">
-                <img src="/images/mel/mel-logo.png" alt="" width="709" height="307" />
-                <span><strong>Conheça o MEL - Movimento Endividados Livres.</strong><small>Acesse a página do movimento.</small></span>
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-              <div className="campaign-popup-social" aria-label="Siga Gutemberg Fonseca nas redes sociais">
-                {socialLinks.map(({ icon: SocialIcon, href, label }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`Seguir no ${label}`} title={label} data-campaign-event="social_click" data-campaign-label={`Pop-up: ${label}`} key={label}><SocialIcon/><span>{label}</span></a>)}
-              </div>
+              <h2 id="campaign-popup-title">Veja quem Flávio Bolsonaro apoia</h2>
+              <video className="campaign-popup-feature-video" controls playsInline preload="metadata" aria-label="Vídeo com Flávio Bolsonaro e Gutemberg Fonseca">
+                <source src={CAMPAIGN_POPUP_VIDEO_SRC} type="video/mp4" />
+                Seu navegador não suporta a reprodução de vídeos.
+              </video>
               <div className="campaign-popup-vote">
                 <p><strong>Dia 4 de outubro, vote</strong><span>Gutemberg Fonseca 2255</span></p>
                 <a href="#inicio" onClick={handleVoteClick} data-campaign-event="support_click" data-campaign-label="Pop-up: Eu voto 2255">Eu voto 2255<CampaignIcon name="arrow"/></a>
