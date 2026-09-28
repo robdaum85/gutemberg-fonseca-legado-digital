@@ -107,7 +107,7 @@ const BlogPostModal = ({ post, open, onClose }: BlogPostModalProps) => {
               <ul className="space-y-2 text-sm text-foreground/90">
                 <li>📱 <strong>Fala Consumidor (WhatsApp):</strong> (21) 99336-4848</li>
                 <li>📞 <strong>Disque 151</strong> – PROCON-RJ</li>
-                <li>💬 <strong>Zap do Guto:</strong> +55 21 92011-2255</li>
+                <li>💬 <strong>Zap do Guto:</strong> +55 21 99685-2160</li>
                 <li>📷 <strong>Instagram:</strong> @gutembergpfonseca</li>
               </ul>
             </div>

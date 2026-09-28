@@ -7,7 +7,7 @@ import "./MelPage.css";
 // Não há backend: o cadastro vira uma mensagem de WhatsApp enviada pela própria
 // pessoa para o número da equipe do Gutemberg, com os dados do formulário já
 // preenchidos no texto. Não existe endpoint, banco de dados nem redirecionamento.
-const MEL_WHATSAPP_PHONE = "5521920112255";
+const MEL_WHATSAPP_PHONE = "5521996852160";
 
 type ContactForm = {
   name: string;

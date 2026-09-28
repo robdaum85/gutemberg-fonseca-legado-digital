@@ -42,7 +42,7 @@ const ContactSection = () => {
     }
 
     const message = `Olá! Meu nome é ${whatsappData.name}. ${whatsappData.message}`;
-    const whatsappNumber = "5521920112255"; // Número do WhatsApp do Gutemberg
+    const whatsappNumber = "5521996852160"; // Número do WhatsApp do Gutemberg
   
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     
@@ -129,7 +129,7 @@ const ContactSection = () => {
                   </svg>
                   <div>
                     <p className="font-medium">WhatsApp</p>
-                    <p className="text-graphite">+55 21 92011-2255</p>
+                    <p className="text-graphite">+55 21 99685-2160</p>
                   </div>
                 </div>
               </div>

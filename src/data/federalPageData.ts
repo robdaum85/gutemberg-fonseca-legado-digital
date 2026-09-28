@@ -248,8 +248,8 @@ export const federalPageData = {
     consentAuditLabel: "Consentimento",
   },
   contacts: {
-    phone: "+55 21 92011-2255",
-    whatsapp: "5521920112255",
+    phone: "+55 21 99685-2160",
+    whatsapp: "5521996852160",
     email: "contato@gutembergfonseca.com.br",
     instagramLabel: "@gutembergpfonseca",
     instagramUrl: "https://www.instagram.com/gutembergpfonseca/",

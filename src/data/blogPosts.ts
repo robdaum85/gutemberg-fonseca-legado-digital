@@ -91,7 +91,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Acompanhe <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a> para mais informações sobre direitos e temas que afetam o bolso.</p>
 
-      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</p>
     `,
   },
   {
@@ -153,7 +153,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Para acompanhar outras orientações, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
 
-      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</p>
     `,
   },
   {
@@ -211,7 +211,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Para acompanhar informações sobre energia, cobranças e direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
 
-      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</p>
     `,
   },
   {
@@ -267,7 +267,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Acompanhe <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a> para acompanhar meu trabalho e outros conteúdos sobre direitos do consumidor e custo de vida.</p>
 
-      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</p>
     `,
   },
   {
@@ -327,7 +327,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Para acompanhar informações sobre dívidas, cobranças e direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
 
-      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</p>
     `,
   },
   {
@@ -394,7 +394,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Acompanhe meu trabalho em <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e em <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
 
-      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</p>
     `,
   },
   {
@@ -453,7 +453,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Para acompanhar meu trabalho, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
 
-      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</p>
     `,
   },
   {
@@ -521,7 +521,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Acompanhe meu trabalho em <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e em <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
 
-      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+      <p>Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</p>
     `,
   },
   {
@@ -645,7 +645,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Para acompanhar alertas sobre golpes e outros direitos do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
 
-      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</p>
     `,
   },
   {
@@ -709,7 +709,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Para acompanhar informações sobre direitos das pessoas com deficiência e defesa do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
 
-      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</p>
     `,
   },
   {
@@ -767,7 +767,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Para acompanhar informações sobre bets, endividamento e defesa do consumidor, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>.</p>
 
-      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</p>
+      <p>Tem alguma dúvida? Fale pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</p>
     `,
   },
   {
@@ -845,7 +845,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Esperar o próximo vento forte para descobrir os mesmos problemas custa caro. E quem paga essa conta é a população.</p>
 
-      <p><strong>Você acha que o Rio está preparado para enfrentar um novo vendaval? Para acompanhar essa discussão e o meu trabalho, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>. Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521920112255" target="_blank" rel="noopener noreferrer">(21) 92011-2255</a>.</strong></p>
+      <p><strong>Você acha que o Rio está preparado para enfrentar um novo vendaval? Para acompanhar essa discussão e o meu trabalho, siga <a href="https://www.instagram.com/gutembergpfonseca/" target="_blank" rel="noopener noreferrer">@gutembergpfonseca</a> e acesse <a href="https://gutembergfonseca.com.br/">gutembergfonseca.com.br</a>. Tem alguma dúvida? Fale comigo pelo WhatsApp: <a href="https://wa.me/5521996852160" target="_blank" rel="noopener noreferrer">(21) 99685-2160</a>.</strong></p>
     `,
   },
   {
@@ -2845,7 +2845,7 @@ export const blogPosts: BlogPost[] = [
       Disque 151</p>
 
       <p><strong>Zap do Guto</strong><br/>
-      +55 21 92011-2255</p>
+      +55 21 99685-2160</p>
 
       <p>Instagram: <strong>@gutembergpfonseca</strong></p>
     `,
@@ -3013,7 +3013,7 @@ export const blogPosts: BlogPost[] = [
 
       <br/>
 
-      <p>Se quiser fazer uma denuncia sobre esse tema ou qualquer outro, os canais sao: Fala Consumidor (SEDCON) pelo WhatsApp <strong>(21) 99336-4848</strong> ou pelo Disque <strong>151</strong> do PROCON-RJ. Quem quiser, pode falar comigo pelo "Zap do Guto" <strong>+55 21 92011-2255</strong>. Tambem estou no <strong>@gutembergpfonseca</strong>.</p>
+      <p>Se quiser fazer uma denuncia sobre esse tema ou qualquer outro, os canais sao: Fala Consumidor (SEDCON) pelo WhatsApp <strong>(21) 99336-4848</strong> ou pelo Disque <strong>151</strong> do PROCON-RJ. Quem quiser, pode falar comigo pelo "Zap do Guto" <strong>+55 21 99685-2160</strong>. Tambem estou no <strong>@gutembergpfonseca</strong>.</p>
 
       <br/>
 
@@ -3093,7 +3093,7 @@ export const blogPosts: BlogPost[] = [
 
       <br/>
 
-      <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo WhatsApp <strong>+55 21 92011-2255</strong>.</p>
+      <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo WhatsApp <strong>+55 21 99685-2160</strong>.</p>
     `,
   },
   {
@@ -3166,7 +3166,7 @@ export const blogPosts: BlogPost[] = [
       <br/>
 
       <h2>Denuncie</h2>
-      <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo whatsapp <strong>+55 21 92011-2255</strong> ou pelo <strong>@gutembergfonseca</strong>.</p>
+      <p>Denúncias, reclamações e dúvidas podem ser enviadas pelo whatsapp <strong>+55 21 99685-2160</strong> ou pelo <strong>@gutembergfonseca</strong>.</p>
     `,
   },
   {
@@ -3905,7 +3905,7 @@ export const blogPosts: BlogPost[] = [
 
     <ul>
       <li><strong>Fala Consumidor (SEDCON):</strong> WhatsApp (21) 99336-4848 ou Disque 151 (PROCON-RJ)</li>
-      <li><strong>Zap do Guto:</strong> +55 21 92011-2255</li>
+      <li><strong>Zap do Guto:</strong> +55 21 99685-2160</li>
       <li><strong>Instagram:</strong> @gutembergfonseca</li>
     </ul>
   `,
