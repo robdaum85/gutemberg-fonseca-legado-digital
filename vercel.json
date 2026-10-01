@@ -70,6 +70,15 @@
           "value": "noindex, follow"
         }
       ]
+    },
+    {
+      "source": "/dashboard_gutemberg_setembro_2026_v2",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive, nosnippet"
+        }
+      ]
     }
   ],
   "redirects": [

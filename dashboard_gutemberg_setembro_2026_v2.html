@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+<title>Dashboard Gutemberg — Setembro/2026</title>
+<style>
+:root{
+  --bg:#f4f7fb; --card:#fff; --ink:#10233f; --muted:#6d7f95;
+  --blue:#2457e6; --blue2:#58a8ff; --navy:#0b2f5b; --cyan:#17b8c8;
+  --green:#239b67; --amber:#e59a26; --red:#d84b55; --purple:#635bdb;
+  --line:#dfe7f0; --shadow:0 12px 34px rgba(28,52,84,.09);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink)}
+.container{max-width:1280px;margin:auto;padding:28px 22px 48px}
+.hero{background:linear-gradient(135deg,#0b2f5b,#165cae 60%,#2789dc);color:#fff;border-radius:26px;padding:31px 32px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.08);right:-105px;top:-155px}.hero h1{margin:0;font-size:clamp(30px,4vw,48px);letter-spacing:-.9px}.hero p{margin:9px 0 0;color:#deebff;font-size:15px;max-width:880px;line-height:1.55}.badges{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:8px 11px;border-radius:999px;font-size:12px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 20px}.nav button{border:1px solid var(--line);background:#fff;color:var(--navy);padding:10px 14px;border-radius:12px;font-weight:800;cursor:pointer}.nav button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.section{display:none}.section.active{display:block}.grid{display:grid;gap:16px}.kpis{grid-template-columns:repeat(4,1fr)}.two{grid-template-columns:1.08fr .92fr}.three{grid-template-columns:repeat(3,1fr)}.four{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid #e6edf5;border-radius:18px;padding:20px;box-shadow:var(--shadow)}.card h2{font-size:18px;margin:0 0 5px}.card h3{font-size:15px;margin:0 0 10px}.sub{color:var(--muted);font-size:12.5px;line-height:1.5}.kpi{padding:18px 18px 16px}.kpi .label{color:var(--muted);font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}.kpi .value{font-size:32px;font-weight:900;margin-top:5px;letter-spacing:-.7px}.kpi .hint{font-size:12px;margin-top:4px;color:var(--muted)}
+.accent{border-top:4px solid var(--blue)}.accent-green{border-top:4px solid var(--green)}.accent-amber{border-top:4px solid var(--amber)}.accent-cyan{border-top:4px solid var(--cyan)}.accent-purple{border-top:4px solid var(--purple)}
+.callout{display:flex;gap:12px;align-items:flex-start;background:#eef6ff;border:1px solid #d7e9ff;border-radius:16px;padding:15px 16px;margin-top:14px}.callout strong{display:block;color:var(--navy);margin-bottom:2px}.callout span{font-size:13px;color:#536980;line-height:1.5}.callout.warn{background:#fff7e9;border-color:#f7dfb4}.callout.good{background:#edf9f3;border-color:#d4efdf}
+.bar-row{display:grid;grid-template-columns:minmax(155px,1.4fr) minmax(150px,3fr) 90px;gap:10px;align-items:center;margin:10px 0}.bar-label{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.track{height:10px;background:#eaf0f7;border-radius:999px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue2));border-radius:999px}.fill.green{background:linear-gradient(90deg,#198b61,#50bf90)}.fill.amber{background:linear-gradient(90deg,#ce7b16,#f4b34f)}.fill.purple{background:linear-gradient(90deg,#4d49c7,#8178ed)}.bar-value{text-align:right;font-size:12px;font-weight:900;color:#24415f}.big-number{font-size:46px;font-weight:900;letter-spacing:-1px;color:var(--navy)}
+.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;font-size:13px}.table th,.table td{padding:12px 10px;border-bottom:1px solid #e8eef5;text-align:left;vertical-align:top}.table th{color:#60728a;font-size:11px;text-transform:uppercase;letter-spacing:.45px;position:sticky;top:0;background:#fff}.table td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:800;white-space:nowrap}.pill{font-size:11px;border-radius:999px;padding:4px 8px;background:#eef4fb;color:#35506e;white-space:nowrap}.pill.ok{background:#e8f7ef;color:#217a51}.pill.warn{background:#fff4e7;color:#a95f09}.pill.bad{background:#fdecef;color:#a52c39}
+.explain{background:#fff;border-left:4px solid var(--blue);padding:14px 16px;border-radius:12px;color:#425a73;font-size:13px;line-height:1.55}.metric-list{display:grid;gap:9px}.metric{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-bottom:1px solid #edf1f6}.metric:last-child{border:0}.metric b{font-size:14px}.metric span{font-weight:900;color:var(--navy)}
+.retention{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:15px}.ret{background:#f1f4ff;border:1px solid #e1e6fb;border-radius:14px;padding:13px;text-align:center}.ret strong{font-size:22px;display:block;color:#3f49b8}.ret small{color:var(--muted)}
+.footer{margin-top:22px;color:#7b8a9c;font-size:11px;text-align:center;line-height:1.5}.note{font-size:11.5px;color:#6e7f93;margin-top:8px}
+@media(max-width:950px){.kpis,.four,.three,.two{grid-template-columns:1fr 1fr}.bar-row{grid-template-columns:130px 1fr 75px}.retention{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.container{padding:14px}.hero{padding:24px 20px;border-radius:20px}.kpis,.four,.three,.two{grid-template-columns:1fr}.bar-row{grid-template-columns:115px 1fr 65px}.kpi .value{font-size:29px}.nav{position:sticky;top:0;z-index:10;background:rgba(244,247,251,.93);padding:8px 0;backdrop-filter:blur(8px)}.retention{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<header class="hero">
+  <h1>Dashboard do site — Gutemberg</h1>
+  <p>Resumo de setembro de 2026 em linguagem simples. O painel reúne Google Analytics e Microsoft Clarity para mostrar audiência, páginas, origem do tráfego, comportamento e pontos técnicos sem misturar métricas diferentes.</p>
+  <div class="badges"><span class="badge">Google Analytics: 01/09/26 a 30/09/26</span><span class="badge">Clarity: 01/09/26 a 30/09/26</span><span class="badge">Datas: dd/mm/aa</span></div>
+</header>
+
+<div class="nav">
+  <button class="active" data-tab="geral">Visão geral</button>
+  <button data-tab="conteudo">Páginas</button>
+  <button data-tab="aquisicao">Aquisição</button>
+  <button data-tab="publico">Público</button>
+  <button data-tab="engajamento">Engajamento</button>
+  <button data-tab="tecnico">Saúde técnica</button>
+</div>
+
+<section id="geral" class="section active">
+  <div class="grid kpis">
+    <div class="card kpi accent"><div class="label">Visualizações no GA</div><div class="value">3.702</div><div class="hint">Páginas vistas em setembro</div></div>
+    <div class="card kpi accent-cyan"><div class="label">Usuários ativos</div><div class="value">1.282</div><div class="hint">Google Analytics</div></div>
+    <div class="card kpi accent-green"><div class="label">Visualizações / usuário</div><div class="value">2,89</div><div class="hint">Média por usuário ativo</div></div>
+    <div class="card kpi accent-amber"><div class="label">Engajamento médio</div><div class="value">56 s</div><div class="hint">Por usuário ativo</div></div>
+  </div>
+  <div class="callout"><div style="font-size:25px">💡</div><div><strong>Resumo em uma frase</strong><span>O site alcançou 1.282 usuários ativos e 3.702 visualizações no mês, mas a audiência continua fortemente concentrada na página principal e o tráfego pago é o maior canal de aquisição.</span></div></div>
+  <div class="grid two" style="margin-top:16px">
+    <div class="card">
+      <h2>Como ler os números</h2><div class="sub">Google Analytics e Clarity medem coisas diferentes.</div>
+      <div class="explain" style="margin-top:12px"><b>Visualizações (GA)</b>: cada página aberta. Uma mesma pessoa pode gerar várias visualizações.</div>
+      <div class="explain" style="margin-top:10px"><b>Usuário ativo (GA)</b>: pessoa/dispositivo que teve atividade relevante no período.</div>
+      <div class="explain" style="margin-top:10px"><b>Sessão (Clarity)</b>: uma visita ao site. O mesmo visitante pode iniciar mais de uma sessão.</div>
+      <div class="explain" style="margin-top:10px"><b>Não some diretamente</b> visualizações, usuários e sessões: são indicadores diferentes.</div>
+    </div>
+    <div class="card">
+      <h2>Clarity — comportamento no mês</h2><div class="sub">01/09/26 a 30/09/26</div>
+      <div class="metric-list" style="margin-top:12px">
+        <div class="metric"><b>Sessões</b><span>1.263</span></div><div class="metric"><b>Usuários únicos</b><span>795</span></div>
+        <div class="metric"><b>Páginas por sessão</b><span>1,54</span></div><div class="metric"><b>Rolagem média</b><span>41,16%</span></div>
+        <div class="metric"><b>Tempo ativo</b><span>46 s</span></div><div class="metric"><b>Tempo total</b><span>174 s</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conteudo" class="section">
+  <div class="grid four">
+    <div class="card kpi accent"><div class="label">Visualizações</div><div class="value">3.702</div><div class="hint">Total do mês</div></div>
+    <div class="card kpi accent-purple"><div class="label">Página principal</div><div class="value">2.305</div><div class="hint">62,26% das visualizações</div></div>
+    <div class="card kpi accent-green"><div class="label">Molduras</div><div class="value">313</div><div class="hint">8,45% das visualizações</div></div>
+    <div class="card kpi accent-amber"><div class="label">Páginas catalogadas</div><div class="value">59</div><div class="hint">GA • relatório de páginas</div></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2>Páginas com maior audiência</h2><div class="sub">Google Analytics • 01/09/26 a 30/09/26</div>
+    <div class="table-wrap" style="margin-top:10px"><table class="table"><thead><tr><th>Página</th><th style="text-align:right">Visualizações</th><th style="text-align:right">Usuários ativos</th><th style="text-align:right">Vis./usuário</th><th style="text-align:right">Engajamento médio</th></tr></thead><tbody>
+      <tr><td><b>Gutemberg Fonseca 2255 | O Federal do Consumidor</b></td><td class="num">2.305</td><td class="num">1.082</td><td class="num">2,13</td><td class="num">36 s</td></tr>
+      <tr><td>Molduras de campanha | Gutemberg Fonseca</td><td class="num">313</td><td class="num">113</td><td class="num">2,77</td><td class="num">39 s</td></tr>
+      <tr><td>Gutemberg Fonseca 2255 (com foto) | Molduras</td><td class="num">172</td><td class="num">63</td><td class="num">2,73</td><td class="num">2 min 59 s</td></tr>
+      <tr><td>Gutemberg Fonseca 2255 | O Defensor do Consumidor</td><td class="num">114</td><td class="num">32</td><td class="num">3,56</td><td class="num">10 s</td></tr>
+      <tr><td>Guto & Dani Martins | Molduras</td><td class="num">96</td><td class="num">37</td><td class="num">2,59</td><td class="num">1 min 02 s</td></tr>
+      <tr><td>Guto & Felipe Pampolha | Molduras</td><td class="num">82</td><td class="num">19</td><td class="num">4,32</td><td class="num">1 min 09 s</td></tr>
+      <tr><td>Guto & Jorge Felippe Neto | Molduras</td><td class="num">80</td><td class="num">20</td><td class="num">4,00</td><td class="num">1 min 21 s</td></tr>
+      <tr><td>Somente Gutemberg | Molduras</td><td class="num">71</td><td class="num">35</td><td class="num">2,03</td><td class="num">1 min 10 s</td></tr>
+    </tbody></table></div>
+  </div>
+  <div class="grid two" style="margin-top:16px">
+    <div class="card"><h2>O que mais chama atenção</h2>
+      <div class="callout"><div>🏠</div><div><strong>A página principal concentra 62,26%</strong><span>São 2.305 das 3.702 visualizações do mês. Ela continua sendo o grande centro do tráfego.</span></div></div>
+      <div class="callout good"><div>⏱️</div><div><strong>Algumas molduras prendem mais atenção</strong><span>A página “com foto” ficou em 2 min 59 s de engajamento médio; Jorge Felippe Neto ficou em 1 min 21 s.</span></div></div>
+      <div class="callout"><div>🔁</div><div><strong>Felipe Pampolha tem alta repetição</strong><span>4,32 visualizações por usuário ativo, a maior entre as páginas visíveis na captura.</span></div></div>
+    </div>
+    <div class="card"><h2>Eventos ligados às páginas</h2><div class="sub">Principais eventos registrados no GA.</div>
+      <div class="metric-list" style="margin-top:10px"><div class="metric"><b>page_view</b><span>3,7 mil</span></div><div class="metric"><b>user_engagement</b><span>2,3 mil</span></div><div class="metric"><b>session_start</b><span>2,3 mil</span></div><div class="metric"><b>scroll</b><span>1,5 mil</span></div><div class="metric"><b>first_visit</b><span>1,1 mil</span></div><div class="metric"><b>photo_frame_upload</b><span>750</span></div><div class="metric"><b>navigation_click</b><span>586</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="aquisicao" class="section">
+  <div class="grid two">
+    <div class="card"><h2>Sessões por canal</h2><div class="sub">Google Analytics • valores conforme exibidos no resumo do relatório.</div>
+      <div style="margin-top:16px">
+        <div class="bar-row"><div class="bar-label">Paid Search</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-value">1,3 mil</div></div>
+        <div class="bar-row"><div class="bar-label">Direct</div><div class="track"><div class="fill" style="width:44.6%"></div></div><div class="bar-value">580</div></div>
+        <div class="bar-row"><div class="bar-label">Organic Search</div><div class="track"><div class="fill" style="width:15.8%"></div></div><div class="bar-value">206</div></div>
+        <div class="bar-row"><div class="bar-label">Organic Social</div><div class="track"><div class="fill" style="width:7.8%"></div></div><div class="bar-value">102</div></div>
+        <div class="bar-row"><div class="bar-label">Unassigned</div><div class="track"><div class="fill" style="width:3.7%"></div></div><div class="bar-value">48</div></div>
+        <div class="bar-row"><div class="bar-label">Cross-network</div><div class="track"><div class="fill" style="width:2.2%"></div></div><div class="bar-value">29</div></div>
+        <div class="bar-row"><div class="bar-label">Referral</div><div class="track"><div class="fill" style="width:1.2%"></div></div><div class="bar-value">15</div></div>
+      </div>
+    </div>
+    <div class="card"><h2>Tradução para leigos</h2>
+      <div class="callout"><div>💰</div><div><strong>Busca paga é o maior motor</strong><span>Paid Search lidera com aproximadamente 1,3 mil sessões no GA, bem à frente dos outros canais.</span></div></div>
+      <div class="callout"><div>⌨️</div><div><strong>Tráfego direto é forte</strong><span>580 sessões chegaram sem uma origem claramente atribuída — por endereço digitado, favorito, link sem marcação ou outras situações semelhantes.</span></div></div>
+      <div class="callout"><div>🔎</div><div><strong>Busca orgânica ainda tem espaço</strong><span>Organic Search aparece com 206 sessões, abaixo da mídia paga.</span></div></div>
+    </div>
+  </div>
+  <div class="grid two" style="margin-top:16px">
+    <div class="card"><h2>Referenciadores no Clarity</h2><div class="sub">Outra forma de olhar a origem do tráfego.</div>
+      <div class="metric-list" style="margin-top:10px"><div class="metric"><b>tupi.fm</b><span>226</span></div><div class="metric"><b>Google</b><span>125</span></div><div class="metric"><b>Google Ads</b><span>105</span></div><div class="metric"><b>Instagram</b><span>70</span></div><div class="metric"><b>Autorreferência</b><span>29</span></div></div>
+    </div>
+    <div class="card"><h2>Mobile continua prioritário</h2><div class="sub">Clarity • sessões por navegador.</div>
+      <div class="bar-row"><div class="bar-label">Chrome Mobile</div><div class="track"><div class="fill green" style="width:62%"></div></div><div class="bar-value">62,0%</div></div>
+      <div class="bar-row"><div class="bar-label">Mobile Safari</div><div class="track"><div class="fill green" style="width:10.93%"></div></div><div class="bar-value">10,93%</div></div>
+      <div class="bar-row"><div class="bar-label">Samsung Internet</div><div class="track"><div class="fill green" style="width:7.05%"></div></div><div class="bar-value">7,05%</div></div>
+      <div class="callout good"><div>📱</div><div><strong>Decisão prática</strong><span>Qualquer ajuste importante deve ser validado primeiro no celular.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="publico" class="section">
+  <div class="grid kpis">
+    <div class="card kpi accent-purple"><div class="label">Portugal</div><div class="value">443</div><div class="hint">Usuários ativos</div></div>
+    <div class="card kpi accent-green"><div class="label">Brasil</div><div class="value">413</div><div class="hint">Usuários ativos</div></div>
+    <div class="card kpi accent-amber"><div class="label">Irã</div><div class="value">115</div><div class="hint">Usuários ativos</div></div>
+    <div class="card kpi accent-cyan"><div class="label">Estados Unidos</div><div class="value">98</div><div class="hint">Usuários ativos</div></div>
+  </div>
+  <div class="grid two" style="margin-top:16px">
+    <div class="card"><h2>Principais países</h2><div class="sub">Google Analytics • usuários ativos.</div>
+      <div style="margin-top:14px">
+        <div class="bar-row"><div class="bar-label">Portugal</div><div class="track"><div class="fill purple" style="width:100%"></div></div><div class="bar-value">443</div></div>
+        <div class="bar-row"><div class="bar-label">Brasil</div><div class="track"><div class="fill purple" style="width:93.2%"></div></div><div class="bar-value">413</div></div>
+        <div class="bar-row"><div class="bar-label">Irã</div><div class="track"><div class="fill purple" style="width:26%"></div></div><div class="bar-value">115</div></div>
+        <div class="bar-row"><div class="bar-label">Estados Unidos</div><div class="track"><div class="fill purple" style="width:22.1%"></div></div><div class="bar-value">98</div></div>
+        <div class="bar-row"><div class="bar-label">Espanha</div><div class="track"><div class="fill purple" style="width:4.7%"></div></div><div class="bar-value">21</div></div>
+        <div class="bar-row"><div class="bar-label">Itália</div><div class="track"><div class="fill purple" style="width:4.7%"></div></div><div class="bar-value">21</div></div>
+        <div class="bar-row"><div class="bar-label">África do Sul</div><div class="track"><div class="fill purple" style="width:3.8%"></div></div><div class="bar-value">17</div></div>
+      </div>
+    </div>
+    <div class="card"><h2>Atividade recente</h2><div class="sub">Indicadores mostrados no resumo do GA ao fim de setembro.</div>
+      <div class="metric-list" style="margin-top:12px"><div class="metric"><b>Últimos 30 dias</b><span>1,3 mil</span></div><div class="metric"><b>Últimos 7 dias</b><span>392</span></div><div class="metric"><b>Último dia</b><span>63</span></div></div>
+      <div class="callout warn"><div>🌍</div><div><strong>Vale validar a geografia</strong><span>Portugal aparece ligeiramente acima do Brasil e há volume relevante no Irã e nos EUA. Se o público esperado for majoritariamente brasileiro, é útil conferir campanhas, origem e qualidade desse tráfego internacional antes de tirar conclusões.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="engajamento" class="section">
+  <div class="grid four">
+    <div class="card kpi accent"><div class="label">page_view</div><div class="value">3,7 mil</div><div class="hint">Visualizações registradas</div></div>
+    <div class="card kpi accent-green"><div class="label">scroll</div><div class="value">1,5 mil</div><div class="hint">Eventos de rolagem</div></div>
+    <div class="card kpi accent-purple"><div class="label">Upload de moldura</div><div class="value">750</div><div class="hint">photo_frame_upload</div></div>
+    <div class="card kpi accent-amber"><div class="label">Cliques de navegação</div><div class="value">586</div><div class="hint">navigation_click</div></div>
+  </div>
+  <div class="grid two" style="margin-top:16px">
+    <div class="card"><h2>Retenção por semana</h2><div class="sub">Coortes do Google Analytics. Mostra a parcela que volta nas semanas seguintes.</div>
+      <div class="retention"><div class="ret"><strong>10,0%</strong><small>Semana 1</small></div><div class="ret"><strong>3,7%</strong><small>Semana 2</small></div><div class="ret"><strong>3,5%</strong><small>Semana 3</small></div><div class="ret"><strong>2,3%</strong><small>Semana 4</small></div><div class="ret"><strong>1,1%</strong><small>Semana 5</small></div></div>
+      <div class="callout"><div>↩️</div><div><strong>Em termos simples</strong><span>A maior queda acontece logo depois da primeira semana. Apenas uma pequena parcela continua voltando nas semanas seguintes.</span></div></div>
+    </div>
+    <div class="card"><h2>Funções que as pessoas usam</h2><div class="sub">Eventos do GA ajudam a enxergar o que acontece além da simples visualização.</div>
+      <div class="metric-list" style="margin-top:10px"><div class="metric"><b>Primeiras visitas</b><span>1,1 mil</span></div><div class="metric"><b>Engajamentos</b><span>2,3 mil</span></div><div class="metric"><b>Uploads de foto/moldura</b><span>750</span></div><div class="metric"><b>Cliques de navegação</b><span>586</span></div></div>
+      <div class="callout good"><div>🖼️</div><div><strong>O recurso de moldura tem uso real</strong><span>750 eventos de upload mostram que a ferramenta não está apenas sendo visitada: há interação concreta com ela.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="tecnico" class="section">
+  <div class="grid kpis">
+    <div class="card kpi accent-green"><div class="label">Pontuação geral</div><div class="value">74,3</div><div class="hint">Clarity</div></div>
+    <div class="card kpi accent-amber"><div class="label">LCP</div><div class="value">4,432 s</div><div class="hint">Carregamento principal</div></div>
+    <div class="card kpi accent-amber"><div class="label">INP</div><div class="value">344 ms</div><div class="hint">Resposta às interações</div></div>
+    <div class="card kpi accent-green"><div class="label">CLS</div><div class="value">0,002</div><div class="hint">Estabilidade visual</div></div>
+  </div>
+  <div class="grid two" style="margin-top:16px">
+    <div class="card"><h2>Erros de JavaScript</h2><div class="big-number" style="color:var(--red)">33</div><div class="sub">Total registrado no período.</div>
+      <div class="table-wrap" style="margin-top:12px"><table class="table"><thead><tr><th>Erro</th><th style="text-align:right">Qtde.</th></tr></thead><tbody><tr><td>ResizeObserver loop completed...</td><td class="num">22</td></tr><tr><td>error invoking postmessage...</td><td class="num">8</td></tr><tr><td>can't find variable: emptyranges</td><td class="num">2</td></tr><tr><td>unable to preload css...</td><td class="num">1</td></tr></tbody></table></div>
+    </div>
+    <div class="card"><h2>Leitura simples</h2>
+      <div class="callout warn"><div>⏱️</div><div><strong>LCP é o principal ponto de atenção</strong><span>O conteúdo principal demora mais do que o desejável para aparecer.</span></div></div>
+      <div class="callout warn"><div>👆</div><div><strong>INP pode melhorar</strong><span>Algumas interações podem parecer menos imediatas.</span></div></div>
+      <div class="callout good"><div>🧱</div><div><strong>CLS está muito bom</strong><span>Os elementos praticamente não mudam de lugar durante o carregamento.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="card" style="margin-top:18px">
+  <h2>Próximo nível: evolução em 4 semanas</h2>
+  <p class="sub" style="font-size:13px">Agora já temos o mês completo no Google Analytics, mas as capturas ainda mostram totais mensais e coortes — não o total de visualizações de cada página em cada semana. Para montar a comparação 01–07, 08–14, 15–21 e 22–30/09, basta exportar o relatório “Páginas e telas” com a dimensão diária ou trocar a granularidade do gráfico para “Dia/Semana” e exportar CSV.</p>
+</div>
+<div class="footer">Fontes: Google Analytics e Microsoft Clarity • setembro/2026. Valores arredondados no GA (ex.: 1,3 mil) foram mantidos como aparecem na interface. Métricas de ferramentas diferentes não foram somadas entre si.</div>
+</div>
+<script>
+const buttons=[...document.querySelectorAll('.nav button')], sections=[...document.querySelectorAll('.section')];
+buttons.forEach(btn=>btn.addEventListener('click',()=>{buttons.forEach(b=>b.classList.remove('active'));sections.forEach(s=>s.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');}));
+</script>
+</body>
+</html>

@@ -13,6 +13,10 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, "index.html"),
         evento: path.resolve(__dirname, "evento.html"),
+        dashboardGutembergSetembro2026: path.resolve(
+          __dirname,
+          "dashboard_gutemberg_setembro_2026_v2.html",
+        ),
       },
     },
   },
