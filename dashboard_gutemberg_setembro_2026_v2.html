@@ -16,8 +16,10 @@
 body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink)}
 .container{max-width:1280px;margin:auto;padding:28px 22px 48px}
 .hero{background:linear-gradient(135deg,#0b2f5b,#165cae 60%,#2789dc);color:#fff;border-radius:26px;padding:31px 32px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.08);right:-105px;top:-155px}.hero h1{margin:0;font-size:clamp(30px,4vw,48px);letter-spacing:-.9px}.hero p{margin:9px 0 0;color:#deebff;font-size:15px;max-width:880px;line-height:1.55}.badges{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:8px 11px;border-radius:999px;font-size:12px}
-.nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 20px}.nav button{border:1px solid var(--line);background:#fff;color:var(--navy);padding:10px 14px;border-radius:12px;font-weight:800;cursor:pointer}.nav button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.actions{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin:16px 0 0}.pdf-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;background:var(--navy);color:#fff;padding:11px 16px;border-radius:12px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 8px 20px rgba(11,47,91,.16)}.pdf-button:hover{background:#164f8c}.pdf-button:focus-visible,.nav button:focus-visible{outline:3px solid rgba(36,87,230,.3);outline-offset:2px}.pdf-help{color:var(--muted);font-size:12px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 20px}.nav button{border:1px solid var(--line);background:#fff;color:var(--navy);padding:10px 14px;border-radius:12px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.nav button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
 .section{display:none}.section.active{display:block}.grid{display:grid;gap:16px}.kpis{grid-template-columns:repeat(4,1fr)}.two{grid-template-columns:1.08fr .92fr}.three{grid-template-columns:repeat(3,1fr)}.four{grid-template-columns:repeat(4,1fr)}
+.print-section-title{display:none}
 .card{background:var(--card);border:1px solid #e6edf5;border-radius:18px;padding:20px;box-shadow:var(--shadow)}.card h2{font-size:18px;margin:0 0 5px}.card h3{font-size:15px;margin:0 0 10px}.sub{color:var(--muted);font-size:12.5px;line-height:1.5}.kpi{padding:18px 18px 16px}.kpi .label{color:var(--muted);font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}.kpi .value{font-size:32px;font-weight:900;margin-top:5px;letter-spacing:-.7px}.kpi .hint{font-size:12px;margin-top:4px;color:var(--muted)}
 .accent{border-top:4px solid var(--blue)}.accent-green{border-top:4px solid var(--green)}.accent-amber{border-top:4px solid var(--amber)}.accent-cyan{border-top:4px solid var(--cyan)}.accent-purple{border-top:4px solid var(--purple)}
 .callout{display:flex;gap:12px;align-items:flex-start;background:#eef6ff;border:1px solid #d7e9ff;border-radius:16px;padding:15px 16px;margin-top:14px}.callout strong{display:block;color:var(--navy);margin-bottom:2px}.callout span{font-size:13px;color:#536980;line-height:1.5}.callout.warn{background:#fff7e9;border-color:#f7dfb4}.callout.good{background:#edf9f3;border-color:#d4efdf}
@@ -27,7 +29,12 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
 .retention{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:15px}.ret{background:#f1f4ff;border:1px solid #e1e6fb;border-radius:14px;padding:13px;text-align:center}.ret strong{font-size:22px;display:block;color:#3f49b8}.ret small{color:var(--muted)}
 .footer{margin-top:22px;color:#7b8a9c;font-size:11px;text-align:center;line-height:1.5}.note{font-size:11.5px;color:#6e7f93;margin-top:8px}
 @media(max-width:950px){.kpis,.four,.three,.two{grid-template-columns:1fr 1fr}.bar-row{grid-template-columns:130px 1fr 75px}.retention{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:640px){.container{padding:14px}.hero{padding:24px 20px;border-radius:20px}.kpis,.four,.three,.two{grid-template-columns:1fr}.bar-row{grid-template-columns:115px 1fr 65px}.kpi .value{font-size:29px}.nav{position:sticky;top:0;z-index:10;background:rgba(244,247,251,.93);padding:8px 0;backdrop-filter:blur(8px)}.retention{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.container{padding:14px}.hero{padding:24px 20px;border-radius:20px}.hero h1{font-size:30px}.kpis,.four,.three,.two{grid-template-columns:1fr}.bar-row{grid-template-columns:minmax(100px,1.2fr) minmax(80px,1fr) 58px;gap:7px}.bar-label{white-space:normal;line-height:1.25}.kpi .value{font-size:29px}.actions{align-items:stretch;flex-direction:column}.pdf-button{width:100%;min-height:46px}.pdf-help{text-align:center}.nav{position:sticky;top:0;z-index:10;flex-wrap:nowrap;overflow-x:auto;margin-left:-14px;margin-right:-14px;padding:9px 14px;background:rgba(244,247,251,.96);backdrop-filter:blur(8px);scrollbar-width:none;-webkit-overflow-scrolling:touch}.nav::-webkit-scrollbar{display:none}.nav button{flex:0 0 auto;min-height:42px}.retention{grid-template-columns:1fr 1fr}.card{padding:17px}.table th,.table td{padding:10px 8px}}
+@media print{
+  @page{size:A4 landscape;margin:10mm}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  html{scroll-behavior:auto} body{background:#fff;font-size:10pt}.container{max-width:none;padding:0}.hero{border-radius:14px;padding:18px 22px;box-shadow:none}.hero h1{font-size:28px}.hero p{font-size:11px}.actions,.nav{display:none!important}.section{display:block!important;break-before:page}.section#geral{break-before:auto}.print-section-title{display:block;margin:0 0 12px;font-size:22px;color:var(--navy)}.grid{gap:10px}.kpis,.four{grid-template-columns:repeat(4,1fr)}.three{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1.08fr .92fr}.card{padding:13px;border-radius:10px;box-shadow:none;break-inside:avoid}.card h2{font-size:15px}.kpi .value{font-size:24px}.callout{padding:10px 11px;margin-top:8px;break-inside:avoid}.bar-row{grid-template-columns:minmax(125px,1.4fr) minmax(120px,3fr) 65px;margin:7px 0}.table-wrap{overflow:visible}.table{font-size:9px}.table th,.table td{padding:7px 6px}.table th{position:static}.retention{gap:6px}.ret{padding:9px}.ret strong{font-size:17px}.footer{margin-top:14px}
+}
 </style>
 </head>
 <body>
@@ -38,16 +45,22 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
   <div class="badges"><span class="badge">Google Analytics: 01/09/26 a 30/09/26</span><span class="badge">Clarity: 01/09/26 a 30/09/26</span><span class="badge">Datas: dd/mm/aa</span></div>
 </header>
 
-<div class="nav">
-  <button class="active" data-tab="geral">Visão geral</button>
-  <button data-tab="conteudo">Páginas</button>
-  <button data-tab="aquisicao">Aquisição</button>
-  <button data-tab="publico">Público</button>
-  <button data-tab="engajamento">Engajamento</button>
-  <button data-tab="tecnico">Saúde técnica</button>
+<div class="actions">
+  <span class="pdf-help">Ao tocar, escolha “Salvar como PDF”. O arquivo reúne todas as abas.</span>
+  <button class="pdf-button" id="generate-pdf" type="button" aria-label="Gerar relatório completo em PDF"><span aria-hidden="true">↓</span> Gerar PDF</button>
 </div>
 
-<section id="geral" class="section active">
+<div class="nav" role="tablist" aria-label="Seções do dashboard">
+  <button class="active" id="tab-geral" type="button" role="tab" aria-selected="true" aria-controls="geral" tabindex="0" data-tab="geral">Visão geral</button>
+  <button id="tab-conteudo" type="button" role="tab" aria-selected="false" aria-controls="conteudo" tabindex="-1" data-tab="conteudo">Páginas</button>
+  <button id="tab-aquisicao" type="button" role="tab" aria-selected="false" aria-controls="aquisicao" tabindex="-1" data-tab="aquisicao">Aquisição</button>
+  <button id="tab-publico" type="button" role="tab" aria-selected="false" aria-controls="publico" tabindex="-1" data-tab="publico">Público</button>
+  <button id="tab-engajamento" type="button" role="tab" aria-selected="false" aria-controls="engajamento" tabindex="-1" data-tab="engajamento">Engajamento</button>
+  <button id="tab-tecnico" type="button" role="tab" aria-selected="false" aria-controls="tecnico" tabindex="-1" data-tab="tecnico">Saúde técnica</button>
+</div>
+
+<section id="geral" class="section active" role="tabpanel" aria-labelledby="tab-geral">
+  <h2 class="print-section-title">Visão geral</h2>
   <div class="grid kpis">
     <div class="card kpi accent"><div class="label">Visualizações no GA</div><div class="value">3.702</div><div class="hint">Páginas vistas em setembro</div></div>
     <div class="card kpi accent-cyan"><div class="label">Usuários ativos</div><div class="value">1.282</div><div class="hint">Google Analytics</div></div>
@@ -74,7 +87,8 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
   </div>
 </section>
 
-<section id="conteudo" class="section">
+<section id="conteudo" class="section" role="tabpanel" aria-labelledby="tab-conteudo">
+  <h2 class="print-section-title">Páginas</h2>
   <div class="grid four">
     <div class="card kpi accent"><div class="label">Visualizações</div><div class="value">3.702</div><div class="hint">Total do mês</div></div>
     <div class="card kpi accent-purple"><div class="label">Página principal</div><div class="value">2.305</div><div class="hint">62,26% das visualizações</div></div>
@@ -107,7 +121,8 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
   </div>
 </section>
 
-<section id="aquisicao" class="section">
+<section id="aquisicao" class="section" role="tabpanel" aria-labelledby="tab-aquisicao">
+  <h2 class="print-section-title">Aquisição</h2>
   <div class="grid two">
     <div class="card"><h2>Sessões por canal</h2><div class="sub">Google Analytics • valores conforme exibidos no resumo do relatório.</div>
       <div style="margin-top:16px">
@@ -139,7 +154,8 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
   </div>
 </section>
 
-<section id="publico" class="section">
+<section id="publico" class="section" role="tabpanel" aria-labelledby="tab-publico">
+  <h2 class="print-section-title">Público</h2>
   <div class="grid kpis">
     <div class="card kpi accent-purple"><div class="label">Portugal</div><div class="value">443</div><div class="hint">Usuários ativos</div></div>
     <div class="card kpi accent-green"><div class="label">Brasil</div><div class="value">413</div><div class="hint">Usuários ativos</div></div>
@@ -165,7 +181,8 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
   </div>
 </section>
 
-<section id="engajamento" class="section">
+<section id="engajamento" class="section" role="tabpanel" aria-labelledby="tab-engajamento">
+  <h2 class="print-section-title">Engajamento</h2>
   <div class="grid four">
     <div class="card kpi accent"><div class="label">page_view</div><div class="value">3,7 mil</div><div class="hint">Visualizações registradas</div></div>
     <div class="card kpi accent-green"><div class="label">scroll</div><div class="value">1,5 mil</div><div class="hint">Eventos de rolagem</div></div>
@@ -184,7 +201,8 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
   </div>
 </section>
 
-<section id="tecnico" class="section">
+<section id="tecnico" class="section" role="tabpanel" aria-labelledby="tab-tecnico">
+  <h2 class="print-section-title">Saúde técnica</h2>
   <div class="grid kpis">
     <div class="card kpi accent-green"><div class="label">Pontuação geral</div><div class="value">74,3</div><div class="hint">Clarity</div></div>
     <div class="card kpi accent-amber"><div class="label">LCP</div><div class="value">4,432 s</div><div class="hint">Carregamento principal</div></div>
@@ -211,7 +229,26 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
 </div>
 <script>
 const buttons=[...document.querySelectorAll('.nav button')], sections=[...document.querySelectorAll('.section')];
-buttons.forEach(btn=>btn.addEventListener('click',()=>{buttons.forEach(b=>b.classList.remove('active'));sections.forEach(s=>s.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');}));
+const activateTab=btn=>{
+  buttons.forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');b.setAttribute('tabindex','-1')});
+  sections.forEach(s=>s.classList.remove('active'));
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected','true');
+  btn.setAttribute('tabindex','0');
+  document.getElementById(btn.dataset.tab).classList.add('active');
+};
+buttons.forEach((btn,index)=>{
+  btn.addEventListener('click',()=>activateTab(btn));
+  btn.addEventListener('keydown',event=>{
+    const keys={ArrowLeft:index-1,ArrowRight:index+1,Home:0,End:buttons.length-1};
+    if(!(event.key in keys))return;
+    event.preventDefault();
+    const next=(keys[event.key]+buttons.length)%buttons.length;
+    activateTab(buttons[next]);
+    buttons[next].focus();
+  });
+});
+document.getElementById('generate-pdf').addEventListener('click',()=>window.print());
 </script>
 </body>
 </html>
