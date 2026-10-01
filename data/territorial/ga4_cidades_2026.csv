@@ -1,0 +1,11 @@
+cidade,pais,usuarios_ativos,novos_usuarios,sessoes_engajadas,taxa_engajamento,sessoes_engajadas_por_usuario,tempo_medio_engajamento_seg,eventos
+Rio de Janeiro,Brazil,202,146,280,60.34,1.39,103,3240
+Sao Paulo,Brazil,33,20,32,48.48,0.97,46,350
+Sao Joao de Meriti,Brazil,32,25,46,67.65,1.44,198,606
+Cabo Frio,Brazil,17,13,27,71.05,1.59,61,257
+Duque de Caxias,Brazil,14,12,15,65.22,1.07,74,208
+Lisboa,Portugal,,,,,,,
+Teerã,Iran,,,,,,,
+Porto,Portugal,,,,,,,
+Vila Nova de Gaia,Portugal,,,,,,,
+(not set),(not set),,,,,,,

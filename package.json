@@ -8,6 +8,9 @@
     "build": "vite build && vite build --config vite.ssr.config.ts && node scripts/generate-static.mjs",
     "build:dev": "vite build --mode development",
     "indexnow": "node scripts/submit-indexnow.mjs",
+    "data:rj-geojson": "node scripts/territorial/fetch-rj-geojson.mjs",
+    "data:territorial": "node scripts/territorial/build-territorial-data.mjs",
+    "test:territorial": "node --test \"src/dashboard-territorial/__tests__/*.test.mjs\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -53,6 +56,7 @@
     "input-otp": "^1.2.4",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.462.0",
+    "maplibre-gl": "^6.11.2",
     "next-themes": "^0.3.0",
     "qrcode": "^1.5.4",
     "react": "^18.3.1",

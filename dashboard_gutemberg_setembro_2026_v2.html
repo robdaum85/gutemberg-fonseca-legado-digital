@@ -27,6 +27,7 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
 .table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;font-size:13px}.table th,.table td{padding:12px 10px;border-bottom:1px solid #e8eef5;text-align:left;vertical-align:top}.table th{color:#60728a;font-size:11px;text-transform:uppercase;letter-spacing:.45px;position:sticky;top:0;background:#fff}.table td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:800;white-space:nowrap}.pill{font-size:11px;border-radius:999px;padding:4px 8px;background:#eef4fb;color:#35506e;white-space:nowrap}.pill.ok{background:#e8f7ef;color:#217a51}.pill.warn{background:#fff4e7;color:#a95f09}.pill.bad{background:#fdecef;color:#a52c39}
 .explain{background:#fff;border-left:4px solid var(--blue);padding:14px 16px;border-radius:12px;color:#425a73;font-size:13px;line-height:1.55}.metric-list{display:grid;gap:9px}.metric{display:flex;justify-content:space-between;gap:20px;min-width:0;padding:10px 0;border-bottom:1px solid #edf1f6}.metric:last-child{border:0}.metric b{flex:0 0 auto;font-size:14px}.metric span{min-width:0;text-align:right;overflow-wrap:anywhere;font-weight:900;color:var(--navy)}
 .retention{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:15px}.ret{background:#f1f4ff;border:1px solid #e1e6fb;border-radius:14px;padding:13px;text-align:center}.ret strong{font-size:22px;display:block;color:#3f49b8}.ret small{color:var(--muted)}
+.digital-disclaimer{margin-top:12px;padding:10px 14px;border-radius:12px;background:#fff7e9;border:1px solid #f7dfb4;color:#7a4a06;font-size:13px;font-weight:700}
 .footer{margin-top:22px;color:#7b8a9c;font-size:11px;text-align:center;line-height:1.5}.note{font-size:11.5px;color:#6e7f93;margin-top:8px}
 @media(max-width:950px){.kpis,.four,.three,.two{grid-template-columns:1fr 1fr}.bar-row{grid-template-columns:130px 1fr 75px}.retention{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.container{padding:14px}.hero{padding:24px 20px;border-radius:20px}.hero h1{font-size:30px}.kpis,.four,.three,.two{grid-template-columns:1fr}.bar-row{grid-template-columns:minmax(100px,1.2fr) minmax(80px,1fr) 58px;gap:7px}.bar-label{white-space:normal;line-height:1.25}.kpi .value{font-size:29px}.actions{align-items:stretch;flex-direction:column}.pdf-button{width:100%;min-height:46px}.pdf-help{text-align:center}.nav{position:sticky;top:0;z-index:10;flex-wrap:nowrap;overflow-x:auto;margin-left:-14px;margin-right:-14px;padding:9px 14px;background:rgba(244,247,251,.96);backdrop-filter:blur(8px);scrollbar-width:none;-webkit-overflow-scrolling:touch}.nav::-webkit-scrollbar{display:none}.nav button{flex:0 0 auto;min-height:42px}.retention{grid-template-columns:1fr 1fr}.card{padding:17px}.table th,.table td{padding:10px 8px}}
@@ -52,6 +53,7 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
 
 <div class="nav" role="tablist" aria-label="Seções do dashboard">
   <button class="active" id="tab-geral" type="button" role="tab" aria-selected="true" aria-controls="geral" tabindex="0" data-tab="geral">Visão geral</button>
+  <button id="tab-territorial" type="button" role="tab" aria-selected="false" aria-controls="territorial" tabindex="-1" data-tab="territorial">Mapa territorial</button>
   <button id="tab-conteudo" type="button" role="tab" aria-selected="false" aria-controls="conteudo" tabindex="-1" data-tab="conteudo">Páginas</button>
   <button id="tab-aquisicao" type="button" role="tab" aria-selected="false" aria-controls="aquisicao" tabindex="-1" data-tab="aquisicao">Aquisição</button>
   <button id="tab-publico" type="button" role="tab" aria-selected="false" aria-controls="publico" tabindex="-1" data-tab="publico">Público</button>
@@ -69,6 +71,7 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
     <div class="card kpi accent-amber"><div class="label">Engajamento médio</div><div class="value">56 s</div><div class="hint">Por usuário ativo</div></div>
   </div>
   <div class="callout"><div style="font-size:25px">💡</div><div><strong>Resumo em uma frase</strong><span>O site alcançou 1.282 usuários ativos e 3.702 visualizações no mês, mas a audiência continua fortemente concentrada na página principal e o tráfego pago é o maior canal de aquisição.</span></div></div>
+  <div class="digital-disclaimer" role="note">Dados digitais medem atenção e interação com o site. Não medem intenção de voto.</div>
   <div class="grid two" style="margin-top:16px">
     <div class="card">
       <h2>Como ler os números</h2><div class="sub">Google Analytics e Clarity medem coisas diferentes.</div>
@@ -86,6 +89,84 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
       </div>
     </div>
   </div>
+</section>
+
+<section id="territorial" class="section" role="tabpanel" aria-labelledby="tab-territorial">
+  <h2 class="print-section-title">Mapa territorial</h2>
+  <div class="card terr-head">
+    <div class="terr-eyebrow">Gutemberg Fonseca 2255</div>
+    <h2 class="terr-title">Sala de Situação Analítica</h2>
+    <div class="terr-subtitle">2022 × presença digital 2026</div>
+    <p>Dados eleitorais históricos e atividade digital atual apresentados lado a lado. Presença digital não representa intenção de voto.</p>
+  </div>
+
+  <div class="grid terr-kpis" id="terr-kpis" aria-label="Resumo histórico de 2022"></div>
+
+  <div class="callout warn" role="note"><div aria-hidden="true">ℹ️</div><div><strong>Usuário, sessão, clique ou upload não equivalem a voto</strong><span>Este painel é descritivo: mostra onde houve voto em 2022 e onde há atividade no site em 2026. Ele não estima votos, não faz previsão e não prioriza municípios.</span></div></div>
+
+  <div class="card terr-filters" role="group" aria-label="Filtros do mapa territorial">
+    <div class="terr-field">
+      <label for="terr-municipio">Município</label>
+      <select id="terr-municipio" disabled><option>Carregando…</option></select>
+    </div>
+    <div class="terr-field">
+      <label for="terr-metric">Métrica do mapa</label>
+      <select id="terr-metric" disabled></select>
+    </div>
+    <div class="terr-field">
+      <span class="terr-label" id="terr-mode-label">Período</span>
+      <div class="terr-modes" role="group" aria-labelledby="terr-mode-label">
+        <button type="button" data-mode="2022" aria-pressed="true" aria-label="Mostrar votos de 2022 no mapa">Votos 2022</button>
+        <button type="button" data-mode="2026" aria-pressed="false" aria-label="Mostrar presença digital de 2026 no mapa">Presença digital 2026</button>
+        <button type="button" data-mode="comparacao" aria-pressed="false" aria-label="Modo comparação: escolha qualquer métrica de 2022 ou 2026">Comparação</button>
+      </div>
+    </div>
+  </div>
+  <div id="terr-status" class="terr-status" role="status" aria-live="polite">Carregando dados territoriais…</div>
+
+  <div class="grid terr-main">
+    <div class="card terr-map-card">
+      <h2 id="terr-map-title">Mapa territorial</h2>
+      <div class="sub" id="terr-map-sub"></div>
+      <div id="terr-map" class="terr-map" role="region" aria-label="Mapa dos municípios do Estado do Rio de Janeiro. Os mesmos valores estão na tabela Ranking municipal, logo abaixo."></div>
+      <img id="terr-map-print" class="terr-map-print" alt="Mapa municipal do Rio de Janeiro (imagem para impressão)" hidden>
+      <div id="terr-legend" class="terr-legend"></div>
+      <a class="terr-link" href="#terr-ranking-card">Ver os mesmos valores em tabela ↓</a>
+    </div>
+    <div class="card terr-details" id="terr-details" aria-live="polite"></div>
+  </div>
+
+  <div class="card terr-block" id="terr-ranking-card">
+    <div class="terr-block-head">
+      <div><h2>Ranking municipal</h2><div class="sub">Tabela completa dos 92 municípios do RJ, alternativa ao mapa. Clique no nome para selecionar. Ordene clicando no cabeçalho.</div></div>
+      <div class="terr-field terr-search"><label for="terr-ranking-search">Buscar município</label><input id="terr-ranking-search" type="search" placeholder="Ex.: Magé" autocomplete="off"></div>
+    </div>
+    <div class="table-wrap terr-scroll"><table class="table terr-table" id="terr-ranking-table"></table></div>
+  </div>
+
+  <div class="card terr-block">
+    <h2>Zonas eleitorais</h2><div class="sub" id="terr-zonas-sub"></div>
+    <div id="terr-zonas" class="terr-zonas"></div>
+  </div>
+
+  <div class="card terr-block">
+    <div class="terr-block-head">
+      <div><h2>Locais de votação</h2><div class="sub" id="terr-locais-sub"></div></div>
+      <div class="terr-field terr-search"><label for="terr-locais-search">Buscar local ou endereço</label><input id="terr-locais-search" type="search" placeholder="Ex.: Escola Municipal" autocomplete="off"></div>
+    </div>
+    <div id="terr-locais"></div>
+  </div>
+
+  <details class="card terr-block terr-secoes" id="terr-secoes-details">
+    <summary><span><b>Seções eleitorais</b><span class="sub" id="terr-secoes-sub"> · abra para carregar as seções do filtro atual</span></span></summary>
+    <div id="terr-secoes"></div>
+  </details>
+
+  <div class="grid two terr-block">
+    <div class="card"><h2>Top 10 municípios em 2022</h2><div class="sub">Votos de Gutemberg para deputado federal.</div><div id="terr-top10"></div></div>
+    <div class="card"><h2>Cidades brasileiras no GA4</h2><div class="sub">Usuários ativos por cidade no relatório importado. Só as cidades do RJ aparecem no mapa.</div><div id="terr-ga4-br" class="terr-ga4"></div></div>
+  </div>
+  <div class="footer" id="terr-sources"></div>
 </section>
 
 <section id="conteudo" class="section" role="tabpanel" aria-labelledby="tab-conteudo">
@@ -124,6 +205,7 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
 
 <section id="aquisicao" class="section" role="tabpanel" aria-labelledby="tab-aquisicao">
   <h2 class="print-section-title">Aquisição</h2>
+  <div class="digital-disclaimer" role="note" style="margin:0 0 14px">Dados digitais medem atenção e interação com o site. Não medem intenção de voto.</div>
   <div class="grid two">
     <div class="card"><h2>Sessões por canal</h2><div class="sub">Google Analytics • valores conforme exibidos no resumo do relatório.</div>
       <div style="margin-top:16px">
@@ -179,6 +261,10 @@ body{margin:0;background:linear-gradient(180deg,#eef5ff 0,#f7f9fc 260px,#f4f7fb 
       <div class="metric-list" style="margin-top:12px"><div class="metric"><b>Últimos 30 dias</b><span>1,3 mil</span></div><div class="metric"><b>Últimos 7 dias</b><span>392</span></div><div class="metric"><b>Último dia</b><span>63</span></div></div>
       <div class="callout warn"><div>🌍</div><div><strong>Vale validar a geografia</strong><span>Portugal aparece ligeiramente acima do Brasil e há volume relevante no Irã e nos EUA. Se o público esperado for majoritariamente brasileiro, é útil conferir campanhas, origem e qualidade desse tráfego internacional antes de tirar conclusões.</span></div></div>
     </div>
+  </div>
+  <div class="card" id="terr-quality" style="margin-top:16px" aria-live="polite">
+    <h2>Qualidade do tráfego</h2>
+    <div class="sub">Carregando…</div>
   </div>
 </section>
 
@@ -527,6 +613,7 @@ const activateTab=btn=>{
   btn.setAttribute('aria-selected','true');
   btn.setAttribute('tabindex','0');
   document.getElementById(btn.dataset.tab).classList.add('active');
+  document.dispatchEvent(new CustomEvent('dashboard:tabchange',{detail:{tab:btn.dataset.tab}}));
 };
 buttons.forEach((btn,index)=>{
   btn.addEventListener('click',()=>activateTab(btn));
@@ -539,7 +626,12 @@ buttons.forEach((btn,index)=>{
     buttons[next].focus();
   });
 });
-document.getElementById('generate-pdf').addEventListener('click',()=>window.print());
+document.getElementById('generate-pdf').addEventListener('click',async()=>{
+  // O mapa territorial carrega sob demanda; garante que ele esteja pronto antes de imprimir.
+  try{await window.territorialDashboard?.prepareForPrint()}catch(error){console.error(error)}
+  window.print();
+});
 </script>
+<script type="module" src="/src/dashboard-territorial/main.js"></script>
 </body>
 </html>
