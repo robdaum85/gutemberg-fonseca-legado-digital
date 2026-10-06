@@ -83,6 +83,11 @@
   ],
   "redirects": [
     {
+      "source": "/",
+      "destination": "https://www.instagram.com/gutembergpfonseca/",
+      "permanent": false
+    },
+    {
       "source": "/:path*",
       "destination": "https://www.instagram.com/gutembergpfonseca/",
       "permanent": false
